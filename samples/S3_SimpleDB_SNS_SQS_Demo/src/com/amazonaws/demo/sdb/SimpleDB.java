@@ -14,14 +14,11 @@
  */
 package com.amazonaws.demo.sdb;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import com.amazonaws.demo.AWSAndroidDemo;
-import com.amazonaws.services.simpledb.AmazonSimpleDB;
 import com.amazonaws.services.simpledb.AmazonSimpleDBClient;
 import com.amazonaws.services.simpledb.model.Attribute;
 import com.amazonaws.services.simpledb.model.CreateDomainRequest;
@@ -38,7 +35,6 @@ import com.amazonaws.services.simpledb.model.SelectRequest;
 
 public class SimpleDB {
 
-	private static AmazonSimpleDBClient sdb = null;
 	private static String nextToken = null;
 	private static int prevNumDomains = 0;
 	public static final String DOMAIN_NAME = "_domain_name";
@@ -62,7 +58,7 @@ public class SimpleDB {
 		if(nextToken != null)
 			req.setNextToken(nextToken);
 		ListDomainsResult result = getInstance().listDomains(req);
-		List domains = result.getDomainNames();
+		List<String> domains = result.getDomainNames();
 		SimpleDB.nextToken = result.getNextToken(); 
 		return domains;
 	}
@@ -98,7 +94,7 @@ public class SimpleDB {
 
 	public static String[] getItemNamesForDomain( String domainName ) {
 		SelectRequest selectRequest = new SelectRequest( "select itemName() from `" + domainName + "`" ).withConsistentRead( true );
-		List items = getInstance().select( selectRequest ).getItems();	
+		List<Item> items = getInstance().select( selectRequest ).getItems();	
 		
 		String[] itemNames = new String[ items.size() ];
 		for ( int i = 0; i < items.size(); i++ ) {

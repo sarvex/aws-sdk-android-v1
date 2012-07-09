@@ -17,11 +17,7 @@ package com.amazonaws.tvmclient;
 
 import com.amazonaws.util.HttpUtils;
 
-import android.util.Log;
-import org.apache.commons.codec.binary.Base64;
-
 public class LoginRequest extends Request {
-    private static final String LOG_TAG = "LoginRequest";
 
     private final String endpoint;
     private final String uid;

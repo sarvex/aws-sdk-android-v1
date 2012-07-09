@@ -6,7 +6,7 @@
     android:layout_height="fill_parent">
     <TextView
     	android:id="@+id/sqs_main_into_text"
-    	android:text="SQS Main Menu"
+    	android:text="@string/sqs_main_menu"
     	android:layout_width="fill_parent"
 		android:textStyle="bold"
 		android:textColor="#ffe3ce08"
@@ -15,25 +15,25 @@
     	/>
 	<Button 
 		android:id="@+id/sqs_create_queue_button"
-		android:text="Create Queue"
+		android:text="@string/create_queue"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>
 	<Button 
 		android:id="@+id/sqs_list_queues_button"
-		android:text="View Queues"
+		android:text="@string/view_queues"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>
 	<Button
 		android:id="@+id/sqs_delete_queue_button"
-		android:text="Delete Queue"
+		android:text="@string/delete_queue"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>
 	<Button 
 		android:id="@+id/sqs_send_message_button"
-		android:text="Send Message to Queue"
+		android:text="@string/send_message_to_queue"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>

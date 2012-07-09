@@ -2,4 +2,6 @@
 <resources>
     <string name="hello">Hello World, S3Uploader</string>
     <string name="app_name">S3Uploader</string>
+    <string name="show_in_browser">Show in Browser</string>
+    <string name="select_photo">Select Photo</string>
 </resources>

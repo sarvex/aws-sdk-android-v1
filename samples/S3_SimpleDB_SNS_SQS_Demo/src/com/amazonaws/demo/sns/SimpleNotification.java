@@ -23,7 +23,6 @@ import com.amazonaws.services.sns.model.CreateTopicRequest;
 import com.amazonaws.services.sns.model.CreateTopicResult;
 import com.amazonaws.services.sns.model.DeleteTopicRequest;
 import com.amazonaws.services.sns.model.ListSubscriptionsByTopicRequest;
-import com.amazonaws.services.sns.model.ListTopicsRequest;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.PublishResult;
 import com.amazonaws.services.sns.model.SubscribeRequest;
@@ -33,7 +32,6 @@ import com.amazonaws.services.sns.model.Topic;
 
 public class SimpleNotification {
 
-	private static AmazonSNSClient sns = null;
 	public static final String TOPIC_ARN = "_Topic_Arn";
 
 	
@@ -42,8 +40,8 @@ public class SimpleNotification {
 	}
 	
 	public static List<String> getTopicNames(){
-		List topics = getInstance().listTopics().getTopics();
-		Iterator tIter = topics.iterator();
+		List<Topic> topics = getInstance().listTopics().getTopics();
+		Iterator<Topic> tIter = topics.iterator();
 		List<String> topicNames = new ArrayList<String>( topics.size() );
 		while(tIter.hasNext()){
 			topicNames.add(((Topic) tIter.next()).getTopicArn());
@@ -52,14 +50,14 @@ public class SimpleNotification {
 	}
 	
 	public static List<String> getSubscriptionNamesByTopic(String topicARN){
-		List subscriptions;
+		List<Subscription> subscriptions;
 		if(topicARN != null) {
 			ListSubscriptionsByTopicRequest req = new ListSubscriptionsByTopicRequest(topicARN);
 			subscriptions = getInstance().listSubscriptionsByTopic(req).getSubscriptions();
 		} else {
 			subscriptions = getInstance().listSubscriptions().getSubscriptions();
 		}
-		Iterator sIter = subscriptions.iterator();
+		Iterator<Subscription> sIter = subscriptions.iterator();
 		List<String> subscriptionNames = new ArrayList<String>(subscriptions.size());
 		while(sIter.hasNext()){
 			subscriptionNames.add( ((Subscription) sIter.next()).getEndpoint());

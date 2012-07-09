@@ -21,14 +21,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
-
 import android.util.Log;
 
 import com.amazonaws.demo.AWSAndroidDemo;
-import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.ListObjectsRequest;
@@ -38,17 +33,16 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 public class S3 {
 
-	private static AmazonS3Client s3 = null;
 	private static ObjectListing objListing = null;
 	public static final String BUCKET_NAME = "_bucket_name";
 	public static final String OBJECT_NAME = "_object_name";
 			
-	public static AmazonS3 getInstance() {
+	public static AmazonS3Client getInstance() {
         return AWSAndroidDemo.clientManager.s3();
 	}
 
 	public static List<String> getBucketNames() {
-		List buckets = getInstance().listBuckets();
+		List<Bucket> buckets = getInstance().listBuckets();
 		
 		List<String> bucketNames = new ArrayList<String>( buckets.size() );
 		Iterator<Bucket> bIter = buckets.iterator();
@@ -71,7 +65,7 @@ public class S3 {
 	
 	public static List<String> getObjectNamesForBucket( String bucketName , int numItems) {
 		ListObjectsRequest req= new ListObjectsRequest();
-		req.setMaxKeys(new Integer(numItems));
+		req.setMaxKeys(Integer.valueOf(numItems));
 		req.setBucketName(bucketName);
 		ObjectListing objects = getInstance().listObjects( req );
 		objListing = objects;

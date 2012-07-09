@@ -18,13 +18,8 @@ import java.util.List;
 
 import com.amazonaws.demo.identity.R;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.demo.identity.sdb.SdbDomainList;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.tvmclient.AmazonSharedPreferencesWrapper;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;

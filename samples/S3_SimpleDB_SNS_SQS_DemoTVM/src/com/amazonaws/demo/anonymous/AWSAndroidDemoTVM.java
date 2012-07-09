@@ -18,7 +18,6 @@ package com.amazonaws.demo.anonymous;
 import com.amazonaws.demo.anonymous.R;
 
 import com.amazonaws.demo.anonymous.AmazonClientManager;
-import com.amazonaws.demo.anonymous.PropertyLoader;
 import com.amazonaws.demo.anonymous.s3.S3Menu;
 import com.amazonaws.demo.anonymous.sdb.SdbMenu;
 import com.amazonaws.demo.anonymous.sns.SnsMenu;
@@ -30,10 +29,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -67,7 +63,7 @@ public class AWSAndroidDemoTVM extends Activity {
 
         clientManager = new AmazonClientManager( getSharedPreferences( "com.amazon.aws.demo.AWSDemo", Context.MODE_PRIVATE ) );
 
-     	if ( this.clientManager.hasCredentials() ) { 
+     	if ( AWSAndroidDemoTVM.clientManager.hasCredentials() ) { 
     		welcomeText.setText(success);
     		snsButton.setVisibility(View.VISIBLE);
     		sqsButton.setVisibility(View.VISIBLE);
@@ -86,7 +82,7 @@ public class AWSAndroidDemoTVM extends Activity {
         snsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVM.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVM.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
         			startActivity(new Intent(AWSAndroidDemoTVM.this, SnsMenu.class));
                 }
@@ -99,7 +95,7 @@ public class AWSAndroidDemoTVM extends Activity {
 		sqsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVM.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVM.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
     			    startActivity(new Intent(AWSAndroidDemoTVM.this, SqsMenu.class));
                 }
@@ -112,7 +108,7 @@ public class AWSAndroidDemoTVM extends Activity {
 		s3Button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVM.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVM.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
     			    startActivity(new Intent(AWSAndroidDemoTVM.this, S3Menu.class));
                 }
@@ -125,7 +121,7 @@ public class AWSAndroidDemoTVM extends Activity {
 		sdbButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVM.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVM.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
     			    startActivity(new Intent(AWSAndroidDemoTVM.this, SdbMenu.class));
                 }
@@ -139,7 +135,6 @@ public class AWSAndroidDemoTVM extends Activity {
 			@Override
 			public void onClick(View v) {
                 clientManager.clearCredentials();
-                clientManager.wipe();
                 displayLogoutSuccess();
 			}
 		});        

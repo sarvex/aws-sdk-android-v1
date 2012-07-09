@@ -5,7 +5,7 @@
     android:layout_height="fill_parent">
     <TextView
     	android:id="@+id/sdb_main_into_text"
-    	android:text="SDB Main Menu"
+    	android:text="@string/sdb_main_menu"
     	android:layout_width="fill_parent"
 		android:textStyle="bold"
 		android:textColor="#ffe3ce08"
@@ -14,19 +14,19 @@
     	/>
 	<Button 
 		android:id="@+id/sdb_main_create_domain_button"
-		android:text="Create Domain"
+		android:text="@string/create_domain"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>
 	<Button 
 		android:id="@+id/sdb_main_create_item_button"
-		android:text="Create Item"
+		android:text="@string/create_item"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>
 	<Button 
 		android:id="@+id/sdb_main_view_domains_button"
-		android:text="View Domains"
+		android:text="@string/view_domains"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>

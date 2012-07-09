@@ -60,12 +60,14 @@ public class Utilities {
 		}
 
 		@Override
-		public void sign(Request arg0, AWSCredentials arg1)
-				throws AmazonClientException {}
+		public void sign(Request<?> arg0, AWSCredentials arg1)
+				throws AmazonClientException {
+		}
 
 		@Override
-		protected void addSessionCredentials(Request arg0,
-				AWSSessionCredentials arg1) {}
+		protected void addSessionCredentials(Request<?> arg0,
+				AWSSessionCredentials arg1) {
+		}
 	}
 	
 }

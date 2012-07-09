@@ -19,15 +19,12 @@ import android.content.SharedPreferences;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicSessionCredentials;
 
-import android.util.Log;
-
 /**
 * This utility class is used to store content in Android's Shared Preferences.
 * For maximum security the preferences should be private. 
 */
 public class AmazonSharedPreferencesWrapper {
-    private static final String LOG_TAG = "AmazonSharedPreferencesWrapper";
-
+	
     private static final String AWS_ACCESS_KEY = "AWS_ACCESS_KEY";
     private static final String AWS_SECRET_KEY = "AWS_SECRET_KEY";
     private static final String AWS_SECURITY_TOKEN = "AWS_SECURITY_TOKEN";

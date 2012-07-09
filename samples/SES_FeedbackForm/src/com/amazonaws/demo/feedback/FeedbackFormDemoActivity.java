@@ -19,7 +19,6 @@ import com.amazonaws.demo.feedback.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,7 +47,7 @@ public class FeedbackFormDemoActivity extends Activity {
        
         clientManager = new AmazonClientManager();
 
-     	if ( this.clientManager.hasCredentials() ){
+     	if ( FeedbackFormDemoActivity.clientManager.hasCredentials() ){
     		submitButton.setVisibility(View.VISIBLE);
     		this.wireButtons();
     	} 

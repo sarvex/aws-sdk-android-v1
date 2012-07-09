@@ -17,6 +17,7 @@ package com.amazonaws.tvmclient;
 
 import android.content.SharedPreferences;
 
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.demo.userpreferences.PropertyLoader;
 import com.amazonaws.services.dynamodb.AmazonDynamoDBClient;
@@ -24,59 +25,117 @@ import com.amazonaws.services.dynamodb.AmazonDynamoDBClient;
 import android.util.Log;
 
 /**
- * This class is used to get clients to the various AWS services. Before accessing a client the credentials should be checked to ensure validity.
+ * This class is used to get clients to the various AWS services. Before
+ * accessing a client the credentials should be checked to ensure validity.
  */
 public class AmazonClientManager {
-	
+
 	private static final String LOG_TAG = "AmazonClientManager";
-	
+
 	private AmazonDynamoDBClient ddb = null;
 	private SharedPreferences sharedPreferences = null;
-	
-	public AmazonClientManager( SharedPreferences settings ) {
+
+	public AmazonClientManager(SharedPreferences settings) {
 		this.sharedPreferences = settings;
 	}
-	
+
 	public AmazonDynamoDBClient ddb() {
 		validateCredentials();
 		return ddb;
 	}
-	
+
 	public boolean hasCredentials() {
 		return PropertyLoader.getInstance().hasCredentials();
 	}
-	
+
 	public Response validateCredentials() {
+
 		Response ableToGetToken = Response.SUCCESSFUL;
-		
-		if ( AmazonSharedPreferencesWrapper.areCredentialsExpired( this.sharedPreferences ) ) {
-			Log.i( LOG_TAG, "Credentials were expired." );
-			
-			clearCredentials();
-			
-			AmazonTVMClient tvm = new AmazonTVMClient( this.sharedPreferences, PropertyLoader.getInstance().getTokenVendingMachineURL(), PropertyLoader.getInstance().useSSL() );
-			ableToGetToken = tvm.anonymousRegister();
-			if ( ableToGetToken.requestWasSuccessful() ) {
-				ableToGetToken = tvm.getToken();
+
+		if (AmazonSharedPreferencesWrapper
+				.areCredentialsExpired(this.sharedPreferences)) {
+
+			synchronized (this) {
+
+				if (AmazonSharedPreferencesWrapper
+						.areCredentialsExpired(this.sharedPreferences)) {
+
+					Log.i(LOG_TAG, "Credentials were expired.");
+
+					AmazonTVMClient tvm = new AmazonTVMClient( this.sharedPreferences, PropertyLoader.getInstance().getTokenVendingMachineURL(), PropertyLoader.getInstance().useSSL() );
+
+					ableToGetToken = tvm.anonymousRegister();
+
+					if (ableToGetToken.requestWasSuccessful()) {
+
+						ableToGetToken = tvm.getToken();
+
+						if (ableToGetToken.requestWasSuccessful()) {
+							Log.i(LOG_TAG, "Creating New Credentials.");
+							initClients();
+						}
+					}
+				}
+			}
+
+		} else if (ddb == null) {
+
+			synchronized (this) {
+
+				if (ddb == null) {
+
+					Log.i(LOG_TAG, "Creating New Credentials.");
+					initClients();
+				}
 			}
 		}
-		
-		if ( ableToGetToken.requestWasSuccessful() && ddb == null ) {
-			Log.i( LOG_TAG, "Creating New Credentials." );
-			
-			AWSCredentials credentials = AmazonSharedPreferencesWrapper.getCredentialsFromSharedPreferences( this.sharedPreferences );
-			
-			ddb = new AmazonDynamoDBClient( credentials );
-		}
-		
+
 		return ableToGetToken;
+	}
+
+	private void initClients() {
+		AWSCredentials credentials = AmazonSharedPreferencesWrapper
+				.getCredentialsFromSharedPreferences(this.sharedPreferences);
+
+		ddb = new AmazonDynamoDBClient( credentials );
 	}
 	
 	public void clearCredentials() {
-		ddb = null;
+
+		synchronized (this) {
+			
+			AmazonSharedPreferencesWrapper.wipe(this.sharedPreferences);
+
+			ddb = null;
+		}
 	}
-	
-	public void wipe() {
-		AmazonSharedPreferencesWrapper.wipe( this.sharedPreferences );
+
+	public boolean wipeCredentialsOnAuthError(AmazonServiceException ex) {
+		if (
+		// STS
+		// http://docs.amazonwebservices.com/STS/latest/APIReference/CommonErrors.html
+		ex.getErrorCode().equals("IncompleteSignature")
+				|| ex.getErrorCode().equals("InternalFailure")
+				|| ex.getErrorCode().equals("InvalidClientTokenId")
+				|| ex.getErrorCode().equals("OptInRequired")
+				|| ex.getErrorCode().equals("RequestExpired")
+				|| ex.getErrorCode().equals("ServiceUnavailable")
+
+				// DynamoDB
+				// http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/ErrorHandling.html#APIErrorTypes
+				|| ex.getErrorCode().equals("AccessDeniedException")
+				|| ex.getErrorCode().equals("IncompleteSignatureException")
+				|| ex.getErrorCode().equals(
+						"MissingAuthenticationTokenException")
+				|| ex.getErrorCode().equals("ValidationException")
+				|| ex.getErrorCode().equals("InternalFailure")
+				|| ex.getErrorCode().equals("InternalServerError")) {
+			
+			clearCredentials();
+
+			return true;
+		}
+
+		return false;
 	}
 }

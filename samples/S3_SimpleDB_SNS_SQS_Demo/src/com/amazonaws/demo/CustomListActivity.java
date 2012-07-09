@@ -18,9 +18,6 @@ import java.util.List;
 
 import com.amazonaws.demo.R;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;

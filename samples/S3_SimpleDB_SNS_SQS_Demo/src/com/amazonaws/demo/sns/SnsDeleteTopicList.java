@@ -17,14 +17,10 @@ package com.amazonaws.demo.sns;
 import java.util.List;
 
 import com.amazonaws.demo.CustomListActivity;
-import com.amazonaws.demo.sqs.SimpleQueue;
-import com.amazonaws.demo.sqs.SqsDeleteQueueList;
 import com.amazonaws.services.sns.model.DeleteTopicRequest;
-import com.amazonaws.services.sqs.model.DeleteQueueRequest;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;

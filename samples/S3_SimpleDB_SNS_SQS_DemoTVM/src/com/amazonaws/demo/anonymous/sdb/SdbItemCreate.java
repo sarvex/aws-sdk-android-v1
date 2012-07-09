@@ -20,8 +20,6 @@ import com.amazonaws.demo.anonymous.R;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.demo.anonymous.AlertActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;

@@ -5,7 +5,7 @@
     android:layout_height="fill_parent">
     <TextView
     	android:id="@+id/item_view_loading_text"
-    	android:text="Loading..."
+    	android:text="@string/loading_"
     	android:layout_width="fill_parent"
 		android:textStyle="bold"
 		android:textColor="#ffe3ce08"

@@ -14,17 +14,13 @@
  */
 package com.amazonaws.demo.feedback;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.util.Log;
 
-import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient;
 import com.amazonaws.services.simpleemail.model.Body;
 import com.amazonaws.services.simpleemail.model.Content;
 import com.amazonaws.services.simpleemail.model.Destination;
 import com.amazonaws.services.simpleemail.model.Message;
 import com.amazonaws.services.simpleemail.model.SendEmailRequest;
-import com.amazonaws.services.simpleemail.model.SendEmailResult;
 
 /*
  * Uses Amazon SES http://aws.amazon.com/ses/
@@ -32,8 +28,6 @@ import com.amazonaws.services.simpleemail.model.SendEmailResult;
  */
 public class SESManager {
 	private static final String LOG_TAG = "SESManager";
-
-    private AmazonSimpleEmailServiceClient sesClient = null;
 	
 	/** Send the feedback message based on data entered */
     public static boolean sendFeedbackEmail(String comments, String name, float rating) {
@@ -50,7 +44,7 @@ public class SESManager {
     	
     	SendEmailRequest request = new SendEmailRequest(email,destination,feedbackMessage);
     	try {
-    		SendEmailResult result = FeedbackFormDemoActivity.clientManager.ses().sendEmail(request);
+    		FeedbackFormDemoActivity.clientManager.ses().sendEmail(request);
     	}
     	catch (Throwable e) {
     		Log.e( LOG_TAG, "Error sending mail" + e );

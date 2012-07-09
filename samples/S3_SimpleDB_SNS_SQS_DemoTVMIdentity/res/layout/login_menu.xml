@@ -41,13 +41,13 @@
         android:paddingTop="15sp">
 	    <Button 
 		    android:id="@+id/login_main_ok_button"
-		    android:text="Login"
+		    android:text="@string/login"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    />
 	    <Button 
 		    android:id="@+id/login_main_register_button"
-		    android:text="Register"
+		    android:text="@string/register"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    />

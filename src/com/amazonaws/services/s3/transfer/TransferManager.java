@@ -111,7 +111,6 @@ public class TransferManager {
 
     /** Configuration for how TransferManager processes requests. */
     private TransferManagerConfiguration configuration;
-
     /** The thread pool in which transfers are uploaded or downloaded. */
     private ThreadPoolExecutor threadPool;
 
@@ -460,13 +459,12 @@ public class TransferManager {
         appendUserAgent(getObjectRequest, USER_AGENT);
 
         String description = "Downloading from " + getObjectRequest.getBucketName() + "/" + getObjectRequest.getKey();
-
+      
         // Add our own transfer progress listener
         TransferProgressImpl transferProgress = new TransferProgressImpl();
         ProgressListenerChain listenerChain = new ProgressListenerChain(new TransferProgressUpdatingListener(
                 transferProgress), getObjectRequest.getProgressListener());
-        getObjectRequest.setProgressListener(listenerChain);
-
+        getObjectRequest.setProgressListener(listenerChain); 
         final S3Object s3Object = s3.getObject(getObjectRequest);
         final DownloadImpl download = new DownloadImpl(description, transferProgress, listenerChain, s3Object, stateListener);
 
@@ -490,7 +488,7 @@ public class TransferManager {
             public Object call() throws Exception {
                 try {
                     download.setState(TransferState.InProgress);
-                    ServiceUtils.downloadObjectToFile(s3Object, file);
+                    ServiceUtils.downloadObjectToFile(s3Object, file,(getObjectRequest.getRange()==null));
                     download.setState(TransferState.Completed);
                     return true;
                 } catch (Exception e) {

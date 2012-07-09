@@ -16,10 +16,7 @@ package com.amazonaws.tvmclient;
 
 import com.amazonaws.util.HttpUtils;
 
-import android.util.Log;
-
 public class GetTokenRequest extends Request {
-    private static final String LOG_TAG = "GetTokenRequest";
 
     private final String endpoint;
     private final String uid;

@@ -26,7 +26,6 @@ import com.amazonaws.auth.SigningAlgorithm;
 import com.amazonaws.util.DateUtils;
 
 public class Utilities {
-    private static final String LOG_TAG = "Utilities";
     
     public static String getTimestamp() {
         return new DateUtils().formatIso8601Date( new Date() );
@@ -50,11 +49,7 @@ public class Utilities {
     }
      
     static class Signer extends AbstractAWSSigner {
-        public void sign(Request request, AWSCredentials credentials) throws AmazonClientException {
-        }
-        protected void addSessionCredentials(Request request, AWSSessionCredentials credentials) {
-        }
-        
+
         public String getSignature( String dataToSign, String key ) {
             try {
 				return super.signAndBase64Encode( dataToSign.getBytes( "UTF-8" ), key, SigningAlgorithm.HmacSHA256 );
@@ -63,6 +58,16 @@ public class Utilities {
                 return null;
             }
         }
+
+		@Override
+		public void sign(Request<?> arg0, AWSCredentials arg1)
+				throws AmazonClientException {
+		}
+
+		@Override
+		protected void addSessionCredentials(Request<?> arg0,
+				AWSSessionCredentials arg1) {
+		}
     }
     
 }

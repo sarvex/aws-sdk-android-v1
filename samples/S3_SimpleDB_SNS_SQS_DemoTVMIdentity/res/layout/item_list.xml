@@ -6,7 +6,7 @@
     android:layout_height="fill_parent">
     <TextView
     	android:id="@+id/item_list_loading_text"
-    	android:text="Loading..."
+    	android:text="@string/loading_"
     	android:layout_width="fill_parent"
 		android:textStyle="bold"
 		android:textColor="#ffe3ce08"
@@ -19,7 +19,7 @@
 		android:layout_height="340dip"/>
 	<Button
 		android:id="@+id/item_list_more_button"
-		android:text="More..."
+		android:text="@string/more_"
 		android:layout_width="fill_parent"
 		android:layout_height="40dip"
 		android:visibility="invisible"/>

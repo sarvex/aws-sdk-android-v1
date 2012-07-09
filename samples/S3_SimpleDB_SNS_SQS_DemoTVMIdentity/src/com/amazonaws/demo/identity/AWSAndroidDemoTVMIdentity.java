@@ -27,10 +27,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -65,11 +62,11 @@ public class AWSAndroidDemoTVMIdentity extends Activity {
 
         clientManager = new AmazonClientManager( getSharedPreferences( "com.amazon.aws.demo.AWSDemo", Context.MODE_PRIVATE ) );
 
-     	if ( !this.clientManager.hasCredentials() ) {
+     	if ( !AWSAndroidDemoTVMIdentity.clientManager.hasCredentials() ) {
     		this.displayCredentialsIssueAndExit();
     		welcomeText.setText(fail);
         }
-        else if ( !this.clientManager.isLoggedIn() ) {
+        else if ( !AWSAndroidDemoTVMIdentity.clientManager.isLoggedIn() ) {
             welcomeText.setText(success);
             loginButton.setVisibility(View.VISIBLE);
     		this.wireButtons();
@@ -87,7 +84,7 @@ public class AWSAndroidDemoTVMIdentity extends Activity {
     
     protected void onResume() {
         super.onResume();
-        if ( !this.clientManager.isLoggedIn() ) {
+        if ( !AWSAndroidDemoTVMIdentity.clientManager.isLoggedIn() ) {
             welcomeText.setText(success);
             loginButton.setVisibility(View.VISIBLE);
     		this.wireButtons();
@@ -110,7 +107,7 @@ public class AWSAndroidDemoTVMIdentity extends Activity {
         snsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVMIdentity.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVMIdentity.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
         			startActivity(new Intent(AWSAndroidDemoTVMIdentity.this, SnsMenu.class));
                 }
@@ -123,7 +120,7 @@ public class AWSAndroidDemoTVMIdentity extends Activity {
 		sqsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVMIdentity.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVMIdentity.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
     			    startActivity(new Intent(AWSAndroidDemoTVMIdentity.this, SqsMenu.class));
                 }
@@ -136,7 +133,7 @@ public class AWSAndroidDemoTVMIdentity extends Activity {
 		s3Button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVMIdentity.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVMIdentity.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
     			    startActivity(new Intent(AWSAndroidDemoTVMIdentity.this, S3Menu.class));
                 }
@@ -149,7 +146,7 @@ public class AWSAndroidDemoTVMIdentity extends Activity {
 		sdbButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Response response = AWSAndroidDemoTVMIdentity.this.clientManager.validateCredentials();
+                Response response = AWSAndroidDemoTVMIdentity.clientManager.validateCredentials();
                 if ( response != null && response.requestWasSuccessful() ) {
     			    startActivity(new Intent(AWSAndroidDemoTVMIdentity.this, SdbMenu.class));
                 }
@@ -162,8 +159,7 @@ public class AWSAndroidDemoTVMIdentity extends Activity {
 		logoutButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                clientManager.clearCredentials();  
-                clientManager.wipe();              
+                clientManager.clearCredentials();             
                 displayLogoutSuccess();
                 
     		    snsButton.setVisibility(View.INVISIBLE);

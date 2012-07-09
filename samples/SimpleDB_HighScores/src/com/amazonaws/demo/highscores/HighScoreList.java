@@ -132,6 +132,7 @@ public class HighScoreList {
     /*
      * If a 'nextToken' was returned on the previous query execution, use the next token to get the next batch of items.
      */
+	@SuppressWarnings("unchecked")
 	public List<HighScore> getNextPageOfScores() {
 		if ( this.nextToken == null ) {
 			return Collections.EMPTY_LIST;

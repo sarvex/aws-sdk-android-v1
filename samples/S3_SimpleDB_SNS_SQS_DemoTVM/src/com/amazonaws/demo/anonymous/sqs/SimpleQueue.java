@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.amazonaws.demo.anonymous.AWSAndroidDemoTVM;
-import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClient;
 import com.amazonaws.services.sqs.model.CreateQueueRequest;
 import com.amazonaws.services.sqs.model.CreateQueueResult;
@@ -33,7 +32,6 @@ import com.amazonaws.services.sqs.model.SetQueueAttributesRequest;
 
 public class SimpleQueue {
 	
-	private static AmazonSQSClient simpleQueue = null;
 	private static List<Message> lastRecievedMessages = null;
 	public static final String QUEUE_URL = "_queue_url"; 
 	public static final String MESSAGE_INDEX = "_message_index";

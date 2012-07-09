@@ -14,7 +14,6 @@
  */
 package com.amazonaws.tvmclient;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 
 import java.security.SecureRandom;
@@ -80,7 +79,7 @@ public class AmazonTVMClient {
     public Response login( String username, String password ) {
         Response response = Response.SUCCESSFUL;
         if ( AmazonSharedPreferencesWrapper.getUidForDevice( this.sharedPreferences ) == null ) {
-            String uid = this.generateRandomString();
+            String uid = AmazonTVMClient.generateRandomString();
             LoginRequest loginRequest = new LoginRequest( this.endpoint, this.useSSL, this.appName, uid, username, password );
             ResponseHandler handler = new LoginResponseHandler( loginRequest.getDecryptionKey() );
 

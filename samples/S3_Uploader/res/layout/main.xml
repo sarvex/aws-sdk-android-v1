@@ -10,13 +10,13 @@
     android:text="@string/hello"
     />
 <Button android:visibility="visible" 
-		android:text="Select Photo" 
+		android:text="@string/select_photo" 
 		android:id="@+id/select_photo_button" 
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent"/>
 <Button 
 		android:id="@+id/show_in_browser_button"
-		android:text="Show in Browser"
+		android:text="@string/show_in_browser"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:visibility="visible"/>

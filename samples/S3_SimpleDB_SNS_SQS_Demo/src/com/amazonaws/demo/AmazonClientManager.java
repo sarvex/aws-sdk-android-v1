@@ -62,7 +62,7 @@ public class AmazonClientManager {
         return PropertyLoader.getInstance().hasCredentials();
     }
     
-    public synchronized void validateCredentials() {
+    public void validateCredentials() {
         if ( s3Client == null || sqsClient == null || sdbClient == null || snsClient == null ) {        
             Log.i( LOG_TAG, "Creating New Clients." );
         
@@ -74,7 +74,7 @@ public class AmazonClientManager {
         }
     }
     
-    public synchronized void clearClients() {
+    public void clearClients() {
         s3Client = null;
         sqsClient = null;
         sdbClient = null;
