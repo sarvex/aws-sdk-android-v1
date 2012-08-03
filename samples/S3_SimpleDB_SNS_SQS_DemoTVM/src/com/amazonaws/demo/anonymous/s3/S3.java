@@ -73,6 +73,16 @@ public class S3 {
 			while (oIter.hasNext()) {
 				objectNames.add(oIter.next().getKey());
 			}
+			// By default list objects will only return 1000 keys
+			// This code will make multiple calls to fetch all keys in a bucket
+			// NOTE: This could potentially cause an out of memory error
+			while (objects.isTruncated()) {
+				objects = getInstance().listNextBatchOfObjects(objects);
+				oIter = objects.getObjectSummaries().iterator();
+				while(oIter.hasNext()){
+					objectNames.add(oIter.next().getKey());
+				}
+			}
 			return objectNames;
 
 		} catch (AmazonServiceException ex) {
