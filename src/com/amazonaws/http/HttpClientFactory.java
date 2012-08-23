@@ -41,7 +41,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.client.params.HttpClientParams;
 
 import com.amazonaws.ClientConfiguration;
 
@@ -67,7 +66,6 @@ class HttpClientFactory {
 
         /* Set HTTP client parameters */
         HttpParams httpClientParams = new BasicHttpParams();
-        HttpClientParams.setRedirecting(httpClientParams, false);
         HttpProtocolParams.setUserAgent(httpClientParams, userAgent);
         HttpConnectionParams.setConnectionTimeout(httpClientParams, config.getConnectionTimeout());
         HttpConnectionParams.setSoTimeout(httpClientParams, config.getSocketTimeout());
@@ -90,7 +88,7 @@ class HttpClientFactory {
 		 * register a new scheme for HTTPS that won't cause self-signed certs to
 		 * error out.
 		 */
-        if (false) {
+        if (System.getProperty("com.amazonaws.sdk.disableCertChecking") != null) {
         	Scheme sch = new Scheme("https", 443, new TrustingSocketFactory());
         	httpClient.getConnectionManager().getSchemeRegistry().register(sch);
         }
