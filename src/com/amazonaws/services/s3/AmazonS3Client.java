@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.InetAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -84,6 +85,7 @@ import com.amazonaws.services.s3.model.AbortMultipartUploadRequest;
 import com.amazonaws.services.s3.model.AccessControlList;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.BucketCrossOriginConfiguration;
 import com.amazonaws.services.s3.model.BucketLifecycleConfiguration;
 import com.amazonaws.services.s3.model.BucketLoggingConfiguration;
 import com.amazonaws.services.s3.model.BucketNotificationConfiguration;
@@ -928,9 +930,9 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         S3Object s3Object = getObject(getObjectRequest);
         // getObject can return null if constraints were specified but not met
         if(s3Object==null)return null;
-        
+
         ServiceUtils.downloadObjectToFile(s3Object, destinationFile,(getObjectRequest.getRange()==null));
-        
+
         return s3Object.getObjectMetadata();
     }
 
@@ -1057,7 +1059,17 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         }
 
         if (!input.markSupported()) {
-            input = new RepeatableInputStream(input, Constants.DEFAULT_STREAM_BUFFER_SIZE);
+            int streamBufferSize = Constants.DEFAULT_STREAM_BUFFER_SIZE;
+            String bufferSizeOverride = System.getProperty("com.amazonaws.sdk.s3.defaultStreamBufferSize");
+			if (bufferSizeOverride != null) {
+            	try {
+            		streamBufferSize = Integer.parseInt(bufferSizeOverride);
+            	} catch (Exception e) {
+            		log.warn("Unable to parse buffer size override from value: " + bufferSizeOverride);
+            	}
+            }
+
+			input = new RepeatableInputStream(input, streamBufferSize);
         }
 
         MD5DigestCalculatingInputStream md5DigestStream = null;
@@ -1599,7 +1611,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
         invoke(request, voidResponseHandler, bucketName, null);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.amazonaws.services.s3.AmazonS3#deleteBucketLifecycleConfiguration(java.lang.String)
 	 */
@@ -1609,7 +1621,57 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
         invoke(request, voidResponseHandler, bucketName, null);
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see com.amazonaws.services.s3.AmazonS3#getBucketCrossOriginConfiguration(java.lang.String)
+	 */
+	public BucketCrossOriginConfiguration getBucketCrossOriginConfiguration(String bucketName) {
+		 Request<GenericBucketRequest> request = createRequest(bucketName, null, new GenericBucketRequest(bucketName), HttpMethodName.GET);
+	        request.addParameter("cors", null);
+
+	        try {
+	            return invoke(request, new Unmarshallers.BucketCrossOriginConfigurationUnmarshaller(), bucketName, null);
+	        } catch (AmazonServiceException ase) {
+	            switch (ase.getStatusCode()) {
+	            case 404:
+	                return null;
+	            default:
+	                throw ase;
+	            }
+	        }
+	}
+
+	/* (non-Javadoc)
+	 * @see com.amazonaws.services.s3.AmazonS3#setBucketCrossOriginConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketCrossOriginConfiguration)
+	 */
+	public void setBucketCrossOriginConfiguration(String bucketName, BucketCrossOriginConfiguration bucketCrossOriginConfiguration) {
+        Request<GenericBucketRequest> request = createRequest(bucketName, null, new GenericBucketRequest(bucketName), HttpMethodName.PUT);
+        request.addParameter("cors", null);
+
+        byte[] content = new BucketConfigurationXmlFactory().convertToXmlByteArray(bucketCrossOriginConfiguration);
+        request.addHeader("Content-Length", String.valueOf(content.length));
+        request.addHeader("Content-Type", "application/xml");
+        request.setContent(new ByteArrayInputStream(content));
+        try {
+            byte[] md5 = Md5Utils.computeMD5Hash(content);
+            String md5Base64 = BinaryUtils.toBase64(md5);
+            request.addHeader("Content-MD5", md5Base64);
+        } catch ( Exception e ) {
+            throw new AmazonClientException("Couldn't compute md5 sum", e);
+        }
+
+        invoke(request, voidResponseHandler, bucketName, null);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.amazonaws.services.s3.AmazonS3#deleteBucketCrossOriginConfiguration(java.lang.String)
+	 */
+	public void deleteBucketCrossOriginConfiguration(String bucketName) {
+        Request<GenericBucketRequest> request = createRequest(bucketName, null, new GenericBucketRequest(bucketName), HttpMethodName.DELETE);
+        request.addParameter("cors", null);
+        invoke(request, voidResponseHandler, bucketName, null);
+  	}
+
 	/* (non-Javadoc)
 	 * @see com.amazonaws.services.s3.AmazonS3#getBucketTaggingConfiguration(java.lang.String)
 	 */
@@ -1660,6 +1722,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
         invoke(request, voidResponseHandler, bucketName, null);
 	}
+
+
 
     /* (non-Javadoc)
      * @see com.amazonaws.services.s3.AmazonS3#setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)
@@ -2726,7 +2790,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     protected <X extends AmazonWebServiceRequest> Request<X> createRequest(String bucketName, String key, X originalRequest, HttpMethodName httpMethod) {
         Request<X> request = new DefaultRequest<X>(originalRequest, Constants.S3_SERVICE_NAME);
         request.setHttpMethod(httpMethod);
-        if (bucketNameUtils.isDNSBucketName(bucketName)) {
+        if (bucketNameUtils.isDNSBucketName(bucketName) && !validIP(endpoint.getHost())) {
             request.setEndpoint(convertToVirtualHostEndpoint(bucketName));
             request.setResourcePath(ServiceUtils.urlEncode(key));
         } else {
@@ -2744,6 +2808,29 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         }
 
         return request;
+    }
+    
+    private boolean validIP(String IP) {
+        if (IP == null) {
+            return false;
+        }
+        String[] tokens = IP.split("\\.");
+        if (tokens.length != 4) {
+            return false;
+        }
+        for (String token : tokens) {
+            int tokenInt;
+            try {
+                tokenInt = Integer.parseInt(token);
+            } catch (NumberFormatException ase) {
+                return false;
+            }
+            if (tokenInt < 0 || tokenInt > 255) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
     private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request,
@@ -2780,5 +2867,5 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
         return (X)client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
-
+    
 }

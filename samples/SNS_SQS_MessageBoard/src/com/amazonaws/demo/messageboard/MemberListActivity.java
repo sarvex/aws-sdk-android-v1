@@ -23,6 +23,7 @@ import com.amazonaws.demo.messageboard.R;
 import com.amazonaws.services.sns.model.Subscription;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -36,78 +37,115 @@ import android.widget.SimpleAdapter;
 
 // Activity used to display the subscribers for the topic.
 public class MemberListActivity extends Activity {
-	protected static final String[] MENU_ITEMS = new String[] { "Delete", "Cancel" }; 
-	
+	protected static final String[] MENU_ITEMS = new String[] { "Delete",
+			"Cancel" };
+
 	protected Button backButton;
 	protected ListView memberList;
 	protected SimpleAdapter adapter;
-	
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        setContentView(R.layout.member_list);
-        
-        this.backButton = (Button)findViewById(R.id.backButton); 
-        this.backButton.setOnClickListener(new View.OnClickListener() {
+
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.member_list);
+
+		this.backButton = (Button) findViewById(R.id.backButton);
+		this.backButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				MemberListActivity.this.finish();
 			}
 		});
-        
-        this.memberList = (ListView)findViewById(R.id.listView);
-        registerForContextMenu( this.memberList );
 
-        this.loadData();
-    }
-    
-    protected void loadData() {
-        Subscribers subscribers = new Subscribers( MessageBoard.instance().listSubscribers() );
-        this.adapter = new SimpleAdapter( this, subscribers, R.layout.listitem, new String[] { "endpoint", "protocol" }, new int[] { R.id.endpoint, R.id.protocol } );
-        this.memberList.setAdapter( this.adapter );    	
-    }
-    
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-    	if ( v.getId() == R.id.listView ) {
-    		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+		this.memberList = (ListView) findViewById(R.id.listView);
+		registerForContextMenu(this.memberList);
+
+		this.loadData();
+	}
+
+	protected void loadData() {
+		new ListSubscribersTask().execute();
+	}
+
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		if (v.getId() == R.id.listView) {
+			AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
 			@SuppressWarnings("unchecked")
-			HashMap<String,String> data = (HashMap<String,String>)this.adapter.getItem( info.position );
-    		menu.setHeaderTitle( data.get( "endpoint" ) );
-    		for (int i = 0; i < MENU_ITEMS.length; i++) {
-    			menu.add(Menu.NONE, i, i, MENU_ITEMS[i]);
+			HashMap<String, String> data = (HashMap<String, String>) this.adapter
+					.getItem(info.position);
+			menu.setHeaderTitle(data.get("endpoint"));
+			for (int i = 0; i < MENU_ITEMS.length; i++) {
+				menu.add(Menu.NONE, i, i, MENU_ITEMS[i]);
 			}
-      	}
-    }    
-    
-    public boolean onContextItemSelected(MenuItem item) {
-	    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
-	    int menuItemIndex = item.getItemId();
+		}
+	}
+
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
+				.getMenuInfo();
+		int menuItemIndex = item.getItemId();
 		String menuItemName = MENU_ITEMS[menuItemIndex];
 
-		if ( menuItemName.equals( "Delete") ) {
+		if (menuItemName.equals("Delete")) {
 			@SuppressWarnings("unchecked")
-			HashMap<String,String> data = (HashMap<String,String>)this.adapter.getItem( info.position );
-			MessageBoard.instance().removeSubscriber( data.get( "arn") );
-			this.loadData();
-			this.memberList.invalidateViews();
+			HashMap<String, String> data = (HashMap<String, String>) this.adapter
+					.getItem(info.position);
+			
+			new RemoveSubscriberTask().execute(data.get("arn"));
 		}
-		
+
 		return true;
-    }    
-        
-    class Subscribers extends ArrayList<HashMap<String,String>> {
+	}
+
+	class Subscribers extends ArrayList<HashMap<String, String>> {
 		private static final long serialVersionUID = 1L;
 
-		public Subscribers( List<Subscription> subscribers ) {
-    		super( subscribers.size() );
-    		
-    		for ( Subscription sub : subscribers ) {
-    			HashMap<String,String> data = new HashMap<String,String>(2);
-    			data.put( "endpoint", sub.getEndpoint() );
-    			data.put( "protocol", sub.getProtocol() );
-    			data.put( "arn", sub.getSubscriptionArn() );
-    			
-    			super.add( data );
-    		}
-    	}
-    }  
+		public Subscribers(List<Subscription> subscribers) {
+			super(subscribers.size());
+
+			for (Subscription sub : subscribers) {
+				HashMap<String, String> data = new HashMap<String, String>(2);
+				data.put("endpoint", sub.getEndpoint());
+				data.put("protocol", sub.getProtocol());
+				data.put("arn", sub.getSubscriptionArn());
+
+				super.add(data);
+			}
+		}
+	}
+
+	private class ListSubscribersTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			Subscribers subscribers = new Subscribers(MessageBoard.instance()
+					.listSubscribers());
+			adapter = new SimpleAdapter(MemberListActivity.this, subscribers,
+					R.layout.listitem, new String[] { "endpoint", "protocol" },
+					new int[] { R.id.endpoint, R.id.protocol });
+
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+			memberList.setAdapter(adapter);
+		}
+	}
+	
+	private class RemoveSubscriberTask extends AsyncTask<String, Void, Void> {
+
+		protected Void doInBackground(String... inputs) {
+
+			MessageBoard.instance().removeSubscriber(inputs[0]);
+			
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+			loadData();
+			memberList.invalidateViews();
+		}
+	}
 }

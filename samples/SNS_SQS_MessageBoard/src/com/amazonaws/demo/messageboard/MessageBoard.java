@@ -175,7 +175,7 @@ public class MessageBoard {
 		try {
 			ReceiveMessageRequest rmr = new ReceiveMessageRequest(this.queueUrl);
 			rmr.setMaxNumberOfMessages(10);
-			rmr.setVisibilityTimeout(30);
+			rmr.setVisibilityTimeout(2);
 
 			List<Message> messages = null;
 			ArrayList<Message> allMessages = new ArrayList<Message>(100);

@@ -20,6 +20,7 @@ import com.amazonaws.tvmclient.AmazonClientManager;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,88 +29,153 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserPreferenceDemoActivity extends Activity {
-	
+
 	private static final String TAG = "UserPreferenceDemoActivity";
 	public static AmazonClientManager clientManager = null;
-	
+
 	@Override
-	public void onCreate( Bundle savedInstanceState ) {
-		
-		super.onCreate( savedInstanceState );
-		setContentView( R.layout.main );
-		
+	public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
 		// Create AmazonClientManager with SharedPreference
-		clientManager = new AmazonClientManager( getSharedPreferences( "com.amazonaws.demo.userpreferencesom.AWSDemo", Context.MODE_PRIVATE ) );
-		
-		TextView tvmUrlTextView = (TextView) findViewById( R.id.tvm_url_text_view );
-		tvmUrlTextView.setText( PropertyLoader.getInstance().getTokenVendingMachineURL() );
-		
-		TextView sslEnabledTextView = (TextView) findViewById( R.id.ssl_enabled_text_view );
-		sslEnabledTextView.setText( PropertyLoader.getInstance().useSSL() ? "YES" : "NO" );
-		
-		final Button createTableBttn = (Button) findViewById( R.id.create_table_bttn );
-		createTableBttn.setOnClickListener( new View.OnClickListener() {
-			
-			public void onClick( View v ) {
-				Log.i( TAG, "createTableBttn clicked." );
-				
-				String tableStatus = DynamoDBManager.getTestTableStatus();
-				if ( tableStatus.length() == 0 ) {
+		clientManager = new AmazonClientManager(getSharedPreferences(
+				"com.amazonaws.demo.userpreferencesom.AWSDemo",
+				Context.MODE_PRIVATE));
+
+		TextView tvmUrlTextView = (TextView) findViewById(R.id.tvm_url_text_view);
+		tvmUrlTextView.setText(PropertyLoader.getInstance()
+				.getTokenVendingMachineURL());
+
+		TextView sslEnabledTextView = (TextView) findViewById(R.id.ssl_enabled_text_view);
+		sslEnabledTextView
+				.setText(PropertyLoader.getInstance().useSSL() ? "YES" : "NO");
+
+		final Button createTableBttn = (Button) findViewById(R.id.create_table_bttn);
+		createTableBttn.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				Log.i(TAG, "createTableBttn clicked.");
+
+				new DynamoDBManagerTask()
+						.execute(DynamoDBManagerType.CREATE_TABLE);
+			}
+		});
+
+		final Button insertUsersBttn = (Button) findViewById(R.id.insert_users_bttn);
+		insertUsersBttn.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				Log.i(TAG, "insertUsersBttn clicked.");
+
+				new DynamoDBManagerTask()
+						.execute(DynamoDBManagerType.INSERT_USER);
+			}
+		});
+
+		final Button listUsersBttn = (Button) findViewById(R.id.list_users_bttn);
+		listUsersBttn.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				Log.i(TAG, "listUsersBttn clicked.");
+
+				new DynamoDBManagerTask()
+						.execute(DynamoDBManagerType.LIST_USERS);
+			}
+		});
+
+		final Button deleteTableBttn = (Button) findViewById(R.id.delete_table_bttn);
+		deleteTableBttn.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				Log.i(TAG, "deleteTableBttn clicked.");
+
+				new DynamoDBManagerTask().execute(DynamoDBManagerType.CLEAN_UP);
+			}
+		});
+	}
+
+	private class DynamoDBManagerTask extends
+			AsyncTask<DynamoDBManagerType, Void, DynamoDBManagerTaskResult> {
+
+		protected DynamoDBManagerTaskResult doInBackground(
+				DynamoDBManagerType... types) {
+
+			String tableStatus = DynamoDBManager.getTestTableStatus();
+
+			DynamoDBManagerTaskResult result = new DynamoDBManagerTaskResult();
+			result.setTableStatus(tableStatus);
+			result.setTaskType(types[0]);
+
+			if (types[0] == DynamoDBManagerType.CREATE_TABLE) {
+				if (tableStatus.length() == 0) {
 					DynamoDBManager.createTable();
 				}
-				else {
-					Toast.makeText( UserPreferenceDemoActivity.this, "The test table already exists.\nTable Status: " + tableStatus, Toast.LENGTH_LONG ).show();
-				}
-			}
-		} );
-		
-		final Button insertUsersBttn = (Button) findViewById( R.id.insert_users_bttn );
-		insertUsersBttn.setOnClickListener( new View.OnClickListener() {
-			
-			public void onClick( View v ) {
-				Log.i( TAG, "insertUsersBttn clicked." );
-				
-				String tableStatus = DynamoDBManager.getTestTableStatus();
-				if ( DynamoDBManager.getTestTableStatus().equalsIgnoreCase( "ACTIVE" ) ) {
+			} else if (types[0] == DynamoDBManagerType.INSERT_USER) {
+				if (tableStatus.equalsIgnoreCase("ACTIVE")) {
 					DynamoDBManager.insertUsers();
 				}
-				else {
-					Toast.makeText( UserPreferenceDemoActivity.this, "The test table is not ready yet.\nTable Status: " + tableStatus, Toast.LENGTH_LONG ).show();
-				}
-			}
-		} );
-		
-		final Button listUsersBttn = (Button) findViewById( R.id.list_users_bttn );
-		listUsersBttn.setOnClickListener( new View.OnClickListener() {
-			
-			public void onClick( View v ) {
-				Log.i( TAG, "listUsersBttn clicked." );
-				
-				String tableStatus = DynamoDBManager.getTestTableStatus();
-				if ( DynamoDBManager.getTestTableStatus().equalsIgnoreCase( "ACTIVE" ) ) {
-					startActivity( new Intent( UserPreferenceDemoActivity.this, UserListActivity.class ) );
-				}
-				else {
-					Toast.makeText( UserPreferenceDemoActivity.this, "The test table is not ready yet.\nTable Status: " + tableStatus, Toast.LENGTH_LONG ).show();
-				}
-			}
-		} );
-		
-		final Button deleteTableBttn = (Button) findViewById( R.id.delete_table_bttn );
-		deleteTableBttn.setOnClickListener( new View.OnClickListener() {
-			
-			public void onClick( View v ) {
-				Log.i( TAG, "deleteTableBttn clicked." );
-				
-				String tableStatus = DynamoDBManager.getTestTableStatus();
-				if ( DynamoDBManager.getTestTableStatus().equalsIgnoreCase( "ACTIVE" ) ) {
+			} else if (types[0] == DynamoDBManagerType.CLEAN_UP) {
+				if (tableStatus.equalsIgnoreCase("ACTIVE")) {
 					DynamoDBManager.cleanUp();
 				}
-				else {
-					Toast.makeText( UserPreferenceDemoActivity.this, "The test table is not ready yet.\nTable Status: " + tableStatus, Toast.LENGTH_LONG ).show();
-				}
 			}
-		} );
-		
+
+			return result;
+		}
+
+		protected void onPostExecute(DynamoDBManagerTaskResult result) {
+
+			if (result.getTaskType() == DynamoDBManagerType.CREATE_TABLE) {
+
+				if (result.getTableStatus().length() != 0) {
+					Toast.makeText(
+							UserPreferenceDemoActivity.this,
+							"The test table already exists.\nTable Status: "
+									+ result.getTableStatus(),
+							Toast.LENGTH_LONG).show();
+				}
+
+			} else if (result.getTaskType() == DynamoDBManagerType.LIST_USERS
+					&& result.getTableStatus().equalsIgnoreCase("ACTIVE")) {
+
+				startActivity(new Intent(UserPreferenceDemoActivity.this,
+						UserListActivity.class));
+
+			} else if (!result.getTableStatus().equalsIgnoreCase("ACTIVE")) {
+
+				Toast.makeText(
+						UserPreferenceDemoActivity.this,
+						"The test table is not ready yet.\nTable Status: "
+								+ result.getTableStatus(), Toast.LENGTH_LONG)
+						.show();
+			}
+		}
+	}
+
+	private enum DynamoDBManagerType {
+		GET_TABLE_STATUS, CREATE_TABLE, INSERT_USER, LIST_USERS, CLEAN_UP
+	}
+
+	private class DynamoDBManagerTaskResult {
+		private DynamoDBManagerType taskType;
+		private String tableStatus;
+
+		public DynamoDBManagerType getTaskType() {
+			return taskType;
+		}
+
+		public void setTaskType(DynamoDBManagerType taskType) {
+			this.taskType = taskType;
+		}
+
+		public String getTableStatus() {
+			return tableStatus;
+		}
+
+		public void setTableStatus(String tableStatus) {
+			this.tableStatus = tableStatus;
+		}
 	}
 }

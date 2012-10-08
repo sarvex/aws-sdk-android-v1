@@ -489,6 +489,27 @@ public interface AmazonEC2 {
             throws AmazonServiceException, AmazonClientException;
 
     /**
+     *
+     * @param createReservedInstancesListingRequest Container for the
+     *           necessary parameters to execute the CreateReservedInstancesListing
+     *           service method on AmazonEC2.
+     * 
+     * @return The response from the CreateReservedInstancesListing service
+     *         method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CreateReservedInstancesListingResult createReservedInstancesListing(CreateReservedInstancesListingRequest createReservedInstancesListingRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
      * <p>
      * Resets permission settings for the specified snapshot.
      * </p>
@@ -825,28 +846,6 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Deactivates a specific number of licenses. Deactivations can be done
-     * against a specific license ID after they have persisted for at least a
-     * 90-day period.
-     * </p>
-     *
-     * @param deactivateLicenseRequest Container for the necessary parameters
-     *           to execute the DeactivateLicense service method on AmazonEC2.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonEC2 indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public void deactivateLicense(DeactivateLicenseRequest deactivateLicenseRequest) 
-            throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
      * The AssociateAddress operation associates an elastic IP address with
      * an instance.
      * </p>
@@ -894,6 +893,28 @@ public interface AmazonEC2 {
             throws AmazonServiceException, AmazonClientException;
 
     /**
+     * <p>
+     * Deactivates a specific number of licenses. Deactivations can be done
+     * against a specific license ID after they have persisted for at least a
+     * 90-day period.
+     * </p>
+     *
+     * @param deactivateLicenseRequest Container for the necessary parameters
+     *           to execute the DeactivateLicense service method on AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void deactivateLicense(DeactivateLicenseRequest deactivateLicenseRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
      *
      * @param describeExportTasksRequest Container for the necessary
      *           parameters to execute the DescribeExportTasks service method on
@@ -937,6 +958,27 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public DescribeVolumesResult describeVolumes(DescribeVolumesRequest describeVolumesRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     *
+     * @param describeReservedInstancesListingsRequest Container for the
+     *           necessary parameters to execute the DescribeReservedInstancesListings
+     *           service method on AmazonEC2.
+     * 
+     * @return The response from the DescribeReservedInstancesListings
+     *         service method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeReservedInstancesListingsResult describeReservedInstancesListings(DescribeReservedInstancesListingsRequest describeReservedInstancesListingsRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -1441,6 +1483,27 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public StartInstancesResult startInstances(StartInstancesRequest startInstancesRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     *
+     * @param cancelReservedInstancesListingRequest Container for the
+     *           necessary parameters to execute the CancelReservedInstancesListing
+     *           service method on AmazonEC2.
+     * 
+     * @return The response from the CancelReservedInstancesListing service
+     *         method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CancelReservedInstancesListingResult cancelReservedInstancesListing(CancelReservedInstancesListingRequest cancelReservedInstancesListingRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -2668,6 +2731,22 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public DescribeVolumesResult describeVolumes() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * 
+     * @return The response from the DescribeReservedInstancesListings
+     *         service method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeReservedInstancesListingsResult describeReservedInstancesListings() throws AmazonServiceException, AmazonClientException;
     
     /**
      * 

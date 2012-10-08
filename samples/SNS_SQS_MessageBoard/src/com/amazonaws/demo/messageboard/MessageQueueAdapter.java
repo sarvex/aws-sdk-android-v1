@@ -37,7 +37,6 @@ public class MessageQueueAdapter extends ArrayAdapter<Message> {
 
 	public MessageQueueAdapter(Context context, int resourceId) {
 		super(context, resourceId);
-		this.messages = MessageBoard.instance().getMessageQueue();
 	}
 
 	public int getCount() {
@@ -60,8 +59,6 @@ public class MessageQueueAdapter extends ArrayAdapter<Message> {
 	}
 
 	public void removeItemAt(int pos) {
-		Message message = this.getItem(pos);
-		MessageBoard.instance().deleteMessageFromQueue(message);
 		this.messages.remove(pos);
 	}
 
@@ -88,5 +85,9 @@ public class MessageQueueAdapter extends ArrayAdapter<Message> {
 		} catch (Exception exception) {
 			return null;
 		}
+	}
+
+	public List<Message> getMessages() {
+		return messages;
 	}
 }

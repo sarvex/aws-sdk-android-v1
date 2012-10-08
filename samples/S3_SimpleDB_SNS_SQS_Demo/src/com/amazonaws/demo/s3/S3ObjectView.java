@@ -16,29 +16,19 @@ package com.amazonaws.demo.s3;
 
 import com.amazonaws.demo.R;
 
-
 import android.app.Activity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.TextView;
-
 
 public class S3ObjectView extends Activity{
 	
-	protected Handler mHandler;
 	protected TextView loadingText;
 	protected TextView bodyText;
 	protected String bucketName;
 	protected String objectName;
 	protected String objectData;
-	
-	private final Runnable postResults = new Runnable() {
-		@Override
-		public void run(){
-			updateUi();
-		}
-	};
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,21 +37,13 @@ public class S3ObjectView extends Activity{
         Bundle extras = this.getIntent().getExtras();
         bucketName = extras.getString(S3.BUCKET_NAME);
         objectName = extras.getString(S3.OBJECT_NAME);
-        mHandler = new Handler();
         loadingText = (TextView) findViewById(R.id.item_view_loading_text);
         bodyText = (TextView) findViewById(R.id.item_view_body_text);
         startPopulateText();
     }
     
     private void startPopulateText(){
-    	Thread t = new Thread() {
-    		@Override
-    		public void run(){
-    			objectData = S3.getDataForObject(bucketName, objectName);
-    	        mHandler.post(postResults);
-    		}
-    	};
-    	t.start();
+    	new GetDataForObjectTask().execute();
     }
     
     private void updateUi(){
@@ -70,6 +52,17 @@ public class S3ObjectView extends Activity{
     	loadingText.setTextSize(16);
     }
 		
+    private class GetDataForObjectTask extends AsyncTask<Void, Void, Void> {
 
-    		
+		protected Void doInBackground(Void... voids) {
+
+			objectData = S3.getDataForObject(bucketName, objectName);
+	        
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+			updateUi();
+		}
+	} 		
 }

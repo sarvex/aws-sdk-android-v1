@@ -26,62 +26,55 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ScoresAdapter extends ArrayAdapter<HighScore> {
-	
-	protected HighScoreList highScores;
-	protected List<HighScore> scores = new ArrayList<HighScore>(1000);
-	
-	public ScoresAdapter( HighScoreList highScores, Context context, int resourceId ) {
-		super( context, resourceId );
-		
-		this.highScores = highScores;
+
+	protected List<HighScore> scores = new ArrayList<HighScore>(100);
+
+	public ScoresAdapter(Context context, int resourceId) {
+		super(context, resourceId);
 	}
-	
+
 	public int getCount() {
-		return this.highScores.getCount();
+		return scores.size();
 	}
-	
-	public HighScore getItem( int pos ) {
-		if ( scores.isEmpty() ) {
-			scores.addAll( this.highScores.getHighScores() );
-		}
-		else if ( scores.size() <= pos ) {
-			scores.addAll(this.highScores.getNextPageOfScores() );
-		}
-		
-		return scores.get( pos );
+
+	public HighScore getItem(int pos) {
+//		if (scores.isEmpty()) {
+//			scores.addAll(this.highScores.getHighScores());
+//		} else if (scores.size() <= pos) {
+//			scores.addAll(this.highScores.getNextPageOfScores());
+//		}
+
+		return scores.get(pos);
 	}
-	
-	public void removeItemAt( int pos ) {
-		HighScore score = this.getItem( pos );	
-		this.highScores.removeHighScore( score );
-		this.scores.remove( pos );
+
+	public void removeItemAt(int pos) {
+		this.scores.remove(pos);
 	}
-	
-	public View getView( int pos, View convertView, ViewGroup parent ) {
-		final HighScore score = this.getItem( pos );
-		
-		LinearLayout layout = new LinearLayout( parent.getContext() );
-		
-		TextView playerText = new TextView( parent.getContext() );
-		playerText.setText( score.getPlayer() );
-		playerText.setGravity( Gravity.LEFT );
+
+	public View getView(int pos, View convertView, ViewGroup parent) {
+		final HighScore score = this.getItem(pos);
+
+		LinearLayout layout = new LinearLayout(parent.getContext());
+
+		TextView playerText = new TextView(parent.getContext());
+		playerText.setText(score.getPlayer());
+		playerText.setGravity(Gravity.LEFT);
 		playerText.setPadding(10, 10, 10, 10);
-		playerText.setMaxWidth( 200 );
-		playerText.setMinWidth( 200 );
 		playerText.setTextSize(16);
-		
-		TextView scoreText = new TextView( parent.getContext() );
-		scoreText.setText( String.valueOf( score.getScore() ) );
-		scoreText.setGravity( Gravity.RIGHT );
-		scoreText.setPadding( 10, 10, 10, 10 );
-		scoreText.setMaxWidth( 50 );
-		scoreText.setMinWidth( 50 );
+
+		TextView scoreText = new TextView(parent.getContext());
+		scoreText.setText(String.valueOf(score.getScore()));
+		scoreText.setGravity(Gravity.RIGHT);
+		scoreText.setPadding(10, 10, 10, 10);
 		scoreText.setTextSize(16);
-				
-		layout.addView( playerText );
-		layout.addView( scoreText );
+
+		layout.addView(playerText);
+		layout.addView(scoreText);
 
 		return layout;
 	}
-		
+
+	public List<HighScore> getScores() {
+		return scores;
+	}
 }

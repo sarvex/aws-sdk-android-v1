@@ -22,6 +22,7 @@ import com.amazonaws.services.dynamodb.model.AttributeValue;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,83 +34,129 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class UserActivity extends Activity {
-	
+
 	private int userNo = 0;
-	
+	private Map<String, AttributeValue> userInfo = null;
+
 	@Override
-	public void onCreate( Bundle savedInstanceState ) {
-		
-		super.onCreate( savedInstanceState );
-		setContentView( R.layout.user_preference );
-		
-		userNo = Integer.valueOf( getIntent().getExtras().getString( "USER_NO" ) );
-		Map<String, AttributeValue> userInfo = DynamoDBManager.getUserInfo( userNo );
-		
-		String userName = userInfo.get( "firstName" ).getS() + " " + userInfo.get( "lastName" ).getS();
-		
-		final TextView textViewUserName = (TextView) findViewById( R.id.textViewUserName );
-		textViewUserName.setText( userName );
-		
-		final CheckBox checkBoxAutoLogin = (CheckBox) findViewById( R.id.checkBoxAutoLogin );
-		checkBoxAutoLogin.setChecked( userInfo.get( "autoLogin" ) != null && userInfo.get( "autoLogin" ).getS().equalsIgnoreCase( "YES" ) );
-		checkBoxAutoLogin.setOnCheckedChangeListener( new OnCheckedChangeListener() {
-			
-			@Override
-			public void onCheckedChanged( CompoundButton buttonView, boolean isChecked ) {
-				AttributeValue targetValue = new AttributeValue().withN( String.valueOf( userNo ) );
-				DynamoDBManager.updateAttributeStringValue( isChecked ? "YES" : "NO", "autoLogin", targetValue );
-			}
-		} );
-		
-		final CheckBox checkBoxVibrate = (CheckBox) findViewById( R.id.checkBoxVibrate );
-		checkBoxVibrate.setChecked( userInfo.get( "vibrate" ) != null && userInfo.get( "vibrate" ).getS().equalsIgnoreCase( "YES" ) );
-		checkBoxVibrate.setOnCheckedChangeListener( new OnCheckedChangeListener() {
-			
-			@Override
-			public void onCheckedChanged( CompoundButton buttonView, boolean isChecked ) {
-				AttributeValue targetValue = new AttributeValue().withN( String.valueOf( userNo ) );
-				DynamoDBManager.updateAttributeStringValue( isChecked ? "YES" : "NO", "vibrate", targetValue );
-			}
-		} );
-		
-		final CheckBox checkBoxSilent = (CheckBox) findViewById( R.id.checkBoxSilent );
-		checkBoxSilent.setChecked( userInfo.get( "silent" ) != null && userInfo.get( "silent" ).getS().equalsIgnoreCase( "YES" ) );
-		checkBoxSilent.setOnCheckedChangeListener( new OnCheckedChangeListener() {
-			
-			@Override
-			public void onCheckedChanged( CompoundButton buttonView, boolean isChecked ) {
-				AttributeValue targetValue = new AttributeValue().withN( String.valueOf( userNo ) );
-				DynamoDBManager.updateAttributeStringValue( isChecked ? "YES" : "NO", "silent", targetValue );
-			}
-		} );
-		
-		final Spinner spinnerColorTheme = (Spinner) findViewById( R.id.spinnerColorTheme );
-		if ( userInfo.get( "colorTheme" ) != null ) {
+	public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.user_preference);
+
+		userNo = Integer.valueOf(getIntent().getExtras().getString("USER_NO"));
+		new GetUserInfoTask().execute();
+	}
+
+	private void setupActivity() {
+		String userName = userInfo.get("firstName").getS() + " "
+				+ userInfo.get("lastName").getS();
+
+		final TextView textViewUserName = (TextView) findViewById(R.id.textViewUserName);
+		textViewUserName.setText(userName);
+
+		final CheckBox checkBoxAutoLogin = (CheckBox) findViewById(R.id.checkBoxAutoLogin);
+		checkBoxAutoLogin.setChecked(userInfo.get("autoLogin") != null
+				&& userInfo.get("autoLogin").getS().equalsIgnoreCase("YES"));
+		checkBoxAutoLogin
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
+
+						new UpdateAttributeTask().execute(isChecked ? "YES"
+								: "NO", "autoLogin", String.valueOf(userNo));
+					}
+				});
+
+		final CheckBox checkBoxVibrate = (CheckBox) findViewById(R.id.checkBoxVibrate);
+		checkBoxVibrate.setChecked(userInfo.get("vibrate") != null
+				&& userInfo.get("vibrate").getS().equalsIgnoreCase("YES"));
+		checkBoxVibrate
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
+
+						new UpdateAttributeTask().execute(isChecked ? "YES"
+								: "NO", "vibrate", String.valueOf(userNo));
+					}
+				});
+
+		final CheckBox checkBoxSilent = (CheckBox) findViewById(R.id.checkBoxSilent);
+		checkBoxSilent.setChecked(userInfo.get("silent") != null
+				&& userInfo.get("silent").getS().equalsIgnoreCase("YES"));
+		checkBoxSilent
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
+
+						new UpdateAttributeTask().execute(isChecked ? "YES"
+								: "NO", "silent", String.valueOf(userNo));
+					}
+				});
+
+		final Spinner spinnerColorTheme = (Spinner) findViewById(R.id.spinnerColorTheme);
+		if (userInfo.get("colorTheme") != null) {
 			Resources res = getResources();
-			String[] colors = res.getStringArray( R.array.color_theme );
-			for ( int i = 0; i < colors.length; i++ ) {
-				if ( colors[ i ].equalsIgnoreCase( userInfo.get( "colorTheme" ).getS() ) ) {
-					spinnerColorTheme.setSelection( i, true );
+			String[] colors = res.getStringArray(R.array.color_theme);
+			for (int i = 0; i < colors.length; i++) {
+				if (colors[i].equalsIgnoreCase(userInfo.get("colorTheme")
+						.getS())) {
+					spinnerColorTheme.setSelection(i, true);
 				}
 			}
 		}
-		spinnerColorTheme.setOnItemSelectedListener( new OnItemSelectedListener() {
-			
-			@Override
-			public void onItemSelected( AdapterView<?> arg0, View arg1, int pos, long arg3 ) {
-				
-				Resources res = getResources();
-				String[] colors = res.getStringArray( R.array.color_theme );
-				
-				AttributeValue targetValue = new AttributeValue().withN( String.valueOf( userNo ) );
-				DynamoDBManager.updateAttributeStringValue( colors[ pos ], "colorTheme", targetValue );
-			}
-			
-			@Override
-			public void onNothingSelected( AdapterView<?> arg0 ) {
+		spinnerColorTheme
+				.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-				// Do nothing
-			}
-		} );
+					@Override
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int pos, long arg3) {
+
+						Resources res = getResources();
+						String[] colors = res
+								.getStringArray(R.array.color_theme);
+
+						new UpdateAttributeTask().execute(colors[pos],
+								"colorTheme", String.valueOf(userNo));
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> arg0) {
+
+						// Do nothing
+					}
+				});
+	}
+
+	private class GetUserInfoTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			userInfo = DynamoDBManager.getUserInfo(userNo);
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+			setupActivity();
+		}
+	}
+
+	private class UpdateAttributeTask extends AsyncTask<String, Void, Void> {
+
+		protected Void doInBackground(String... inputs) {
+
+			AttributeValue targetValue = new AttributeValue().withN(inputs[2]);
+			DynamoDBManager.updateAttributeStringValue(inputs[0], inputs[1],
+					targetValue);
+
+			return null;
+		}
 	}
 }

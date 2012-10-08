@@ -112,7 +112,7 @@ public class HighScoreList {
     /*
      * Using the pre-defined query, extracts items from the domain in a determined order using the 'select' operation.
      */
-	public List<HighScore> getHighScores() {
+	public synchronized List<HighScore> getHighScores() {
 		String query = null;
 		switch ( this.sortMethod ) {
 			case PLAYER_SORT: query = PLAYER_SORT_QUERY; break;
@@ -133,7 +133,7 @@ public class HighScoreList {
      * If a 'nextToken' was returned on the previous query execution, use the next token to get the next batch of items.
      */
 	@SuppressWarnings("unchecked")
-	public List<HighScore> getNextPageOfScores() {
+	public synchronized List<HighScore> getNextPageOfScores() {
 		if ( this.nextToken == null ) {
 			return Collections.EMPTY_LIST;
 		}

@@ -19,6 +19,7 @@ import com.amazonaws.demo.userpreferencesom.DynamoDBManager.UserPreference;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +33,7 @@ import android.widget.TextView;
 public class UserActivity extends Activity {
 	
 	private int userNo = 0;
+	private UserPreference userInfo = null;
 	
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -40,9 +42,12 @@ public class UserActivity extends Activity {
 		setContentView( R.layout.user_preference );
 		
 		userNo = Integer.valueOf( getIntent().getExtras().getString( "USER_NO" ) );
-		final UserPreference userInfo = DynamoDBManager.getUserPreference( userNo );
+		new GetUserInfoTask().execute();
+	}
+	
+	private void setupActivity() {
 		
-		String userName = userInfo.getFirstName() + " " + userInfo.getLastName();
+String userName = userInfo.getFirstName() + " " + userInfo.getLastName();
 		
 		final TextView textViewUserName = (TextView) findViewById( R.id.textViewUserName );
 		textViewUserName.setText( userName );
@@ -54,7 +59,7 @@ public class UserActivity extends Activity {
 			@Override
 			public void onCheckedChanged( CompoundButton buttonView, boolean isChecked ) {
 				userInfo.setAutoLogin(isChecked);
-				DynamoDBManager.updateUserPreference(userInfo);
+				new UpdateAttributeTask().execute();
 			}
 		} );
 		
@@ -65,7 +70,7 @@ public class UserActivity extends Activity {
 			@Override
 			public void onCheckedChanged( CompoundButton buttonView, boolean isChecked ) {
 				userInfo.setVibrate(isChecked);
-				DynamoDBManager.updateUserPreference(userInfo);
+				new UpdateAttributeTask().execute();
 			}
 		} );
 		
@@ -76,7 +81,7 @@ public class UserActivity extends Activity {
 			@Override
 			public void onCheckedChanged( CompoundButton buttonView, boolean isChecked ) {
 				userInfo.setSilent(isChecked);
-				DynamoDBManager.updateUserPreference(userInfo);
+				new UpdateAttributeTask().execute();
 			}
 		} );
 		
@@ -99,7 +104,8 @@ public class UserActivity extends Activity {
 				String[] colors = res.getStringArray( R.array.color_theme );
 				
 				userInfo.setColorTheme(colors[ pos ]);
-				DynamoDBManager.updateUserPreference(userInfo);
+
+				new UpdateAttributeTask().execute();
 			}
 			
 			@Override
@@ -108,5 +114,29 @@ public class UserActivity extends Activity {
 				// Do nothing
 			}
 		} );
+	}
+	
+	private class GetUserInfoTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			userInfo = DynamoDBManager.getUserPreference( userNo );
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+			setupActivity();
+		}
+	}
+
+	private class UpdateAttributeTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			DynamoDBManager.updateUserPreference(userInfo);
+
+			return null;
+		}
 	}
 }

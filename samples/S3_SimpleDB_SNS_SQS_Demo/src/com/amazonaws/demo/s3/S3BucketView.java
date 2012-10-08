@@ -20,6 +20,7 @@ import java.util.List;
 import com.amazonaws.demo.CustomListActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -58,13 +59,11 @@ public class S3BucketView extends CustomListActivity{
     }
     
     protected void obtainListItems(){
-		objectNameList = S3.getObjectNamesForBucket(bucketName, NUM_OBJECTS);
-        getHandler().post(postResults);
+		new GetObjectNamesForBucketTask().execute();
     }
         
     protected void obtainMoreItems(){
-    	objectNameList = S3.getMoreObjectNamesForBucket();
-    	getHandler().post(postMore);
+    	new GetMoreObjectNamesForBucketTask().execute();
     }
 
 	protected void wireOnListClick(){
@@ -79,5 +78,34 @@ public class S3BucketView extends CustomListActivity{
 		    }
 		 });
 	}
-    		
+    	
+	private class GetObjectNamesForBucketTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			objectNameList = S3.getObjectNamesForBucket(bucketName, NUM_OBJECTS);
+	        
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+			getHandler().post(postResults);
+		}
+	}
+	
+	private class GetMoreObjectNamesForBucketTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			objectNameList = S3.getMoreObjectNamesForBucket();
+	    	
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+			getHandler().post(postMore);
+		}
+	}
 }

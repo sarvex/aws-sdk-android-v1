@@ -68,8 +68,5 @@ public class S3ObjectView extends Activity{
     	loadingText.setText(objectName);
     	bodyText.setText(objectData);
     	loadingText.setTextSize(16);
-    }
-		
-
-    		
+    }	
 }

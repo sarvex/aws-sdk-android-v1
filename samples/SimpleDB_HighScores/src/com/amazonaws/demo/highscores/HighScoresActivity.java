@@ -18,6 +18,7 @@ import com.amazonaws.demo.highscores.R;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,15 +61,7 @@ public class HighScoresActivity extends Activity {
         populateButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				HighScoreList list = new HighScoreList();
-                list.createHighScoresDomain();
-				for (int i = 1; i <= 10; i++) {
-                    String playerName = Constants.getRandomPlayerName();
-                    int score = Constants.getRandomScore();
-					HighScore hs = new HighScore( playerName, score );
-					
-					list.addHighScore(hs);
-				}
+				new PopulateHighScoresTask().execute();
 			}
 		});
         
@@ -100,8 +93,45 @@ public class HighScoresActivity extends Activity {
         clearButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new HighScoreList().clearHighScores();
+				new ClearHighScoresTask().execute();
 			}
 		});
     }
+    
+    private class PopulateHighScoresTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			HighScoreList list = new HighScoreList();
+            list.createHighScoresDomain();
+            
+			for (int i = 1; i <= 10; i++) {
+                String playerName = Constants.getRandomPlayerName();
+                int score = Constants.getRandomScore();
+				HighScore hs = new HighScore( playerName, score );
+				
+				list.addHighScore(hs);
+			}
+
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+		}
+	}
+    
+    private class ClearHighScoresTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			new HighScoreList().clearHighScores();
+
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+		}
+	}
 }

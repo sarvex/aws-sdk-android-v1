@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.os.AsyncTask;
 
-
 import com.amazonaws.demo.AlertActivity;
 import com.amazonaws.demo.PropertyLoader;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -29,8 +28,9 @@ public class S3AsyncActivity extends AlertActivity {
 	protected TextView downloadAmount;
 	protected S3UploadTask uploadTask;
 	protected S3DownloadTask downloadTask;
-	
-	protected final String bucketName = "testing-async-with-s3-for" + PropertyLoader.getInstance().getAccessKey().toLowerCase();
+
+	protected final String bucketName = "testing-async-with-s3-for"
+			+ PropertyLoader.getInstance().getAccessKey().toLowerCase();
 	protected final String objectName = "asyncTestFile";
 
 	protected File tempFile;
@@ -50,44 +50,22 @@ public class S3AsyncActivity extends AlertActivity {
 	}
 
 	public void generateTestFile() {
-		// create our test bucket
-		try {
-			S3.createBucket(bucketName);
-		}
-		catch (Exception e) {
-			setStackAndPost(e);
-		}
 
-		// create a dummy file (if not already present)
-		tempFile = new File(getFilesDir().getAbsolutePath() + "temp.txt");
-
-		if (!tempFile.exists()) {
-			try {
-				FileWriter fw = new FileWriter(tempFile);
-
-				for (int i=0; i < 100000; i++) {
-					fw.write("This is a test!");
-				}
-
-				fw.close();
-			}
-			catch (Exception e) {
-				setStackAndPost(e);
-			}
-		}
+		new S3CreateBucketTask().execute();
 	}
 
-	public void wireButtons(){
+	public void wireButtons() {
 		stopDownButton.setClickable(false);
 
 		startUpButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				try{
+				try {
 					generateTestFile();
 					uploadTask = new S3UploadTask();
-					uploadTask.execute(new PutObjectRequest(bucketName, objectName, tempFile));
-				} catch(Throwable e){
+					uploadTask.execute(new PutObjectRequest(bucketName,
+							objectName, tempFile));
+				} catch (Throwable e) {
 					setStackAndPost(e);
 				}
 			}
@@ -96,10 +74,11 @@ public class S3AsyncActivity extends AlertActivity {
 		startDownButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				try{
+				try {
 					downloadTask = new S3DownloadTask();
-					downloadTask.execute(new GetObjectRequest(bucketName,objectName));
-				} catch(Throwable e){
+					downloadTask.execute(new GetObjectRequest(bucketName,
+							objectName));
+				} catch (Throwable e) {
 					setStackAndPost(e);
 				}
 			}
@@ -108,57 +87,56 @@ public class S3AsyncActivity extends AlertActivity {
 		stopDownButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				try{
+				try {
 					downloadTask.cancel(true);
-				} catch(Throwable e){
+				} catch (Throwable e) {
 					setStackAndPost(e);
 				}
 			}
 		});
 	}
-	
+
 	private class GenereateTempFileTask extends AsyncTask<File, Long, Boolean> {
 		protected void onPreExecute() {
 			uploadAmount.setText("Prepping temp file");
 			startUpButton.setClickable(false);
 		}
-		
+
 		// From AsyncTask, the code to run in the background
 		// DO NOT UPDATE UI HERE
 		protected Boolean doInBackground(File... reqs) {
 			if (tempFile.exists()) {
 				return true;
 			}
-			
+
 			try {
 				FileWriter fw = new FileWriter(reqs[0]);
 
-				for (int i=0; i < 10000; i++) {
+				for (int i = 0; i < 10000; i++) {
 					fw.write("This is a test!This is a test!This is a test!This is a test!This is a test!This is a test!This is a test!This is a test!This is a test!This is a test!");
 				}
 
 				fw.close();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				return false;
 			}
 			return true;
 		}
-		
+
 		protected void onPostExecute(Boolean result) {
 			if (result) {
 				uploadAmount.setText("0");
 				startUpButton.setClickable(true);
-			}
-			else {
+			} else {
 				uploadAmount.setText("ERROR");
 			}
 		}
 	}
 
-	private class S3UploadTask extends AsyncTask<PutObjectRequest, Long, Long> implements ProgressListener {
+	private class S3UploadTask extends AsyncTask<PutObjectRequest, Long, Long>
+			implements ProgressListener {
 		protected Long totalSent;
-		
+
 		// From AsyncTask, run on UI thread before execution
 		protected void onPreExecute() {
 			startUpButton.setClickable(false);
@@ -171,8 +149,7 @@ public class S3AsyncActivity extends AlertActivity {
 			reqs[0].setProgressListener(this);
 			try {
 				S3.getInstance().putObject(reqs[0]);
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				return 0L;
 			}
 			return totalSent;
@@ -198,7 +175,8 @@ public class S3AsyncActivity extends AlertActivity {
 		}
 	}
 
-	private class S3DownloadTask extends AsyncTask<GetObjectRequest, Long, Long> {
+	private class S3DownloadTask extends
+			AsyncTask<GetObjectRequest, Long, Long> {
 
 		// From AsyncTask, run on UI thread before execution
 		protected void onPreExecute() {
@@ -206,34 +184,32 @@ public class S3AsyncActivity extends AlertActivity {
 			startDownButton.setClickable(false);
 		}
 
-		// From AsyncTask 
+		// From AsyncTask
 		protected Long doInBackground(GetObjectRequest... reqs) {
 			byte buffer[] = new byte[1024];
 			S3ObjectInputStream is;
 			try {
 				is = S3.getInstance().getObject(reqs[0]).getObjectContent();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				return 0L;
 			}
 			Long totalRead = 0L;
 			int bytesRead = 1;
-			try {	
-				while (( bytesRead > 0) && (!this.isCancelled())){
+			try {
+				while ((bytesRead > 0) && (!this.isCancelled())) {
 					bytesRead = is.read(buffer);
 					totalRead += bytesRead;
 					publishProgress(totalRead);
 				}
-				
+
 				// abort the get object request
 				if (this.isCancelled()) {
 					is.abort();
 				}
-				
+
 				// close our stream
 				is.close();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				return 0L;
 			}
 			return totalRead;
@@ -246,14 +222,14 @@ public class S3AsyncActivity extends AlertActivity {
 		}
 
 		// From AsyncTask, runs on UI thread when background calls
-		// publishProgress			
+		// publishProgress
 		protected void onPostExecute(Long result) {
 			downloadAmount.setText("DONE! " + result);
 			stopDownButton.setClickable(false);
 			startDownButton.setClickable(true);
 		}
-		
-		// From AsyncTask, runs on UI thread called when task is canceled from 
+
+		// From AsyncTask, runs on UI thread called when task is canceled from
 		// any other thread
 		protected void onCancelled() {
 			stopDownButton.setClickable(false);
@@ -261,4 +237,35 @@ public class S3AsyncActivity extends AlertActivity {
 		}
 	}
 
+	private class S3CreateBucketTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			// create our test bucket
+			try {
+				S3.createBucket(bucketName);
+			} catch (Exception e) {
+				setStackAndPost(e);
+			}
+
+			// create a dummy file (if not already present)
+			tempFile = new File(getFilesDir().getAbsolutePath() + "temp.txt");
+
+			if (!tempFile.exists()) {
+				try {
+					FileWriter fw = new FileWriter(tempFile);
+
+					for (int i = 0; i < 100000; i++) {
+						fw.write("This is a test!");
+					}
+
+					fw.close();
+				} catch (Exception e) {
+					setStackAndPost(e);
+				}
+			}
+
+			return null;
+		}
+	}
 }

@@ -19,6 +19,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,56 +30,76 @@ import com.amazonaws.demo.anonymous.CustomListActivity;
 import com.amazonaws.services.sqs.model.DeleteQueueRequest;
 
 public class SqsDeleteQueueList extends CustomListActivity {
-	
+
 	protected List<String> queueListArray;
 	protected String clickedQueueUrl;
-	
-	
+
 	private static final String SUCCESS = "Delete Queue";
-	
-	private Runnable postResults = new Runnable(){
+
+	private Runnable postResults = new Runnable() {
 		@Override
-		public void run(){
+		public void run() {
 			updateUi(queueListArray, SUCCESS);
 		}
 	};
-	
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        startPopulateList();
-    }
-    
-    protected void obtainListItems(){
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		startPopulateList();
+	}
+
+	protected void obtainListItems() {
 		queueListArray = SimpleQueue.getQueueUrls();
 		getHandler().post(postResults);
-    }
-    
-	protected void wireOnListClick(){
+	}
+
+	protected void wireOnListClick() {
 		getItemList().setOnItemClickListener(new OnItemClickListener() {
-		    @Override
-		    public void onItemClick(AdapterView<?> list, View view, int position, long id) {
-		    	clickedQueueUrl = ((TextView)view).getText().toString();
-		    	AlertDialog.Builder builder = new AlertDialog.Builder(SqsDeleteQueueList.this);
-		    	builder.setMessage("Are you sure you want to delete: "+ clickedQueueUrl)
-		    		   .setCancelable(false)
-		    		   .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-								SimpleQueue.getInstance().deleteQueue(new DeleteQueueRequest(clickedQueueUrl));
-								startPopulateList();
-						}
-					})
-						.setNegativeButton("No", new DialogInterface.OnClickListener() {
-							
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								dialog.cancel();
-							}
-						});
-		    	builder.show();
+			@Override
+			public void onItemClick(AdapterView<?> list, View view,
+					int position, long id) {
+				clickedQueueUrl = ((TextView) view).getText().toString();
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						SqsDeleteQueueList.this);
+				builder.setMessage(
+						"Are you sure you want to delete: " + clickedQueueUrl)
+						.setCancelable(false)
+						.setPositiveButton("Yes",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+										new DeleteQueueTask().execute();
+									}
+								})
+						.setNegativeButton("No",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+										dialog.cancel();
+									}
+								});
+				builder.show();
 			}
-		 });
+		});
+	}
+
+	private class DeleteQueueTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+
+			SimpleQueue.getInstance().deleteQueue(
+					new DeleteQueueRequest(clickedQueueUrl));
+
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+			startPopulateList();
+		}
 	}
 }

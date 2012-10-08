@@ -14,6 +14,8 @@
  */
 package com.amazonaws.demo.s3uploader;
 
+import java.util.Locale;
+
 public class Constants {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // This sample App is for demonstration purposes only.
@@ -31,7 +33,7 @@ public class Constants {
 	
 	
 	public static String getPictureBucket() {
-		return ("my-unique-name" + ACCESS_KEY_ID + PICTURE_BUCKET).toLowerCase();
+		return ("my-unique-name" + ACCESS_KEY_ID + PICTURE_BUCKET).toLowerCase(Locale.US);
 	}
 	
 }
