@@ -27,7 +27,12 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.apache.http.Header;
 import org.apache.http.HttpHost;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.ProtocolException;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.NTCredentials;
 import org.apache.http.client.HttpClient;
@@ -45,6 +50,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.client.params.HttpClientParams;
 
 import com.amazonaws.AmazonClientException;
@@ -54,16 +60,16 @@ import com.amazonaws.ClientConfiguration;
 class HttpClientFactory {
 
     /**
-	 * Creates a new HttpClient object using the specified AWS
-	 * ClientConfiguration to configure the client.
-	 *
-	 * @param config
-	 *            Client configuration options (ex: proxy settings, connection
-	 *            limits, etc).
-	 *
-	 * @return The new, configured HttpClient.
-	 */
-	public HttpClient createHttpClient(ClientConfiguration config) {
+     * Creates a new HttpClient object using the specified AWS
+     * ClientConfiguration to configure the client.
+     *
+     * @param config
+     *            Client configuration options (ex: proxy settings, connection
+     *            limits, etc).
+     *
+     * @return The new, configured HttpClient.
+     */
+    public HttpClient createHttpClient(ClientConfiguration config) {
         /* Form User-Agent information */
         String userAgent = config.getUserAgent();
         if (!(userAgent.equals(ClientConfiguration.DEFAULT_USER_AGENT))) {
@@ -82,8 +88,8 @@ class HttpClientFactory {
         int socketSendBufferSizeHint = config.getSocketBufferSizeHints()[0];
         int socketReceiveBufferSizeHint = config.getSocketBufferSizeHints()[1];
         if (socketSendBufferSizeHint > 0 || socketReceiveBufferSizeHint > 0) {
-        	HttpConnectionParams.setSocketBufferSize(httpClientParams,
-        			Math.max(socketSendBufferSizeHint, socketReceiveBufferSizeHint));
+            HttpConnectionParams.setSocketBufferSize(httpClientParams,
+                    Math.max(socketSendBufferSizeHint, socketReceiveBufferSizeHint));
         }
 
         /* Set connection manager */
@@ -104,12 +110,12 @@ class HttpClientFactory {
             String proxyWorkstation = config.getProxyWorkstation();
 
             if (proxyUsername != null && proxyPassword != null) {
-        		httpClient.getCredentialsProvider().setCredentials(
-        				new AuthScope(proxyHost, proxyPort),
-        				new NTCredentials(proxyUsername, proxyPassword, proxyWorkstation, proxyDomain));
+                httpClient.getCredentialsProvider().setCredentials(
+                        new AuthScope(proxyHost, proxyPort),
+                        new NTCredentials(proxyUsername, proxyPassword, proxyWorkstation, proxyDomain));
             }
         }
 
         return httpClient;
-	}
+    }
 }

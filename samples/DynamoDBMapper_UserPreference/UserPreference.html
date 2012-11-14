@@ -56,7 +56,7 @@ DynamoDBMapper mapper = new DynamoDBMapper(ddb);</pre></td></tr>
 
 		
     <h2>Defining Mapping Class</h2>
-    <p>You can map a class in your client app to the TestUserPereference table as shown in the
+    <p>You can map a class in your client app to the TestUserPreference table as shown in the
             following code example. The code snippet defines a <code>UserPreference</code> class and
             uses the annotations that are defined by Amazon DynamoDB to establish the mapping.</p>
     <ul>
@@ -67,7 +67,7 @@ DynamoDBMapper mapper = new DynamoDBMapper(ddb);</pre></td></tr>
     <p><span style="font-weight:bold;">NOTE:</span> The DynamoDB OM provides the <code>@DynamoDBVersionAttribute</code> annotation type that you can use to enable optimistic locking that ensures that the client-side item that you are updating (or deleting) is the same as the item on the server-side. For more information on how to use optimistic locking with the DynamoDB OM, please read this <a href="http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/JavaVersionSupportHLAPI.html">Developer Guide</a>. For a complete list of the annotations that the DynamoDB OM offers for you to map your classes and properties to tables and attributes, go to <a href="http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/JavaSDKHighLevel.html#JavaDeclarativeTagsList">this topic</a>.</p>
     <table class="sample">
 	<tr>
-	    <td><pre>@DynamoDBTable(tableName = "TestUserPereference")
+	    <td><pre>@DynamoDBTable(tableName = "TestUserPreference")
 public static class UserPreference {
 	private int userNo;
 	private String firstName;

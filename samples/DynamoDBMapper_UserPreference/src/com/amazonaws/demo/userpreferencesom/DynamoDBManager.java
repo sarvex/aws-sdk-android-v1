@@ -223,7 +223,7 @@ public class DynamoDBManager {
 		}
 	}
 
-	@DynamoDBTable(tableName = "TestUserPereference")
+	@DynamoDBTable(tableName = "TestUserPreference")
 	public static class UserPreference {
 		private int userNo;
 		private String firstName;

@@ -6,9 +6,18 @@
     <artifactId>aws-android-sdk</artifactId>
     <packaging>jar</packaging>
     <name>AWS SDK for Android</name>
-    <version>1.4.3</version>
+    <version>1.4.4</version>
     <description>The Amazon Web Services SDK for Android provides Android APIs for building software on AWS’ cost-effective, scalable, and reliable infrastructure products. The AWS SDK for Android allows developers to code against APIs for all of Amazon's infrastructure web services (Amazon S3, Amazon EC2, Amazon SQS, Auto Scaling, etc).</description>
     <url>http://aws.amazon.com/sdkforandroid</url>
+
+    <properties>
+      <project.build.sourceEncoding>
+        UTF-8
+      </project.build.sourceEncoding>
+      <project.reporting.outputEncoding>
+        UTF-8
+      </project.reporting.outputEncoding>
+    </properties>
 
     <scm>
         <url>http://github.com/amazonwebservices/aws-sdk-for-android.git</url>
@@ -29,11 +38,6 @@
             <version>[1.1, 1.2)</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>[4.1, 4.2)</version>
-        </dependency>
-        <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.3</version>
@@ -52,13 +56,6 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
-        <!--<dependency>
-            <groupId>javax.xml</groupId>
-            <artifactId>jaxp-api</artifactId>
-            <version>1.4.2</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>-->
 	<dependency>
             <groupId>stax</groupId>
             <artifactId>stax-api</artifactId>
@@ -71,7 +68,12 @@
             <version>1.2.0</version>
             <optional>true</optional>
         </dependency>
-	
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>2.2.1</version>
+            <scope>provided</scope>
+        </dependency>	
     </dependencies>
 
     <developers>
@@ -102,9 +104,10 @@
       </pluginManagement>
 
       <plugins>
-<plugin>
+       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>jarjar-maven-plugin</artifactId>
+	<version>1.5</version>
         <executions>
           <execution>
             <phase>package</phase>
