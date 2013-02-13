@@ -12,3 +12,7 @@ Thumbs.db
 # Patched code #
 ######################
 *.bak
+
+# Build assets #
+######################
+target
