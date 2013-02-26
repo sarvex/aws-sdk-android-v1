@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -1751,6 +1751,81 @@ public interface AmazonEC2Async extends AmazonEC2 {
 
     /**
      * <p>
+     * Gives you information about your VPCs. You can filter the results to
+     * return information only about VPCs that match criteria you specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular VPC
+     * or VPCs (or all your VPCs) only if the VPC's state is available. You
+     * can specify multiple filters (e.g., the VPC uses one of several sets
+     * of DHCP options, and the VPC's state is available). The result
+     * includes information for a particular VPC only if the VPC matches all
+     * your filters.
+     * </p>
+     * <p>
+     * If there's no match, no special message is returned; the response is
+     * simply empty. The following table shows the available filters.
+     * </p>
+     *
+     * @param describeVpcsRequest Container for the necessary parameters to
+     *           execute the DescribeVpcs operation on AmazonEC2.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeVpcs service method, as returned by AmazonEC2.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeVpcsResult> describeVpcsAsync(DescribeVpcsRequest describeVpcsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Gives you information about your VPCs. You can filter the results to
+     * return information only about VPCs that match criteria you specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular VPC
+     * or VPCs (or all your VPCs) only if the VPC's state is available. You
+     * can specify multiple filters (e.g., the VPC uses one of several sets
+     * of DHCP options, and the VPC's state is available). The result
+     * includes information for a particular VPC only if the VPC matches all
+     * your filters.
+     * </p>
+     * <p>
+     * If there's no match, no special message is returned; the response is
+     * simply empty. The following table shows the available filters.
+     * </p>
+     *
+     * @param describeVpcsRequest Container for the necessary parameters to
+     *           execute the DescribeVpcs operation on AmazonEC2.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeVpcs service method, as returned by AmazonEC2.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeVpcsResult> describeVpcsAsync(DescribeVpcsRequest describeVpcsRequest,
+            AsyncHandler<DescribeVpcsRequest, DescribeVpcsResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * The AssociateAddress operation associates an elastic IP address with
      * an instance.
      * </p>
@@ -2593,6 +2668,83 @@ public interface AmazonEC2Async extends AmazonEC2 {
      */
     public Future<DescribeInstanceAttributeResult> describeInstanceAttributeAsync(DescribeInstanceAttributeRequest describeInstanceAttributeRequest,
             AsyncHandler<DescribeInstanceAttributeRequest, DescribeInstanceAttributeResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Gives you information about your subnets. You can filter the results
+     * to return information only about subnets that match criteria you
+     * specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular
+     * subnet (or all) only if the subnet's state is available. You can
+     * specify multiple filters (e.g., the subnet is in a particular VPC, and
+     * the subnet's state is available).
+     * </p>
+     * <p>
+     * The result includes information for a particular subnet only if the
+     * subnet matches all your filters. If there's no match, no special
+     * message is returned; the response is simply empty. The following table
+     * shows the available filters.
+     * </p>
+     *
+     * @param describeSubnetsRequest Container for the necessary parameters
+     *           to execute the DescribeSubnets operation on AmazonEC2.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeSubnets service method, as returned by AmazonEC2.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeSubnetsResult> describeSubnetsAsync(DescribeSubnetsRequest describeSubnetsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Gives you information about your subnets. You can filter the results
+     * to return information only about subnets that match criteria you
+     * specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular
+     * subnet (or all) only if the subnet's state is available. You can
+     * specify multiple filters (e.g., the subnet is in a particular VPC, and
+     * the subnet's state is available).
+     * </p>
+     * <p>
+     * The result includes information for a particular subnet only if the
+     * subnet matches all your filters. If there's no match, no special
+     * message is returned; the response is simply empty. The following table
+     * shows the available filters.
+     * </p>
+     *
+     * @param describeSubnetsRequest Container for the necessary parameters
+     *           to execute the DescribeSubnets operation on AmazonEC2.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeSubnets service method, as returned by AmazonEC2.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeSubnetsResult> describeSubnetsAsync(DescribeSubnetsRequest describeSubnetsRequest,
+            AsyncHandler<DescribeSubnetsRequest, DescribeSubnetsResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -4891,6 +5043,49 @@ public interface AmazonEC2Async extends AmazonEC2 {
      */
     public Future<Void> deletePlacementGroupAsync(DeletePlacementGroupRequest deletePlacementGroupRequest,
             AsyncHandler<DeletePlacementGroupRequest, Void> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
+    /**
+     *
+     * @param copySnapshotRequest Container for the necessary parameters to
+     *           execute the CopySnapshot operation on AmazonEC2.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CopySnapshot service method, as returned by AmazonEC2.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<CopySnapshotResult> copySnapshotAsync(CopySnapshotRequest copySnapshotRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     *
+     * @param copySnapshotRequest Container for the necessary parameters to
+     *           execute the CopySnapshot operation on AmazonEC2.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CopySnapshot service method, as returned by AmazonEC2.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<CopySnapshotResult> copySnapshotAsync(CopySnapshotRequest copySnapshotRequest,
+            AsyncHandler<CopySnapshotRequest, CopySnapshotResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -36,13 +36,6 @@ public class SqsDeleteQueueList extends CustomListActivity {
 
 	private static final String SUCCESS = "Delete Queue";
 
-	private Runnable postResults = new Runnable() {
-		@Override
-		public void run() {
-			updateUi(queueListArray, SUCCESS);
-		}
-	};
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,8 +43,7 @@ public class SqsDeleteQueueList extends CustomListActivity {
 	}
 
 	protected void obtainListItems() {
-		queueListArray = SimpleQueue.getQueueUrls();
-		getHandler().post(postResults);
+		new ObtainMoreItemsTask().execute();
 	}
 
 	protected void wireOnListClick() {
@@ -100,6 +92,18 @@ public class SqsDeleteQueueList extends CustomListActivity {
 
 		protected void onPostExecute(Void result) {
 			startPopulateList();
+		}
+	}
+
+	private class ObtainMoreItemsTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+			queueListArray = SimpleQueue.getQueueUrls();
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+			updateUi(queueListArray, SUCCESS);
 		}
 	}
 }

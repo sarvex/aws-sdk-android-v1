@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -196,10 +196,10 @@ public class InstanceStatusEvent {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (code != null) sb.append("Code: " + code + ", ");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (notBefore != null) sb.append("NotBefore: " + notBefore + ", ");
-        if (notAfter != null) sb.append("NotAfter: " + notAfter + ", ");
+        if (getCode() != null) sb.append("Code: " + getCode() + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getNotBefore() != null) sb.append("NotBefore: " + getNotBefore() + ", ");
+        if (getNotAfter() != null) sb.append("NotAfter: " + getNotAfter() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -220,7 +220,7 @@ public class InstanceStatusEvent {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof InstanceStatusEvent == false) return false;
         InstanceStatusEvent other = (InstanceStatusEvent)obj;
         

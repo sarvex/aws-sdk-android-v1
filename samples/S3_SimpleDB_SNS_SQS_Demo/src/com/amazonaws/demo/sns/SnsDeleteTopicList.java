@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -35,13 +35,6 @@ public class SnsDeleteTopicList extends CustomListActivity {
 
 	private static final String SUCCESS = "Delete Topic List";
 
-	private final Runnable postResults = new Runnable() {
-		@Override
-		public void run() {
-			updateUi(topicNameList, SUCCESS);
-		}
-	};
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,8 +42,7 @@ public class SnsDeleteTopicList extends CustomListActivity {
 	}
 
 	protected void obtainListItems() {
-		topicNameList = SimpleNotification.getTopicNames();
-		getHandler().post(postResults);
+		new ObtainListItemsTask().execute();
 	}
 
 	protected void wireOnListClick() {
@@ -99,6 +91,18 @@ public class SnsDeleteTopicList extends CustomListActivity {
 
 		protected void onPostExecute(Void result) {
 			startPopulateList();
+		}
+	}
+	
+	private class ObtainListItemsTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+			topicNameList = SimpleNotification.getTopicNames();
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+			updateUi(topicNameList, SUCCESS);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -175,10 +175,10 @@ public class VolumeStatusAction {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (code != null) sb.append("Code: " + code + ", ");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (eventType != null) sb.append("EventType: " + eventType + ", ");
-        if (eventId != null) sb.append("EventId: " + eventId + ", ");
+        if (getCode() != null) sb.append("Code: " + getCode() + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getEventType() != null) sb.append("EventType: " + getEventType() + ", ");
+        if (getEventId() != null) sb.append("EventId: " + getEventId() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -199,7 +199,7 @@ public class VolumeStatusAction {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof VolumeStatusAction == false) return false;
         VolumeStatusAction other = (VolumeStatusAction)obj;
         

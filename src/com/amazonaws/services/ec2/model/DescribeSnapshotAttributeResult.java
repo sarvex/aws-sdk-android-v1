@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -235,9 +235,9 @@ public class DescribeSnapshotAttributeResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (snapshotId != null) sb.append("SnapshotId: " + snapshotId + ", ");
-        if (createVolumePermissions != null) sb.append("CreateVolumePermissions: " + createVolumePermissions + ", ");
-        if (productCodes != null) sb.append("ProductCodes: " + productCodes + ", ");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ", ");
+        if (getCreateVolumePermissions() != null) sb.append("CreateVolumePermissions: " + getCreateVolumePermissions() + ", ");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -257,7 +257,7 @@ public class DescribeSnapshotAttributeResult {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof DescribeSnapshotAttributeResult == false) return false;
         DescribeSnapshotAttributeResult other = (DescribeSnapshotAttributeResult)obj;
         

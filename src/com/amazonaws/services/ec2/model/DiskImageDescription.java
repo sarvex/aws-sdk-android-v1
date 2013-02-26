@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -175,10 +175,10 @@ public class DiskImageDescription {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (format != null) sb.append("Format: " + format + ", ");
-        if (size != null) sb.append("Size: " + size + ", ");
-        if (importManifestUrl != null) sb.append("ImportManifestUrl: " + importManifestUrl + ", ");
-        if (checksum != null) sb.append("Checksum: " + checksum + ", ");
+        if (getFormat() != null) sb.append("Format: " + getFormat() + ", ");
+        if (getSize() != null) sb.append("Size: " + getSize() + ", ");
+        if (getImportManifestUrl() != null) sb.append("ImportManifestUrl: " + getImportManifestUrl() + ", ");
+        if (getChecksum() != null) sb.append("Checksum: " + getChecksum() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -199,7 +199,7 @@ public class DiskImageDescription {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof DiskImageDescription == false) return false;
         DiskImageDescription other = (DiskImageDescription)obj;
         

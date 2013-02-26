@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -158,8 +158,8 @@ public class BackendServerDescription {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (instancePort != null) sb.append("InstancePort: " + instancePort + ", ");
-        if (policyNames != null) sb.append("PolicyNames: " + policyNames + ", ");
+        if (getInstancePort() != null) sb.append("InstancePort: " + getInstancePort() + ", ");
+        if (getPolicyNames() != null) sb.append("PolicyNames: " + getPolicyNames() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -178,7 +178,7 @@ public class BackendServerDescription {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof BackendServerDescription == false) return false;
         BackendServerDescription other = (BackendServerDescription)obj;
         

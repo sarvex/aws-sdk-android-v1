@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 package com.amazonaws.services.s3.internal;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,7 +45,7 @@ public class ObjectRestoreHeaderHandler<T extends ObjectRestoreResult> implement
     public void handle(T result, HttpResponse response) {
         String restoreHeader = response.getHeaders().get(Headers.RESTORE);
         if ( restoreHeader != null ) {
-            result.setExpirationTime(parseDate(restoreHeader));
+            result.setRestoreExpirationTime(parseDate(restoreHeader));
             result.setOngoingRestore(parseBoolean(restoreHeader));
         }
     }

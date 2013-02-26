@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -203,6 +203,9 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     /** Shared factory for converting configuration objects to XML */
     private static final BucketConfigurationXmlFactory bucketConfigurationXmlFactory = new BucketConfigurationXmlFactory();
 
+    /** S3 specific client configuration options */
+    private S3ClientOptions clientOptions = new S3ClientOptions();
+
     /** Provider for AWS credentials. */
     private AWSCredentialsProvider awsCredentialsProvider;
 
@@ -291,13 +294,6 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
      */
     public AmazonS3Client(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
-		System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
-		try {
-			org.xml.sax.XMLReader reader = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
-		}
-		catch ( org.xml.sax.SAXException e ) {
-            log.warn("Unable to load XMLReader " + e.getMessage(), e);
-		}
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
         init();
     }
@@ -337,6 +333,24 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         HandlerChainFactory chainFactory = new HandlerChainFactory();
         requestHandlers.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/s3/request.handlers"));
+        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
+        try {
+            org.xml.sax.XMLReader reader = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
+        }
+        catch ( org.xml.sax.SAXException e ) {
+            log.warn("Unable to load XMLReader " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * <p>
+     * Override the default S3 client options for this client.
+     * </p>
+     * @param clientOptions
+     *            The S3 client options to use.
+     */
+    public void setS3ClientOptions(S3ClientOptions clientOptions) {
+      this.clientOptions = new S3ClientOptions(clientOptions);
     }
 
     /**
@@ -806,7 +820,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
             switch (ase.getStatusCode()) {
             case 301:
                 // A redirect error means the bucket exists, but in another region.
-            	return true;
+                return true;
             case 403:
                 // A permissions error means the bucket exists, but is owned by another account.
                 return true;
@@ -1760,16 +1774,18 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
      * @see com.amazonaws.services.s3.AmazonS3#setBucketWebsiteConfiguration(com.amazonaws.services.s3.model.SetBucketWebsiteConfigurationRequest)
      */
     public void setBucketWebsiteConfiguration(SetBucketWebsiteConfigurationRequest setBucketWebsiteConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException {
+           throws AmazonClientException, AmazonServiceException {
         String bucketName = setBucketWebsiteConfigurationRequest.getBucketName();
         BucketWebsiteConfiguration configuration = setBucketWebsiteConfigurationRequest.getConfiguration();
 
-        assertParameterNotNull(bucketName,
-            "The bucket name parameter must be specified when setting a bucket's website configuration");
-        assertParameterNotNull(configuration,
-            "The bucket website configuration parameter must be specified when setting a bucket's website configuration");
-        assertParameterNotNull(configuration.getIndexDocumentSuffix(),
-            "The bucket website configuration parameter must specify the index document suffix when setting a bucket's website configuration");
+            assertParameterNotNull(bucketName,
+                    "The bucket name parameter must be specified when setting a bucket's website configuration");
+            assertParameterNotNull(configuration,
+                    "The bucket website configuration parameter must be specified when setting a bucket's website configuration");
+            if (configuration.getRedirectAllRequestsTo() == null) {
+            assertParameterNotNull(configuration.getIndexDocumentSuffix(),
+                    "The bucket website configuration parameter must specify the index document suffix when setting a bucket's website configuration");
+            }
 
         Request<SetBucketWebsiteConfigurationRequest> request = createRequest(bucketName, null, setBucketWebsiteConfigurationRequest, HttpMethodName.PUT);
         request.addParameter("website", null);
@@ -2576,7 +2592,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         try {
             return new URI(endpoint.getScheme() + "://" + bucketName + "." + endpoint.getAuthority());
         } catch (URISyntaxException e) {
-            throw new AmazonClientException("Can't turn bucket name into a URI: " + e.getMessage(), e);
+            throw new IllegalArgumentException("Invalid bucket name: " + bucketName, e);
         }
     }
 
@@ -2826,12 +2842,12 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         String path = null;
         if ( bucketNameUtils.isDNSBucketName(bucketName) ) {
             requestEndpoint = convertToVirtualHostEndpoint(bucketName);
-            path = ServiceUtils.urlEncode(key);
+            path = key;
         } else {
             requestEndpoint = endpoint;
 
             if ( bucketName != null ) {
-                path = bucketName + "/" + (key != null ? ServiceUtils.urlEncode(key) : "");
+                path = bucketName + "/" + (key != null ? key : "");
             }
         }
 
@@ -2876,7 +2892,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         boolean sslCertMismatch = endpoint.getScheme().equalsIgnoreCase("https") &&
                                   bucketName != null && bucketName.contains(".");
 
-        if (bucketNameUtils.isDNSBucketName(bucketName) && !validIP(endpoint.getHost()) && !sslCertMismatch) {
+        if (!clientOptions.isPathStyleAccess() && bucketNameUtils.isDNSBucketName(bucketName) &&
+              !validIP(endpoint.getHost()) && !sslCertMismatch) {
             request.setEndpoint(convertToVirtualHostEndpoint(bucketName));
             request.setResourcePath(ServiceUtils.urlEncode(key));
         } else {
@@ -2930,6 +2947,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         for (Entry<String, String> entry : request.getOriginalRequest().copyPrivateRequestParameters().entrySet()) {
             request.addParameter(entry.getKey(), entry.getValue());
         }
+        request.setTimeOffset(timeOffset);
 
         /*
          * The string we sign needs to include the exact headers that we

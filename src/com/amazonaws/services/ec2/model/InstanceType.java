@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -27,6 +27,8 @@ public enum InstanceType {
     M2Xlarge("m2.xlarge"),
     M22xlarge("m2.2xlarge"),
     M24xlarge("m2.4xlarge"),
+    M3Xlarge("m3.xlarge"),
+    M32xlarge("m3.2xlarge"),
     C1Medium("c1.medium"),
     C1Xlarge("c1.xlarge"),
     Hi14xlarge("hi1.4xlarge"),
@@ -72,6 +74,10 @@ public enum InstanceType {
             return InstanceType.M22xlarge;
         } else if ("m2.4xlarge".equals(value)) {
             return InstanceType.M24xlarge;
+        } else if ("m3.xlarge".equals(value)) {
+            return InstanceType.M3Xlarge;
+        } else if ("m3.2xlarge".equals(value)) {
+            return InstanceType.M32xlarge;
         } else if ("c1.medium".equals(value)) {
             return InstanceType.C1Medium;
         } else if ("c1.xlarge".equals(value)) {

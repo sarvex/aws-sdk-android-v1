@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -248,12 +248,12 @@ public class ExportTask {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (exportTaskId != null) sb.append("ExportTaskId: " + exportTaskId + ", ");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (state != null) sb.append("State: " + state + ", ");
-        if (statusMessage != null) sb.append("StatusMessage: " + statusMessage + ", ");
-        if (instanceExportDetails != null) sb.append("InstanceExportDetails: " + instanceExportDetails + ", ");
-        if (exportToS3Task != null) sb.append("ExportToS3Task: " + exportToS3Task + ", ");
+        if (getExportTaskId() != null) sb.append("ExportTaskId: " + getExportTaskId() + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getState() != null) sb.append("State: " + getState() + ", ");
+        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ", ");
+        if (getInstanceExportDetails() != null) sb.append("InstanceExportDetails: " + getInstanceExportDetails() + ", ");
+        if (getExportToS3Task() != null) sb.append("ExportToS3Task: " + getExportToS3Task() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -276,7 +276,7 @@ public class ExportTask {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof ExportTask == false) return false;
         ExportTask other = (ExportTask)obj;
         

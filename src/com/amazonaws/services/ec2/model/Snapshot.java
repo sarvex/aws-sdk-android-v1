@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -517,16 +517,16 @@ public class Snapshot {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (snapshotId != null) sb.append("SnapshotId: " + snapshotId + ", ");
-        if (volumeId != null) sb.append("VolumeId: " + volumeId + ", ");
-        if (state != null) sb.append("State: " + state + ", ");
-        if (startTime != null) sb.append("StartTime: " + startTime + ", ");
-        if (progress != null) sb.append("Progress: " + progress + ", ");
-        if (ownerId != null) sb.append("OwnerId: " + ownerId + ", ");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (volumeSize != null) sb.append("VolumeSize: " + volumeSize + ", ");
-        if (ownerAlias != null) sb.append("OwnerAlias: " + ownerAlias + ", ");
-        if (tags != null) sb.append("Tags: " + tags + ", ");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ", ");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ", ");
+        if (getState() != null) sb.append("State: " + getState() + ", ");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ", ");
+        if (getProgress() != null) sb.append("Progress: " + getProgress() + ", ");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() + ", ");
+        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ", ");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -553,7 +553,7 @@ public class Snapshot {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof Snapshot == false) return false;
         Snapshot other = (Snapshot)obj;
         

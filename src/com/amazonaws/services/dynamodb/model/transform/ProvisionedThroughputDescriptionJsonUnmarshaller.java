@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -55,6 +55,10 @@ public class ProvisionedThroughputDescriptionJsonUnmarshaller implements Unmarsh
                 if (context.testExpression("LastDecreaseDateTime", targetDepth)) {
                     context.nextToken();
                     provisionedThroughputDescription.setLastDecreaseDateTime(DateJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("NumberOfDecreasesToday", targetDepth)) {
+                    context.nextToken();
+                    provisionedThroughputDescription.setNumberOfDecreasesToday(LongJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("ReadCapacityUnits", targetDepth)) {
                     context.nextToken();

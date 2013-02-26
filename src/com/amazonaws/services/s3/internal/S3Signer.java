@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -93,7 +93,8 @@ public class S3Signer extends AbstractAWSSigner {
         	addSessionCredentials(request, (AWSSessionCredentials) sanitizedCredentials);
         }
 
-        request.addHeader(Headers.DATE, ServiceUtils.formatRfc822Date(new Date()));
+        Date date = getSignatureDate(request.getTimeOffset());
+        request.addHeader(Headers.DATE, ServiceUtils.formatRfc822Date(date));
         String canonicalString = RestUtils.makeS3CanonicalString(
                 httpVerb, resourcePath, request, null);
         log.debug("Calculated string to sign:\n\"" + canonicalString + "\"");

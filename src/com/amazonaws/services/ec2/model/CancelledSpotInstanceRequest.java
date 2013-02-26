@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -104,8 +104,8 @@ public class CancelledSpotInstanceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (spotInstanceRequestId != null) sb.append("SpotInstanceRequestId: " + spotInstanceRequestId + ", ");
-        if (state != null) sb.append("State: " + state + ", ");
+        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ", ");
+        if (getState() != null) sb.append("State: " + getState() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -124,7 +124,7 @@ public class CancelledSpotInstanceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof CancelledSpotInstanceRequest == false) return false;
         CancelledSpotInstanceRequest other = (CancelledSpotInstanceRequest)obj;
         

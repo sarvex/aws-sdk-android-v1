@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2012 Amazon Technologies, Inc.
+ * Copyright 2011-2013 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,18 +26,18 @@ import com.amazonaws.services.s3.Headers;
 public interface ObjectRestoreResult {
 
     /**
-     * Returns the expiration date of the object, or null if the object is not
+     * Returns the expiration date when the Object is scheduled to move to Amazon Glacier, or null if the object is not
      * configured to expire.
      */
-    public Date getExpirationTime();
+    public Date getRestoreExpirationTime();
 
     /**
-     * Sets the expiration date of the object.
+     * Sets the expiration date when the Object is scheduled to move to Amazon Glacier.
      *
      * @param expiration
      *            The date the object will expire.
      */
-    public void setExpirationTime(Date expiration);
+    public void setRestoreExpirationTime(Date expiration);
 
     /**
      * Sets a boolean value which indicates there is an ongoing restore request.

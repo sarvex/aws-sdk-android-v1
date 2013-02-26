@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -67,6 +67,11 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
      * Boolean value to indicate whether there is an ongoing restore request.
      */
     private Boolean ongoingRestore;
+
+    /**
+     * The expiration time when the object is scheduled to move to Amazon Glacier, or null if it has no expiration.
+     */
+    private Date restoreExpirationTime;
 
     /**
      * <p>
@@ -623,6 +628,26 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
      */
     public void setExpirationTimeRuleId(String expirationTimeRuleId) {
         this.expirationTimeRuleId = expirationTimeRuleId;
+    }
+
+
+    /**
+     * Returns the expiration time when the object is scheduled to move to
+     * Amazon Glacier, or null if it doesn't expire.
+     */
+    public Date getRestoreExpirationTime() {
+        return restoreExpirationTime;
+    }
+
+    /**
+     * Sets the expiration time when the object is scheduled to move to Amazon
+     * Glacier.
+     *
+     * @param expirationTime
+     *            The expiration time for the object to move to.
+     */
+    public void setRestoreExpirationTime(Date restoreExpirationTime) {
+        this.restoreExpirationTime = restoreExpirationTime;
     }
 
     /**

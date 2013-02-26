@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Portions copyright 2006-2009 James Murty. Please see LICENSE.txt
  * for applicable license terms and NOTICE.txt for applicable notices.
@@ -217,10 +217,10 @@ public class ServiceUtils {
      * @param destinationFile
      *            The file to store the object's data in.
      * @param performIntegrityCheck
-     *            Boolean valuable to indicate whether do the integrity check or not          
-     *            
+     *            Boolean valuable to indicate whether do the integrity check or not
+     *
      */
-    public static void downloadObjectToFile(S3Object s3Object, File destinationFile,boolean performIntegrityCheck) {
+    public static void downloadObjectToFile(S3Object s3Object, File destinationFile, boolean performIntegrityCheck) {
 
         // attempt to create the parent if it doesn't exist
         File parentDirectory = destinationFile.getParentFile();

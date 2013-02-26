@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -303,12 +303,12 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (instanceId != null) sb.append("InstanceId: " + instanceId + ", ");
-        if (publicIp != null) sb.append("PublicIp: " + publicIp + ", ");
-        if (allocationId != null) sb.append("AllocationId: " + allocationId + ", ");
-        if (networkInterfaceId != null) sb.append("NetworkInterfaceId: " + networkInterfaceId + ", ");
-        if (privateIpAddress != null) sb.append("PrivateIpAddress: " + privateIpAddress + ", ");
-        if (allowReassociation != null) sb.append("AllowReassociation: " + allowReassociation + ", ");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ", ");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ", ");
+        if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() + ", ");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ", ");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ", ");
+        if (isAllowReassociation() != null) sb.append("AllowReassociation: " + isAllowReassociation() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -331,7 +331,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof AssociateAddressRequest == false) return false;
         AssociateAddressRequest other = (AssociateAddressRequest)obj;
         

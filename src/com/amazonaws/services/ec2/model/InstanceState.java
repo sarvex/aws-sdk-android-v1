@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -177,8 +177,8 @@ public class InstanceState {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (code != null) sb.append("Code: " + code + ", ");
-        if (name != null) sb.append("Name: " + name + ", ");
+        if (getCode() != null) sb.append("Code: " + getCode() + ", ");
+        if (getName() != null) sb.append("Name: " + getName() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -197,7 +197,7 @@ public class InstanceState {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof InstanceState == false) return false;
         InstanceState other = (InstanceState)obj;
         

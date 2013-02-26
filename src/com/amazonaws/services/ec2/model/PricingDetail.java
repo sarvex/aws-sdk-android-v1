@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -103,8 +103,8 @@ public class PricingDetail {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (price != null) sb.append("Price: " + price + ", ");
-        if (count != null) sb.append("Count: " + count + ", ");
+        if (getPrice() != null) sb.append("Price: " + getPrice() + ", ");
+        if (getCount() != null) sb.append("Count: " + getCount() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -123,7 +123,7 @@ public class PricingDetail {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof PricingDetail == false) return false;
         PricingDetail other = (PricingDetail)obj;
         

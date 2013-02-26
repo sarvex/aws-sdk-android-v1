@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -37,14 +37,21 @@ public abstract class AmazonWebServiceRequest {
      * The optional credentials to use for this request - overrides the
      * default credentials set at the client level.
      */
-	private AWSCredentials credentials;
+    private AWSCredentials credentials;
 
 
     /**
      * Returns the optional STS security token associated with the request.
      *
+     * This method is not available in the external release of the SDK.
+     *
      * @return the optional STS security token associated with the request.
+     *
+     * @deprecated Pass a {@link com.amazonaws.auth.AWSSessionCredentials} to
+     * your client constructor instead.  Note the delegationToken methods do not
+     * work for services other than s3.
      */
+    @Deprecated
     public String getDelegationToken() {
         return delegationToken;
     }
@@ -52,34 +59,41 @@ public abstract class AmazonWebServiceRequest {
     /**
      * Sets the optional STS security token associated with the request.
      *
+     * This method is not available in the external release of the SDK.
+     *
      * @param delegationToken
      *            The optional STS security token associated with the request.
+     *
+     * @deprecated Pass a {@link com.amazonaws.auth.AWSSessionCredentials} to
+     * your client constructor instead.  Note the delegationToken methods do not
+     * work for services other than s3.
      */
+    @Deprecated
     public void setDelegationToken(String delegationToken) {
         this.delegationToken = delegationToken;
     }
 
-	/**
-	 * Sets the optional credentials to use for this request, overriding the
-	 * default credentials set at the client level.
-	 *
-	 * @param credentials
-	 *            The optional AWS security credentials to use for this request,
-	 *            overriding the default credentials set at the client level.
-	 */
+    /**
+     * Sets the optional credentials to use for this request, overriding the
+     * default credentials set at the client level.
+     *
+     * @param credentials
+     *            The optional AWS security credentials to use for this request,
+     *            overriding the default credentials set at the client level.
+     */
     public void setRequestCredentials(AWSCredentials credentials) {
-		this.credentials = credentials;
+        this.credentials = credentials;
     }
 
-	/**
-	 * Returns the optional credentials to use to sign this request, overriding
-	 * the default credentials set at the client level.
-	 *
-	 * @return The optional credentials to use to sign this request, overriding
-	 *         the default credentials set at the client level.
-	 */
+    /**
+     * Returns the optional credentials to use to sign this request, overriding
+     * the default credentials set at the client level.
+     *
+     * @return The optional credentials to use to sign this request, overriding
+     *         the default credentials set at the client level.
+     */
     public AWSCredentials getRequestCredentials() {
-    	return credentials;
+        return credentials;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -316,11 +316,11 @@ public class License {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (licenseId != null) sb.append("LicenseId: " + licenseId + ", ");
-        if (type != null) sb.append("Type: " + type + ", ");
-        if (pool != null) sb.append("Pool: " + pool + ", ");
-        if (capacities != null) sb.append("Capacities: " + capacities + ", ");
-        if (tags != null) sb.append("Tags: " + tags + ", ");
+        if (getLicenseId() != null) sb.append("LicenseId: " + getLicenseId() + ", ");
+        if (getType() != null) sb.append("Type: " + getType() + ", ");
+        if (getPool() != null) sb.append("Pool: " + getPool() + ", ");
+        if (getCapacities() != null) sb.append("Capacities: " + getCapacities() + ", ");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -342,7 +342,7 @@ public class License {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof License == false) return false;
         License other = (License)obj;
         

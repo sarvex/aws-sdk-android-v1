@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -322,11 +322,11 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (size != null) sb.append("Size: " + size + ", ");
-        if (snapshotId != null) sb.append("SnapshotId: " + snapshotId + ", ");
-        if (availabilityZone != null) sb.append("AvailabilityZone: " + availabilityZone + ", ");
-        if (volumeType != null) sb.append("VolumeType: " + volumeType + ", ");
-        if (iops != null) sb.append("Iops: " + iops + ", ");
+        if (getSize() != null) sb.append("Size: " + getSize() + ", ");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ", ");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ", ");
+        if (getVolumeType() != null) sb.append("VolumeType: " + getVolumeType() + ", ");
+        if (getIops() != null) sb.append("Iops: " + getIops() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -348,7 +348,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof CreateVolumeRequest == false) return false;
         CreateVolumeRequest other = (CreateVolumeRequest)obj;
         

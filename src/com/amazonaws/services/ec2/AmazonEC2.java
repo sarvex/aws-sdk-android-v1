@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -846,6 +846,42 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Gives you information about your VPCs. You can filter the results to
+     * return information only about VPCs that match criteria you specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular VPC
+     * or VPCs (or all your VPCs) only if the VPC's state is available. You
+     * can specify multiple filters (e.g., the VPC uses one of several sets
+     * of DHCP options, and the VPC's state is available). The result
+     * includes information for a particular VPC only if the VPC matches all
+     * your filters.
+     * </p>
+     * <p>
+     * If there's no match, no special message is returned; the response is
+     * simply empty. The following table shows the available filters.
+     * </p>
+     *
+     * @param describeVpcsRequest Container for the necessary parameters to
+     *           execute the DescribeVpcs service method on AmazonEC2.
+     * 
+     * @return The response from the DescribeVpcs service method, as returned
+     *         by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeVpcsResult describeVpcs(DescribeVpcsRequest describeVpcsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * The AssociateAddress operation associates an elastic IP address with
      * an instance.
      * </p>
@@ -1229,6 +1265,43 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public DescribeInstanceAttributeResult describeInstanceAttribute(DescribeInstanceAttributeRequest describeInstanceAttributeRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Gives you information about your subnets. You can filter the results
+     * to return information only about subnets that match criteria you
+     * specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular
+     * subnet (or all) only if the subnet's state is available. You can
+     * specify multiple filters (e.g., the subnet is in a particular VPC, and
+     * the subnet's state is available).
+     * </p>
+     * <p>
+     * The result includes information for a particular subnet only if the
+     * subnet matches all your filters. If there's no match, no special
+     * message is returned; the response is simply empty. The following table
+     * shows the available filters.
+     * </p>
+     *
+     * @param describeSubnetsRequest Container for the necessary parameters
+     *           to execute the DescribeSubnets service method on AmazonEC2.
+     * 
+     * @return The response from the DescribeSubnets service method, as
+     *         returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeSubnetsResult describeSubnets(DescribeSubnetsRequest describeSubnetsRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -2297,6 +2370,26 @@ public interface AmazonEC2 {
             throws AmazonServiceException, AmazonClientException;
 
     /**
+     *
+     * @param copySnapshotRequest Container for the necessary parameters to
+     *           execute the CopySnapshot service method on AmazonEC2.
+     * 
+     * @return The response from the CopySnapshot service method, as returned
+     *         by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CopySnapshotResult copySnapshot(CopySnapshotRequest copySnapshotRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
      * <p>
      * The AllocateAddress operation acquires an elastic IP address for use
      * with your account.
@@ -2696,6 +2789,38 @@ public interface AmazonEC2 {
     public DescribeVolumeStatusResult describeVolumeStatus() throws AmazonServiceException, AmazonClientException;
     
     /**
+     * <p>
+     * Gives you information about your VPCs. You can filter the results to
+     * return information only about VPCs that match criteria you specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular VPC
+     * or VPCs (or all your VPCs) only if the VPC's state is available. You
+     * can specify multiple filters (e.g., the VPC uses one of several sets
+     * of DHCP options, and the VPC's state is available). The result
+     * includes information for a particular VPC only if the VPC matches all
+     * your filters.
+     * </p>
+     * <p>
+     * If there's no match, no special message is returned; the response is
+     * simply empty. The following table shows the available filters.
+     * </p>
+     * 
+     * @return The response from the DescribeVpcs service method, as returned
+     *         by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeVpcsResult describeVpcs() throws AmazonServiceException, AmazonClientException;
+    
+    /**
      * 
      * @return The response from the DescribeExportTasks service method, as
      *         returned by AmazonEC2.
@@ -2827,6 +2952,39 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public DescribeConversionTasksResult describeConversionTasks() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * <p>
+     * Gives you information about your subnets. You can filter the results
+     * to return information only about subnets that match criteria you
+     * specify.
+     * </p>
+     * <p>
+     * For example, you could ask to get information about a particular
+     * subnet (or all) only if the subnet's state is available. You can
+     * specify multiple filters (e.g., the subnet is in a particular VPC, and
+     * the subnet's state is available).
+     * </p>
+     * <p>
+     * The result includes information for a particular subnet only if the
+     * subnet matches all your filters. If there's no match, no special
+     * message is returned; the response is simply empty. The following table
+     * shows the available filters.
+     * </p>
+     * 
+     * @return The response from the DescribeSubnets service method, as
+     *         returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeSubnetsResult describeSubnets() throws AmazonServiceException, AmazonClientException;
     
     /**
      * <p>

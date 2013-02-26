@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import com.amazonaws.services.ec2.model.DescribeSpotInstanceRequestsResult;
 import com.amazonaws.services.ec2.model.GroupIdentifier;
 import com.amazonaws.services.ec2.model.ImportKeyPairRequest;
 import com.amazonaws.services.ec2.model.LaunchSpecification;
+import com.amazonaws.services.ec2.model.RequestSpotInstancesRequest;
 import com.amazonaws.services.ec2.model.RequestSpotInstancesResult;
 import com.amazonaws.services.ec2.model.Reservation;
 import com.amazonaws.services.ec2.model.RunInstancesResult;
@@ -42,6 +43,27 @@ public class EC2RequestHandler extends AbstractRequestHandler {
     		String publicKeyMaterial = importKeyPairRequest.getPublicKeyMaterial();
     		String encodedKeyMaterial = new String(Base64.encodeBase64(publicKeyMaterial.getBytes()));
     		request.addParameter("PublicKeyMaterial", encodedKeyMaterial);
+    	}
+
+    	// Request -> Query string marshalling for RequestSpotInstancesRequest is a little tricky since
+    	// the query string params follow a different form than the XML responses, so we manually set the parameters here.
+    	else if (originalRequest instanceof RequestSpotInstancesRequest) {
+    	    RequestSpotInstancesRequest requestSpotInstancesRequest = (RequestSpotInstancesRequest)originalRequest;
+    	    int count = 1;
+    	    for (GroupIdentifier group : requestSpotInstancesRequest.getLaunchSpecification().getAllSecurityGroups()) {
+    	        if (group.getGroupId() != null) {
+    	            request.addParameter("LaunchSpecification.SecurityGroupId." + count++, group.getGroupId());
+    	        }
+    	    }
+
+    	    // Remove any of the incorrect parameters.
+    	    List<String> keysToRemove = new ArrayList<String>();
+    	    for (String parameter : request.getParameters().keySet()) {
+    	        if (parameter.startsWith("LaunchSpecification.GroupSet.")) keysToRemove.add(parameter);
+    	    }
+    	    for (String key : keysToRemove) {
+    	        request.getParameters().remove(key);
+    	    }
     	}
     }
 

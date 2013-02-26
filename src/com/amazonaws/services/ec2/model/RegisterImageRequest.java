@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -480,14 +480,14 @@ public class RegisterImageRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (imageLocation != null) sb.append("ImageLocation: " + imageLocation + ", ");
-        if (name != null) sb.append("Name: " + name + ", ");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (architecture != null) sb.append("Architecture: " + architecture + ", ");
-        if (kernelId != null) sb.append("KernelId: " + kernelId + ", ");
-        if (ramdiskId != null) sb.append("RamdiskId: " + ramdiskId + ", ");
-        if (rootDeviceName != null) sb.append("RootDeviceName: " + rootDeviceName + ", ");
-        if (blockDeviceMappings != null) sb.append("BlockDeviceMappings: " + blockDeviceMappings + ", ");
+        if (getImageLocation() != null) sb.append("ImageLocation: " + getImageLocation() + ", ");
+        if (getName() != null) sb.append("Name: " + getName() + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ", ");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ", ");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ", ");
+        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ", ");
+        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -512,7 +512,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof RegisterImageRequest == false) return false;
         RegisterImageRequest other = (RegisterImageRequest)obj;
         

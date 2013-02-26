@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -555,12 +555,12 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (loadBalancerName != null) sb.append("LoadBalancerName: " + loadBalancerName + ", ");
-        if (listeners != null) sb.append("Listeners: " + listeners + ", ");
-        if (availabilityZones != null) sb.append("AvailabilityZones: " + availabilityZones + ", ");
-        if (subnets != null) sb.append("Subnets: " + subnets + ", ");
-        if (securityGroups != null) sb.append("SecurityGroups: " + securityGroups + ", ");
-        if (scheme != null) sb.append("Scheme: " + scheme + ", ");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ", ");
+        if (getListeners() != null) sb.append("Listeners: " + getListeners() + ", ");
+        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ", ");
+        if (getSubnets() != null) sb.append("Subnets: " + getSubnets() + ", ");
+        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ", ");
+        if (getScheme() != null) sb.append("Scheme: " + getScheme() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -583,7 +583,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof CreateLoadBalancerRequest == false) return false;
         CreateLoadBalancerRequest other = (CreateLoadBalancerRequest)obj;
         

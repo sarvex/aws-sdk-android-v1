@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ public class FederatedUser {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>2 - 96<br/>
-     * <b>Pattern: </b>[\w+=,.@-\:]*<br/>
+     * <b>Pattern: </b>[\w+=,.@\:-]*<br/>
      */
     private String federatedUserId;
 
@@ -36,8 +36,7 @@ public class FederatedUser {
      * For more information about ARNs and how to use them in policies, see
      * <a
      * ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     * Identity and Access Management</i>.
+     * target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>20 - 2048<br/>
@@ -61,8 +60,7 @@ public class FederatedUser {
      * credentials. For more information about ARNs and how to use them in
      * policies, see <a
      * ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     * Identity and Access Management</i>.
+     * target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      */
     public FederatedUser(String federatedUserId, String arn) {
         this.federatedUserId = federatedUserId;
@@ -77,7 +75,7 @@ public class FederatedUser {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>2 - 96<br/>
-     * <b>Pattern: </b>[\w+=,.@-\:]*<br/>
+     * <b>Pattern: </b>[\w+=,.@\:-]*<br/>
      *
      * @return The string identifying the federated user associated with the
      *         credentials, similar to the UserId of an IAM user.
@@ -92,7 +90,7 @@ public class FederatedUser {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>2 - 96<br/>
-     * <b>Pattern: </b>[\w+=,.@-\:]*<br/>
+     * <b>Pattern: </b>[\w+=,.@\:-]*<br/>
      *
      * @param federatedUserId The string identifying the federated user associated with the
      *         credentials, similar to the UserId of an IAM user.
@@ -109,7 +107,7 @@ public class FederatedUser {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>2 - 96<br/>
-     * <b>Pattern: </b>[\w+=,.@-\:]*<br/>
+     * <b>Pattern: </b>[\w+=,.@\:-]*<br/>
      *
      * @param federatedUserId The string identifying the federated user associated with the
      *         credentials, similar to the UserId of an IAM user.
@@ -128,8 +126,7 @@ public class FederatedUser {
      * For more information about ARNs and how to use them in policies, see
      * <a
      * ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     * Identity and Access Management</i>.
+     * target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>20 - 2048<br/>
@@ -138,8 +135,7 @@ public class FederatedUser {
      *         For more information about ARNs and how to use them in policies, see
      *         <a
      *         ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     *         Identity and Access Management</i>.
+     *         target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      */
     public String getArn() {
         return arn;
@@ -150,8 +146,7 @@ public class FederatedUser {
      * For more information about ARNs and how to use them in policies, see
      * <a
      * ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     * Identity and Access Management</i>.
+     * target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>20 - 2048<br/>
@@ -160,8 +155,7 @@ public class FederatedUser {
      *         For more information about ARNs and how to use them in policies, see
      *         <a
      *         ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     *         Identity and Access Management</i>.
+     *         target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      */
     public void setArn(String arn) {
         this.arn = arn;
@@ -172,8 +166,7 @@ public class FederatedUser {
      * For more information about ARNs and how to use them in policies, see
      * <a
      * ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     * Identity and Access Management</i>.
+     * target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -184,8 +177,7 @@ public class FederatedUser {
      *         For more information about ARNs and how to use them in policies, see
      *         <a
      *         ocs.amazonwebservices.com/IAM/latest/UserGuide/Using_Identifiers.html"
-     *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
-     *         Identity and Access Management</i>.
+     *         target="_blank">Identifiers for IAM Entities</a> in <i>Using IAM</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -208,8 +200,8 @@ public class FederatedUser {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (federatedUserId != null) sb.append("FederatedUserId: " + federatedUserId + ", ");
-        if (arn != null) sb.append("Arn: " + arn + ", ");
+        if (getFederatedUserId() != null) sb.append("FederatedUserId: " + getFederatedUserId() + ", ");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -228,7 +220,7 @@ public class FederatedUser {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof FederatedUser == false) return false;
         FederatedUser other = (FederatedUser)obj;
         

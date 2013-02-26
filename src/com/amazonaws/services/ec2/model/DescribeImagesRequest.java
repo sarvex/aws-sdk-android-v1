@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -455,10 +455,10 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (imageIds != null) sb.append("ImageIds: " + imageIds + ", ");
-        if (owners != null) sb.append("Owners: " + owners + ", ");
-        if (executableUsers != null) sb.append("ExecutableUsers: " + executableUsers + ", ");
-        if (filters != null) sb.append("Filters: " + filters + ", ");
+        if (getImageIds() != null) sb.append("ImageIds: " + getImageIds() + ", ");
+        if (getOwners() != null) sb.append("Owners: " + getOwners() + ", ");
+        if (getExecutableUsers() != null) sb.append("ExecutableUsers: " + getExecutableUsers() + ", ");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -479,7 +479,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof DescribeImagesRequest == false) return false;
         DescribeImagesRequest other = (DescribeImagesRequest)obj;
         

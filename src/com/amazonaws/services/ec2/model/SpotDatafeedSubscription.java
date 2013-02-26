@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -235,11 +235,11 @@ public class SpotDatafeedSubscription {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (ownerId != null) sb.append("OwnerId: " + ownerId + ", ");
-        if (bucket != null) sb.append("Bucket: " + bucket + ", ");
-        if (prefix != null) sb.append("Prefix: " + prefix + ", ");
-        if (state != null) sb.append("State: " + state + ", ");
-        if (fault != null) sb.append("Fault: " + fault + ", ");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ", ");
+        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ", ");
+        if (getPrefix() != null) sb.append("Prefix: " + getPrefix() + ", ");
+        if (getState() != null) sb.append("State: " + getState() + ", ");
+        if (getFault() != null) sb.append("Fault: " + getFault() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -261,7 +261,7 @@ public class SpotDatafeedSubscription {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof SpotDatafeedSubscription == false) return false;
         SpotDatafeedSubscription other = (SpotDatafeedSubscription)obj;
         

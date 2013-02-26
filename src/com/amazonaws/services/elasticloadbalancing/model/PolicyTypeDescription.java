@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -194,9 +194,9 @@ public class PolicyTypeDescription {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (policyTypeName != null) sb.append("PolicyTypeName: " + policyTypeName + ", ");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (policyAttributeTypeDescriptions != null) sb.append("PolicyAttributeTypeDescriptions: " + policyAttributeTypeDescriptions + ", ");
+        if (getPolicyTypeName() != null) sb.append("PolicyTypeName: " + getPolicyTypeName() + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getPolicyAttributeTypeDescriptions() != null) sb.append("PolicyAttributeTypeDescriptions: " + getPolicyAttributeTypeDescriptions() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -216,7 +216,7 @@ public class PolicyTypeDescription {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof PolicyTypeDescription == false) return false;
         PolicyTypeDescription other = (PolicyTypeDescription)obj;
         

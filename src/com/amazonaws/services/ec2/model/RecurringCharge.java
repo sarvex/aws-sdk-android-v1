@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -111,8 +111,8 @@ public class RecurringCharge {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (frequency != null) sb.append("Frequency: " + frequency + ", ");
-        if (amount != null) sb.append("Amount: " + amount + ", ");
+        if (getFrequency() != null) sb.append("Frequency: " + getFrequency() + ", ");
+        if (getAmount() != null) sb.append("Amount: " + getAmount() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -131,7 +131,7 @@ public class RecurringCharge {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof RecurringCharge == false) return false;
         RecurringCharge other = (RecurringCharge)obj;
         

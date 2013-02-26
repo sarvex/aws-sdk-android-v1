@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ public class CancelReservedInstancesListingRequestMarshaller implements Marshall
 
         Request<CancelReservedInstancesListingRequest> request = new DefaultRequest<CancelReservedInstancesListingRequest>(cancelReservedInstancesListingRequest, "AmazonEC2");
         request.addParameter("Action", "CancelReservedInstancesListing");
-        request.addParameter("Version", "2012-10-01");
+        request.addParameter("Version", "2012-12-01");
 
         if (cancelReservedInstancesListingRequest.getReservedInstancesListingId() != null) {
             request.addParameter("ReservedInstancesListingId", StringUtils.fromString(cancelReservedInstancesListingRequest.getReservedInstancesListingId()));

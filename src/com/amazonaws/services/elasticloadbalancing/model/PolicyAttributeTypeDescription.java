@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -256,11 +256,11 @@ public class PolicyAttributeTypeDescription {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (attributeName != null) sb.append("AttributeName: " + attributeName + ", ");
-        if (attributeType != null) sb.append("AttributeType: " + attributeType + ", ");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (defaultValue != null) sb.append("DefaultValue: " + defaultValue + ", ");
-        if (cardinality != null) sb.append("Cardinality: " + cardinality + ", ");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ", ");
+        if (getAttributeType() != null) sb.append("AttributeType: " + getAttributeType() + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ", ");
+        if (getCardinality() != null) sb.append("Cardinality: " + getCardinality() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -282,7 +282,7 @@ public class PolicyAttributeTypeDescription {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof PolicyAttributeTypeDescription == false) return false;
         PolicyAttributeTypeDescription other = (PolicyAttributeTypeDescription)obj;
         

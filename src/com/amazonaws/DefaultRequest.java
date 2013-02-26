@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -55,6 +55,9 @@ public class DefaultRequest<T> implements Request<T> {
 
     /** An optional stream from which to read the request payload. */
 	private InputStream content;
+	
+	/** An optional time offset to account for clock skew */
+	private int timeOffset;
 
     /**
      * Constructs a new DefaultRequest with the specified service name and the
@@ -207,6 +210,28 @@ public class DefaultRequest<T> implements Request<T> {
     public void setParameters(Map<String, String> parameters) {
         this.parameters.clear();
         this.parameters.putAll(parameters);
+    }
+    
+    /**
+     * @see com.amazonaws.Request#getTimeOffset
+     */
+    public int getTimeOffset() {
+        return timeOffset;
+    }
+    
+    /**
+     * @see com.amazonaws.Request#setTimeOffset(int);
+     */
+    public void setTimeOffset(int timeOffset) {
+        this.timeOffset = timeOffset;
+    }
+    
+    /**
+     * @see com.amazonaws.Request#withTimeOffset(int);
+     */
+    public Request<T> withTimeOffset(int timeOffset) {
+        setTimeOffset(timeOffset);
+        return this;
     }
 
     @Override

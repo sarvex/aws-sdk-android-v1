@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -151,8 +151,8 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (publicIp != null) sb.append("PublicIp: " + publicIp + ", ");
-        if (allocationId != null) sb.append("AllocationId: " + allocationId + ", ");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ", ");
+        if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -171,7 +171,7 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof ReleaseAddressRequest == false) return false;
         ReleaseAddressRequest other = (ReleaseAddressRequest)obj;
         

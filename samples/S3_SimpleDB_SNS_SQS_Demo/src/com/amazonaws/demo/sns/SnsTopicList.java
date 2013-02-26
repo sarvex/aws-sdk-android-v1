@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import java.util.List;
 import com.amazonaws.demo.CustomListActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,13 +32,6 @@ public class SnsTopicList extends CustomListActivity{
 	
 	private static final String SUCCESS = "Topic List";
 	
-	private final Runnable postResults = new Runnable() {
-		@Override
-		public void run(){
-			updateUi(topicNameList, SUCCESS);
-		}
-	};
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +39,7 @@ public class SnsTopicList extends CustomListActivity{
     }
     
     protected void obtainListItems(){
-		topicNameList = SimpleNotification.getTopicNames();
-        getHandler().post(postResults);
+		new ObtainListItemsTask().execute();
     }
     
 	protected void wireOnListClick(){
@@ -60,5 +53,16 @@ public class SnsTopicList extends CustomListActivity{
 		    }
 		 });
 	}
-    		
+    	
+	private class ObtainListItemsTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+			topicNameList = SimpleNotification.getTopicNames();
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+			updateUi(topicNameList, SUCCESS);
+		}
+	}
 }

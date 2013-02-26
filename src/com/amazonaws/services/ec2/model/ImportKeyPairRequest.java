@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -153,8 +153,8 @@ public class ImportKeyPairRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (keyName != null) sb.append("KeyName: " + keyName + ", ");
-        if (publicKeyMaterial != null) sb.append("PublicKeyMaterial: " + publicKeyMaterial + ", ");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ", ");
+        if (getPublicKeyMaterial() != null) sb.append("PublicKeyMaterial: " + getPublicKeyMaterial() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -173,7 +173,7 @@ public class ImportKeyPairRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof ImportKeyPairRequest == false) return false;
         ImportKeyPairRequest other = (ImportKeyPairRequest)obj;
         

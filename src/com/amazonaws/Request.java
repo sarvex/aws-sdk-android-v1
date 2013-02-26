@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -173,5 +173,39 @@ public interface Request<T> {
      *         object is representing.
      */
     public AmazonWebServiceRequest getOriginalRequest();
+    
+    /**
+     * Returns the optional value for time offset for this request.  This
+     * will be used by the signer to adjust for potential clock skew.  
+     * Value is in seconds, positive values imply the current clock is "fast",
+     * negative values imply clock is slow.
+     * 
+     * @return The optional value for time offset (in seconds) for this request.
+     */
+    public int getTimeOffset();
+    
+    /**
+     * Sets the optional value for time offset for this request.  This
+     * will be used by the signer to adjust for potential clock skew.  
+     * Value is in seconds, positive values imply the current clock is "fast",
+     * negative values imply clock is slow.
+     *
+     * @param timeOffset
+     *            The optional value for time offset (in seconds) for this request.
+     */
+    public void setTimeOffset(int timeOffset);
+    
+    
+    /**
+     * Sets the optional value for time offset for this request.  This
+     * will be used by the signer to adjust for potential clock skew.  
+     * Value is in seconds, positive values imply the current clock is "fast",
+     * negative values imply clock is slow.
+     *
+     * @return The updated request object.
+     */
+    public Request<T> withTimeOffset(int timeOffset);
+    
+    
 
 }

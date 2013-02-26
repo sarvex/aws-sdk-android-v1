@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ public class Instance {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
      */
     private String instanceType;
 
@@ -588,7 +588,7 @@ public class Instance {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
      *
      * @return The instance type. For more information on instance types, please see
      *         the <a
@@ -608,7 +608,7 @@ public class Instance {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -630,7 +630,7 @@ public class Instance {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -655,7 +655,7 @@ public class Instance {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -677,7 +677,7 @@ public class Instance {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -1898,43 +1898,43 @@ public class Instance {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (instanceId != null) sb.append("InstanceId: " + instanceId + ", ");
-        if (imageId != null) sb.append("ImageId: " + imageId + ", ");
-        if (state != null) sb.append("State: " + state + ", ");
-        if (privateDnsName != null) sb.append("PrivateDnsName: " + privateDnsName + ", ");
-        if (publicDnsName != null) sb.append("PublicDnsName: " + publicDnsName + ", ");
-        if (stateTransitionReason != null) sb.append("StateTransitionReason: " + stateTransitionReason + ", ");
-        if (keyName != null) sb.append("KeyName: " + keyName + ", ");
-        if (amiLaunchIndex != null) sb.append("AmiLaunchIndex: " + amiLaunchIndex + ", ");
-        if (productCodes != null) sb.append("ProductCodes: " + productCodes + ", ");
-        if (instanceType != null) sb.append("InstanceType: " + instanceType + ", ");
-        if (launchTime != null) sb.append("LaunchTime: " + launchTime + ", ");
-        if (placement != null) sb.append("Placement: " + placement + ", ");
-        if (kernelId != null) sb.append("KernelId: " + kernelId + ", ");
-        if (ramdiskId != null) sb.append("RamdiskId: " + ramdiskId + ", ");
-        if (platform != null) sb.append("Platform: " + platform + ", ");
-        if (monitoring != null) sb.append("Monitoring: " + monitoring + ", ");
-        if (subnetId != null) sb.append("SubnetId: " + subnetId + ", ");
-        if (vpcId != null) sb.append("VpcId: " + vpcId + ", ");
-        if (privateIpAddress != null) sb.append("PrivateIpAddress: " + privateIpAddress + ", ");
-        if (publicIpAddress != null) sb.append("PublicIpAddress: " + publicIpAddress + ", ");
-        if (stateReason != null) sb.append("StateReason: " + stateReason + ", ");
-        if (architecture != null) sb.append("Architecture: " + architecture + ", ");
-        if (rootDeviceType != null) sb.append("RootDeviceType: " + rootDeviceType + ", ");
-        if (rootDeviceName != null) sb.append("RootDeviceName: " + rootDeviceName + ", ");
-        if (blockDeviceMappings != null) sb.append("BlockDeviceMappings: " + blockDeviceMappings + ", ");
-        if (virtualizationType != null) sb.append("VirtualizationType: " + virtualizationType + ", ");
-        if (instanceLifecycle != null) sb.append("InstanceLifecycle: " + instanceLifecycle + ", ");
-        if (spotInstanceRequestId != null) sb.append("SpotInstanceRequestId: " + spotInstanceRequestId + ", ");
-        if (license != null) sb.append("License: " + license + ", ");
-        if (clientToken != null) sb.append("ClientToken: " + clientToken + ", ");
-        if (tags != null) sb.append("Tags: " + tags + ", ");
-        if (securityGroups != null) sb.append("SecurityGroups: " + securityGroups + ", ");
-        if (sourceDestCheck != null) sb.append("SourceDestCheck: " + sourceDestCheck + ", ");
-        if (hypervisor != null) sb.append("Hypervisor: " + hypervisor + ", ");
-        if (networkInterfaces != null) sb.append("NetworkInterfaces: " + networkInterfaces + ", ");
-        if (iamInstanceProfile != null) sb.append("IamInstanceProfile: " + iamInstanceProfile + ", ");
-        if (ebsOptimized != null) sb.append("EbsOptimized: " + ebsOptimized + ", ");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ", ");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ", ");
+        if (getState() != null) sb.append("State: " + getState() + ", ");
+        if (getPrivateDnsName() != null) sb.append("PrivateDnsName: " + getPrivateDnsName() + ", ");
+        if (getPublicDnsName() != null) sb.append("PublicDnsName: " + getPublicDnsName() + ", ");
+        if (getStateTransitionReason() != null) sb.append("StateTransitionReason: " + getStateTransitionReason() + ", ");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ", ");
+        if (getAmiLaunchIndex() != null) sb.append("AmiLaunchIndex: " + getAmiLaunchIndex() + ", ");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ", ");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ", ");
+        if (getLaunchTime() != null) sb.append("LaunchTime: " + getLaunchTime() + ", ");
+        if (getPlacement() != null) sb.append("Placement: " + getPlacement() + ", ");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ", ");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ", ");
+        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ", ");
+        if (getMonitoring() != null) sb.append("Monitoring: " + getMonitoring() + ", ");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ", ");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ", ");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ", ");
+        if (getPublicIpAddress() != null) sb.append("PublicIpAddress: " + getPublicIpAddress() + ", ");
+        if (getStateReason() != null) sb.append("StateReason: " + getStateReason() + ", ");
+        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ", ");
+        if (getRootDeviceType() != null) sb.append("RootDeviceType: " + getRootDeviceType() + ", ");
+        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ", ");
+        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ", ");
+        if (getVirtualizationType() != null) sb.append("VirtualizationType: " + getVirtualizationType() + ", ");
+        if (getInstanceLifecycle() != null) sb.append("InstanceLifecycle: " + getInstanceLifecycle() + ", ");
+        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ", ");
+        if (getLicense() != null) sb.append("License: " + getLicense() + ", ");
+        if (getClientToken() != null) sb.append("ClientToken: " + getClientToken() + ", ");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ", ");
+        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ", ");
+        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ", ");
+        if (getHypervisor() != null) sb.append("Hypervisor: " + getHypervisor() + ", ");
+        if (getNetworkInterfaces() != null) sb.append("NetworkInterfaces: " + getNetworkInterfaces() + ", ");
+        if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ", ");
+        if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -1988,7 +1988,7 @@ public class Instance {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof Instance == false) return false;
         Instance other = (Instance)obj;
         

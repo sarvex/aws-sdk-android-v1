@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,35 +14,39 @@
  */
 package com.amazonaws.demo.sdb;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.amazonaws.demo.CustomListActivity;
 
 public class SdbItemList extends CustomListActivity {
-	
+
 	protected String[] itemNameList;
-    protected String domainName;
-	
+	protected String domainName;
+
 	private static final String SUCCESS = "Item List";
-	
-	private final Runnable postResults = new Runnable() {
-		@Override
-		public void run(){
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		Bundle extras = this.getIntent().getExtras();
+		domainName = extras.getString(SimpleDB.DOMAIN_NAME);
+		startPopulateList();
+	}
+
+	protected void obtainListItems() {
+		new ObtainListItemsTask().execute();
+	}
+
+	private class ObtainListItemsTask extends AsyncTask<Void, Void, Void> {
+
+		protected Void doInBackground(Void... voids) {
+			itemNameList = SimpleDB.getItemNamesForDomain(domainName);
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
 			updateUi(itemNameList, SUCCESS);
 		}
-	};
-	
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Bundle extras = this.getIntent().getExtras();
-        domainName = extras.getString(SimpleDB.DOMAIN_NAME);
-        startPopulateList();
-    }
-    
-    protected void obtainListItems(){
-		itemNameList = SimpleDB.getItemNamesForDomain(domainName);
-        getHandler().post(postResults);
-    }
-    
+	}
 }

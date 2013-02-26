@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -153,8 +153,8 @@ public class DescribeInstanceStatusResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (instanceStatuses != null) sb.append("InstanceStatuses: " + instanceStatuses + ", ");
-        if (nextToken != null) sb.append("NextToken: " + nextToken + ", ");
+        if (getInstanceStatuses() != null) sb.append("InstanceStatuses: " + getInstanceStatuses() + ", ");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -173,7 +173,7 @@ public class DescribeInstanceStatusResult {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof DescribeInstanceStatusResult == false) return false;
         DescribeInstanceStatusResult other = (DescribeInstanceStatusResult)obj;
         

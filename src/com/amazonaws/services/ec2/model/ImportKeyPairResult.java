@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -117,8 +117,8 @@ public class ImportKeyPairResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (keyName != null) sb.append("KeyName: " + keyName + ", ");
-        if (keyFingerprint != null) sb.append("KeyFingerprint: " + keyFingerprint + ", ");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ", ");
+        if (getKeyFingerprint() != null) sb.append("KeyFingerprint: " + getKeyFingerprint() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -137,7 +137,7 @@ public class ImportKeyPairResult {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof ImportKeyPairResult == false) return false;
         ImportKeyPairResult other = (ImportKeyPairResult)obj;
         

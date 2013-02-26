@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -68,7 +68,8 @@ public class AWS3Signer extends AbstractAWSSigner {
 
         SigningAlgorithm algorithm = SigningAlgorithm.HmacSHA256;
         String nonce = UUID.randomUUID().toString();
-        String date = dateUtils.formatRfc822Date(new Date());
+        Date dateValue = getSignatureDate(request.getTimeOffset());
+        String date = dateUtils.formatRfc822Date(dateValue);
         boolean isHttps = false;
 
         if (overriddenDate != null) date = overriddenDate;

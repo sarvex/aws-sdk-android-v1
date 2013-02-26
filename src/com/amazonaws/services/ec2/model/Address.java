@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -381,14 +381,14 @@ public class Address {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (instanceId != null) sb.append("InstanceId: " + instanceId + ", ");
-        if (publicIp != null) sb.append("PublicIp: " + publicIp + ", ");
-        if (allocationId != null) sb.append("AllocationId: " + allocationId + ", ");
-        if (associationId != null) sb.append("AssociationId: " + associationId + ", ");
-        if (domain != null) sb.append("Domain: " + domain + ", ");
-        if (networkInterfaceId != null) sb.append("NetworkInterfaceId: " + networkInterfaceId + ", ");
-        if (networkInterfaceOwnerId != null) sb.append("NetworkInterfaceOwnerId: " + networkInterfaceOwnerId + ", ");
-        if (privateIpAddress != null) sb.append("PrivateIpAddress: " + privateIpAddress + ", ");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ", ");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ", ");
+        if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() + ", ");
+        if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() + ", ");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ", ");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ", ");
+        if (getNetworkInterfaceOwnerId() != null) sb.append("NetworkInterfaceOwnerId: " + getNetworkInterfaceOwnerId() + ", ");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -413,7 +413,7 @@ public class Address {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof Address == false) return false;
         Address other = (Address)obj;
         

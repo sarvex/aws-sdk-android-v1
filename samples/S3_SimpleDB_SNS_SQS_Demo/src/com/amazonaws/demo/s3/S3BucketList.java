@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import java.util.List;
 import com.amazonaws.demo.CustomListActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,13 +33,6 @@ public class S3BucketList extends CustomListActivity {
 
 	private static final String SUCCESS = "Bucket List";
 
-	private final Runnable postResults = new Runnable() {
-		@Override
-		public void run() {
-			updateUi(bucketNameList, SUCCESS);
-		}
-	};
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,8 +40,7 @@ public class S3BucketList extends CustomListActivity {
 	}
 
 	protected void obtainListItems() {
-		bucketNameList = S3.getBucketNames();
-		getHandler().post(postResults);
+		new GetBucketNamesTask().execute();
 	}
 
 	@Override
@@ -64,5 +57,20 @@ public class S3BucketList extends CustomListActivity {
 				startActivity(bucketViewIntent);
 			}
 		});
+	}
+
+	protected class GetBucketNamesTask extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			bucketNameList = S3.getBucketNames();
+
+			return null;
+		}
+
+		protected void onPostExecute(Void result) {
+
+			updateUi(bucketNameList, SUCCESS);
+		}
 	}
 }

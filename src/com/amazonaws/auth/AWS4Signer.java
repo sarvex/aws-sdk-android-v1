@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -90,7 +90,7 @@ public class AWS4Signer extends AbstractAWSSigner {
         }
         request.addHeader("Host", hostHeader);
 
-        Date date = new Date();
+        Date date = getSignatureDate(request.getTimeOffset());
         if (overriddenDate != null) date = overriddenDate;
 
         String dateTime  = dateTimeFormat.format(date);

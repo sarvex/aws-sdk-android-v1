@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -257,8 +257,8 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (instanceId != null) sb.append("InstanceId: " + instanceId + ", ");
-        if (attribute != null) sb.append("Attribute: " + attribute + ", ");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ", ");
+        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -277,7 +277,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof DescribeInstanceAttributeRequest == false) return false;
         DescribeInstanceAttributeRequest other = (DescribeInstanceAttributeRequest)obj;
         

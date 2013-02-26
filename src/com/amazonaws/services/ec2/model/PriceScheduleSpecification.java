@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -139,9 +139,9 @@ public class PriceScheduleSpecification {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (term != null) sb.append("Term: " + term + ", ");
-        if (price != null) sb.append("Price: " + price + ", ");
-        if (currencyCode != null) sb.append("CurrencyCode: " + currencyCode + ", ");
+        if (getTerm() != null) sb.append("Term: " + getTerm() + ", ");
+        if (getPrice() != null) sb.append("Price: " + getPrice() + ", ");
+        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -161,7 +161,7 @@ public class PriceScheduleSpecification {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof PriceScheduleSpecification == false) return false;
         PriceScheduleSpecification other = (PriceScheduleSpecification)obj;
         

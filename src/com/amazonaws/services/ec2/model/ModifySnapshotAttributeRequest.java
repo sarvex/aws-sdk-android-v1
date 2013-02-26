@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -525,12 +525,12 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (snapshotId != null) sb.append("SnapshotId: " + snapshotId + ", ");
-        if (attribute != null) sb.append("Attribute: " + attribute + ", ");
-        if (operationType != null) sb.append("OperationType: " + operationType + ", ");
-        if (userIds != null) sb.append("UserIds: " + userIds + ", ");
-        if (groupNames != null) sb.append("GroupNames: " + groupNames + ", ");
-        if (createVolumePermission != null) sb.append("CreateVolumePermission: " + createVolumePermission + ", ");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ", ");
+        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ", ");
+        if (getOperationType() != null) sb.append("OperationType: " + getOperationType() + ", ");
+        if (getUserIds() != null) sb.append("UserIds: " + getUserIds() + ", ");
+        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ", ");
+        if (getCreateVolumePermission() != null) sb.append("CreateVolumePermission: " + getCreateVolumePermission() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -553,7 +553,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof ModifySnapshotAttributeRequest == false) return false;
         ModifySnapshotAttributeRequest other = (ModifySnapshotAttributeRequest)obj;
         

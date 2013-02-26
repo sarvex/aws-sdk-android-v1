@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -35,20 +35,6 @@ public class S3BucketView extends CustomListActivity{
 	private static final String SUCCESS = "Object List";
 	private static final int NUM_OBJECTS = 6;
 	
-	private final Runnable postResults = new Runnable() {
-		@Override
-		public void run(){
-			updateUi(objectNameList, SUCCESS);
-		}
-	};
-	
-	private final Runnable postMore = new Runnable() {
-		@Override
-		public void run(){
-			updateList(objectNameList);
-		}
-	};
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,30 +68,24 @@ public class S3BucketView extends CustomListActivity{
 	private class GetObjectNamesForBucketTask extends AsyncTask<Void, Void, Void> {
 
 		protected Void doInBackground(Void... voids) {
-
 			objectNameList = S3.getObjectNamesForBucket(bucketName, NUM_OBJECTS);
-	        
 			return null;
 		}
 
 		protected void onPostExecute(Void result) {
-
-			getHandler().post(postResults);
+			updateUi(objectNameList, SUCCESS);
 		}
 	}
 	
 	private class GetMoreObjectNamesForBucketTask extends AsyncTask<Void, Void, Void> {
 
 		protected Void doInBackground(Void... voids) {
-
 			objectNameList = S3.getMoreObjectNamesForBucket();
-	    	
 			return null;
 		}
 
 		protected void onPostExecute(Void result) {
-
-			getHandler().post(postMore);
+			updateList(objectNameList);
 		}
 	}
 }

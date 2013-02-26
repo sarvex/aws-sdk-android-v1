@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -118,8 +118,8 @@ public class CreateVolumePermission {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (userId != null) sb.append("UserId: " + userId + ", ");
-        if (group != null) sb.append("Group: " + group + ", ");
+        if (getUserId() != null) sb.append("UserId: " + getUserId() + ", ");
+        if (getGroup() != null) sb.append("Group: " + getGroup() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -138,7 +138,7 @@ public class CreateVolumePermission {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof CreateVolumePermission == false) return false;
         CreateVolumePermission other = (CreateVolumePermission)obj;
         

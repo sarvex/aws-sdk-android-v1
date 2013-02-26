@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -214,10 +214,10 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (description != null) sb.append("Description: " + description + ", ");
-        if (launchSpecification != null) sb.append("LaunchSpecification: " + launchSpecification + ", ");
-        if (diskImages != null) sb.append("DiskImages: " + diskImages + ", ");
-        if (platform != null) sb.append("Platform: " + platform + ", ");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ", ");
+        if (getLaunchSpecification() != null) sb.append("LaunchSpecification: " + getLaunchSpecification() + ", ");
+        if (getDiskImages() != null) sb.append("DiskImages: " + getDiskImages() + ", ");
+        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ", ");
         sb.append("}");
         return sb.toString();
     }
@@ -238,7 +238,7 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
-    
+
         if (obj instanceof ImportInstanceRequest == false) return false;
         ImportInstanceRequest other = (ImportInstanceRequest)obj;
         

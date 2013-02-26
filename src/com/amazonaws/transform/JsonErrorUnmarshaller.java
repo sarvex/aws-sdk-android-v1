@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -30,19 +30,22 @@ public class JsonErrorUnmarshaller extends AbstractErrorUnmarshaller<JSONObject>
 
     public AmazonServiceException unmarshall(JSONObject json) throws Exception {
         String message = parseMessage(json);
-        
+
         AmazonServiceException ase = newException(message);
 
         String errorCode = parseErrorCode(json);
         ase.setErrorCode(errorCode);
         return ase;
     }
-    
+
     public String parseMessage(JSONObject json) throws Exception {
         String message = "";
         if (json.has("message")) {
             message = json.getString("message");
+        } else if (json.has("Message")) {
+            message = json.getString("Message");
         }
+
         return message;
     }
 
