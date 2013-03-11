@@ -16,6 +16,8 @@ package com.amazonaws.demo;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.sqs.AmazonSQSClient;
 import com.amazonaws.services.simpledb.AmazonSimpleDBClient;
@@ -65,12 +67,21 @@ public class AmazonClientManager {
     public void validateCredentials() {
         if ( s3Client == null || sqsClient == null || sdbClient == null || snsClient == null ) {        
             Log.i( LOG_TAG, "Creating New Clients." );
+            
+            Region region = Region.getRegion(Regions.US_WEST_2); 
         
             AWSCredentials credentials = new BasicAWSCredentials( PropertyLoader.getInstance().getAccessKey(), PropertyLoader.getInstance().getSecretKey() );
 		    s3Client = new AmazonS3Client( credentials );
+		    s3Client.setRegion(region);
+		    
 		    sqsClient = new AmazonSQSClient( credentials );
+		    sqsClient.setRegion(region);
+		    
 		    sdbClient = new AmazonSimpleDBClient( credentials );
+		    sdbClient.setRegion(region);
+		    
 		    snsClient = new AmazonSNSClient( credentials );
+		    snsClient.setRegion(region);
         }
     }
     

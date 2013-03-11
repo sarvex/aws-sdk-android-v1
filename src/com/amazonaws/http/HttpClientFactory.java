@@ -82,7 +82,7 @@ class HttpClientFactory {
         HttpProtocolParams.setUserAgent(httpClientParams, userAgent);
         HttpConnectionParams.setConnectionTimeout(httpClientParams, config.getConnectionTimeout());
         HttpConnectionParams.setSoTimeout(httpClientParams, config.getSocketTimeout());
-        HttpConnectionParams.setStaleCheckingEnabled(httpClientParams, true);
+        HttpConnectionParams.setStaleCheckingEnabled(httpClientParams, false);
         HttpConnectionParams.setTcpNoDelay(httpClientParams, true);
 
         int socketSendBufferSizeHint = config.getSocketBufferSizeHints()[0];
@@ -118,4 +118,5 @@ class HttpClientFactory {
 
         return httpClient;
     }
+
 }

@@ -15,8 +15,8 @@
 package com.amazonaws.services.ec2;
 
 import com.amazonaws.*;
+import com.amazonaws.regions.*;
 import com.amazonaws.services.ec2.model.*;
-
 
 /**
  * Interface for accessing AmazonEC2.
@@ -50,6 +50,11 @@ public interface AmazonEC2 {
      * a complete list of all available endpoints for all AWS services, see:
      * <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
      * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
+     * <p>
+     * <b>This method is not threadsafe. An endpoint should be configured when the
+     * client is created and before any service requests are made. Changing it
+     * afterwards creates inevitable race conditions for any service requests in
+     * transit or retrying.</b>
      *
      * @param endpoint
      *            The endpoint (ex: "ec2.amazonaws.com") or a full URL,
@@ -60,8 +65,34 @@ public interface AmazonEC2 {
      * @throws IllegalArgumentException
      *             If any problems are detected with the specified endpoint.
      */
-    public void setEndpoint(String endpoint) throws java.lang.IllegalArgumentException;
-    
+    public void setEndpoint(String endpoint) throws java.lang.IllegalArgumentException;    
+
+    /**
+     * An alternative to {@link AmazonDynamoDB#setEndpoint(String)}, sets the
+     * regional endpoint for this client's service calls. Callers can use this
+     * method to control which AWS region they want to work with.
+     * <p>
+     * By default, all service endpoints in all regions use the https protocol.
+     * To use http instead, specify it in the {@link ClientConfiguration}
+     * supplied at construction.
+     * <p>
+     * <b>This method is not threadsafe. A region should be configured when the
+     * client is created and before any service requests are made. Changing it
+     * afterwards creates inevitable race conditions for any service requests in
+     * transit or retrying.</b>
+     * 
+     * @param region
+     *            The region this client will communicate with. See
+     *            {@link com.amazonaws.regions.Region#getRegion(com.amazonaws.regions.Regions)} for
+     *            accessing a given region.
+     * @throws java.lang.IllegalArgumentException
+     *             If the given region is null, or if this service isn't
+     *             available in the given region. See
+     *             {@link com.amazonaws.regions.Region#isServiceSupported(String)}
+     * @see Region#getRegion(com.amazonaws.regions.Regions)
+     */
+    public void setRegion(com.amazonaws.regions.Region region) throws java.lang.IllegalArgumentException;    
+	
     /**
      * <p>
      * The RebootInstances operation requests a reboot of one or more
@@ -653,6 +684,27 @@ public interface AmazonEC2 {
             throws AmazonServiceException, AmazonClientException;
 
     /**
+     *
+     * @param describeAccountAttributesRequest Container for the necessary
+     *           parameters to execute the DescribeAccountAttributes service method on
+     *           AmazonEC2.
+     * 
+     * @return The response from the DescribeAccountAttributes service
+     *         method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
      * <p>
      * Enable IO on the volume after an event has occured.
      * </p>
@@ -881,6 +933,24 @@ public interface AmazonEC2 {
             throws AmazonServiceException, AmazonClientException;
 
     /**
+     *
+     * @param cancelConversionTaskRequest Container for the necessary
+     *           parameters to execute the CancelConversionTask service method on
+     *           AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void cancelConversionTask(CancelConversionTaskRequest cancelConversionTaskRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
      * <p>
      * The AssociateAddress operation associates an elastic IP address with
      * an instance.
@@ -908,24 +978,6 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public AssociateAddressResult associateAddress(AssociateAddressRequest associateAddressRequest) 
-            throws AmazonServiceException, AmazonClientException;
-
-    /**
-     *
-     * @param cancelConversionTaskRequest Container for the necessary
-     *           parameters to execute the CancelConversionTask service method on
-     *           AmazonEC2.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonEC2 indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public void cancelConversionTask(CancelConversionTaskRequest cancelConversionTaskRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -1707,6 +1759,26 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public void cancelExportTask(CancelExportTaskRequest cancelExportTaskRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     *
+     * @param copyImageRequest Container for the necessary parameters to
+     *           execute the CopyImage service method on AmazonEC2.
+     * 
+     * @return The response from the CopyImage service method, as returned by
+     *         AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CopyImageResult copyImage(CopyImageRequest copyImageRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -2749,6 +2821,22 @@ public interface AmazonEC2 {
     public DescribeSpotDatafeedSubscriptionResult describeSpotDatafeedSubscription() throws AmazonServiceException, AmazonClientException;
     
     /**
+     * 
+     * @return The response from the DescribeAccountAttributes service
+     *         method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeAccountAttributesResult describeAccountAttributes() throws AmazonServiceException, AmazonClientException;
+    
+    /**
      * <p>
      * Provides details of a user's registered licenses. Zero or more IDs
      * may be specified on the call. When one or more license IDs are
@@ -3376,6 +3464,25 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public DescribeReservedInstancesOfferingsResult describeReservedInstancesOfferings() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * <p>
+     * The DisassociateAddress operation disassociates the specified elastic
+     * IP address from the instance to which it is assigned. This is an
+     * idempotent operation. If you enter it more than once, Amazon EC2 does
+     * not return an error.
+     * </p>
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void disassociateAddress() throws AmazonServiceException, AmazonClientException;
     
     /**
      * <p>

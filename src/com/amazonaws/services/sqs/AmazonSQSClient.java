@@ -826,6 +826,11 @@ public class AmazonSQSClient extends AmazonWebServiceClient implements AmazonSQS
         signer.setRegionName(regionId);
     }
     
+    @Override
+    protected String getServiceAbbreviation() {
+        return "sqs";
+    }
+    
 
     /**
      * Returns additional metadata for a previously executed successful, request, typically used for

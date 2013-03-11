@@ -14,20 +14,22 @@
  */
 package com.amazonaws.services.sns.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#listTopics(ListTopicsRequest) ListTopics operation}.
  * <p>
- * The ListTopics action returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more topics, a
- * NextToken is also returned. Use the NextToken parameter in a new ListTopics call to get further results.
+ * The <code>ListTopics</code> action returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more
+ * topics, a <code>NextToken</code> is also returned. Use the <code>NextToken</code> parameter in a new <code>ListTopics</code> call to get further
+ * results.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#listTopics(ListTopicsRequest)
  */
-public class ListTopicsRequest extends AmazonWebServiceRequest {
+public class ListTopicsRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * Token returned by the previous ListTopics request.
+     * Token returned by the previous <code>ListTopics</code> request.
      */
     private String nextToken;
 
@@ -42,7 +44,8 @@ public class ListTopicsRequest extends AmazonWebServiceRequest {
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param nextToken Token returned by the previous ListTopics request.
+     * @param nextToken Token returned by the previous
+     * <code>ListTopics</code> request.
      */
     public ListTopicsRequest(String nextToken) {
         this.nextToken = nextToken;
@@ -51,29 +54,29 @@ public class ListTopicsRequest extends AmazonWebServiceRequest {
     
     
     /**
-     * Token returned by the previous ListTopics request.
+     * Token returned by the previous <code>ListTopics</code> request.
      *
-     * @return Token returned by the previous ListTopics request.
+     * @return Token returned by the previous <code>ListTopics</code> request.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Token returned by the previous ListTopics request.
+     * Token returned by the previous <code>ListTopics</code> request.
      *
-     * @param nextToken Token returned by the previous ListTopics request.
+     * @param nextToken Token returned by the previous <code>ListTopics</code> request.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Token returned by the previous ListTopics request.
+     * Token returned by the previous <code>ListTopics</code> request.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Token returned by the previous ListTopics request.
+     * @param nextToken Token returned by the previous <code>ListTopics</code> request.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

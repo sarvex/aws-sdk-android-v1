@@ -1667,6 +1667,11 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
         signer.setRegionName(regionId);
     }
     
+    @Override
+    protected String getServiceAbbreviation() {
+        return "autoscaling";
+    }
+    
 
     /**
      * Returns additional metadata for a previously executed successful, request, typically used for

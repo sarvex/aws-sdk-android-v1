@@ -15,40 +15,22 @@
 package com.amazonaws.services.sns;
 
 import com.amazonaws.*;
+import com.amazonaws.regions.*;
 import com.amazonaws.services.sns.model.*;
-
 
 /**
  * Interface for accessing AmazonSNS.
  * Amazon Simple Notification Service <p>
- * This is the <i>Amazon Simple Notification Service (Amazon SNS) API Reference</i> . This guide provides detailed information about Amazon SNS actions,
- * data types, parameters, and errors. For detailed information about Amazon SNS features and their associated API calls, go to the <a
- * href="http://docs.amazonwebservices.com/sns/latest/gsg/"> Amazon SNS Getting Started Guide </a> .
+ * Amazon Simple Notification Service (Amazon SNS) is a web service that enables you to build distributed web-enabled applications. Applications can use
+ * Amazon SNS to easily push real-time notification messages to interested subscribers over multiple delivery protocols. For more information about this
+ * product see <a href="http://aws.amazon.com/sns/"> http://aws.amazon.com/sns </a> . For detailed information about Amazon SNS features and their
+ * associated API calls, see the <a href="http://docs.aws.amazon.com/sns/latest/gsg/"> Amazon SNS Getting Started Guide </a> .
  * </p>
  * <p>
- * Amazon Simple Notification Service is a web service that enables you to build distributed web-enabled applications. Applications can use Amazon SNS to
- * easily push real-time notification messages to interested subscribers over multiple delivery protocols. For more information about this product go to
- * <a href="http://aws.amazon.com/sns/"> http://aws.amazon.com/sns </a> .
+ * We also provide SDKs that enable you to access Amazon SNS from your preferred programming language. The SDKs contain functionality that automatically
+ * takes care of tasks such as: cryptographically signing your service requests, retrying requests, and handling error responses. For a list of available
+ * SDKs, go to <a href="http://aws.amazon.com/tools/"> Tools for Amazon Web Services </a> .
  * </p>
- * <p>
- * Use the following links to get started using the <i>Amazon Simple Notification Service API Reference</i> :
- * </p>
- * 
- * <ul>
- * <li> <a href="http://docs.amazonwebservices.com/sns/latest/api/API_Operations.html"> Actions </a> : An alphabetical list of all Amazon SNS
- * actions.</li>
- * <li> <a href="http://docs.amazonwebservices.com/sns/latest/api/API_Types.html"> Data Types </a> : An alphabetical list of all Amazon SNS data
- * types.</li>
- * <li> <a href="http://docs.amazonwebservices.com/sns/latest/api/CommonParameters.html"> Common Parameters </a> : Parameters that all Query actions can
- * use.</li>
- * <li> <a href="http://docs.amazonwebservices.com/sns/latest/api/CommonErrors.html"> Common Errors </a> : Client and server errors that all actions can
- * return.</li>
- * <li> <a href="http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html"> Regions and Endpoints </a> : Itemized regions and endpoints
- * for all AWS products.</li>
- * <li> <a href="http://sns.us-east-1.amazonaws.com/doc/2010-03-31/SimpleNotificationService.wsdl"> WSDL Location </a> :
- * http://sns.us-east-1.amazonaws.com/doc/2010-03-31/SimpleNotificationService.wsdl</li>
- * 
- * </ul>
  */
 public interface AmazonSNS {
 
@@ -65,6 +47,11 @@ public interface AmazonSNS {
      * a complete list of all available endpoints for all AWS services, see:
      * <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
      * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
+     * <p>
+     * <b>This method is not threadsafe. An endpoint should be configured when the
+     * client is created and before any service requests are made. Changing it
+     * afterwards creates inevitable race conditions for any service requests in
+     * transit or retrying.</b>
      *
      * @param endpoint
      *            The endpoint (ex: "sns.us-east-1.amazonaws.com") or a full URL,
@@ -75,16 +62,42 @@ public interface AmazonSNS {
      * @throws IllegalArgumentException
      *             If any problems are detected with the specified endpoint.
      */
-    public void setEndpoint(String endpoint) throws java.lang.IllegalArgumentException;
-    
+    public void setEndpoint(String endpoint) throws java.lang.IllegalArgumentException;    
+
+    /**
+     * An alternative to {@link AmazonDynamoDB#setEndpoint(String)}, sets the
+     * regional endpoint for this client's service calls. Callers can use this
+     * method to control which AWS region they want to work with.
+     * <p>
+     * By default, all service endpoints in all regions use the https protocol.
+     * To use http instead, specify it in the {@link ClientConfiguration}
+     * supplied at construction.
+     * <p>
+     * <b>This method is not threadsafe. A region should be configured when the
+     * client is created and before any service requests are made. Changing it
+     * afterwards creates inevitable race conditions for any service requests in
+     * transit or retrying.</b>
+     * 
+     * @param region
+     *            The region this client will communicate with. See
+     *            {@link Region#getRegion(com.amazonaws.regions.Regions)} for
+     *            accessing a given region.
+     * @throws java.lang.IllegalArgumentException
+     *             If the given region is null, or if this service isn't
+     *             available in the given region. See
+     *             {@link Region#isServiceSupported(String)}
+     * @see Region#getRegion(com.amazonaws.regions.Regions)
+     */
+    public void setRegion(Region region) throws java.lang.IllegalArgumentException;    
+	
     /**
      * <p>
-     * The ConfirmSubscription action verifies an endpoint owner's intent to
-     * receive messages by validating the token sent to the endpoint by an
-     * earlier Subscribe action. If the token is valid, the action creates a
-     * new subscription and returns its Amazon Resource Name (ARN). This call
-     * requires an AWS signature only when the AuthenticateOnUnsubscribe flag
-     * is set to "true".
+     * The <code>ConfirmSubscription</code> action verifies an endpoint
+     * owner's intent to receive messages by validating the token sent to the
+     * endpoint by an earlier <code>Subscribe</code> action. If the token is
+     * valid, the action creates a new subscription and returns its Amazon
+     * Resource Name (ARN). This call requires an AWS signature only when the
+     * <code>AuthenticateOnUnsubscribe</code> flag is set to "true".
      * </p>
      *
      * @param confirmSubscriptionRequest Container for the necessary
@@ -113,9 +126,9 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The GetTopicAttribtues action returns all of the properties of a topic
-     * customers have created. Topic properties returned might differ based
-     * on the authorization of the user.
+     * The <code>GetTopicAttributes</code> action returns all of the
+     * properties of a topic. Topic properties returned might differ based on
+     * the authorization of the user.
      * </p>
      *
      * @param getTopicAttributesRequest Container for the necessary
@@ -143,11 +156,11 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The Subscribe action prepares to subscribe an endpoint by sending the
-     * endpoint a confirmation message. To actually create a subscription,
-     * the endpoint owner must call the ConfirmSubscription action with the
-     * token from the confirmation message. Confirmation tokens are valid for
-     * three days.
+     * The <code>Subscribe</code> action prepares to subscribe an endpoint by
+     * sending the endpoint a confirmation message. To actually create a
+     * subscription, the endpoint owner must call the
+     * <code>ConfirmSubscription</code> action with the token from the
+     * confirmation message. Confirmation tokens are valid for three days.
      * </p>
      *
      * @param subscribeRequest Container for the necessary parameters to
@@ -175,8 +188,8 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The SetTopicAttributes action allows a topic owner to set an attribute
-     * of the topic to a new value.
+     * The <code>SetTopicAttributes</code> action allows a topic owner to set
+     * an attribute of the topic to a new value.
      * </p>
      *
      * @param setTopicAttributesRequest Container for the necessary
@@ -201,10 +214,11 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The DeleteTopic action deletes a topic and all its subscriptions.
-     * Deleting a topic might prevent some messages previously sent to the
-     * topic from being delivered to subscribers. This action is idempotent,
-     * so deleting a topic that does not exist will not result in an error.
+     * The <code>DeleteTopic</code> action deletes a topic and all its
+     * subscriptions. Deleting a topic might prevent some messages previously
+     * sent to the topic from being delivered to subscribers. This action is
+     * idempotent, so deleting a topic that does not exist does not result in
+     * an error.
      * </p>
      *
      * @param deleteTopicRequest Container for the necessary parameters to
@@ -228,8 +242,8 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The RemovePermission action removes a statement from a topic's access
-     * control policy.
+     * The <code>RemovePermission</code> action removes a statement from a
+     * topic's access control policy.
      * </p>
      *
      * @param removePermissionRequest Container for the necessary parameters
@@ -253,11 +267,12 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The ListSubscriptions action returns a list of the requester's
-     * subscriptions. Each call returns a limited list of subscriptions, up
-     * to 100. If there are more subscriptions, a NextToken is also returned.
-     * Use the NextToken parameter in a new ListSubscriptions call to get
-     * further results.
+     * The <code>ListSubscriptions</code> action returns a list of the
+     * requester's subscriptions. Each call returns a limited list of
+     * subscriptions, up to 100. If there are more subscriptions, a
+     * <code>NextToken</code> is also returned. Use the
+     * <code>NextToken</code> parameter in a new ListSubscriptions call to
+     * get further results.
      * </p>
      *
      * @param listSubscriptionsRequest Container for the necessary parameters
@@ -283,8 +298,8 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The SetSubscriptionAttributes action allows a subscription owner to
-     * set an attribute of the topic to a new value.
+     * The <code>SetSubscriptionAttributes</code> action allows a
+     * subscription owner to set an attribute of the topic to a new value.
      * </p>
      *
      * @param setSubscriptionAttributesRequest Container for the necessary
@@ -309,9 +324,9 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The AddPermission action adds a statement to a topic's access control
-     * policy, granting access for the specified AWS accounts to the
-     * specified actions.
+     * The <code>AddPermission</code> action adds a statement to a topic's
+     * access control policy, granting access for the specified AWS accounts
+     * to the specified actions.
      * </p>
      *
      * @param addPermissionRequest Container for the necessary parameters to
@@ -335,11 +350,12 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The CreateTopic action creates a topic to which notifications can be
-     * published. Users can create at most 25 topics. This action is
-     * idempotent, so if the requester already owns a topic with the
-     * specified name, that topic's ARN will be returned without creating a
-     * new topic.
+     * The <code>CreateTopic</code> action creates a topic to which
+     * notifications can be published. Users can create at most 100 topics.
+     * For more information, see <a href="http://aws.amazon.com/sns/">
+     * http://aws.amazon.com/sns </a> . This action is idempotent, so if the
+     * requester already owns a topic with the specified name, that topic's
+     * ARN is returned without creating a new topic.
      * </p>
      *
      * @param createTopicRequest Container for the necessary parameters to
@@ -366,8 +382,8 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The GetSubscriptionAttribtues action returns all of the properties of
-     * a subscription.
+     * The <code>GetSubscriptionAttribtues</code> action returns all of the
+     * properties of a subscription.
      * </p>
      *
      * @param getSubscriptionAttributesRequest Container for the necessary
@@ -395,10 +411,11 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The ListTopics action returns a list of the requester's topics. Each
-     * call returns a limited list of topics, up to 100. If there are more
-     * topics, a NextToken is also returned. Use the NextToken parameter in a
-     * new ListTopics call to get further results.
+     * The <code>ListTopics</code> action returns a list of the requester's
+     * topics. Each call returns a limited list of topics, up to 100. If
+     * there are more topics, a <code>NextToken</code> is also returned. Use
+     * the <code>NextToken</code> parameter in a new <code>ListTopics</code>
+     * call to get further results.
      * </p>
      *
      * @param listTopicsRequest Container for the necessary parameters to
@@ -424,14 +441,14 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The Unsubscribe action deletes a subscription. If the subscription
-     * requires authentication for deletion, only the owner of the
-     * subscription or the its topic's owner can unsubscribe, and an AWS
-     * signature is required. If the Unsubscribe call does not require
-     * authentication and the requester is not the subscription owner, a
-     * final cancellation message is delivered to the endpoint, so that the
-     * endpoint owner can easily resubscribe to the topic if the Unsubscribe
-     * request was unintended.
+     * The <code>Unsubscribe</code> action deletes a subscription. If the
+     * subscription requires authentication for deletion, only the owner of
+     * the subscription or the its topic's owner can unsubscribe, and an AWS
+     * signature is required. If the <code>Unsubscribe</code> call does not
+     * require authentication and the requester is not the subscription
+     * owner, a final cancellation message is delivered to the endpoint, so
+     * that the endpoint owner can easily resubscribe to the topic if the
+     * <code>Unsubscribe</code> request was unintended.
      * </p>
      *
      * @param unsubscribeRequest Container for the necessary parameters to
@@ -455,11 +472,12 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The ListSubscriptionsByTopic action returns a list of the
+     * The <code>ListSubscriptionsByTopic</code> action returns a list of the
      * subscriptions to a specific topic. Each call returns a limited list of
-     * subscriptions, up to 100. If there are more subscriptions, a NextToken
-     * is also returned. Use the NextToken parameter in a new
-     * ListSubscriptionsByTopic call to get further results.
+     * subscriptions, up to 100. If there are more subscriptions, a
+     * <code>NextToken</code> is also returned. Use the
+     * <code>NextToken</code> parameter in a new
+     * <code>ListSubscriptionsByTopic</code> call to get further results.
      * </p>
      *
      * @param listSubscriptionsByTopicRequest Container for the necessary
@@ -487,11 +505,12 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The Publish action sends a message to all of a topic's subscribed
-     * endpoints. When a messageId is returned, the message has been saved
-     * and Amazon SNS will attempt to deliver it to the topic's subscribers
-     * shortly. The format of the outgoing message to each subscribed
-     * endpoint depends on the notification protocol selected.
+     * The <code>Publish</code> action sends a message to all of a topic's
+     * subscribed endpoints. When a <code>messageId</code> is returned, the
+     * message has been saved and Amazon SNS will attempt to deliver it to
+     * the topic's subscribers shortly. The format of the outgoing message to
+     * each subscribed endpoint depends on the notification protocol
+     * selected.
      * </p>
      *
      * @param publishRequest Container for the necessary parameters to
@@ -518,11 +537,12 @@ public interface AmazonSNS {
 
     /**
      * <p>
-     * The ListSubscriptions action returns a list of the requester's
-     * subscriptions. Each call returns a limited list of subscriptions, up
-     * to 100. If there are more subscriptions, a NextToken is also returned.
-     * Use the NextToken parameter in a new ListSubscriptions call to get
-     * further results.
+     * The <code>ListSubscriptions</code> action returns a list of the
+     * requester's subscriptions. Each call returns a limited list of
+     * subscriptions, up to 100. If there are more subscriptions, a
+     * <code>NextToken</code> is also returned. Use the
+     * <code>NextToken</code> parameter in a new ListSubscriptions call to
+     * get further results.
      * </p>
      * 
      * @return The response from the ListSubscriptions service method, as
@@ -544,10 +564,11 @@ public interface AmazonSNS {
     
     /**
      * <p>
-     * The ListTopics action returns a list of the requester's topics. Each
-     * call returns a limited list of topics, up to 100. If there are more
-     * topics, a NextToken is also returned. Use the NextToken parameter in a
-     * new ListTopics call to get further results.
+     * The <code>ListTopics</code> action returns a list of the requester's
+     * topics. Each call returns a limited list of topics, up to 100. If
+     * there are more topics, a <code>NextToken</code> is also returned. Use
+     * the <code>NextToken</code> parameter in a new <code>ListTopics</code>
+     * call to get further results.
      * </p>
      * 
      * @return The response from the ListTopics service method, as returned

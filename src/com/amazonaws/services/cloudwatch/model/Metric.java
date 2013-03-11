@@ -13,14 +13,19 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+import java.io.Serializable;
 
 /**
  * <p>
  * The <code>Metric</code> data type contains information about a specific metric. If you call ListMetrics, Amazon CloudWatch returns information
  * contained by this data type.
  * </p>
+ * <p>
+ * The example in the Examples section publishes two metrics named buffers and latency. Both metrics are in the examples namespace. Both metrics have
+ * two dimensions, InstanceID and InstanceType.
+ * </p>
  */
-public class Metric {
+public class Metric  implements Serializable  {
 
     /**
      * The namespace of the metric.

@@ -20,6 +20,8 @@ import java.util.Date;
 import com.amazonaws.demo.s3uploader.R;
 
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -53,6 +55,9 @@ public class S3UploaderActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		s3Client.setRegion(Region.getRegion(Regions.US_WEST_2));
+		
 		setContentView(R.layout.main);
 
 		selectPhoto = (Button) findViewById(R.id.select_photo_button);

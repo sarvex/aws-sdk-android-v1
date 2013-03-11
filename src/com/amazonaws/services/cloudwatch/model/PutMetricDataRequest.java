@@ -14,32 +14,37 @@
  */
 package com.amazonaws.services.cloudwatch.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudwatch.AmazonCloudWatch#putMetricData(PutMetricDataRequest) PutMetricData operation}.
  * <p>
- * Publishes metric data points to Amazon CloudWatch. Amazon Cloudwatch associates the data points with the specified metric. If the specified metric
- * does not exist, Amazon CloudWatch creates the metric.
+ * Publishes metric data points to Amazon CloudWatch. Amazon CloudWatch associates the data points with the specified metric. If the specified metric
+ * does not exist, Amazon CloudWatch creates the metric. When Amazon CloudWatch creates a metric, it can take up to fifteen minutes for the metric to
+ * appear in calls to the ListMetrics action.
  * </p>
  * <p>
- * <b>NOTE:</b> If you create a metric with the PutMetricData action, allow up to fifteen minutes for the metric to appear in calls to the ListMetrics
- * action.
+ * Each <code>PutMetricData</code> request is limited to 8 KB in size for HTTP GET requests and is limited to 40 KB in size for HTTP POST requests.
  * </p>
  * <p>
- * The size of a PutMetricData request is limited to 8 KB for HTTP GET requests and 40 KB for HTTP POST requests.
+ * <b>IMPORTANT:</b>Although the Value parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small or too large.
+ * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g., NaN,
+ * +Infinity, -Infinity) are not supported.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> Although the Value parameter accepts numbers of type Double, Amazon CloudWatch truncates values with very large exponents. Values
- * with base-10 exponents greater than 126 (1 x 10^126) are truncated. Likewise, values with base-10 exponents less than -130 (1 x 10^-130) are also
- * truncated.
+ * Data that is timestamped 24 hours or more in the past may take in excess of 48 hours to become available from submission time using
+ * <code>GetMetricStatistics</code> .
  * </p>
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#putMetricData(PutMetricDataRequest)
  */
-public class PutMetricDataRequest extends AmazonWebServiceRequest {
+public class PutMetricDataRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * The namespace for the metric data.
+     * The namespace for the metric data. <note> You cannot specify a
+     * namespace that begins with "AWS/". Namespaces that begin with "AWS/"
+     * are reserved for other Amazon Web Services products that send metrics
+     * to Amazon CloudWatch. </note>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
@@ -53,33 +58,48 @@ public class PutMetricDataRequest extends AmazonWebServiceRequest {
     private java.util.List<MetricDatum> metricData;
 
     /**
-     * The namespace for the metric data.
+     * The namespace for the metric data. <note> You cannot specify a
+     * namespace that begins with "AWS/". Namespaces that begin with "AWS/"
+     * are reserved for other Amazon Web Services products that send metrics
+     * to Amazon CloudWatch. </note>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[^:].*<br/>
      *
-     * @return The namespace for the metric data.
+     * @return The namespace for the metric data. <note> You cannot specify a
+     *         namespace that begins with "AWS/". Namespaces that begin with "AWS/"
+     *         are reserved for other Amazon Web Services products that send metrics
+     *         to Amazon CloudWatch. </note>
      */
     public String getNamespace() {
         return namespace;
     }
     
     /**
-     * The namespace for the metric data.
+     * The namespace for the metric data. <note> You cannot specify a
+     * namespace that begins with "AWS/". Namespaces that begin with "AWS/"
+     * are reserved for other Amazon Web Services products that send metrics
+     * to Amazon CloudWatch. </note>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[^:].*<br/>
      *
-     * @param namespace The namespace for the metric data.
+     * @param namespace The namespace for the metric data. <note> You cannot specify a
+     *         namespace that begins with "AWS/". Namespaces that begin with "AWS/"
+     *         are reserved for other Amazon Web Services products that send metrics
+     *         to Amazon CloudWatch. </note>
      */
     public void setNamespace(String namespace) {
         this.namespace = namespace;
     }
     
     /**
-     * The namespace for the metric data.
+     * The namespace for the metric data. <note> You cannot specify a
+     * namespace that begins with "AWS/". Namespaces that begin with "AWS/"
+     * are reserved for other Amazon Web Services products that send metrics
+     * to Amazon CloudWatch. </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -87,7 +107,10 @@ public class PutMetricDataRequest extends AmazonWebServiceRequest {
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[^:].*<br/>
      *
-     * @param namespace The namespace for the metric data.
+     * @param namespace The namespace for the metric data. <note> You cannot specify a
+     *         namespace that begins with "AWS/". Namespaces that begin with "AWS/"
+     *         are reserved for other Amazon Web Services products that send metrics
+     *         to Amazon CloudWatch. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

@@ -28,6 +28,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.CreateTopicRequest;
 import com.amazonaws.services.sns.model.CreateTopicResult;
@@ -74,9 +76,14 @@ public class MessageBoard {
 	public MessageBoard() {
 		AWSCredentials credentials = new BasicAWSCredentials(
 				Constants.ACCESS_KEY_ID, Constants.SECRET_KEY);
+		Region region = Region.getRegion(Regions.US_WEST_2); 
+		
 		this.snsClient = new AmazonSNSClient(credentials);
+		this.snsClient.setRegion(region);
+		
 		this.sqsClient = new AmazonSQSClient(credentials);
-
+		this.sqsClient.setRegion(region);
+		
 		// Find the Topic for this App or create one.
 		this.topicARN = this.findTopicArn();
 		if (topicARN == null) {

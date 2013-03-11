@@ -13,11 +13,12 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
+import java.io.Serializable;
 
 /**
- * List Subscriptions By Topic Result
+ * 
  */
-public class ListSubscriptionsByTopicResult {
+public class ListSubscriptionsByTopicResult  implements Serializable  {
 
     /**
      * A list of subscriptions.
@@ -25,8 +26,9 @@ public class ListSubscriptionsByTopicResult {
     private java.util.List<Subscription> subscriptions;
 
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      */
     private String nextToken;
 
@@ -100,35 +102,41 @@ public class ListSubscriptionsByTopicResult {
     }
     
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      *
-     * @return Token to pass along to the next ListSubscriptionsByTopic request. This
-     *         element is returned if there are more subscriptions to retrieve.
+     * @return Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     *         request. This element is returned if there are more subscriptions to
+     *         retrieve.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      *
-     * @param nextToken Token to pass along to the next ListSubscriptionsByTopic request. This
-     *         element is returned if there are more subscriptions to retrieve.
+     * @param nextToken Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     *         request. This element is returned if there are more subscriptions to
+     *         retrieve.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Token to pass along to the next ListSubscriptionsByTopic request. This
-     *         element is returned if there are more subscriptions to retrieve.
+     * @param nextToken Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     *         request. This element is returned if there are more subscriptions to
+     *         retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

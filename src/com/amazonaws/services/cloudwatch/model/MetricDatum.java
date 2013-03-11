@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+import java.io.Serializable;
 
 /**
  * <p>
@@ -20,7 +21,7 @@ package com.amazonaws.services.cloudwatch.model;
  * aggregated into an existing metric.
  * </p>
  */
-public class MetricDatum {
+public class MetricDatum  implements Serializable  {
 
     /**
      * The name of the metric.
@@ -31,7 +32,9 @@ public class MetricDatum {
     private String metricName;
 
     /**
-     * A list of dimensions associated with the metric.
+     * A list of dimensions associated with the metric. Note, when using the
+     * Dimensions value in a query, you need to append .member.N to it (e.g.,
+     * Dimensions.member.N).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
@@ -47,10 +50,10 @@ public class MetricDatum {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch truncates values with very large exponents. Values with
-     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
-     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-     * are also truncated. </important>
+     * CloudWatch rejects values that are either too small or too large.
+     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
+     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
+     * NaN, +Infinity, -Infinity) are not supported. </important>
      */
     private Double value;
 
@@ -111,12 +114,16 @@ public class MetricDatum {
     
     
     /**
-     * A list of dimensions associated with the metric.
+     * A list of dimensions associated with the metric. Note, when using the
+     * Dimensions value in a query, you need to append .member.N to it (e.g.,
+     * Dimensions.member.N).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @return A list of dimensions associated with the metric.
+     * @return A list of dimensions associated with the metric. Note, when using the
+     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
+     *         Dimensions.member.N).
      */
     public java.util.List<Dimension> getDimensions() {
         
@@ -127,12 +134,16 @@ public class MetricDatum {
     }
     
     /**
-     * A list of dimensions associated with the metric.
+     * A list of dimensions associated with the metric. Note, when using the
+     * Dimensions value in a query, you need to append .member.N to it (e.g.,
+     * Dimensions.member.N).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param dimensions A list of dimensions associated with the metric.
+     * @param dimensions A list of dimensions associated with the metric. Note, when using the
+     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
+     *         Dimensions.member.N).
      */
     public void setDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
@@ -146,14 +157,18 @@ public class MetricDatum {
     }
     
     /**
-     * A list of dimensions associated with the metric.
+     * A list of dimensions associated with the metric. Note, when using the
+     * Dimensions value in a query, you need to append .member.N to it (e.g.,
+     * Dimensions.member.N).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param dimensions A list of dimensions associated with the metric.
+     * @param dimensions A list of dimensions associated with the metric. Note, when using the
+     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
+     *         Dimensions.member.N).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -167,14 +182,18 @@ public class MetricDatum {
     }
     
     /**
-     * A list of dimensions associated with the metric.
+     * A list of dimensions associated with the metric. Note, when using the
+     * Dimensions value in a query, you need to append .member.N to it (e.g.,
+     * Dimensions.member.N).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param dimensions A list of dimensions associated with the metric.
+     * @param dimensions A list of dimensions associated with the metric. Note, when using the
+     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
+     *         Dimensions.member.N).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -234,17 +253,17 @@ public class MetricDatum {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch truncates values with very large exponents. Values with
-     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
-     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-     * are also truncated. </important>
+     * CloudWatch rejects values that are either too small or too large.
+     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
+     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
+     * NaN, +Infinity, -Infinity) are not supported. </important>
      *
      * @return The value for the metric. <important>Although the <code>Value</code>
      *         parameter accepts numbers of type <code>Double</code>, Amazon
-     *         CloudWatch truncates values with very large exponents. Values with
-     *         base-10 exponents greater than 126 (1 x 10^126) are truncated.
-     *         Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-     *         are also truncated. </important>
+     *         CloudWatch rejects values that are either too small or too large.
+     *         Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
+     *         10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
+     *         NaN, +Infinity, -Infinity) are not supported. </important>
      */
     public Double getValue() {
         return value;
@@ -253,17 +272,17 @@ public class MetricDatum {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch truncates values with very large exponents. Values with
-     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
-     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-     * are also truncated. </important>
+     * CloudWatch rejects values that are either too small or too large.
+     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
+     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
+     * NaN, +Infinity, -Infinity) are not supported. </important>
      *
      * @param value The value for the metric. <important>Although the <code>Value</code>
      *         parameter accepts numbers of type <code>Double</code>, Amazon
-     *         CloudWatch truncates values with very large exponents. Values with
-     *         base-10 exponents greater than 126 (1 x 10^126) are truncated.
-     *         Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-     *         are also truncated. </important>
+     *         CloudWatch rejects values that are either too small or too large.
+     *         Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
+     *         10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
+     *         NaN, +Infinity, -Infinity) are not supported. </important>
      */
     public void setValue(Double value) {
         this.value = value;
@@ -272,19 +291,19 @@ public class MetricDatum {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch truncates values with very large exponents. Values with
-     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
-     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-     * are also truncated. </important>
+     * CloudWatch rejects values that are either too small or too large.
+     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
+     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
+     * NaN, +Infinity, -Infinity) are not supported. </important>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param value The value for the metric. <important>Although the <code>Value</code>
      *         parameter accepts numbers of type <code>Double</code>, Amazon
-     *         CloudWatch truncates values with very large exponents. Values with
-     *         base-10 exponents greater than 126 (1 x 10^126) are truncated.
-     *         Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-     *         are also truncated. </important>
+     *         CloudWatch rejects values that are either too small or too large.
+     *         Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
+     *         10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
+     *         NaN, +Infinity, -Infinity) are not supported. </important>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

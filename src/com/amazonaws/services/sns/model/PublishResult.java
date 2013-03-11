@@ -13,41 +13,49 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
+import java.io.Serializable;
 
 /**
- * Publish Result
+ * 
  */
-public class PublishResult {
+public class PublishResult  implements Serializable  {
 
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      */
     private String messageId;
 
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      *
-     * @return Unique identifier assigned to the published message.
+     * @return Unique identifier assigned to the published message. <p>Length
+     *         Constraint: Maximum 100 characters
      */
     public String getMessageId() {
         return messageId;
     }
     
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      *
-     * @param messageId Unique identifier assigned to the published message.
+     * @param messageId Unique identifier assigned to the published message. <p>Length
+     *         Constraint: Maximum 100 characters
      */
     public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
     
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param messageId Unique identifier assigned to the published message.
+     * @param messageId Unique identifier assigned to the published message. <p>Length
+     *         Constraint: Maximum 100 characters
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

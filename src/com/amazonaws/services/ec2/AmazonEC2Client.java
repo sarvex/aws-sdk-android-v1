@@ -862,6 +862,30 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     }
     
     /**
+     *
+     * @param describeAccountAttributesRequest Container for the necessary
+     *           parameters to execute the DescribeAccountAttributes service method on
+     *           AmazonEC2.
+     * 
+     * @return The response from the DescribeAccountAttributes service
+     *         method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeAccountAttributesResult describeAccountAttributes(DescribeAccountAttributesRequest describeAccountAttributesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<DescribeAccountAttributesRequest> request = new DescribeAccountAttributesRequestMarshaller().marshall(describeAccountAttributesRequest);
+        return invoke(request, new DescribeAccountAttributesResultStaxUnmarshaller());
+    }
+    
+    /**
      * <p>
      * Enable IO on the volume after an event has occured.
      * </p>
@@ -1117,6 +1141,27 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     }
     
     /**
+     *
+     * @param cancelConversionTaskRequest Container for the necessary
+     *           parameters to execute the CancelConversionTask service method on
+     *           AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void cancelConversionTask(CancelConversionTaskRequest cancelConversionTaskRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<CancelConversionTaskRequest> request = new CancelConversionTaskRequestMarshaller().marshall(cancelConversionTaskRequest);
+        invoke(request, null);
+    }
+    
+    /**
      * <p>
      * The AssociateAddress operation associates an elastic IP address with
      * an instance.
@@ -1147,27 +1192,6 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
             throws AmazonServiceException, AmazonClientException {
         Request<AssociateAddressRequest> request = new AssociateAddressRequestMarshaller().marshall(associateAddressRequest);
         return invoke(request, new AssociateAddressResultStaxUnmarshaller());
-    }
-    
-    /**
-     *
-     * @param cancelConversionTaskRequest Container for the necessary
-     *           parameters to execute the CancelConversionTask service method on
-     *           AmazonEC2.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonEC2 indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public void cancelConversionTask(CancelConversionTaskRequest cancelConversionTaskRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<CancelConversionTaskRequest> request = new CancelConversionTaskRequestMarshaller().marshall(cancelConversionTaskRequest);
-        invoke(request, null);
     }
     
     /**
@@ -2027,6 +2051,29 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
             throws AmazonServiceException, AmazonClientException {
         Request<CancelExportTaskRequest> request = new CancelExportTaskRequestMarshaller().marshall(cancelExportTaskRequest);
         invoke(request, null);
+    }
+    
+    /**
+     *
+     * @param copyImageRequest Container for the necessary parameters to
+     *           execute the CopyImage service method on AmazonEC2.
+     * 
+     * @return The response from the CopyImage service method, as returned by
+     *         AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CopyImageResult copyImage(CopyImageRequest copyImageRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<CopyImageRequest> request = new CopyImageRequestMarshaller().marshall(copyImageRequest);
+        return invoke(request, new CopyImageResultStaxUnmarshaller());
     }
     
     /**
@@ -3175,6 +3222,24 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     }
     
     /**
+     * 
+     * @return The response from the DescribeAccountAttributes service
+     *         method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeAccountAttributesResult describeAccountAttributes() throws AmazonServiceException, AmazonClientException {
+        return describeAccountAttributes(new DescribeAccountAttributesRequest());
+    }
+    
+    /**
      * <p>
      * Provides details of a user's registered licenses. Zero or more IDs
      * may be specified on the call. When one or more license IDs are
@@ -3849,6 +3914,27 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     
     /**
      * <p>
+     * The DisassociateAddress operation disassociates the specified elastic
+     * IP address from the instance to which it is assigned. This is an
+     * idempotent operation. If you enter it more than once, Amazon EC2 does
+     * not return an error.
+     * </p>
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void disassociateAddress() throws AmazonServiceException, AmazonClientException {
+        disassociateAddress(new DisassociateAddressRequest());
+    }
+    
+    /**
+     * <p>
      * The AllocateAddress operation acquires an elastic IP address for use
      * with your account.
      * </p>
@@ -3962,6 +4048,11 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      */
     public RegisterImageResult registerImage() throws AmazonServiceException, AmazonClientException {
         return registerImage(new RegisterImageRequest());
+    }
+    
+    @Override
+    protected String getServiceAbbreviation() {
+        return "ec2";
     }
     
 

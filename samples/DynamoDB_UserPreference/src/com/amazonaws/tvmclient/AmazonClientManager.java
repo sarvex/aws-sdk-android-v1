@@ -19,6 +19,8 @@ import android.content.SharedPreferences;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.demo.userpreferences.PropertyLoader;
 import com.amazonaws.services.dynamodb.AmazonDynamoDBClient;
 
@@ -98,6 +100,7 @@ public class AmazonClientManager {
 				.getCredentialsFromSharedPreferences(this.sharedPreferences);
 
 		ddb = new AmazonDynamoDBClient( credentials );
+		ddb.setRegion(Region.getRegion(Regions.US_WEST_2));
 	}
 	
 	public void clearCredentials() {

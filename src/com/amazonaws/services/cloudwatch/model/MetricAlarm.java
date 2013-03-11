@@ -13,13 +13,14 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+import java.io.Serializable;
 
 /**
  * <p>
  * The MetricAlarm data type represents an alarm. You can use PutMetricAlarm to create or update an alarm.
  * </p>
  */
-public class MetricAlarm {
+public class MetricAlarm  implements Serializable  {
 
     /**
      * The name of the alarm.
@@ -85,7 +86,8 @@ public class MetricAlarm {
      * <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      * is specified as an Amazon Resource Number (ARN). Currently the only
      * actions supported are publishing to an Amazon SNS topic or triggering
-     * an Auto Scaling policy.
+     * an Auto Scaling policy. <important>The current WSDL lists this
+     * attribute as <code>UnknownActions</code>.</important>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
@@ -639,7 +641,8 @@ public class MetricAlarm {
      * <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      * is specified as an Amazon Resource Number (ARN). Currently the only
      * actions supported are publishing to an Amazon SNS topic or triggering
-     * an Auto Scaling policy.
+     * an Auto Scaling policy. <important>The current WSDL lists this
+     * attribute as <code>UnknownActions</code>.</important>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
@@ -648,7 +651,8 @@ public class MetricAlarm {
      *         <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      *         is specified as an Amazon Resource Number (ARN). Currently the only
      *         actions supported are publishing to an Amazon SNS topic or triggering
-     *         an Auto Scaling policy.
+     *         an Auto Scaling policy. <important>The current WSDL lists this
+     *         attribute as <code>UnknownActions</code>.</important>
      */
     public java.util.List<String> getInsufficientDataActions() {
         
@@ -663,7 +667,8 @@ public class MetricAlarm {
      * <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      * is specified as an Amazon Resource Number (ARN). Currently the only
      * actions supported are publishing to an Amazon SNS topic or triggering
-     * an Auto Scaling policy.
+     * an Auto Scaling policy. <important>The current WSDL lists this
+     * attribute as <code>UnknownActions</code>.</important>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
@@ -672,7 +677,8 @@ public class MetricAlarm {
      *         <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      *         is specified as an Amazon Resource Number (ARN). Currently the only
      *         actions supported are publishing to an Amazon SNS topic or triggering
-     *         an Auto Scaling policy.
+     *         an Auto Scaling policy. <important>The current WSDL lists this
+     *         attribute as <code>UnknownActions</code>.</important>
      */
     public void setInsufficientDataActions(java.util.Collection<String> insufficientDataActions) {
         if (insufficientDataActions == null) {
@@ -690,7 +696,8 @@ public class MetricAlarm {
      * <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      * is specified as an Amazon Resource Number (ARN). Currently the only
      * actions supported are publishing to an Amazon SNS topic or triggering
-     * an Auto Scaling policy.
+     * an Auto Scaling policy. <important>The current WSDL lists this
+     * attribute as <code>UnknownActions</code>.</important>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -701,7 +708,8 @@ public class MetricAlarm {
      *         <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      *         is specified as an Amazon Resource Number (ARN). Currently the only
      *         actions supported are publishing to an Amazon SNS topic or triggering
-     *         an Auto Scaling policy.
+     *         an Auto Scaling policy. <important>The current WSDL lists this
+     *         attribute as <code>UnknownActions</code>.</important>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -719,7 +727,8 @@ public class MetricAlarm {
      * <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      * is specified as an Amazon Resource Number (ARN). Currently the only
      * actions supported are publishing to an Amazon SNS topic or triggering
-     * an Auto Scaling policy.
+     * an Auto Scaling policy. <important>The current WSDL lists this
+     * attribute as <code>UnknownActions</code>.</important>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -730,7 +739,8 @@ public class MetricAlarm {
      *         <code>INSUFFICIENT_DATA</code> state from any other state. Each action
      *         is specified as an Amazon Resource Number (ARN). Currently the only
      *         actions supported are publishing to an Amazon SNS topic or triggering
-     *         an Auto Scaling policy.
+     *         an Auto Scaling policy. <important>The current WSDL lists this
+     *         attribute as <code>UnknownActions</code>.</important>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

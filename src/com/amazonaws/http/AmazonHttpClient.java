@@ -17,12 +17,15 @@ package com.amazonaws.http;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import javax.net.ssl.SSLContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -33,6 +36,9 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -128,6 +134,15 @@ public class AmazonHttpClient {
      */
     public ResponseMetadata getResponseMetadataForRequest(AmazonWebServiceRequest request) {
         return responseMetadataCache.get(request);
+    }
+
+    /**
+     * Disables the default strict hostname verification in this client and
+     * instead uses a browser compatible hostname verification strategy (i.e.
+     * cert hostname wildcards are evaulated more liberally).
+     */
+    public void disableStrictHostnameVerification() {
+        return;
     }
 
     /**
@@ -360,17 +375,21 @@ public class AmazonHttpClient {
      *             If the request can't be reset.
      */
     private void resetRequestAfterError(Request<?> request, Exception cause) throws AmazonClientException {
-        if ( request.getContent() != null && request.getContent().markSupported() ) {
-            try {
-                request.getContent().reset();
-            } catch ( IOException e ) {
-                // This exception comes from being unable to reset the input stream,
-                // so throw the original, more meaningful exception
-                throw new AmazonClientException(
-                        "Encountered an exception and couldn't reset the stream to retry", cause);
-            }
+        if ( request.getContent() == null ) {
+            return; // no reset needed
         }
-    }
+        if ( ! request.getContent().markSupported() ) {
+            throw new AmazonClientException("Encountered an exception and stream is not resettable", cause);
+        }
+        try {
+            request.getContent().reset();
+        } catch ( IOException e ) {
+            // This exception comes from being unable to reset the input stream,
+            // so throw the original, more meaningful exception
+            throw new AmazonClientException(
+                    "Encountered an exception and couldn't reset the stream to retry", cause);
+        }
+    }   
 
     /**
      * Applies any additional options set in the request.

@@ -14,17 +14,18 @@
  */
 package com.amazonaws.services.sns.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#deleteTopic(DeleteTopicRequest) DeleteTopic operation}.
  * <p>
- * The DeleteTopic action deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the topic from being
- * delivered to subscribers. This action is idempotent, so deleting a topic that does not exist will not result in an error.
+ * The <code>DeleteTopic</code> action deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the
+ * topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist does not result in an error.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#deleteTopic(DeleteTopicRequest)
  */
-public class DeleteTopicRequest extends AmazonWebServiceRequest {
+public class DeleteTopicRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
      * The ARN of the topic you want to delete. <examples> <queryrequest>

@@ -14,16 +14,18 @@
  */
 package com.amazonaws.services.sns.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#addPermission(AddPermissionRequest) AddPermission operation}.
  * <p>
- * The AddPermission action adds a statement to a topic's access control policy, granting access for the specified AWS accounts to the specified actions.
+ * The <code>AddPermission</code> action adds a statement to a topic's access control policy, granting access for the specified AWS accounts to the
+ * specified actions.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#addPermission(AddPermissionRequest)
  */
-public class AddPermissionRequest extends AmazonWebServiceRequest {
+public class AddPermissionRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
      * The ARN of the topic whose access control policy you wish to modify.
@@ -46,7 +48,8 @@ public class AddPermissionRequest extends AmazonWebServiceRequest {
     private java.util.List<String> aWSAccountIds;
 
     /**
-     * The action you want to allow for the specified principal(s).
+     * The action you want to allow for the specified principal(s). <p>Valid
+     * values: any Amazon SNS action name.
      */
     private java.util.List<String> actionNames;
 
@@ -71,7 +74,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest {
      * eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      * @param actionNames The action you want to allow for the specified
-     * principal(s).
+     * principal(s). <p>Valid values: any Amazon SNS action name.
      */
     public AddPermissionRequest(String topicArn, String label, java.util.List<String> aWSAccountIds, java.util.List<String> actionNames) {
         this.topicArn = topicArn;
@@ -260,9 +263,11 @@ public class AddPermissionRequest extends AmazonWebServiceRequest {
     }
     
     /**
-     * The action you want to allow for the specified principal(s).
+     * The action you want to allow for the specified principal(s). <p>Valid
+     * values: any Amazon SNS action name.
      *
-     * @return The action you want to allow for the specified principal(s).
+     * @return The action you want to allow for the specified principal(s). <p>Valid
+     *         values: any Amazon SNS action name.
      */
     public java.util.List<String> getActionNames() {
         
@@ -273,9 +278,11 @@ public class AddPermissionRequest extends AmazonWebServiceRequest {
     }
     
     /**
-     * The action you want to allow for the specified principal(s).
+     * The action you want to allow for the specified principal(s). <p>Valid
+     * values: any Amazon SNS action name.
      *
-     * @param actionNames The action you want to allow for the specified principal(s).
+     * @param actionNames The action you want to allow for the specified principal(s). <p>Valid
+     *         values: any Amazon SNS action name.
      */
     public void setActionNames(java.util.Collection<String> actionNames) {
         if (actionNames == null) {
@@ -289,11 +296,13 @@ public class AddPermissionRequest extends AmazonWebServiceRequest {
     }
     
     /**
-     * The action you want to allow for the specified principal(s).
+     * The action you want to allow for the specified principal(s). <p>Valid
+     * values: any Amazon SNS action name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param actionNames The action you want to allow for the specified principal(s).
+     * @param actionNames The action you want to allow for the specified principal(s). <p>Valid
+     *         values: any Amazon SNS action name.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -307,11 +316,13 @@ public class AddPermissionRequest extends AmazonWebServiceRequest {
     }
     
     /**
-     * The action you want to allow for the specified principal(s).
+     * The action you want to allow for the specified principal(s). <p>Valid
+     * values: any Amazon SNS action name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param actionNames The action you want to allow for the specified principal(s).
+     * @param actionNames The action you want to allow for the specified principal(s). <p>Valid
+     *         values: any Amazon SNS action name.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

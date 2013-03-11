@@ -939,6 +939,11 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
         return getSendQuota(new GetSendQuotaRequest());
     }
     
+    @Override
+    protected String getServiceAbbreviation() {
+        return "email";
+    }
+    
 
     /**
      * Returns additional metadata for a previously executed successful, request, typically used for

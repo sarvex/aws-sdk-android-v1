@@ -14,18 +14,19 @@
  */
 package com.amazonaws.services.sns.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#publish(PublishRequest) Publish operation}.
  * <p>
- * The Publish action sends a message to all of a topic's subscribed endpoints. When a messageId is returned, the message has been saved and Amazon SNS
- * will attempt to deliver it to the topic's subscribers shortly. The format of the outgoing message to each subscribed endpoint depends on the
- * notification protocol selected.
+ * The <code>Publish</code> action sends a message to all of a topic's subscribed endpoints. When a <code>messageId</code> is returned, the message has
+ * been saved and Amazon SNS will attempt to deliver it to the topic's subscribers shortly. The format of the outgoing message to each subscribed
+ * endpoint depends on the notification protocol selected.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#publish(PublishRequest)
  */
-public class PublishRequest extends AmazonWebServiceRequest {
+public class PublishRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
      * The topic you want to publish to.
@@ -33,15 +34,35 @@ public class PublishRequest extends AmazonWebServiceRequest {
     private String topicArn;
 
     /**
-     * The message you want to send to the topic. <p>Constraints: Messages
-     * must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
-     * 8192 characters).
+     * The message you want to send to the topic. <p>If you want to send the
+     * same message to all transport protocols, include the text of the
+     * message as a String value. <p>If you want to send different messages
+     * for each transport protocol, set the value of the
+     * <code>MessageStructure</code> parameter to <code>json</code> and use a
+     * JSON object for the <code>Message</code> parameter. See the Examples
+     * section for the format of the JSON object. <p>Constraints: Messages
+     * must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     * 65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     * JSON object that correspond to supported transport protocols must have
+     * simple JSON string values. </li> <li>The values will be parsed
+     * (unescaped) before they are used in outgoing messages.</li>
+     * <li>Outbound notifications are JSON encoded (meaning that the
+     * characters will be reescaped for sending).</li> <li>Values have a
+     * minimum length of 0 (the empty string, "", is allowed).</li>
+     * <li>Values have a maximum length bounded by the overall message size
+     * (so, including multiple protocols may limit message sizes).</li>
+     * <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     * that do not correspond to supported transport protocols are
+     * ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     * parse or validate any key or value in the message will cause the
+     * <code>Publish</code> call to return an error (no partial
+     * delivery).</li> </ul>
      */
     private String message;
 
     /**
      * Optional parameter to be used as the "Subject" line of when the
-     * message is delivered to e-mail endpoints. This field will also be
+     * message is delivered to email endpoints. This field will also be
      * included, if present, in the standard JSON messages delivered to other
      * endpoints. <p>Constraints: Subjects must be ASCII text that begins
      * with a letter, number or punctuation mark; must not include line
@@ -51,25 +72,22 @@ public class PublishRequest extends AmazonWebServiceRequest {
     private String subject;
 
     /**
-     * Optional parameter. It will have one valid value: "json". If this
-     * option, Message is present and set to "json", the value of Message
-     * must: be a syntactically valid JSON object. It must contain at least a
-     * top level JSON key of "default" with a value that is a string. For any
-     * other top level key that matches one of our transport protocols (e.g.
-     * "http"), then the corresponding value (if it is a string) will be used
-     * for the message published for that protocol <p>Constraints: Keys in
-     * the JSON object that correspond to supported transport protocols must
-     * have simple JSON string values. The values will be parsed (unescaped)
-     * before they are used in outgoing messages. Typically, outbound
-     * notifications are JSON encoded (meaning, the characters will be
-     * reescaped for sending). JSON strings are UTF-8. Values have a minimum
-     * length of 0 (the empty string, "", is allowed). Values have a maximum
-     * length bounded by the overall message size (so, including multiple
-     * protocols may limit message sizes). Non-string values will cause the
-     * key to be ignored. Keys that do not correspond to supported transport
-     * protocols will be ignored. Duplicate keys are not allowed. Failure to
-     * parse or validate any key or value in the message will cause the
-     * Publish call to return an error (no partial delivery).
+     * Set <code>MessageStructure</code> to <code>json</code> if you want to
+     * send a different message for each protocol. For example, using one
+     * publish action, you can send a short message to your SMS subscribers
+     * and a longer message to your email subscribers. If you set
+     * <code>MessageStructure</code> to <code>json</code>, the value of the
+     * <code>Message</code> parameter must: <ul> <li>be a syntactically valid
+     * JSON object; and</li> <li>contain at least a top-level JSON key of
+     * "default" with a value that is a string.</li> </ul> <p> You can define
+     * other top-level keys that define the message you want to send to a
+     * specific transport protocol (e.g., "http"). <p>For information about
+     * sending different messages for each protocol using the AWS Management
+     * Console, go to <a
+     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * Different Messages for Each Protocol</a> in the <i>Amazon Simple
+     * Notification Service Getting Started Guide</i>. <p>Valid value:
+     * <code>json</code>
      */
     private String messageStructure;
 
@@ -85,9 +103,29 @@ public class PublishRequest extends AmazonWebServiceRequest {
      * initialize any additional object members.
      * 
      * @param topicArn The topic you want to publish to.
-     * @param message The message you want to send to the topic.
-     * <p>Constraints: Messages must be UTF-8 encoded strings at most 8 KB in
-     * size (8192 bytes, not 8192 characters).
+     * @param message The message you want to send to the topic. <p>If you
+     * want to send the same message to all transport protocols, include the
+     * text of the message as a String value. <p>If you want to send
+     * different messages for each transport protocol, set the value of the
+     * <code>MessageStructure</code> parameter to <code>json</code> and use a
+     * JSON object for the <code>Message</code> parameter. See the Examples
+     * section for the format of the JSON object. <p>Constraints: Messages
+     * must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     * 65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     * JSON object that correspond to supported transport protocols must have
+     * simple JSON string values. </li> <li>The values will be parsed
+     * (unescaped) before they are used in outgoing messages.</li>
+     * <li>Outbound notifications are JSON encoded (meaning that the
+     * characters will be reescaped for sending).</li> <li>Values have a
+     * minimum length of 0 (the empty string, "", is allowed).</li>
+     * <li>Values have a maximum length bounded by the overall message size
+     * (so, including multiple protocols may limit message sizes).</li>
+     * <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     * that do not correspond to supported transport protocols are
+     * ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     * parse or validate any key or value in the message will cause the
+     * <code>Publish</code> call to return an error (no partial
+     * delivery).</li> </ul>
      */
     public PublishRequest(String topicArn, String message) {
         this.topicArn = topicArn;
@@ -102,13 +140,33 @@ public class PublishRequest extends AmazonWebServiceRequest {
      * initialize any additional object members.
      * 
      * @param topicArn The topic you want to publish to.
-     * @param message The message you want to send to the topic.
-     * <p>Constraints: Messages must be UTF-8 encoded strings at most 8 KB in
-     * size (8192 bytes, not 8192 characters).
+     * @param message The message you want to send to the topic. <p>If you
+     * want to send the same message to all transport protocols, include the
+     * text of the message as a String value. <p>If you want to send
+     * different messages for each transport protocol, set the value of the
+     * <code>MessageStructure</code> parameter to <code>json</code> and use a
+     * JSON object for the <code>Message</code> parameter. See the Examples
+     * section for the format of the JSON object. <p>Constraints: Messages
+     * must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     * 65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     * JSON object that correspond to supported transport protocols must have
+     * simple JSON string values. </li> <li>The values will be parsed
+     * (unescaped) before they are used in outgoing messages.</li>
+     * <li>Outbound notifications are JSON encoded (meaning that the
+     * characters will be reescaped for sending).</li> <li>Values have a
+     * minimum length of 0 (the empty string, "", is allowed).</li>
+     * <li>Values have a maximum length bounded by the overall message size
+     * (so, including multiple protocols may limit message sizes).</li>
+     * <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     * that do not correspond to supported transport protocols are
+     * ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     * parse or validate any key or value in the message will cause the
+     * <code>Publish</code> call to return an error (no partial
+     * delivery).</li> </ul>
      * @param subject Optional parameter to be used as the "Subject" line of
-     * when the message is delivered to e-mail endpoints. This field will
-     * also be included, if present, in the standard JSON messages delivered
-     * to other endpoints. <p>Constraints: Subjects must be ASCII text that
+     * when the message is delivered to email endpoints. This field will also
+     * be included, if present, in the standard JSON messages delivered to
+     * other endpoints. <p>Constraints: Subjects must be ASCII text that
      * begins with a letter, number or punctuation mark; must not include
      * line breaks or control characters; and must be less than 100
      * characters long.
@@ -156,41 +214,161 @@ public class PublishRequest extends AmazonWebServiceRequest {
     
     
     /**
-     * The message you want to send to the topic. <p>Constraints: Messages
-     * must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
-     * 8192 characters).
+     * The message you want to send to the topic. <p>If you want to send the
+     * same message to all transport protocols, include the text of the
+     * message as a String value. <p>If you want to send different messages
+     * for each transport protocol, set the value of the
+     * <code>MessageStructure</code> parameter to <code>json</code> and use a
+     * JSON object for the <code>Message</code> parameter. See the Examples
+     * section for the format of the JSON object. <p>Constraints: Messages
+     * must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     * 65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     * JSON object that correspond to supported transport protocols must have
+     * simple JSON string values. </li> <li>The values will be parsed
+     * (unescaped) before they are used in outgoing messages.</li>
+     * <li>Outbound notifications are JSON encoded (meaning that the
+     * characters will be reescaped for sending).</li> <li>Values have a
+     * minimum length of 0 (the empty string, "", is allowed).</li>
+     * <li>Values have a maximum length bounded by the overall message size
+     * (so, including multiple protocols may limit message sizes).</li>
+     * <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     * that do not correspond to supported transport protocols are
+     * ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     * parse or validate any key or value in the message will cause the
+     * <code>Publish</code> call to return an error (no partial
+     * delivery).</li> </ul>
      *
-     * @return The message you want to send to the topic. <p>Constraints: Messages
-     *         must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
-     *         8192 characters).
+     * @return The message you want to send to the topic. <p>If you want to send the
+     *         same message to all transport protocols, include the text of the
+     *         message as a String value. <p>If you want to send different messages
+     *         for each transport protocol, set the value of the
+     *         <code>MessageStructure</code> parameter to <code>json</code> and use a
+     *         JSON object for the <code>Message</code> parameter. See the Examples
+     *         section for the format of the JSON object. <p>Constraints: Messages
+     *         must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     *         65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     *         JSON object that correspond to supported transport protocols must have
+     *         simple JSON string values. </li> <li>The values will be parsed
+     *         (unescaped) before they are used in outgoing messages.</li>
+     *         <li>Outbound notifications are JSON encoded (meaning that the
+     *         characters will be reescaped for sending).</li> <li>Values have a
+     *         minimum length of 0 (the empty string, "", is allowed).</li>
+     *         <li>Values have a maximum length bounded by the overall message size
+     *         (so, including multiple protocols may limit message sizes).</li>
+     *         <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     *         that do not correspond to supported transport protocols are
+     *         ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     *         parse or validate any key or value in the message will cause the
+     *         <code>Publish</code> call to return an error (no partial
+     *         delivery).</li> </ul>
      */
     public String getMessage() {
         return message;
     }
     
     /**
-     * The message you want to send to the topic. <p>Constraints: Messages
-     * must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
-     * 8192 characters).
+     * The message you want to send to the topic. <p>If you want to send the
+     * same message to all transport protocols, include the text of the
+     * message as a String value. <p>If you want to send different messages
+     * for each transport protocol, set the value of the
+     * <code>MessageStructure</code> parameter to <code>json</code> and use a
+     * JSON object for the <code>Message</code> parameter. See the Examples
+     * section for the format of the JSON object. <p>Constraints: Messages
+     * must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     * 65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     * JSON object that correspond to supported transport protocols must have
+     * simple JSON string values. </li> <li>The values will be parsed
+     * (unescaped) before they are used in outgoing messages.</li>
+     * <li>Outbound notifications are JSON encoded (meaning that the
+     * characters will be reescaped for sending).</li> <li>Values have a
+     * minimum length of 0 (the empty string, "", is allowed).</li>
+     * <li>Values have a maximum length bounded by the overall message size
+     * (so, including multiple protocols may limit message sizes).</li>
+     * <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     * that do not correspond to supported transport protocols are
+     * ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     * parse or validate any key or value in the message will cause the
+     * <code>Publish</code> call to return an error (no partial
+     * delivery).</li> </ul>
      *
-     * @param message The message you want to send to the topic. <p>Constraints: Messages
-     *         must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
-     *         8192 characters).
+     * @param message The message you want to send to the topic. <p>If you want to send the
+     *         same message to all transport protocols, include the text of the
+     *         message as a String value. <p>If you want to send different messages
+     *         for each transport protocol, set the value of the
+     *         <code>MessageStructure</code> parameter to <code>json</code> and use a
+     *         JSON object for the <code>Message</code> parameter. See the Examples
+     *         section for the format of the JSON object. <p>Constraints: Messages
+     *         must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     *         65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     *         JSON object that correspond to supported transport protocols must have
+     *         simple JSON string values. </li> <li>The values will be parsed
+     *         (unescaped) before they are used in outgoing messages.</li>
+     *         <li>Outbound notifications are JSON encoded (meaning that the
+     *         characters will be reescaped for sending).</li> <li>Values have a
+     *         minimum length of 0 (the empty string, "", is allowed).</li>
+     *         <li>Values have a maximum length bounded by the overall message size
+     *         (so, including multiple protocols may limit message sizes).</li>
+     *         <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     *         that do not correspond to supported transport protocols are
+     *         ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     *         parse or validate any key or value in the message will cause the
+     *         <code>Publish</code> call to return an error (no partial
+     *         delivery).</li> </ul>
      */
     public void setMessage(String message) {
         this.message = message;
     }
     
     /**
-     * The message you want to send to the topic. <p>Constraints: Messages
-     * must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
-     * 8192 characters).
+     * The message you want to send to the topic. <p>If you want to send the
+     * same message to all transport protocols, include the text of the
+     * message as a String value. <p>If you want to send different messages
+     * for each transport protocol, set the value of the
+     * <code>MessageStructure</code> parameter to <code>json</code> and use a
+     * JSON object for the <code>Message</code> parameter. See the Examples
+     * section for the format of the JSON object. <p>Constraints: Messages
+     * must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     * 65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     * JSON object that correspond to supported transport protocols must have
+     * simple JSON string values. </li> <li>The values will be parsed
+     * (unescaped) before they are used in outgoing messages.</li>
+     * <li>Outbound notifications are JSON encoded (meaning that the
+     * characters will be reescaped for sending).</li> <li>Values have a
+     * minimum length of 0 (the empty string, "", is allowed).</li>
+     * <li>Values have a maximum length bounded by the overall message size
+     * (so, including multiple protocols may limit message sizes).</li>
+     * <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     * that do not correspond to supported transport protocols are
+     * ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     * parse or validate any key or value in the message will cause the
+     * <code>Publish</code> call to return an error (no partial
+     * delivery).</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param message The message you want to send to the topic. <p>Constraints: Messages
-     *         must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
-     *         8192 characters).
+     * @param message The message you want to send to the topic. <p>If you want to send the
+     *         same message to all transport protocols, include the text of the
+     *         message as a String value. <p>If you want to send different messages
+     *         for each transport protocol, set the value of the
+     *         <code>MessageStructure</code> parameter to <code>json</code> and use a
+     *         JSON object for the <code>Message</code> parameter. See the Examples
+     *         section for the format of the JSON object. <p>Constraints: Messages
+     *         must be UTF-8 encoded strings at most 64 KB in size (65536 bytes, not
+     *         65536 characters). <p>JSON-specific constraints: <ul> <li>Keys in the
+     *         JSON object that correspond to supported transport protocols must have
+     *         simple JSON string values. </li> <li>The values will be parsed
+     *         (unescaped) before they are used in outgoing messages.</li>
+     *         <li>Outbound notifications are JSON encoded (meaning that the
+     *         characters will be reescaped for sending).</li> <li>Values have a
+     *         minimum length of 0 (the empty string, "", is allowed).</li>
+     *         <li>Values have a maximum length bounded by the overall message size
+     *         (so, including multiple protocols may limit message sizes).</li>
+     *         <li>Non-string values will cause the key to be ignored.</li> <li>Keys
+     *         that do not correspond to supported transport protocols are
+     *         ignored.</li> <li>Duplicate keys are not allowed.</li> <li>Failure to
+     *         parse or validate any key or value in the message will cause the
+     *         <code>Publish</code> call to return an error (no partial
+     *         delivery).</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -203,7 +381,7 @@ public class PublishRequest extends AmazonWebServiceRequest {
     
     /**
      * Optional parameter to be used as the "Subject" line of when the
-     * message is delivered to e-mail endpoints. This field will also be
+     * message is delivered to email endpoints. This field will also be
      * included, if present, in the standard JSON messages delivered to other
      * endpoints. <p>Constraints: Subjects must be ASCII text that begins
      * with a letter, number or punctuation mark; must not include line
@@ -211,7 +389,7 @@ public class PublishRequest extends AmazonWebServiceRequest {
      * long.
      *
      * @return Optional parameter to be used as the "Subject" line of when the
-     *         message is delivered to e-mail endpoints. This field will also be
+     *         message is delivered to email endpoints. This field will also be
      *         included, if present, in the standard JSON messages delivered to other
      *         endpoints. <p>Constraints: Subjects must be ASCII text that begins
      *         with a letter, number or punctuation mark; must not include line
@@ -224,7 +402,7 @@ public class PublishRequest extends AmazonWebServiceRequest {
     
     /**
      * Optional parameter to be used as the "Subject" line of when the
-     * message is delivered to e-mail endpoints. This field will also be
+     * message is delivered to email endpoints. This field will also be
      * included, if present, in the standard JSON messages delivered to other
      * endpoints. <p>Constraints: Subjects must be ASCII text that begins
      * with a letter, number or punctuation mark; must not include line
@@ -232,7 +410,7 @@ public class PublishRequest extends AmazonWebServiceRequest {
      * long.
      *
      * @param subject Optional parameter to be used as the "Subject" line of when the
-     *         message is delivered to e-mail endpoints. This field will also be
+     *         message is delivered to email endpoints. This field will also be
      *         included, if present, in the standard JSON messages delivered to other
      *         endpoints. <p>Constraints: Subjects must be ASCII text that begins
      *         with a letter, number or punctuation mark; must not include line
@@ -245,7 +423,7 @@ public class PublishRequest extends AmazonWebServiceRequest {
     
     /**
      * Optional parameter to be used as the "Subject" line of when the
-     * message is delivered to e-mail endpoints. This field will also be
+     * message is delivered to email endpoints. This field will also be
      * included, if present, in the standard JSON messages delivered to other
      * endpoints. <p>Constraints: Subjects must be ASCII text that begins
      * with a letter, number or punctuation mark; must not include line
@@ -255,7 +433,7 @@ public class PublishRequest extends AmazonWebServiceRequest {
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param subject Optional parameter to be used as the "Subject" line of when the
-     *         message is delivered to e-mail endpoints. This field will also be
+     *         message is delivered to email endpoints. This field will also be
      *         included, if present, in the standard JSON messages delivered to other
      *         endpoints. <p>Constraints: Subjects must be ASCII text that begins
      *         with a letter, number or punctuation mark; must not include line
@@ -272,137 +450,119 @@ public class PublishRequest extends AmazonWebServiceRequest {
     
     
     /**
-     * Optional parameter. It will have one valid value: "json". If this
-     * option, Message is present and set to "json", the value of Message
-     * must: be a syntactically valid JSON object. It must contain at least a
-     * top level JSON key of "default" with a value that is a string. For any
-     * other top level key that matches one of our transport protocols (e.g.
-     * "http"), then the corresponding value (if it is a string) will be used
-     * for the message published for that protocol <p>Constraints: Keys in
-     * the JSON object that correspond to supported transport protocols must
-     * have simple JSON string values. The values will be parsed (unescaped)
-     * before they are used in outgoing messages. Typically, outbound
-     * notifications are JSON encoded (meaning, the characters will be
-     * reescaped for sending). JSON strings are UTF-8. Values have a minimum
-     * length of 0 (the empty string, "", is allowed). Values have a maximum
-     * length bounded by the overall message size (so, including multiple
-     * protocols may limit message sizes). Non-string values will cause the
-     * key to be ignored. Keys that do not correspond to supported transport
-     * protocols will be ignored. Duplicate keys are not allowed. Failure to
-     * parse or validate any key or value in the message will cause the
-     * Publish call to return an error (no partial delivery).
+     * Set <code>MessageStructure</code> to <code>json</code> if you want to
+     * send a different message for each protocol. For example, using one
+     * publish action, you can send a short message to your SMS subscribers
+     * and a longer message to your email subscribers. If you set
+     * <code>MessageStructure</code> to <code>json</code>, the value of the
+     * <code>Message</code> parameter must: <ul> <li>be a syntactically valid
+     * JSON object; and</li> <li>contain at least a top-level JSON key of
+     * "default" with a value that is a string.</li> </ul> <p> You can define
+     * other top-level keys that define the message you want to send to a
+     * specific transport protocol (e.g., "http"). <p>For information about
+     * sending different messages for each protocol using the AWS Management
+     * Console, go to <a
+     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * Different Messages for Each Protocol</a> in the <i>Amazon Simple
+     * Notification Service Getting Started Guide</i>. <p>Valid value:
+     * <code>json</code>
      *
-     * @return Optional parameter. It will have one valid value: "json". If this
-     *         option, Message is present and set to "json", the value of Message
-     *         must: be a syntactically valid JSON object. It must contain at least a
-     *         top level JSON key of "default" with a value that is a string. For any
-     *         other top level key that matches one of our transport protocols (e.g.
-     *         "http"), then the corresponding value (if it is a string) will be used
-     *         for the message published for that protocol <p>Constraints: Keys in
-     *         the JSON object that correspond to supported transport protocols must
-     *         have simple JSON string values. The values will be parsed (unescaped)
-     *         before they are used in outgoing messages. Typically, outbound
-     *         notifications are JSON encoded (meaning, the characters will be
-     *         reescaped for sending). JSON strings are UTF-8. Values have a minimum
-     *         length of 0 (the empty string, "", is allowed). Values have a maximum
-     *         length bounded by the overall message size (so, including multiple
-     *         protocols may limit message sizes). Non-string values will cause the
-     *         key to be ignored. Keys that do not correspond to supported transport
-     *         protocols will be ignored. Duplicate keys are not allowed. Failure to
-     *         parse or validate any key or value in the message will cause the
-     *         Publish call to return an error (no partial delivery).
+     * @return Set <code>MessageStructure</code> to <code>json</code> if you want to
+     *         send a different message for each protocol. For example, using one
+     *         publish action, you can send a short message to your SMS subscribers
+     *         and a longer message to your email subscribers. If you set
+     *         <code>MessageStructure</code> to <code>json</code>, the value of the
+     *         <code>Message</code> parameter must: <ul> <li>be a syntactically valid
+     *         JSON object; and</li> <li>contain at least a top-level JSON key of
+     *         "default" with a value that is a string.</li> </ul> <p> You can define
+     *         other top-level keys that define the message you want to send to a
+     *         specific transport protocol (e.g., "http"). <p>For information about
+     *         sending different messages for each protocol using the AWS Management
+     *         Console, go to <a
+     *         sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     *         Different Messages for Each Protocol</a> in the <i>Amazon Simple
+     *         Notification Service Getting Started Guide</i>. <p>Valid value:
+     *         <code>json</code>
      */
     public String getMessageStructure() {
         return messageStructure;
     }
     
     /**
-     * Optional parameter. It will have one valid value: "json". If this
-     * option, Message is present and set to "json", the value of Message
-     * must: be a syntactically valid JSON object. It must contain at least a
-     * top level JSON key of "default" with a value that is a string. For any
-     * other top level key that matches one of our transport protocols (e.g.
-     * "http"), then the corresponding value (if it is a string) will be used
-     * for the message published for that protocol <p>Constraints: Keys in
-     * the JSON object that correspond to supported transport protocols must
-     * have simple JSON string values. The values will be parsed (unescaped)
-     * before they are used in outgoing messages. Typically, outbound
-     * notifications are JSON encoded (meaning, the characters will be
-     * reescaped for sending). JSON strings are UTF-8. Values have a minimum
-     * length of 0 (the empty string, "", is allowed). Values have a maximum
-     * length bounded by the overall message size (so, including multiple
-     * protocols may limit message sizes). Non-string values will cause the
-     * key to be ignored. Keys that do not correspond to supported transport
-     * protocols will be ignored. Duplicate keys are not allowed. Failure to
-     * parse or validate any key or value in the message will cause the
-     * Publish call to return an error (no partial delivery).
+     * Set <code>MessageStructure</code> to <code>json</code> if you want to
+     * send a different message for each protocol. For example, using one
+     * publish action, you can send a short message to your SMS subscribers
+     * and a longer message to your email subscribers. If you set
+     * <code>MessageStructure</code> to <code>json</code>, the value of the
+     * <code>Message</code> parameter must: <ul> <li>be a syntactically valid
+     * JSON object; and</li> <li>contain at least a top-level JSON key of
+     * "default" with a value that is a string.</li> </ul> <p> You can define
+     * other top-level keys that define the message you want to send to a
+     * specific transport protocol (e.g., "http"). <p>For information about
+     * sending different messages for each protocol using the AWS Management
+     * Console, go to <a
+     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * Different Messages for Each Protocol</a> in the <i>Amazon Simple
+     * Notification Service Getting Started Guide</i>. <p>Valid value:
+     * <code>json</code>
      *
-     * @param messageStructure Optional parameter. It will have one valid value: "json". If this
-     *         option, Message is present and set to "json", the value of Message
-     *         must: be a syntactically valid JSON object. It must contain at least a
-     *         top level JSON key of "default" with a value that is a string. For any
-     *         other top level key that matches one of our transport protocols (e.g.
-     *         "http"), then the corresponding value (if it is a string) will be used
-     *         for the message published for that protocol <p>Constraints: Keys in
-     *         the JSON object that correspond to supported transport protocols must
-     *         have simple JSON string values. The values will be parsed (unescaped)
-     *         before they are used in outgoing messages. Typically, outbound
-     *         notifications are JSON encoded (meaning, the characters will be
-     *         reescaped for sending). JSON strings are UTF-8. Values have a minimum
-     *         length of 0 (the empty string, "", is allowed). Values have a maximum
-     *         length bounded by the overall message size (so, including multiple
-     *         protocols may limit message sizes). Non-string values will cause the
-     *         key to be ignored. Keys that do not correspond to supported transport
-     *         protocols will be ignored. Duplicate keys are not allowed. Failure to
-     *         parse or validate any key or value in the message will cause the
-     *         Publish call to return an error (no partial delivery).
+     * @param messageStructure Set <code>MessageStructure</code> to <code>json</code> if you want to
+     *         send a different message for each protocol. For example, using one
+     *         publish action, you can send a short message to your SMS subscribers
+     *         and a longer message to your email subscribers. If you set
+     *         <code>MessageStructure</code> to <code>json</code>, the value of the
+     *         <code>Message</code> parameter must: <ul> <li>be a syntactically valid
+     *         JSON object; and</li> <li>contain at least a top-level JSON key of
+     *         "default" with a value that is a string.</li> </ul> <p> You can define
+     *         other top-level keys that define the message you want to send to a
+     *         specific transport protocol (e.g., "http"). <p>For information about
+     *         sending different messages for each protocol using the AWS Management
+     *         Console, go to <a
+     *         sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     *         Different Messages for Each Protocol</a> in the <i>Amazon Simple
+     *         Notification Service Getting Started Guide</i>. <p>Valid value:
+     *         <code>json</code>
      */
     public void setMessageStructure(String messageStructure) {
         this.messageStructure = messageStructure;
     }
     
     /**
-     * Optional parameter. It will have one valid value: "json". If this
-     * option, Message is present and set to "json", the value of Message
-     * must: be a syntactically valid JSON object. It must contain at least a
-     * top level JSON key of "default" with a value that is a string. For any
-     * other top level key that matches one of our transport protocols (e.g.
-     * "http"), then the corresponding value (if it is a string) will be used
-     * for the message published for that protocol <p>Constraints: Keys in
-     * the JSON object that correspond to supported transport protocols must
-     * have simple JSON string values. The values will be parsed (unescaped)
-     * before they are used in outgoing messages. Typically, outbound
-     * notifications are JSON encoded (meaning, the characters will be
-     * reescaped for sending). JSON strings are UTF-8. Values have a minimum
-     * length of 0 (the empty string, "", is allowed). Values have a maximum
-     * length bounded by the overall message size (so, including multiple
-     * protocols may limit message sizes). Non-string values will cause the
-     * key to be ignored. Keys that do not correspond to supported transport
-     * protocols will be ignored. Duplicate keys are not allowed. Failure to
-     * parse or validate any key or value in the message will cause the
-     * Publish call to return an error (no partial delivery).
+     * Set <code>MessageStructure</code> to <code>json</code> if you want to
+     * send a different message for each protocol. For example, using one
+     * publish action, you can send a short message to your SMS subscribers
+     * and a longer message to your email subscribers. If you set
+     * <code>MessageStructure</code> to <code>json</code>, the value of the
+     * <code>Message</code> parameter must: <ul> <li>be a syntactically valid
+     * JSON object; and</li> <li>contain at least a top-level JSON key of
+     * "default" with a value that is a string.</li> </ul> <p> You can define
+     * other top-level keys that define the message you want to send to a
+     * specific transport protocol (e.g., "http"). <p>For information about
+     * sending different messages for each protocol using the AWS Management
+     * Console, go to <a
+     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * Different Messages for Each Protocol</a> in the <i>Amazon Simple
+     * Notification Service Getting Started Guide</i>. <p>Valid value:
+     * <code>json</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param messageStructure Optional parameter. It will have one valid value: "json". If this
-     *         option, Message is present and set to "json", the value of Message
-     *         must: be a syntactically valid JSON object. It must contain at least a
-     *         top level JSON key of "default" with a value that is a string. For any
-     *         other top level key that matches one of our transport protocols (e.g.
-     *         "http"), then the corresponding value (if it is a string) will be used
-     *         for the message published for that protocol <p>Constraints: Keys in
-     *         the JSON object that correspond to supported transport protocols must
-     *         have simple JSON string values. The values will be parsed (unescaped)
-     *         before they are used in outgoing messages. Typically, outbound
-     *         notifications are JSON encoded (meaning, the characters will be
-     *         reescaped for sending). JSON strings are UTF-8. Values have a minimum
-     *         length of 0 (the empty string, "", is allowed). Values have a maximum
-     *         length bounded by the overall message size (so, including multiple
-     *         protocols may limit message sizes). Non-string values will cause the
-     *         key to be ignored. Keys that do not correspond to supported transport
-     *         protocols will be ignored. Duplicate keys are not allowed. Failure to
-     *         parse or validate any key or value in the message will cause the
-     *         Publish call to return an error (no partial delivery).
+     * @param messageStructure Set <code>MessageStructure</code> to <code>json</code> if you want to
+     *         send a different message for each protocol. For example, using one
+     *         publish action, you can send a short message to your SMS subscribers
+     *         and a longer message to your email subscribers. If you set
+     *         <code>MessageStructure</code> to <code>json</code>, the value of the
+     *         <code>Message</code> parameter must: <ul> <li>be a syntactically valid
+     *         JSON object; and</li> <li>contain at least a top-level JSON key of
+     *         "default" with a value that is a string.</li> </ul> <p> You can define
+     *         other top-level keys that define the message you want to send to a
+     *         specific transport protocol (e.g., "http"). <p>For information about
+     *         sending different messages for each protocol using the AWS Management
+     *         Console, go to <a
+     *         sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     *         Different Messages for Each Protocol</a> in the <i>Amazon Simple
+     *         Notification Service Getting Started Guide</i>. <p>Valid value:
+     *         <code>json</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

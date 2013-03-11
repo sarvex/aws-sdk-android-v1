@@ -20,6 +20,8 @@ import java.util.List;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.regions.Region;
 import com.amazonaws.services.simpledb.AmazonSimpleDBClient;
 import com.amazonaws.services.simpledb.model.Attribute;
 import com.amazonaws.services.simpledb.model.CreateDomainRequest;
@@ -75,6 +77,7 @@ public class HighScoreList {
         // Initial the SimpleDB Client.
 		AWSCredentials credentials = new BasicAWSCredentials( Constants.ACCESS_KEY_ID, Constants.SECRET_KEY );
         this.sdbClient = new AmazonSimpleDBClient( credentials); 
+        this.sdbClient.setRegion(Region.getRegion(Regions.US_WEST_2));
 		this.nextToken = null;
 		this.sortMethod = sortMethod;
 		this.count = -1;
