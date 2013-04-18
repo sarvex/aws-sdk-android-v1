@@ -69,6 +69,9 @@ import com.amazonaws.util.VersionInfoUtils;
  * The AmazonS3Encryption class extends the Amazon S3 Client, allowing you to store data securely in S3.
  * <p>
  * The encryption materials specified in the constructor will be used to encrypt and decrypt data.
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AmazonS3EncryptionClient extends AmazonS3Client {
 
@@ -432,15 +435,22 @@ public class AmazonS3EncryptionClient extends AmazonS3Client {
                 objectToBeReturned = decryptObjectUsingMetadata(retrievedObject);
             } else {
                 // Check if encrypted info is in an instruction file
-                S3Object instructionFile = getInstructionFile(getObjectRequest);
-                if (EncryptionUtils.isEncryptionInfoInInstructionFile(instructionFile)) {
-                    objectToBeReturned = decryptObjectUsingInstructionFile(retrievedObject, instructionFile);
-                } else {
-                    // The object was not encrypted to begin with.  Return the object without decrypting it.
-                    log.warn(String.format("Unable to detect encryption information for object '%s' in bucket '%s'. " +
-                            "Returning object without decryption.",
-                            retrievedObject.getKey(), retrievedObject.getBucketName()));
-                    objectToBeReturned = retrievedObject;
+                S3Object instructionFile = null;
+                try {
+                    instructionFile = getInstructionFile(getObjectRequest);
+                    if (EncryptionUtils.isEncryptionInfoInInstructionFile(instructionFile)) {
+                        objectToBeReturned = decryptObjectUsingInstructionFile(retrievedObject, instructionFile);
+                    } else {
+                        // The object was not encrypted to begin with.  Return the object without decrypting it.
+                        log.warn(String.format("Unable to detect encryption information for object '%s' in bucket '%s'. " +
+                                "Returning object without decryption.",
+                                retrievedObject.getKey(), retrievedObject.getBucketName()));
+                        objectToBeReturned = retrievedObject;
+                    }
+                } finally {
+                    if (instructionFile != null) {
+                        try { instructionFile.getObjectContent().close();} catch (Exception e) {}
+                    }
                 }
             }
         } catch (AmazonClientException ace) {

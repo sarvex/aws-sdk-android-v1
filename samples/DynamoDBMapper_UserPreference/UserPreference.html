@@ -48,7 +48,7 @@
     <p>To make low-level service requests to Amazon DynamoDB, you need to instantiate an Amazon DynamoDB <i>client</i>. In order to use the Amazon DynamoDB OM, you need to instantiate a DynamoDB Mapper object with the Amazon DynamoDB client. The code below shows how to create an Amazon DynamoDB OM using the stored temporary credentials from the TVM.</p>
 	<table class="sample"><tr><td align="left">
                     <pre>AWSCredentials credentials = AmazonSharedPreferencesWrapper
-		.getCredentialsFromSharedPreferences(this.sharedPreferences);
+        .getCredentialsFromSharedPreferences(this.sharedPreferences);
 
 AmazonDynamoDBClient ddb = new AmazonDynamoDBClient(credentials);
 DynamoDBMapper mapper = new DynamoDBMapper(ddb);</pre></td></tr>
@@ -69,76 +69,76 @@ DynamoDBMapper mapper = new DynamoDBMapper(ddb);</pre></td></tr>
 	<tr>
 	    <td><pre>@DynamoDBTable(tableName = "TestUserPreference")
 public static class UserPreference {
-	private int userNo;
-	private String firstName;
-	private String lastName;
-	private Boolean autoLogin;
-	private Boolean vibrate;
-	private Boolean silent;
-	private String colorTheme;
+    private int userNo;
+    private String firstName;
+    private String lastName;
+    private Boolean autoLogin;
+    private Boolean vibrate;
+    private Boolean silent;
+    private String colorTheme;
 
-	@DynamoDBHashKey(attributeName = "userNo")
-	public int getUserNo() {
-		return userNo;
-	}
+    @DynamoDBHashKey(attributeName = "userNo")
+    public int getUserNo() {
+        return userNo;
+    }
 
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
+    public void setUserNo(int userNo) {
+        this.userNo = userNo;
+    }
 
-	@DynamoDBAttribute(attributeName = "firstName")
-	public String getFirstName() {
-		return firstName;
-	}
+    @DynamoDBAttribute(attributeName = "firstName")
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	@DynamoDBAttribute(attributeName = "lastName")
-	public String getLastName() {
-		return lastName;
-	}
+    @DynamoDBAttribute(attributeName = "lastName")
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	@DynamoDBAttribute(attributeName = "autoLogin")
-	public Boolean isAutoLogin() {
-		return autoLogin;
-	}
+    @DynamoDBAttribute(attributeName = "autoLogin")
+    public Boolean isAutoLogin() {
+        return autoLogin;
+    }
 
-	public void setAutoLogin(Boolean autoLogin) {
-		this.autoLogin = autoLogin;
-	}
+    public void setAutoLogin(Boolean autoLogin) {
+        this.autoLogin = autoLogin;
+    }
 
-	@DynamoDBAttribute(attributeName = "vibrate")
-	public Boolean isVibrate() {
-		return vibrate;
-	}
+    @DynamoDBAttribute(attributeName = "vibrate")
+    public Boolean isVibrate() {
+        return vibrate;
+    }
 
-	public void setVibrate(Boolean vibrate) {
-		this.vibrate = vibrate;
-	}
+    public void setVibrate(Boolean vibrate) {
+        this.vibrate = vibrate;
+    }
 
-	@DynamoDBAttribute(attributeName = "silent")
-	public Boolean isSilent() {
-		return silent;
-	}
+    @DynamoDBAttribute(attributeName = "silent")
+    public Boolean isSilent() {
+        return silent;
+    }
 
-	public void setSilent(Boolean silent) {
-		this.silent = silent;
-	}
+    public void setSilent(Boolean silent) {
+        this.silent = silent;
+    }
 
-	@DynamoDBAttribute(attributeName = "colorTheme")
-	public String getColorTheme() {
-		return colorTheme;
-	}
+    @DynamoDBAttribute(attributeName = "colorTheme")
+    public String getColorTheme() {
+        return colorTheme;
+    }
 
-	public void setColorTheme(String colorTheme) {
-		this.colorTheme = colorTheme;
-	}
+    public void setColorTheme(String colorTheme) {
+        this.colorTheme = colorTheme;
+    }
 }</pre>
                 </td>
 	</tr>
@@ -156,25 +156,25 @@ public static class UserPreference {
     <tr>
 	<td style="vertical-align: text-top;">
                     <pre>HashMap&lt;String, AttributeValue&gt; item =
-		new HashMap&lt;String, AttributeValue&gt;();
+        new HashMap&lt;String, AttributeValue&gt;();
 
 AttributeValue userNo = new AttributeValue()
-		.withN(String.valueOf(i));
+        .withN(String.valueOf(i));
 item.put("userNo", userNo);
 
 AttributeValue firstName = new AttributeValue()
-		.withS(Constants.getRandomName());
+        .withS(Constants.getRandomName());
 item.put("firstName", firstName);
 
 AttributeValue lastName = new AttributeValue()
-		.withS(Constants.getRandomName());
+        .withS(Constants.getRandomName());
 item.put("lastName", lastName);
 
 PutItemRequest request = new PutItemRequest()
-		.withTableName(PropertyLoader
-				.getInstance()
-				.getTestTableName())
-		.withItem(item);
+        .withTableName(PropertyLoader
+                .getInstance()
+                .getTestTableName())
+        .withItem(item);
 
 ddb.putItem(request);</pre>
                 </td>
@@ -200,13 +200,16 @@ mapper.save(userPreference);</pre>
     <tr>
 	<td style="vertical-align: text-top;">
                     <pre>
+HashMap&lt;String, AttributeValue&gt; keyMap =
+        new HashMap&lt;String, AttributeValue&gt;();
+keyMap.put("userNo", targetValue);
 Key primaryKey = new Key().withHashKeyElement(targetValue);
 DeleteItemRequest request = new DeleteItemRequest()
-		.withTableName(PropertyLoader
-				.getInstance()
-				.getTestTableName())
-		.withKey(primaryKey);
-		
+        .withTableName(PropertyLoader
+                .getInstance()
+                .getTestTableName())
+        .withKey(keyMap);
+        
 ddb.deleteItem(request);</pre>
 	</td>
 	<td style="vertical-align: text-top;">
@@ -234,19 +237,19 @@ mapper.delete(deleteUserPreference);</pre>
                     <pre>
 ScanRequest request = new ScanRequest();
 request.setTableName(PropertyLoader
-			.getInstance()
-			.getTestTableName());
+            .getInstance()
+            .getTestTableName());
 ScanResult result = ddb.scan(request);
 
 List&lt;Map&lt;String, AttributeValue&gt;&gt; users = result.getItems();
-		    </pre>
+</pre>
 	</td>
 	<td style="vertical-align: text-top;">
                     <pre>
 DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
 PaginatedScanList&lt;UserPreference&gt; result = mapper.scan(
-		UserPreference.class,
-		scanExpression);</pre>
+        UserPreference.class,
+        scanExpression);</pre>
 	</td>
     </tr>
 </table>
@@ -264,18 +267,20 @@ PaginatedScanList&lt;UserPreference&gt; result = mapper.scan(
 	<td style="vertical-align: text-top;">
                     <pre>
 AttributeValue userNoAttr = new AttributeValue().withN(String
-		.valueOf(userNo));
-Key primaryKey = new Key().withHashKeyElement(userNoAttr);
+        .valueOf(userNo));
+HashMap&lt;String, AttributeValue&gt; keyMap =
+        new HashMap&lt;String, AttributeValue&gt;();
+keyMap.put("userNo", userNoAttr);
 GetItemRequest request = new GetItemRequest()
-		.withTableName(PropertyLoader
-				.getInstance()
-				.getTestTableName())
-		.withKey(primaryKey);
+        .withTableName(PropertyLoader
+                .getInstance()
+                .getTestTableName())
+        .withKey(keyMap);
 
 GetItemResult result = ddb.getItem(request);
 
 Map&lt;String, AttributeValue&gt; userPreferences = result.getItem();
-		    </pre>
+</pre>
 	</td>
 	<td style="vertical-align: text-top;">
                     <pre>
@@ -295,20 +300,21 @@ UserPreference userPreference = mapper.load(UserPreference.class, userNo);</pre>
 	<td style="vertical-align: text-top;"><pre>
 AttributeValue av = new AttributeValue().withS(value);
 AttributeValueUpdate avu = new AttributeValueUpdate()
-		.withValue(av)
-		.withAction(AttributeAction.PUT);
-Key primaryKey = new Key()
-		.withHashKeyElement(targetValue);
+        .withValue(av)
+        .withAction(AttributeAction.PUT);
+HashMap&lt;String, AttributeValue&gt; keyMap =
+        new HashMap&lt;String, AttributeValue&gt;();
+keyMap.put("userNo", targetValue);
 HashMap&lt;String, AttributeValueUpdate&gt; updates =
-		new HashMap&lt;String, AttributeValueUpdate&gt;();
+        new HashMap&lt;String, AttributeValueUpdate&gt;();
 updates.put(key, avu);
 
 UpdateItemRequest request = new UpdateItemRequest()
-		.withTableName(PropertyLoader
-				.getInstance()
-				.getTestTableName())
-		.withKey(primaryKey)
-		.withAttributeUpdates(updates);
+        .withTableName(PropertyLoader
+                .getInstance()
+                .getTestTableName())
+        .withKey(keyMap)
+        .withAttributeUpdates(updates);
 
 ddb.updateItem(request);</pre>
 	</td>

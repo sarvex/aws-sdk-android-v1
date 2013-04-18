@@ -64,6 +64,9 @@ import com.amazonaws.services.autoscaling.model.transform.*;
  * For information about this product's regions and endpoints, go to <a href="http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html">
  * Regions and Endpoints </a> in the Amazon Web Services General Reference.
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AmazonAutoScalingClient extends AmazonWebServiceClient implements AmazonAutoScaling {
 

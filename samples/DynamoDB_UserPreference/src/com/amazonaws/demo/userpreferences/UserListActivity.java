@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.amazonaws.demo.userpreferences.R;
-import com.amazonaws.services.dynamodb.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;

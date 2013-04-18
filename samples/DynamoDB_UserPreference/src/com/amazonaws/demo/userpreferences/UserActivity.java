@@ -18,7 +18,7 @@ package com.amazonaws.demo.userpreferences;
 import java.util.Map;
 
 import com.amazonaws.demo.userpreferences.R;
-import com.amazonaws.services.dynamodb.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
 import android.app.Activity;
 import android.content.res.Resources;

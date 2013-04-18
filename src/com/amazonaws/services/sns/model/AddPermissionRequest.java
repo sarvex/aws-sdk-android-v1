@@ -42,7 +42,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * to the specified actions. The users must have AWS accounts, but do not
      * need to be signed up for this service. <!--For information about
      * locating the AWS account identification, see <a
-     * eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      */
     private java.util.List<String> aWSAccountIds;
@@ -71,7 +71,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * will be given access to the specified actions. The users must have AWS
      * accounts, but do not need to be signed up for this service. <!--For
      * information about locating the AWS account identification, see <a
-     * eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      * @param actionNames The action you want to allow for the specified
      * principal(s). <p>Valid values: any Amazon SNS action name.
@@ -158,14 +158,14 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * to the specified actions. The users must have AWS accounts, but do not
      * need to be signed up for this service. <!--For information about
      * locating the AWS account identification, see <a
-     * eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      *
      * @return The AWS account IDs of the users (principals) who will be given access
      *         to the specified actions. The users must have AWS accounts, but do not
      *         need to be signed up for this service. <!--For information about
      *         locating the AWS account identification, see <a
-     *         eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      *         AWS Identifiers</aulink> in the &service; Developer Guide.-->
      */
     public java.util.List<String> getAWSAccountIds() {
@@ -181,14 +181,14 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * to the specified actions. The users must have AWS accounts, but do not
      * need to be signed up for this service. <!--For information about
      * locating the AWS account identification, see <a
-     * eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      *
      * @param aWSAccountIds The AWS account IDs of the users (principals) who will be given access
      *         to the specified actions. The users must have AWS accounts, but do not
      *         need to be signed up for this service. <!--For information about
      *         locating the AWS account identification, see <a
-     *         eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      *         AWS Identifiers</aulink> in the &service; Developer Guide.-->
      */
     public void setAWSAccountIds(java.util.Collection<String> aWSAccountIds) {
@@ -207,7 +207,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * to the specified actions. The users must have AWS accounts, but do not
      * need to be signed up for this service. <!--For information about
      * locating the AWS account identification, see <a
-     * eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -216,7 +216,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      *         to the specified actions. The users must have AWS accounts, but do not
      *         need to be signed up for this service. <!--For information about
      *         locating the AWS account identification, see <a
-     *         eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      *         AWS Identifiers</aulink> in the &service; Developer Guide.-->
      *
      * @return A reference to this updated object so that method calls can be chained 
@@ -235,7 +235,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * to the specified actions. The users must have AWS accounts, but do not
      * need to be signed up for this service. <!--For information about
      * locating the AWS account identification, see <a
-     * eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -244,7 +244,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      *         to the specified actions. The users must have AWS accounts, but do not
      *         need to be signed up for this service. <!--For information about
      *         locating the AWS account identification, see <a
-     *         eService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      *         AWS Identifiers</aulink> in the &service; Developer Guide.-->
      *
      * @return A reference to this updated object so that method calls can be chained 
@@ -350,11 +350,11 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ", ");
-        if (getLabel() != null) sb.append("Label: " + getLabel() + ", ");
-        if (getAWSAccountIds() != null) sb.append("AWSAccountIds: " + getAWSAccountIds() + ", ");
-        if (getActionNames() != null) sb.append("ActionNames: " + getActionNames() + ", ");
+        sb.append("{");    	
+        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");    	
+        if (getLabel() != null) sb.append("Label: " + getLabel() + ",");    	
+        if (getAWSAccountIds() != null) sb.append("AWSAccountIds: " + getAWSAccountIds() + ",");    	
+        if (getActionNames() != null) sb.append("ActionNames: " + getActionNames() );
         sb.append("}");
         return sb.toString();
     }

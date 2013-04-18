@@ -84,7 +84,7 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
      * specific transport protocol (e.g., "http"). <p>For information about
      * sending different messages for each protocol using the AWS Management
      * Console, go to <a
-     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
      * Different Messages for Each Protocol</a> in the <i>Amazon Simple
      * Notification Service Getting Started Guide</i>. <p>Valid value:
      * <code>json</code>
@@ -462,7 +462,7 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
      * specific transport protocol (e.g., "http"). <p>For information about
      * sending different messages for each protocol using the AWS Management
      * Console, go to <a
-     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
      * Different Messages for Each Protocol</a> in the <i>Amazon Simple
      * Notification Service Getting Started Guide</i>. <p>Valid value:
      * <code>json</code>
@@ -479,7 +479,7 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
      *         specific transport protocol (e.g., "http"). <p>For information about
      *         sending different messages for each protocol using the AWS Management
      *         Console, go to <a
-     *         sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     *         href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
      *         Different Messages for Each Protocol</a> in the <i>Amazon Simple
      *         Notification Service Getting Started Guide</i>. <p>Valid value:
      *         <code>json</code>
@@ -501,7 +501,7 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
      * specific transport protocol (e.g., "http"). <p>For information about
      * sending different messages for each protocol using the AWS Management
      * Console, go to <a
-     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
      * Different Messages for Each Protocol</a> in the <i>Amazon Simple
      * Notification Service Getting Started Guide</i>. <p>Valid value:
      * <code>json</code>
@@ -518,7 +518,7 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
      *         specific transport protocol (e.g., "http"). <p>For information about
      *         sending different messages for each protocol using the AWS Management
      *         Console, go to <a
-     *         sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     *         href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
      *         Different Messages for Each Protocol</a> in the <i>Amazon Simple
      *         Notification Service Getting Started Guide</i>. <p>Valid value:
      *         <code>json</code>
@@ -540,7 +540,7 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
      * specific transport protocol (e.g., "http"). <p>For information about
      * sending different messages for each protocol using the AWS Management
      * Console, go to <a
-     * sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     * href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
      * Different Messages for Each Protocol</a> in the <i>Amazon Simple
      * Notification Service Getting Started Guide</i>. <p>Valid value:
      * <code>json</code>
@@ -559,7 +559,7 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
      *         specific transport protocol (e.g., "http"). <p>For information about
      *         sending different messages for each protocol using the AWS Management
      *         Console, go to <a
-     *         sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
+     *         href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create
      *         Different Messages for Each Protocol</a> in the <i>Amazon Simple
      *         Notification Service Getting Started Guide</i>. <p>Valid value:
      *         <code>json</code>
@@ -584,11 +584,11 @@ public class PublishRequest extends AmazonWebServiceRequest  implements Serializ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ", ");
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ", ");
-        if (getSubject() != null) sb.append("Subject: " + getSubject() + ", ");
-        if (getMessageStructure() != null) sb.append("MessageStructure: " + getMessageStructure() + ", ");
+        sb.append("{");    	
+        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");    	
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
+        if (getSubject() != null) sb.append("Subject: " + getSubject() + ",");    	
+        if (getMessageStructure() != null) sb.append("MessageStructure: " + getMessageStructure() );
         sb.append("}");
         return sb.toString();
     }

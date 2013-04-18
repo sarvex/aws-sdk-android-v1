@@ -18,22 +18,23 @@ package com.amazonaws.demo.userpreferencesom;
 import java.util.ArrayList;
 
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.services.dynamodb.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodb.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodb.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodb.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodb.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodb.datamodeling.DynamoDBTable;
-import com.amazonaws.services.dynamodb.datamodeling.PaginatedScanList;
-import com.amazonaws.services.dynamodb.model.CreateTableRequest;
-import com.amazonaws.services.dynamodb.model.DeleteTableRequest;
-import com.amazonaws.services.dynamodb.model.DescribeTableRequest;
-import com.amazonaws.services.dynamodb.model.DescribeTableResult;
-import com.amazonaws.services.dynamodb.model.KeySchema;
-import com.amazonaws.services.dynamodb.model.KeySchemaElement;
-import com.amazonaws.services.dynamodb.model.ProvisionedThroughput;
-import com.amazonaws.services.dynamodb.model.ResourceNotFoundException;
-import com.amazonaws.services.dynamodb.model.ScalarAttributeType;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
+import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
+import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DescribeTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DescribeTableResult;
+import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
+import com.amazonaws.services.dynamodbv2.model.KeyType;
+import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
+import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
+import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 
 public class DynamoDBManager {
 
@@ -49,14 +50,16 @@ public class DynamoDBManager {
 				.ddb();
 
 		KeySchemaElement kse = new KeySchemaElement().withAttributeName(
+				"userNo").withKeyType(KeyType.HASH);
+		AttributeDefinition ad = new AttributeDefinition().withAttributeName(
 				"userNo").withAttributeType(ScalarAttributeType.N);
-		KeySchema ks = new KeySchema().withHashKeyElement(kse);
 		ProvisionedThroughput pt = new ProvisionedThroughput()
 				.withReadCapacityUnits(10l).withWriteCapacityUnits(5l);
 
 		CreateTableRequest request = new CreateTableRequest()
 				.withTableName(PropertyLoader.getInstance().getTestTableName())
-				.withKeySchema(ks).withProvisionedThroughput(pt);
+				.withKeySchema(kse).withAttributeDefinitions(ad)
+				.withProvisionedThroughput(pt);
 
 		try {
 			ddb.createTable(request);

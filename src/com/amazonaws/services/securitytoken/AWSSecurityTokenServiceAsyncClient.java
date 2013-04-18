@@ -59,6 +59,9 @@ import com.amazonaws.services.securitytoken.model.*;
  * <p>
  * We will refer to Amazon Identity and Access Management using the abbreviated form IAM. All copyrights and legal protections still apply.
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AWSSecurityTokenServiceAsyncClient extends AWSSecurityTokenServiceClient
         implements AWSSecurityTokenServiceAsync {
@@ -217,6 +220,28 @@ public class AWSSecurityTokenServiceAsyncClient extends AWSSecurityTokenServiceC
      */
     public AWSSecurityTokenServiceAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, new ClientConfiguration(), executorService);
+    }
+
+    /**
+     * Constructs a new asynchronous client to invoke service methods on
+     * AWSSecurityTokenService using the specified AWS account credentials
+     * provider and client configuration options.
+     *
+     * <p>
+     * All calls made using this new client object are non-blocking, and will immediately
+     * return a Java Future object that the caller can later check to see if the service
+     * call has actually completed.
+     *
+     * @param awsCredentialsProvider
+     *            The AWS credentials provider which will provide credentials
+     *            to authenticate requests with AWS services.
+     * @param clientConfiguration
+     *            Client configuration options (ex: max retry limit, proxy
+     *            settings, etc).
+     */
+    public AWSSecurityTokenServiceAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
+                ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
     }
 
     /**

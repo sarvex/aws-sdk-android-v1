@@ -116,6 +116,10 @@ public class UserPreferenceDemoActivity extends Activity {
 				if (tableStatus.equalsIgnoreCase("ACTIVE")) {
 					DynamoDBManager.insertUsers();
 				}
+			} else if (types[0] == DynamoDBManagerType.LIST_USERS) {
+				if (tableStatus.equalsIgnoreCase("ACTIVE")) {
+					DynamoDBManager.getUserList();
+				}
 			} else if (types[0] == DynamoDBManagerType.CLEAN_UP) {
 				if (tableStatus.equalsIgnoreCase("ACTIVE")) {
 					DynamoDBManager.cleanUp();

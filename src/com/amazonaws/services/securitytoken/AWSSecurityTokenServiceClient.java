@@ -66,6 +66,9 @@ import com.amazonaws.services.securitytoken.model.transform.*;
  * <p>
  * We will refer to Amazon Identity and Access Management using the abbreviated form IAM. All copyrights and legal protections still apply.
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implements AWSSecurityTokenService {
 

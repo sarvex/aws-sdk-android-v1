@@ -60,6 +60,9 @@ import com.amazonaws.services.elasticloadbalancing.model.*;
  * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/UserScenarios.html"> Using Elastic Load Balancing </a> in the
  * <i>Elastic Load Balancing Developer Guide</i> .
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBalancingClient
         implements AmazonElasticLoadBalancingAsync {
@@ -218,6 +221,28 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      */
     public AmazonElasticLoadBalancingAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, new ClientConfiguration(), executorService);
+    }
+
+    /**
+     * Constructs a new asynchronous client to invoke service methods on
+     * AmazonElasticLoadBalancing using the specified AWS account credentials
+     * provider and client configuration options.
+     *
+     * <p>
+     * All calls made using this new client object are non-blocking, and will immediately
+     * return a Java Future object that the caller can later check to see if the service
+     * call has actually completed.
+     *
+     * @param awsCredentialsProvider
+     *            The AWS credentials provider which will provide credentials
+     *            to authenticate requests with AWS services.
+     * @param clientConfiguration
+     *            Client configuration options (ex: max retry limit, proxy
+     *            settings, etc).
+     */
+    public AmazonElasticLoadBalancingAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
+                ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
     }
 
     /**

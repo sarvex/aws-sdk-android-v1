@@ -53,6 +53,9 @@ import com.amazonaws.services.sns.model.transform.*;
  * takes care of tasks such as: cryptographically signing your service requests, retrying requests, and handling error responses. For a list of available
  * SDKs, go to <a href="http://aws.amazon.com/tools/"> Tools for Amazon Web Services </a> .
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS {
 

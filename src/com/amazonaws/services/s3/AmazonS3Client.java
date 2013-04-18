@@ -185,6 +185,9 @@ import com.amazonaws.util.Md5Utils;
  * <a href="http://aws.amazon.com/s3">
  * http://aws.amazon.com/s3</a>
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
@@ -964,16 +967,26 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     /* (non-Javadoc)
      * @see com.amazonaws.services.s3.AmazonS3#getObject(com.amazonaws.services.s3.model.GetObjectRequest, java.io.File)
      */
-    public ObjectMetadata getObject(GetObjectRequest getObjectRequest, File destinationFile)
+    public ObjectMetadata getObject(final GetObjectRequest getObjectRequest, File destinationFile)
             throws AmazonClientException, AmazonServiceException {
         assertParameterNotNull(destinationFile,
                 "The destination file parameter must be specified when downloading an object directly to a file");
 
-        S3Object s3Object = getObject(getObjectRequest);
+        S3Object s3Object = ServiceUtils.retryableDownloadS3ObjectToFile(destinationFile, new ServiceUtils.RetryableS3DownloadTask() {
+
+			@Override
+			public S3Object getS3ObjectStream() {
+				return getObject(getObjectRequest);
+			}
+
+			@Override
+			public boolean needIntegrityCheck() {
+				return getObjectRequest.getRange()== null;
+			}
+        	
+        });
         // getObject can return null if constraints were specified but not met
         if(s3Object==null)return null;
-
-        ServiceUtils.downloadObjectToFile(s3Object, destinationFile,(getObjectRequest.getRange()==null));
 
         return s3Object.getObjectMetadata();
     }

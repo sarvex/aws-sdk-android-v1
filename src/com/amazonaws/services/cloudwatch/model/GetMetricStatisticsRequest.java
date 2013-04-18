@@ -112,7 +112,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     /**
      * The metric statistics to return. For information about specific
      * statistics returned by GetMetricStatistics, go to <a
-     * dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      * <p>
@@ -485,7 +485,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     /**
      * The metric statistics to return. For information about specific
      * statistics returned by GetMetricStatistics, go to <a
-     * dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      * <p>
@@ -494,7 +494,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *
      * @return The metric statistics to return. For information about specific
      *         statistics returned by GetMetricStatistics, go to <a
-     *         dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      */
@@ -509,7 +509,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     /**
      * The metric statistics to return. For information about specific
      * statistics returned by GetMetricStatistics, go to <a
-     * dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      * <p>
@@ -518,7 +518,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *
      * @param statistics The metric statistics to return. For information about specific
      *         statistics returned by GetMetricStatistics, go to <a
-     *         dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      */
@@ -536,7 +536,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     /**
      * The metric statistics to return. For information about specific
      * statistics returned by GetMetricStatistics, go to <a
-     * dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      * <p>
@@ -547,7 +547,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *
      * @param statistics The metric statistics to return. For information about specific
      *         statistics returned by GetMetricStatistics, go to <a
-     *         dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      *
@@ -565,7 +565,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     /**
      * The metric statistics to return. For information about specific
      * statistics returned by GetMetricStatistics, go to <a
-     * dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      * <p>
@@ -576,7 +576,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *
      * @param statistics The metric statistics to return. For information about specific
      *         statistics returned by GetMetricStatistics, go to <a
-     *         dex.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
+     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
      *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
      *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
      *
@@ -689,15 +689,15 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ", ");
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ", ");
-        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ", ");
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ", ");
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ", ");
-        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ", ");
-        if (getStatistics() != null) sb.append("Statistics: " + getStatistics() + ", ");
-        if (getUnit() != null) sb.append("Unit: " + getUnit() + ", ");
+        sb.append("{");    	
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
+        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");    	
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
+        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ",");    	
+        if (getStatistics() != null) sb.append("Statistics: " + getStatistics() + ",");    	
+        if (getUnit() != null) sb.append("Unit: " + getUnit() );
         sb.append("}");
         return sb.toString();
     }

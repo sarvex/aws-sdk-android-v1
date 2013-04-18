@@ -56,6 +56,9 @@ import com.amazonaws.services.ec2.model.transform.*;
  * <p>
  * Visit <a href="http://aws.amazon.com/ec2/"> http://aws.amazon.com/ec2/ </a> for more information.
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2 {
 

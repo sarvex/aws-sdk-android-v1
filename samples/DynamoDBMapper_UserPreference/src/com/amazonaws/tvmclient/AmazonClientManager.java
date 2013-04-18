@@ -22,7 +22,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.demo.userpreferencesom.PropertyLoader;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodb.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
 import android.util.Log;
 

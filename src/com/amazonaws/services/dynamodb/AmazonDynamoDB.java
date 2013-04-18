@@ -27,6 +27,7 @@ import com.amazonaws.services.dynamodb.model.*;
  * Amazon DynamoDB removes traditional scalability limitations on data storage while maintaining low latency and predictable performance.
  * </p>
  */
+@Deprecated
 public interface AmazonDynamoDB {
 
     /**
@@ -82,6 +83,7 @@ public interface AmazonDynamoDB {
      *             available in the given region. See
      *             {@link Region#isServiceSupported(String)}
      * @see Region#getRegion(com.amazonaws.regions.Regions)
+     * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      */
     public void setRegion(Region region) throws java.lang.IllegalArgumentException;    
 	
@@ -159,6 +161,7 @@ public interface AmazonDynamoDB {
      * @return The response from the BatchWriteItem service method, as
      *         returned by AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws InternalServerErrorException
      * @throws ResourceNotFoundException
@@ -190,6 +193,7 @@ public interface AmazonDynamoDB {
      * @return The response from the UpdateItem service method, as returned
      *         by AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws ConditionalCheckFailedException
      * @throws InternalServerErrorException
@@ -225,6 +229,7 @@ public interface AmazonDynamoDB {
      * @return The response from the PutItem service method, as returned by
      *         AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws ConditionalCheckFailedException
      * @throws InternalServerErrorException
@@ -419,6 +424,7 @@ public interface AmazonDynamoDB {
      * @return The response from the DeleteItem service method, as returned
      *         by AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws ConditionalCheckFailedException
      * @throws InternalServerErrorException

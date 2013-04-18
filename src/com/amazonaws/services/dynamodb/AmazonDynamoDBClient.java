@@ -54,7 +54,11 @@ import com.amazonaws.services.dynamodb.model.transform.*;
  * <p>
  * Amazon DynamoDB removes traditional scalability limitations on data storage while maintaining low latency and predictable performance.
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
+@Deprecated
 public class AmazonDynamoDBClient extends AmazonWebServiceClient implements AmazonDynamoDB {
 
     /** Provider for AWS credentials. */
@@ -334,6 +338,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @return The response from the BatchWriteItem service method, as
      *         returned by AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws InternalServerErrorException
      * @throws ResourceNotFoundException
@@ -382,6 +387,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @return The response from the UpdateItem service method, as returned
      *         by AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws ConditionalCheckFailedException
      * @throws InternalServerErrorException
@@ -434,6 +440,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @return The response from the PutItem service method, as returned by
      *         AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws ConditionalCheckFailedException
      * @throws InternalServerErrorException
@@ -730,6 +737,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @return The response from the DeleteItem service method, as returned
      *         by AmazonDynamoDB.
      * 
+     * @throws LimitExceededException
      * @throws ProvisionedThroughputExceededException
      * @throws ConditionalCheckFailedException
      * @throws InternalServerErrorException

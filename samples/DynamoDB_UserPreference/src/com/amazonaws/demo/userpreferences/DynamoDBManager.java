@@ -20,27 +20,27 @@ import java.util.List;
 import java.util.Map;
 
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.services.dynamodb.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodb.model.AttributeAction;
-import com.amazonaws.services.dynamodb.model.AttributeValue;
-import com.amazonaws.services.dynamodb.model.AttributeValueUpdate;
-import com.amazonaws.services.dynamodb.model.CreateTableRequest;
-import com.amazonaws.services.dynamodb.model.DeleteItemRequest;
-import com.amazonaws.services.dynamodb.model.DeleteTableRequest;
-import com.amazonaws.services.dynamodb.model.DescribeTableRequest;
-import com.amazonaws.services.dynamodb.model.DescribeTableResult;
-import com.amazonaws.services.dynamodb.model.GetItemRequest;
-import com.amazonaws.services.dynamodb.model.GetItemResult;
-import com.amazonaws.services.dynamodb.model.Key;
-import com.amazonaws.services.dynamodb.model.KeySchema;
-import com.amazonaws.services.dynamodb.model.KeySchemaElement;
-import com.amazonaws.services.dynamodb.model.ProvisionedThroughput;
-import com.amazonaws.services.dynamodb.model.PutItemRequest;
-import com.amazonaws.services.dynamodb.model.ResourceNotFoundException;
-import com.amazonaws.services.dynamodb.model.ScalarAttributeType;
-import com.amazonaws.services.dynamodb.model.ScanRequest;
-import com.amazonaws.services.dynamodb.model.ScanResult;
-import com.amazonaws.services.dynamodb.model.UpdateItemRequest;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.model.AttributeAction;
+import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
+import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DeleteItemRequest;
+import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DescribeTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DescribeTableResult;
+import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
+import com.amazonaws.services.dynamodbv2.model.GetItemResult;
+import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
+import com.amazonaws.services.dynamodbv2.model.KeyType;
+import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
+import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
+import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
+import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
+import com.amazonaws.services.dynamodbv2.model.ScanRequest;
+import com.amazonaws.services.dynamodbv2.model.ScanResult;
+import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 
 public class DynamoDBManager {
 
@@ -56,14 +56,16 @@ public class DynamoDBManager {
 				.ddb();
 
 		KeySchemaElement kse = new KeySchemaElement().withAttributeName(
+				"userNo").withKeyType(KeyType.HASH);
+		AttributeDefinition ad = new AttributeDefinition().withAttributeName(
 				"userNo").withAttributeType(ScalarAttributeType.N);
-		KeySchema ks = new KeySchema().withHashKeyElement(kse);
 		ProvisionedThroughput pt = new ProvisionedThroughput()
 				.withReadCapacityUnits(10l).withWriteCapacityUnits(5l);
 
 		CreateTableRequest request = new CreateTableRequest()
 				.withTableName(PropertyLoader.getInstance().getTestTableName())
-				.withKeySchema(ks).withProvisionedThroughput(pt);
+				.withKeySchema(kse).withAttributeDefinitions(ad)
+				.withProvisionedThroughput(pt);
 
 		try {
 			ddb.createTable(request);
@@ -169,10 +171,11 @@ public class DynamoDBManager {
 
 		AttributeValue userNoAttr = new AttributeValue().withN(String
 				.valueOf(userNo));
-		Key primaryKey = new Key().withHashKeyElement(userNoAttr);
+		HashMap<String, AttributeValue> keyMap = new HashMap<String, AttributeValue>();
+		keyMap.put("userNo", userNoAttr);
 		GetItemRequest request = new GetItemRequest().withTableName(
 				PropertyLoader.getInstance().getTestTableName()).withKey(
-				primaryKey);
+				keyMap);
 
 		try {
 			GetItemResult result = ddb.getItem(request);
@@ -198,13 +201,14 @@ public class DynamoDBManager {
 		AttributeValue av = new AttributeValue().withS(value);
 		AttributeValueUpdate avu = new AttributeValueUpdate().withValue(av)
 				.withAction(AttributeAction.PUT);
-		Key primaryKey = new Key().withHashKeyElement(targetValue);
+		HashMap<String, AttributeValue> keyMap = new HashMap<String, AttributeValue>();
+		keyMap.put("userNo", targetValue);
 		HashMap<String, AttributeValueUpdate> updates = new HashMap<String, AttributeValueUpdate>();
 		updates.put(key, avu);
 
 		UpdateItemRequest request = new UpdateItemRequest()
 				.withTableName(PropertyLoader.getInstance().getTestTableName())
-				.withKey(primaryKey).withAttributeUpdates(updates);
+				.withKey(keyMap).withAttributeUpdates(updates);
 
 		try {
 			ddb.updateItem(request);
@@ -222,10 +226,11 @@ public class DynamoDBManager {
 		AmazonDynamoDBClient ddb = UserPreferenceDemoActivity.clientManager
 				.ddb();
 
-		Key primaryKey = new Key().withHashKeyElement(targetValue);
+		HashMap<String, AttributeValue> keyMap = new HashMap<String, AttributeValue>();
+		keyMap.put("userNo", targetValue);
 		DeleteItemRequest request = new DeleteItemRequest().withTableName(
 				PropertyLoader.getInstance().getTestTableName()).withKey(
-				primaryKey);
+				keyMap);
 		try {
 			ddb.deleteItem(request);
 		} catch (AmazonServiceException ex) {

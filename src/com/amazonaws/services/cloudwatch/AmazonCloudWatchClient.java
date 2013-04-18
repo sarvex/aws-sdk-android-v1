@@ -100,6 +100,9 @@ import com.amazonaws.services.cloudwatch.model.transform.*;
  * <li> <a href="http://aws.amazon.com/net/"> AWS Windows and .NET Developer Center </a> </li>
  * 
  * </ul>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
 public class AmazonCloudWatchClient extends AmazonWebServiceClient implements AmazonCloudWatch {
 

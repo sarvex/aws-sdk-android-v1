@@ -41,7 +41,11 @@ import com.amazonaws.services.dynamodb.model.*;
  * <p>
  * Amazon DynamoDB removes traditional scalability limitations on data storage while maintaining low latency and predictable performance.
  * </p>
+ * <p>
+ * See our blog to learn more about {@see <a href="http://mobile.awsblog.com/post/Tx31X75XISXHRH8/Managing-Credentials-in-Mobile-Applications">Managing Credentials in Mobile Applications</a>.}
+ * </p>
  */
+@Deprecated
 public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         implements AmazonDynamoDBAsync {
 
@@ -199,6 +203,28 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      */
     public AmazonDynamoDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider, ExecutorService executorService) {
         this(awsCredentialsProvider, new ClientConfiguration(), executorService);
+    }
+
+    /**
+     * Constructs a new asynchronous client to invoke service methods on
+     * AmazonDynamoDB using the specified AWS account credentials
+     * provider and client configuration options.
+     *
+     * <p>
+     * All calls made using this new client object are non-blocking, and will immediately
+     * return a Java Future object that the caller can later check to see if the service
+     * call has actually completed.
+     *
+     * @param awsCredentialsProvider
+     *            The AWS credentials provider which will provide credentials
+     *            to authenticate requests with AWS services.
+     * @param clientConfiguration
+     *            Client configuration options (ex: max retry limit, proxy
+     *            settings, etc).
+     */
+    public AmazonDynamoDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
+                ClientConfiguration clientConfiguration) {
+        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
     }
 
     /**
