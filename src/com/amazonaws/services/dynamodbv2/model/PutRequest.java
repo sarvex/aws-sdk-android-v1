@@ -16,16 +16,36 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Put Request
+ * <p>
+ * Represents a request to perform a <i>PutItem</i> operation on an item.
+ * </p>
  */
 public class PutRequest  implements Serializable  {
 
+    /**
+     * A map of attribute name to attribute values, representing the primary
+     * key of an item to be processed by <i>PutItem</i>. All of the table's
+     * primary key attributes must be specified, and their data types must
+     * match those of the table's key schema. If any attributes are present
+     * in the item which are part of an index key schema for the table, their
+     * types must match the index key schema.
+     */
     private java.util.Map<String,AttributeValue> item;
 
     /**
-     * Returns the value of the Item property for this object.
+     * A map of attribute name to attribute values, representing the primary
+     * key of an item to be processed by <i>PutItem</i>. All of the table's
+     * primary key attributes must be specified, and their data types must
+     * match those of the table's key schema. If any attributes are present
+     * in the item which are part of an index key schema for the table, their
+     * types must match the index key schema.
      *
-     * @return The value of the Item property for this object.
+     * @return A map of attribute name to attribute values, representing the primary
+     *         key of an item to be processed by <i>PutItem</i>. All of the table's
+     *         primary key attributes must be specified, and their data types must
+     *         match those of the table's key schema. If any attributes are present
+     *         in the item which are part of an index key schema for the table, their
+     *         types must match the index key schema.
      */
     public java.util.Map<String,AttributeValue> getItem() {
         
@@ -34,20 +54,40 @@ public class PutRequest  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Item property for this object.
+     * A map of attribute name to attribute values, representing the primary
+     * key of an item to be processed by <i>PutItem</i>. All of the table's
+     * primary key attributes must be specified, and their data types must
+     * match those of the table's key schema. If any attributes are present
+     * in the item which are part of an index key schema for the table, their
+     * types must match the index key schema.
      *
-     * @param item The new value for the Item property for this object.
+     * @param item A map of attribute name to attribute values, representing the primary
+     *         key of an item to be processed by <i>PutItem</i>. All of the table's
+     *         primary key attributes must be specified, and their data types must
+     *         match those of the table's key schema. If any attributes are present
+     *         in the item which are part of an index key schema for the table, their
+     *         types must match the index key schema.
      */
     public void setItem(java.util.Map<String,AttributeValue> item) {
         this.item = item;
     }
     
     /**
-     * Sets the value of the Item property for this object.
+     * A map of attribute name to attribute values, representing the primary
+     * key of an item to be processed by <i>PutItem</i>. All of the table's
+     * primary key attributes must be specified, and their data types must
+     * match those of the table's key schema. If any attributes are present
+     * in the item which are part of an index key schema for the table, their
+     * types must match the index key schema.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param item The new value for the Item property for this object.
+     * @param item A map of attribute name to attribute values, representing the primary
+     *         key of an item to be processed by <i>PutItem</i>. All of the table's
+     *         primary key attributes must be specified, and their data types must
+     *         match those of the table's key schema. If any attributes are present
+     *         in the item which are part of an index key schema for the table, their
+     *         types must match the index key schema.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

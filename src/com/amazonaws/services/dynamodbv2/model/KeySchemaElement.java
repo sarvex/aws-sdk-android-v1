@@ -16,12 +16,27 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Key Schema Element
+ * <p>
+ * Represents a key schema. Specifies the attributes that make up the primary key of a table, or the key attributes of a secondary index.
+ * </p>
  */
 public class KeySchemaElement  implements Serializable  {
 
+    /**
+     * Represents the name of a key attribute.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 255<br/>
+     */
     private String attributeName;
 
+    /**
+     * Represents the attribute data, consisting of the data type and the
+     * attribute value itself.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>HASH, RANGE
+     */
     private String keyType;
 
     /**
@@ -31,38 +46,38 @@ public class KeySchemaElement  implements Serializable  {
     public KeySchemaElement() {}
     
     /**
-     * Returns the value of the AttributeName property for this object.
+     * Represents the name of a key attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @return The value of the AttributeName property for this object.
+     * @return Represents the name of a key attribute.
      */
     public String getAttributeName() {
         return attributeName;
     }
     
     /**
-     * Sets the value of the AttributeName property for this object.
+     * Represents the name of a key attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param attributeName The new value for the AttributeName property for this object.
+     * @param attributeName Represents the name of a key attribute.
      */
     public void setAttributeName(String attributeName) {
         this.attributeName = attributeName;
     }
     
     /**
-     * Sets the value of the AttributeName property for this object.
+     * Represents the name of a key attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param attributeName The new value for the AttributeName property for this object.
+     * @param attributeName Represents the name of a key attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -74,12 +89,14 @@ public class KeySchemaElement  implements Serializable  {
     
     
     /**
-     * Returns the value of the KeyType property for this object.
+     * Represents the attribute data, consisting of the data type and the
+     * attribute value itself.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @return The value of the KeyType property for this object.
+     * @return Represents the attribute data, consisting of the data type and the
+     *         attribute value itself.
      *
      * @see KeyType
      */
@@ -88,12 +105,14 @@ public class KeySchemaElement  implements Serializable  {
     }
     
     /**
-     * Sets the value of the KeyType property for this object.
+     * Represents the attribute data, consisting of the data type and the
+     * attribute value itself.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType The new value for the KeyType property for this object.
+     * @param keyType Represents the attribute data, consisting of the data type and the
+     *         attribute value itself.
      *
      * @see KeyType
      */
@@ -102,14 +121,16 @@ public class KeySchemaElement  implements Serializable  {
     }
     
     /**
-     * Sets the value of the KeyType property for this object.
+     * Represents the attribute data, consisting of the data type and the
+     * attribute value itself.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType The new value for the KeyType property for this object.
+     * @param keyType Represents the attribute data, consisting of the data type and the
+     *         attribute value itself.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -123,12 +144,14 @@ public class KeySchemaElement  implements Serializable  {
     
     
     /**
-     * Sets the value of the KeyType property for this object.
+     * Represents the attribute data, consisting of the data type and the
+     * attribute value itself.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType The new value for the KeyType property for this object.
+     * @param keyType Represents the attribute data, consisting of the data type and the
+     *         attribute value itself.
      *
      * @see KeyType
      */
@@ -137,14 +160,16 @@ public class KeySchemaElement  implements Serializable  {
     }
     
     /**
-     * Sets the value of the KeyType property for this object.
+     * Represents the attribute data, consisting of the data type and the
+     * attribute value itself.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType The new value for the KeyType property for this object.
+     * @param keyType Represents the attribute data, consisting of the data type and the
+     *         attribute value itself.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

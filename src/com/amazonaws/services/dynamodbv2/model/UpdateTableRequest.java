@@ -18,44 +18,77 @@ import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#updateTable(UpdateTableRequest) UpdateTable operation}.
- * 
+ * <p>
+ * Updates the provisioned throughput for the given table. Setting the throughput for a table helps you manage performance and is part of the provisioned
+ * throughput feature of Amazon DynamoDB.
+ * </p>
+ * <p>
+ * The provisioned throughput values can be upgraded or downgraded based on the maximums and minimums listed in the <a
+ * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html"> Limits </a> section in the <i>Amazon DynamoDB Developer
+ * Guide</i> .
+ * </p>
+ * <p>
+ * The table must be in the <code>ACTIVE</code> state for this operation to succeed. <i>UpdateTable</i> is an asynchronous operation; while executing the
+ * operation, the table is in the <code>UPDATING</code> state. While the table is in the <code>UPDATING</code> state, the table still has the provisioned
+ * throughput from before the call. The new provisioned throughput setting is in effect only when the table returns to the <code>ACTIVE</code> state
+ * after the <i>UpdateTable</i> operation.
+ * </p>
+ * <p>
+ * You cannot add, modify or delete local secondary indexes using <i>UpdateTable</i> . Local secondary indexes can only be defined at table creation
+ * time.
+ * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#updateTable(UpdateTableRequest)
  */
 public class UpdateTableRequest extends AmazonWebServiceRequest  implements Serializable  {
 
+    /**
+     * The name of the table to be updated.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String tableName;
 
+    /**
+     * The provisioned throughput settings for the specified table. The
+     * settings can be modified using the <i>UpdateTable</i> operation.
+     * <p>For current minimum and maximum provisioned throughput values, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     */
     private ProvisionedThroughput provisionedThroughput;
 
     /**
-     * Returns the value of the TableName property for this object.
+     * The name of the table to be updated.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the TableName property for this object.
+     * @return The name of the table to be updated.
      */
     public String getTableName() {
         return tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to be updated.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to be updated.
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to be updated.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -63,7 +96,7 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to be updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -75,30 +108,59 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
     
     
     /**
-     * Returns the value of the ProvisionedThroughput property for this
-     * object.
+     * The provisioned throughput settings for the specified table. The
+     * settings can be modified using the <i>UpdateTable</i> operation.
+     * <p>For current minimum and maximum provisioned throughput values, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @return The value of the ProvisionedThroughput property for this object.
+     * @return The provisioned throughput settings for the specified table. The
+     *         settings can be modified using the <i>UpdateTable</i> operation.
+     *         <p>For current minimum and maximum provisioned throughput values, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     *         in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public ProvisionedThroughput getProvisionedThroughput() {
         return provisionedThroughput;
     }
     
     /**
-     * Sets the value of the ProvisionedThroughput property for this object.
+     * The provisioned throughput settings for the specified table. The
+     * settings can be modified using the <i>UpdateTable</i> operation.
+     * <p>For current minimum and maximum provisioned throughput values, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @param provisionedThroughput The new value for the ProvisionedThroughput property for this object.
+     * @param provisionedThroughput The provisioned throughput settings for the specified table. The
+     *         settings can be modified using the <i>UpdateTable</i> operation.
+     *         <p>For current minimum and maximum provisioned throughput values, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     *         in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public void setProvisionedThroughput(ProvisionedThroughput provisionedThroughput) {
         this.provisionedThroughput = provisionedThroughput;
     }
     
     /**
-     * Sets the value of the ProvisionedThroughput property for this object.
+     * The provisioned throughput settings for the specified table. The
+     * settings can be modified using the <i>UpdateTable</i> operation.
+     * <p>For current minimum and maximum provisioned throughput values, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param provisionedThroughput The new value for the ProvisionedThroughput property for this object.
+     * @param provisionedThroughput The provisioned throughput settings for the specified table. The
+     *         settings can be modified using the <i>UpdateTable</i> operation.
+     *         <p>For current minimum and maximum provisioned throughput values, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     *         in the <i>Amazon DynamoDB Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

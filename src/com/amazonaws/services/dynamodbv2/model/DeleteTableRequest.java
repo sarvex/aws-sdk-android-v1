@@ -18,12 +18,41 @@ import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteTable(DeleteTableRequest) DeleteTable operation}.
- * 
+ * <p>
+ * The <i>DeleteTable</i> operation deletes a table and all of its items. After a <i>DeleteTable</i> request, the specified table is in the
+ * <code>DELETING</code> state until Amazon DynamoDB completes the deletion. If the table is in the <code>ACTIVE</code> state, you can delete it. If a
+ * table is in <code>CREATING</code> or <code>UPDATING</code> states, then Amazon DynamoDB returns a
+ * <i>ResourceInUseException</i> . If the specified table does not exist, Amazon DynamoDB returns a <i>ResourceNotFoundException</i>
+ * . If table is already in the <code>DELETING</code> state, no error is returned.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> Amazon DynamoDB might continue to accept data read and write operations, such as GetItem and PutItem, on a table in the DELETING state
+ * until the table deletion is complete.
+ * </p>
+ * <p>
+ * Tables are unique among those associated with the AWS Account issuing the request, and the AWS region that receives the request (such as
+ * dynamodb.us-east-1.amazonaws.com). Each Amazon DynamoDB endpoint is entirely independent. For example, if you have two tables called "MyTable," one in
+ * dynamodb.us-east-1.amazonaws.com and one in dynamodb.us-west-1.amazonaws.com, they are completely independent and do not share any data; deleting one
+ * does not delete the other.
+ * </p>
+ * <p>
+ * When you delete a table, any local secondary indexes on that table are also deleted.
+ * </p>
+ * <p>
+ * Use the <i>DescribeTable</i> API to check the status of the table.
+ * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteTable(DeleteTableRequest)
  */
 public class DeleteTableRequest extends AmazonWebServiceRequest  implements Serializable  {
 
+    /**
+     * The name of the table to delete.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String tableName;
 
     /**
@@ -37,7 +66,7 @@ public class DeleteTableRequest extends AmazonWebServiceRequest  implements Seri
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param tableName
+     * @param tableName The name of the table to delete.
      */
     public DeleteTableRequest(String tableName) {
         this.tableName = tableName;
@@ -46,33 +75,33 @@ public class DeleteTableRequest extends AmazonWebServiceRequest  implements Seri
     
     
     /**
-     * Returns the value of the TableName property for this object.
+     * The name of the table to delete.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the TableName property for this object.
+     * @return The name of the table to delete.
      */
     public String getTableName() {
         return tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to delete.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to delete.
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to delete.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -80,7 +109,7 @@ public class DeleteTableRequest extends AmazonWebServiceRequest  implements Seri
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

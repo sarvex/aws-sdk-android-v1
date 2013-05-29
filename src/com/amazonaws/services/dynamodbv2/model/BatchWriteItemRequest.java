@@ -18,25 +18,165 @@ import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest) BatchWriteItem operation}.
+ * <p>
+ * The <i>BatchWriteItem</i> operation puts or deletes multiple items in one or more tables. A single call to <i>BatchWriteItem</i> can write up to 1 MB
+ * of data, which can comprise as many as 25 put or delete requests. Individual items to be written can be as large as 64 KB.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> BatchWriteItem cannot update items. To update items, use the UpdateItem API.
+ * </p>
+ * <p>
+ * The individual <i>PutItem</i> and <i>DeleteItem</i> operations specified in <i>BatchWriteItem</i> are atomic; however <i>BatchWriteItem</i> as a whole
+ * is not. If any requested operations fail because the table's provisioned throughput is exceeded or an internal processing failure occurs, the failed
+ * operations are returned in the <i>UnprocessedItems</i> response parameter. You can investigate and optionally resend the requests. Typically, you
+ * would call <i>BatchWriteItem</i> in a loop. Each iteration would check for unprocessed items and submit a new <i>BatchWriteItem</i> request with those
+ * unprocessed items until all items have been processed.
+ * </p>
+ * <p>
+ * To write one item, you can use the <i>PutItem</i> operation; to delete one item, you can use the <i>DeleteItem</i> operation.
+ * </p>
+ * <p>
+ * With <i>BatchWriteItem</i> , you can efficiently write or delete large amounts of data, such as from Amazon Elastic MapReduce (EMR), or copy data from
+ * another database into Amazon DynamoDB. In order to improve performance with these large-scale operations, <i>BatchWriteItem</i> does not behave in the
+ * same way as individual <i>PutItem</i> and <i>DeleteItem</i> calls would For example, you cannot specify conditions on individual put and delete
+ * requests, and <i>BatchWriteItem</i> does not return deleted items in the response.
+ * </p>
+ * <p>
+ * If you use a programming language that supports concurrency, such as Java, you can use threads to write items in parallel. Your application must
+ * include the necessary logic to manage the threads.
+ * </p>
+ * <p>
+ * With languages that don't support threading, such as PHP, <i>BatchWriteItem</i> will write or delete the specified items one at a time. In both
+ * situations, <i>BatchWriteItem</i> provides an alternative where the API performs the specified put and delete operations in parallel, giving you the
+ * power of the thread pool approach without having to introduce complexity into your application.
+ * </p>
+ * <p>
+ * Parallel processing reduces latency, but each specified put and delete request consumes the same number of write capacity units whether it is
+ * processed in parallel or not. Delete operations on nonexistent items consume one write capacity unit.
+ * </p>
+ * <p>
+ * If one or more of the following is true, Amazon DynamoDB rejects the entire batch write operation:
+ * </p>
  * 
+ * <ul>
+ * <li> <p>
+ * One or more tables specified in the <i>BatchWriteItem</i> request does not exist.
+ * </p>
+ * </li>
+ * <li> <p>
+ * Primary key attributes specified on an item in the request do not match those in the corresponding table's primary key schema.
+ * </p>
+ * </li>
+ * <li> <p>
+ * You try to perform multiple operations on the same item in the same <i>BatchWriteItem</i> request. For example, you cannot put and delete the same
+ * item in the same <i>BatchWriteItem</i> request.
+ * </p>
+ * </li>
+ * <li> <p>
+ * The total request size exceeds 1 MB.
+ * </p>
+ * </li>
+ * <li> <p>
+ * Any individual item in a batch exceeds 64 KB.
+ * </p>
+ * </li>
+ * 
+ * </ul>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)
  */
 public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements Serializable  {
 
+    /**
+     * A map of one or more table names and, for each table, a list of
+     * operations to be performed (<i>DeleteRequest</i> or
+     * <i>PutRequest</i>). Each element in the map consists of the following:
+     * <ul> <li> <p><i>DeleteRequest</i> - Perform a <i>DeleteItem</i>
+     * operation on the specified item. The item to be deleted is identified
+     * by a <i>Key</i> subelement: <ul> <li> <p><i>Key</i> - A map of primary
+     * key attribute values that uniquely identify the item. Each entry in
+     * this map consists of an attribute name and an attribute value. </li>
+     * </ul> </li> <li> <p><i>PutRequest</i> - Perform a <i>PutItem</i>
+     * operation on the specified item. The item to be put is identified by
+     * an <i>Item</i> subelement: <ul> <li> <p><i>Item</i> - A map of
+     * attributes and their values. Each entry in this map consists of an
+     * attribute name and an attribute value. Attribute values must not be
+     * null; string and binary type attributes must have lengths greater than
+     * zero; and set type attributes must not be empty. Requests that contain
+     * empty values will be rejected with a <i>ValidationException</i>. <p>If
+     * you specify any attributes that are part of an index key, then the
+     * data types for those attributes must match those of the schema in the
+     * table's attribute definition.</li> </ul> </li> </ul>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 25<br/>
+     */
     private java.util.Map<String,java.util.List<WriteRequest>> requestItems;
 
+    /**
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>TOTAL, NONE
+     */
     private String returnConsumedCapacity;
 
+    /**
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>SIZE, NONE
+     */
     private String returnItemCollectionMetrics;
 
     /**
-     * Returns the value of the RequestItems property for this object.
+     * A map of one or more table names and, for each table, a list of
+     * operations to be performed (<i>DeleteRequest</i> or
+     * <i>PutRequest</i>). Each element in the map consists of the following:
+     * <ul> <li> <p><i>DeleteRequest</i> - Perform a <i>DeleteItem</i>
+     * operation on the specified item. The item to be deleted is identified
+     * by a <i>Key</i> subelement: <ul> <li> <p><i>Key</i> - A map of primary
+     * key attribute values that uniquely identify the item. Each entry in
+     * this map consists of an attribute name and an attribute value. </li>
+     * </ul> </li> <li> <p><i>PutRequest</i> - Perform a <i>PutItem</i>
+     * operation on the specified item. The item to be put is identified by
+     * an <i>Item</i> subelement: <ul> <li> <p><i>Item</i> - A map of
+     * attributes and their values. Each entry in this map consists of an
+     * attribute name and an attribute value. Attribute values must not be
+     * null; string and binary type attributes must have lengths greater than
+     * zero; and set type attributes must not be empty. Requests that contain
+     * empty values will be rejected with a <i>ValidationException</i>. <p>If
+     * you specify any attributes that are part of an index key, then the
+     * data types for those attributes must match those of the schema in the
+     * table's attribute definition.</li> </ul> </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 25<br/>
      *
-     * @return The value of the RequestItems property for this object.
+     * @return A map of one or more table names and, for each table, a list of
+     *         operations to be performed (<i>DeleteRequest</i> or
+     *         <i>PutRequest</i>). Each element in the map consists of the following:
+     *         <ul> <li> <p><i>DeleteRequest</i> - Perform a <i>DeleteItem</i>
+     *         operation on the specified item. The item to be deleted is identified
+     *         by a <i>Key</i> subelement: <ul> <li> <p><i>Key</i> - A map of primary
+     *         key attribute values that uniquely identify the item. Each entry in
+     *         this map consists of an attribute name and an attribute value. </li>
+     *         </ul> </li> <li> <p><i>PutRequest</i> - Perform a <i>PutItem</i>
+     *         operation on the specified item. The item to be put is identified by
+     *         an <i>Item</i> subelement: <ul> <li> <p><i>Item</i> - A map of
+     *         attributes and their values. Each entry in this map consists of an
+     *         attribute name and an attribute value. Attribute values must not be
+     *         null; string and binary type attributes must have lengths greater than
+     *         zero; and set type attributes must not be empty. Requests that contain
+     *         empty values will be rejected with a <i>ValidationException</i>. <p>If
+     *         you specify any attributes that are part of an index key, then the
+     *         data types for those attributes must match those of the schema in the
+     *         table's attribute definition.</li> </ul> </li> </ul>
      */
     public java.util.Map<String,java.util.List<WriteRequest>> getRequestItems() {
         
@@ -45,26 +185,98 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Sets the value of the RequestItems property for this object.
+     * A map of one or more table names and, for each table, a list of
+     * operations to be performed (<i>DeleteRequest</i> or
+     * <i>PutRequest</i>). Each element in the map consists of the following:
+     * <ul> <li> <p><i>DeleteRequest</i> - Perform a <i>DeleteItem</i>
+     * operation on the specified item. The item to be deleted is identified
+     * by a <i>Key</i> subelement: <ul> <li> <p><i>Key</i> - A map of primary
+     * key attribute values that uniquely identify the item. Each entry in
+     * this map consists of an attribute name and an attribute value. </li>
+     * </ul> </li> <li> <p><i>PutRequest</i> - Perform a <i>PutItem</i>
+     * operation on the specified item. The item to be put is identified by
+     * an <i>Item</i> subelement: <ul> <li> <p><i>Item</i> - A map of
+     * attributes and their values. Each entry in this map consists of an
+     * attribute name and an attribute value. Attribute values must not be
+     * null; string and binary type attributes must have lengths greater than
+     * zero; and set type attributes must not be empty. Requests that contain
+     * empty values will be rejected with a <i>ValidationException</i>. <p>If
+     * you specify any attributes that are part of an index key, then the
+     * data types for those attributes must match those of the schema in the
+     * table's attribute definition.</li> </ul> </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 25<br/>
      *
-     * @param requestItems The new value for the RequestItems property for this object.
+     * @param requestItems A map of one or more table names and, for each table, a list of
+     *         operations to be performed (<i>DeleteRequest</i> or
+     *         <i>PutRequest</i>). Each element in the map consists of the following:
+     *         <ul> <li> <p><i>DeleteRequest</i> - Perform a <i>DeleteItem</i>
+     *         operation on the specified item. The item to be deleted is identified
+     *         by a <i>Key</i> subelement: <ul> <li> <p><i>Key</i> - A map of primary
+     *         key attribute values that uniquely identify the item. Each entry in
+     *         this map consists of an attribute name and an attribute value. </li>
+     *         </ul> </li> <li> <p><i>PutRequest</i> - Perform a <i>PutItem</i>
+     *         operation on the specified item. The item to be put is identified by
+     *         an <i>Item</i> subelement: <ul> <li> <p><i>Item</i> - A map of
+     *         attributes and their values. Each entry in this map consists of an
+     *         attribute name and an attribute value. Attribute values must not be
+     *         null; string and binary type attributes must have lengths greater than
+     *         zero; and set type attributes must not be empty. Requests that contain
+     *         empty values will be rejected with a <i>ValidationException</i>. <p>If
+     *         you specify any attributes that are part of an index key, then the
+     *         data types for those attributes must match those of the schema in the
+     *         table's attribute definition.</li> </ul> </li> </ul>
      */
     public void setRequestItems(java.util.Map<String,java.util.List<WriteRequest>> requestItems) {
         this.requestItems = requestItems;
     }
     
     /**
-     * Sets the value of the RequestItems property for this object.
+     * A map of one or more table names and, for each table, a list of
+     * operations to be performed (<i>DeleteRequest</i> or
+     * <i>PutRequest</i>). Each element in the map consists of the following:
+     * <ul> <li> <p><i>DeleteRequest</i> - Perform a <i>DeleteItem</i>
+     * operation on the specified item. The item to be deleted is identified
+     * by a <i>Key</i> subelement: <ul> <li> <p><i>Key</i> - A map of primary
+     * key attribute values that uniquely identify the item. Each entry in
+     * this map consists of an attribute name and an attribute value. </li>
+     * </ul> </li> <li> <p><i>PutRequest</i> - Perform a <i>PutItem</i>
+     * operation on the specified item. The item to be put is identified by
+     * an <i>Item</i> subelement: <ul> <li> <p><i>Item</i> - A map of
+     * attributes and their values. Each entry in this map consists of an
+     * attribute name and an attribute value. Attribute values must not be
+     * null; string and binary type attributes must have lengths greater than
+     * zero; and set type attributes must not be empty. Requests that contain
+     * empty values will be rejected with a <i>ValidationException</i>. <p>If
+     * you specify any attributes that are part of an index key, then the
+     * data types for those attributes must match those of the schema in the
+     * table's attribute definition.</li> </ul> </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 25<br/>
      *
-     * @param requestItems The new value for the RequestItems property for this object.
+     * @param requestItems A map of one or more table names and, for each table, a list of
+     *         operations to be performed (<i>DeleteRequest</i> or
+     *         <i>PutRequest</i>). Each element in the map consists of the following:
+     *         <ul> <li> <p><i>DeleteRequest</i> - Perform a <i>DeleteItem</i>
+     *         operation on the specified item. The item to be deleted is identified
+     *         by a <i>Key</i> subelement: <ul> <li> <p><i>Key</i> - A map of primary
+     *         key attribute values that uniquely identify the item. Each entry in
+     *         this map consists of an attribute name and an attribute value. </li>
+     *         </ul> </li> <li> <p><i>PutRequest</i> - Perform a <i>PutItem</i>
+     *         operation on the specified item. The item to be put is identified by
+     *         an <i>Item</i> subelement: <ul> <li> <p><i>Item</i> - A map of
+     *         attributes and their values. Each entry in this map consists of an
+     *         attribute name and an attribute value. Attribute values must not be
+     *         null; string and binary type attributes must have lengths greater than
+     *         zero; and set type attributes must not be empty. Requests that contain
+     *         empty values will be rejected with a <i>ValidationException</i>. <p>If
+     *         you specify any attributes that are part of an index key, then the
+     *         data types for those attributes must match those of the schema in the
+     *         table's attribute definition.</li> </ul> </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -75,13 +287,16 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Returns the value of the ReturnConsumedCapacity property for this
-     * object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @return The value of the ReturnConsumedCapacity property for this object.
+     * @return If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -90,12 +305,16 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -104,14 +323,18 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -125,12 +348,16 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -139,14 +366,18 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -159,13 +390,18 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Returns the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @return The value of the ReturnItemCollectionMetrics property for this object.
+     * @return If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -174,14 +410,18 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -190,16 +430,20 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -213,14 +457,18 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -229,16 +477,20 @@ public class BatchWriteItemRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

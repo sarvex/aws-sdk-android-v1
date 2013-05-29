@@ -18,22 +18,111 @@ import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteItem(DeleteItemRequest) DeleteItem operation}.
- * 
+ * <p>
+ * Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the item if it exists, or if it has an
+ * expected attribute value.
+ * </p>
+ * <p>
+ * In addition to deleting an item, you can also return the item's attribute values in the same operation, using the <i>ReturnValues</i> parameter.
+ * </p>
+ * <p>
+ * Unless you specify conditions, the <i>DeleteItem</i> is an idempotent operation; running it multiple times on the same item or attribute does
+ * <i>not</i> result in an error response.
+ * </p>
+ * <p>
+ * Conditional deletes are useful for only deleting items if specific conditions are met. If those conditions are met, Amazon DynamoDB performs the
+ * delete. Otherwise, the item is not deleted.
+ * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteItem(DeleteItemRequest)
  */
 public class DeleteItemRequest extends AmazonWebServiceRequest  implements Serializable  {
 
+    /**
+     * The name of the table from which to delete the item.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String tableName;
 
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
+     */
     private java.util.Map<String,AttributeValue> key;
 
+    /**
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>DeleteItem</i>operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
+     */
     private java.util.Map<String,ExpectedAttributeValue> expected;
 
+    /**
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     * values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     * not specified, or if its value is <code>NONE</code>, then nothing is
+     * returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - The content of the old item is returned.
+     * </li> </ul>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
+     */
     private String returnValues;
 
+    /**
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>TOTAL, NONE
+     */
     private String returnConsumedCapacity;
 
+    /**
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>SIZE, NONE
+     */
     private String returnItemCollectionMetrics;
 
     /**
@@ -47,8 +136,9 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param tableName
-     * @param key
+     * @param tableName The name of the table from which to delete the item.
+     * @param key A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
      */
     public DeleteItemRequest(String tableName, java.util.Map<String,AttributeValue> key) {
         this.tableName = tableName;
@@ -58,33 +148,33 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     
     
     /**
-     * Returns the value of the TableName property for this object.
+     * The name of the table from which to delete the item.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the TableName property for this object.
+     * @return The name of the table from which to delete the item.
      */
     public String getTableName() {
         return tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table from which to delete the item.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table from which to delete the item.
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table from which to delete the item.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -92,7 +182,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table from which to delete the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -104,9 +194,11 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     
     
     /**
-     * Returns the value of the Key property for this object.
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
      *
-     * @return The value of the Key property for this object.
+     * @return A map of attribute names to <i>AttributeValue</i> objects,
+     *         representing the primary key of the item to delete.
      */
     public java.util.Map<String,AttributeValue> getKey() {
         
@@ -115,20 +207,24 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the Key property for this object.
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
      *
-     * @param key The new value for the Key property for this object.
+     * @param key A map of attribute names to <i>AttributeValue</i> objects,
+     *         representing the primary key of the item to delete.
      */
     public void setKey(java.util.Map<String,AttributeValue> key) {
         this.key = key;
     }
     
     /**
-     * Sets the value of the Key property for this object.
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param key The new value for the Key property for this object.
+     * @param key A map of attribute names to <i>AttributeValue</i> objects,
+     *         representing the primary key of the item to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -139,9 +235,73 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Returns the value of the Expected property for this object.
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>DeleteItem</i>operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
      *
-     * @return The value of the Expected property for this object.
+     * @return A map of attribute/condition pairs. This is the conditional block for
+     *         the <i>DeleteItem</i>operation. All the conditions must be met for the
+     *         operation to succeed. <p><i>Expected</i> allows you to provide an
+     *         attribute name, and whether or not Amazon DynamoDB should check to see
+     *         if the attribute value already exists; or if the attribute value
+     *         exists and has a particular value before changing it. <p>Each item in
+     *         <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     *         check, along with the following: <ul> <li> <p><i>Value</i> - The
+     *         attribute value for Amazon DynamoDB to check. </li> <li>
+     *         <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     *         attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     *         value already exists in the table. If it is found, then the operation
+     *         succeeds. If it is not found, the operation fails with a
+     *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     *         value does <i>not</i> exist in the table. If in fact the value does
+     *         not exist, then the assumption is valid and the operation succeeds. If
+     *         the value is found, despite the assumption that it does not exist, the
+     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     *         the attribute exists: You don't have to set <i>Exists</i> to
+     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     *         value to exist, but don't specify what that value is.) </li> <li>
+     *         <p><i>Exists</i> is <code>false</code> but you also specify a
+     *         <i>Value</i>. (You cannot expect an attribute to have a value, while
+     *         also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     *         specify more than one condition for <i>Exists</i>, then all of the
+     *         conditions must evaluate to true. (In other words, the conditions are
+     *         ANDed together.) Otherwise, the conditional operation will fail.
      */
     public java.util.Map<String,ExpectedAttributeValue> getExpected() {
         
@@ -150,20 +310,148 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the Expected property for this object.
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>DeleteItem</i>operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
      *
-     * @param expected The new value for the Expected property for this object.
+     * @param expected A map of attribute/condition pairs. This is the conditional block for
+     *         the <i>DeleteItem</i>operation. All the conditions must be met for the
+     *         operation to succeed. <p><i>Expected</i> allows you to provide an
+     *         attribute name, and whether or not Amazon DynamoDB should check to see
+     *         if the attribute value already exists; or if the attribute value
+     *         exists and has a particular value before changing it. <p>Each item in
+     *         <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     *         check, along with the following: <ul> <li> <p><i>Value</i> - The
+     *         attribute value for Amazon DynamoDB to check. </li> <li>
+     *         <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     *         attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     *         value already exists in the table. If it is found, then the operation
+     *         succeeds. If it is not found, the operation fails with a
+     *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     *         value does <i>not</i> exist in the table. If in fact the value does
+     *         not exist, then the assumption is valid and the operation succeeds. If
+     *         the value is found, despite the assumption that it does not exist, the
+     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     *         the attribute exists: You don't have to set <i>Exists</i> to
+     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     *         value to exist, but don't specify what that value is.) </li> <li>
+     *         <p><i>Exists</i> is <code>false</code> but you also specify a
+     *         <i>Value</i>. (You cannot expect an attribute to have a value, while
+     *         also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     *         specify more than one condition for <i>Exists</i>, then all of the
+     *         conditions must evaluate to true. (In other words, the conditions are
+     *         ANDed together.) Otherwise, the conditional operation will fail.
      */
     public void setExpected(java.util.Map<String,ExpectedAttributeValue> expected) {
         this.expected = expected;
     }
     
     /**
-     * Sets the value of the Expected property for this object.
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>DeleteItem</i>operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param expected The new value for the Expected property for this object.
+     * @param expected A map of attribute/condition pairs. This is the conditional block for
+     *         the <i>DeleteItem</i>operation. All the conditions must be met for the
+     *         operation to succeed. <p><i>Expected</i> allows you to provide an
+     *         attribute name, and whether or not Amazon DynamoDB should check to see
+     *         if the attribute value already exists; or if the attribute value
+     *         exists and has a particular value before changing it. <p>Each item in
+     *         <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     *         check, along with the following: <ul> <li> <p><i>Value</i> - The
+     *         attribute value for Amazon DynamoDB to check. </li> <li>
+     *         <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     *         attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     *         value already exists in the table. If it is found, then the operation
+     *         succeeds. If it is not found, the operation fails with a
+     *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     *         value does <i>not</i> exist in the table. If in fact the value does
+     *         not exist, then the assumption is valid and the operation succeeds. If
+     *         the value is found, despite the assumption that it does not exist, the
+     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     *         the attribute exists: You don't have to set <i>Exists</i> to
+     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     *         value to exist, but don't specify what that value is.) </li> <li>
+     *         <p><i>Exists</i> is <code>false</code> but you also specify a
+     *         <i>Value</i>. (You cannot expect an attribute to have a value, while
+     *         also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     *         specify more than one condition for <i>Exists</i>, then all of the
+     *         conditions must evaluate to true. (In other words, the conditions are
+     *         ANDed together.) Otherwise, the conditional operation will fail.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -174,12 +462,24 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Returns the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     * values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     * not specified, or if its value is <code>NONE</code>, then nothing is
+     * returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - The content of the old item is returned.
+     * </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @return The value of the ReturnValues property for this object.
+     * @return Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     *         values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     *         not specified, or if its value is <code>NONE</code>, then nothing is
+     *         returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     *         <p><code>ALL_OLD</code> - The content of the old item is returned.
+     *         </li> </ul>
      *
      * @see ReturnValue
      */
@@ -188,12 +488,24 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     * values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     * not specified, or if its value is <code>NONE</code>, then nothing is
+     * returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - The content of the old item is returned.
+     * </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     *         values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     *         not specified, or if its value is <code>NONE</code>, then nothing is
+     *         returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     *         <p><code>ALL_OLD</code> - The content of the old item is returned.
+     *         </li> </ul>
      *
      * @see ReturnValue
      */
@@ -202,14 +514,26 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     * values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     * not specified, or if its value is <code>NONE</code>, then nothing is
+     * returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - The content of the old item is returned.
+     * </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     *         values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     *         not specified, or if its value is <code>NONE</code>, then nothing is
+     *         returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     *         <p><code>ALL_OLD</code> - The content of the old item is returned.
+     *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -223,12 +547,24 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     * values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     * not specified, or if its value is <code>NONE</code>, then nothing is
+     * returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - The content of the old item is returned.
+     * </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     *         values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     *         not specified, or if its value is <code>NONE</code>, then nothing is
+     *         returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     *         <p><code>ALL_OLD</code> - The content of the old item is returned.
+     *         </li> </ul>
      *
      * @see ReturnValue
      */
@@ -237,14 +573,26 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     * values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     * not specified, or if its value is <code>NONE</code>, then nothing is
+     * returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - The content of the old item is returned.
+     * </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were deleted. For <i>DeleteItem</i>, the valid
+     *         values are: <ul> <li> <p><code>NONE</code> - If <i>ReturnValues</i> is
+     *         not specified, or if its value is <code>NONE</code>, then nothing is
+     *         returned. (This is the default for <i>ReturnValues</i>.) </li> <li>
+     *         <p><code>ALL_OLD</code> - The content of the old item is returned.
+     *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -257,13 +605,16 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Returns the value of the ReturnConsumedCapacity property for this
-     * object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @return The value of the ReturnConsumedCapacity property for this object.
+     * @return If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -272,12 +623,16 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -286,14 +641,18 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -307,12 +666,16 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -321,14 +684,18 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -341,13 +708,18 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Returns the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @return The value of the ReturnItemCollectionMetrics property for this object.
+     * @return If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -356,14 +728,18 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -372,16 +748,20 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -395,14 +775,18 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -411,16 +795,20 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

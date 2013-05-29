@@ -16,47 +16,61 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Attribute Definition
+ * <p>
+ * Specifies an attribute for describing the key schema for the table and indexes.
+ * </p>
  */
 public class AttributeDefinition  implements Serializable  {
 
+    /**
+     * A name for the attribute.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 255<br/>
+     */
     private String attributeName;
 
+    /**
+     * The data type for the attribute.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>S, N, B
+     */
     private String attributeType;
 
     /**
-     * Returns the value of the AttributeName property for this object.
+     * A name for the attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @return The value of the AttributeName property for this object.
+     * @return A name for the attribute.
      */
     public String getAttributeName() {
         return attributeName;
     }
     
     /**
-     * Sets the value of the AttributeName property for this object.
+     * A name for the attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param attributeName The new value for the AttributeName property for this object.
+     * @param attributeName A name for the attribute.
      */
     public void setAttributeName(String attributeName) {
         this.attributeName = attributeName;
     }
     
     /**
-     * Sets the value of the AttributeName property for this object.
+     * A name for the attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param attributeName The new value for the AttributeName property for this object.
+     * @param attributeName A name for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -68,12 +82,12 @@ public class AttributeDefinition  implements Serializable  {
     
     
     /**
-     * Returns the value of the AttributeType property for this object.
+     * The data type for the attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>S, N, B
      *
-     * @return The value of the AttributeType property for this object.
+     * @return The data type for the attribute.
      *
      * @see ScalarAttributeType
      */
@@ -82,12 +96,12 @@ public class AttributeDefinition  implements Serializable  {
     }
     
     /**
-     * Sets the value of the AttributeType property for this object.
+     * The data type for the attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>S, N, B
      *
-     * @param attributeType The new value for the AttributeType property for this object.
+     * @param attributeType The data type for the attribute.
      *
      * @see ScalarAttributeType
      */
@@ -96,14 +110,14 @@ public class AttributeDefinition  implements Serializable  {
     }
     
     /**
-     * Sets the value of the AttributeType property for this object.
+     * The data type for the attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>S, N, B
      *
-     * @param attributeType The new value for the AttributeType property for this object.
+     * @param attributeType The data type for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -117,12 +131,12 @@ public class AttributeDefinition  implements Serializable  {
     
     
     /**
-     * Sets the value of the AttributeType property for this object.
+     * The data type for the attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>S, N, B
      *
-     * @param attributeType The new value for the AttributeType property for this object.
+     * @param attributeType The data type for the attribute.
      *
      * @see ScalarAttributeType
      */
@@ -131,14 +145,14 @@ public class AttributeDefinition  implements Serializable  {
     }
     
     /**
-     * Sets the value of the AttributeType property for this object.
+     * The data type for the attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>S, N, B
      *
-     * @param attributeType The new value for the AttributeType property for this object.
+     * @param attributeType The data type for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

@@ -340,15 +340,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         HandlerChainFactory chainFactory = new HandlerChainFactory();
         requestHandlers.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/s3/request.handlers"));
-        System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
-        try {
-            org.xml.sax.XMLReader reader = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
-        }
-        catch ( org.xml.sax.SAXException e ) {
-            log.warn("Unable to load XMLReader " + e.getMessage(), e);
-        }
     }
-    
+
     /* (non-Javadoc)
      * @see com.amazonaws.AmazonWebServiceClient#getServiceAbbreviation()
      */
@@ -974,16 +967,16 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
         S3Object s3Object = ServiceUtils.retryableDownloadS3ObjectToFile(destinationFile, new ServiceUtils.RetryableS3DownloadTask() {
 
-			@Override
-			public S3Object getS3ObjectStream() {
-				return getObject(getObjectRequest);
-			}
+            @Override
+            public S3Object getS3ObjectStream() {
+                return getObject(getObjectRequest);
+            }
 
-			@Override
-			public boolean needIntegrityCheck() {
-				return getObjectRequest.getRange()== null;
-			}
-        	
+            @Override
+            public boolean needIntegrityCheck() {
+                return getObjectRequest.getRange()== null;
+            }
+
         });
         // getObject can return null if constraints were specified but not met
         if(s3Object==null)return null;
@@ -1199,6 +1192,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         result.setServerSideEncryption(returnedMetadata.getServerSideEncryption());
         result.setExpirationTime(returnedMetadata.getExpirationTime());
         result.setExpirationTimeRuleId(returnedMetadata.getExpirationTimeRuleId());
+        result.setContentMd5(contentMd5);
 
         return result;
     }
@@ -2540,9 +2534,9 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
     protected Signer createSigner(Request<?> request, String bucketName, String key) {
         String resourcePath =
-            "/" +
-            ((bucketName != null) ? bucketName + "/" : "") +
-            ((key != null) ? ServiceUtils.urlEncode(key) : "");
+                "/" +
+                ((bucketName != null) ? bucketName + "/" : "") +
+                ((key != null) ? key : "");
 
         return new S3Signer(request.getHttpMethod().toString(), resourcePath);
     }
@@ -2915,18 +2909,12 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
              && bucketNameUtils.isDNSBucketName(bucketName)
              && !validIP(endpoint.getHost()) ) {
             request.setEndpoint(convertToVirtualHostEndpoint(bucketName));
-            request.setResourcePath(ServiceUtils.urlEncode(key));
+            request.setResourcePath(key);
         } else {
             request.setEndpoint(endpoint);
 
             if (bucketName != null) {
-                /*
-                 * We don't URL encode the bucket name, since it shouldn't
-                 * contain any characters that need to be encoded based on
-                 * Amazon S3's naming restrictions.
-                 */
-                request.setResourcePath(bucketName + "/"
-                        + (key != null ? ServiceUtils.urlEncode(key) : ""));
+                request.setResourcePath(bucketName + "/" + (key != null ? key : ""));
             }
         }
 

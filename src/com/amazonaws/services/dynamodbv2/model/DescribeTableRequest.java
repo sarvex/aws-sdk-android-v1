@@ -18,42 +18,52 @@ import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#describeTable(DescribeTableRequest) DescribeTable operation}.
- * 
+ * <p>
+ * Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the
+ * table.
+ * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#describeTable(DescribeTableRequest)
  */
 public class DescribeTableRequest extends AmazonWebServiceRequest  implements Serializable  {
 
+    /**
+     * The name of the table to describe.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String tableName;
 
     /**
-     * Returns the value of the TableName property for this object.
+     * The name of the table to describe.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the TableName property for this object.
+     * @return The name of the table to describe.
      */
     public String getTableName() {
         return tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to describe.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to describe.
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to describe.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -61,7 +71,7 @@ public class DescribeTableRequest extends AmazonWebServiceRequest  implements Se
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

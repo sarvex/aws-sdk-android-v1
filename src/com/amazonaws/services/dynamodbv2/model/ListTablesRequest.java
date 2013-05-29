@@ -18,48 +18,83 @@ import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#listTables(ListTablesRequest) ListTables operation}.
- * 
+ * <p>
+ * Returns an array of all the tables associated with the current account and endpoint.
+ * </p>
+ * <p>
+ * Each Amazon DynamoDB endpoint is entirely independent. For example, if you have two tables called "MyTable," one in
+ * <i>dynamodb.us-east-1.amazonaws.com</i> and one in <i>dynamodb.us-west-1.amazonaws.com</i> , they are completely independent and do not share any
+ * data. The <i>ListTables</i> operation returns all of the table names associated with the account making the request, for the endpoint that receives
+ * the request.
+ * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#listTables(ListTablesRequest)
  */
 public class ListTablesRequest extends AmazonWebServiceRequest  implements Serializable  {
 
+    /**
+     * The name of the table that starts the list. If you already ran a
+     * <i>ListTables</i> operation and received a
+     * <i>LastEvaluatedTableName</i> value in the response, use that value
+     * here to continue the list.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String exclusiveStartTableName;
 
+    /**
+     * A maximum number of table names to return.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Range: </b>1 - 100<br/>
+     */
     private Integer limit;
 
     /**
-     * Returns the value of the ExclusiveStartTableName property for this
-     * object.
+     * The name of the table that starts the list. If you already ran a
+     * <i>ListTables</i> operation and received a
+     * <i>LastEvaluatedTableName</i> value in the response, use that value
+     * here to continue the list.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the ExclusiveStartTableName property for this object.
+     * @return The name of the table that starts the list. If you already ran a
+     *         <i>ListTables</i> operation and received a
+     *         <i>LastEvaluatedTableName</i> value in the response, use that value
+     *         here to continue the list.
      */
     public String getExclusiveStartTableName() {
         return exclusiveStartTableName;
     }
     
     /**
-     * Sets the value of the ExclusiveStartTableName property for this
-     * object.
+     * The name of the table that starts the list. If you already ran a
+     * <i>ListTables</i> operation and received a
+     * <i>LastEvaluatedTableName</i> value in the response, use that value
+     * here to continue the list.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param exclusiveStartTableName The new value for the ExclusiveStartTableName property for this
-     *         object.
+     * @param exclusiveStartTableName The name of the table that starts the list. If you already ran a
+     *         <i>ListTables</i> operation and received a
+     *         <i>LastEvaluatedTableName</i> value in the response, use that value
+     *         here to continue the list.
      */
     public void setExclusiveStartTableName(String exclusiveStartTableName) {
         this.exclusiveStartTableName = exclusiveStartTableName;
     }
     
     /**
-     * Sets the value of the ExclusiveStartTableName property for this
-     * object.
+     * The name of the table that starts the list. If you already ran a
+     * <i>ListTables</i> operation and received a
+     * <i>LastEvaluatedTableName</i> value in the response, use that value
+     * here to continue the list.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -67,8 +102,10 @@ public class ListTablesRequest extends AmazonWebServiceRequest  implements Seria
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param exclusiveStartTableName The new value for the ExclusiveStartTableName property for this
-     *         object.
+     * @param exclusiveStartTableName The name of the table that starts the list. If you already ran a
+     *         <i>ListTables</i> operation and received a
+     *         <i>LastEvaluatedTableName</i> value in the response, use that value
+     *         here to continue the list.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -80,38 +117,38 @@ public class ListTablesRequest extends AmazonWebServiceRequest  implements Seria
     
     
     /**
-     * Returns the value of the Limit property for this object.
+     * A maximum number of table names to return.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 100<br/>
      *
-     * @return The value of the Limit property for this object.
+     * @return A maximum number of table names to return.
      */
     public Integer getLimit() {
         return limit;
     }
     
     /**
-     * Sets the value of the Limit property for this object.
+     * A maximum number of table names to return.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 100<br/>
      *
-     * @param limit The new value for the Limit property for this object.
+     * @param limit A maximum number of table names to return.
      */
     public void setLimit(Integer limit) {
         this.limit = limit;
     }
     
     /**
-     * Sets the value of the Limit property for this object.
+     * A maximum number of table names to return.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 100<br/>
      *
-     * @param limit The new value for the Limit property for this object.
+     * @param limit A maximum number of table names to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

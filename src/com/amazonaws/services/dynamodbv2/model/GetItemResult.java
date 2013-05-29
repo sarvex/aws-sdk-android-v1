@@ -16,18 +16,34 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Get Item Result
+ * <p>
+ * Represents the output of a <i>GetItem</i> operation.
+ * </p>
  */
 public class GetItemResult  implements Serializable  {
 
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects, as
+     * specified by <i>AttributesToGet</i>.
+     */
     private java.util.Map<String,AttributeValue> item;
 
+    /**
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     */
     private ConsumedCapacity consumedCapacity;
 
     /**
-     * Returns the value of the Item property for this object.
+     * A map of attribute names to <i>AttributeValue</i> objects, as
+     * specified by <i>AttributesToGet</i>.
      *
-     * @return The value of the Item property for this object.
+     * @return A map of attribute names to <i>AttributeValue</i> objects, as
+     *         specified by <i>AttributesToGet</i>.
      */
     public java.util.Map<String,AttributeValue> getItem() {
         
@@ -36,20 +52,24 @@ public class GetItemResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Item property for this object.
+     * A map of attribute names to <i>AttributeValue</i> objects, as
+     * specified by <i>AttributesToGet</i>.
      *
-     * @param item The new value for the Item property for this object.
+     * @param item A map of attribute names to <i>AttributeValue</i> objects, as
+     *         specified by <i>AttributesToGet</i>.
      */
     public void setItem(java.util.Map<String,AttributeValue> item) {
         this.item = item;
     }
     
     /**
-     * Sets the value of the Item property for this object.
+     * A map of attribute names to <i>AttributeValue</i> objects, as
+     * specified by <i>AttributesToGet</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param item The new value for the Item property for this object.
+     * @param item A map of attribute names to <i>AttributeValue</i> objects, as
+     *         specified by <i>AttributesToGet</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -60,29 +80,59 @@ public class GetItemResult  implements Serializable  {
     }
     
     /**
-     * Returns the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @return The value of the ConsumedCapacity property for this object.
+     * @return The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public ConsumedCapacity getConsumedCapacity() {
         return consumedCapacity;
     }
     
     /**
-     * Sets the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @param consumedCapacity The new value for the ConsumedCapacity property for this object.
+     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public void setConsumedCapacity(ConsumedCapacity consumedCapacity) {
         this.consumedCapacity = consumedCapacity;
     }
     
     /**
-     * Sets the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param consumedCapacity The new value for the ConsumedCapacity property for this object.
+     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

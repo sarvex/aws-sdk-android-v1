@@ -16,21 +16,59 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Projection
+ * <p>
+ * Represents attributes that are copied (projected) from the table into the index. These are in addition to the primary key attributes and index key
+ * attributes, which are automatically projected.
+ * </p>
  */
 public class Projection  implements Serializable  {
 
+    /**
+     * Represents the set of attributes that are projected into the index:
+     * <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     * are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     * Only the specified table attributes are projected into the index. The
+     * list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     * <li> <p><code>ALL</code> - All of the table attributes are projected
+     * into the index. </li> </ul>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ALL, KEYS_ONLY, INCLUDE
+     */
     private String projectionType;
 
+    /**
+     * Represents the non-key attribute names which will be projected into
+     * the index. <p>The total count of attributes specified in
+     * <i>NonKeyAttributes</i>, summed across all of the local secondary
+     * indexes, must not exceed 20. If you project the same attribute into
+     * two different indexes, this counts as two distinct attributes when
+     * determining the total.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 20<br/>
+     */
     private java.util.List<String> nonKeyAttributes;
 
     /**
-     * Returns the value of the ProjectionType property for this object.
+     * Represents the set of attributes that are projected into the index:
+     * <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     * are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     * Only the specified table attributes are projected into the index. The
+     * list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     * <li> <p><code>ALL</code> - All of the table attributes are projected
+     * into the index. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL, KEYS_ONLY, INCLUDE
      *
-     * @return The value of the ProjectionType property for this object.
+     * @return Represents the set of attributes that are projected into the index:
+     *         <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     *         are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     *         Only the specified table attributes are projected into the index. The
+     *         list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     *         <li> <p><code>ALL</code> - All of the table attributes are projected
+     *         into the index. </li> </ul>
      *
      * @see ProjectionType
      */
@@ -39,12 +77,24 @@ public class Projection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ProjectionType property for this object.
+     * Represents the set of attributes that are projected into the index:
+     * <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     * are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     * Only the specified table attributes are projected into the index. The
+     * list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     * <li> <p><code>ALL</code> - All of the table attributes are projected
+     * into the index. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL, KEYS_ONLY, INCLUDE
      *
-     * @param projectionType The new value for the ProjectionType property for this object.
+     * @param projectionType Represents the set of attributes that are projected into the index:
+     *         <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     *         are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     *         Only the specified table attributes are projected into the index. The
+     *         list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     *         <li> <p><code>ALL</code> - All of the table attributes are projected
+     *         into the index. </li> </ul>
      *
      * @see ProjectionType
      */
@@ -53,14 +103,26 @@ public class Projection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ProjectionType property for this object.
+     * Represents the set of attributes that are projected into the index:
+     * <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     * are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     * Only the specified table attributes are projected into the index. The
+     * list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     * <li> <p><code>ALL</code> - All of the table attributes are projected
+     * into the index. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL, KEYS_ONLY, INCLUDE
      *
-     * @param projectionType The new value for the ProjectionType property for this object.
+     * @param projectionType Represents the set of attributes that are projected into the index:
+     *         <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     *         are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     *         Only the specified table attributes are projected into the index. The
+     *         list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     *         <li> <p><code>ALL</code> - All of the table attributes are projected
+     *         into the index. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -74,12 +136,24 @@ public class Projection  implements Serializable  {
     
     
     /**
-     * Sets the value of the ProjectionType property for this object.
+     * Represents the set of attributes that are projected into the index:
+     * <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     * are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     * Only the specified table attributes are projected into the index. The
+     * list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     * <li> <p><code>ALL</code> - All of the table attributes are projected
+     * into the index. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL, KEYS_ONLY, INCLUDE
      *
-     * @param projectionType The new value for the ProjectionType property for this object.
+     * @param projectionType Represents the set of attributes that are projected into the index:
+     *         <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     *         are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     *         Only the specified table attributes are projected into the index. The
+     *         list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     *         <li> <p><code>ALL</code> - All of the table attributes are projected
+     *         into the index. </li> </ul>
      *
      * @see ProjectionType
      */
@@ -88,14 +162,26 @@ public class Projection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ProjectionType property for this object.
+     * Represents the set of attributes that are projected into the index:
+     * <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     * are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     * Only the specified table attributes are projected into the index. The
+     * list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     * <li> <p><code>ALL</code> - All of the table attributes are projected
+     * into the index. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL, KEYS_ONLY, INCLUDE
      *
-     * @param projectionType The new value for the ProjectionType property for this object.
+     * @param projectionType Represents the set of attributes that are projected into the index:
+     *         <ul> <li> <p><code>KEYS_ONLY</code> - Only the index and primary keys
+     *         are projected into the index. </li> <li> <p><code>INCLUDE</code> -
+     *         Only the specified table attributes are projected into the index. The
+     *         list of projected attributes are in <i>NonKeyAttributes</i>. </li>
+     *         <li> <p><code>ALL</code> - All of the table attributes are projected
+     *         into the index. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -108,12 +194,22 @@ public class Projection  implements Serializable  {
     }
     
     /**
-     * Returns the value of the NonKeyAttributes property for this object.
+     * Represents the non-key attribute names which will be projected into
+     * the index. <p>The total count of attributes specified in
+     * <i>NonKeyAttributes</i>, summed across all of the local secondary
+     * indexes, must not exceed 20. If you project the same attribute into
+     * two different indexes, this counts as two distinct attributes when
+     * determining the total.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 20<br/>
      *
-     * @return The value of the NonKeyAttributes property for this object.
+     * @return Represents the non-key attribute names which will be projected into
+     *         the index. <p>The total count of attributes specified in
+     *         <i>NonKeyAttributes</i>, summed across all of the local secondary
+     *         indexes, must not exceed 20. If you project the same attribute into
+     *         two different indexes, this counts as two distinct attributes when
+     *         determining the total.
      */
     public java.util.List<String> getNonKeyAttributes() {
         
@@ -121,12 +217,22 @@ public class Projection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NonKeyAttributes property for this object.
+     * Represents the non-key attribute names which will be projected into
+     * the index. <p>The total count of attributes specified in
+     * <i>NonKeyAttributes</i>, summed across all of the local secondary
+     * indexes, must not exceed 20. If you project the same attribute into
+     * two different indexes, this counts as two distinct attributes when
+     * determining the total.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 20<br/>
      *
-     * @param nonKeyAttributes The new value for the NonKeyAttributes property for this object.
+     * @param nonKeyAttributes Represents the non-key attribute names which will be projected into
+     *         the index. <p>The total count of attributes specified in
+     *         <i>NonKeyAttributes</i>, summed across all of the local secondary
+     *         indexes, must not exceed 20. If you project the same attribute into
+     *         two different indexes, this counts as two distinct attributes when
+     *         determining the total.
      */
     public void setNonKeyAttributes(java.util.Collection<String> nonKeyAttributes) {
         if (nonKeyAttributes == null) {
@@ -140,14 +246,24 @@ public class Projection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NonKeyAttributes property for this object.
+     * Represents the non-key attribute names which will be projected into
+     * the index. <p>The total count of attributes specified in
+     * <i>NonKeyAttributes</i>, summed across all of the local secondary
+     * indexes, must not exceed 20. If you project the same attribute into
+     * two different indexes, this counts as two distinct attributes when
+     * determining the total.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 20<br/>
      *
-     * @param nonKeyAttributes The new value for the NonKeyAttributes property for this object.
+     * @param nonKeyAttributes Represents the non-key attribute names which will be projected into
+     *         the index. <p>The total count of attributes specified in
+     *         <i>NonKeyAttributes</i>, summed across all of the local secondary
+     *         indexes, must not exceed 20. If you project the same attribute into
+     *         two different indexes, this counts as two distinct attributes when
+     *         determining the total.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -161,14 +277,24 @@ public class Projection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NonKeyAttributes property for this object.
+     * Represents the non-key attribute names which will be projected into
+     * the index. <p>The total count of attributes specified in
+     * <i>NonKeyAttributes</i>, summed across all of the local secondary
+     * indexes, must not exceed 20. If you project the same attribute into
+     * two different indexes, this counts as two distinct attributes when
+     * determining the total.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 20<br/>
      *
-     * @param nonKeyAttributes The new value for the NonKeyAttributes property for this object.
+     * @param nonKeyAttributes Represents the non-key attribute names which will be projected into
+     *         the index. <p>The total count of attributes specified in
+     *         <i>NonKeyAttributes</i>, summed across all of the local secondary
+     *         indexes, must not exceed 20. If you project the same attribute into
+     *         two different indexes, this counts as two distinct attributes when
+     *         determining the total.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

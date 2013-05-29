@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -309,7 +310,7 @@ public class DynamoDBMapper {
      *            construction.
      */
     public <T extends Object> T load(Class<T> clazz, Object hashKey, Object rangeKey, DynamoDBMapperConfig config) {
-        config = mergeConfig(config);        
+        config = mergeConfig(config);
         T keyObject = createKeyObject(clazz, hashKey, rangeKey);        
         return load(keyObject, config);
     }
@@ -379,8 +380,13 @@ public class DynamoDBMapper {
         DynamoDBTable table = reflector.getTable(clazz);
         String tableName = table.tableName();
         if ( config.getTableNameOverride() != null ) {
-            tableName = config.getTableNameOverride().getTableName();
+            if ( config.getTableNameOverride().getTableName() != null ) {
+                tableName = config.getTableNameOverride().getTableName();
+            } else {
+                tableName = config.getTableNameOverride().getTableNamePrefix() + tableName;
+            }
         }
+
         return tableName;
     }
 
@@ -628,7 +634,7 @@ public class DynamoDBMapper {
                     .withExpected(expectedValues)));
         } else {
             db.updateItem(applyUserAgent(new UpdateItemRequest().withTableName(tableName).withKey(key)
-                    .withAttributeUpdates(transformAttributeUpdates(clazz, updateValues)).withExpected(expectedValues)));
+                    .withAttributeUpdates(transformAttributeUpdates(clazz, key, updateValues)).withExpected(expectedValues)));
         }
 
         /*
@@ -1060,7 +1066,7 @@ public class DynamoDBMapper {
     }
 
     /**
-     * Scans through an AWS DynamoDB table and returns the matching results as
+     * Scans through an Amazon DynamoDB table and returns the matching results as
      * an unmodifiable list of instantiated objects, using the default configuration.
      *
      * @see DynamoDBMapper#scan(Class, DynamoDBScanExpression, DynamoDBMapperConfig)
@@ -1070,10 +1076,10 @@ public class DynamoDBMapper {
     }
 
     /**
-     * Scans through an AWS DynamoDB table and returns the matching results as
+     * Scans through an Amazon DynamoDB table and returns the matching results as
      * an unmodifiable list of instantiated objects. The table to scan is
      * determined by looking at the annotations on the specified class, which
-     * declares where to store the object data in AWS DynamoDB, and the scan
+     * declares where to store the object data in Amazon DynamoDB, and the scan
      * expression parameter allows the caller to filter results and control how
      * the scan is executed.
      * <p>
@@ -1088,7 +1094,7 @@ public class DynamoDBMapper {
      *            The type of the objects being returned.
      * @param clazz
      *            The class annotated with DynamoDB annotations describing how
-     *            to store the object data in AWS DynamoDB.
+     *            to store the object data in Amazon DynamoDB.
      * @param scanExpression
      *            Details on how to run the scan, including any filters to apply
      *            to limit results.
@@ -1107,9 +1113,112 @@ public class DynamoDBMapper {
         ScanResult scanResult = db.scan(applyUserAgent(scanRequest));
         return new PaginatedScanList<T>(this, clazz, db, scanRequest, scanResult);
     }
-
+    
     /**
-     * Queries an AWS DynamoDB table and returns the matching results as an
+	 * Scans through an Amazon DynamoDB table on logically partitioned segments
+	 * in parallel and returns the matching results in one unmodifiable list of
+	 * instantiated objects, using the default configuration.
+	 * 
+	 * @see DynamoDBMapper#parallelScan(Class, DynamoDBScanExpression,int,
+	 *      DynamoDBMapperConfig)
+	 */
+    public <T> PaginatedParallelScanList<T> parallelScan(Class<T> clazz, DynamoDBScanExpression scanExpression, int totalSegments) {
+        return parallelScan(clazz, scanExpression, totalSegments, config);
+    }
+    
+	/**
+	 * Scans through an Amazon DynamoDB table on logically partitioned segments
+	 * in parallel. This method will create a thread pool of the specified size,
+	 * and each thread will issue scan requests for its assigned segment,
+	 * following the returned continuation token, until the end of its segment.
+	 * Callers should be responsible for setting the appropriate number of total
+	 * segments. More scan segments would result in better performance but more
+	 * consumed capacity of the table. The results are returned in one
+	 * unmodifiable list of instantiated objects. The table to scan is
+	 * determined by looking at the annotations on the specified class, which
+	 * declares where to store the object data in Amazon DynamoDB, and the scan
+	 * expression parameter allows the caller to filter results and control how
+	 * the scan is executed.
+	 * <p>
+	 * Callers should be aware that the returned list is unmodifiable, and any
+	 * attempts to modify the list will result in an
+	 * UnsupportedOperationException.
+	 * <p>
+	 * The unmodifiable list returned is lazily loaded when possible, so calls
+	 * to DynamoDB will be made only as needed.
+	 * 
+	 * @param <T>
+	 *            The type of the objects being returned.
+	 * @param clazz
+	 *            The class annotated with DynamoDB annotations describing how
+	 *            to store the object data in Amazon DynamoDB.
+	 * @param scanExpression
+	 *            Details on how to run the scan, including any filters to apply
+	 *            to limit results.
+	 * @param totalSegments
+	 *            Number of total parallel scan segments. 
+	 *            <b>Range: </b>1 - 4096
+	 * @param config
+	 *            The configuration to use for this scan, which overrides the
+	 *            default provided at object construction.
+	 * @return An unmodifiable list of the objects constructed from the results
+	 *         of the scan operation.
+	 * @see PaginatedParallelScanList
+	 */
+    public <T> PaginatedParallelScanList<T> parallelScan(Class<T> clazz, DynamoDBScanExpression scanExpression, int totalSegments, DynamoDBMapperConfig config) {
+        config = mergeConfig(config);
+
+        // Create hard copies of the original scan request with difference segment number.
+        List<ScanRequest> parallelScanRequests = createParallelScanRequestsFromExpression(clazz, scanExpression, totalSegments, config);
+        ParallelScanTask parallelScanTask = new ParallelScanTask(this, db, parallelScanRequests);
+
+        return new PaginatedParallelScanList<T>(this, clazz, db, parallelScanTask);
+    }
+    
+    /**
+     * Scans through an Amazon DynamoDB table and returns a single page of matching
+     * results. The table to scan is determined by looking at the annotations on
+     * the specified class, which declares where to store the object data in AWS
+     * DynamoDB, and the scan expression parameter allows the caller to filter
+     * results and control how the scan is executed.
+     * 
+     * @param <T>
+     *            The type of the objects being returned.
+     * @param clazz
+     *            The class annotated with DynamoDB annotations describing how
+     *            to store the object data in Amazon DynamoDB.
+     * @param scanExpression
+     *            Details on how to run the scan, including any filters to apply
+     *            to limit results.
+     * @param config
+     *            The configuration to use for this scan, which overrides the
+     *            default provided at object construction.
+     */
+    public <T> ScanResultPage<T> scanPage(Class<T> clazz, DynamoDBScanExpression scanExpression, DynamoDBMapperConfig config) {
+        config = mergeConfig(config);
+
+        ScanRequest scanRequest = createScanRequestFromExpression(clazz, scanExpression, config);
+
+        ScanResult scanResult = db.scan(applyUserAgent(scanRequest));
+        ScanResultPage<T> result = new ScanResultPage<T>();
+        result.setResults(marshallIntoObjects(clazz, scanResult.getItems()));
+        result.setLastEvaluatedKey(scanResult.getLastEvaluatedKey());
+        
+        return result;
+    }
+    
+    /**
+     * Scans through an Amazon DynamoDB table and returns a single page of matching
+     * results. 
+     * 
+     * @see DynamoDBMapper#scanPage(Class, DynamoDBScanExpression, DynamoDBMapperConfig)
+     */
+    public <T> ScanResultPage<T> scanPage(Class<T> clazz, DynamoDBScanExpression scanExpression) {
+        return scanPage(clazz, scanExpression, this.config);
+    }
+    
+    /**
+     * Queries an Amazon DynamoDB table and returns the matching results as an
      * unmodifiable list of instantiated objects, using the default
      * configuration.
      *
@@ -1121,10 +1230,10 @@ public class DynamoDBMapper {
     }
 
     /**
-     * Queries an AWS DynamoDB table and returns the matching results as an
+     * Queries an Amazon DynamoDB table and returns the matching results as an
      * unmodifiable list of instantiated objects. The table to query is
      * determined by looking at the annotations on the specified class, which
-     * declares where to store the object data in AWS DynamoDB, and the query
+     * declares where to store the object data in Amazon DynamoDB, and the query
      * expression parameter allows the caller to filter results and control how
      * the query is executed.
      * <p>
@@ -1144,16 +1253,15 @@ public class DynamoDBMapper {
      *            The type of the objects being returned.
      * @param clazz
      *            The class annotated with DynamoDB annotations describing how
-     *            to store the object data in AWS DynamoDB.
+     *            to store the object data in Amazon DynamoDB.
      * @param queryExpression
-     *            Details on how to run the query, including any filters to
-     *            apply to limit the results.
+     *            Details on how to run the query, including any conditions on
+     *            the key values
      * @param config
      *            The configuration to use for this query, which overrides the
      *            default provided at object construction.
      * @return An unmodifiable list of the objects constructed from the results
      *         of the query operation.
-     *
      * @see PaginatedQueryList
      */
     public <T> PaginatedQueryList<T> query(Class<T> clazz, DynamoDBQueryExpression<T> queryExpression, DynamoDBMapperConfig config) {
@@ -1163,6 +1271,51 @@ public class DynamoDBMapper {
 
         QueryResult queryResult = db.query(applyUserAgent(queryRequest));
         return new PaginatedQueryList<T>(this, clazz, db, queryRequest, queryResult);
+    }
+    
+    /**
+     * Queries an Amazon DynamoDB table and returns a single page of matching
+     * results. The table to query is determined by looking at the annotations
+     * on the specified class, which declares where to store the object data in
+     * Amazon DynamoDB, and the query expression parameter allows the caller to
+     * filter results and control how the query is executed.
+     * 
+     * @see DynamoDBMapper#queryPage(Class, DynamoDBQueryExpression, DynamoDBMapperConfig)
+     */
+    public <T> QueryResultPage<T> queryPage(Class<T> clazz, DynamoDBQueryExpression<T> queryExpression) {
+        return queryPage(clazz, queryExpression, this.config);
+    }
+    
+    /**
+     * Queries an Amazon DynamoDB table and returns a single page of matching
+     * results. The table to query is determined by looking at the annotations
+     * on the specified class, which declares where to store the object data in
+     * Amazon DynamoDB, and the query expression parameter allows the caller to
+     * filter results and control how the query is executed.
+     * 
+     * @param <T>
+     *            The type of the objects being returned.
+     * @param clazz
+     *            The class annotated with DynamoDB annotations describing how
+     *            to store the object data in AWS DynamoDB.
+     * @param queryExpression
+     *            Details on how to run the query, including any conditions on
+     *            the key values
+     * @param config
+     *            The configuration to use for this query, which overrides the
+     *            default provided at object construction.
+     */
+    public <T> QueryResultPage<T> queryPage(Class<T> clazz, DynamoDBQueryExpression<T> queryExpression, DynamoDBMapperConfig config) {
+        config = mergeConfig(config);
+
+        QueryRequest queryRequest = createQueryRequestFromExpression(clazz, queryExpression, config);
+
+        QueryResult scanResult = db.query(applyUserAgent(queryRequest));
+        QueryResultPage<T> result = new QueryResultPage<T>();
+        result.setResults(marshallIntoObjects(clazz, scanResult.getItems()));
+        result.setLastEvaluatedKey(scanResult.getLastEvaluatedKey());
+        
+        return result;
     }
 
     /**
@@ -1272,6 +1425,17 @@ public class DynamoDBMapper {
 
         return scanRequest;
     }
+    
+    private List<ScanRequest> createParallelScanRequestsFromExpression(Class<?> clazz, DynamoDBScanExpression scanExpression, int totalSegments, DynamoDBMapperConfig config) {
+    	if (totalSegments < 1)
+			throw new IllegalArgumentException("Parallel scan should have at least one scan segment.");
+    	List<ScanRequest> parallelScanRequests= new LinkedList<ScanRequest>();
+        for (int segment = 0; segment < totalSegments; segment++) {
+        	ScanRequest scanRequest = createScanRequestFromExpression(clazz, scanExpression, config);
+        	parallelScanRequests.add(scanRequest.withSegment(segment).withTotalSegments(totalSegments));
+        }
+        return parallelScanRequests;
+    }
 
     private <T> QueryRequest  createQueryRequestFromExpression(Class<T> clazz, DynamoDBQueryExpression<T> queryExpression, DynamoDBMapperConfig config) {
         QueryRequest queryRequest = new QueryRequest();
@@ -1282,9 +1446,10 @@ public class DynamoDBMapper {
         Map<String, Condition> keyConditions = getHashKeyEqualsConditions(queryExpression.getHashKeyValues());
         
         Map<String, Condition> rangeKeyConditions = queryExpression.getRangeKeyConditions();
-        processRangeKeyConditions(clazz, queryRequest, rangeKeyConditions);
-        
-        keyConditions.putAll(rangeKeyConditions);
+        if (null != rangeKeyConditions) {
+        	processRangeKeyConditions(clazz, queryRequest, rangeKeyConditions);
+        	keyConditions.putAll(rangeKeyConditions);
+        }
         
         queryRequest.setKeyConditions(keyConditions);
         queryRequest.setScanIndexForward(queryExpression.isScanIndexForward());
@@ -1410,11 +1575,44 @@ public class DynamoDBMapper {
     }
     
     private Map<String, AttributeValueUpdate> transformAttributeUpdates(Class<?> clazz,
+            Map<String, AttributeValue> keys,
             Map<String, AttributeValueUpdate> updateValues) {
         Map<String, AttributeValue> item = convertToItem(updateValues);
-        transformAttributes(clazz, item);
+        
+        HashSet<String> keysAdded = new HashSet<String>();
+        for (Map.Entry<String, AttributeValue> e : keys.entrySet()) {
+            if (!item.containsKey(e.getKey())) {
+                keysAdded.add(e.getKey());
+                item.put(e.getKey(), e.getValue());
+            }
+        }
+        boolean hashKeyAdded = false;
+        boolean rangeKeyAdded = false;
+        String hashKey = reflector.getAttributeName(reflector.getHashKeyGetter(clazz));
+        if (!item.containsKey(hashKey)) {
+            item.put(hashKey, keys.get(hashKey));
+            hashKeyAdded = true;
+        }
+
+        item = transformAttributes(clazz, item);
+
+        // Remove the keys if we added them before.
+        for (String key : keysAdded) {
+            item.remove(key);
+        }
+
         for(String key: item.keySet()) {
-            updateValues.get(key).getValue().setB(item.get(key).getB());
+            if (updateValues.containsKey(key)) {
+                updateValues.get(key).getValue()
+                    .withB(item.get(key).getB())
+                    .withBS(item.get(key).getBS())
+                    .withN(item.get(key).getN())
+                    .withNS(item.get(key).getNS())
+                    .withS(item.get(key).getS())
+                    .withSS(item.get(key).getSS());
+            } else {
+                updateValues.put(key, new AttributeValueUpdate(item.get(key), "PUT"));
+            }
         }
         return updateValues;
     }

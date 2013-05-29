@@ -18,22 +18,130 @@ import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#putItem(PutItemRequest) PutItem operation}.
- * 
+ * <p>
+ * Creates a new item, or replaces an old item with a new item. If an item already exists in the specified table with the same primary key, the new item
+ * completely replaces the existing item. You can perform a conditional put (insert a new item if one with the specified primary key doesn't exist), or
+ * replace an existing item if it has certain attribute values.
+ * </p>
+ * <p>
+ * In addition to putting an item, you can also return the item's attribute values in the same operation, using the <i>ReturnValues</i> parameter.
+ * </p>
+ * <p>
+ * When you add an item, the primary key attribute(s) are the only required attributes. Attribute values cannot be null. String and binary type
+ * attributes must have lengths greater than zero. Set type attributes cannot be empty. Requests with empty values will be rejected with a
+ * <i>ValidationException</i> .
+ * </p>
+ * <p>
+ * You can request that <i>PutItem</i> return either a copy of the old item (before the update) or a copy of the new item (after the update). For more
+ * information, see the <i>ReturnValues</i> description.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> To prevent a new item from replacing an existing item, use a conditional put operation with Exists set to false for the primary key
+ * attribute, or attributes.
+ * </p>
+ * <p>
+ * For more information about using this API, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDDItems.html">
+ * Working with Items </a> in the <i>Amazon DynamoDB Developer Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#putItem(PutItemRequest)
  */
 public class PutItemRequest extends AmazonWebServiceRequest  implements Serializable  {
 
+    /**
+     * The name of the table to contain the item.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String tableName;
 
+    /**
+     * A map of attribute name/value pairs, one for each attribute. Only the
+     * primary key attributes are required; you can optionally provide other
+     * attribute name-value pairs for the item. <p>If you specify any
+     * attributes that are part of an index key, then the data types for
+     * those attributes must match those of the schema in the table's
+     * attribute definition. <p>For more information about primary keys, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     * in the <i>Item</i> map is an <i>AttributeValue</i> object.
+     */
     private java.util.Map<String,AttributeValue> item;
 
+    /**
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>PutItem</i> operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
+     */
     private java.util.Map<String,ExpectedAttributeValue> expected;
 
+    /**
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were updated with the <i>PutItem</i> request. For
+     * <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     * If <i>ReturnValues</i> is not specified, or if its value is
+     * <code>NONE</code>, then nothing is returned. (This is the default for
+     * <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     * <i>PutItem</i> overwrote an attribute name-value pair, then the
+     * content of the old item is returned. </li> </ul>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
+     */
     private String returnValues;
 
+    /**
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>TOTAL, NONE
+     */
     private String returnConsumedCapacity;
 
+    /**
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>SIZE, NONE
+     */
     private String returnItemCollectionMetrics;
 
     /**
@@ -47,8 +155,17 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param tableName
-     * @param item
+     * @param tableName The name of the table to contain the item.
+     * @param item A map of attribute name/value pairs, one for each
+     * attribute. Only the primary key attributes are required; you can
+     * optionally provide other attribute name-value pairs for the item.
+     * <p>If you specify any attributes that are part of an index key, then
+     * the data types for those attributes must match those of the schema in
+     * the table's attribute definition. <p>For more information about
+     * primary keys, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     * in the <i>Item</i> map is an <i>AttributeValue</i> object.
      */
     public PutItemRequest(String tableName, java.util.Map<String,AttributeValue> item) {
         this.tableName = tableName;
@@ -58,33 +175,33 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     
     
     /**
-     * Returns the value of the TableName property for this object.
+     * The name of the table to contain the item.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the TableName property for this object.
+     * @return The name of the table to contain the item.
      */
     public String getTableName() {
         return tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to contain the item.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to contain the item.
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The name of the table to contain the item.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -92,7 +209,7 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The name of the table to contain the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -104,9 +221,27 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     
     
     /**
-     * Returns the value of the Item property for this object.
+     * A map of attribute name/value pairs, one for each attribute. Only the
+     * primary key attributes are required; you can optionally provide other
+     * attribute name-value pairs for the item. <p>If you specify any
+     * attributes that are part of an index key, then the data types for
+     * those attributes must match those of the schema in the table's
+     * attribute definition. <p>For more information about primary keys, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     * in the <i>Item</i> map is an <i>AttributeValue</i> object.
      *
-     * @return The value of the Item property for this object.
+     * @return A map of attribute name/value pairs, one for each attribute. Only the
+     *         primary key attributes are required; you can optionally provide other
+     *         attribute name-value pairs for the item. <p>If you specify any
+     *         attributes that are part of an index key, then the data types for
+     *         those attributes must match those of the schema in the table's
+     *         attribute definition. <p>For more information about primary keys, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     *         Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     *         in the <i>Item</i> map is an <i>AttributeValue</i> object.
      */
     public java.util.Map<String,AttributeValue> getItem() {
         
@@ -115,20 +250,56 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the Item property for this object.
+     * A map of attribute name/value pairs, one for each attribute. Only the
+     * primary key attributes are required; you can optionally provide other
+     * attribute name-value pairs for the item. <p>If you specify any
+     * attributes that are part of an index key, then the data types for
+     * those attributes must match those of the schema in the table's
+     * attribute definition. <p>For more information about primary keys, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     * in the <i>Item</i> map is an <i>AttributeValue</i> object.
      *
-     * @param item The new value for the Item property for this object.
+     * @param item A map of attribute name/value pairs, one for each attribute. Only the
+     *         primary key attributes are required; you can optionally provide other
+     *         attribute name-value pairs for the item. <p>If you specify any
+     *         attributes that are part of an index key, then the data types for
+     *         those attributes must match those of the schema in the table's
+     *         attribute definition. <p>For more information about primary keys, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     *         Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     *         in the <i>Item</i> map is an <i>AttributeValue</i> object.
      */
     public void setItem(java.util.Map<String,AttributeValue> item) {
         this.item = item;
     }
     
     /**
-     * Sets the value of the Item property for this object.
+     * A map of attribute name/value pairs, one for each attribute. Only the
+     * primary key attributes are required; you can optionally provide other
+     * attribute name-value pairs for the item. <p>If you specify any
+     * attributes that are part of an index key, then the data types for
+     * those attributes must match those of the schema in the table's
+     * attribute definition. <p>For more information about primary keys, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     * in the <i>Item</i> map is an <i>AttributeValue</i> object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param item The new value for the Item property for this object.
+     * @param item A map of attribute name/value pairs, one for each attribute. Only the
+     *         primary key attributes are required; you can optionally provide other
+     *         attribute name-value pairs for the item. <p>If you specify any
+     *         attributes that are part of an index key, then the data types for
+     *         those attributes must match those of the schema in the table's
+     *         attribute definition. <p>For more information about primary keys, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     *         Key</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>Each element
+     *         in the <i>Item</i> map is an <i>AttributeValue</i> object.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -139,9 +310,73 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Returns the value of the Expected property for this object.
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>PutItem</i> operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
      *
-     * @return The value of the Expected property for this object.
+     * @return A map of attribute/condition pairs. This is the conditional block for
+     *         the <i>PutItem</i> operation. All the conditions must be met for the
+     *         operation to succeed. <p><i>Expected</i> allows you to provide an
+     *         attribute name, and whether or not Amazon DynamoDB should check to see
+     *         if the attribute value already exists; or if the attribute value
+     *         exists and has a particular value before changing it. <p>Each item in
+     *         <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     *         check, along with the following: <ul> <li> <p><i>Value</i> - The
+     *         attribute value for Amazon DynamoDB to check. </li> <li>
+     *         <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     *         attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     *         value already exists in the table. If it is found, then the operation
+     *         succeeds. If it is not found, the operation fails with a
+     *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     *         value does <i>not</i> exist in the table. If in fact the value does
+     *         not exist, then the assumption is valid and the operation succeeds. If
+     *         the value is found, despite the assumption that it does not exist, the
+     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     *         the attribute exists: You don't have to set <i>Exists</i> to
+     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     *         value to exist, but don't specify what that value is.) </li> <li>
+     *         <p><i>Exists</i> is <code>false</code> but you also specify a
+     *         <i>Value</i>. (You cannot expect an attribute to have a value, while
+     *         also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     *         specify more than one condition for <i>Exists</i>, then all of the
+     *         conditions must evaluate to true. (In other words, the conditions are
+     *         ANDed together.) Otherwise, the conditional operation will fail.
      */
     public java.util.Map<String,ExpectedAttributeValue> getExpected() {
         
@@ -150,20 +385,148 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the Expected property for this object.
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>PutItem</i> operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
      *
-     * @param expected The new value for the Expected property for this object.
+     * @param expected A map of attribute/condition pairs. This is the conditional block for
+     *         the <i>PutItem</i> operation. All the conditions must be met for the
+     *         operation to succeed. <p><i>Expected</i> allows you to provide an
+     *         attribute name, and whether or not Amazon DynamoDB should check to see
+     *         if the attribute value already exists; or if the attribute value
+     *         exists and has a particular value before changing it. <p>Each item in
+     *         <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     *         check, along with the following: <ul> <li> <p><i>Value</i> - The
+     *         attribute value for Amazon DynamoDB to check. </li> <li>
+     *         <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     *         attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     *         value already exists in the table. If it is found, then the operation
+     *         succeeds. If it is not found, the operation fails with a
+     *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     *         value does <i>not</i> exist in the table. If in fact the value does
+     *         not exist, then the assumption is valid and the operation succeeds. If
+     *         the value is found, despite the assumption that it does not exist, the
+     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     *         the attribute exists: You don't have to set <i>Exists</i> to
+     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     *         value to exist, but don't specify what that value is.) </li> <li>
+     *         <p><i>Exists</i> is <code>false</code> but you also specify a
+     *         <i>Value</i>. (You cannot expect an attribute to have a value, while
+     *         also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     *         specify more than one condition for <i>Exists</i>, then all of the
+     *         conditions must evaluate to true. (In other words, the conditions are
+     *         ANDed together.) Otherwise, the conditional operation will fail.
      */
     public void setExpected(java.util.Map<String,ExpectedAttributeValue> expected) {
         this.expected = expected;
     }
     
     /**
-     * Sets the value of the Expected property for this object.
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>PutItem</i> operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param expected The new value for the Expected property for this object.
+     * @param expected A map of attribute/condition pairs. This is the conditional block for
+     *         the <i>PutItem</i> operation. All the conditions must be met for the
+     *         operation to succeed. <p><i>Expected</i> allows you to provide an
+     *         attribute name, and whether or not Amazon DynamoDB should check to see
+     *         if the attribute value already exists; or if the attribute value
+     *         exists and has a particular value before changing it. <p>Each item in
+     *         <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     *         check, along with the following: <ul> <li> <p><i>Value</i> - The
+     *         attribute value for Amazon DynamoDB to check. </li> <li>
+     *         <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     *         attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     *         value already exists in the table. If it is found, then the operation
+     *         succeeds. If it is not found, the operation fails with a
+     *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     *         value does <i>not</i> exist in the table. If in fact the value does
+     *         not exist, then the assumption is valid and the operation succeeds. If
+     *         the value is found, despite the assumption that it does not exist, the
+     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     *         the attribute exists: You don't have to set <i>Exists</i> to
+     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     *         value to exist, but don't specify what that value is.) </li> <li>
+     *         <p><i>Exists</i> is <code>false</code> but you also specify a
+     *         <i>Value</i>. (You cannot expect an attribute to have a value, while
+     *         also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     *         specify more than one condition for <i>Exists</i>, then all of the
+     *         conditions must evaluate to true. (In other words, the conditions are
+     *         ANDed together.) Otherwise, the conditional operation will fail.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -174,12 +537,26 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Returns the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were updated with the <i>PutItem</i> request. For
+     * <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     * If <i>ReturnValues</i> is not specified, or if its value is
+     * <code>NONE</code>, then nothing is returned. (This is the default for
+     * <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     * <i>PutItem</i> overwrote an attribute name-value pair, then the
+     * content of the old item is returned. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @return The value of the ReturnValues property for this object.
+     * @return Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were updated with the <i>PutItem</i> request. For
+     *         <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     *         If <i>ReturnValues</i> is not specified, or if its value is
+     *         <code>NONE</code>, then nothing is returned. (This is the default for
+     *         <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     *         <i>PutItem</i> overwrote an attribute name-value pair, then the
+     *         content of the old item is returned. </li> </ul>
      *
      * @see ReturnValue
      */
@@ -188,12 +565,26 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were updated with the <i>PutItem</i> request. For
+     * <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     * If <i>ReturnValues</i> is not specified, or if its value is
+     * <code>NONE</code>, then nothing is returned. (This is the default for
+     * <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     * <i>PutItem</i> overwrote an attribute name-value pair, then the
+     * content of the old item is returned. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were updated with the <i>PutItem</i> request. For
+     *         <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     *         If <i>ReturnValues</i> is not specified, or if its value is
+     *         <code>NONE</code>, then nothing is returned. (This is the default for
+     *         <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     *         <i>PutItem</i> overwrote an attribute name-value pair, then the
+     *         content of the old item is returned. </li> </ul>
      *
      * @see ReturnValue
      */
@@ -202,14 +593,28 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were updated with the <i>PutItem</i> request. For
+     * <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     * If <i>ReturnValues</i> is not specified, or if its value is
+     * <code>NONE</code>, then nothing is returned. (This is the default for
+     * <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     * <i>PutItem</i> overwrote an attribute name-value pair, then the
+     * content of the old item is returned. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were updated with the <i>PutItem</i> request. For
+     *         <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     *         If <i>ReturnValues</i> is not specified, or if its value is
+     *         <code>NONE</code>, then nothing is returned. (This is the default for
+     *         <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     *         <i>PutItem</i> overwrote an attribute name-value pair, then the
+     *         content of the old item is returned. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -223,12 +628,26 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were updated with the <i>PutItem</i> request. For
+     * <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     * If <i>ReturnValues</i> is not specified, or if its value is
+     * <code>NONE</code>, then nothing is returned. (This is the default for
+     * <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     * <i>PutItem</i> overwrote an attribute name-value pair, then the
+     * content of the old item is returned. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were updated with the <i>PutItem</i> request. For
+     *         <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     *         If <i>ReturnValues</i> is not specified, or if its value is
+     *         <code>NONE</code>, then nothing is returned. (This is the default for
+     *         <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     *         <i>PutItem</i> overwrote an attribute name-value pair, then the
+     *         content of the old item is returned. </li> </ul>
      *
      * @see ReturnValue
      */
@@ -237,14 +656,28 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnValues property for this object.
+     * Use <i>ReturnValues</i> if you want to get the item attributes as they
+     * appeared before they were updated with the <i>PutItem</i> request. For
+     * <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     * If <i>ReturnValues</i> is not specified, or if its value is
+     * <code>NONE</code>, then nothing is returned. (This is the default for
+     * <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     * <i>PutItem</i> overwrote an attribute name-value pair, then the
+     * content of the old item is returned. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW
      *
-     * @param returnValues The new value for the ReturnValues property for this object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the item attributes as they
+     *         appeared before they were updated with the <i>PutItem</i> request. For
+     *         <i>PutItem</i>, the valid values are: <ul> <li> <p><code>NONE</code> -
+     *         If <i>ReturnValues</i> is not specified, or if its value is
+     *         <code>NONE</code>, then nothing is returned. (This is the default for
+     *         <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> - If
+     *         <i>PutItem</i> overwrote an attribute name-value pair, then the
+     *         content of the old item is returned. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -257,13 +690,16 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Returns the value of the ReturnConsumedCapacity property for this
-     * object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @return The value of the ReturnConsumedCapacity property for this object.
+     * @return If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -272,12 +708,16 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -286,14 +726,18 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -307,12 +751,16 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @see ReturnConsumedCapacity
      */
@@ -321,14 +769,18 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnConsumedCapacity property for this object.
+     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     * the response; if set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>TOTAL, NONE
      *
-     * @param returnConsumedCapacity The new value for the ReturnConsumedCapacity property for this object.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
+     *         the response; if set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -341,13 +793,18 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Returns the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @return The value of the ReturnItemCollectionMetrics property for this object.
+     * @return If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -356,14 +813,18 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -372,16 +833,20 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -395,14 +860,18 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -411,16 +880,20 @@ public class PutItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * Sets the value of the ReturnItemCollectionMetrics property for this
-     * object.
+     * If set to <code>SIZE</code>, statistics about item collections, if
+     * any, that were modified during the operation are returned in the
+     * response. If set to <code>NONE</code> (the default), no statistics are
+     * returned..
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>SIZE, NONE
      *
-     * @param returnItemCollectionMetrics The new value for the ReturnItemCollectionMetrics property for this
-     *         object.
+     * @param returnItemCollectionMetrics If set to <code>SIZE</code>, statistics about item collections, if
+     *         any, that were modified during the operation are returned in the
+     *         response. If set to <code>NONE</code> (the default), no statistics are
+     *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

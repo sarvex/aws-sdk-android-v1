@@ -16,18 +16,37 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Item Collection Metrics
+ * <p>
+ * Information about item collections, if any, that were affected by the operation. <i>ItemCollectionMetrics</i> is only returned if it was asked for in
+ * the request. If the table does not have any secondary indexes, this information is not returned in the response.
+ * </p>
  */
 public class ItemCollectionMetrics  implements Serializable  {
 
+    /**
+     * The hash key value of the item collection. This is the same as the
+     * hash key of the item.
+     */
     private java.util.Map<String,AttributeValue> itemCollectionKey;
 
+    /**
+     * An estimate of item collection size, measured in gigabytes. This is a
+     * two-element array containing a lower bound and an upper bound for the
+     * estimate. The estimate includes the size of all the items in the
+     * table, plus the size of all attributes projected into all of the
+     * secondary indexes on that table. Use this estimate to measure whether
+     * a secondary index is approaching its size limit. <p>The estimate is
+     * subject to change over time; therefore, do not rely on the precision
+     * or accuracy of the estimate.
+     */
     private java.util.List<Double> sizeEstimateRangeGB;
 
     /**
-     * Returns the value of the ItemCollectionKey property for this object.
+     * The hash key value of the item collection. This is the same as the
+     * hash key of the item.
      *
-     * @return The value of the ItemCollectionKey property for this object.
+     * @return The hash key value of the item collection. This is the same as the
+     *         hash key of the item.
      */
     public java.util.Map<String,AttributeValue> getItemCollectionKey() {
         
@@ -36,20 +55,24 @@ public class ItemCollectionMetrics  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ItemCollectionKey property for this object.
+     * The hash key value of the item collection. This is the same as the
+     * hash key of the item.
      *
-     * @param itemCollectionKey The new value for the ItemCollectionKey property for this object.
+     * @param itemCollectionKey The hash key value of the item collection. This is the same as the
+     *         hash key of the item.
      */
     public void setItemCollectionKey(java.util.Map<String,AttributeValue> itemCollectionKey) {
         this.itemCollectionKey = itemCollectionKey;
     }
     
     /**
-     * Sets the value of the ItemCollectionKey property for this object.
+     * The hash key value of the item collection. This is the same as the
+     * hash key of the item.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param itemCollectionKey The new value for the ItemCollectionKey property for this object.
+     * @param itemCollectionKey The hash key value of the item collection. This is the same as the
+     *         hash key of the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -60,9 +83,23 @@ public class ItemCollectionMetrics  implements Serializable  {
     }
     
     /**
-     * Returns the value of the SizeEstimateRangeGB property for this object.
+     * An estimate of item collection size, measured in gigabytes. This is a
+     * two-element array containing a lower bound and an upper bound for the
+     * estimate. The estimate includes the size of all the items in the
+     * table, plus the size of all attributes projected into all of the
+     * secondary indexes on that table. Use this estimate to measure whether
+     * a secondary index is approaching its size limit. <p>The estimate is
+     * subject to change over time; therefore, do not rely on the precision
+     * or accuracy of the estimate.
      *
-     * @return The value of the SizeEstimateRangeGB property for this object.
+     * @return An estimate of item collection size, measured in gigabytes. This is a
+     *         two-element array containing a lower bound and an upper bound for the
+     *         estimate. The estimate includes the size of all the items in the
+     *         table, plus the size of all attributes projected into all of the
+     *         secondary indexes on that table. Use this estimate to measure whether
+     *         a secondary index is approaching its size limit. <p>The estimate is
+     *         subject to change over time; therefore, do not rely on the precision
+     *         or accuracy of the estimate.
      */
     public java.util.List<Double> getSizeEstimateRangeGB() {
         
@@ -70,9 +107,23 @@ public class ItemCollectionMetrics  implements Serializable  {
     }
     
     /**
-     * Sets the value of the SizeEstimateRangeGB property for this object.
+     * An estimate of item collection size, measured in gigabytes. This is a
+     * two-element array containing a lower bound and an upper bound for the
+     * estimate. The estimate includes the size of all the items in the
+     * table, plus the size of all attributes projected into all of the
+     * secondary indexes on that table. Use this estimate to measure whether
+     * a secondary index is approaching its size limit. <p>The estimate is
+     * subject to change over time; therefore, do not rely on the precision
+     * or accuracy of the estimate.
      *
-     * @param sizeEstimateRangeGB The new value for the SizeEstimateRangeGB property for this object.
+     * @param sizeEstimateRangeGB An estimate of item collection size, measured in gigabytes. This is a
+     *         two-element array containing a lower bound and an upper bound for the
+     *         estimate. The estimate includes the size of all the items in the
+     *         table, plus the size of all attributes projected into all of the
+     *         secondary indexes on that table. Use this estimate to measure whether
+     *         a secondary index is approaching its size limit. <p>The estimate is
+     *         subject to change over time; therefore, do not rely on the precision
+     *         or accuracy of the estimate.
      */
     public void setSizeEstimateRangeGB(java.util.Collection<Double> sizeEstimateRangeGB) {
         if (sizeEstimateRangeGB == null) {
@@ -86,11 +137,25 @@ public class ItemCollectionMetrics  implements Serializable  {
     }
     
     /**
-     * Sets the value of the SizeEstimateRangeGB property for this object.
+     * An estimate of item collection size, measured in gigabytes. This is a
+     * two-element array containing a lower bound and an upper bound for the
+     * estimate. The estimate includes the size of all the items in the
+     * table, plus the size of all attributes projected into all of the
+     * secondary indexes on that table. Use this estimate to measure whether
+     * a secondary index is approaching its size limit. <p>The estimate is
+     * subject to change over time; therefore, do not rely on the precision
+     * or accuracy of the estimate.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sizeEstimateRangeGB The new value for the SizeEstimateRangeGB property for this object.
+     * @param sizeEstimateRangeGB An estimate of item collection size, measured in gigabytes. This is a
+     *         two-element array containing a lower bound and an upper bound for the
+     *         estimate. The estimate includes the size of all the items in the
+     *         table, plus the size of all attributes projected into all of the
+     *         secondary indexes on that table. Use this estimate to measure whether
+     *         a secondary index is approaching its size limit. <p>The estimate is
+     *         subject to change over time; therefore, do not rely on the precision
+     *         or accuracy of the estimate.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -104,11 +169,25 @@ public class ItemCollectionMetrics  implements Serializable  {
     }
     
     /**
-     * Sets the value of the SizeEstimateRangeGB property for this object.
+     * An estimate of item collection size, measured in gigabytes. This is a
+     * two-element array containing a lower bound and an upper bound for the
+     * estimate. The estimate includes the size of all the items in the
+     * table, plus the size of all attributes projected into all of the
+     * secondary indexes on that table. Use this estimate to measure whether
+     * a secondary index is approaching its size limit. <p>The estimate is
+     * subject to change over time; therefore, do not rely on the precision
+     * or accuracy of the estimate.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sizeEstimateRangeGB The new value for the SizeEstimateRangeGB property for this object.
+     * @param sizeEstimateRangeGB An estimate of item collection size, measured in gigabytes. This is a
+     *         two-element array containing a lower bound and an upper bound for the
+     *         estimate. The estimate includes the size of all the items in the
+     *         table, plus the size of all attributes projected into all of the
+     *         secondary indexes on that table. Use this estimate to measure whether
+     *         a secondary index is approaching its size limit. <p>The estimate is
+     *         subject to change over time; therefore, do not rely on the precision
+     *         or accuracy of the estimate.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

@@ -16,24 +16,63 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Scan Result
+ * <p>
+ * Represents the output of a <i>Scan</i> operation.
+ * </p>
  */
 public class ScanResult  implements Serializable  {
 
+    /**
+     * An array of item attributes that match the scan criteria. Each element
+     * in this array consists of an attribute name and the value for that
+     * attribute.
+     */
     private java.util.List<java.util.Map<String,AttributeValue>> items;
 
+    /**
+     * The number of items in the response.
+     */
     private Integer count;
 
+    /**
+     * The number of items in the complete scan, before any filters are
+     * applied. A high <i>ScannedCount</i> value with few, or no,
+     * <i>Count</i> results indicates an inefficient <i>Scan</i> operation.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count
+     * and ScannedCount</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     */
     private Integer scannedCount;
 
+    /**
+     * The primary key of the item where the operation stopped, inclusive of
+     * the previous result set. Use this value to start a new operation,
+     * excluding this value in the new request. <p><i>LastEvaluatedKey</i> is
+     * null when the entire result set is complete (in other words, when the
+     * operation processed the "last page" of results). <p>If there are no
+     * remaining table or segment items to be scanned,
+     * <i>LastEvaluatedKey</i> is returned as null.
+     */
     private java.util.Map<String,AttributeValue> lastEvaluatedKey;
 
+    /**
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     */
     private ConsumedCapacity consumedCapacity;
 
     /**
-     * Returns the value of the Items property for this object.
+     * An array of item attributes that match the scan criteria. Each element
+     * in this array consists of an attribute name and the value for that
+     * attribute.
      *
-     * @return The value of the Items property for this object.
+     * @return An array of item attributes that match the scan criteria. Each element
+     *         in this array consists of an attribute name and the value for that
+     *         attribute.
      */
     public java.util.List<java.util.Map<String,AttributeValue>> getItems() {
         
@@ -41,9 +80,13 @@ public class ScanResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Items property for this object.
+     * An array of item attributes that match the scan criteria. Each element
+     * in this array consists of an attribute name and the value for that
+     * attribute.
      *
-     * @param items The new value for the Items property for this object.
+     * @param items An array of item attributes that match the scan criteria. Each element
+     *         in this array consists of an attribute name and the value for that
+     *         attribute.
      */
     public void setItems(java.util.Collection<java.util.Map<String,AttributeValue>> items) {
         if (items == null) {
@@ -57,11 +100,15 @@ public class ScanResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Items property for this object.
+     * An array of item attributes that match the scan criteria. Each element
+     * in this array consists of an attribute name and the value for that
+     * attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param items The new value for the Items property for this object.
+     * @param items An array of item attributes that match the scan criteria. Each element
+     *         in this array consists of an attribute name and the value for that
+     *         attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -75,11 +122,15 @@ public class ScanResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Items property for this object.
+     * An array of item attributes that match the scan criteria. Each element
+     * in this array consists of an attribute name and the value for that
+     * attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param items The new value for the Items property for this object.
+     * @param items An array of item attributes that match the scan criteria. Each element
+     *         in this array consists of an attribute name and the value for that
+     *         attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -97,29 +148,29 @@ public class ScanResult  implements Serializable  {
     }
     
     /**
-     * Returns the value of the Count property for this object.
+     * The number of items in the response.
      *
-     * @return The value of the Count property for this object.
+     * @return The number of items in the response.
      */
     public Integer getCount() {
         return count;
     }
     
     /**
-     * Sets the value of the Count property for this object.
+     * The number of items in the response.
      *
-     * @param count The new value for the Count property for this object.
+     * @param count The number of items in the response.
      */
     public void setCount(Integer count) {
         this.count = count;
     }
     
     /**
-     * Sets the value of the Count property for this object.
+     * The number of items in the response.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param count The new value for the Count property for this object.
+     * @param count The number of items in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -131,29 +182,59 @@ public class ScanResult  implements Serializable  {
     
     
     /**
-     * Returns the value of the ScannedCount property for this object.
+     * The number of items in the complete scan, before any filters are
+     * applied. A high <i>ScannedCount</i> value with few, or no,
+     * <i>Count</i> results indicates an inefficient <i>Scan</i> operation.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count
+     * and ScannedCount</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @return The value of the ScannedCount property for this object.
+     * @return The number of items in the complete scan, before any filters are
+     *         applied. A high <i>ScannedCount</i> value with few, or no,
+     *         <i>Count</i> results indicates an inefficient <i>Scan</i> operation.
+     *         For more information, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count
+     *         and ScannedCount</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public Integer getScannedCount() {
         return scannedCount;
     }
     
     /**
-     * Sets the value of the ScannedCount property for this object.
+     * The number of items in the complete scan, before any filters are
+     * applied. A high <i>ScannedCount</i> value with few, or no,
+     * <i>Count</i> results indicates an inefficient <i>Scan</i> operation.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count
+     * and ScannedCount</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @param scannedCount The new value for the ScannedCount property for this object.
+     * @param scannedCount The number of items in the complete scan, before any filters are
+     *         applied. A high <i>ScannedCount</i> value with few, or no,
+     *         <i>Count</i> results indicates an inefficient <i>Scan</i> operation.
+     *         For more information, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count
+     *         and ScannedCount</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public void setScannedCount(Integer scannedCount) {
         this.scannedCount = scannedCount;
     }
     
     /**
-     * Sets the value of the ScannedCount property for this object.
+     * The number of items in the complete scan, before any filters are
+     * applied. A high <i>ScannedCount</i> value with few, or no,
+     * <i>Count</i> results indicates an inefficient <i>Scan</i> operation.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count
+     * and ScannedCount</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param scannedCount The new value for the ScannedCount property for this object.
+     * @param scannedCount The number of items in the complete scan, before any filters are
+     *         applied. A high <i>ScannedCount</i> value with few, or no,
+     *         <i>Count</i> results indicates an inefficient <i>Scan</i> operation.
+     *         For more information, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count
+     *         and ScannedCount</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -165,9 +246,21 @@ public class ScanResult  implements Serializable  {
     
     
     /**
-     * Returns the value of the LastEvaluatedKey property for this object.
+     * The primary key of the item where the operation stopped, inclusive of
+     * the previous result set. Use this value to start a new operation,
+     * excluding this value in the new request. <p><i>LastEvaluatedKey</i> is
+     * null when the entire result set is complete (in other words, when the
+     * operation processed the "last page" of results). <p>If there are no
+     * remaining table or segment items to be scanned,
+     * <i>LastEvaluatedKey</i> is returned as null.
      *
-     * @return The value of the LastEvaluatedKey property for this object.
+     * @return The primary key of the item where the operation stopped, inclusive of
+     *         the previous result set. Use this value to start a new operation,
+     *         excluding this value in the new request. <p><i>LastEvaluatedKey</i> is
+     *         null when the entire result set is complete (in other words, when the
+     *         operation processed the "last page" of results). <p>If there are no
+     *         remaining table or segment items to be scanned,
+     *         <i>LastEvaluatedKey</i> is returned as null.
      */
     public java.util.Map<String,AttributeValue> getLastEvaluatedKey() {
         
@@ -176,20 +269,44 @@ public class ScanResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the LastEvaluatedKey property for this object.
+     * The primary key of the item where the operation stopped, inclusive of
+     * the previous result set. Use this value to start a new operation,
+     * excluding this value in the new request. <p><i>LastEvaluatedKey</i> is
+     * null when the entire result set is complete (in other words, when the
+     * operation processed the "last page" of results). <p>If there are no
+     * remaining table or segment items to be scanned,
+     * <i>LastEvaluatedKey</i> is returned as null.
      *
-     * @param lastEvaluatedKey The new value for the LastEvaluatedKey property for this object.
+     * @param lastEvaluatedKey The primary key of the item where the operation stopped, inclusive of
+     *         the previous result set. Use this value to start a new operation,
+     *         excluding this value in the new request. <p><i>LastEvaluatedKey</i> is
+     *         null when the entire result set is complete (in other words, when the
+     *         operation processed the "last page" of results). <p>If there are no
+     *         remaining table or segment items to be scanned,
+     *         <i>LastEvaluatedKey</i> is returned as null.
      */
     public void setLastEvaluatedKey(java.util.Map<String,AttributeValue> lastEvaluatedKey) {
         this.lastEvaluatedKey = lastEvaluatedKey;
     }
     
     /**
-     * Sets the value of the LastEvaluatedKey property for this object.
+     * The primary key of the item where the operation stopped, inclusive of
+     * the previous result set. Use this value to start a new operation,
+     * excluding this value in the new request. <p><i>LastEvaluatedKey</i> is
+     * null when the entire result set is complete (in other words, when the
+     * operation processed the "last page" of results). <p>If there are no
+     * remaining table or segment items to be scanned,
+     * <i>LastEvaluatedKey</i> is returned as null.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param lastEvaluatedKey The new value for the LastEvaluatedKey property for this object.
+     * @param lastEvaluatedKey The primary key of the item where the operation stopped, inclusive of
+     *         the previous result set. Use this value to start a new operation,
+     *         excluding this value in the new request. <p><i>LastEvaluatedKey</i> is
+     *         null when the entire result set is complete (in other words, when the
+     *         operation processed the "last page" of results). <p>If there are no
+     *         remaining table or segment items to be scanned,
+     *         <i>LastEvaluatedKey</i> is returned as null.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -200,29 +317,59 @@ public class ScanResult  implements Serializable  {
     }
     
     /**
-     * Returns the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @return The value of the ConsumedCapacity property for this object.
+     * @return The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public ConsumedCapacity getConsumedCapacity() {
         return consumedCapacity;
     }
     
     /**
-     * Sets the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @param consumedCapacity The new value for the ConsumedCapacity property for this object.
+     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public void setConsumedCapacity(ConsumedCapacity consumedCapacity) {
         this.consumedCapacity = consumedCapacity;
     }
     
     /**
-     * Sets the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param consumedCapacity The new value for the ConsumedCapacity property for this object.
+     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

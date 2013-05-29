@@ -26,15 +26,6 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
 
 import com.amazonaws.util.VersionInfoUtils;
 
@@ -43,7 +34,6 @@ import com.amazonaws.util.VersionInfoUtils;
  */
 public class RegionUtils {
 
-    private static final String CLOUDFRONT_DISTRO = "http://aws-sdk-configurations.amazonwebservices.com/";
     private static List<Region> regions;
     private static final String REGIONS_FILE_OVERRIDE = RegionUtils.class.getName() + ".fileOverride";
 
@@ -136,13 +126,6 @@ public class RegionUtils {
             } catch ( FileNotFoundException e ) {
                 throw new RuntimeException("Couldn't find regions override file specified", e);
             }
-        } else {
-            try {
-                InputStream regionsFile = getRegionsFileFromCloudfront();
-                initRegions(regionsFile);
-            } catch ( Exception e ) {
-                log.warn("Failed to initialize regional endpoints from cloudfront", e);
-            }
         }
 
         // Fall back onto the version we ship with the SDK
@@ -175,34 +158,7 @@ public class RegionUtils {
      * the SDK, in case it cannot be fetched from the remote source.
      */
     private static void initSDKRegions() {
-        ClassLoader classLoader = RegionUtils.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("/etc/regions.xml");
+        InputStream inputStream = RegionUtils.class.getResourceAsStream("regions.xml");
         initRegions(inputStream);
-    }
-
-    /**
-     * Caches the regions file to the location given
-     */
-    private static InputStream getRegionsFileFromCloudfront() throws IOException {
-        String endpointsUrl = CLOUDFRONT_DISTRO + "endpoints.xml";
-        return fetchFile(endpointsUrl);
-    }
-
-    /**
-     * Fetches a file from the URL given and returns an input stream to it.
-     */
-    private static InputStream fetchFile(String url) throws IOException, ClientProtocolException,
-            FileNotFoundException {
-
-        HttpParams httpClientParams = new BasicHttpParams();
-        HttpProtocolParams.setUserAgent(httpClientParams, VersionInfoUtils.getUserAgent());
-        HttpClient httpclient = new DefaultHttpClient(httpClientParams);
-        HttpGet httpget = new HttpGet(url);
-        HttpResponse response = httpclient.execute(httpget);
-        HttpEntity entity = response.getEntity();
-        if ( entity != null ) {
-            return entity.getContent();
-        }
-        return null;
     }
 }

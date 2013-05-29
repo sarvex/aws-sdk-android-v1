@@ -17,7 +17,10 @@ package com.amazonaws.services.dynamodbv2.model;
 import com.amazonaws.AmazonServiceException;
 
 /**
- * AmazonDynamoDBv2 exception
+ * <p>
+ * The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table, or tried to delete a table
+ * currently in the <code>CREATING</code> state.
+ * </p>
  */        
 public class ResourceInUseException extends AmazonServiceException {
     private static final long serialVersionUID = 1L;

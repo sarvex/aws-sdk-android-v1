@@ -16,20 +16,40 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Attribute Value
+ * <p>
+ * Represents the data for an attribute. You can set one, and only one, of the elements.
+ * </p>
  */
 public class AttributeValue  implements Serializable  {
 
+    /**
+     * Represents a String data type
+     */
     private String s;
 
+    /**
+     * Represents a Number data type
+     */
     private String n;
 
+    /**
+     * Represents a Binary data type
+     */
     private java.nio.ByteBuffer b;
 
+    /**
+     * Represents a String set data type
+     */
     private java.util.List<String> sS;
 
+    /**
+     * Represents a Number set data type
+     */
     private java.util.List<String> nS;
 
+    /**
+     * Represents a Binary set data type
+     */
     private java.util.List<java.nio.ByteBuffer> bS;
 
     /**
@@ -43,7 +63,7 @@ public class AttributeValue  implements Serializable  {
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param s
+     * @param s Represents a String data type
      */
     public AttributeValue(String s) {
         this.s = s;
@@ -56,7 +76,7 @@ public class AttributeValue  implements Serializable  {
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param sS
+     * @param sS Represents a String set data type
      */
     public AttributeValue(java.util.List<String> sS) {
         this.sS = sS;
@@ -65,29 +85,29 @@ public class AttributeValue  implements Serializable  {
     
     
     /**
-     * Returns the value of the S property for this object.
+     * Represents a String data type
      *
-     * @return The value of the S property for this object.
+     * @return Represents a String data type
      */
     public String getS() {
         return s;
     }
     
     /**
-     * Sets the value of the S property for this object.
+     * Represents a String data type
      *
-     * @param s The new value for the S property for this object.
+     * @param s Represents a String data type
      */
     public void setS(String s) {
         this.s = s;
     }
     
     /**
-     * Sets the value of the S property for this object.
+     * Represents a String data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param s The new value for the S property for this object.
+     * @param s Represents a String data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -99,29 +119,29 @@ public class AttributeValue  implements Serializable  {
     
     
     /**
-     * Returns the value of the N property for this object.
+     * Represents a Number data type
      *
-     * @return The value of the N property for this object.
+     * @return Represents a Number data type
      */
     public String getN() {
         return n;
     }
     
     /**
-     * Sets the value of the N property for this object.
+     * Represents a Number data type
      *
-     * @param n The new value for the N property for this object.
+     * @param n Represents a Number data type
      */
     public void setN(String n) {
         this.n = n;
     }
     
     /**
-     * Sets the value of the N property for this object.
+     * Represents a Number data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param n The new value for the N property for this object.
+     * @param n Represents a Number data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -133,29 +153,29 @@ public class AttributeValue  implements Serializable  {
     
     
     /**
-     * Returns the value of the B property for this object.
+     * Represents a Binary data type
      *
-     * @return The value of the B property for this object.
+     * @return Represents a Binary data type
      */
     public java.nio.ByteBuffer getB() {
         return b;
     }
     
     /**
-     * Sets the value of the B property for this object.
+     * Represents a Binary data type
      *
-     * @param b The new value for the B property for this object.
+     * @param b Represents a Binary data type
      */
     public void setB(java.nio.ByteBuffer b) {
         this.b = b;
     }
     
     /**
-     * Sets the value of the B property for this object.
+     * Represents a Binary data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param b The new value for the B property for this object.
+     * @param b Represents a Binary data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -167,9 +187,9 @@ public class AttributeValue  implements Serializable  {
     
     
     /**
-     * Returns the value of the SS property for this object.
+     * Represents a String set data type
      *
-     * @return The value of the SS property for this object.
+     * @return Represents a String set data type
      */
     public java.util.List<String> getSS() {
         
@@ -177,9 +197,9 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the SS property for this object.
+     * Represents a String set data type
      *
-     * @param sS The new value for the SS property for this object.
+     * @param sS Represents a String set data type
      */
     public void setSS(java.util.Collection<String> sS) {
         if (sS == null) {
@@ -193,11 +213,11 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the SS property for this object.
+     * Represents a String set data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sS The new value for the SS property for this object.
+     * @param sS Represents a String set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -211,11 +231,11 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the SS property for this object.
+     * Represents a String set data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sS The new value for the SS property for this object.
+     * @param sS Represents a String set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -233,9 +253,9 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Returns the value of the NS property for this object.
+     * Represents a Number set data type
      *
-     * @return The value of the NS property for this object.
+     * @return Represents a Number set data type
      */
     public java.util.List<String> getNS() {
         
@@ -243,9 +263,9 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NS property for this object.
+     * Represents a Number set data type
      *
-     * @param nS The new value for the NS property for this object.
+     * @param nS Represents a Number set data type
      */
     public void setNS(java.util.Collection<String> nS) {
         if (nS == null) {
@@ -259,11 +279,11 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NS property for this object.
+     * Represents a Number set data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nS The new value for the NS property for this object.
+     * @param nS Represents a Number set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -277,11 +297,11 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NS property for this object.
+     * Represents a Number set data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nS The new value for the NS property for this object.
+     * @param nS Represents a Number set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -299,9 +319,9 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Returns the value of the BS property for this object.
+     * Represents a Binary set data type
      *
-     * @return The value of the BS property for this object.
+     * @return Represents a Binary set data type
      */
     public java.util.List<java.nio.ByteBuffer> getBS() {
         
@@ -309,9 +329,9 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the BS property for this object.
+     * Represents a Binary set data type
      *
-     * @param bS The new value for the BS property for this object.
+     * @param bS Represents a Binary set data type
      */
     public void setBS(java.util.Collection<java.nio.ByteBuffer> bS) {
         if (bS == null) {
@@ -325,11 +345,11 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the BS property for this object.
+     * Represents a Binary set data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bS The new value for the BS property for this object.
+     * @param bS Represents a Binary set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -343,11 +363,11 @@ public class AttributeValue  implements Serializable  {
     }
     
     /**
-     * Sets the value of the BS property for this object.
+     * Represents a Binary set data type
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bS The new value for the BS property for this object.
+     * @param bS Represents a Binary set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

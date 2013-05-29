@@ -16,38 +16,47 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Write Request
+ * <p>
+ * Represents an operation to perform - either <i>DeleteItem</i> or <i>PutItem</i> . You can only specify one of these operations, not both, in a single
+ * <i>WriteRequest</i> . If you do need to perform both of these operations, you will need to specify two separate <i>WriteRequest</i> objects.
+ * </p>
  */
 public class WriteRequest  implements Serializable  {
 
+    /**
+     * Represents a request to perform a <i>DeleteItem</i> operation.
+     */
     private PutRequest putRequest;
 
+    /**
+     * Represents a request to perform a <i>PutItem</i> operation.
+     */
     private DeleteRequest deleteRequest;
 
     /**
-     * Returns the value of the PutRequest property for this object.
+     * Represents a request to perform a <i>DeleteItem</i> operation.
      *
-     * @return The value of the PutRequest property for this object.
+     * @return Represents a request to perform a <i>DeleteItem</i> operation.
      */
     public PutRequest getPutRequest() {
         return putRequest;
     }
     
     /**
-     * Sets the value of the PutRequest property for this object.
+     * Represents a request to perform a <i>DeleteItem</i> operation.
      *
-     * @param putRequest The new value for the PutRequest property for this object.
+     * @param putRequest Represents a request to perform a <i>DeleteItem</i> operation.
      */
     public void setPutRequest(PutRequest putRequest) {
         this.putRequest = putRequest;
     }
     
     /**
-     * Sets the value of the PutRequest property for this object.
+     * Represents a request to perform a <i>DeleteItem</i> operation.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param putRequest The new value for the PutRequest property for this object.
+     * @param putRequest Represents a request to perform a <i>DeleteItem</i> operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -59,29 +68,29 @@ public class WriteRequest  implements Serializable  {
     
     
     /**
-     * Returns the value of the DeleteRequest property for this object.
+     * Represents a request to perform a <i>PutItem</i> operation.
      *
-     * @return The value of the DeleteRequest property for this object.
+     * @return Represents a request to perform a <i>PutItem</i> operation.
      */
     public DeleteRequest getDeleteRequest() {
         return deleteRequest;
     }
     
     /**
-     * Sets the value of the DeleteRequest property for this object.
+     * Represents a request to perform a <i>PutItem</i> operation.
      *
-     * @param deleteRequest The new value for the DeleteRequest property for this object.
+     * @param deleteRequest Represents a request to perform a <i>PutItem</i> operation.
      */
     public void setDeleteRequest(DeleteRequest deleteRequest) {
         this.deleteRequest = deleteRequest;
     }
     
     /**
-     * Sets the value of the DeleteRequest property for this object.
+     * Represents a request to perform a <i>PutItem</i> operation.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param deleteRequest The new value for the DeleteRequest property for this object.
+     * @param deleteRequest Represents a request to perform a <i>PutItem</i> operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

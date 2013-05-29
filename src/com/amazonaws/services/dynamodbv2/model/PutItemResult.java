@@ -16,20 +16,59 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Put Item Result
+ * <p>
+ * Represents the output of a <i>PutItem</i> operation.
+ * </p>
  */
 public class PutItemResult  implements Serializable  {
 
+    /**
+     * The attribute values as they appeared before the <i>PutItem</i>
+     * operation, but only if <i>ReturnValues</i> is specified as
+     * <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
+     */
     private java.util.Map<String,AttributeValue> attributes;
 
+    /**
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     */
     private ConsumedCapacity consumedCapacity;
 
+    /**
+     * Information about item collections, if any, that were affected by the
+     * operation. <i>ItemCollectionMetrics</i> is only returned if it was
+     * asked for in the request. If the table does not have any secondary
+     * indexes, this information is not returned in the response. <p>Each
+     * <i>ItemCollectionMetrics</i> element consists of: <ul>
+     * <li><p><i>ItemCollectionKey</i> - The hash key value of the item
+     * collection. This is the same as the hash key of the item.</li>
+     * <li><p><i>SizeEstimateRange</i> - An estimate of item collection size,
+     * measured in gigabytes. This is a two-element array containing a lower
+     * bound and an upper bound for the estimate. The estimate includes the
+     * size of all the items in the table, plus the size of all attributes
+     * projected into all of the secondary indexes on that table. Use this
+     * estimate to measure whether a secondary index is approaching its size
+     * limit. <p>The estimate is subject to change over time; therefore, do
+     * not rely on the precision or accuracy of the estimate. </li> </ul>
+     */
     private ItemCollectionMetrics itemCollectionMetrics;
 
     /**
-     * Returns the value of the Attributes property for this object.
+     * The attribute values as they appeared before the <i>PutItem</i>
+     * operation, but only if <i>ReturnValues</i> is specified as
+     * <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
      *
-     * @return The value of the Attributes property for this object.
+     * @return The attribute values as they appeared before the <i>PutItem</i>
+     *         operation, but only if <i>ReturnValues</i> is specified as
+     *         <code>ALL_OLD</code> in the request. Each element consists of an
+     *         attribute name and an attribute value.
      */
     public java.util.Map<String,AttributeValue> getAttributes() {
         
@@ -38,20 +77,32 @@ public class PutItemResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Attributes property for this object.
+     * The attribute values as they appeared before the <i>PutItem</i>
+     * operation, but only if <i>ReturnValues</i> is specified as
+     * <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
      *
-     * @param attributes The new value for the Attributes property for this object.
+     * @param attributes The attribute values as they appeared before the <i>PutItem</i>
+     *         operation, but only if <i>ReturnValues</i> is specified as
+     *         <code>ALL_OLD</code> in the request. Each element consists of an
+     *         attribute name and an attribute value.
      */
     public void setAttributes(java.util.Map<String,AttributeValue> attributes) {
         this.attributes = attributes;
     }
     
     /**
-     * Sets the value of the Attributes property for this object.
+     * The attribute values as they appeared before the <i>PutItem</i>
+     * operation, but only if <i>ReturnValues</i> is specified as
+     * <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributes The new value for the Attributes property for this object.
+     * @param attributes The attribute values as they appeared before the <i>PutItem</i>
+     *         operation, but only if <i>ReturnValues</i> is specified as
+     *         <code>ALL_OLD</code> in the request. Each element consists of an
+     *         attribute name and an attribute value.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -62,29 +113,59 @@ public class PutItemResult  implements Serializable  {
     }
     
     /**
-     * Returns the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @return The value of the ConsumedCapacity property for this object.
+     * @return The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public ConsumedCapacity getConsumedCapacity() {
         return consumedCapacity;
     }
     
     /**
-     * Sets the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
-     * @param consumedCapacity The new value for the ConsumedCapacity property for this object.
+     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public void setConsumedCapacity(ConsumedCapacity consumedCapacity) {
         this.consumedCapacity = consumedCapacity;
     }
     
     /**
-     * Sets the value of the ConsumedCapacity property for this object.
+     * The table name that consumed provisioned throughput, and the number of
+     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     * returned if it was asked for in the request. For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param consumedCapacity The new value for the ConsumedCapacity property for this object.
+     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
+     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
+     *         returned if it was asked for in the request. For more information, see
+     *         <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
+     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -96,30 +177,113 @@ public class PutItemResult  implements Serializable  {
     
     
     /**
-     * Returns the value of the ItemCollectionMetrics property for this
-     * object.
+     * Information about item collections, if any, that were affected by the
+     * operation. <i>ItemCollectionMetrics</i> is only returned if it was
+     * asked for in the request. If the table does not have any secondary
+     * indexes, this information is not returned in the response. <p>Each
+     * <i>ItemCollectionMetrics</i> element consists of: <ul>
+     * <li><p><i>ItemCollectionKey</i> - The hash key value of the item
+     * collection. This is the same as the hash key of the item.</li>
+     * <li><p><i>SizeEstimateRange</i> - An estimate of item collection size,
+     * measured in gigabytes. This is a two-element array containing a lower
+     * bound and an upper bound for the estimate. The estimate includes the
+     * size of all the items in the table, plus the size of all attributes
+     * projected into all of the secondary indexes on that table. Use this
+     * estimate to measure whether a secondary index is approaching its size
+     * limit. <p>The estimate is subject to change over time; therefore, do
+     * not rely on the precision or accuracy of the estimate. </li> </ul>
      *
-     * @return The value of the ItemCollectionMetrics property for this object.
+     * @return Information about item collections, if any, that were affected by the
+     *         operation. <i>ItemCollectionMetrics</i> is only returned if it was
+     *         asked for in the request. If the table does not have any secondary
+     *         indexes, this information is not returned in the response. <p>Each
+     *         <i>ItemCollectionMetrics</i> element consists of: <ul>
+     *         <li><p><i>ItemCollectionKey</i> - The hash key value of the item
+     *         collection. This is the same as the hash key of the item.</li>
+     *         <li><p><i>SizeEstimateRange</i> - An estimate of item collection size,
+     *         measured in gigabytes. This is a two-element array containing a lower
+     *         bound and an upper bound for the estimate. The estimate includes the
+     *         size of all the items in the table, plus the size of all attributes
+     *         projected into all of the secondary indexes on that table. Use this
+     *         estimate to measure whether a secondary index is approaching its size
+     *         limit. <p>The estimate is subject to change over time; therefore, do
+     *         not rely on the precision or accuracy of the estimate. </li> </ul>
      */
     public ItemCollectionMetrics getItemCollectionMetrics() {
         return itemCollectionMetrics;
     }
     
     /**
-     * Sets the value of the ItemCollectionMetrics property for this object.
+     * Information about item collections, if any, that were affected by the
+     * operation. <i>ItemCollectionMetrics</i> is only returned if it was
+     * asked for in the request. If the table does not have any secondary
+     * indexes, this information is not returned in the response. <p>Each
+     * <i>ItemCollectionMetrics</i> element consists of: <ul>
+     * <li><p><i>ItemCollectionKey</i> - The hash key value of the item
+     * collection. This is the same as the hash key of the item.</li>
+     * <li><p><i>SizeEstimateRange</i> - An estimate of item collection size,
+     * measured in gigabytes. This is a two-element array containing a lower
+     * bound and an upper bound for the estimate. The estimate includes the
+     * size of all the items in the table, plus the size of all attributes
+     * projected into all of the secondary indexes on that table. Use this
+     * estimate to measure whether a secondary index is approaching its size
+     * limit. <p>The estimate is subject to change over time; therefore, do
+     * not rely on the precision or accuracy of the estimate. </li> </ul>
      *
-     * @param itemCollectionMetrics The new value for the ItemCollectionMetrics property for this object.
+     * @param itemCollectionMetrics Information about item collections, if any, that were affected by the
+     *         operation. <i>ItemCollectionMetrics</i> is only returned if it was
+     *         asked for in the request. If the table does not have any secondary
+     *         indexes, this information is not returned in the response. <p>Each
+     *         <i>ItemCollectionMetrics</i> element consists of: <ul>
+     *         <li><p><i>ItemCollectionKey</i> - The hash key value of the item
+     *         collection. This is the same as the hash key of the item.</li>
+     *         <li><p><i>SizeEstimateRange</i> - An estimate of item collection size,
+     *         measured in gigabytes. This is a two-element array containing a lower
+     *         bound and an upper bound for the estimate. The estimate includes the
+     *         size of all the items in the table, plus the size of all attributes
+     *         projected into all of the secondary indexes on that table. Use this
+     *         estimate to measure whether a secondary index is approaching its size
+     *         limit. <p>The estimate is subject to change over time; therefore, do
+     *         not rely on the precision or accuracy of the estimate. </li> </ul>
      */
     public void setItemCollectionMetrics(ItemCollectionMetrics itemCollectionMetrics) {
         this.itemCollectionMetrics = itemCollectionMetrics;
     }
     
     /**
-     * Sets the value of the ItemCollectionMetrics property for this object.
+     * Information about item collections, if any, that were affected by the
+     * operation. <i>ItemCollectionMetrics</i> is only returned if it was
+     * asked for in the request. If the table does not have any secondary
+     * indexes, this information is not returned in the response. <p>Each
+     * <i>ItemCollectionMetrics</i> element consists of: <ul>
+     * <li><p><i>ItemCollectionKey</i> - The hash key value of the item
+     * collection. This is the same as the hash key of the item.</li>
+     * <li><p><i>SizeEstimateRange</i> - An estimate of item collection size,
+     * measured in gigabytes. This is a two-element array containing a lower
+     * bound and an upper bound for the estimate. The estimate includes the
+     * size of all the items in the table, plus the size of all attributes
+     * projected into all of the secondary indexes on that table. Use this
+     * estimate to measure whether a secondary index is approaching its size
+     * limit. <p>The estimate is subject to change over time; therefore, do
+     * not rely on the precision or accuracy of the estimate. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param itemCollectionMetrics The new value for the ItemCollectionMetrics property for this object.
+     * @param itemCollectionMetrics Information about item collections, if any, that were affected by the
+     *         operation. <i>ItemCollectionMetrics</i> is only returned if it was
+     *         asked for in the request. If the table does not have any secondary
+     *         indexes, this information is not returned in the response. <p>Each
+     *         <i>ItemCollectionMetrics</i> element consists of: <ul>
+     *         <li><p><i>ItemCollectionKey</i> - The hash key value of the item
+     *         collection. This is the same as the hash key of the item.</li>
+     *         <li><p><i>SizeEstimateRange</i> - An estimate of item collection size,
+     *         measured in gigabytes. This is a two-element array containing a lower
+     *         bound and an upper bound for the estimate. The estimate includes the
+     *         size of all the items in the table, plus the size of all attributes
+     *         projected into all of the secondary indexes on that table. Use this
+     *         estimate to measure whether a secondary index is approaching its size
+     *         limit. <p>The estimate is subject to change over time; therefore, do
+     *         not rely on the precision or accuracy of the estimate. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

@@ -16,45 +16,89 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Provisioned Throughput Description
+ * <p>
+ * Describes the provisioned throughput settings for the table, consisting of read and write capacity units, along with data about increases and
+ * decreases.
+ * </p>
  */
 public class ProvisionedThroughputDescription  implements Serializable  {
 
+    /**
+     * The date and time of the last provisioned throughput increase for this
+     * table.
+     */
     private java.util.Date lastIncreaseDateTime;
 
+    /**
+     * The date and time of the last provisioned throughput decrease for this
+     * table.
+     */
     private java.util.Date lastDecreaseDateTime;
 
+    /**
+     * The number of provisioned throughput decreases for this table during
+     * this UTC calendar day. For current maximums on provisioned throughput
+     * decreases, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Range: </b>1 - <br/>
+     */
     private Long numberOfDecreasesToday;
 
+    /**
+     * The maximum number of strongly consistent reads consumed per second
+     * before Amazon DynamoDB returns a <i>ThrottlingException</i>.
+     * Eventually consistent reads require less effort than strongly
+     * consistent reads, so a setting of 50 <i>ReadCapacityUnits</i> per
+     * second provides 100 eventually consistent <i>ReadCapacityUnits</i> per
+     * second.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Range: </b>1 - <br/>
+     */
     private Long readCapacityUnits;
 
+    /**
+     * The maximum number of writes consumed per second before Amazon
+     * DynamoDB returns a <i>ThrottlingException</i>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Range: </b>1 - <br/>
+     */
     private Long writeCapacityUnits;
 
     /**
-     * Returns the value of the LastIncreaseDateTime property for this
-     * object.
+     * The date and time of the last provisioned throughput increase for this
+     * table.
      *
-     * @return The value of the LastIncreaseDateTime property for this object.
+     * @return The date and time of the last provisioned throughput increase for this
+     *         table.
      */
     public java.util.Date getLastIncreaseDateTime() {
         return lastIncreaseDateTime;
     }
     
     /**
-     * Sets the value of the LastIncreaseDateTime property for this object.
+     * The date and time of the last provisioned throughput increase for this
+     * table.
      *
-     * @param lastIncreaseDateTime The new value for the LastIncreaseDateTime property for this object.
+     * @param lastIncreaseDateTime The date and time of the last provisioned throughput increase for this
+     *         table.
      */
     public void setLastIncreaseDateTime(java.util.Date lastIncreaseDateTime) {
         this.lastIncreaseDateTime = lastIncreaseDateTime;
     }
     
     /**
-     * Sets the value of the LastIncreaseDateTime property for this object.
+     * The date and time of the last provisioned throughput increase for this
+     * table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param lastIncreaseDateTime The new value for the LastIncreaseDateTime property for this object.
+     * @param lastIncreaseDateTime The date and time of the last provisioned throughput increase for this
+     *         table.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -66,30 +110,35 @@ public class ProvisionedThroughputDescription  implements Serializable  {
     
     
     /**
-     * Returns the value of the LastDecreaseDateTime property for this
-     * object.
+     * The date and time of the last provisioned throughput decrease for this
+     * table.
      *
-     * @return The value of the LastDecreaseDateTime property for this object.
+     * @return The date and time of the last provisioned throughput decrease for this
+     *         table.
      */
     public java.util.Date getLastDecreaseDateTime() {
         return lastDecreaseDateTime;
     }
     
     /**
-     * Sets the value of the LastDecreaseDateTime property for this object.
+     * The date and time of the last provisioned throughput decrease for this
+     * table.
      *
-     * @param lastDecreaseDateTime The new value for the LastDecreaseDateTime property for this object.
+     * @param lastDecreaseDateTime The date and time of the last provisioned throughput decrease for this
+     *         table.
      */
     public void setLastDecreaseDateTime(java.util.Date lastDecreaseDateTime) {
         this.lastDecreaseDateTime = lastDecreaseDateTime;
     }
     
     /**
-     * Sets the value of the LastDecreaseDateTime property for this object.
+     * The date and time of the last provisioned throughput decrease for this
+     * table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param lastDecreaseDateTime The new value for the LastDecreaseDateTime property for this object.
+     * @param lastDecreaseDateTime The date and time of the last provisioned throughput decrease for this
+     *         table.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -101,39 +150,62 @@ public class ProvisionedThroughputDescription  implements Serializable  {
     
     
     /**
-     * Returns the value of the NumberOfDecreasesToday property for this
-     * object.
+     * The number of provisioned throughput decreases for this table during
+     * this UTC calendar day. For current maximums on provisioned throughput
+     * decreases, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @return The value of the NumberOfDecreasesToday property for this object.
+     * @return The number of provisioned throughput decreases for this table during
+     *         this UTC calendar day. For current maximums on provisioned throughput
+     *         decreases, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     *         in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public Long getNumberOfDecreasesToday() {
         return numberOfDecreasesToday;
     }
     
     /**
-     * Sets the value of the NumberOfDecreasesToday property for this object.
+     * The number of provisioned throughput decreases for this table during
+     * this UTC calendar day. For current maximums on provisioned throughput
+     * decreases, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @param numberOfDecreasesToday The new value for the NumberOfDecreasesToday property for this object.
+     * @param numberOfDecreasesToday The number of provisioned throughput decreases for this table during
+     *         this UTC calendar day. For current maximums on provisioned throughput
+     *         decreases, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     *         in the <i>Amazon DynamoDB Developer Guide</i>.
      */
     public void setNumberOfDecreasesToday(Long numberOfDecreasesToday) {
         this.numberOfDecreasesToday = numberOfDecreasesToday;
     }
     
     /**
-     * Sets the value of the NumberOfDecreasesToday property for this object.
+     * The number of provisioned throughput decreases for this table during
+     * this UTC calendar day. For current maximums on provisioned throughput
+     * decreases, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @param numberOfDecreasesToday The new value for the NumberOfDecreasesToday property for this object.
+     * @param numberOfDecreasesToday The number of provisioned throughput decreases for this table during
+     *         this UTC calendar day. For current maximums on provisioned throughput
+     *         decreases, see <a
+     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     *         in the <i>Amazon DynamoDB Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -145,38 +217,68 @@ public class ProvisionedThroughputDescription  implements Serializable  {
     
     
     /**
-     * Returns the value of the ReadCapacityUnits property for this object.
+     * The maximum number of strongly consistent reads consumed per second
+     * before Amazon DynamoDB returns a <i>ThrottlingException</i>.
+     * Eventually consistent reads require less effort than strongly
+     * consistent reads, so a setting of 50 <i>ReadCapacityUnits</i> per
+     * second provides 100 eventually consistent <i>ReadCapacityUnits</i> per
+     * second.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @return The value of the ReadCapacityUnits property for this object.
+     * @return The maximum number of strongly consistent reads consumed per second
+     *         before Amazon DynamoDB returns a <i>ThrottlingException</i>.
+     *         Eventually consistent reads require less effort than strongly
+     *         consistent reads, so a setting of 50 <i>ReadCapacityUnits</i> per
+     *         second provides 100 eventually consistent <i>ReadCapacityUnits</i> per
+     *         second.
      */
     public Long getReadCapacityUnits() {
         return readCapacityUnits;
     }
     
     /**
-     * Sets the value of the ReadCapacityUnits property for this object.
+     * The maximum number of strongly consistent reads consumed per second
+     * before Amazon DynamoDB returns a <i>ThrottlingException</i>.
+     * Eventually consistent reads require less effort than strongly
+     * consistent reads, so a setting of 50 <i>ReadCapacityUnits</i> per
+     * second provides 100 eventually consistent <i>ReadCapacityUnits</i> per
+     * second.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @param readCapacityUnits The new value for the ReadCapacityUnits property for this object.
+     * @param readCapacityUnits The maximum number of strongly consistent reads consumed per second
+     *         before Amazon DynamoDB returns a <i>ThrottlingException</i>.
+     *         Eventually consistent reads require less effort than strongly
+     *         consistent reads, so a setting of 50 <i>ReadCapacityUnits</i> per
+     *         second provides 100 eventually consistent <i>ReadCapacityUnits</i> per
+     *         second.
      */
     public void setReadCapacityUnits(Long readCapacityUnits) {
         this.readCapacityUnits = readCapacityUnits;
     }
     
     /**
-     * Sets the value of the ReadCapacityUnits property for this object.
+     * The maximum number of strongly consistent reads consumed per second
+     * before Amazon DynamoDB returns a <i>ThrottlingException</i>.
+     * Eventually consistent reads require less effort than strongly
+     * consistent reads, so a setting of 50 <i>ReadCapacityUnits</i> per
+     * second provides 100 eventually consistent <i>ReadCapacityUnits</i> per
+     * second.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @param readCapacityUnits The new value for the ReadCapacityUnits property for this object.
+     * @param readCapacityUnits The maximum number of strongly consistent reads consumed per second
+     *         before Amazon DynamoDB returns a <i>ThrottlingException</i>.
+     *         Eventually consistent reads require less effort than strongly
+     *         consistent reads, so a setting of 50 <i>ReadCapacityUnits</i> per
+     *         second provides 100 eventually consistent <i>ReadCapacityUnits</i> per
+     *         second.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -188,38 +290,44 @@ public class ProvisionedThroughputDescription  implements Serializable  {
     
     
     /**
-     * Returns the value of the WriteCapacityUnits property for this object.
+     * The maximum number of writes consumed per second before Amazon
+     * DynamoDB returns a <i>ThrottlingException</i>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @return The value of the WriteCapacityUnits property for this object.
+     * @return The maximum number of writes consumed per second before Amazon
+     *         DynamoDB returns a <i>ThrottlingException</i>.
      */
     public Long getWriteCapacityUnits() {
         return writeCapacityUnits;
     }
     
     /**
-     * Sets the value of the WriteCapacityUnits property for this object.
+     * The maximum number of writes consumed per second before Amazon
+     * DynamoDB returns a <i>ThrottlingException</i>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @param writeCapacityUnits The new value for the WriteCapacityUnits property for this object.
+     * @param writeCapacityUnits The maximum number of writes consumed per second before Amazon
+     *         DynamoDB returns a <i>ThrottlingException</i>.
      */
     public void setWriteCapacityUnits(Long writeCapacityUnits) {
         this.writeCapacityUnits = writeCapacityUnits;
     }
     
     /**
-     * Sets the value of the WriteCapacityUnits property for this object.
+     * The maximum number of writes consumed per second before Amazon
+     * DynamoDB returns a <i>ThrottlingException</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
-     * @param writeCapacityUnits The new value for the WriteCapacityUnits property for this object.
+     * @param writeCapacityUnits The maximum number of writes consumed per second before Amazon
+     *         DynamoDB returns a <i>ThrottlingException</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

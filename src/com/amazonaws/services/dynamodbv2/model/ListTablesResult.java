@@ -16,18 +16,37 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * List Tables Result
+ * <p>
+ * Represents the output of a <i>ListTables</i> operation.
+ * </p>
  */
 public class ListTablesResult  implements Serializable  {
 
+    /**
+     * The names of the tables associated with the current account at the
+     * current endpoint.
+     */
     private java.util.List<String> tableNames;
 
+    /**
+     * The name of the last table in the current list, only if some tables
+     * for the account and endpoint have not been returned. This value does
+     * not exist in a response if all table names are already returned. Use
+     * this value as the <i>ExclusiveStartTableName</i> in a new request to
+     * continue the list until all the table names are returned.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String lastEvaluatedTableName;
 
     /**
-     * Returns the value of the TableNames property for this object.
+     * The names of the tables associated with the current account at the
+     * current endpoint.
      *
-     * @return The value of the TableNames property for this object.
+     * @return The names of the tables associated with the current account at the
+     *         current endpoint.
      */
     public java.util.List<String> getTableNames() {
         
@@ -35,9 +54,11 @@ public class ListTablesResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the TableNames property for this object.
+     * The names of the tables associated with the current account at the
+     * current endpoint.
      *
-     * @param tableNames The new value for the TableNames property for this object.
+     * @param tableNames The names of the tables associated with the current account at the
+     *         current endpoint.
      */
     public void setTableNames(java.util.Collection<String> tableNames) {
         if (tableNames == null) {
@@ -51,11 +72,13 @@ public class ListTablesResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the TableNames property for this object.
+     * The names of the tables associated with the current account at the
+     * current endpoint.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tableNames The new value for the TableNames property for this object.
+     * @param tableNames The names of the tables associated with the current account at the
+     *         current endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -69,11 +92,13 @@ public class ListTablesResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the TableNames property for this object.
+     * The names of the tables associated with the current account at the
+     * current endpoint.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tableNames The new value for the TableNames property for this object.
+     * @param tableNames The names of the tables associated with the current account at the
+     *         current endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -91,34 +116,53 @@ public class ListTablesResult  implements Serializable  {
     }
     
     /**
-     * Returns the value of the LastEvaluatedTableName property for this
-     * object.
+     * The name of the last table in the current list, only if some tables
+     * for the account and endpoint have not been returned. This value does
+     * not exist in a response if all table names are already returned. Use
+     * this value as the <i>ExclusiveStartTableName</i> in a new request to
+     * continue the list until all the table names are returned.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the LastEvaluatedTableName property for this object.
+     * @return The name of the last table in the current list, only if some tables
+     *         for the account and endpoint have not been returned. This value does
+     *         not exist in a response if all table names are already returned. Use
+     *         this value as the <i>ExclusiveStartTableName</i> in a new request to
+     *         continue the list until all the table names are returned.
      */
     public String getLastEvaluatedTableName() {
         return lastEvaluatedTableName;
     }
     
     /**
-     * Sets the value of the LastEvaluatedTableName property for this object.
+     * The name of the last table in the current list, only if some tables
+     * for the account and endpoint have not been returned. This value does
+     * not exist in a response if all table names are already returned. Use
+     * this value as the <i>ExclusiveStartTableName</i> in a new request to
+     * continue the list until all the table names are returned.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param lastEvaluatedTableName The new value for the LastEvaluatedTableName property for this object.
+     * @param lastEvaluatedTableName The name of the last table in the current list, only if some tables
+     *         for the account and endpoint have not been returned. This value does
+     *         not exist in a response if all table names are already returned. Use
+     *         this value as the <i>ExclusiveStartTableName</i> in a new request to
+     *         continue the list until all the table names are returned.
      */
     public void setLastEvaluatedTableName(String lastEvaluatedTableName) {
         this.lastEvaluatedTableName = lastEvaluatedTableName;
     }
     
     /**
-     * Sets the value of the LastEvaluatedTableName property for this object.
+     * The name of the last table in the current list, only if some tables
+     * for the account and endpoint have not been returned. This value does
+     * not exist in a response if all table names are already returned. Use
+     * this value as the <i>ExclusiveStartTableName</i> in a new request to
+     * continue the list until all the table names are returned.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -126,7 +170,11 @@ public class ListTablesResult  implements Serializable  {
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param lastEvaluatedTableName The new value for the LastEvaluatedTableName property for this object.
+     * @param lastEvaluatedTableName The name of the last table in the current list, only if some tables
+     *         for the account and endpoint have not been returned. This value does
+     *         not exist in a response if all table names are already returned. Use
+     *         this value as the <i>ExclusiveStartTableName</i> in a new request to
+     *         continue the list until all the table names are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

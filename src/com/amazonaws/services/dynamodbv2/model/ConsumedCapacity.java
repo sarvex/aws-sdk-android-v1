@@ -16,42 +16,57 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Consumed Capacity
+ * <p>
+ * The table name that consumed provisioned throughput, and the number of capacity units consumed by it. <i>ConsumedCapacity</i> is only returned if it
+ * was asked for in the request. For more information, see <a
+ * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"> Provisioned Throughput </a> in the <i>Amazon
+ * DynamoDB Developer Guide</i> .
+ * </p>
  */
 public class ConsumedCapacity  implements Serializable  {
 
+    /**
+     * The table that consumed the provisioned throughput.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String tableName;
 
+    /**
+     * The total number of capacity units consumed.
+     */
     private Double capacityUnits;
 
     /**
-     * Returns the value of the TableName property for this object.
+     * The table that consumed the provisioned throughput.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the TableName property for this object.
+     * @return The table that consumed the provisioned throughput.
      */
     public String getTableName() {
         return tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The table that consumed the provisioned throughput.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The table that consumed the provisioned throughput.
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
     
     /**
-     * Sets the value of the TableName property for this object.
+     * The table that consumed the provisioned throughput.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -59,7 +74,7 @@ public class ConsumedCapacity  implements Serializable  {
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param tableName The new value for the TableName property for this object.
+     * @param tableName The table that consumed the provisioned throughput.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -71,29 +86,29 @@ public class ConsumedCapacity  implements Serializable  {
     
     
     /**
-     * Returns the value of the CapacityUnits property for this object.
+     * The total number of capacity units consumed.
      *
-     * @return The value of the CapacityUnits property for this object.
+     * @return The total number of capacity units consumed.
      */
     public Double getCapacityUnits() {
         return capacityUnits;
     }
     
     /**
-     * Sets the value of the CapacityUnits property for this object.
+     * The total number of capacity units consumed.
      *
-     * @param capacityUnits The new value for the CapacityUnits property for this object.
+     * @param capacityUnits The total number of capacity units consumed.
      */
     public void setCapacityUnits(Double capacityUnits) {
         this.capacityUnits = capacityUnits;
     }
     
     /**
-     * Sets the value of the CapacityUnits property for this object.
+     * The total number of capacity units consumed.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param capacityUnits The new value for the CapacityUnits property for this object.
+     * @param capacityUnits The total number of capacity units consumed.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

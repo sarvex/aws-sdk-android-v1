@@ -17,7 +17,9 @@ package com.amazonaws.services.dynamodbv2.model;
 import com.amazonaws.AmazonServiceException;
 
 /**
- * AmazonDynamoDBv2 exception
+ * <p>
+ * A condition specified in the operation could not be evaluated.
+ * </p>
  */        
 public class ConditionalCheckFailedException extends AmazonServiceException {
     private static final long serialVersionUID = 1L;

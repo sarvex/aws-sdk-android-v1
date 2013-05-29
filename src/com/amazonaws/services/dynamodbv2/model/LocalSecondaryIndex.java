@@ -16,44 +16,72 @@ package com.amazonaws.services.dynamodbv2.model;
 import java.io.Serializable;
 
 /**
- * Local Secondary Index
+ * <p>
+ * Represents a local secondary index.
+ * </p>
  */
 public class LocalSecondaryIndex  implements Serializable  {
 
+    /**
+     * Represents the name of the secondary index. The name must be unique
+     * among all other indexes on this table.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String indexName;
 
+    /**
+     * Represents the complete index key schema, which consists of one or
+     * more pairs of attribute names and key types (<code>HASH</code> or
+     * <code>RANGE</code>).
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 2<br/>
+     */
     private java.util.List<KeySchemaElement> keySchema;
 
+    /**
+     * Represents attributes that are copied (projected) from the table into
+     * the index. These are in addition to the primary key attributes and
+     * index key attributes, which are automatically projected.
+     */
     private Projection projection;
 
     /**
-     * Returns the value of the IndexName property for this object.
+     * Represents the name of the secondary index. The name must be unique
+     * among all other indexes on this table.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the IndexName property for this object.
+     * @return Represents the name of the secondary index. The name must be unique
+     *         among all other indexes on this table.
      */
     public String getIndexName() {
         return indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * Represents the name of the secondary index. The name must be unique
+     * among all other indexes on this table.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName Represents the name of the secondary index. The name must be unique
+     *         among all other indexes on this table.
      */
     public void setIndexName(String indexName) {
         this.indexName = indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * Represents the name of the secondary index. The name must be unique
+     * among all other indexes on this table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -61,7 +89,8 @@ public class LocalSecondaryIndex  implements Serializable  {
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName Represents the name of the secondary index. The name must be unique
+     *         among all other indexes on this table.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -73,12 +102,16 @@ public class LocalSecondaryIndex  implements Serializable  {
     
     
     /**
-     * Returns the value of the KeySchema property for this object.
+     * Represents the complete index key schema, which consists of one or
+     * more pairs of attribute names and key types (<code>HASH</code> or
+     * <code>RANGE</code>).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @return The value of the KeySchema property for this object.
+     * @return Represents the complete index key schema, which consists of one or
+     *         more pairs of attribute names and key types (<code>HASH</code> or
+     *         <code>RANGE</code>).
      */
     public java.util.List<KeySchemaElement> getKeySchema() {
         
@@ -86,12 +119,16 @@ public class LocalSecondaryIndex  implements Serializable  {
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * Represents the complete index key schema, which consists of one or
+     * more pairs of attribute names and key types (<code>HASH</code> or
+     * <code>RANGE</code>).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema Represents the complete index key schema, which consists of one or
+     *         more pairs of attribute names and key types (<code>HASH</code> or
+     *         <code>RANGE</code>).
      */
     public void setKeySchema(java.util.Collection<KeySchemaElement> keySchema) {
         if (keySchema == null) {
@@ -105,14 +142,18 @@ public class LocalSecondaryIndex  implements Serializable  {
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * Represents the complete index key schema, which consists of one or
+     * more pairs of attribute names and key types (<code>HASH</code> or
+     * <code>RANGE</code>).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema Represents the complete index key schema, which consists of one or
+     *         more pairs of attribute names and key types (<code>HASH</code> or
+     *         <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -126,14 +167,18 @@ public class LocalSecondaryIndex  implements Serializable  {
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * Represents the complete index key schema, which consists of one or
+     * more pairs of attribute names and key types (<code>HASH</code> or
+     * <code>RANGE</code>).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema Represents the complete index key schema, which consists of one or
+     *         more pairs of attribute names and key types (<code>HASH</code> or
+     *         <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -151,29 +196,41 @@ public class LocalSecondaryIndex  implements Serializable  {
     }
     
     /**
-     * Returns the value of the Projection property for this object.
+     * Represents attributes that are copied (projected) from the table into
+     * the index. These are in addition to the primary key attributes and
+     * index key attributes, which are automatically projected.
      *
-     * @return The value of the Projection property for this object.
+     * @return Represents attributes that are copied (projected) from the table into
+     *         the index. These are in addition to the primary key attributes and
+     *         index key attributes, which are automatically projected.
      */
     public Projection getProjection() {
         return projection;
     }
     
     /**
-     * Sets the value of the Projection property for this object.
+     * Represents attributes that are copied (projected) from the table into
+     * the index. These are in addition to the primary key attributes and
+     * index key attributes, which are automatically projected.
      *
-     * @param projection The new value for the Projection property for this object.
+     * @param projection Represents attributes that are copied (projected) from the table into
+     *         the index. These are in addition to the primary key attributes and
+     *         index key attributes, which are automatically projected.
      */
     public void setProjection(Projection projection) {
         this.projection = projection;
     }
     
     /**
-     * Sets the value of the Projection property for this object.
+     * Represents attributes that are copied (projected) from the table into
+     * the index. These are in addition to the primary key attributes and
+     * index key attributes, which are automatically projected.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param projection The new value for the Projection property for this object.
+     * @param projection Represents attributes that are copied (projected) from the table into
+     *         the index. These are in addition to the primary key attributes and
+     *         index key attributes, which are automatically projected.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
