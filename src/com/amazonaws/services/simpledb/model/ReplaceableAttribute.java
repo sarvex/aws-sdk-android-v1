@@ -19,7 +19,7 @@ import java.io.Serializable;
  * <p>
  * </p>
  */
-public class ReplaceableAttribute  implements Serializable  {
+public class ReplaceableAttribute implements Serializable {
 
     /**
      * The name of the replaceable attribute.
@@ -44,6 +44,8 @@ public class ReplaceableAttribute  implements Serializable  {
      */
     public ReplaceableAttribute() {}
     
+
+
     /**
      * Constructs a new ReplaceableAttribute object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,9 +58,9 @@ public class ReplaceableAttribute  implements Serializable  {
      * setting is <code>false</code>.
      */
     public ReplaceableAttribute(String name, String value, Boolean replace) {
-        this.name = name;
-        this.value = value;
-        this.replace = replace;
+        setName(name);
+        setValue(value);
+        setReplace(replace);
     }
 
     
@@ -89,7 +91,7 @@ public class ReplaceableAttribute  implements Serializable  {
      * @param name The name of the replaceable attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableAttribute withName(String name) {
         this.name = name;
@@ -123,7 +125,7 @@ public class ReplaceableAttribute  implements Serializable  {
      * @param value The value of the replaceable attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableAttribute withValue(String value) {
         this.value = value;
@@ -169,7 +171,7 @@ public class ReplaceableAttribute  implements Serializable  {
      *         <code>false</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableAttribute withReplace(Boolean replace) {
         this.replace = replace;
@@ -201,9 +203,9 @@ public class ReplaceableAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (isReplace() != null) sb.append("Replace: " + isReplace() );
         sb.append("}");
         return sb.toString();

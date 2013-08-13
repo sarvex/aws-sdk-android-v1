@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeSecurityGroupsRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -28,14 +30,15 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSecurityGroups(DescribeSecurityGroupsRequest)
  */
-public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSecurityGroupsRequest> {
 
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * An optional list of group names that specify the Amazon EC2 security
+     * groups to describe.
      */
-    private java.util.List<String> groupNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNames;
 
-    private java.util.List<String> groupIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groupIds;
 
     /**
      * A list of filters used to match properties for SecurityGroups. For a
@@ -44,46 +47,52 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * An optional list of group names that specify the Amazon EC2 security
+     * groups to describe.
      *
-     * @return The optional list of Amazon EC2 security groups to describe.
+     * @return An optional list of group names that specify the Amazon EC2 security
+     *         groups to describe.
      */
     public java.util.List<String> getGroupNames() {
         
         if (groupNames == null) {
-            groupNames = new java.util.ArrayList<String>();
+              groupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groupNames.setAutoConstruct(true);
         }
         return groupNames;
     }
     
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * An optional list of group names that specify the Amazon EC2 security
+     * groups to describe.
      *
-     * @param groupNames The optional list of Amazon EC2 security groups to describe.
+     * @param groupNames An optional list of group names that specify the Amazon EC2 security
+     *         groups to describe.
      */
     public void setGroupNames(java.util.Collection<String> groupNames) {
         if (groupNames == null) {
             this.groupNames = null;
             return;
         }
-
-        java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
         groupNamesCopy.addAll(groupNames);
         this.groupNames = groupNamesCopy;
     }
     
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * An optional list of group names that specify the Amazon EC2 security
+     * groups to describe.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupNames The optional list of Amazon EC2 security groups to describe.
+     * @param groupNames An optional list of group names that specify the Amazon EC2 security
+     *         groups to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupNames(String... groupNames) {
         if (getGroupNames() == null) setGroupNames(new java.util.ArrayList<String>(groupNames.length));
@@ -94,20 +103,22 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * An optional list of group names that specify the Amazon EC2 security
+     * groups to describe.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupNames The optional list of Amazon EC2 security groups to describe.
+     * @param groupNames An optional list of group names that specify the Amazon EC2 security
+     *         groups to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupNames(java.util.Collection<String> groupNames) {
         if (groupNames == null) {
             this.groupNames = null;
         } else {
-            java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
             groupNamesCopy.addAll(groupNames);
             this.groupNames = groupNamesCopy;
         }
@@ -123,7 +134,8 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     public java.util.List<String> getGroupIds() {
         
         if (groupIds == null) {
-            groupIds = new java.util.ArrayList<String>();
+              groupIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groupIds.setAutoConstruct(true);
         }
         return groupIds;
     }
@@ -138,8 +150,7 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
             this.groupIds = null;
             return;
         }
-
-        java.util.List<String> groupIdsCopy = new java.util.ArrayList<String>(groupIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupIds.size());
         groupIdsCopy.addAll(groupIds);
         this.groupIds = groupIdsCopy;
     }
@@ -152,7 +163,7 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
      * @param groupIds The new value for the GroupIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupIds(String... groupIds) {
         if (getGroupIds() == null) setGroupIds(new java.util.ArrayList<String>(groupIds.length));
@@ -170,13 +181,13 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
      * @param groupIds The new value for the GroupIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupIds(java.util.Collection<String> groupIds) {
         if (groupIds == null) {
             this.groupIds = null;
         } else {
-            java.util.List<String> groupIdsCopy = new java.util.ArrayList<String>(groupIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupIds.size());
             groupIdsCopy.addAll(groupIds);
             this.groupIds = groupIdsCopy;
         }
@@ -200,7 +211,8 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -223,8 +235,7 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -245,7 +256,7 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -271,18 +282,30 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeSecurityGroupsRequest> getDryRunRequest() {
+        Request<DescribeSecurityGroupsRequest> request = new DescribeSecurityGroupsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -296,9 +319,9 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");    	
-        if (getGroupIds() != null) sb.append("GroupIds: " + getGroupIds() + ",");    	
+        sb.append("{");
+        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");
+        if (getGroupIds() != null) sb.append("GroupIds: " + getGroupIds() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

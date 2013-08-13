@@ -20,7 +20,7 @@ import java.io.Serializable;
  * An Amazon EC2 security group, describing how EC2 instances in this group can receive network traffic.
  * </p>
  */
-public class SecurityGroup  implements Serializable  {
+public class SecurityGroup implements Serializable {
 
     /**
      * The AWS Access Key ID of the owner of the security group.
@@ -42,13 +42,13 @@ public class SecurityGroup  implements Serializable  {
     /**
      * The permissions enabled for this security group.
      */
-    private java.util.List<IpPermission> ipPermissions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissions;
 
-    private java.util.List<IpPermission> ipPermissionsEgress;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsEgress;
 
     private String vpcId;
 
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * The AWS Access Key ID of the owner of the security group.
@@ -76,7 +76,7 @@ public class SecurityGroup  implements Serializable  {
      * @param ownerId The AWS Access Key ID of the owner of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withOwnerId(String ownerId) {
         this.ownerId = ownerId;
@@ -110,7 +110,7 @@ public class SecurityGroup  implements Serializable  {
      * @param groupName The name of this security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withGroupName(String groupName) {
         this.groupName = groupName;
@@ -144,7 +144,7 @@ public class SecurityGroup  implements Serializable  {
      * @param groupId The new value for the GroupId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withGroupId(String groupId) {
         this.groupId = groupId;
@@ -178,7 +178,7 @@ public class SecurityGroup  implements Serializable  {
      * @param description The description of this security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withDescription(String description) {
         this.description = description;
@@ -194,7 +194,8 @@ public class SecurityGroup  implements Serializable  {
     public java.util.List<IpPermission> getIpPermissions() {
         
         if (ipPermissions == null) {
-            ipPermissions = new java.util.ArrayList<IpPermission>();
+              ipPermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>();
+              ipPermissions.setAutoConstruct(true);
         }
         return ipPermissions;
     }
@@ -209,8 +210,7 @@ public class SecurityGroup  implements Serializable  {
             this.ipPermissions = null;
             return;
         }
-
-        java.util.List<IpPermission> ipPermissionsCopy = new java.util.ArrayList<IpPermission>(ipPermissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissions.size());
         ipPermissionsCopy.addAll(ipPermissions);
         this.ipPermissions = ipPermissionsCopy;
     }
@@ -223,7 +223,7 @@ public class SecurityGroup  implements Serializable  {
      * @param ipPermissions The permissions enabled for this security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissions(IpPermission... ipPermissions) {
         if (getIpPermissions() == null) setIpPermissions(new java.util.ArrayList<IpPermission>(ipPermissions.length));
@@ -241,13 +241,13 @@ public class SecurityGroup  implements Serializable  {
      * @param ipPermissions The permissions enabled for this security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissions(java.util.Collection<IpPermission> ipPermissions) {
         if (ipPermissions == null) {
             this.ipPermissions = null;
         } else {
-            java.util.List<IpPermission> ipPermissionsCopy = new java.util.ArrayList<IpPermission>(ipPermissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissions.size());
             ipPermissionsCopy.addAll(ipPermissions);
             this.ipPermissions = ipPermissionsCopy;
         }
@@ -263,7 +263,8 @@ public class SecurityGroup  implements Serializable  {
     public java.util.List<IpPermission> getIpPermissionsEgress() {
         
         if (ipPermissionsEgress == null) {
-            ipPermissionsEgress = new java.util.ArrayList<IpPermission>();
+              ipPermissionsEgress = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>();
+              ipPermissionsEgress.setAutoConstruct(true);
         }
         return ipPermissionsEgress;
     }
@@ -278,8 +279,7 @@ public class SecurityGroup  implements Serializable  {
             this.ipPermissionsEgress = null;
             return;
         }
-
-        java.util.List<IpPermission> ipPermissionsEgressCopy = new java.util.ArrayList<IpPermission>(ipPermissionsEgress.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsEgressCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissionsEgress.size());
         ipPermissionsEgressCopy.addAll(ipPermissionsEgress);
         this.ipPermissionsEgress = ipPermissionsEgressCopy;
     }
@@ -292,7 +292,7 @@ public class SecurityGroup  implements Serializable  {
      * @param ipPermissionsEgress The new value for the IpPermissionsEgress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissionsEgress(IpPermission... ipPermissionsEgress) {
         if (getIpPermissionsEgress() == null) setIpPermissionsEgress(new java.util.ArrayList<IpPermission>(ipPermissionsEgress.length));
@@ -310,13 +310,13 @@ public class SecurityGroup  implements Serializable  {
      * @param ipPermissionsEgress The new value for the IpPermissionsEgress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissionsEgress(java.util.Collection<IpPermission> ipPermissionsEgress) {
         if (ipPermissionsEgress == null) {
             this.ipPermissionsEgress = null;
         } else {
-            java.util.List<IpPermission> ipPermissionsEgressCopy = new java.util.ArrayList<IpPermission>(ipPermissionsEgress.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsEgressCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissionsEgress.size());
             ipPermissionsEgressCopy.addAll(ipPermissionsEgress);
             this.ipPermissionsEgress = ipPermissionsEgressCopy;
         }
@@ -350,7 +350,7 @@ public class SecurityGroup  implements Serializable  {
      * @param vpcId The new value for the VpcId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withVpcId(String vpcId) {
         this.vpcId = vpcId;
@@ -366,7 +366,8 @@ public class SecurityGroup  implements Serializable  {
     public java.util.List<Tag> getTags() {
         
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -381,8 +382,7 @@ public class SecurityGroup  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -395,7 +395,7 @@ public class SecurityGroup  implements Serializable  {
      * @param tags The new value for the Tags property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -413,13 +413,13 @@ public class SecurityGroup  implements Serializable  {
      * @param tags The new value for the Tags property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
@@ -438,14 +438,14 @@ public class SecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getGroupId() != null) sb.append("GroupId: " + getGroupId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getIpPermissions() != null) sb.append("IpPermissions: " + getIpPermissions() + ",");    	
-        if (getIpPermissionsEgress() != null) sb.append("IpPermissionsEgress: " + getIpPermissionsEgress() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
+        sb.append("{");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getGroupId() != null) sb.append("GroupId: " + getGroupId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getIpPermissions() != null) sb.append("IpPermissions: " + getIpPermissions() + ",");
+        if (getIpPermissionsEgress() != null) sb.append("IpPermissionsEgress: " + getIpPermissionsEgress() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes a state change for an Amazon EC2 instance.
  * </p>
  */
-public class StateReason  implements Serializable  {
+public class StateReason implements Serializable {
 
     /**
      * Reason code for the state change.
@@ -58,7 +58,7 @@ public class StateReason  implements Serializable  {
      * @param code Reason code for the state change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StateReason withCode(String code) {
         this.code = code;
@@ -92,7 +92,7 @@ public class StateReason  implements Serializable  {
      * @param message Descriptive message for the state change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StateReason withMessage(String message) {
         this.message = message;
@@ -111,8 +111,8 @@ public class StateReason  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

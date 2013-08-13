@@ -56,6 +56,24 @@ public class AWS4Signer extends AbstractAWSSigner {
     /** Date override for testing only */
     protected Date overriddenDate;
 
+    protected ThreadLocal<SimpleDateFormat> dateTimeFormat = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            final SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
+            dateTimeFormat.setTimeZone(new SimpleTimeZone(0, "UTC"));
+            return dateTimeFormat;
+        }
+    };
+
+    protected ThreadLocal<SimpleDateFormat> dateStampFormat = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            final SimpleDateFormat dateStampFormat = new SimpleDateFormat("yyyyMMdd");
+            dateStampFormat.setTimeZone(new SimpleTimeZone(0, "UTC"));
+            return dateStampFormat;
+        }
+    };
+
     protected static final Log log = LogFactory.getLog(AWS4Signer.class);
 
 
@@ -74,30 +92,29 @@ public class AWS4Signer extends AbstractAWSSigner {
         }
 
         addHostHeader(request);
-        String scope =  getScope(request);
 
-        InputStream payloadStream = getBinaryRequestPayloadStream(request);
-        payloadStream.mark(-1);
-        String contentSha256 = BinaryUtils.toHex(hash(payloadStream));
-        try {
-            payloadStream.reset();
-        } catch (IOException e) {
-            throw new AmazonClientException("Unable to reset stream after calculating AWS4 signature", e);
+        Date date = getDateFromRequest(request);
+
+        String scope =  getScope(request, date);
+
+        String contentSha256 = calculateContentHash(request);
+
+        request.addHeader("X-Amz-Date", getDateTimeStamp(date));
+
+        if (request.getHeaders().get("x-amz-content-sha256") != null && request.getHeaders().get("x-amz-content-sha256").equals("required")) {
+            request.addHeader("x-amz-content-sha256", contentSha256);
         }
-
-        request.addHeader("X-Amz-Date", getDateTimeStamp(getDateFromRequest(request)));
-        request.addHeader("x-amz-content-sha256", contentSha256);
 
         String signingCredentials = sanitizedCredentials.getAWSAccessKeyId() + "/" + scope;
 
-        byte[] signature = computeSignature(request, ALGORITHM, contentSha256, sanitizedCredentials);
+        HeaderSigningResult headerSigningResult = computeSignature(request, date, ALGORITHM, contentSha256, sanitizedCredentials);
 
         String credentialsAuthorizationHeader =
                 "Credential=" + signingCredentials;
         String signedHeadersAuthorizationHeader =
                 "SignedHeaders=" + getSignedHeadersString(request);
         String signatureAuthorizationHeader =
-                "Signature=" + BinaryUtils.toHex(signature);
+                "Signature=" + BinaryUtils.toHex(headerSigningResult.getSignature());
 
         String authorizationHeader = ALGORITHM + " "
                 + credentialsAuthorizationHeader + ", "
@@ -105,6 +122,8 @@ public class AWS4Signer extends AbstractAWSSigner {
                 + signatureAuthorizationHeader;
 
         request.addHeader("Authorization", authorizationHeader);
+
+        processRequestPayload(request, headerSigningResult);
     }
 
     /**
@@ -208,12 +227,11 @@ public class AWS4Signer extends AbstractAWSSigner {
     }
 
 
-    protected byte[] computeSignature(Request<?> request, String algorithm, String contentSha256, AWSCredentials sanitizedCredentials) {
+    protected HeaderSigningResult computeSignature(Request<?> request, Date date, String algorithm, String contentSha256, AWSCredentials sanitizedCredentials) {
 
         String regionName = extractRegionName(request.getEndpoint());
         String serviceName = extractServiceName(request.getEndpoint());
 
-        Date date = getDateFromRequest(request);
         String dateTime = getDateTimeStamp(date);
         String dateStamp = getDateStamp(date);
         String scope =  dateStamp + "/" + regionName + "/" + serviceName + "/" + TERMINATOR;
@@ -229,25 +247,20 @@ public class AWS4Signer extends AbstractAWSSigner {
         byte[] kSigning = sign(TERMINATOR, kService, SigningAlgorithm.HmacSHA256);
 
         byte[] signature = sign(stringToSign.getBytes(), kSigning, SigningAlgorithm.HmacSHA256);
-        return signature;
+        return new HeaderSigningResult(dateTime, scope, kSigning, signature);
     }
 
     protected String getDateTimeStamp(Date date) {
-        SimpleDateFormat dateTimeFormat;
-        dateTimeFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
-        dateTimeFormat.setTimeZone(new SimpleTimeZone(0, "UTC"));
-        return dateTimeFormat.format(date);
+        return dateTimeFormat.get().format(date);
     }
 
     protected String getDateStamp(Date date) {
-        SimpleDateFormat dateStampFormat;
-        dateStampFormat = new SimpleDateFormat("yyyyMMdd");
-        dateStampFormat.setTimeZone(new SimpleTimeZone(0, "UTC"));
-        return dateStampFormat.format(date);
+        return dateStampFormat.get().format(date);
     }
 
     protected Date getDateFromRequest(Request<?> request) {
-        Date date = getSignatureDate(request.getTimeOffset());
+    	int timeOffset = getTimeOffset(request);
+        Date date = getSignatureDate(timeOffset);
         if (overriddenDate != null) date = overriddenDate;
         return date;
     }
@@ -263,14 +276,76 @@ public class AWS4Signer extends AbstractAWSSigner {
         request.addHeader("Host", hostHeader);
     }
 
-    protected String getScope(Request<?> request) {
+    protected String getScope(Request<?> request, Date date) {
         String regionName = extractRegionName(request.getEndpoint());
         String serviceName = extractServiceName(request.getEndpoint());
 
-        Date date = getDateFromRequest(request);
         String dateStamp = getDateStamp(date);
         String scope =  dateStamp + "/" + regionName + "/" + serviceName + "/" + TERMINATOR;
         return scope;
     }
 
+    /**
+     * Calculate the hash of the request's payload.
+     * Subclass could override this method to provide different values for "x-amz-content-sha256" header
+     * or do any other necessary set-ups on the request headers.
+     * (e.g. aws-chunked uses a pre-defined header value, and needs to change some headers
+     * relating to content-encoding and content-length.)
+     */
+    protected String calculateContentHash(Request<?> request) {
+        InputStream payloadStream = getBinaryRequestPayloadStream(request);
+        payloadStream.mark(-1);
+        String contentSha256 = BinaryUtils.toHex(hash(payloadStream));
+        try {
+            payloadStream.reset();
+        } catch (IOException e) {
+            throw new AmazonClientException("Unable to reset stream after calculating AWS4 signature", e);
+        }
+        return contentSha256;
+    }
+
+    /**
+     * Subclass could override this method to perform any additional procedure on the request
+     * payload, with access to the result from signing the header. (e.g. Signing the payload by
+     * chunk-encoding).
+     * The default implementation doesn't need to do anything.
+     */
+    protected void processRequestPayload(Request<?> request, HeaderSigningResult headerSigningResult) {
+        return;
+    }
+
+    protected class HeaderSigningResult {
+
+        private String dateTime;
+        private String scope;
+        private byte[] kSigning;
+        private byte[] signature;
+
+        public HeaderSigningResult(String dateTime, String scope, byte[] kSigning, byte[] signature) {
+            this.dateTime = dateTime;
+            this.scope = scope;
+            this.kSigning = kSigning;
+            this.signature = signature;
+        }
+
+        public String getDateTime() {
+            return dateTime;
+        }
+
+        public String getScope() {
+            return scope;
+        }
+
+        public byte[] getKSigning() {
+            byte[] kSigningCopy = new byte[kSigning.length];
+            System.arraycopy(kSigning, 0, kSigningCopy, 0, kSigning.length);
+            return kSigningCopy;
+        }
+
+        public byte[] getSignature() {
+            byte[] signatureCopy = new byte[signature.length];
+            System.arraycopy(signature, 0, signatureCopy, 0, signature.length);
+            return signatureCopy;
+        }
+    }
 }

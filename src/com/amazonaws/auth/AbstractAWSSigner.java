@@ -34,6 +34,7 @@ import org.apache.commons.codec.binary.Base64;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.Request;
+import com.amazonaws.SDKGlobalConfiguration;
 import com.amazonaws.util.HttpUtils;
 import com.amazonaws.util.StringInputStream;
 
@@ -76,7 +77,7 @@ public abstract class AbstractAWSSigner implements Signer {
         }
     }
 
-    protected byte[] sign(String stringData, byte[] key, SigningAlgorithm algorithm) throws AmazonClientException {
+    public byte[] sign(String stringData, byte[] key, SigningAlgorithm algorithm) throws AmazonClientException {
         try {
             byte[] data = stringData.getBytes(DEFAULT_ENCODING);
             return sign(data, key, algorithm);
@@ -107,7 +108,7 @@ public abstract class AbstractAWSSigner implements Signer {
      * @throws AmazonClientException
      *             If the hash cannot be computed.
      */
-    protected byte[] hash(String text) throws AmazonClientException {
+    public byte[] hash(String text) throws AmazonClientException {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(text.getBytes(DEFAULT_ENCODING));
@@ -141,7 +142,7 @@ public abstract class AbstractAWSSigner implements Signer {
      * @throws AmazonClientException
      *             If the hash cannot be computed.
      */
-    protected byte[] hash(byte[] data) throws AmazonClientException {
+    public byte[] hash(byte[] data) throws AmazonClientException {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(data);
@@ -397,6 +398,15 @@ public abstract class AbstractAWSSigner implements Signer {
             dateValue = new Date(epochMillis);   
         }
         return dateValue;
+    }
+    
+    protected int getTimeOffset(Request<?> request) {
+    	int timeOffset = request.getTimeOffset();
+        if(SDKGlobalConfiguration.getGlobalTimeOffset() != 0) {
+            // if global time offset is set then use that (For clock skew issues)
+            timeOffset = SDKGlobalConfiguration.getGlobalTimeOffset();
+        }
+        return timeOffset;
     }
     
     /**

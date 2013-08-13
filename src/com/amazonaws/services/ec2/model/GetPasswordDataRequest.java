@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.GetPasswordDataRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -28,7 +30,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#getPasswordData(GetPasswordDataRequest)
  */
-public class GetPasswordDataRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetPasswordDataRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<GetPasswordDataRequest> {
 
     /**
      * The ID of the instance for which you want the Windows administrator
@@ -42,6 +44,8 @@ public class GetPasswordDataRequest extends AmazonWebServiceRequest  implements 
      */
     public GetPasswordDataRequest() {}
     
+
+
     /**
      * Constructs a new GetPasswordDataRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -51,7 +55,7 @@ public class GetPasswordDataRequest extends AmazonWebServiceRequest  implements 
      * Windows administrator password.
      */
     public GetPasswordDataRequest(String instanceId) {
-        this.instanceId = instanceId;
+        setInstanceId(instanceId);
     }
 
     
@@ -88,13 +92,25 @@ public class GetPasswordDataRequest extends AmazonWebServiceRequest  implements 
      *         password.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPasswordDataRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<GetPasswordDataRequest> getDryRunRequest() {
+        Request<GetPasswordDataRequest> request = new GetPasswordDataRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -107,7 +123,7 @@ public class GetPasswordDataRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() );
         sb.append("}");
         return sb.toString();

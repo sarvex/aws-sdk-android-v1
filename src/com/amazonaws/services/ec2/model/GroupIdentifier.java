@@ -20,7 +20,7 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class GroupIdentifier  implements Serializable  {
+public class GroupIdentifier implements Serializable {
 
     /**
      * 
@@ -55,7 +55,7 @@ public class GroupIdentifier  implements Serializable  {
      * @param groupName 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GroupIdentifier withGroupName(String groupName) {
         this.groupName = groupName;
@@ -89,7 +89,7 @@ public class GroupIdentifier  implements Serializable  {
      * @param groupId The new value for the GroupId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GroupIdentifier withGroupId(String groupId) {
         this.groupId = groupId;
@@ -108,8 +108,8 @@ public class GroupIdentifier  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
         if (getGroupId() != null) sb.append("GroupId: " + getGroupId() );
         sb.append("}");
         return sb.toString();

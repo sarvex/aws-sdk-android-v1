@@ -84,7 +84,7 @@ public class SubscribeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSubscriptionArn() != null) sb.append("SubscriptionArn: " + getSubscriptionArn() );
         sb.append("}");
         return sb.toString();

@@ -43,6 +43,7 @@ import java.io.Serializable;
  * Permissions in Temporary Credentials </a> in <i>Using Temporary Security Credentials</i> . For information about using <code>GetFederationToken</code>
  * to create temporary security credentials, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/CreatingFedTokens.html"> Creating Temporary
  * Credentials to Enable Access for Federated Users </a> in <i>Using Temporary Security Credentials</i> .
+ * 
  * </p>
  *
  * @see com.amazonaws.services.securitytoken.AWSSecurityTokenService#getFederationToken(GetFederationTokenRequest)
@@ -96,6 +97,8 @@ public class GetFederationTokenRequest extends AmazonWebServiceRequest  implemen
      */
     public GetFederationTokenRequest() {}
     
+
+
     /**
      * Constructs a new GetFederationTokenRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -108,7 +111,7 @@ public class GetFederationTokenRequest extends AmazonWebServiceRequest  implemen
      * policy.
      */
     public GetFederationTokenRequest(String name) {
-        this.name = name;
+        setName(name);
     }
 
     
@@ -169,7 +172,7 @@ public class GetFederationTokenRequest extends AmazonWebServiceRequest  implemen
      *         policy, such as in an Amazon S3 bucket policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenRequest withName(String name) {
         this.name = name;
@@ -257,7 +260,7 @@ public class GetFederationTokenRequest extends AmazonWebServiceRequest  implemen
      *         policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenRequest withPolicy(String policy) {
         this.policy = policy;
@@ -330,7 +333,7 @@ public class GetFederationTokenRequest extends AmazonWebServiceRequest  implemen
      *         the session for AWS account owners defaults to one hour.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenRequest withDurationSeconds(Integer durationSeconds) {
         this.durationSeconds = durationSeconds;
@@ -349,9 +352,9 @@ public class GetFederationTokenRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");
         if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() );
         sb.append("}");
         return sb.toString();

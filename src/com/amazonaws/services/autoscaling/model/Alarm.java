@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The Alarm data type.
  * </p>
  */
-public class Alarm  implements Serializable  {
+public class Alarm implements Serializable {
 
     /**
      * The name of the alarm.
@@ -78,7 +78,7 @@ public class Alarm  implements Serializable  {
      * @param alarmName The name of the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Alarm withAlarmName(String alarmName) {
         this.alarmName = alarmName;
@@ -124,7 +124,7 @@ public class Alarm  implements Serializable  {
      * @param alarmARN The Amazon Resource Name (ARN) of the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Alarm withAlarmARN(String alarmARN) {
         this.alarmARN = alarmARN;
@@ -143,8 +143,8 @@ public class Alarm  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");    	
+        sb.append("{");
+        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");
         if (getAlarmARN() != null) sb.append("AlarmARN: " + getAlarmARN() );
         sb.append("}");
         return sb.toString();

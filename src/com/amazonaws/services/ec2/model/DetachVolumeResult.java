@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of detaching an EBS volume from an instance.
  * </p>
  */
-public class DetachVolumeResult  implements Serializable  {
+public class DetachVolumeResult implements Serializable {
 
     /**
      * The updated EBS volume attachment information after trying to detach
@@ -60,7 +60,7 @@ public class DetachVolumeResult  implements Serializable  {
      *         the volume from the specified instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachVolumeResult withAttachment(VolumeAttachment attachment) {
         this.attachment = attachment;
@@ -79,7 +79,7 @@ public class DetachVolumeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttachment() != null) sb.append("Attachment: " + getAttachment() );
         sb.append("}");
         return sb.toString();

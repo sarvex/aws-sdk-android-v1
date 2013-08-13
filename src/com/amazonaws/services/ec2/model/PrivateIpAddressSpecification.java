@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Private Ip Address Specification
  */
-public class PrivateIpAddressSpecification  implements Serializable  {
+public class PrivateIpAddressSpecification implements Serializable {
 
     private String privateIpAddress;
 
@@ -50,7 +50,7 @@ public class PrivateIpAddressSpecification  implements Serializable  {
      * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PrivateIpAddressSpecification withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
@@ -84,7 +84,7 @@ public class PrivateIpAddressSpecification  implements Serializable  {
      * @param primary The new value for the Primary property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PrivateIpAddressSpecification withPrimary(Boolean primary) {
         this.primary = primary;
@@ -112,8 +112,8 @@ public class PrivateIpAddressSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
+        sb.append("{");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
         if (isPrimary() != null) sb.append("Primary: " + isPrimary() );
         sb.append("}");
         return sb.toString();

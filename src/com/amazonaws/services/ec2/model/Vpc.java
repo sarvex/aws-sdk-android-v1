@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The Vpc data type.
  * </p>
  */
-public class Vpc  implements Serializable  {
+public class Vpc implements Serializable {
 
     /**
      * Specifies the ID of the VPC.
@@ -48,7 +48,7 @@ public class Vpc  implements Serializable  {
     /**
      * A list of tags for the VPC.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * The allowed tenancy of instances launched into the VPC.
@@ -86,7 +86,7 @@ public class Vpc  implements Serializable  {
      * @param vpcId Specifies the ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withVpcId(String vpcId) {
         this.vpcId = vpcId;
@@ -126,7 +126,7 @@ public class Vpc  implements Serializable  {
      *         either <code>pending</code> or <code>available</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withState(String state) {
         this.state = state;
@@ -160,7 +160,7 @@ public class Vpc  implements Serializable  {
      * @param cidrBlock Specifies the CIDR block the VPC covers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withCidrBlock(String cidrBlock) {
         this.cidrBlock = cidrBlock;
@@ -206,7 +206,7 @@ public class Vpc  implements Serializable  {
      *         associated with the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withDhcpOptionsId(String dhcpOptionsId) {
         this.dhcpOptionsId = dhcpOptionsId;
@@ -222,7 +222,8 @@ public class Vpc  implements Serializable  {
     public java.util.List<Tag> getTags() {
         
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -237,8 +238,7 @@ public class Vpc  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -251,7 +251,7 @@ public class Vpc  implements Serializable  {
      * @param tags A list of tags for the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -269,13 +269,13 @@ public class Vpc  implements Serializable  {
      * @param tags A list of tags for the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
@@ -309,7 +309,7 @@ public class Vpc  implements Serializable  {
      * @param instanceTenancy The allowed tenancy of instances launched into the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withInstanceTenancy(String instanceTenancy) {
         this.instanceTenancy = instanceTenancy;
@@ -343,7 +343,7 @@ public class Vpc  implements Serializable  {
      * @param isDefault 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
@@ -371,13 +371,13 @@ public class Vpc  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getCidrBlock() != null) sb.append("CidrBlock: " + getCidrBlock() + ",");    	
-        if (getDhcpOptionsId() != null) sb.append("DhcpOptionsId: " + getDhcpOptionsId() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
-        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");    	
+        sb.append("{");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getCidrBlock() != null) sb.append("CidrBlock: " + getCidrBlock() + ",");
+        if (getDhcpOptionsId() != null) sb.append("DhcpOptionsId: " + getDhcpOptionsId() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
+        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");
         if (isDefault() != null) sb.append("IsDefault: " + isDefault() );
         sb.append("}");
         return sb.toString();

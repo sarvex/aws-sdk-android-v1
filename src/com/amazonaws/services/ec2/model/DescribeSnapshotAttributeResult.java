@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of describing an EBS snapshot attribute.
  * </p>
  */
-public class DescribeSnapshotAttributeResult  implements Serializable  {
+public class DescribeSnapshotAttributeResult implements Serializable {
 
     /**
      * The ID of the snapshot whose attribute is being described.
@@ -32,9 +32,9 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
      * associated EBS snapshot. <p> Only available if the
      * createVolumePermission attribute is requested.
      */
-    private java.util.List<CreateVolumePermission> createVolumePermissions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> createVolumePermissions;
 
-    private java.util.List<ProductCode> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodes;
 
     /**
      * The ID of the snapshot whose attribute is being described.
@@ -62,7 +62,7 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
      * @param snapshotId The ID of the snapshot whose attribute is being described.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -82,7 +82,8 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
     public java.util.List<CreateVolumePermission> getCreateVolumePermissions() {
         
         if (createVolumePermissions == null) {
-            createVolumePermissions = new java.util.ArrayList<CreateVolumePermission>();
+              createVolumePermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>();
+              createVolumePermissions.setAutoConstruct(true);
         }
         return createVolumePermissions;
     }
@@ -101,8 +102,7 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
             this.createVolumePermissions = null;
             return;
         }
-
-        java.util.List<CreateVolumePermission> createVolumePermissionsCopy = new java.util.ArrayList<CreateVolumePermission>(createVolumePermissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> createVolumePermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(createVolumePermissions.size());
         createVolumePermissionsCopy.addAll(createVolumePermissions);
         this.createVolumePermissions = createVolumePermissionsCopy;
     }
@@ -119,7 +119,7 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
      *         createVolumePermission attribute is requested.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withCreateVolumePermissions(CreateVolumePermission... createVolumePermissions) {
         if (getCreateVolumePermissions() == null) setCreateVolumePermissions(new java.util.ArrayList<CreateVolumePermission>(createVolumePermissions.length));
@@ -141,13 +141,13 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
      *         createVolumePermission attribute is requested.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withCreateVolumePermissions(java.util.Collection<CreateVolumePermission> createVolumePermissions) {
         if (createVolumePermissions == null) {
             this.createVolumePermissions = null;
         } else {
-            java.util.List<CreateVolumePermission> createVolumePermissionsCopy = new java.util.ArrayList<CreateVolumePermission>(createVolumePermissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> createVolumePermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(createVolumePermissions.size());
             createVolumePermissionsCopy.addAll(createVolumePermissions);
             this.createVolumePermissions = createVolumePermissionsCopy;
         }
@@ -163,7 +163,8 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
     public java.util.List<ProductCode> getProductCodes() {
         
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<ProductCode>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
@@ -178,8 +179,7 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
@@ -192,7 +192,7 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
      * @param productCodes The new value for the ProductCodes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withProductCodes(ProductCode... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<ProductCode>(productCodes.length));
@@ -210,13 +210,13 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
      * @param productCodes The new value for the ProductCodes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
@@ -235,9 +235,9 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getCreateVolumePermissions() != null) sb.append("CreateVolumePermissions: " + getCreateVolumePermissions() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getCreateVolumePermissions() != null) sb.append("CreateVolumePermissions: " + getCreateVolumePermissions() + ",");
         if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() );
         sb.append("}");
         return sb.toString();

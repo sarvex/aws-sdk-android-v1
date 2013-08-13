@@ -32,7 +32,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeScalingActivities(DescribeScalingActivitiesRequest)
  */
-public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list containing the activity IDs of the desired scaling activities.
@@ -42,7 +42,7 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
      * than 50 items. If unknown activities are requested, they are ignored
      * with no error.
      */
-    private java.util.List<String> activityIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> activityIds;
 
     /**
      * The name of the <a>AutoScalingGroup</a>.
@@ -88,7 +88,8 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
     public java.util.List<String> getActivityIds() {
         
         if (activityIds == null) {
-            activityIds = new java.util.ArrayList<String>();
+              activityIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              activityIds.setAutoConstruct(true);
         }
         return activityIds;
     }
@@ -113,8 +114,7 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
             this.activityIds = null;
             return;
         }
-
-        java.util.List<String> activityIdsCopy = new java.util.ArrayList<String>(activityIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> activityIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(activityIds.size());
         activityIdsCopy.addAll(activityIds);
         this.activityIds = activityIdsCopy;
     }
@@ -137,7 +137,7 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
      *         with no error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesRequest withActivityIds(String... activityIds) {
         if (getActivityIds() == null) setActivityIds(new java.util.ArrayList<String>(activityIds.length));
@@ -165,13 +165,13 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
      *         with no error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesRequest withActivityIds(java.util.Collection<String> activityIds) {
         if (activityIds == null) {
             this.activityIds = null;
         } else {
-            java.util.List<String> activityIdsCopy = new java.util.ArrayList<String>(activityIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> activityIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(activityIds.size());
             activityIdsCopy.addAll(activityIds);
             this.activityIds = activityIdsCopy;
         }
@@ -217,7 +217,7 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
      * @param autoScalingGroupName The name of the <a>AutoScalingGroup</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -260,7 +260,7 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
      * @param maxRecords The maximum number of scaling activities to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
@@ -309,7 +309,7 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
      *         for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -328,10 +328,10 @@ public class DescribeScalingActivitiesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getActivityIds() != null) sb.append("ActivityIds: " + getActivityIds() + ",");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getActivityIds() != null) sb.append("ActivityIds: " + getActivityIds() + ",");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

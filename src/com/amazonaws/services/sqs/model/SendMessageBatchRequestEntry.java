@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Contains the details of a single SQS message along with a <code>Id</code> .
  * </p>
  */
-public class SendMessageBatchRequestEntry  implements Serializable  {
+public class SendMessageBatchRequestEntry implements Serializable {
 
     /**
      * An identifier for the message in this batch. This is used to
@@ -45,6 +45,8 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      */
     public SendMessageBatchRequestEntry() {}
     
+
+
     /**
      * Constructs a new SendMessageBatchRequestEntry object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +58,8 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      * @param messageBody Body of the message.
      */
     public SendMessageBatchRequestEntry(String id, String messageBody) {
-        this.id = id;
-        this.messageBody = messageBody;
+        setId(id);
+        setMessageBody(messageBody);
     }
 
     
@@ -100,7 +102,7 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      *         request need to be unique within the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchRequestEntry withId(String id) {
         this.id = id;
@@ -134,7 +136,7 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      * @param messageBody Body of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchRequestEntry withMessageBody(String messageBody) {
         this.messageBody = messageBody;
@@ -168,7 +170,7 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      * @param delaySeconds The number of seconds for which the message has to be delayed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchRequestEntry withDelaySeconds(Integer delaySeconds) {
         this.delaySeconds = delaySeconds;
@@ -187,9 +189,9 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getMessageBody() != null) sb.append("MessageBody: " + getMessageBody() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getMessageBody() != null) sb.append("MessageBody: " + getMessageBody() + ",");
         if (getDelaySeconds() != null) sb.append("DelaySeconds: " + getDelaySeconds() );
         sb.append("}");
         return sb.toString();

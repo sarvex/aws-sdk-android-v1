@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AuthorizeSecurityGroupIngressRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -33,7 +35,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#authorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest)
  */
-public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AuthorizeSecurityGroupIngressRequest> {
 
     /**
      * Name of the standard (EC2) security group to modify. The group must
@@ -84,7 +86,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * Specifying permissions through IP permissions is the preferred way of
      * authorizing permissions since it offers more flexibility and control.
      */
-    private java.util.List<IpPermission> ipPermissions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissions;
 
     /**
      * Default constructor for a new AuthorizeSecurityGroupIngressRequest object.  Callers should use the
@@ -92,6 +94,8 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      */
     public AuthorizeSecurityGroupIngressRequest() {}
     
+
+
     /**
      * Constructs a new AuthorizeSecurityGroupIngressRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -106,8 +110,8 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * offers more flexibility and control.
      */
     public AuthorizeSecurityGroupIngressRequest(String groupName, java.util.List<IpPermission> ipPermissions) {
-        this.groupName = groupName;
-        this.ipPermissions = ipPermissions;
+        setGroupName(groupName);
+        setIpPermissions(ipPermissions);
     }
 
     
@@ -150,7 +154,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      *         (EC2) security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withGroupName(String groupName) {
         this.groupName = groupName;
@@ -196,7 +200,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      *         used instead of GroupName for standard (EC2) security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withGroupId(String groupId) {
         this.groupId = groupId;
@@ -230,7 +234,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * @param sourceSecurityGroupName Deprecated
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withSourceSecurityGroupName(String sourceSecurityGroupName) {
         this.sourceSecurityGroupName = sourceSecurityGroupName;
@@ -264,7 +268,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * @param sourceSecurityGroupOwnerId Deprecated
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withSourceSecurityGroupOwnerId(String sourceSecurityGroupOwnerId) {
         this.sourceSecurityGroupOwnerId = sourceSecurityGroupOwnerId;
@@ -298,7 +302,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * @param ipProtocol Deprecated
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withIpProtocol(String ipProtocol) {
         this.ipProtocol = ipProtocol;
@@ -332,7 +336,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * @param fromPort Deprecated
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withFromPort(Integer fromPort) {
         this.fromPort = fromPort;
@@ -366,7 +370,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * @param toPort Deprecated
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withToPort(Integer toPort) {
         this.toPort = toPort;
@@ -400,7 +404,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      * @param cidrIp Deprecated
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withCidrIp(String cidrIp) {
         this.cidrIp = cidrIp;
@@ -420,7 +424,8 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
     public java.util.List<IpPermission> getIpPermissions() {
         
         if (ipPermissions == null) {
-            ipPermissions = new java.util.ArrayList<IpPermission>();
+              ipPermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>();
+              ipPermissions.setAutoConstruct(true);
         }
         return ipPermissions;
     }
@@ -439,8 +444,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
             this.ipPermissions = null;
             return;
         }
-
-        java.util.List<IpPermission> ipPermissionsCopy = new java.util.ArrayList<IpPermission>(ipPermissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissions.size());
         ipPermissionsCopy.addAll(ipPermissions);
         this.ipPermissions = ipPermissionsCopy;
     }
@@ -457,7 +461,7 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      *         authorizing permissions since it offers more flexibility and control.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withIpPermissions(IpPermission... ipPermissions) {
         if (getIpPermissions() == null) setIpPermissions(new java.util.ArrayList<IpPermission>(ipPermissions.length));
@@ -479,18 +483,30 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
      *         authorizing permissions since it offers more flexibility and control.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AuthorizeSecurityGroupIngressRequest withIpPermissions(java.util.Collection<IpPermission> ipPermissions) {
         if (ipPermissions == null) {
             this.ipPermissions = null;
         } else {
-            java.util.List<IpPermission> ipPermissionsCopy = new java.util.ArrayList<IpPermission>(ipPermissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissions.size());
             ipPermissionsCopy.addAll(ipPermissions);
             this.ipPermissions = ipPermissionsCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AuthorizeSecurityGroupIngressRequest> getDryRunRequest() {
+        Request<AuthorizeSecurityGroupIngressRequest> request = new AuthorizeSecurityGroupIngressRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -504,15 +520,15 @@ public class AuthorizeSecurityGroupIngressRequest extends AmazonWebServiceReques
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getGroupId() != null) sb.append("GroupId: " + getGroupId() + ",");    	
-        if (getSourceSecurityGroupName() != null) sb.append("SourceSecurityGroupName: " + getSourceSecurityGroupName() + ",");    	
-        if (getSourceSecurityGroupOwnerId() != null) sb.append("SourceSecurityGroupOwnerId: " + getSourceSecurityGroupOwnerId() + ",");    	
-        if (getIpProtocol() != null) sb.append("IpProtocol: " + getIpProtocol() + ",");    	
-        if (getFromPort() != null) sb.append("FromPort: " + getFromPort() + ",");    	
-        if (getToPort() != null) sb.append("ToPort: " + getToPort() + ",");    	
-        if (getCidrIp() != null) sb.append("CidrIp: " + getCidrIp() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getGroupId() != null) sb.append("GroupId: " + getGroupId() + ",");
+        if (getSourceSecurityGroupName() != null) sb.append("SourceSecurityGroupName: " + getSourceSecurityGroupName() + ",");
+        if (getSourceSecurityGroupOwnerId() != null) sb.append("SourceSecurityGroupOwnerId: " + getSourceSecurityGroupOwnerId() + ",");
+        if (getIpProtocol() != null) sb.append("IpProtocol: " + getIpProtocol() + ",");
+        if (getFromPort() != null) sb.append("FromPort: " + getFromPort() + ",");
+        if (getToPort() != null) sb.append("ToPort: " + getToPort() + ",");
+        if (getCidrIp() != null) sb.append("CidrIp: " + getCidrIp() + ",");
         if (getIpPermissions() != null) sb.append("IpPermissions: " + getIpPermissions() );
         sb.append("}");
         return sb.toString();

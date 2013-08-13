@@ -20,8 +20,8 @@ import java.io.Serializable;
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#listSubscriptions(ListSubscriptionsRequest) ListSubscriptions operation}.
  * <p>
  * The <code>ListSubscriptions</code> action returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to
- * 100. If there are more subscriptions, a <code>NextToken</code> is also returned. Use the <code>NextToken</code> parameter in a new ListSubscriptions
- * call to get further results.
+ * 100. If there are more subscriptions, a <code>NextToken</code> is also returned. Use the <code>NextToken</code> parameter in a new
+ * <code>ListSubscriptions</code> call to get further results.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#listSubscriptions(ListSubscriptionsRequest)
@@ -39,6 +39,8 @@ public class ListSubscriptionsRequest extends AmazonWebServiceRequest  implement
      */
     public ListSubscriptionsRequest() {}
     
+
+
     /**
      * Constructs a new ListSubscriptionsRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -48,7 +50,7 @@ public class ListSubscriptionsRequest extends AmazonWebServiceRequest  implement
      * <code>ListSubscriptions</code> request.
      */
     public ListSubscriptionsRequest(String nextToken) {
-        this.nextToken = nextToken;
+        setNextToken(nextToken);
     }
 
     
@@ -98,7 +100,7 @@ public class ListSubscriptionsRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

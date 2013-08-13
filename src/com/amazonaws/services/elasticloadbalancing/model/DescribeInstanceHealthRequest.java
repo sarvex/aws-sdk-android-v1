@@ -29,7 +29,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeInstanceHealth(DescribeInstanceHealthRequest)
  */
-public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name associated with the LoadBalancer. The name must be unique
@@ -40,7 +40,7 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
     /**
      * A list of instance IDs whose states are being queried.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * Default constructor for a new DescribeInstanceHealthRequest object.  Callers should use the
@@ -48,6 +48,8 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      */
     public DescribeInstanceHealthRequest() {}
     
+
+
     /**
      * Constructs a new DescribeInstanceHealthRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,7 +59,7 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      * name must be unique within the client AWS account.
      */
     public DescribeInstanceHealthRequest(String loadBalancerName) {
-        this.loadBalancerName = loadBalancerName;
+        setLoadBalancerName(loadBalancerName);
     }
 
     
@@ -94,7 +96,7 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      *         within the client AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -110,7 +112,8 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
     public java.util.List<Instance> getInstances() {
         
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -125,8 +128,7 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -139,7 +141,7 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      * @param instances A list of instance IDs whose states are being queried.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthRequest withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -157,13 +159,13 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      * @param instances A list of instance IDs whose states are being queried.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthRequest withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
@@ -182,8 +184,8 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getInstances() != null) sb.append("Instances: " + getInstances() );
         sb.append("}");
         return sb.toString();

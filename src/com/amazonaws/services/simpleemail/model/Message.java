@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the message to be sent, composed of a subject and a body.
  * </p>
  */
-public class Message  implements Serializable  {
+public class Message implements Serializable {
 
     /**
      * The subject of the message: A short summary of the content, which will
@@ -39,6 +39,8 @@ public class Message  implements Serializable  {
      */
     public Message() {}
     
+
+
     /**
      * Constructs a new Message object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -49,8 +51,8 @@ public class Message  implements Serializable  {
      * @param body The message body.
      */
     public Message(Content subject, Body body) {
-        this.subject = subject;
-        this.body = body;
+        setSubject(subject);
+        setBody(body);
     }
 
     
@@ -87,7 +89,7 @@ public class Message  implements Serializable  {
      *         appear in the recipient's inbox.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withSubject(Content subject) {
         this.subject = subject;
@@ -121,7 +123,7 @@ public class Message  implements Serializable  {
      * @param body The message body.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withBody(Body body) {
         this.body = body;
@@ -140,8 +142,8 @@ public class Message  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubject() != null) sb.append("Subject: " + getSubject() + ",");    	
+        sb.append("{");
+        if (getSubject() != null) sb.append("Subject: " + getSubject() + ",");
         if (getBody() != null) sb.append("Body: " + getBody() );
         sb.append("}");
         return sb.toString();

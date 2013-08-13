@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteKeyPairRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteKeyPair(DeleteKeyPairRequest)
  */
-public class DeleteKeyPairRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteKeyPairRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteKeyPairRequest> {
 
     /**
      * The name of the Amazon EC2 key pair to delete.
@@ -37,6 +39,8 @@ public class DeleteKeyPairRequest extends AmazonWebServiceRequest  implements Se
      */
     public DeleteKeyPairRequest() {}
     
+
+
     /**
      * Constructs a new DeleteKeyPairRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -45,7 +49,7 @@ public class DeleteKeyPairRequest extends AmazonWebServiceRequest  implements Se
      * @param keyName The name of the Amazon EC2 key pair to delete.
      */
     public DeleteKeyPairRequest(String keyName) {
-        this.keyName = keyName;
+        setKeyName(keyName);
     }
 
     
@@ -76,13 +80,25 @@ public class DeleteKeyPairRequest extends AmazonWebServiceRequest  implements Se
      * @param keyName The name of the Amazon EC2 key pair to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteKeyPairRequest withKeyName(String keyName) {
         this.keyName = keyName;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteKeyPairRequest> getDryRunRequest() {
+        Request<DeleteKeyPairRequest> request = new DeleteKeyPairRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -95,7 +111,7 @@ public class DeleteKeyPairRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getKeyName() != null) sb.append("KeyName: " + getKeyName() );
         sb.append("}");
         return sb.toString();

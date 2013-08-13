@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CancelBundleTaskRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -26,7 +28,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#cancelBundleTask(CancelBundleTaskRequest)
  */
-public class CancelBundleTaskRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CancelBundleTaskRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CancelBundleTaskRequest> {
 
     /**
      * The ID of the bundle task to cancel.
@@ -39,6 +41,8 @@ public class CancelBundleTaskRequest extends AmazonWebServiceRequest  implements
      */
     public CancelBundleTaskRequest() {}
     
+
+
     /**
      * Constructs a new CancelBundleTaskRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -47,7 +51,7 @@ public class CancelBundleTaskRequest extends AmazonWebServiceRequest  implements
      * @param bundleId The ID of the bundle task to cancel.
      */
     public CancelBundleTaskRequest(String bundleId) {
-        this.bundleId = bundleId;
+        setBundleId(bundleId);
     }
 
     
@@ -78,13 +82,25 @@ public class CancelBundleTaskRequest extends AmazonWebServiceRequest  implements
      * @param bundleId The ID of the bundle task to cancel.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelBundleTaskRequest withBundleId(String bundleId) {
         this.bundleId = bundleId;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CancelBundleTaskRequest> getDryRunRequest() {
+        Request<CancelBundleTaskRequest> request = new CancelBundleTaskRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -97,7 +113,7 @@ public class CancelBundleTaskRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getBundleId() != null) sb.append("BundleId: " + getBundleId() );
         sb.append("}");
         return sb.toString();

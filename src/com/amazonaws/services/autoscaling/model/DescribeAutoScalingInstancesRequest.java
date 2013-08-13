@@ -29,7 +29,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeAutoScalingInstances(DescribeAutoScalingInstancesRequest)
  */
-public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The list of Auto Scaling instances to describe. If this list is
@@ -37,7 +37,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
      * requested instances cannot contain more than 50 items. If unknown
      * instances are requested, they are ignored with no error.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     /**
      * The maximum number of Auto Scaling instances to be described with each
@@ -71,7 +71,8 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
     public java.util.List<String> getInstanceIds() {
         
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
@@ -92,8 +93,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
@@ -112,7 +112,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
      *         instances are requested, they are ignored with no error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingInstancesRequest withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -136,13 +136,13 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
      *         instances are requested, they are ignored with no error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingInstancesRequest withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
@@ -191,7 +191,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
      *         call.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingInstancesRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
@@ -240,7 +240,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
      *         data available.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingInstancesRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -259,9 +259,9 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

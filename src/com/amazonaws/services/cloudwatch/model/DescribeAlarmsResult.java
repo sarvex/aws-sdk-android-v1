@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the DescribeAlarms action.
  * </p>
  */
-public class DescribeAlarmsResult  implements Serializable  {
+public class DescribeAlarmsResult implements Serializable {
 
     /**
      * A list of information for the specified alarms.
      */
-    private java.util.List<MetricAlarm> metricAlarms;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm> metricAlarms;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -40,7 +40,8 @@ public class DescribeAlarmsResult  implements Serializable  {
     public java.util.List<MetricAlarm> getMetricAlarms() {
         
         if (metricAlarms == null) {
-            metricAlarms = new java.util.ArrayList<MetricAlarm>();
+              metricAlarms = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm>();
+              metricAlarms.setAutoConstruct(true);
         }
         return metricAlarms;
     }
@@ -55,8 +56,7 @@ public class DescribeAlarmsResult  implements Serializable  {
             this.metricAlarms = null;
             return;
         }
-
-        java.util.List<MetricAlarm> metricAlarmsCopy = new java.util.ArrayList<MetricAlarm>(metricAlarms.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm> metricAlarmsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm>(metricAlarms.size());
         metricAlarmsCopy.addAll(metricAlarms);
         this.metricAlarms = metricAlarmsCopy;
     }
@@ -69,7 +69,7 @@ public class DescribeAlarmsResult  implements Serializable  {
      * @param metricAlarms A list of information for the specified alarms.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsResult withMetricAlarms(MetricAlarm... metricAlarms) {
         if (getMetricAlarms() == null) setMetricAlarms(new java.util.ArrayList<MetricAlarm>(metricAlarms.length));
@@ -87,13 +87,13 @@ public class DescribeAlarmsResult  implements Serializable  {
      * @param metricAlarms A list of information for the specified alarms.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsResult withMetricAlarms(java.util.Collection<MetricAlarm> metricAlarms) {
         if (metricAlarms == null) {
             this.metricAlarms = null;
         } else {
-            java.util.List<MetricAlarm> metricAlarmsCopy = new java.util.ArrayList<MetricAlarm>(metricAlarms.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm> metricAlarmsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm>(metricAlarms.size());
             metricAlarmsCopy.addAll(metricAlarms);
             this.metricAlarms = metricAlarmsCopy;
         }
@@ -127,7 +127,7 @@ public class DescribeAlarmsResult  implements Serializable  {
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -146,8 +146,8 @@ public class DescribeAlarmsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMetricAlarms() != null) sb.append("MetricAlarms: " + getMetricAlarms() + ",");    	
+        sb.append("{");
+        if (getMetricAlarms() != null) sb.append("MetricAlarms: " + getMetricAlarms() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

@@ -22,8 +22,8 @@ import java.io.Serializable;
  * The <code>ChangeMessageVisibility</code> action changes the visibility timeout of a specified message in a queue to a new value. The maximum allowed
  * timeout value you can set the value to is 12 hours. This means you can't extend the timeout of a message in an existing queue to more than a total
  * visibility timeout of 12 hours. (For more information visibility timeout, see <a
- * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html"> Visibility Timeout </a> in the Amazon SQS
- * Developer Guide.)
+ * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html"> Visibility Timeout </a> in the Amazon SQS Developer
+ * Guide.)
  * </p>
  * <p>
  * For example, let's say you have a message and its default message visibility timeout is 30 minutes. You could call <code>ChangeMessageVisiblity</code>
@@ -42,7 +42,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#changeMessageVisibility(ChangeMessageVisibilityRequest)
  */
-public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The URL of the SQS queue to take action on.
@@ -66,6 +66,8 @@ public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest  imp
      */
     public ChangeMessageVisibilityRequest() {}
     
+
+
     /**
      * Constructs a new ChangeMessageVisibilityRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -78,9 +80,9 @@ public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest  imp
      * visibility timeout.
      */
     public ChangeMessageVisibilityRequest(String queueUrl, String receiptHandle, Integer visibilityTimeout) {
-        this.queueUrl = queueUrl;
-        this.receiptHandle = receiptHandle;
-        this.visibilityTimeout = visibilityTimeout;
+        setQueueUrl(queueUrl);
+        setReceiptHandle(receiptHandle);
+        setVisibilityTimeout(visibilityTimeout);
     }
 
     
@@ -111,7 +113,7 @@ public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest  imp
      * @param queueUrl The URL of the SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
@@ -151,7 +153,7 @@ public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest  imp
      *         timeout should be changed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityRequest withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
@@ -185,7 +187,7 @@ public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest  imp
      * @param visibilityTimeout The new value (in seconds) for the message's visibility timeout.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityRequest withVisibilityTimeout(Integer visibilityTimeout) {
         this.visibilityTimeout = visibilityTimeout;
@@ -204,9 +206,9 @@ public class ChangeMessageVisibilityRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
-        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
+        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");
         if (getVisibilityTimeout() != null) sb.append("VisibilityTimeout: " + getVisibilityTimeout() );
         sb.append("}");
         return sb.toString();

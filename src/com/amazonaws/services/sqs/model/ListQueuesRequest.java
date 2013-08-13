@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#listQueues(ListQueuesRequest)
  */
-public class ListQueuesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListQueuesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string to use for filtering the list results. Only those queues
@@ -38,6 +38,8 @@ public class ListQueuesRequest extends AmazonWebServiceRequest  implements Seria
      */
     public ListQueuesRequest() {}
     
+
+
     /**
      * Constructs a new ListQueuesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -48,7 +50,7 @@ public class ListQueuesRequest extends AmazonWebServiceRequest  implements Seria
      * returned.
      */
     public ListQueuesRequest(String queueNamePrefix) {
-        this.queueNamePrefix = queueNamePrefix;
+        setQueueNamePrefix(queueNamePrefix);
     }
 
     
@@ -85,7 +87,7 @@ public class ListQueuesRequest extends AmazonWebServiceRequest  implements Seria
      *         whose name begins with the specified string are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListQueuesRequest withQueueNamePrefix(String queueNamePrefix) {
         this.queueNamePrefix = queueNamePrefix;
@@ -104,7 +106,7 @@ public class ListQueuesRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getQueueNamePrefix() != null) sb.append("QueueNamePrefix: " + getQueueNamePrefix() );
         sb.append("}");
         return sb.toString();

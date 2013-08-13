@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancerPolicies(DescribeLoadBalancerPoliciesRequest)
  */
-public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The mnemonic name associated with the LoadBalancer. If no name is
@@ -41,7 +41,7 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
      * The names of LoadBalancer policies you've created or Elastic Load
      * Balancing sample policy names.
      */
-    private java.util.List<String> policyNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNames;
 
     /**
      * The mnemonic name associated with the LoadBalancer. If no name is
@@ -87,7 +87,7 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
      *         sample polices.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -105,7 +105,8 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
     public java.util.List<String> getPolicyNames() {
         
         if (policyNames == null) {
-            policyNames = new java.util.ArrayList<String>();
+              policyNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              policyNames.setAutoConstruct(true);
         }
         return policyNames;
     }
@@ -122,8 +123,7 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
             this.policyNames = null;
             return;
         }
-
-        java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
         policyNamesCopy.addAll(policyNames);
         this.policyNames = policyNamesCopy;
     }
@@ -138,7 +138,7 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
      *         Balancing sample policy names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesRequest withPolicyNames(String... policyNames) {
         if (getPolicyNames() == null) setPolicyNames(new java.util.ArrayList<String>(policyNames.length));
@@ -158,13 +158,13 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
      *         Balancing sample policy names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesRequest withPolicyNames(java.util.Collection<String> policyNames) {
         if (policyNames == null) {
             this.policyNames = null;
         } else {
-            java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
             policyNamesCopy.addAll(policyNames);
             this.policyNames = policyNamesCopy;
         }
@@ -183,8 +183,8 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getPolicyNames() != null) sb.append("PolicyNames: " + getPolicyNames() );
         sb.append("}");
         return sb.toString();

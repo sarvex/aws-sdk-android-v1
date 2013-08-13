@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The AppCookieStickinessPolicy data type.
  * </p>
  */
-public class AppCookieStickinessPolicy  implements Serializable  {
+public class AppCookieStickinessPolicy implements Serializable {
 
     /**
      * The mnemonic name for the policy being created. The name must be
@@ -39,6 +39,8 @@ public class AppCookieStickinessPolicy  implements Serializable  {
      */
     public AppCookieStickinessPolicy() {}
     
+
+
     /**
      * Constructs a new AppCookieStickinessPolicy object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -50,8 +52,8 @@ public class AppCookieStickinessPolicy  implements Serializable  {
      * stickiness.
      */
     public AppCookieStickinessPolicy(String policyName, String cookieName) {
-        this.policyName = policyName;
-        this.cookieName = cookieName;
+        setPolicyName(policyName);
+        setCookieName(cookieName);
     }
 
     
@@ -88,7 +90,7 @@ public class AppCookieStickinessPolicy  implements Serializable  {
      *         unique within a set of policies for this LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AppCookieStickinessPolicy withPolicyName(String policyName) {
         this.policyName = policyName;
@@ -122,7 +124,7 @@ public class AppCookieStickinessPolicy  implements Serializable  {
      * @param cookieName The name of the application cookie used for stickiness.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AppCookieStickinessPolicy withCookieName(String cookieName) {
         this.cookieName = cookieName;
@@ -141,8 +143,8 @@ public class AppCookieStickinessPolicy  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (getCookieName() != null) sb.append("CookieName: " + getCookieName() );
         sb.append("}");
         return sb.toString();

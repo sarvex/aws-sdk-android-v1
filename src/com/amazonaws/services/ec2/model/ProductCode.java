@@ -20,7 +20,7 @@ import java.io.Serializable;
  * An AWS DevPay product code.
  * </p>
  */
-public class ProductCode  implements Serializable  {
+public class ProductCode implements Serializable {
 
     /**
      * The unique ID of an AWS DevPay product code.
@@ -55,7 +55,7 @@ public class ProductCode  implements Serializable  {
      * @param productCodeId The unique ID of an AWS DevPay product code.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProductCode withProductCodeId(String productCodeId) {
         this.productCodeId = productCodeId;
@@ -89,7 +89,7 @@ public class ProductCode  implements Serializable  {
      * @param productCodeType The new value for the ProductCodeType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProductCode withProductCodeType(String productCodeType) {
         this.productCodeType = productCodeType;
@@ -108,8 +108,8 @@ public class ProductCode  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProductCodeId() != null) sb.append("ProductCodeId: " + getProductCodeId() + ",");    	
+        sb.append("{");
+        if (getProductCodeId() != null) sb.append("ProductCodeId: " + getProductCodeId() + ",");
         if (getProductCodeType() != null) sb.append("ProductCodeType: " + getProductCodeType() );
         sb.append("}");
         return sb.toString();

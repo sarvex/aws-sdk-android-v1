@@ -22,15 +22,17 @@ import java.io.Serializable;
  * Gets statistics for the specified metric.
  * </p>
  * <p>
- * The maximum number of data points returned from a single <code>GetMetricStatistics</code> request is 1,440, wereas the maximum number of data points
- * that can be queried is 50,850. If you make a request that generates more than 1,440 data points, Amazon CloudWatch returns an error. In such a case,
- * you can alter the request by narrowing the specified time range or increasing the specified period. Alternatively, you can make multiple requests
- * across adjacent time ranges.
+ * <b>NOTE:</b> The maximum number of data points returned from a single GetMetricStatistics request is 1,440. If a request is made that generates more
+ * than 1,440 data points, Amazon CloudWatch returns an error. In such a case, alter the request by narrowing the specified time range or increasing the
+ * specified period. Alternatively, make multiple requests across adjacent time ranges.
  * </p>
  * <p>
  * Amazon CloudWatch aggregates data points based on the length of the <code>period</code> that you specify. For example, if you request statistics with
  * a one-minute granularity, Amazon CloudWatch aggregates data points with time stamps that fall within the same one-minute period. In such a case, the
  * data points queried can greatly outnumber the data points returned.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> The maximum number of data points that can be queried is 50,850; whereas the maximum number of data points returned is 1,440.
  * </p>
  * <p>
  * The following examples show various statistics allowed by the data point query maximum of 50,850 when you call <code>GetMetricStatistics</code> on
@@ -43,19 +45,13 @@ import java.io.Serializable;
  * <li>Statistics for up to 2 instances over a span of 2 weeks</li>
  * 
  * </ul>
- * <p>
- * For information about the namespace, metric names, and dimensions that other Amazon Web Services products use to send metrics to CloudWatch, go to <a
- * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html"> Amazon CloudWatch Metrics, Namespaces, and
- * Dimensions Reference </a> in the <i>Amazon CloudWatch Developer Guide</i> .
- * 
- * </p>
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#getMetricStatistics(GetMetricStatisticsRequest)
  */
-public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetMetricStatisticsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The namespace of the metric, with or without spaces.
+     * The namespace of the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
@@ -64,7 +60,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     private String namespace;
 
     /**
-     * The name of the metric, with or without spaces.
+     * The name of the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
@@ -77,7 +73,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<Dimension> dimensions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensions;
 
     /**
      * The time stamp to use for determining the first datapoint to return.
@@ -86,9 +82,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * to the nearest value. Datapoints are returned for start times up to
      * two weeks in the past. Specified start times that are more than two
      * weeks in the past will not return datapoints for metrics that are
-     * older than two weeks. <p>Data that is timestamped 24 hours or more in
-     * the past may take in excess of 48 hours to become available from
-     * submission time using <code>GetMetricStatistics</code>. </note>
+     * older than two weeks. </note>
      */
     private java.util.Date startTime;
 
@@ -110,16 +104,12 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     private Integer period;
 
     /**
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, go to <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * The metric statistics to return.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 5<br/>
      */
-    private java.util.List<String> statistics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> statistics;
 
     /**
      * The unit for the metric.
@@ -130,33 +120,33 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     private String unit;
 
     /**
-     * The namespace of the metric, with or without spaces.
+     * The namespace of the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[^:].*<br/>
      *
-     * @return The namespace of the metric, with or without spaces.
+     * @return The namespace of the metric.
      */
     public String getNamespace() {
         return namespace;
     }
     
     /**
-     * The namespace of the metric, with or without spaces.
+     * The namespace of the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[^:].*<br/>
      *
-     * @param namespace The namespace of the metric, with or without spaces.
+     * @param namespace The namespace of the metric.
      */
     public void setNamespace(String namespace) {
         this.namespace = namespace;
     }
     
     /**
-     * The namespace of the metric, with or without spaces.
+     * The namespace of the metric.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -164,10 +154,10 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[^:].*<br/>
      *
-     * @param namespace The namespace of the metric, with or without spaces.
+     * @param namespace The namespace of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withNamespace(String namespace) {
         this.namespace = namespace;
@@ -176,41 +166,41 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     
     
     /**
-     * The name of the metric, with or without spaces.
+     * The name of the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @return The name of the metric, with or without spaces.
+     * @return The name of the metric.
      */
     public String getMetricName() {
         return metricName;
     }
     
     /**
-     * The name of the metric, with or without spaces.
+     * The name of the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param metricName The name of the metric, with or without spaces.
+     * @param metricName The name of the metric.
      */
     public void setMetricName(String metricName) {
         this.metricName = metricName;
     }
     
     /**
-     * The name of the metric, with or without spaces.
+     * The name of the metric.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param metricName The name of the metric, with or without spaces.
+     * @param metricName The name of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withMetricName(String metricName) {
         this.metricName = metricName;
@@ -229,7 +219,8 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     public java.util.List<Dimension> getDimensions() {
         
         if (dimensions == null) {
-            dimensions = new java.util.ArrayList<Dimension>();
+              dimensions = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>();
+              dimensions.setAutoConstruct(true);
         }
         return dimensions;
     }
@@ -247,8 +238,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
             this.dimensions = null;
             return;
         }
-
-        java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
         dimensionsCopy.addAll(dimensions);
         this.dimensions = dimensionsCopy;
     }
@@ -264,7 +254,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param dimensions A list of dimensions describing qualities of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withDimensions(Dimension... dimensions) {
         if (getDimensions() == null) setDimensions(new java.util.ArrayList<Dimension>(dimensions.length));
@@ -285,13 +275,13 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param dimensions A list of dimensions describing qualities of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
         } else {
-            java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
             dimensionsCopy.addAll(dimensions);
             this.dimensions = dimensionsCopy;
         }
@@ -306,9 +296,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * to the nearest value. Datapoints are returned for start times up to
      * two weeks in the past. Specified start times that are more than two
      * weeks in the past will not return datapoints for metrics that are
-     * older than two weeks. <p>Data that is timestamped 24 hours or more in
-     * the past may take in excess of 48 hours to become available from
-     * submission time using <code>GetMetricStatistics</code>. </note>
+     * older than two weeks. </note>
      *
      * @return The time stamp to use for determining the first datapoint to return.
      *         The value specified is inclusive; results include datapoints with the
@@ -316,9 +304,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         to the nearest value. Datapoints are returned for start times up to
      *         two weeks in the past. Specified start times that are more than two
      *         weeks in the past will not return datapoints for metrics that are
-     *         older than two weeks. <p>Data that is timestamped 24 hours or more in
-     *         the past may take in excess of 48 hours to become available from
-     *         submission time using <code>GetMetricStatistics</code>. </note>
+     *         older than two weeks. </note>
      */
     public java.util.Date getStartTime() {
         return startTime;
@@ -331,9 +317,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * to the nearest value. Datapoints are returned for start times up to
      * two weeks in the past. Specified start times that are more than two
      * weeks in the past will not return datapoints for metrics that are
-     * older than two weeks. <p>Data that is timestamped 24 hours or more in
-     * the past may take in excess of 48 hours to become available from
-     * submission time using <code>GetMetricStatistics</code>. </note>
+     * older than two weeks. </note>
      *
      * @param startTime The time stamp to use for determining the first datapoint to return.
      *         The value specified is inclusive; results include datapoints with the
@@ -341,9 +325,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         to the nearest value. Datapoints are returned for start times up to
      *         two weeks in the past. Specified start times that are more than two
      *         weeks in the past will not return datapoints for metrics that are
-     *         older than two weeks. <p>Data that is timestamped 24 hours or more in
-     *         the past may take in excess of 48 hours to become available from
-     *         submission time using <code>GetMetricStatistics</code>. </note>
+     *         older than two weeks. </note>
      */
     public void setStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -356,9 +338,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * to the nearest value. Datapoints are returned for start times up to
      * two weeks in the past. Specified start times that are more than two
      * weeks in the past will not return datapoints for metrics that are
-     * older than two weeks. <p>Data that is timestamped 24 hours or more in
-     * the past may take in excess of 48 hours to become available from
-     * submission time using <code>GetMetricStatistics</code>. </note>
+     * older than two weeks. </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -368,12 +348,10 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         to the nearest value. Datapoints are returned for start times up to
      *         two weeks in the past. Specified start times that are more than two
      *         weeks in the past will not return datapoints for metrics that are
-     *         older than two weeks. <p>Data that is timestamped 24 hours or more in
-     *         the past may take in excess of 48 hours to become available from
-     *         submission time using <code>GetMetricStatistics</code>. </note>
+     *         older than two weeks. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -419,7 +397,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         to the time stamp specified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
@@ -474,7 +452,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         of 60. The default value is 60.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withPeriod(Integer period) {
         this.period = period;
@@ -483,76 +461,52 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     
     
     /**
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, go to <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * The metric statistics to return.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 5<br/>
      *
-     * @return The metric statistics to return. For information about specific
-     *         statistics returned by GetMetricStatistics, go to <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * @return The metric statistics to return.
      */
     public java.util.List<String> getStatistics() {
         
         if (statistics == null) {
-            statistics = new java.util.ArrayList<String>();
+              statistics = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              statistics.setAutoConstruct(true);
         }
         return statistics;
     }
     
     /**
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, go to <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * The metric statistics to return.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 5<br/>
      *
-     * @param statistics The metric statistics to return. For information about specific
-     *         statistics returned by GetMetricStatistics, go to <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * @param statistics The metric statistics to return.
      */
     public void setStatistics(java.util.Collection<String> statistics) {
         if (statistics == null) {
             this.statistics = null;
             return;
         }
-
-        java.util.List<String> statisticsCopy = new java.util.ArrayList<String>(statistics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> statisticsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(statistics.size());
         statisticsCopy.addAll(statistics);
         this.statistics = statisticsCopy;
     }
     
     /**
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, go to <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * The metric statistics to return.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 5<br/>
      *
-     * @param statistics The metric statistics to return. For information about specific
-     *         statistics returned by GetMetricStatistics, go to <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * @param statistics The metric statistics to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withStatistics(String... statistics) {
         if (getStatistics() == null) setStatistics(new java.util.ArrayList<String>(statistics.length));
@@ -563,31 +517,23 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, go to <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     * in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     * <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * The metric statistics to return.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 5<br/>
      *
-     * @param statistics The metric statistics to return. For information about specific
-     *         statistics returned by GetMetricStatistics, go to <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic">Statistics</a>
-     *         in the <i>Amazon CloudWatch Developer Guide</i>. <p> Valid Values:
-     *         <code>Average | Sum | SampleCount | Maximum | Minimum</code>
+     * @param statistics The metric statistics to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withStatistics(java.util.Collection<String> statistics) {
         if (statistics == null) {
             this.statistics = null;
         } else {
-            java.util.List<String> statisticsCopy = new java.util.ArrayList<String>(statistics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> statisticsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(statistics.size());
             statisticsCopy.addAll(statistics);
             this.statistics = statisticsCopy;
         }
@@ -634,7 +580,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param unit The unit for the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -669,7 +615,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param unit The unit for the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -689,14 +635,14 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
-        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ",");    	
-        if (getStatistics() != null) sb.append("Statistics: " + getStatistics() + ",");    	
+        sb.append("{");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");
+        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ",");
+        if (getStatistics() != null) sb.append("Statistics: " + getStatistics() + ",");
         if (getUnit() != null) sb.append("Unit: " + getUnit() );
         sb.append("}");
         return sb.toString();

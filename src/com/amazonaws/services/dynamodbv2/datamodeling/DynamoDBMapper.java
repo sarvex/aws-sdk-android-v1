@@ -28,9 +28,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 
 import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.http.AmazonHttpClient;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.ConsistentReads;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.SaveBehavior;
@@ -152,6 +155,8 @@ public class DynamoDBMapper {
     private final AmazonDynamoDB db;
     private final DynamoDBMapperConfig config;
     private static final DynamoDBReflector reflector = new DynamoDBReflector();
+    /** The max back off time for batch write */
+    private static final long MAX_BACKOFF_IN_MILLISECONDS = 1000 * 3;
 
     /**
      * User agent for requests made using the {@link DynamoDBMapper}.
@@ -212,20 +217,20 @@ public class DynamoDBMapper {
     public <T extends Object> T load(Class<T> clazz, Object hashKey, Object rangeKey) {
         return load(clazz, hashKey, rangeKey, config);
     }
-    
+
     /**
      * Returns an object whose keys match those of the prototype key object given,
      * or null if no such item exists.
-     * 
+     *
      * @param keyObject
      *            An object of the class to load with the keys values to match.
-     *            
+     *
      * @see DynamoDBMapper#load(Object, DynamoDBMapperConfig)
      */
     public <T extends Object> T load(T keyObject) {
         return load(keyObject, this.config);
     }
-    
+
     /**
      * Returns an object whose keys match those of the prototype key object given,
      * or null if no such item exists.
@@ -240,15 +245,15 @@ public class DynamoDBMapper {
     public <T extends Object> T load(T keyObject, DynamoDBMapperConfig config) {
         @SuppressWarnings("unchecked")
         Class<T> clazz = (Class<T>) keyObject.getClass();
-        
+
         config = mergeConfig(config);
 
         String tableName = getTableName(clazz, config);
-        
+
         GetItemRequest rq = new GetItemRequest();
 
         Map<String, AttributeValue> key = getKey(keyObject, clazz);
-        
+
         rq.setKey(key);
         rq.setTableName(tableName);
         rq.setConsistentRead(config.getConsistentReads() == ConsistentReads.CONSISTENT);
@@ -265,7 +270,7 @@ public class DynamoDBMapper {
 
     /**
      * Returns a key map for the key object given.
-     * 
+     *
      * @param keyObject
      *            The key object, corresponding to an item in a dynamo table.
      */
@@ -292,7 +297,7 @@ public class DynamoDBMapper {
         return key;
     }
 
-    
+
     /**
      * Returns an object with the given hash key, or null if no such object
      * exists.
@@ -311,7 +316,7 @@ public class DynamoDBMapper {
      */
     public <T extends Object> T load(Class<T> clazz, Object hashKey, Object rangeKey, DynamoDBMapperConfig config) {
         config = mergeConfig(config);
-        T keyObject = createKeyObject(clazz, hashKey, rangeKey);        
+        T keyObject = createKeyObject(clazz, hashKey, rangeKey);
         return load(keyObject, config);
     }
 
@@ -324,7 +329,7 @@ public class DynamoDBMapper {
             keyObject = clazz.newInstance();
         } catch ( Exception e ) {
             throw new DynamoDBMappingException("Failed to instantiate class", e);
-        } 
+        }
         boolean seenHashKey = false;
         boolean seenRangeKey = false;
         for ( Method getter : reflector.getKeyGetters(clazz) ) {
@@ -355,7 +360,7 @@ public class DynamoDBMapper {
         }
         return keyObject;
     }
-    
+
     /**
      * Returns a map of attribute name to EQ condition for the key prototype
      * object given.
@@ -482,38 +487,10 @@ public class DynamoDBMapper {
     public <T extends Object> void save(T object) {
         save(object, config);
     }
-
-    /**
-     * Saves an item in DynamoDB. The service method used is determined by the
-     * {@link DynamoDBMapperConfig#getSaveBehavior()} value, to use either
-     * {@link AWSDynamoDB#putItem(PutItemRequest)} or
-     * {@link AWSDynamoDB#updateItem(UpdateItemRequest)}. For updates, a null
-     * value for an object property will remove it from that item in DynamoDB.
-     * For puts, a null value will not be passed to the service. The effect is
-     * therefore the same, except when the item in DynamoDB contains attributes
-     * that aren't modeled by the domain object given.
-     *
-     * @param object
-     *            The object to save into DynamoDB
-     * @param config
-     *            The configuration to use, which overrides the default provided
-     *            at object construction.
-     */
-    public <T extends Object> void save(T object, DynamoDBMapperConfig config) {
-        config = mergeConfig(config);
-
-        @SuppressWarnings("unchecked")
-        Class<? extends T> clazz = (Class<? extends T>) object.getClass();
-        String tableName = getTableName(clazz, config);
-        
-        Map<String, AttributeValueUpdate> updateValues = new HashMap<String, AttributeValueUpdate>();
-        Map<String, ExpectedAttributeValue> expectedValues = new HashMap<String, ExpectedAttributeValue>();
-
-        boolean forcePut = config.getSaveBehavior() == SaveBehavior.CLOBBER;
-        List<ValueUpdate> inMemoryUpdates = new LinkedList<ValueUpdate>();
-
+    
+    private boolean needAutoGenerateAssignableKey(Class<?> clazz, Object object) {
         Collection<Method> keyGetters = reflector.getKeyGetters(clazz);
-
+        boolean forcePut = false;
         /*
          * Determine if there are any auto-assigned keys to assign. If so, force
          * a put and assign the keys.
@@ -531,121 +508,412 @@ public class DynamoDBMapper {
         if ( !hashKeyGetterFound ) {
             throw new DynamoDBMappingException("No " + DynamoDBHashKey.class + " annotation found in class " + clazz);
         }
-
-        Map<String, AttributeValue> key = new HashMap<String, AttributeValue>();
-
-        /*
-         * First handle keys
-         */
-        for ( Method method : keyGetters ) {
-            Object getterResult = safeInvoke(method, object);
-            String attributeName = reflector.getAttributeName(method);
-
-            if ( getterResult == null && reflector.isAssignableKey(method) ) {
-                AttributeValue newVersionValue = getAutoGeneratedKeyAttributeValue(method, getterResult);
-                key.put(attributeName, newVersionValue);
-
-                if ( forcePut ) {
-                    updateValues.put(attributeName,
-                            new AttributeValueUpdate().withAction("PUT").withValue(newVersionValue));
-                    inMemoryUpdates.add(new ValueUpdate(method, newVersionValue, object));
-
-                    if ( config.getSaveBehavior() != SaveBehavior.CLOBBER ) {
-                        // Add an expect clause to make sure that the item
-                        // doesn't already exist, since it's supposed to be new
-                        ExpectedAttributeValue expected = new ExpectedAttributeValue();
-                        expected.setExists(false);
-                        expectedValues.put(attributeName, expected);
-                    }
-                }
-            } else {
-                AttributeValue currentValue = getSimpleAttributeValue(method, getterResult);
-                if ( currentValue == null ) {
-                    throw new DynamoDBMappingException("Null or empty value for key: " + method);
-                }
-                
-                key.put(attributeName, currentValue);
-
-                if ( forcePut ) {
-                    updateValues.put(attributeName, new AttributeValueUpdate().withValue(currentValue)
-                            .withAction("PUT"));
-                }
-            }
-        }
-
-        /*
-         * Next construct an update for every non-key property
-         */
-        for ( Method method : reflector.getRelevantGetters(clazz) ) {
-
-            // Skip any key methods, since they are handled separately
-            if ( keyGetters.contains(method) )
-                continue;
-
-            Object getterResult = safeInvoke(method, object);
-            String attributeName = reflector.getAttributeName(method);
-
-            /*
-             * If this is a versioned field, update it
-             */
-            if ( reflector.isVersionAttributeGetter(method) ) {
-                if ( config.getSaveBehavior() != SaveBehavior.CLOBBER ) {
-                    // First establish the expected (current) value for the
-                    // update call
-                    ExpectedAttributeValue expected = new ExpectedAttributeValue();
-
-                    // For new objects, insist that the value doesn't exist.
-                    // For existing ones, insist it has the old value.
-                    AttributeValue currentValue = getSimpleAttributeValue(method, getterResult);
-                    expected.setExists(currentValue != null);
-                    if ( currentValue != null ) {
-                        expected.setValue(currentValue);
-                    }
-                    expectedValues.put(attributeName, expected);
-                }
-
-                AttributeValue newVersionValue = getVersionAttributeValue(method, getterResult);
-                updateValues
-                        .put(attributeName, new AttributeValueUpdate().withAction("PUT").withValue(newVersionValue));
-                inMemoryUpdates.add(new ValueUpdate(method, newVersionValue, object));
-            }
-
-            /*
-             * Otherwise apply the update value for this attribute.
-             */
-            else  {
-                AttributeValue currentValue = getSimpleAttributeValue(method, getterResult);
-                if ( currentValue != null ) {
-                    updateValues.put(attributeName, new AttributeValueUpdate().withValue(currentValue)
-                            .withAction("PUT"));
-                } else if ( config.getSaveBehavior() != SaveBehavior.CLOBBER ) {
-                    updateValues.put(attributeName, new AttributeValueUpdate().withAction("DELETE"));
-                }
-            }
-        }
-
-        /*
-         * Do a put or an update, according to the configuration. For a put (not
-         * the default), we need to munge the data type.
-         */
-        if ( config.getSaveBehavior() == SaveBehavior.CLOBBER || forcePut ) {
-            db.putItem(applyUserAgent(new PutItemRequest().withTableName(tableName)
-                    .withItem(transformAttributes(clazz, convertToItem(updateValues)))
-                    .withExpected(expectedValues)));
-        } else {
-            db.updateItem(applyUserAgent(new UpdateItemRequest().withTableName(tableName).withKey(key)
-                    .withAttributeUpdates(transformAttributeUpdates(clazz, key, updateValues)).withExpected(expectedValues)));
-        }
-
-        /*
-         * Finally, after the service call has succeeded, update the in-memory
-         * object with new field values as appropriate.
-         */
-        for ( ValueUpdate update : inMemoryUpdates ) {
-            update.apply();
-        }
+        return forcePut;
     }
 
+    /**
+     * Saves an item in DynamoDB. The service method used is determined by the
+     * {@link DynamoDBMapperConfig#getSaveBehavior()} value, to use either
+     * {@link AWSDynamoDB#putItem(PutItemRequest)} or
+     * {@link AWSDynamoDB#updateItem(UpdateItemRequest)}:
+     * <ul>
+     * <li><b>UPDATE</b> (default) : UPDATE will not affect unmodeled attributes
+     * on a save operation and a null value for the modeled attribute will
+     * remove it from that item in DynamoDB. Because of the limitation of
+     * updateItem request, the implementation of UPDATE will send a putItem
+     * request when a key-only object is being saved, and it will send another
+     * updateItem request if the given key(s) already exists in the table.</li>
+     * <li><b>UPDATE_SKIP_NULL_ATTRIBUTES</b> : Similar to UPDATE except that it
+     * ignores any null value attribute(s) and will NOT remove them from that
+     * item in DynamoDB. It also guarantees to send only one single updateItem
+     * request, no matter the object is key-only or not.</li>
+     * <li><b>CLOBBER</b> : CLOBBER will clear and replace all attributes,
+     * included unmodeled ones, (delete and recreate) on save. Versioned field
+     * constraints will also be disregarded.</li>
+     * </ul>
+     * 
+     * @param object
+     *            The object to save into DynamoDB
+     * @param config
+     *            The configuration to use, which overrides the default provided
+     *            at object construction.
+     * 
+     * @see DynamoDBMapperConfig.SaveBehavior
+     */
+    public <T extends Object> void save(T object, DynamoDBMapperConfig config) {
+        config = mergeConfig(config);
+
+        @SuppressWarnings("unchecked")
+        Class<? extends T> clazz = (Class<? extends T>) object.getClass();
+        String tableName = getTableName(clazz, config);
+
+        /*
+         * We force a putItem request instead of updateItem request either when
+         * CLOBBER is configured, or part of the primary key of the object needs
+         * to be auto-generated.
+         */
+        boolean forcePut = (config.getSaveBehavior() == SaveBehavior.CLOBBER)
+                || needAutoGenerateAssignableKey(clazz, object);
+
+        SaveObjectHandler saveObjectHandler;
+        
+        if (forcePut) {
+            saveObjectHandler = this.new SaveObjectHandler(clazz, object,
+                    tableName, config.getSaveBehavior()) {
+
+                @Override
+                protected void onKeyAttributeValue(String attributeName,
+                        AttributeValue keyAttributeValue) {
+                    /* Treat key values as common attribute value updates. */
+                    getAttributeValueUpdates().put(attributeName,
+                            new AttributeValueUpdate().withValue(keyAttributeValue)
+                                    .withAction("PUT"));
+                }
+
+                @Override
+                protected void onNullNonKeyAttribute(String attributeName) {
+                    /* When doing a force put, we can safely ignore the null-valued attributes. */
+                    return;
+                }
+
+                @Override
+                protected void executeLowLevelRequest(boolean onlyKeyAttributeSpecified) {
+                    /* Send a putItem request */
+                    db.putItem(applyUserAgent(new PutItemRequest().withTableName(getTableName())
+                            .withItem(transformAttributes(this.clazz, convertToItem(getAttributeValueUpdates())))
+                            .withExpected(getExpectedAttributeValues())));
+                }
+            };
+        } else {
+            saveObjectHandler = this.new SaveObjectHandler(clazz, object,
+                    tableName, config.getSaveBehavior()) {
+
+                @Override
+                protected void onKeyAttributeValue(String attributeName,
+                        AttributeValue keyAttributeValue) {
+                    /* Put it in the key collection which is later used in the updateItem request. */
+                    getKeyAttributeValues().put(attributeName, keyAttributeValue);
+                }
+
+                @Override
+                protected void onNullNonKeyAttribute(String attributeName) {
+                    /*
+                     * If UPDATE_SKIP_NULL_ATTRIBUTES is configured, we don't
+                     * delete null value attributes.
+                     */
+                    if (getLocalSaveBehavior() == SaveBehavior.UPDATE_SKIP_NULL_ATTRIBUTES) {
+                        return;
+                    }
+                    
+                    else {
+                        /* Delete attributes that are set as null in the object. */
+                        getAttributeValueUpdates()
+                                .put(attributeName,
+                                        new AttributeValueUpdate()
+                                                .withAction("DELETE"));
+                    }
+                }
+
+                @Override
+                protected void executeLowLevelRequest(boolean onlyKeyAttributeSpecified) {
+                    /*
+                     * Do a putItem when a key-only object is being saved with
+                     * UPDATE configuration.
+                     */
+                    boolean doUpdateItem = true;
+                    if (onlyKeyAttributeSpecified && getLocalSaveBehavior() == SaveBehavior.UPDATE) {
+                        doUpdateItem = false;
+                        try {
+                            keyOnlyPut(this.clazz, this.object, getTableName(),
+                                    reflector.getHashKeyGetter(this.clazz),
+                                    reflector.getRangeKeyGetter(this.clazz));
+                        } catch (AmazonServiceException ase) {
+                            if (ase.getErrorCode().equals(
+                                    "ConditionalCheckFailedException")) {
+                                /*
+                                 * If another item with the given keys is found
+                                 * in the table, we follow up an updateItem
+                                 * request.
+                                 */
+                                doUpdateItem = true;
+                            } else {
+                                throw ase;
+                            }
+                        }
+                    }
+                    if ( doUpdateItem ) {
+                        /* Send an updateItem request. */
+                        db.updateItem(applyUserAgent(new UpdateItemRequest()
+                                .withTableName(getTableName())
+                                .withKey(getKeyAttributeValues())
+                                .withAttributeUpdates(
+                                        transformAttributeUpdates(this.clazz,
+                                                getKeyAttributeValues(), getAttributeValueUpdates()))
+                                .withExpected(getExpectedAttributeValues())));
+                    }
+                }
+            };
+        }
+        
+        saveObjectHandler.execute();
+    }
+
+    /**
+     * The handler for saving object using DynamoDBMapper. Caller should
+     * implement the abstract methods to provide the expected behavior on each
+     * scenario, and this handler will take care of all the other basic workflow
+     * and common operations.
+     */
+    protected abstract class SaveObjectHandler {
+        
+        protected final Object object;
+        protected final Class<?> clazz;
+        private String tableName;
+        private SaveBehavior saveBehavior;
+        
+        private Map<String, AttributeValue> key;
+        private Map<String, AttributeValueUpdate> updateValues;
+        private Map<String, ExpectedAttributeValue> expectedValues;
+        private List<ValueUpdate> inMemoryUpdates;
+
+        private boolean nonKeyAttributePresent;
+        
+        /**
+         * Constructs a handler for saving the specified model object.
+         * 
+         * @param object            The model object to be saved.
+         * @param clazz             The domain class of the object.
+         * @param tableName         The table name.
+         */
+        public SaveObjectHandler(Class<?> clazz, Object object, String tableName, SaveBehavior saveBehavior) {
+            this.clazz = clazz;
+            this.object = object;
+            this.tableName = tableName;
+            this.saveBehavior = saveBehavior;
+
+            updateValues = new HashMap<String, AttributeValueUpdate>();
+            expectedValues = new HashMap<String, ExpectedAttributeValue>();
+            inMemoryUpdates = new LinkedList<ValueUpdate>();
+            key = new HashMap<String, AttributeValue>();
+
+            nonKeyAttributePresent = false;
+        }
+        
+        /**
+         * The general workflow of a save operation.
+         */
+        public void execute() {
+            Collection<Method> keyGetters = reflector.getKeyGetters(clazz);
+
+            /*
+             * First handle keys
+             */
+            for ( Method method : keyGetters ) {
+                Object getterResult = safeInvoke(method, object);
+                String attributeName = reflector.getAttributeName(method);
+
+                if ( getterResult == null && reflector.isAssignableKey(method) ) {
+                    onAutoGenerateAssignableKey(method, attributeName);
+                }
+                
+                else {
+                    AttributeValue newAttributeValue = getSimpleAttributeValue(method, getterResult);
+                    if ( newAttributeValue == null ) {
+                        throw new DynamoDBMappingException("Null or empty value for key: " + method);
+                    }
+
+                    onKeyAttributeValue(attributeName, newAttributeValue);
+                }
+            }
+
+            /*
+             * Next construct an update for every non-key property
+             */
+            for ( Method method : reflector.getRelevantGetters(clazz) ) {
+
+                // Skip any key methods, since they are handled separately
+                if ( keyGetters.contains(method) )
+                    continue;
+
+                Object getterResult = safeInvoke(method, object);
+                String attributeName = reflector.getAttributeName(method);
+
+                /*
+                 * If this is a versioned field, update it
+                 */
+                if ( reflector.isVersionAttributeGetter(method) ) {
+                    onVersionAttribute(method, getterResult, attributeName);
+                    nonKeyAttributePresent = true;
+                }
+
+                /*
+                 * Otherwise apply the update value for this attribute.
+                 */
+                else  {
+                    AttributeValue currentValue = getSimpleAttributeValue(method, getterResult);
+                    if ( currentValue != null ) {
+                        updateValues.put(attributeName, new AttributeValueUpdate().withValue(currentValue)
+                                .withAction("PUT"));
+                        nonKeyAttributePresent = true;
+                    } else {
+                        onNullNonKeyAttribute(attributeName);
+                    }
+                }
+            }
+
+            /*
+             * Execute the implementation of the low level request.
+             */
+            executeLowLevelRequest(! nonKeyAttributePresent);
+            
+            /*
+             * Finally, after the service call has succeeded, update the in-memory
+             * object with new field values as appropriate.
+             */
+            for ( ValueUpdate update : inMemoryUpdates ) {
+                update.apply();
+            }
+        }
+        
+        /**
+         * Implement this method to do the necessary operations when a key
+         * attribute is set with some value.
+         * 
+         * @param attributeName
+         *            The name of the key attribute.
+         * @param keyAttributeValue
+         *            The AttributeValue of the key attribute as specified in
+         *            the object.
+         */
+        protected abstract void onKeyAttributeValue(String attributeName, AttributeValue keyAttributeValue);
+        
+        /**
+         * Implement this method to do any additional operations when a non-key
+         * attribute is set null in the object.
+         * 
+         * @param attributeName
+         *            The name of the non-key attribute.
+         */
+        protected abstract void onNullNonKeyAttribute(String attributeName);
+        
+        /**
+         * Implement this method to send the low-level request that is necessary
+         * to complete the save operation.
+         * 
+         * @param onlyKeyAttributeSpecified
+         *            Whether the object to be saved is only specified with key
+         *            attributes.
+         */
+        protected abstract void executeLowLevelRequest(boolean onlyKeyAttributeSpecified);
+        
+        /** Get the SaveBehavior used locally for this save operation. **/
+        protected SaveBehavior getLocalSaveBehavior() {
+            return saveBehavior;
+        }
+        
+        /** Get the table name **/
+        protected String getTableName() {
+            return tableName;
+        }
+        
+        /** Get the map of all the specified key of the saved object. **/
+        protected Map<String, AttributeValue> getKeyAttributeValues() {
+            return key;
+        }
+        
+        /** Get the map of AttributeValueUpdate on each modeled attribute. **/
+        protected Map<String, AttributeValueUpdate> getAttributeValueUpdates() {
+            return updateValues;
+        }
+        
+        /** Get the map of ExpectedAttributeValue on each modeled attribute. **/
+        protected Map<String, ExpectedAttributeValue> getExpectedAttributeValues() {
+            return expectedValues;
+        }
+        
+        /** Get the list of all the necessary in-memory update on the object. **/
+        protected List<ValueUpdate> getInMemoryUpdates() {
+            return inMemoryUpdates;
+        }
+        
+        private void onAutoGenerateAssignableKey(Method method, String attributeName) {
+            AttributeValue newVersionValue = getAutoGeneratedKeyAttributeValue(method, null);
+            
+            updateValues.put(attributeName,
+                    new AttributeValueUpdate().withAction("PUT").withValue(newVersionValue));
+            inMemoryUpdates.add(new ValueUpdate(method, newVersionValue, object));
+            
+            if ( getLocalSaveBehavior() != SaveBehavior.CLOBBER ) {
+                // Add an expect clause to make sure that the item
+                // doesn't already exist, since it's supposed to be new
+                ExpectedAttributeValue expected = new ExpectedAttributeValue();
+                expected.setExists(false);
+                expectedValues.put(attributeName, expected);
+            }
+        }
+        
+        private void onVersionAttribute(Method method, Object getterResult,
+                String attributeName) {
+            if ( getLocalSaveBehavior() != SaveBehavior.CLOBBER ) {
+                // First establish the expected (current) value for the
+                // update call
+                ExpectedAttributeValue expected = new ExpectedAttributeValue();
+
+                // For new objects, insist that the value doesn't exist.
+                // For existing ones, insist it has the old value.
+                AttributeValue currentValue = getSimpleAttributeValue(method, getterResult);
+                expected.setExists(currentValue != null);
+                if ( currentValue != null ) {
+                    expected.setValue(currentValue);
+                }
+                expectedValues.put(attributeName, expected);
+            }
+
+            AttributeValue newVersionValue = getVersionAttributeValue(method, getterResult);
+            updateValues
+                    .put(attributeName, new AttributeValueUpdate().withAction("PUT").withValue(newVersionValue));
+            inMemoryUpdates.add(new ValueUpdate(method, newVersionValue, object));
+        }
+    }
+    
+    /**
+     * Edge case to deal with the problem reported here:
+     * https://forums.aws.amazon.com/thread.jspa?threadID=86798&tstart=25
+     * <p>
+     * DynamoDB fails silently on updateItem request that
+     * <ul>
+     * <li>is specified with a primary key that does not exist in the table</li>
+     * <li>and contains only non-"PUT" AttributeValueUpdate on any non-key
+     * attribute.</li>
+     * </ul>
+     * <p>
+     * So we have to do a putItem when a key-only object is being saved with
+     * UPDATE configuration. In order to make sure this putItem request won't
+     * replace any existing item in the table, we also insist that an item with
+     * the key(s) given doesn't already exist. This isn't perfect, but we should
+     * be doing a putItem at all in this case, so it's the best we can do.
+     */
+    private void keyOnlyPut(Class<?> clazz, Object object, String tableName,
+                            Method hashKeyGetter, Method rangeKeyGetter) {
+        Map<String, AttributeValue> attributes = new HashMap<String, AttributeValue>();
+        Map<String, ExpectedAttributeValue> expectedValues = new HashMap<String, ExpectedAttributeValue>();
+
+        String hashKeyAttributeName = reflector.getAttributeName(hashKeyGetter);
+        Object hashGetterResult = safeInvoke(hashKeyGetter, object);
+        attributes.put(hashKeyAttributeName, getSimpleAttributeValue(hashKeyGetter, hashGetterResult));
+        expectedValues.put(hashKeyAttributeName, new ExpectedAttributeValue().withExists(false));
+
+        if (rangeKeyGetter != null) {
+            String rangeKeyAttributeName = reflector.getAttributeName(rangeKeyGetter);
+            Object rangeGetterResult = safeInvoke(rangeKeyGetter, object);
+            attributes.put(rangeKeyAttributeName, getSimpleAttributeValue(rangeKeyGetter, rangeGetterResult));
+            expectedValues.put(rangeKeyAttributeName, new ExpectedAttributeValue().withExists(false));
+        }
+        attributes = transformAttributes(clazz, attributes);
+        db.putItem(applyUserAgent(new PutItemRequest().withTableName(tableName).withItem(attributes)
+                .withExpected(expectedValues)));
+    }
+    
     /**
      * Deletes the given object from its DynamoDB table.
      */
@@ -670,7 +938,7 @@ public class DynamoDBMapper {
         String tableName = getTableName(clazz, config);
 
         Map<String, AttributeValue> key = getKey(object, clazz);
-        
+
         /*
          * If there is a version field, make sure we assert its value. If the
          * version field is null (only should happen in unusual circumstances),
@@ -700,52 +968,57 @@ public class DynamoDBMapper {
 
     /**
      * Deletes the objects given using one or more calls to the
-     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API.
+     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API. <b>No
+     * version checks are performed</b>, as required by the API.
      *
      * @see DynamoDBMapper#batchWrite(List, List, DynamoDBMapperConfig)
      */
-    public void batchDelete(List<? extends Object> objectsToDelete) {
-        batchWrite(Collections.emptyList(), objectsToDelete, this.config);
+    public List<FailedBatch> batchDelete(List<? extends Object> objectsToDelete) {
+        return batchWrite(Collections.emptyList(), objectsToDelete, this.config);
     }
 
     /**
      * Deletes the objects given using one or more calls to the
-     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API.
+     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API. <b>No
+     * version checks are performed</b>, as required by the API.
      *
      * @see DynamoDBMapper#batchWrite(List, List, DynamoDBMapperConfig)
      */
-    public void batchDelete(Object... objectsToDelete) {
-        batchWrite(Collections.emptyList(), Arrays.asList(objectsToDelete), this.config);
+    public List<FailedBatch> batchDelete(Object... objectsToDelete) {
+        return batchWrite(Collections.emptyList(), Arrays.asList(objectsToDelete), this.config);
     }
 
     /**
      * Saves the objects given using one or more calls to the
-     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API.
+     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API. <b>No
+     * version checks are performed</b>, as required by the API.
      *
      * @see DynamoDBMapper#batchWrite(List, List, DynamoDBMapperConfig)
      */
-    public void batchSave(List<? extends Object> objectsToSave) {
-        batchWrite(objectsToSave, Collections.emptyList(), this.config);
+    public List<FailedBatch> batchSave(List<? extends Object> objectsToSave) {
+        return batchWrite(objectsToSave, Collections.emptyList(), this.config);
     }
 
     /**
      * Saves the objects given using one or more calls to the
-     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API.
+     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API. <b>No
+     * version checks are performed</b>, as required by the API.
      *
      * @see DynamoDBMapper#batchWrite(List, List, DynamoDBMapperConfig)
      */
-    public void batchSave(Object... objectsToSave) {
-        batchWrite(Arrays.asList(objectsToSave), Collections.emptyList(), this.config);
+    public List<FailedBatch> batchSave(Object... objectsToSave) {
+        return batchWrite(Arrays.asList(objectsToSave), Collections.emptyList(), this.config);
     }
 
     /**
      * Saves and deletes the objects given using one or more calls to the
-     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API.
+     * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API. <b>No
+     * version checks are performed</b>, as required by the API.
      *
      * @see DynamoDBMapper#batchWrite(List, List, DynamoDBMapperConfig)
      */
-    public void batchWrite(List<? extends Object> objectsToWrite, List<? extends Object> objectsToDelete) {
-        batchWrite(objectsToWrite, objectsToDelete, this.config);
+    public List<FailedBatch> batchWrite(List<? extends Object> objectsToWrite, List<? extends Object> objectsToDelete) {
+        return batchWrite(objectsToWrite, objectsToDelete, this.config);
     }
 
     /**
@@ -753,13 +1026,13 @@ public class DynamoDBMapper {
      * {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)} API.
      *
      * @param objectsToWrite
-     *            A list of objects to save to DynamoDB. No version checks are
-     *            performed, as required by the
+     *            A list of objects to save to DynamoDB. <b>No version checks
+     *            are performed</b>, as required by the
      *            {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)}
      *            API.
      * @param objectsToDelete
-     *            A list of objects to delete from DynamoDB. No version checks
-     *            are performed, as required by the
+     *            A list of objects to delete from DynamoDB. <b>No version
+     *            checks are performed</b>, as required by the
      *            {@link AmazonDynamoDB#batchWriteItem(BatchWriteItemRequest)}
      *            API.
      * @param config
@@ -767,9 +1040,13 @@ public class DynamoDBMapper {
      *            considered; if specified, all objects in the two parameter
      *            lists will be considered to belong to the given table
      *            override.
+     * @return A list of failed batches which includes the unprocessed items and
+     *         the exceptions causing the failure.
      */
-    public void batchWrite(List<? extends Object> objectsToWrite, List<? extends Object> objectsToDelete, DynamoDBMapperConfig config) {
+    public List<FailedBatch> batchWrite(List<? extends Object> objectsToWrite, List<? extends Object> objectsToDelete, DynamoDBMapperConfig config) {
         config = mergeConfig(config);
+
+        List<FailedBatch> totalFailedBatches = new LinkedList<FailedBatch>();
 
         HashMap<String, List<WriteRequest>> requestItems = new HashMap<String, List<WriteRequest>>();
 
@@ -816,7 +1093,7 @@ public class DynamoDBMapper {
             if ( !requestItems.containsKey(tableName) ) {
                 requestItems.put(tableName, new LinkedList<WriteRequest>());
             }
-            
+
             requestItems.get(tableName).add(
                     new WriteRequest().withDeleteRequest(new DeleteRequest().withKey(key)));
         }
@@ -843,21 +1120,144 @@ public class DynamoDBMapper {
                 }
             }
 
-            BatchWriteItemResult result = db.batchWriteItem(new BatchWriteItemRequest().withRequestItems(batch));
+            List<FailedBatch> failedBatches = writeOneBatch(batch);
+            if (failedBatches != null) {
+                totalFailedBatches.addAll(failedBatches);
 
-            // add any unprocessed items back into the list to process
-            for ( Entry<String, List<WriteRequest>> unprocessedItem : result.getUnprocessedItems().entrySet() ) {
-                if ( !requestItems.containsKey(unprocessedItem.getKey()) ) {
-                    requestItems.put(unprocessedItem.getKey(), new LinkedList<WriteRequest>());
+                // If contains throttling exception, we do a backoff
+                if (containsThrottlingException(failedBatches)) {
+                    try {
+                        Thread.sleep(1000 * 2);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        throw new AmazonClientException(e.getMessage(), e);
+                    }
                 }
-                requestItems.get(unprocessedItem.getKey()).addAll(unprocessedItem.getValue());
             }
         }
+
+
 
         // Once the entire batch is processed, update assigned keys in memory
         for ( ValueUpdate update : inMemoryUpdates ) {
             update.apply();
         }
+
+        return totalFailedBatches;
+    }
+
+    /**
+     * Process one batch of requests(max 25). It will divide the batch if
+     * receives request too large exception(the total size of the request is beyond 1M).
+     */
+    private List<FailedBatch> writeOneBatch(Map<String, List<WriteRequest>> batch) {
+
+        List<FailedBatch> failedBatches = new LinkedList<FailedBatch>();
+        Map<String, List<WriteRequest>> firstHalfBatch = new HashMap<String, List<WriteRequest>>();
+        Map<String, List<WriteRequest>> secondHalfBatch = new HashMap<String, List<WriteRequest>>();
+        FailedBatch failedBatch = callUntilCompletion(batch);
+
+        if (failedBatch != null) {
+            // If the exception is request entity too large, we divide the batch
+            // into smaller parts.
+
+            if (failedBatch.getException() instanceof AmazonServiceException
+            && AmazonHttpClient.isRequestEntityTooLargeException((AmazonServiceException) failedBatch.getException())) {
+
+                // If only one item left, the item size must beyond 64k, which
+                // exceedes the limit.
+
+                if (computeFailedBatchSize(failedBatch) == 1) {
+                    failedBatches.add(failedBatch);
+                } else {
+                    divideBatch(batch, firstHalfBatch, secondHalfBatch);
+                    failedBatches.addAll(writeOneBatch(firstHalfBatch));
+                    failedBatches.addAll(writeOneBatch(secondHalfBatch));
+                }
+
+            } else {
+                failedBatches.add(failedBatch);
+            }
+
+        }
+        return failedBatches;
+    }
+
+    /**
+     * Check whether there are throttling exception in the failed batches.
+     */
+    private boolean containsThrottlingException (List<FailedBatch> failedBatches) {
+        for (FailedBatch failedBatch : failedBatches) {
+           Exception e = failedBatch.getException();
+            if (e instanceof AmazonServiceException
+                    && AmazonHttpClient.isThrottlingException((AmazonServiceException) e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Divide the batch of objects to save into two smaller batches. Each contains half of the elements.
+     */
+    private void divideBatch(Map<String, List<WriteRequest>> batch, Map<String, List<WriteRequest>> firstHalfBatch, Map<String, List<WriteRequest>> secondHalfBatch) {
+        for (String key : batch.keySet()) {
+
+            List<WriteRequest> requests = batch.get(key);
+
+            List<WriteRequest> firstHalfRequests = requests.subList(0, requests.size() / 2);
+
+            List<WriteRequest> secondHalfRequests = requests.subList(requests.size() / 2, requests.size());
+
+            firstHalfBatch.put(key, firstHalfRequests);
+
+            secondHalfBatch.put(key, secondHalfRequests);
+
+        }
+
+    }
+
+    /**
+     * Count the total number of unprocessed items in the failed batch.
+     */
+
+    private int computeFailedBatchSize(FailedBatch failedBatch) {
+
+        int count = 0;
+
+        for (String tableName : failedBatch.getUnprocessedItems().keySet()) {
+            count += failedBatch.getUnprocessedItems().get(tableName).size();
+        }
+        return count;
+    }
+
+    /**
+     * Continue trying to process the batch until it finishes or an exception
+     * occurs.
+     */
+
+    private FailedBatch callUntilCompletion(Map<String, List<WriteRequest>> batch) {
+        BatchWriteItemResult result = null;
+        int retries = 0;
+        FailedBatch failedBatch = null;
+        while (true) {
+            try {
+                result = db.batchWriteItem(new BatchWriteItemRequest().withRequestItems(batch));
+            } catch (Exception e) {
+                failedBatch = new FailedBatch();
+                failedBatch.setUnprocessedItems(batch);
+                failedBatch.setException(e);
+                return failedBatch;
+            }
+            retries++;
+            batch = result.getUnprocessedItems();
+            if (batch.size() > 0) {
+                pauseExponentially(retries);
+            } else {
+                break;
+            }
+        }
+        return failedBatch;
     }
 
     /**
@@ -868,10 +1268,10 @@ public class DynamoDBMapper {
     public Map<String, List<Object>> batchLoad(List<Object> itemsToGet) {
         return batchLoad(itemsToGet, this.config);
     }
-    
+
     /**
      * Retrieves multiple items from multiple tables using their primary keys.
-     * 
+     *
      * @param itemsToGet
      *            Key objects, corresponding to the class to fetch, with their
      *            primary key values set.
@@ -905,7 +1305,7 @@ public class DynamoDBMapper {
                         new KeysAndAttributes().withConsistentRead(consistentReads).withKeys(
                                 new LinkedList<Map<String, AttributeValue>>()));
             }
-            
+
             requestItems.get(tableName).getKeys().add(getKey(keyObject));
 
             // Reach the maximum number which can be handled in a single batchGet
@@ -922,7 +1322,7 @@ public class DynamoDBMapper {
 
         return resultSet;
     }
-    
+
     /**
      * Retrieves the attributes for multiple items from multiple tables using
      * their primary keys.
@@ -939,7 +1339,7 @@ public class DynamoDBMapper {
      * Valid only for tables with a single hash key, or a single hash and range
      * key. For other schemas, use
      * {@link DynamoDBMapper#batchLoad(List, DynamoDBMapperConfig)}
-     * 
+     *
      * @param itemsToGet
      *            Map from class to load to list of primary key attributes.
      * @param config
@@ -966,7 +1366,7 @@ public class DynamoDBMapper {
     private void processBatchGetRequest(Map<String, Class<?>> classesByTableName,
                                         Map<String, KeysAndAttributes> requestItems,
                                         Map<String, List<Object>> resultSet) {
-        
+
         BatchGetItemResult batchGetItemResult = null;
         BatchGetItemRequest batchGetItemRequest = new BatchGetItemRequest();
         batchGetItemRequest.setRequestItems(requestItems);
@@ -1113,19 +1513,19 @@ public class DynamoDBMapper {
         ScanResult scanResult = db.scan(applyUserAgent(scanRequest));
         return new PaginatedScanList<T>(this, clazz, db, scanRequest, scanResult);
     }
-    
+
     /**
 	 * Scans through an Amazon DynamoDB table on logically partitioned segments
 	 * in parallel and returns the matching results in one unmodifiable list of
 	 * instantiated objects, using the default configuration.
-	 * 
+	 *
 	 * @see DynamoDBMapper#parallelScan(Class, DynamoDBScanExpression,int,
 	 *      DynamoDBMapperConfig)
 	 */
     public <T> PaginatedParallelScanList<T> parallelScan(Class<T> clazz, DynamoDBScanExpression scanExpression, int totalSegments) {
         return parallelScan(clazz, scanExpression, totalSegments, config);
     }
-    
+
 	/**
 	 * Scans through an Amazon DynamoDB table on logically partitioned segments
 	 * in parallel. This method will create a thread pool of the specified size,
@@ -1146,7 +1546,7 @@ public class DynamoDBMapper {
 	 * <p>
 	 * The unmodifiable list returned is lazily loaded when possible, so calls
 	 * to DynamoDB will be made only as needed.
-	 * 
+	 *
 	 * @param <T>
 	 *            The type of the objects being returned.
 	 * @param clazz
@@ -1156,7 +1556,7 @@ public class DynamoDBMapper {
 	 *            Details on how to run the scan, including any filters to apply
 	 *            to limit results.
 	 * @param totalSegments
-	 *            Number of total parallel scan segments. 
+	 *            Number of total parallel scan segments.
 	 *            <b>Range: </b>1 - 4096
 	 * @param config
 	 *            The configuration to use for this scan, which overrides the
@@ -1174,14 +1574,14 @@ public class DynamoDBMapper {
 
         return new PaginatedParallelScanList<T>(this, clazz, db, parallelScanTask);
     }
-    
+
     /**
      * Scans through an Amazon DynamoDB table and returns a single page of matching
      * results. The table to scan is determined by looking at the annotations on
      * the specified class, which declares where to store the object data in AWS
      * DynamoDB, and the scan expression parameter allows the caller to filter
      * results and control how the scan is executed.
-     * 
+     *
      * @param <T>
      *            The type of the objects being returned.
      * @param clazz
@@ -1203,20 +1603,20 @@ public class DynamoDBMapper {
         ScanResultPage<T> result = new ScanResultPage<T>();
         result.setResults(marshallIntoObjects(clazz, scanResult.getItems()));
         result.setLastEvaluatedKey(scanResult.getLastEvaluatedKey());
-        
+
         return result;
     }
-    
+
     /**
      * Scans through an Amazon DynamoDB table and returns a single page of matching
-     * results. 
-     * 
+     * results.
+     *
      * @see DynamoDBMapper#scanPage(Class, DynamoDBScanExpression, DynamoDBMapperConfig)
      */
     public <T> ScanResultPage<T> scanPage(Class<T> clazz, DynamoDBScanExpression scanExpression) {
         return scanPage(clazz, scanExpression, this.config);
     }
-    
+
     /**
      * Queries an Amazon DynamoDB table and returns the matching results as an
      * unmodifiable list of instantiated objects, using the default
@@ -1237,8 +1637,8 @@ public class DynamoDBMapper {
      * expression parameter allows the caller to filter results and control how
      * the query is executed.
      * <p>
-     * When the query is on any local secondary index, callers should be aware that 
-     * the returned object(s) will only contain item attributes that are projected 
+     * When the query is on any local secondary index, callers should be aware that
+     * the returned object(s) will only contain item attributes that are projected
      * into the index. All the other unprojected attributes will be saved as type
      * default values.
      * <p>
@@ -1272,27 +1672,27 @@ public class DynamoDBMapper {
         QueryResult queryResult = db.query(applyUserAgent(queryRequest));
         return new PaginatedQueryList<T>(this, clazz, db, queryRequest, queryResult);
     }
-    
+
     /**
      * Queries an Amazon DynamoDB table and returns a single page of matching
      * results. The table to query is determined by looking at the annotations
      * on the specified class, which declares where to store the object data in
      * Amazon DynamoDB, and the query expression parameter allows the caller to
      * filter results and control how the query is executed.
-     * 
+     *
      * @see DynamoDBMapper#queryPage(Class, DynamoDBQueryExpression, DynamoDBMapperConfig)
      */
     public <T> QueryResultPage<T> queryPage(Class<T> clazz, DynamoDBQueryExpression<T> queryExpression) {
         return queryPage(clazz, queryExpression, this.config);
     }
-    
+
     /**
      * Queries an Amazon DynamoDB table and returns a single page of matching
      * results. The table to query is determined by looking at the annotations
      * on the specified class, which declares where to store the object data in
      * Amazon DynamoDB, and the query expression parameter allows the caller to
      * filter results and control how the query is executed.
-     * 
+     *
      * @param <T>
      *            The type of the objects being returned.
      * @param clazz
@@ -1314,7 +1714,7 @@ public class DynamoDBMapper {
         QueryResultPage<T> result = new QueryResultPage<T>();
         result.setResults(marshallIntoObjects(clazz, scanResult.getItems()));
         result.setLastEvaluatedKey(scanResult.getLastEvaluatedKey());
-        
+
         return result;
     }
 
@@ -1425,7 +1825,7 @@ public class DynamoDBMapper {
 
         return scanRequest;
     }
-    
+
     private List<ScanRequest> createParallelScanRequestsFromExpression(Class<?> clazz, DynamoDBScanExpression scanExpression, int totalSegments, DynamoDBMapperConfig config) {
     	if (totalSegments < 1)
 			throw new IllegalArgumentException("Parallel scan should have at least one scan segment.");
@@ -1442,15 +1842,15 @@ public class DynamoDBMapper {
         queryRequest.setConsistentRead(queryExpression.isConsistentRead());
         queryRequest.setTableName(getTableName(clazz, config));
         queryRequest.setIndexName(queryExpression.getIndexName());
-                
+
         Map<String, Condition> keyConditions = getHashKeyEqualsConditions(queryExpression.getHashKeyValues());
-        
+
         Map<String, Condition> rangeKeyConditions = queryExpression.getRangeKeyConditions();
         if (null != rangeKeyConditions) {
         	processRangeKeyConditions(clazz, queryRequest, rangeKeyConditions);
         	keyConditions.putAll(rangeKeyConditions);
         }
-        
+
         queryRequest.setKeyConditions(keyConditions);
         queryRequest.setScanIndexForward(queryExpression.isScanIndexForward());
         queryRequest.setLimit(queryExpression.getLimit());
@@ -1467,9 +1867,9 @@ public class DynamoDBMapper {
          * Exception if conditions on multiple range keys are found.
          */
         if (rangeKeyConditions.size() > 1) {
-        	// The current DynamoDB service only supports queries using hash key equal condition 
+        	// The current DynamoDB service only supports queries using hash key equal condition
         	// plus ONE range key condition.
-        	// This range key could be either the primary key or any index key.	
+        	// This range key could be either the primary key or any index key.
         	throw new AmazonClientException("Conditions on multiple range keys ("
         			+ rangeKeyConditions.keySet().toString()
         			+ ") are found in the query. DynamoDB service only accepts up to ONE range key condition.");
@@ -1477,19 +1877,19 @@ public class DynamoDBMapper {
         String assignedIndexName = queryRequest.getIndexName();
         for (String rangeKey : rangeKeyConditions.keySet()) {
         	/**
-        	 * If it is a primary range key, checks whether the user has specified 
+        	 * If it is a primary range key, checks whether the user has specified
         	 * an unnecessary index name.
         	 */
-        	if (rangeKey.equals(reflector.getPrimaryRangeKeyName(clazz))) {    		
+        	if (rangeKey.equals(reflector.getPrimaryRangeKeyName(clazz))) {
         		if ( null != assignedIndexName )
         			throw new AmazonClientException("The range key ("
         					+ rangeKey + ") in the query is the primary key of the table, not the range key of index ("
         					+ assignedIndexName + ").");
-        	} 
+        	}
         	else {
                 List<String> annotatedIndexNames = reflector.getIndexNameByIndexRangeKeyName(clazz, rangeKey);
             	/**
-            	 * If it is an index range key, 
+            	 * If it is an index range key,
             	 * 		check whether the provided index name matches the @DynamoDBIndexRangeKey annotation,
             	 * 		or try to infer the index name according to @DynamoDBIndexRangeKey annotation
             	 * 			if it is not provided in the query.
@@ -1511,12 +1911,12 @@ public class DynamoDBMapper {
             						+ rangeKey + "(Choose from " + annotatedIndexNames.toString() + ").");
             			}
             		}
-                }	
+                }
                 else {
             		throw new AmazonClientException("The range key used in the query (" + rangeKey + ") is not annotated with " +
             				"either @DynamoDBRangeKey or @DynamoDBIndexRangeKey in class (" + clazz.getName() + ").");
             	}
-        	}	
+        	}
         }
     }
     /**
@@ -1529,12 +1929,12 @@ public class DynamoDBMapper {
         String rangeKeyName = rangeKeyGetter == null ? null : reflector.getAttributeName(rangeKeyGetter);
         return untransformAttributes(hashKeyName, rangeKeyName, attributeValues);
     }
-    
+
     /**
      * Transforms the attribute values after loading from DynamoDb.
      * Only ever called by {@link #untransformAttributes(Class, Map)}.
      * By default, returns the attributes unchanged.
-     * 
+     *
      * @param hashKey the attribute name of the hash key
      * @param rangeKey the attribute name of the range key (or null if there is none)
      * @param attributeValues
@@ -1544,7 +1944,7 @@ public class DynamoDBMapper {
             Map<String, AttributeValue> attributeValues) {
         return attributeValues;
     }
-    
+
     /**
      * By default, just calls {@link #transformAttributes(String, String, Map)}.
      * @param clazz
@@ -1558,12 +1958,12 @@ public class DynamoDBMapper {
         String rangeKeyName = rangeKeyGetter == null ? null : reflector.getAttributeName(rangeKeyGetter);
         return transformAttributes(hashKeyName, rangeKeyName, attributeValues);
     }
-    
+
     /**
      * Transform attribute values prior to storing in DynamoDB.
      * Only ever called by {@link #transformAttributes(Class, Map)}.
      * By default, returns the attributes unchanged.
-     * 
+     *
      * @param hashKey the attribute name of the hash key
      * @param rangeKey the attribute name of the range key (or null if there is none)
      * @param attributeValues
@@ -1573,12 +1973,12 @@ public class DynamoDBMapper {
             Map<String, AttributeValue> attributeValues) {
         return attributeValues;
     }
-    
+
     private Map<String, AttributeValueUpdate> transformAttributeUpdates(Class<?> clazz,
             Map<String, AttributeValue> keys,
             Map<String, AttributeValueUpdate> updateValues) {
         Map<String, AttributeValue> item = convertToItem(updateValues);
-        
+
         HashSet<String> keysAdded = new HashSet<String>();
         for (Map.Entry<String, AttributeValue> e : keys.entrySet()) {
             if (!item.containsKey(e.getKey())) {
@@ -1617,8 +2017,56 @@ public class DynamoDBMapper {
         return updateValues;
     }
 
+    private void pauseExponentially(int retries) {
+        if (retries == 0) {
+            return;
+        }
+
+        Random random = new Random();
+        long delay = 0;
+        long scaleFactor = 500 + random.nextInt(100);
+        delay = (long) (Math.pow(2, retries) * scaleFactor);
+        delay = Math.min(delay, MAX_BACKOFF_IN_MILLISECONDS);
+
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new AmazonClientException(e.getMessage(), e);
+        }
+    }
+
     static <X extends AmazonWebServiceRequest> X applyUserAgent(X request) {
         request.getRequestClientOptions().addClientMarker(USER_AGENT);
         return request;
+    }
+
+    /**
+     * The return type of batchWrite, batchDelete and batchSave. It contains the information about the unprocessed items
+     * and the exception causing the failure.
+     *
+     */
+    public static class FailedBatch {
+
+        private Map<String, java.util.List<WriteRequest>> unprocessedItems;
+
+        private Exception exception;
+
+        public void setUnprocessedItems(Map<String, java.util.List<WriteRequest>> unprocessedItems) {
+            this.unprocessedItems = unprocessedItems;
+        }
+
+        public Map<String, java.util.List<WriteRequest>> getUnprocessedItems() {
+            return unprocessedItems;
+        }
+
+        public void setException(Exception excetpion) {
+            this.exception = excetpion;
+        }
+
+        public Exception getException() {
+            return exception;
+        }
+
     }
 }

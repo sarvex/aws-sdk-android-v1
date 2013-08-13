@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the AttachLoadBalancerToSubnets action.
  * </p>
  */
-public class AttachLoadBalancerToSubnetsResult  implements Serializable  {
+public class AttachLoadBalancerToSubnetsResult implements Serializable {
 
     /**
      * A list of subnet IDs added for the LoadBalancer.
      */
-    private java.util.List<String> subnets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnets;
 
     /**
      * A list of subnet IDs added for the LoadBalancer.
@@ -35,7 +35,8 @@ public class AttachLoadBalancerToSubnetsResult  implements Serializable  {
     public java.util.List<String> getSubnets() {
         
         if (subnets == null) {
-            subnets = new java.util.ArrayList<String>();
+              subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnets.setAutoConstruct(true);
         }
         return subnets;
     }
@@ -50,8 +51,7 @@ public class AttachLoadBalancerToSubnetsResult  implements Serializable  {
             this.subnets = null;
             return;
         }
-
-        java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
         subnetsCopy.addAll(subnets);
         this.subnets = subnetsCopy;
     }
@@ -64,7 +64,7 @@ public class AttachLoadBalancerToSubnetsResult  implements Serializable  {
      * @param subnets A list of subnet IDs added for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachLoadBalancerToSubnetsResult withSubnets(String... subnets) {
         if (getSubnets() == null) setSubnets(new java.util.ArrayList<String>(subnets.length));
@@ -82,13 +82,13 @@ public class AttachLoadBalancerToSubnetsResult  implements Serializable  {
      * @param subnets A list of subnet IDs added for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachLoadBalancerToSubnetsResult withSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
             this.subnets = null;
         } else {
-            java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
             subnetsCopy.addAll(subnets);
             this.subnets = subnetsCopy;
         }
@@ -107,7 +107,7 @@ public class AttachLoadBalancerToSubnetsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSubnets() != null) sb.append("Subnets: " + getSubnets() );
         sb.append("}");
         return sb.toString();

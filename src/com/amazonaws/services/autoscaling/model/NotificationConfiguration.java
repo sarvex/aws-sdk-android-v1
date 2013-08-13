@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>NotificationConfiguration</code> data type.
  * </p>
  */
-public class NotificationConfiguration  implements Serializable  {
+public class NotificationConfiguration implements Serializable {
 
     /**
      * Specifies the Auto Scaling group name.
@@ -88,7 +88,7 @@ public class NotificationConfiguration  implements Serializable  {
      * @param autoScalingGroupName Specifies the Auto Scaling group name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NotificationConfiguration withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -140,7 +140,7 @@ public class NotificationConfiguration  implements Serializable  {
      *         Service (SNS) topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NotificationConfiguration withTopicARN(String topicARN) {
         this.topicARN = topicARN;
@@ -186,7 +186,7 @@ public class NotificationConfiguration  implements Serializable  {
      * @param notificationType The types of events for an action to start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NotificationConfiguration withNotificationType(String notificationType) {
         this.notificationType = notificationType;
@@ -205,9 +205,9 @@ public class NotificationConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getTopicARN() != null) sb.append("TopicARN: " + getTopicARN() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getTopicARN() != null) sb.append("TopicARN: " + getTopicARN() + ",");
         if (getNotificationType() != null) sb.append("NotificationType: " + getNotificationType() );
         sb.append("}");
         return sb.toString();

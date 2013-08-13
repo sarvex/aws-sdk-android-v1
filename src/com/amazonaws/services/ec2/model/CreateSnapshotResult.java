@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of creating a snapshot from an EBS volume.
  * </p>
  */
-public class CreateSnapshotResult  implements Serializable  {
+public class CreateSnapshotResult implements Serializable {
 
     /**
      * The new snapshot.
@@ -53,7 +53,7 @@ public class CreateSnapshotResult  implements Serializable  {
      * @param snapshot The new snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotResult withSnapshot(Snapshot snapshot) {
         this.snapshot = snapshot;
@@ -72,7 +72,7 @@ public class CreateSnapshotResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSnapshot() != null) sb.append("Snapshot: " + getSnapshot() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ReportInstanceStatusRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,9 +24,9 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#reportInstanceStatus(ReportInstanceStatusRequest)
  */
-public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ReportInstanceStatusRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ReportInstanceStatusRequest> {
 
-    private java.util.List<String> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instances;
 
     private String status;
 
@@ -32,7 +34,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
 
     private java.util.Date endTime;
 
-    private java.util.List<String> reasonCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> reasonCodes;
 
     private String description;
 
@@ -44,7 +46,8 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
     public java.util.List<String> getInstances() {
         
         if (instances == null) {
-            instances = new java.util.ArrayList<String>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -59,8 +62,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
             this.instances = null;
             return;
         }
-
-        java.util.List<String> instancesCopy = new java.util.ArrayList<String>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -73,7 +75,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param instances The new value for the Instances property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withInstances(String... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<String>(instances.length));
@@ -91,13 +93,13 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param instances The new value for the Instances property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withInstances(java.util.Collection<String> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<String> instancesCopy = new java.util.ArrayList<String>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
@@ -131,7 +133,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param status The new value for the Status property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withStatus(String status) {
         this.status = status;
@@ -165,7 +167,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param startTime The new value for the StartTime property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -199,7 +201,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param endTime The new value for the EndTime property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
@@ -215,7 +217,8 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
     public java.util.List<String> getReasonCodes() {
         
         if (reasonCodes == null) {
-            reasonCodes = new java.util.ArrayList<String>();
+              reasonCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              reasonCodes.setAutoConstruct(true);
         }
         return reasonCodes;
     }
@@ -230,8 +233,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
             this.reasonCodes = null;
             return;
         }
-
-        java.util.List<String> reasonCodesCopy = new java.util.ArrayList<String>(reasonCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> reasonCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(reasonCodes.size());
         reasonCodesCopy.addAll(reasonCodes);
         this.reasonCodes = reasonCodesCopy;
     }
@@ -244,7 +246,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param reasonCodes The new value for the ReasonCodes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withReasonCodes(String... reasonCodes) {
         if (getReasonCodes() == null) setReasonCodes(new java.util.ArrayList<String>(reasonCodes.length));
@@ -262,13 +264,13 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param reasonCodes The new value for the ReasonCodes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withReasonCodes(java.util.Collection<String> reasonCodes) {
         if (reasonCodes == null) {
             this.reasonCodes = null;
         } else {
-            java.util.List<String> reasonCodesCopy = new java.util.ArrayList<String>(reasonCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> reasonCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(reasonCodes.size());
             reasonCodesCopy.addAll(reasonCodes);
             this.reasonCodes = reasonCodesCopy;
         }
@@ -302,13 +304,25 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportInstanceStatusRequest withDescription(String description) {
         this.description = description;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ReportInstanceStatusRequest> getDryRunRequest() {
+        Request<ReportInstanceStatusRequest> request = new ReportInstanceStatusRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -321,12 +335,12 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getReasonCodes() != null) sb.append("ReasonCodes: " + getReasonCodes() + ",");    	
+        sb.append("{");
+        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getReasonCodes() != null) sb.append("ReasonCodes: " + getReasonCodes() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

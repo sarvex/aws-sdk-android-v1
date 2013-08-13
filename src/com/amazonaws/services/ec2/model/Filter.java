@@ -27,7 +27,7 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class Filter  implements Serializable  {
+public class Filter implements Serializable {
 
     /**
      * Specifies the name of the filter.
@@ -37,7 +37,7 @@ public class Filter  implements Serializable  {
     /**
      * Contains one or more values for the filter.
      */
-    private java.util.List<String> values;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> values;
 
     /**
      * Default constructor for a new Filter object.  Callers should use the
@@ -45,6 +45,8 @@ public class Filter  implements Serializable  {
      */
     public Filter() {}
     
+
+
     /**
      * Constructs a new Filter object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -54,12 +56,14 @@ public class Filter  implements Serializable  {
      * @param values Contains one or more values for the filter.
      */
     public Filter(String name, java.util.List<String> values) {
-        this.name = name;
-        this.values = values;
+        setName(name);
+        setValues(values);
     }
 
     
     
+
+
     /**
      * Constructs a new Filter object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -68,7 +72,7 @@ public class Filter  implements Serializable  {
      * @param name Specifies the name of the filter.
      */
     public Filter(String name) {
-        this.name = name;
+        setName(name);
     }
 
     
@@ -99,7 +103,7 @@ public class Filter  implements Serializable  {
      * @param name Specifies the name of the filter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Filter withName(String name) {
         this.name = name;
@@ -115,7 +119,8 @@ public class Filter  implements Serializable  {
     public java.util.List<String> getValues() {
         
         if (values == null) {
-            values = new java.util.ArrayList<String>();
+              values = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              values.setAutoConstruct(true);
         }
         return values;
     }
@@ -130,8 +135,7 @@ public class Filter  implements Serializable  {
             this.values = null;
             return;
         }
-
-        java.util.List<String> valuesCopy = new java.util.ArrayList<String>(values.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> valuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(values.size());
         valuesCopy.addAll(values);
         this.values = valuesCopy;
     }
@@ -144,7 +148,7 @@ public class Filter  implements Serializable  {
      * @param values Contains one or more values for the filter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Filter withValues(String... values) {
         if (getValues() == null) setValues(new java.util.ArrayList<String>(values.length));
@@ -162,13 +166,13 @@ public class Filter  implements Serializable  {
      * @param values Contains one or more values for the filter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Filter withValues(java.util.Collection<String> values) {
         if (values == null) {
             this.values = null;
         } else {
-            java.util.List<String> valuesCopy = new java.util.ArrayList<String>(values.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> valuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(values.size());
             valuesCopy.addAll(values);
             this.values = valuesCopy;
         }
@@ -187,8 +191,8 @@ public class Filter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getValues() != null) sb.append("Values: " + getValues() );
         sb.append("}");
         return sb.toString();

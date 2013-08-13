@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ResetSnapshotAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#resetSnapshotAttribute(ResetSnapshotAttributeRequest)
  */
-public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ResetSnapshotAttributeRequest> {
 
     /**
      * The ID of the snapshot whose attribute is being reset.
@@ -46,6 +48,8 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest  impl
      */
     public ResetSnapshotAttributeRequest() {}
     
+
+
     /**
      * Constructs a new ResetSnapshotAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,8 +61,8 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest  impl
      * attribute names: <code>createVolumePermission</code>
      */
     public ResetSnapshotAttributeRequest(String snapshotId, String attribute) {
-        this.snapshotId = snapshotId;
-        this.attribute = attribute;
+        setSnapshotId(snapshotId);
+        setAttribute(attribute);
     }
 
     
@@ -104,7 +108,7 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest  impl
      * @param snapshotId The ID of the snapshot whose attribute is being reset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetSnapshotAttributeRequest withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -157,7 +161,7 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest  impl
      *         <code>createVolumePermission</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotAttributeName
      */
@@ -196,13 +200,25 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest  impl
      *         <code>createVolumePermission</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotAttributeName
      */
     public ResetSnapshotAttributeRequest withAttribute(SnapshotAttributeName attribute) {
         this.attribute = attribute.toString();
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ResetSnapshotAttributeRequest> getDryRunRequest() {
+        Request<ResetSnapshotAttributeRequest> request = new ResetSnapshotAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -216,8 +232,8 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

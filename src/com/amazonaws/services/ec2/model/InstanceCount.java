@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Instance Count
  */
-public class InstanceCount  implements Serializable  {
+public class InstanceCount implements Serializable {
 
     private String state;
 
@@ -50,7 +50,7 @@ public class InstanceCount  implements Serializable  {
      * @param state The new value for the State property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceCount withState(String state) {
         this.state = state;
@@ -84,7 +84,7 @@ public class InstanceCount  implements Serializable  {
      * @param instanceCount The new value for the InstanceCount property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceCount withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
@@ -103,8 +103,8 @@ public class InstanceCount  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
+        sb.append("{");
+        if (getState() != null) sb.append("State: " + getState() + ",");
         if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() );
         sb.append("}");
         return sb.toString();

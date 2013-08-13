@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the verification attributes of a single identity.
  * </p>
  */
-public class IdentityVerificationAttributes  implements Serializable  {
+public class IdentityVerificationAttributes implements Serializable {
 
     /**
      * The verification status of the identity: "Pending", "Success",
@@ -82,7 +82,7 @@ public class IdentityVerificationAttributes  implements Serializable  {
      *         "Failed", or "TemporaryFailure".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VerificationStatus
      */
@@ -121,7 +121,7 @@ public class IdentityVerificationAttributes  implements Serializable  {
      *         "Failed", or "TemporaryFailure".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VerificationStatus
      */
@@ -162,7 +162,7 @@ public class IdentityVerificationAttributes  implements Serializable  {
      *         identities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityVerificationAttributes withVerificationToken(String verificationToken) {
         this.verificationToken = verificationToken;
@@ -181,8 +181,8 @@ public class IdentityVerificationAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVerificationStatus() != null) sb.append("VerificationStatus: " + getVerificationStatus() + ",");    	
+        sb.append("{");
+        if (getVerificationStatus() != null) sb.append("VerificationStatus: " + getVerificationStatus() + ",");
         if (getVerificationToken() != null) sb.append("VerificationToken: " + getVerificationToken() );
         sb.append("}");
         return sb.toString();

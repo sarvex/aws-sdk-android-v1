@@ -32,7 +32,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#enableAvailabilityZonesForLoadBalancer(EnableAvailabilityZonesForLoadBalancerRequest)
  */
-public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name associated with the LoadBalancer. The name must be unique
@@ -44,7 +44,7 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
      * A list of new Availability Zones for the LoadBalancer. Each
      * Availability Zone must be in the same Region as the LoadBalancer.
      */
-    private java.util.List<String> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
      * Default constructor for a new EnableAvailabilityZonesForLoadBalancerRequest object.  Callers should use the
@@ -52,6 +52,8 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
      */
     public EnableAvailabilityZonesForLoadBalancerRequest() {}
     
+
+
     /**
      * Constructs a new EnableAvailabilityZonesForLoadBalancerRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -64,8 +66,8 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
      * LoadBalancer.
      */
     public EnableAvailabilityZonesForLoadBalancerRequest(String loadBalancerName, java.util.List<String> availabilityZones) {
-        this.loadBalancerName = loadBalancerName;
-        this.availabilityZones = availabilityZones;
+        setLoadBalancerName(loadBalancerName);
+        setAvailabilityZones(availabilityZones);
     }
 
     
@@ -102,7 +104,7 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
      *         within the client AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableAvailabilityZonesForLoadBalancerRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -120,7 +122,8 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
     public java.util.List<String> getAvailabilityZones() {
         
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
@@ -137,8 +140,7 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
@@ -153,7 +155,7 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
      *         Availability Zone must be in the same Region as the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableAvailabilityZonesForLoadBalancerRequest withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -173,13 +175,13 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
      *         Availability Zone must be in the same Region as the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableAvailabilityZonesForLoadBalancerRequest withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
@@ -198,8 +200,8 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() );
         sb.append("}");
         return sb.toString();

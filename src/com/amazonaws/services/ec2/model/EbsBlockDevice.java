@@ -20,7 +20,7 @@ import java.io.Serializable;
  * An EBS volume backed block device.
  * </p>
  */
-public class EbsBlockDevice  implements Serializable  {
+public class EbsBlockDevice implements Serializable {
 
     /**
      * The ID of the snapshot from which the volume will be created.
@@ -68,7 +68,7 @@ public class EbsBlockDevice  implements Serializable  {
      * @param snapshotId The ID of the snapshot from which the volume will be created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsBlockDevice withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -102,7 +102,7 @@ public class EbsBlockDevice  implements Serializable  {
      * @param volumeSize The size of the volume, in gigabytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsBlockDevice withVolumeSize(Integer volumeSize) {
         this.volumeSize = volumeSize;
@@ -142,7 +142,7 @@ public class EbsBlockDevice  implements Serializable  {
      *         termination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsBlockDevice withDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
@@ -200,7 +200,7 @@ public class EbsBlockDevice  implements Serializable  {
      * @param volumeType The new value for the VolumeType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeType
      */
@@ -235,7 +235,7 @@ public class EbsBlockDevice  implements Serializable  {
      * @param volumeType The new value for the VolumeType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeType
      */
@@ -270,7 +270,7 @@ public class EbsBlockDevice  implements Serializable  {
      * @param iops The new value for the Iops property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsBlockDevice withIops(Integer iops) {
         this.iops = iops;
@@ -289,11 +289,11 @@ public class EbsBlockDevice  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() + ",");    	
-        if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() + ",");    	
-        if (getVolumeType() != null) sb.append("VolumeType: " + getVolumeType() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() + ",");
+        if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() + ",");
+        if (getVolumeType() != null) sb.append("VolumeType: " + getVolumeType() + ",");
         if (getIops() != null) sb.append("Iops: " + getIops() );
         sb.append("}");
         return sb.toString();

@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The result of describing a user's key pairs.
  * </p>
  */
-public class DescribeKeyPairsResult  implements Serializable  {
+public class DescribeKeyPairsResult implements Serializable {
 
     /**
      * The list of described key pairs.
      */
-    private java.util.List<KeyPairInfo> keyPairs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<KeyPairInfo> keyPairs;
 
     /**
      * The list of described key pairs.
@@ -35,7 +35,8 @@ public class DescribeKeyPairsResult  implements Serializable  {
     public java.util.List<KeyPairInfo> getKeyPairs() {
         
         if (keyPairs == null) {
-            keyPairs = new java.util.ArrayList<KeyPairInfo>();
+              keyPairs = new com.amazonaws.internal.ListWithAutoConstructFlag<KeyPairInfo>();
+              keyPairs.setAutoConstruct(true);
         }
         return keyPairs;
     }
@@ -50,8 +51,7 @@ public class DescribeKeyPairsResult  implements Serializable  {
             this.keyPairs = null;
             return;
         }
-
-        java.util.List<KeyPairInfo> keyPairsCopy = new java.util.ArrayList<KeyPairInfo>(keyPairs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<KeyPairInfo> keyPairsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<KeyPairInfo>(keyPairs.size());
         keyPairsCopy.addAll(keyPairs);
         this.keyPairs = keyPairsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeKeyPairsResult  implements Serializable  {
      * @param keyPairs The list of described key pairs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeKeyPairsResult withKeyPairs(KeyPairInfo... keyPairs) {
         if (getKeyPairs() == null) setKeyPairs(new java.util.ArrayList<KeyPairInfo>(keyPairs.length));
@@ -82,13 +82,13 @@ public class DescribeKeyPairsResult  implements Serializable  {
      * @param keyPairs The list of described key pairs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeKeyPairsResult withKeyPairs(java.util.Collection<KeyPairInfo> keyPairs) {
         if (keyPairs == null) {
             this.keyPairs = null;
         } else {
-            java.util.List<KeyPairInfo> keyPairsCopy = new java.util.ArrayList<KeyPairInfo>(keyPairs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<KeyPairInfo> keyPairsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<KeyPairInfo>(keyPairs.size());
             keyPairsCopy.addAll(keyPairs);
             this.keyPairs = keyPairsCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeKeyPairsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getKeyPairs() != null) sb.append("KeyPairs: " + getKeyPairs() );
         sb.append("}");
         return sb.toString();

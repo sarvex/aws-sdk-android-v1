@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeLicensesRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -25,13 +27,13 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeLicenses(DescribeLicensesRequest)
  */
-public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeLicensesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeLicensesRequest> {
 
     /**
      * Specifies the license registration for which details are to be
      * returned.
      */
-    private java.util.List<String> licenseIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> licenseIds;
 
     /**
      * A list of filters used to match properties for Licenses. For a
@@ -40,7 +42,7 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * Specifies the license registration for which details are to be
@@ -52,7 +54,8 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
     public java.util.List<String> getLicenseIds() {
         
         if (licenseIds == null) {
-            licenseIds = new java.util.ArrayList<String>();
+              licenseIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              licenseIds.setAutoConstruct(true);
         }
         return licenseIds;
     }
@@ -69,8 +72,7 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
             this.licenseIds = null;
             return;
         }
-
-        java.util.List<String> licenseIdsCopy = new java.util.ArrayList<String>(licenseIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> licenseIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(licenseIds.size());
         licenseIdsCopy.addAll(licenseIds);
         this.licenseIds = licenseIdsCopy;
     }
@@ -85,7 +87,7 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
      *         returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLicensesRequest withLicenseIds(String... licenseIds) {
         if (getLicenseIds() == null) setLicenseIds(new java.util.ArrayList<String>(licenseIds.length));
@@ -105,13 +107,13 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
      *         returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLicensesRequest withLicenseIds(java.util.Collection<String> licenseIds) {
         if (licenseIds == null) {
             this.licenseIds = null;
         } else {
-            java.util.List<String> licenseIdsCopy = new java.util.ArrayList<String>(licenseIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> licenseIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(licenseIds.size());
             licenseIdsCopy.addAll(licenseIds);
             this.licenseIds = licenseIdsCopy;
         }
@@ -135,7 +137,8 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -158,8 +161,7 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -180,7 +182,7 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLicensesRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -206,18 +208,30 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLicensesRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeLicensesRequest> getDryRunRequest() {
+        Request<DescribeLicensesRequest> request = new DescribeLicensesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -231,8 +245,8 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLicenseIds() != null) sb.append("LicenseIds: " + getLicenseIds() + ",");    	
+        sb.append("{");
+        if (getLicenseIds() != null) sb.append("LicenseIds: " + getLicenseIds() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes the S3 storage destination for a BundleTask when bundling a Windows instance.
  * </p>
  */
-public class S3Storage  implements Serializable  {
+public class S3Storage implements Serializable {
 
     /**
      * The bucket in which to store the AMI. You can specify a bucket that
@@ -95,7 +95,7 @@ public class S3Storage  implements Serializable  {
      *         Amazon EC2 returns an error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Storage withBucket(String bucket) {
         this.bucket = bucket;
@@ -129,7 +129,7 @@ public class S3Storage  implements Serializable  {
      * @param prefix The prefix to use when storing the AMI in S3.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Storage withPrefix(String prefix) {
         this.prefix = prefix;
@@ -163,7 +163,7 @@ public class S3Storage  implements Serializable  {
      * @param aWSAccessKeyId The Access Key ID of the owner of the Amazon S3 bucket.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Storage withAWSAccessKeyId(String aWSAccessKeyId) {
         this.aWSAccessKeyId = aWSAccessKeyId;
@@ -203,7 +203,7 @@ public class S3Storage  implements Serializable  {
      *         permission to upload items into Amazon S3 on the user's behalf.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Storage withUploadPolicy(String uploadPolicy) {
         this.uploadPolicy = uploadPolicy;
@@ -237,7 +237,7 @@ public class S3Storage  implements Serializable  {
      * @param uploadPolicySignature The signature of the Base64 encoded JSON document.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Storage withUploadPolicySignature(String uploadPolicySignature) {
         this.uploadPolicySignature = uploadPolicySignature;
@@ -256,11 +256,11 @@ public class S3Storage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");    	
-        if (getPrefix() != null) sb.append("Prefix: " + getPrefix() + ",");    	
-        if (getAWSAccessKeyId() != null) sb.append("AWSAccessKeyId: " + getAWSAccessKeyId() + ",");    	
-        if (getUploadPolicy() != null) sb.append("UploadPolicy: " + getUploadPolicy() + ",");    	
+        sb.append("{");
+        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");
+        if (getPrefix() != null) sb.append("Prefix: " + getPrefix() + ",");
+        if (getAWSAccessKeyId() != null) sb.append("AWSAccessKeyId: " + getAWSAccessKeyId() + ",");
+        if (getUploadPolicy() != null) sb.append("UploadPolicy: " + getUploadPolicy() + ",");
         if (getUploadPolicySignature() != null) sb.append("UploadPolicySignature: " + getUploadPolicySignature() );
         sb.append("}");
         return sb.toString();

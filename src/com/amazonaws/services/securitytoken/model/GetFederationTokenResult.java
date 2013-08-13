@@ -71,7 +71,7 @@ public class GetFederationTokenResult  implements Serializable  {
      * @param credentials Credentials for the service API authentication.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenResult withCredentials(Credentials credentials) {
         this.credentials = credentials;
@@ -123,7 +123,7 @@ public class GetFederationTokenResult  implements Serializable  {
      *         in your resource policies like in an Amazon S3 bucket policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenResult withFederatedUser(FederatedUser federatedUser) {
         this.federatedUser = federatedUser;
@@ -178,7 +178,7 @@ public class GetFederationTokenResult  implements Serializable  {
      *         100 percent of the allowed value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenResult withPackedPolicySize(Integer packedPolicySize) {
         this.packedPolicySize = packedPolicySize;
@@ -197,9 +197,9 @@ public class GetFederationTokenResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");    	
-        if (getFederatedUser() != null) sb.append("FederatedUser: " + getFederatedUser() + ",");    	
+        sb.append("{");
+        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");
+        if (getFederatedUser() != null) sb.append("FederatedUser: " + getFederatedUser() + ",");
         if (getPackedPolicySize() != null) sb.append("PackedPolicySize: " + getPackedPolicySize() );
         sb.append("}");
         return sb.toString();

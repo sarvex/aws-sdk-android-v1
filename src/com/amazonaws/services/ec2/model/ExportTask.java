@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Export Task
  */
-public class ExportTask  implements Serializable  {
+public class ExportTask implements Serializable {
 
     private String exportTaskId;
 
@@ -58,7 +58,7 @@ public class ExportTask  implements Serializable  {
      * @param exportTaskId The new value for the ExportTaskId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withExportTaskId(String exportTaskId) {
         this.exportTaskId = exportTaskId;
@@ -92,7 +92,7 @@ public class ExportTask  implements Serializable  {
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withDescription(String description) {
         this.description = description;
@@ -126,7 +126,7 @@ public class ExportTask  implements Serializable  {
      * @param state The new value for the State property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withState(String state) {
         this.state = state;
@@ -160,7 +160,7 @@ public class ExportTask  implements Serializable  {
      * @param statusMessage The new value for the StatusMessage property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
@@ -195,7 +195,7 @@ public class ExportTask  implements Serializable  {
      * @param instanceExportDetails The new value for the InstanceExportDetails property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withInstanceExportDetails(InstanceExportDetails instanceExportDetails) {
         this.instanceExportDetails = instanceExportDetails;
@@ -229,7 +229,7 @@ public class ExportTask  implements Serializable  {
      * @param exportToS3Task The new value for the ExportToS3Task property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withExportToS3Task(ExportToS3Task exportToS3Task) {
         this.exportToS3Task = exportToS3Task;
@@ -248,12 +248,12 @@ public class ExportTask  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExportTaskId() != null) sb.append("ExportTaskId: " + getExportTaskId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");    	
-        if (getInstanceExportDetails() != null) sb.append("InstanceExportDetails: " + getInstanceExportDetails() + ",");    	
+        sb.append("{");
+        if (getExportTaskId() != null) sb.append("ExportTaskId: " + getExportTaskId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");
+        if (getInstanceExportDetails() != null) sb.append("InstanceExportDetails: " + getInstanceExportDetails() + ",");
         if (getExportToS3Task() != null) sb.append("ExportToS3Task: " + getExportToS3Task() );
         sb.append("}");
         return sb.toString();

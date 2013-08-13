@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The result of describing Amazon EC2 instances.
  * </p>
  */
-public class DescribeInstancesResult  implements Serializable  {
+public class DescribeInstancesResult implements Serializable {
 
     /**
      * The list of reservations containing the describes instances.
      */
-    private java.util.List<Reservation> reservations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Reservation> reservations;
 
     /**
      * The list of reservations containing the describes instances.
@@ -35,7 +35,8 @@ public class DescribeInstancesResult  implements Serializable  {
     public java.util.List<Reservation> getReservations() {
         
         if (reservations == null) {
-            reservations = new java.util.ArrayList<Reservation>();
+              reservations = new com.amazonaws.internal.ListWithAutoConstructFlag<Reservation>();
+              reservations.setAutoConstruct(true);
         }
         return reservations;
     }
@@ -50,8 +51,7 @@ public class DescribeInstancesResult  implements Serializable  {
             this.reservations = null;
             return;
         }
-
-        java.util.List<Reservation> reservationsCopy = new java.util.ArrayList<Reservation>(reservations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Reservation> reservationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Reservation>(reservations.size());
         reservationsCopy.addAll(reservations);
         this.reservations = reservationsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeInstancesResult  implements Serializable  {
      * @param reservations The list of reservations containing the describes instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesResult withReservations(Reservation... reservations) {
         if (getReservations() == null) setReservations(new java.util.ArrayList<Reservation>(reservations.length));
@@ -82,13 +82,13 @@ public class DescribeInstancesResult  implements Serializable  {
      * @param reservations The list of reservations containing the describes instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesResult withReservations(java.util.Collection<Reservation> reservations) {
         if (reservations == null) {
             this.reservations = null;
         } else {
-            java.util.List<Reservation> reservationsCopy = new java.util.ArrayList<Reservation>(reservations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Reservation> reservationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Reservation>(reservations.size());
             reservationsCopy.addAll(reservations);
             this.reservations = reservationsCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservations() != null) sb.append("Reservations: " + getReservations() );
         sb.append("}");
         return sb.toString();

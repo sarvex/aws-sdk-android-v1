@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Instance Network Interface Specification
  */
-public class InstanceNetworkInterfaceSpecification  implements Serializable  {
+public class InstanceNetworkInterfaceSpecification implements Serializable {
 
     private String networkInterfaceId;
 
@@ -30,11 +30,11 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
 
     private String privateIpAddress;
 
-    private java.util.List<String> groups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groups;
 
     private Boolean deleteOnTermination;
 
-    private java.util.List<PrivateIpAddressSpecification> privateIpAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification> privateIpAddresses;
 
     private Integer secondaryPrivateIpAddressCount;
 
@@ -64,7 +64,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
@@ -98,7 +98,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param deviceIndex The new value for the DeviceIndex property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withDeviceIndex(Integer deviceIndex) {
         this.deviceIndex = deviceIndex;
@@ -132,7 +132,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param subnetId The new value for the SubnetId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withSubnetId(String subnetId) {
         this.subnetId = subnetId;
@@ -166,7 +166,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withDescription(String description) {
         this.description = description;
@@ -200,7 +200,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
@@ -216,7 +216,8 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
     public java.util.List<String> getGroups() {
         
         if (groups == null) {
-            groups = new java.util.ArrayList<String>();
+              groups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groups.setAutoConstruct(true);
         }
         return groups;
     }
@@ -231,8 +232,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
             this.groups = null;
             return;
         }
-
-        java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
         groupsCopy.addAll(groups);
         this.groups = groupsCopy;
     }
@@ -245,7 +245,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param groups The new value for the Groups property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withGroups(String... groups) {
         if (getGroups() == null) setGroups(new java.util.ArrayList<String>(groups.length));
@@ -263,13 +263,13 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param groups The new value for the Groups property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withGroups(java.util.Collection<String> groups) {
         if (groups == null) {
             this.groups = null;
         } else {
-            java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
             groupsCopy.addAll(groups);
             this.groups = groupsCopy;
         }
@@ -303,7 +303,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param deleteOnTermination The new value for the DeleteOnTermination property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
@@ -328,7 +328,8 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
     public java.util.List<PrivateIpAddressSpecification> getPrivateIpAddresses() {
         
         if (privateIpAddresses == null) {
-            privateIpAddresses = new java.util.ArrayList<PrivateIpAddressSpecification>();
+              privateIpAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification>();
+              privateIpAddresses.setAutoConstruct(true);
         }
         return privateIpAddresses;
     }
@@ -343,8 +344,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
             this.privateIpAddresses = null;
             return;
         }
-
-        java.util.List<PrivateIpAddressSpecification> privateIpAddressesCopy = new java.util.ArrayList<PrivateIpAddressSpecification>(privateIpAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification> privateIpAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification>(privateIpAddresses.size());
         privateIpAddressesCopy.addAll(privateIpAddresses);
         this.privateIpAddresses = privateIpAddressesCopy;
     }
@@ -357,7 +357,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withPrivateIpAddresses(PrivateIpAddressSpecification... privateIpAddresses) {
         if (getPrivateIpAddresses() == null) setPrivateIpAddresses(new java.util.ArrayList<PrivateIpAddressSpecification>(privateIpAddresses.length));
@@ -375,13 +375,13 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withPrivateIpAddresses(java.util.Collection<PrivateIpAddressSpecification> privateIpAddresses) {
         if (privateIpAddresses == null) {
             this.privateIpAddresses = null;
         } else {
-            java.util.List<PrivateIpAddressSpecification> privateIpAddressesCopy = new java.util.ArrayList<PrivateIpAddressSpecification>(privateIpAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification> privateIpAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification>(privateIpAddresses.size());
             privateIpAddressesCopy.addAll(privateIpAddresses);
             this.privateIpAddresses = privateIpAddressesCopy;
         }
@@ -421,7 +421,7 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
      *         object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceSpecification withSecondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
         this.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
@@ -440,15 +440,15 @@ public class InstanceNetworkInterfaceSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
-        if (getDeviceIndex() != null) sb.append("DeviceIndex: " + getDeviceIndex() + ",");    	
-        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
-        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");    	
-        if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() + ",");    	
-        if (getPrivateIpAddresses() != null) sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() + ",");    	
+        sb.append("{");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+        if (getDeviceIndex() != null) sb.append("DeviceIndex: " + getDeviceIndex() + ",");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");
+        if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() + ",");
+        if (getPrivateIpAddresses() != null) sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() + ",");
         if (getSecondaryPrivateIpAddressCount() != null) sb.append("SecondaryPrivateIpAddressCount: " + getSecondaryPrivateIpAddressCount() );
         sb.append("}");
         return sb.toString();

@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#setInstanceHealth(SetInstanceHealthRequest)
  */
-public class SetInstanceHealthRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetInstanceHealthRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the Amazon EC2 instance.
@@ -90,7 +90,7 @@ public class SetInstanceHealthRequest extends AmazonWebServiceRequest  implement
      * @param instanceId The identifier of the Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetInstanceHealthRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -148,7 +148,7 @@ public class SetInstanceHealthRequest extends AmazonWebServiceRequest  implement
      *         instance is unhealthy. Auto Scaling should terminate and replace it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetInstanceHealthRequest withHealthStatus(String healthStatus) {
         this.healthStatus = healthStatus;
@@ -188,7 +188,7 @@ public class SetInstanceHealthRequest extends AmazonWebServiceRequest  implement
      *         group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetInstanceHealthRequest withShouldRespectGracePeriod(Boolean shouldRespectGracePeriod) {
         this.shouldRespectGracePeriod = shouldRespectGracePeriod;
@@ -218,9 +218,9 @@ public class SetInstanceHealthRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");
         if (isShouldRespectGracePeriod() != null) sb.append("ShouldRespectGracePeriod: " + isShouldRespectGracePeriod() );
         sb.append("}");
         return sb.toString();

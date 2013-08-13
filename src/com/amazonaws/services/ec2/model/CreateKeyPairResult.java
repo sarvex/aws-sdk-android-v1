@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of creating a new EC2 key pair.
  * </p>
  */
-public class CreateKeyPairResult  implements Serializable  {
+public class CreateKeyPairResult implements Serializable {
 
     /**
      * The newly created EC2 key pair.
@@ -53,7 +53,7 @@ public class CreateKeyPairResult  implements Serializable  {
      * @param keyPair The newly created EC2 key pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateKeyPairResult withKeyPair(KeyPair keyPair) {
         this.keyPair = keyPair;
@@ -72,7 +72,7 @@ public class CreateKeyPairResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getKeyPair() != null) sb.append("KeyPair: " + getKeyPair() );
         sb.append("}");
         return sb.toString();

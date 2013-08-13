@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#setQueueAttributes(SetQueueAttributesRequest)
  */
-public class SetQueueAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetQueueAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The URL of the SQS queue to take action on.
@@ -43,6 +43,8 @@ public class SetQueueAttributesRequest extends AmazonWebServiceRequest  implemen
      */
     public SetQueueAttributesRequest() {}
     
+
+
     /**
      * Constructs a new SetQueueAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -52,8 +54,8 @@ public class SetQueueAttributesRequest extends AmazonWebServiceRequest  implemen
      * @param attributes A map of attributes to set.
      */
     public SetQueueAttributesRequest(String queueUrl, java.util.Map<String,String> attributes) {
-        this.queueUrl = queueUrl;
-        this.attributes = attributes;
+        setQueueUrl(queueUrl);
+        setAttributes(attributes);
     }
 
     
@@ -84,7 +86,7 @@ public class SetQueueAttributesRequest extends AmazonWebServiceRequest  implemen
      * @param queueUrl The URL of the SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetQueueAttributesRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
@@ -103,7 +105,6 @@ public class SetQueueAttributesRequest extends AmazonWebServiceRequest  implemen
             attributes = new java.util.HashMap<String,String>();
         }
         return attributes;
-
     }
     
     /**
@@ -123,13 +124,44 @@ public class SetQueueAttributesRequest extends AmazonWebServiceRequest  implemen
      * @param attributes A map of attributes to set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetQueueAttributesRequest withAttributes(java.util.Map<String,String> attributes) {
         setAttributes(attributes);
         return this;
     }
     
+   	
+    /**
+     * A map of attributes to set.
+     * <p>
+     * The method adds a new key-value pair into Attributes parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Attributes.
+     * @param value The corresponding value of the entry to be added into Attributes.
+     */
+	public SetQueueAttributesRequest addAttributesEntry(String key, String value) {
+		if (null == this.attributes) {
+			this.attributes = new java.util.HashMap<String,String>();
+		}
+		if (this.attributes.containsKey(key))
+			throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+		this.attributes.put(key, value);
+		return this;
+	}
+	
+	/**
+	 * Removes all the entries added into Attributes.
+	 * <p>
+	 * Returns a reference to this object so that method calls can be chained together.
+	 */
+	public SetQueueAttributesRequest clearAttributesEntries() {
+		this.attributes = null;
+		return this;
+	}
+	
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -141,8 +173,8 @@ public class SetQueueAttributesRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

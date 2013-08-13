@@ -22,7 +22,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#cancelExportTask(CancelExportTaskRequest)
  */
-public class CancelExportTaskRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CancelExportTaskRequest extends AmazonWebServiceRequest implements Serializable {
 
     private String exportTaskId;
 
@@ -52,7 +52,7 @@ public class CancelExportTaskRequest extends AmazonWebServiceRequest  implements
      * @param exportTaskId The new value for the ExportTaskId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelExportTaskRequest withExportTaskId(String exportTaskId) {
         this.exportTaskId = exportTaskId;
@@ -71,7 +71,7 @@ public class CancelExportTaskRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getExportTaskId() != null) sb.append("ExportTaskId: " + getExportTaskId() );
         sb.append("}");
         return sb.toString();

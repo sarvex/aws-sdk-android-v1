@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Specifies the details of a how an EC2 EBS volume is attached to an instance.
  * </p>
  */
-public class VolumeAttachment  implements Serializable  {
+public class VolumeAttachment implements Serializable {
 
     /**
      * 
@@ -83,7 +83,7 @@ public class VolumeAttachment  implements Serializable  {
      * @param volumeId 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeAttachment withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -117,7 +117,7 @@ public class VolumeAttachment  implements Serializable  {
      * @param instanceId 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeAttachment withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -157,7 +157,7 @@ public class VolumeAttachment  implements Serializable  {
      *         <code>/dev/sdh</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeAttachment withDevice(String device) {
         this.device = device;
@@ -204,7 +204,7 @@ public class VolumeAttachment  implements Serializable  {
      * @param state 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeAttachmentState
      */
@@ -239,7 +239,7 @@ public class VolumeAttachment  implements Serializable  {
      * @param state 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeAttachmentState
      */
@@ -274,7 +274,7 @@ public class VolumeAttachment  implements Serializable  {
      * @param attachTime Timestamp when this attachment initiated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeAttachment withAttachTime(java.util.Date attachTime) {
         this.attachTime = attachTime;
@@ -314,7 +314,7 @@ public class VolumeAttachment  implements Serializable  {
      *         instance is terminated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeAttachment withDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
@@ -344,12 +344,12 @@ public class VolumeAttachment  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getAttachTime() != null) sb.append("AttachTime: " + getAttachTime() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getAttachTime() != null) sb.append("AttachTime: " + getAttachTime() + ",");
         if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() );
         sb.append("}");
         return sb.toString();

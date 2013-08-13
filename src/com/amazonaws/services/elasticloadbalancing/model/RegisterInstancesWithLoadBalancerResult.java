@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the RegisterInstancesWithLoadBalancer action.
  * </p>
  */
-public class RegisterInstancesWithLoadBalancerResult  implements Serializable  {
+public class RegisterInstancesWithLoadBalancerResult implements Serializable {
 
     /**
      * An updated list of instances for the LoadBalancer.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * An updated list of instances for the LoadBalancer.
@@ -35,7 +35,8 @@ public class RegisterInstancesWithLoadBalancerResult  implements Serializable  {
     public java.util.List<Instance> getInstances() {
         
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -50,8 +51,7 @@ public class RegisterInstancesWithLoadBalancerResult  implements Serializable  {
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -64,7 +64,7 @@ public class RegisterInstancesWithLoadBalancerResult  implements Serializable  {
      * @param instances An updated list of instances for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterInstancesWithLoadBalancerResult withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -82,13 +82,13 @@ public class RegisterInstancesWithLoadBalancerResult  implements Serializable  {
      * @param instances An updated list of instances for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterInstancesWithLoadBalancerResult withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
@@ -107,7 +107,7 @@ public class RegisterInstancesWithLoadBalancerResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstances() != null) sb.append("Instances: " + getInstances() );
         sb.append("}");
         return sb.toString();

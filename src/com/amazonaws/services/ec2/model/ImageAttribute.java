@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents an attribute of an <i>Amazon Machine Image</i> (AMI).
  * </p>
  */
-public class ImageAttribute  implements Serializable  {
+public class ImageAttribute implements Serializable {
 
     /**
      * The ID of the associated AMI.
@@ -30,12 +30,12 @@ public class ImageAttribute  implements Serializable  {
     /**
      * Launch permissions for the associated AMI.
      */
-    private java.util.List<LaunchPermission> launchPermissions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission> launchPermissions;
 
     /**
      * Product codes for the associated AMI.
      */
-    private java.util.List<ProductCode> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodes;
 
     /**
      * Kernel ID of the associated AMI.
@@ -55,7 +55,7 @@ public class ImageAttribute  implements Serializable  {
     /**
      * Block device mappings for the associated AMI.
      */
-    private java.util.List<BlockDeviceMapping> blockDeviceMappings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappings;
 
     /**
      * The ID of the associated AMI.
@@ -83,7 +83,7 @@ public class ImageAttribute  implements Serializable  {
      * @param imageId The ID of the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withImageId(String imageId) {
         this.imageId = imageId;
@@ -99,7 +99,8 @@ public class ImageAttribute  implements Serializable  {
     public java.util.List<LaunchPermission> getLaunchPermissions() {
         
         if (launchPermissions == null) {
-            launchPermissions = new java.util.ArrayList<LaunchPermission>();
+              launchPermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission>();
+              launchPermissions.setAutoConstruct(true);
         }
         return launchPermissions;
     }
@@ -114,8 +115,7 @@ public class ImageAttribute  implements Serializable  {
             this.launchPermissions = null;
             return;
         }
-
-        java.util.List<LaunchPermission> launchPermissionsCopy = new java.util.ArrayList<LaunchPermission>(launchPermissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission> launchPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission>(launchPermissions.size());
         launchPermissionsCopy.addAll(launchPermissions);
         this.launchPermissions = launchPermissionsCopy;
     }
@@ -128,7 +128,7 @@ public class ImageAttribute  implements Serializable  {
      * @param launchPermissions Launch permissions for the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withLaunchPermissions(LaunchPermission... launchPermissions) {
         if (getLaunchPermissions() == null) setLaunchPermissions(new java.util.ArrayList<LaunchPermission>(launchPermissions.length));
@@ -146,13 +146,13 @@ public class ImageAttribute  implements Serializable  {
      * @param launchPermissions Launch permissions for the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withLaunchPermissions(java.util.Collection<LaunchPermission> launchPermissions) {
         if (launchPermissions == null) {
             this.launchPermissions = null;
         } else {
-            java.util.List<LaunchPermission> launchPermissionsCopy = new java.util.ArrayList<LaunchPermission>(launchPermissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission> launchPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission>(launchPermissions.size());
             launchPermissionsCopy.addAll(launchPermissions);
             this.launchPermissions = launchPermissionsCopy;
         }
@@ -168,7 +168,8 @@ public class ImageAttribute  implements Serializable  {
     public java.util.List<ProductCode> getProductCodes() {
         
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<ProductCode>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
@@ -183,8 +184,7 @@ public class ImageAttribute  implements Serializable  {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
@@ -197,7 +197,7 @@ public class ImageAttribute  implements Serializable  {
      * @param productCodes Product codes for the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withProductCodes(ProductCode... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<ProductCode>(productCodes.length));
@@ -215,13 +215,13 @@ public class ImageAttribute  implements Serializable  {
      * @param productCodes Product codes for the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
@@ -255,7 +255,7 @@ public class ImageAttribute  implements Serializable  {
      * @param kernelId Kernel ID of the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withKernelId(String kernelId) {
         this.kernelId = kernelId;
@@ -289,7 +289,7 @@ public class ImageAttribute  implements Serializable  {
      * @param ramdiskId Ramdisk ID of the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
@@ -323,7 +323,7 @@ public class ImageAttribute  implements Serializable  {
      * @param description User-created description of the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withDescription(String description) {
         this.description = description;
@@ -339,7 +339,8 @@ public class ImageAttribute  implements Serializable  {
     public java.util.List<BlockDeviceMapping> getBlockDeviceMappings() {
         
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<BlockDeviceMapping>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
@@ -354,8 +355,7 @@ public class ImageAttribute  implements Serializable  {
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
@@ -368,7 +368,7 @@ public class ImageAttribute  implements Serializable  {
      * @param blockDeviceMappings Block device mappings for the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withBlockDeviceMappings(BlockDeviceMapping... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.length));
@@ -386,13 +386,13 @@ public class ImageAttribute  implements Serializable  {
      * @param blockDeviceMappings Block device mappings for the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
@@ -411,13 +411,13 @@ public class ImageAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getLaunchPermissions() != null) sb.append("LaunchPermissions: " + getLaunchPermissions() + ",");    	
-        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");    	
-        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");    	
-        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getLaunchPermissions() != null) sb.append("LaunchPermissions: " + getLaunchPermissions() + ",");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() );
         sb.append("}");
         return sb.toString();

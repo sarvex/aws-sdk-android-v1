@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeVolumeAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeVolumeAttribute(DescribeVolumeAttributeRequest)
  */
-public class DescribeVolumeAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeVolumeAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeVolumeAttributeRequest> {
 
     private String volumeId;
 
@@ -54,7 +56,7 @@ public class DescribeVolumeAttributeRequest extends AmazonWebServiceRequest  imp
      * @param volumeId The new value for the VolumeId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeAttributeRequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -101,7 +103,7 @@ public class DescribeVolumeAttributeRequest extends AmazonWebServiceRequest  imp
      * @param attribute The new value for the Attribute property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeAttributeName
      */
@@ -136,13 +138,25 @@ public class DescribeVolumeAttributeRequest extends AmazonWebServiceRequest  imp
      * @param attribute The new value for the Attribute property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeAttributeName
      */
     public DescribeVolumeAttributeRequest withAttribute(VolumeAttributeName attribute) {
         this.attribute = attribute.toString();
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeVolumeAttributeRequest> getDryRunRequest() {
+        Request<DescribeVolumeAttributeRequest> request = new DescribeVolumeAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -156,8 +170,8 @@ public class DescribeVolumeAttributeRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

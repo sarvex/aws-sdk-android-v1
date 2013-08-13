@@ -18,11 +18,11 @@ import java.io.Serializable;
 /**
  * Instance Status Summary
  */
-public class InstanceStatusSummary  implements Serializable  {
+public class InstanceStatusSummary implements Serializable {
 
     private String status;
 
-    private java.util.List<InstanceStatusDetails> details;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails> details;
 
     /**
      * Returns the value of the Status property for this object.
@@ -50,7 +50,7 @@ public class InstanceStatusSummary  implements Serializable  {
      * @param status The new value for the Status property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusSummary withStatus(String status) {
         this.status = status;
@@ -66,7 +66,8 @@ public class InstanceStatusSummary  implements Serializable  {
     public java.util.List<InstanceStatusDetails> getDetails() {
         
         if (details == null) {
-            details = new java.util.ArrayList<InstanceStatusDetails>();
+              details = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails>();
+              details.setAutoConstruct(true);
         }
         return details;
     }
@@ -81,8 +82,7 @@ public class InstanceStatusSummary  implements Serializable  {
             this.details = null;
             return;
         }
-
-        java.util.List<InstanceStatusDetails> detailsCopy = new java.util.ArrayList<InstanceStatusDetails>(details.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails> detailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails>(details.size());
         detailsCopy.addAll(details);
         this.details = detailsCopy;
     }
@@ -95,7 +95,7 @@ public class InstanceStatusSummary  implements Serializable  {
      * @param details The new value for the Details property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusSummary withDetails(InstanceStatusDetails... details) {
         if (getDetails() == null) setDetails(new java.util.ArrayList<InstanceStatusDetails>(details.length));
@@ -113,13 +113,13 @@ public class InstanceStatusSummary  implements Serializable  {
      * @param details The new value for the Details property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusSummary withDetails(java.util.Collection<InstanceStatusDetails> details) {
         if (details == null) {
             this.details = null;
         } else {
-            java.util.List<InstanceStatusDetails> detailsCopy = new java.util.ArrayList<InstanceStatusDetails>(details.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails> detailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails>(details.size());
             detailsCopy.addAll(details);
             this.details = detailsCopy;
         }
@@ -138,8 +138,8 @@ public class InstanceStatusSummary  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getDetails() != null) sb.append("Details: " + getDetails() );
         sb.append("}");
         return sb.toString();

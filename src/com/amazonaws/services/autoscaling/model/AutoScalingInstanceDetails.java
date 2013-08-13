@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>AutoScalingInstanceDetails</code> data type.
  * </p>
  */
-public class AutoScalingInstanceDetails  implements Serializable  {
+public class AutoScalingInstanceDetails implements Serializable {
 
     /**
      * The instance ID of the Amazon EC2 instance.
@@ -116,7 +116,7 @@ public class AutoScalingInstanceDetails  implements Serializable  {
      * @param instanceId The instance ID of the Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingInstanceDetails withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -162,7 +162,7 @@ public class AutoScalingInstanceDetails  implements Serializable  {
      * @param autoScalingGroupName The name of the Auto Scaling group associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingInstanceDetails withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -208,7 +208,7 @@ public class AutoScalingInstanceDetails  implements Serializable  {
      * @param availabilityZone The Availability Zone in which this instance resides.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingInstanceDetails withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -254,7 +254,7 @@ public class AutoScalingInstanceDetails  implements Serializable  {
      * @param lifecycleState The life cycle state of this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingInstanceDetails withLifecycleState(String lifecycleState) {
         this.lifecycleState = lifecycleState;
@@ -312,7 +312,7 @@ public class AutoScalingInstanceDetails  implements Serializable  {
      *         instance is unhealthy. Auto Scaling should terminate and replace it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingInstanceDetails withHealthStatus(String healthStatus) {
         this.healthStatus = healthStatus;
@@ -358,7 +358,7 @@ public class AutoScalingInstanceDetails  implements Serializable  {
      * @param launchConfigurationName The launch configuration associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingInstanceDetails withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
@@ -377,12 +377,12 @@ public class AutoScalingInstanceDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getLifecycleState() != null) sb.append("LifecycleState: " + getLifecycleState() + ",");    	
-        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getLifecycleState() != null) sb.append("LifecycleState: " + getLifecycleState() + ",");
+        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");
         if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() );
         sb.append("}");
         return sb.toString();

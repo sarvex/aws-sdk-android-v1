@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of registering a new Amazon Machine Image (AMI). Contains the ID of the new image.
  * </p>
  */
-public class RegisterImageResult  implements Serializable  {
+public class RegisterImageResult implements Serializable {
 
     /**
      * The ID of the new Amazon Machine Image (AMI).
@@ -53,7 +53,7 @@ public class RegisterImageResult  implements Serializable  {
      * @param imageId The ID of the new Amazon Machine Image (AMI).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageResult withImageId(String imageId) {
         this.imageId = imageId;
@@ -72,7 +72,7 @@ public class RegisterImageResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageId() != null) sb.append("ImageId: " + getImageId() );
         sb.append("}");
         return sb.toString();

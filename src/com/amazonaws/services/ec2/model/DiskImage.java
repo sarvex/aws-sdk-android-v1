@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Disk Image
  */
-public class DiskImage  implements Serializable  {
+public class DiskImage implements Serializable {
 
     private DiskImageDetail image;
 
@@ -52,7 +52,7 @@ public class DiskImage  implements Serializable  {
      * @param image The new value for the Image property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImage withImage(DiskImageDetail image) {
         this.image = image;
@@ -86,7 +86,7 @@ public class DiskImage  implements Serializable  {
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImage withDescription(String description) {
         this.description = description;
@@ -120,7 +120,7 @@ public class DiskImage  implements Serializable  {
      * @param volume The new value for the Volume property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImage withVolume(VolumeDetail volume) {
         this.volume = volume;
@@ -139,9 +139,9 @@ public class DiskImage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImage() != null) sb.append("Image: " + getImage() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getImage() != null) sb.append("Image: " + getImage() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getVolume() != null) sb.append("Volume: " + getVolume() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeAccountAttributesRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,9 +24,9 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeAccountAttributes(DescribeAccountAttributesRequest)
  */
-public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeAccountAttributesRequest> {
 
-    private java.util.List<String> attributeNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNames;
 
     /**
      * Returns the value of the AttributeNames property for this object.
@@ -34,7 +36,8 @@ public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  i
     public java.util.List<String> getAttributeNames() {
         
         if (attributeNames == null) {
-            attributeNames = new java.util.ArrayList<String>();
+              attributeNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              attributeNames.setAutoConstruct(true);
         }
         return attributeNames;
     }
@@ -49,8 +52,7 @@ public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  i
             this.attributeNames = null;
             return;
         }
-
-        java.util.List<String> attributeNamesCopy = new java.util.ArrayList<String>(attributeNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributeNames.size());
         attributeNamesCopy.addAll(attributeNames);
         this.attributeNames = attributeNamesCopy;
     }
@@ -63,7 +65,7 @@ public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  i
      * @param attributeNames The new value for the AttributeNames property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesRequest withAttributeNames(String... attributeNames) {
         if (getAttributeNames() == null) setAttributeNames(new java.util.ArrayList<String>(attributeNames.length));
@@ -81,18 +83,30 @@ public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  i
      * @param attributeNames The new value for the AttributeNames property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesRequest withAttributeNames(java.util.Collection<String> attributeNames) {
         if (attributeNames == null) {
             this.attributeNames = null;
         } else {
-            java.util.List<String> attributeNamesCopy = new java.util.ArrayList<String>(attributeNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributeNames.size());
             attributeNamesCopy.addAll(attributeNames);
             this.attributeNames = attributeNamesCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeAccountAttributesRequest> getDryRunRequest() {
+        Request<DescribeAccountAttributesRequest> request = new DescribeAccountAttributesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -106,7 +120,7 @@ public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttributeNames() != null) sb.append("AttributeNames: " + getAttributeNames() );
         sb.append("}");
         return sb.toString();

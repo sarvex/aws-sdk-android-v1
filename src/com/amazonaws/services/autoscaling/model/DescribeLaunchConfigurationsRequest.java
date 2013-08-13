@@ -27,12 +27,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeLaunchConfigurations(DescribeLaunchConfigurationsRequest)
  */
-public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list of launch configuration names.
      */
-    private java.util.List<String> launchConfigurationNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> launchConfigurationNames;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -58,7 +58,8 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
     public java.util.List<String> getLaunchConfigurationNames() {
         
         if (launchConfigurationNames == null) {
-            launchConfigurationNames = new java.util.ArrayList<String>();
+              launchConfigurationNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              launchConfigurationNames.setAutoConstruct(true);
         }
         return launchConfigurationNames;
     }
@@ -73,8 +74,7 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
             this.launchConfigurationNames = null;
             return;
         }
-
-        java.util.List<String> launchConfigurationNamesCopy = new java.util.ArrayList<String>(launchConfigurationNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> launchConfigurationNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(launchConfigurationNames.size());
         launchConfigurationNamesCopy.addAll(launchConfigurationNames);
         this.launchConfigurationNames = launchConfigurationNamesCopy;
     }
@@ -87,7 +87,7 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
      * @param launchConfigurationNames A list of launch configuration names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLaunchConfigurationsRequest withLaunchConfigurationNames(String... launchConfigurationNames) {
         if (getLaunchConfigurationNames() == null) setLaunchConfigurationNames(new java.util.ArrayList<String>(launchConfigurationNames.length));
@@ -105,13 +105,13 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
      * @param launchConfigurationNames A list of launch configuration names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLaunchConfigurationsRequest withLaunchConfigurationNames(java.util.Collection<String> launchConfigurationNames) {
         if (launchConfigurationNames == null) {
             this.launchConfigurationNames = null;
         } else {
-            java.util.List<String> launchConfigurationNamesCopy = new java.util.ArrayList<String>(launchConfigurationNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> launchConfigurationNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(launchConfigurationNames.size());
             launchConfigurationNamesCopy.addAll(launchConfigurationNames);
             this.launchConfigurationNames = launchConfigurationNamesCopy;
         }
@@ -154,7 +154,7 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLaunchConfigurationsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -197,7 +197,7 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
      * @param maxRecords The maximum number of launch configurations. The default is 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLaunchConfigurationsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
@@ -216,9 +216,9 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLaunchConfigurationNames() != null) sb.append("LaunchConfigurationNames: " + getLaunchConfigurationNames() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getLaunchConfigurationNames() != null) sb.append("LaunchConfigurationNames: " + getLaunchConfigurationNames() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeVpcsRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -32,12 +34,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeVpcs(DescribeVpcsRequest)
  */
-public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeVpcsRequest> {
 
     /**
      * The ID of a VPC you want information about.
      */
-    private java.util.List<String> vpcIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> vpcIds;
 
     /**
      * A list of filters used to match properties for VPCs. For a complete
@@ -45,7 +47,7 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The ID of a VPC you want information about.
@@ -55,7 +57,8 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
     public java.util.List<String> getVpcIds() {
         
         if (vpcIds == null) {
-            vpcIds = new java.util.ArrayList<String>();
+              vpcIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              vpcIds.setAutoConstruct(true);
         }
         return vpcIds;
     }
@@ -70,8 +73,7 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
             this.vpcIds = null;
             return;
         }
-
-        java.util.List<String> vpcIdsCopy = new java.util.ArrayList<String>(vpcIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> vpcIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(vpcIds.size());
         vpcIdsCopy.addAll(vpcIds);
         this.vpcIds = vpcIdsCopy;
     }
@@ -84,7 +86,7 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
      * @param vpcIds The ID of a VPC you want information about.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsRequest withVpcIds(String... vpcIds) {
         if (getVpcIds() == null) setVpcIds(new java.util.ArrayList<String>(vpcIds.length));
@@ -102,13 +104,13 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
      * @param vpcIds The ID of a VPC you want information about.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsRequest withVpcIds(java.util.Collection<String> vpcIds) {
         if (vpcIds == null) {
             this.vpcIds = null;
         } else {
-            java.util.List<String> vpcIdsCopy = new java.util.ArrayList<String>(vpcIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> vpcIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(vpcIds.size());
             vpcIdsCopy.addAll(vpcIds);
             this.vpcIds = vpcIdsCopy;
         }
@@ -130,7 +132,8 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -151,8 +154,7 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -171,7 +173,7 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -195,18 +197,30 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeVpcsRequest> getDryRunRequest() {
+        Request<DescribeVpcsRequest> request = new DescribeVpcsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -220,8 +234,8 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpcIds() != null) sb.append("VpcIds: " + getVpcIds() + ",");    	
+        sb.append("{");
+        if (getVpcIds() != null) sb.append("VpcIds: " + getVpcIds() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

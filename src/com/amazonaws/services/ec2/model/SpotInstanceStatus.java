@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Spot Instance Status
  */
-public class SpotInstanceStatus  implements Serializable  {
+public class SpotInstanceStatus implements Serializable {
 
     private String code;
 
@@ -52,7 +52,7 @@ public class SpotInstanceStatus  implements Serializable  {
      * @param code The new value for the Code property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceStatus withCode(String code) {
         this.code = code;
@@ -86,7 +86,7 @@ public class SpotInstanceStatus  implements Serializable  {
      * @param updateTime The new value for the UpdateTime property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceStatus withUpdateTime(java.util.Date updateTime) {
         this.updateTime = updateTime;
@@ -120,7 +120,7 @@ public class SpotInstanceStatus  implements Serializable  {
      * @param message The new value for the Message property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceStatus withMessage(String message) {
         this.message = message;
@@ -139,9 +139,9 @@ public class SpotInstanceStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
-        if (getUpdateTime() != null) sb.append("UpdateTime: " + getUpdateTime() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
+        if (getUpdateTime() != null) sb.append("UpdateTime: " + getUpdateTime() + ",");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

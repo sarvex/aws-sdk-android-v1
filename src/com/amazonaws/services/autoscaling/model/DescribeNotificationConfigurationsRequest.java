@@ -24,12 +24,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeNotificationConfigurations(DescribeNotificationConfigurationsRequest)
  */
-public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
      */
-    private java.util.List<String> autoScalingGroupNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNames;
 
     /**
      * A string that is used to mark the start of the next batch of returned
@@ -56,7 +56,8 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
     public java.util.List<String> getAutoScalingGroupNames() {
         
         if (autoScalingGroupNames == null) {
-            autoScalingGroupNames = new java.util.ArrayList<String>();
+              autoScalingGroupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              autoScalingGroupNames.setAutoConstruct(true);
         }
         return autoScalingGroupNames;
     }
@@ -71,8 +72,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
             this.autoScalingGroupNames = null;
             return;
         }
-
-        java.util.List<String> autoScalingGroupNamesCopy = new java.util.ArrayList<String>(autoScalingGroupNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingGroupNames.size());
         autoScalingGroupNamesCopy.addAll(autoScalingGroupNames);
         this.autoScalingGroupNames = autoScalingGroupNamesCopy;
     }
@@ -85,7 +85,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @param autoScalingGroupNames The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withAutoScalingGroupNames(String... autoScalingGroupNames) {
         if (getAutoScalingGroupNames() == null) setAutoScalingGroupNames(new java.util.ArrayList<String>(autoScalingGroupNames.length));
@@ -103,13 +103,13 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @param autoScalingGroupNames The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withAutoScalingGroupNames(java.util.Collection<String> autoScalingGroupNames) {
         if (autoScalingGroupNames == null) {
             this.autoScalingGroupNames = null;
         } else {
-            java.util.List<String> autoScalingGroupNamesCopy = new java.util.ArrayList<String>(autoScalingGroupNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingGroupNames.size());
             autoScalingGroupNamesCopy.addAll(autoScalingGroupNames);
             this.autoScalingGroupNames = autoScalingGroupNamesCopy;
         }
@@ -158,7 +158,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      *         results for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -201,7 +201,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @param maxRecords Maximum number of records to be returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
@@ -220,9 +220,9 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupNames() != null) sb.append("AutoScalingGroupNames: " + getAutoScalingGroupNames() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupNames() != null) sb.append("AutoScalingGroupNames: " + getAutoScalingGroupNames() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() );
         sb.append("}");
         return sb.toString();

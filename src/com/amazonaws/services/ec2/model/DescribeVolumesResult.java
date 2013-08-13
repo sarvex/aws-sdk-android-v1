@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The result of describing your EBS volumes.
  * </p>
  */
-public class DescribeVolumesResult  implements Serializable  {
+public class DescribeVolumesResult implements Serializable {
 
     /**
      * The list of described EBS volumes.
      */
-    private java.util.List<Volume> volumes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Volume> volumes;
 
     /**
      * The list of described EBS volumes.
@@ -35,7 +35,8 @@ public class DescribeVolumesResult  implements Serializable  {
     public java.util.List<Volume> getVolumes() {
         
         if (volumes == null) {
-            volumes = new java.util.ArrayList<Volume>();
+              volumes = new com.amazonaws.internal.ListWithAutoConstructFlag<Volume>();
+              volumes.setAutoConstruct(true);
         }
         return volumes;
     }
@@ -50,8 +51,7 @@ public class DescribeVolumesResult  implements Serializable  {
             this.volumes = null;
             return;
         }
-
-        java.util.List<Volume> volumesCopy = new java.util.ArrayList<Volume>(volumes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Volume> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Volume>(volumes.size());
         volumesCopy.addAll(volumes);
         this.volumes = volumesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeVolumesResult  implements Serializable  {
      * @param volumes The list of described EBS volumes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumesResult withVolumes(Volume... volumes) {
         if (getVolumes() == null) setVolumes(new java.util.ArrayList<Volume>(volumes.length));
@@ -82,13 +82,13 @@ public class DescribeVolumesResult  implements Serializable  {
      * @param volumes The list of described EBS volumes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumesResult withVolumes(java.util.Collection<Volume> volumes) {
         if (volumes == null) {
             this.volumes = null;
         } else {
-            java.util.List<Volume> volumesCopy = new java.util.ArrayList<Volume>(volumes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Volume> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Volume>(volumes.size());
             volumesCopy.addAll(volumes);
             this.volumes = volumesCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeVolumesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolumes() != null) sb.append("Volumes: " + getVolumes() );
         sb.append("}");
         return sb.toString();

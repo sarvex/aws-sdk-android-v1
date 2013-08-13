@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Contains the result of a successful invocation of DescribeLoadBalancers.
  * </p>
  */
-public class LoadBalancerDescription  implements Serializable  {
+public class LoadBalancerDescription implements Serializable {
 
     /**
      * Specifies the name associated with the LoadBalancer.
@@ -57,7 +57,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * PolicyNames are returned in a list of tuples in the
      * ListenerDescriptions element.
      */
-    private java.util.List<ListenerDescription> listenerDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription> listenerDescriptions;
 
     /**
      * Provides a list of policies defined for the LoadBalancer.
@@ -67,17 +67,17 @@ public class LoadBalancerDescription  implements Serializable  {
     /**
      * Contains a list of back-end server descriptions.
      */
-    private java.util.List<BackendServerDescription> backendServerDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BackendServerDescription> backendServerDescriptions;
 
     /**
      * Specifies a list of Availability Zones.
      */
-    private java.util.List<String> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
      * Provides a list of VPC subnet IDs for the LoadBalancer.
      */
-    private java.util.List<String> subnets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnets;
 
     /**
      * Provides the ID of the VPC attached to the LoadBalancer.
@@ -87,7 +87,7 @@ public class LoadBalancerDescription  implements Serializable  {
     /**
      * Provides a list of EC2 instance IDs for the LoadBalancer.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * Specifies information regarding the various health probes conducted on
@@ -107,7 +107,7 @@ public class LoadBalancerDescription  implements Serializable  {
     /**
      * The security groups the LoadBalancer is a member of (VPC only).
      */
-    private java.util.List<String> securityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroups;
 
     /**
      * Provides the date and time the LoadBalancer was created.
@@ -156,7 +156,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param loadBalancerName Specifies the name associated with the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -190,7 +190,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param dNSName Specifies the external DNS name associated with the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withDNSName(String dNSName) {
         this.dNSName = dNSName;
@@ -254,7 +254,7 @@ public class LoadBalancerDescription  implements Serializable  {
      *         Balancing Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withCanonicalHostedZoneName(String canonicalHostedZoneName) {
         this.canonicalHostedZoneName = canonicalHostedZoneName;
@@ -318,7 +318,7 @@ public class LoadBalancerDescription  implements Serializable  {
      *         Balancing Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withCanonicalHostedZoneNameID(String canonicalHostedZoneNameID) {
         this.canonicalHostedZoneNameID = canonicalHostedZoneNameID;
@@ -338,7 +338,8 @@ public class LoadBalancerDescription  implements Serializable  {
     public java.util.List<ListenerDescription> getListenerDescriptions() {
         
         if (listenerDescriptions == null) {
-            listenerDescriptions = new java.util.ArrayList<ListenerDescription>();
+              listenerDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription>();
+              listenerDescriptions.setAutoConstruct(true);
         }
         return listenerDescriptions;
     }
@@ -357,8 +358,7 @@ public class LoadBalancerDescription  implements Serializable  {
             this.listenerDescriptions = null;
             return;
         }
-
-        java.util.List<ListenerDescription> listenerDescriptionsCopy = new java.util.ArrayList<ListenerDescription>(listenerDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription> listenerDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription>(listenerDescriptions.size());
         listenerDescriptionsCopy.addAll(listenerDescriptions);
         this.listenerDescriptions = listenerDescriptionsCopy;
     }
@@ -375,7 +375,7 @@ public class LoadBalancerDescription  implements Serializable  {
      *         ListenerDescriptions element.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withListenerDescriptions(ListenerDescription... listenerDescriptions) {
         if (getListenerDescriptions() == null) setListenerDescriptions(new java.util.ArrayList<ListenerDescription>(listenerDescriptions.length));
@@ -397,13 +397,13 @@ public class LoadBalancerDescription  implements Serializable  {
      *         ListenerDescriptions element.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withListenerDescriptions(java.util.Collection<ListenerDescription> listenerDescriptions) {
         if (listenerDescriptions == null) {
             this.listenerDescriptions = null;
         } else {
-            java.util.List<ListenerDescription> listenerDescriptionsCopy = new java.util.ArrayList<ListenerDescription>(listenerDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription> listenerDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription>(listenerDescriptions.size());
             listenerDescriptionsCopy.addAll(listenerDescriptions);
             this.listenerDescriptions = listenerDescriptionsCopy;
         }
@@ -437,7 +437,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param policies Provides a list of policies defined for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withPolicies(Policies policies) {
         this.policies = policies;
@@ -453,7 +453,8 @@ public class LoadBalancerDescription  implements Serializable  {
     public java.util.List<BackendServerDescription> getBackendServerDescriptions() {
         
         if (backendServerDescriptions == null) {
-            backendServerDescriptions = new java.util.ArrayList<BackendServerDescription>();
+              backendServerDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<BackendServerDescription>();
+              backendServerDescriptions.setAutoConstruct(true);
         }
         return backendServerDescriptions;
     }
@@ -468,8 +469,7 @@ public class LoadBalancerDescription  implements Serializable  {
             this.backendServerDescriptions = null;
             return;
         }
-
-        java.util.List<BackendServerDescription> backendServerDescriptionsCopy = new java.util.ArrayList<BackendServerDescription>(backendServerDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BackendServerDescription> backendServerDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BackendServerDescription>(backendServerDescriptions.size());
         backendServerDescriptionsCopy.addAll(backendServerDescriptions);
         this.backendServerDescriptions = backendServerDescriptionsCopy;
     }
@@ -482,7 +482,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param backendServerDescriptions Contains a list of back-end server descriptions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withBackendServerDescriptions(BackendServerDescription... backendServerDescriptions) {
         if (getBackendServerDescriptions() == null) setBackendServerDescriptions(new java.util.ArrayList<BackendServerDescription>(backendServerDescriptions.length));
@@ -500,13 +500,13 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param backendServerDescriptions Contains a list of back-end server descriptions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withBackendServerDescriptions(java.util.Collection<BackendServerDescription> backendServerDescriptions) {
         if (backendServerDescriptions == null) {
             this.backendServerDescriptions = null;
         } else {
-            java.util.List<BackendServerDescription> backendServerDescriptionsCopy = new java.util.ArrayList<BackendServerDescription>(backendServerDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BackendServerDescription> backendServerDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BackendServerDescription>(backendServerDescriptions.size());
             backendServerDescriptionsCopy.addAll(backendServerDescriptions);
             this.backendServerDescriptions = backendServerDescriptionsCopy;
         }
@@ -522,7 +522,8 @@ public class LoadBalancerDescription  implements Serializable  {
     public java.util.List<String> getAvailabilityZones() {
         
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
@@ -537,8 +538,7 @@ public class LoadBalancerDescription  implements Serializable  {
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
@@ -551,7 +551,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param availabilityZones Specifies a list of Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -569,13 +569,13 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param availabilityZones Specifies a list of Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
@@ -591,7 +591,8 @@ public class LoadBalancerDescription  implements Serializable  {
     public java.util.List<String> getSubnets() {
         
         if (subnets == null) {
-            subnets = new java.util.ArrayList<String>();
+              subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnets.setAutoConstruct(true);
         }
         return subnets;
     }
@@ -606,8 +607,7 @@ public class LoadBalancerDescription  implements Serializable  {
             this.subnets = null;
             return;
         }
-
-        java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
         subnetsCopy.addAll(subnets);
         this.subnets = subnetsCopy;
     }
@@ -620,7 +620,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param subnets Provides a list of VPC subnet IDs for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withSubnets(String... subnets) {
         if (getSubnets() == null) setSubnets(new java.util.ArrayList<String>(subnets.length));
@@ -638,13 +638,13 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param subnets Provides a list of VPC subnet IDs for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
             this.subnets = null;
         } else {
-            java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
             subnetsCopy.addAll(subnets);
             this.subnets = subnetsCopy;
         }
@@ -678,7 +678,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param vPCId Provides the ID of the VPC attached to the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withVPCId(String vPCId) {
         this.vPCId = vPCId;
@@ -694,7 +694,8 @@ public class LoadBalancerDescription  implements Serializable  {
     public java.util.List<Instance> getInstances() {
         
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -709,8 +710,7 @@ public class LoadBalancerDescription  implements Serializable  {
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -723,7 +723,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param instances Provides a list of EC2 instance IDs for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -741,13 +741,13 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param instances Provides a list of EC2 instance IDs for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
@@ -787,7 +787,7 @@ public class LoadBalancerDescription  implements Serializable  {
      *         the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withHealthCheck(HealthCheck healthCheck) {
         this.healthCheck = healthCheck;
@@ -845,7 +845,7 @@ public class LoadBalancerDescription  implements Serializable  {
      *         inbound source.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withSourceSecurityGroup(SourceSecurityGroup sourceSecurityGroup) {
         this.sourceSecurityGroup = sourceSecurityGroup;
@@ -861,7 +861,8 @@ public class LoadBalancerDescription  implements Serializable  {
     public java.util.List<String> getSecurityGroups() {
         
         if (securityGroups == null) {
-            securityGroups = new java.util.ArrayList<String>();
+              securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              securityGroups.setAutoConstruct(true);
         }
         return securityGroups;
     }
@@ -876,8 +877,7 @@ public class LoadBalancerDescription  implements Serializable  {
             this.securityGroups = null;
             return;
         }
-
-        java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
         securityGroupsCopy.addAll(securityGroups);
         this.securityGroups = securityGroupsCopy;
     }
@@ -890,7 +890,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param securityGroups The security groups the LoadBalancer is a member of (VPC only).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withSecurityGroups(String... securityGroups) {
         if (getSecurityGroups() == null) setSecurityGroups(new java.util.ArrayList<String>(securityGroups.length));
@@ -908,13 +908,13 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param securityGroups The security groups the LoadBalancer is a member of (VPC only).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
         } else {
-            java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
             securityGroupsCopy.addAll(securityGroups);
             this.securityGroups = securityGroupsCopy;
         }
@@ -948,7 +948,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param createdTime Provides the date and time the LoadBalancer was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withCreatedTime(java.util.Date createdTime) {
         this.createdTime = createdTime;
@@ -1012,7 +1012,7 @@ public class LoadBalancerDescription  implements Serializable  {
      *         for load balancers attached to a VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withScheme(String scheme) {
         this.scheme = scheme;
@@ -1031,22 +1031,22 @@ public class LoadBalancerDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
-        if (getDNSName() != null) sb.append("DNSName: " + getDNSName() + ",");    	
-        if (getCanonicalHostedZoneName() != null) sb.append("CanonicalHostedZoneName: " + getCanonicalHostedZoneName() + ",");    	
-        if (getCanonicalHostedZoneNameID() != null) sb.append("CanonicalHostedZoneNameID: " + getCanonicalHostedZoneNameID() + ",");    	
-        if (getListenerDescriptions() != null) sb.append("ListenerDescriptions: " + getListenerDescriptions() + ",");    	
-        if (getPolicies() != null) sb.append("Policies: " + getPolicies() + ",");    	
-        if (getBackendServerDescriptions() != null) sb.append("BackendServerDescriptions: " + getBackendServerDescriptions() + ",");    	
-        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");    	
-        if (getSubnets() != null) sb.append("Subnets: " + getSubnets() + ",");    	
-        if (getVPCId() != null) sb.append("VPCId: " + getVPCId() + ",");    	
-        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");    	
-        if (getHealthCheck() != null) sb.append("HealthCheck: " + getHealthCheck() + ",");    	
-        if (getSourceSecurityGroup() != null) sb.append("SourceSecurityGroup: " + getSourceSecurityGroup() + ",");    	
-        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");    	
-        if (getCreatedTime() != null) sb.append("CreatedTime: " + getCreatedTime() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+        if (getDNSName() != null) sb.append("DNSName: " + getDNSName() + ",");
+        if (getCanonicalHostedZoneName() != null) sb.append("CanonicalHostedZoneName: " + getCanonicalHostedZoneName() + ",");
+        if (getCanonicalHostedZoneNameID() != null) sb.append("CanonicalHostedZoneNameID: " + getCanonicalHostedZoneNameID() + ",");
+        if (getListenerDescriptions() != null) sb.append("ListenerDescriptions: " + getListenerDescriptions() + ",");
+        if (getPolicies() != null) sb.append("Policies: " + getPolicies() + ",");
+        if (getBackendServerDescriptions() != null) sb.append("BackendServerDescriptions: " + getBackendServerDescriptions() + ",");
+        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+        if (getSubnets() != null) sb.append("Subnets: " + getSubnets() + ",");
+        if (getVPCId() != null) sb.append("VPCId: " + getVPCId() + ",");
+        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");
+        if (getHealthCheck() != null) sb.append("HealthCheck: " + getHealthCheck() + ",");
+        if (getSourceSecurityGroup() != null) sb.append("SourceSecurityGroup: " + getSourceSecurityGroup() + ",");
+        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+        if (getCreatedTime() != null) sb.append("CreatedTime: " + getCreatedTime() + ",");
         if (getScheme() != null) sb.append("Scheme: " + getScheme() );
         sb.append("}");
         return sb.toString();

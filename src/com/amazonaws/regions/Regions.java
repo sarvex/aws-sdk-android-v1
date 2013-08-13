@@ -47,4 +47,21 @@ public enum Regions {
     public String getName() {
         return name;
     }
+    
+	/**
+	 * Returns a region enum corresponding to the given region name.
+	 * 
+	 * @param regionName
+	 *            The name of the region. Ex.: eu-west-1
+	 * @return Region enum representing the given region name.
+	 */
+	public static Regions fromName(String regionName) {
+		for (Regions region : Regions.values()) {
+			if (regionName.equals(region.getName())) {
+				return region;
+			}
+		}
+		throw new IllegalArgumentException("Cannot create enum from " + regionName + " value!");
+	} 
+    
 }

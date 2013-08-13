@@ -27,6 +27,7 @@ import com.amazonaws.auth.AbstractAWSSigner;
 import com.amazonaws.auth.Signer;
 import com.amazonaws.auth.SigningAlgorithm;
 import com.amazonaws.services.s3.Headers;
+import com.amazonaws.util.HttpUtils;
 
 /**
  * Implementation of the {@linkplain Signer} interface specific to S3's signing
@@ -90,12 +91,13 @@ public class S3Signer extends AbstractAWSSigner {
 
         AWSCredentials sanitizedCredentials = sanitizeCredentials(credentials);
         if ( sanitizedCredentials instanceof AWSSessionCredentials ) {
-        	addSessionCredentials(request, (AWSSessionCredentials) sanitizedCredentials);
+            addSessionCredentials(request, (AWSSessionCredentials) sanitizedCredentials);
         }
 
-        String encodedResourcePath = ServiceUtils.urlEncode(resourcePath);
-
-        Date date = getSignatureDate(request.getTimeOffset());
+        String encodedResourcePath = HttpUtils.urlEncode(resourcePath, true);
+        
+        int timeOffset = getTimeOffset(request);
+        Date date = getSignatureDate(timeOffset);
         request.addHeader(Headers.DATE, ServiceUtils.formatRfc822Date(date));
         String canonicalString = RestUtils.makeS3CanonicalString(
                 httpVerb, encodedResourcePath, request, null);

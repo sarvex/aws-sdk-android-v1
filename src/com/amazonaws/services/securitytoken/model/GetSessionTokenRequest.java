@@ -38,6 +38,7 @@ import java.io.Serializable;
  * For more information about using <code>GetSessionToken</code> to create temporary credentials, go to <a
  * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/CreatingSessionTokens.html"> Creating Temporary Credentials to Enable Access for IAM Users </a>
  * in <i>Using IAM</i> .
+ * 
  * </p>
  *
  * @see com.amazonaws.services.securitytoken.AWSSecurityTokenService#getSessionToken(GetSessionTokenRequest)
@@ -159,7 +160,7 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
      *         hour, the session for AWS account owners defaults to one hour.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenRequest withDurationSeconds(Integer durationSeconds) {
         this.durationSeconds = durationSeconds;
@@ -253,7 +254,7 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
      *         viewing the user's security credentials.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenRequest withSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
@@ -329,7 +330,7 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
      *         requesting resources that require MFA authentication.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenRequest withTokenCode(String tokenCode) {
         this.tokenCode = tokenCode;
@@ -348,9 +349,9 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() + ",");    	
-        if (getSerialNumber() != null) sb.append("SerialNumber: " + getSerialNumber() + ",");    	
+        sb.append("{");
+        if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() + ",");
+        if (getSerialNumber() != null) sb.append("SerialNumber: " + getSerialNumber() + ",");
         if (getTokenCode() != null) sb.append("TokenCode: " + getTokenCode() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CopySnapshotRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#copySnapshot(CopySnapshotRequest)
  */
-public class CopySnapshotRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CopySnapshotRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CopySnapshotRequest> {
 
     private String sourceRegion;
 
@@ -56,7 +58,7 @@ public class CopySnapshotRequest extends AmazonWebServiceRequest  implements Ser
      * @param sourceRegion The new value for the SourceRegion property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopySnapshotRequest withSourceRegion(String sourceRegion) {
         this.sourceRegion = sourceRegion;
@@ -90,7 +92,7 @@ public class CopySnapshotRequest extends AmazonWebServiceRequest  implements Ser
      * @param sourceSnapshotId The new value for the SourceSnapshotId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopySnapshotRequest withSourceSnapshotId(String sourceSnapshotId) {
         this.sourceSnapshotId = sourceSnapshotId;
@@ -124,13 +126,25 @@ public class CopySnapshotRequest extends AmazonWebServiceRequest  implements Ser
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopySnapshotRequest withDescription(String description) {
         this.description = description;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CopySnapshotRequest> getDryRunRequest() {
+        Request<CopySnapshotRequest> request = new CopySnapshotRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -143,9 +157,9 @@ public class CopySnapshotRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceRegion() != null) sb.append("SourceRegion: " + getSourceRegion() + ",");    	
-        if (getSourceSnapshotId() != null) sb.append("SourceSnapshotId: " + getSourceSnapshotId() + ",");    	
+        sb.append("{");
+        if (getSourceRegion() != null) sb.append("SourceRegion: " + getSourceRegion() + ",");
+        if (getSourceSnapshotId() != null) sb.append("SourceSnapshotId: " + getSourceSnapshotId() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

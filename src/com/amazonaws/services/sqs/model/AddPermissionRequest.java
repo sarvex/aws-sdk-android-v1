@@ -20,25 +20,25 @@ import java.io.Serializable;
  * Container for the parameters to the {@link com.amazonaws.services.sqs.AmazonSQS#addPermission(AddPermissionRequest) AddPermission operation}.
  * <p>
  * The AddPermission action adds a permission to a queue for a specific <a
- * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html#d0e3892"> principal </a> . This allows for sharing
- * access to the queue.
+ * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html"> principal </a> . This allows for sharing access to the
+ * queue.
  * </p>
  * <p>
  * When you create a queue, you have full control access rights for the queue. Only you (as owner of the queue) can grant or deny permissions to the
  * queue. For more information about these permissions, see <a
- * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/?acp-overview.html"> Shared Queues </a> in the Amazon SQS
- * Developer Guide.
+ * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/?acp-overview.html"> Shared Queues </a> in the Amazon SQS Developer
+ * Guide.
  * </p>
  * <p>
  * <code>AddPermission</code> writes an SQS-generated policy. If you want to write your own policy, use SetQueueAttributes to upload your policy. For
  * more information about writing your own policy, see <a
- * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/?AccessPolicyLanguage.html"> Appendix: The Access Policy
- * Language </a> in the Amazon SQS Developer Guide.
+ * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/?AccessPolicyLanguage.html"> Appendix: The Access Policy Language </a>
+ * in the Amazon SQS Developer Guide.
  * </p>
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#addPermission(AddPermissionRequest)
  */
-public class AddPermissionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AddPermissionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The URL of the SQS queue to take action on.
@@ -54,16 +54,16 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
 
     /**
      * The AWS account number of the <a
-     * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      * who will be given permission. The principal must have an AWS account,
      * but does not need to be signed up for Amazon SQS.
      */
-    private java.util.List<String> aWSAccountIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> aWSAccountIds;
 
     /**
      * The action the client wants to allow for the specified principal.
      */
-    private java.util.List<String> actions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> actions;
 
     /**
      * Default constructor for a new AddPermissionRequest object.  Callers should use the
@@ -71,6 +71,8 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      */
     public AddPermissionRequest() {}
     
+
+
     /**
      * Constructs a new AddPermissionRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -82,17 +84,17 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * characters; alphanumeric characters, hyphens (-), and underscores (_)
      * are allowed.
      * @param aWSAccountIds The AWS account number of the <a
-     * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      * who will be given permission. The principal must have an AWS account,
      * but does not need to be signed up for Amazon SQS.
      * @param actions The action the client wants to allow for the specified
      * principal.
      */
     public AddPermissionRequest(String queueUrl, String label, java.util.List<String> aWSAccountIds, java.util.List<String> actions) {
-        this.queueUrl = queueUrl;
-        this.label = label;
-        this.aWSAccountIds = aWSAccountIds;
-        this.actions = actions;
+        setQueueUrl(queueUrl);
+        setLabel(label);
+        setAWSAccountIds(aWSAccountIds);
+        setActions(actions);
     }
 
     
@@ -123,7 +125,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * @param queueUrl The URL of the SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddPermissionRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
@@ -169,7 +171,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      *         alphanumeric characters, hyphens (-), and underscores (_) are allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddPermissionRequest withLabel(String label) {
         this.label = label;
@@ -179,31 +181,32 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     
     /**
      * The AWS account number of the <a
-     * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      * who will be given permission. The principal must have an AWS account,
      * but does not need to be signed up for Amazon SQS.
      *
      * @return The AWS account number of the <a
-     *         href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      *         who will be given permission. The principal must have an AWS account,
      *         but does not need to be signed up for Amazon SQS.
      */
     public java.util.List<String> getAWSAccountIds() {
         
         if (aWSAccountIds == null) {
-            aWSAccountIds = new java.util.ArrayList<String>();
+              aWSAccountIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              aWSAccountIds.setAutoConstruct(true);
         }
         return aWSAccountIds;
     }
     
     /**
      * The AWS account number of the <a
-     * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      * who will be given permission. The principal must have an AWS account,
      * but does not need to be signed up for Amazon SQS.
      *
      * @param aWSAccountIds The AWS account number of the <a
-     *         href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      *         who will be given permission. The principal must have an AWS account,
      *         but does not need to be signed up for Amazon SQS.
      */
@@ -212,27 +215,26 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
             this.aWSAccountIds = null;
             return;
         }
-
-        java.util.List<String> aWSAccountIdsCopy = new java.util.ArrayList<String>(aWSAccountIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> aWSAccountIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(aWSAccountIds.size());
         aWSAccountIdsCopy.addAll(aWSAccountIds);
         this.aWSAccountIds = aWSAccountIdsCopy;
     }
     
     /**
      * The AWS account number of the <a
-     * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      * who will be given permission. The principal must have an AWS account,
      * but does not need to be signed up for Amazon SQS.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param aWSAccountIds The AWS account number of the <a
-     *         href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      *         who will be given permission. The principal must have an AWS account,
      *         but does not need to be signed up for Amazon SQS.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddPermissionRequest withAWSAccountIds(String... aWSAccountIds) {
         if (getAWSAccountIds() == null) setAWSAccountIds(new java.util.ArrayList<String>(aWSAccountIds.length));
@@ -244,25 +246,25 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     
     /**
      * The AWS account number of the <a
-     * href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      * who will be given permission. The principal must have an AWS account,
      * but does not need to be signed up for Amazon SQS.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param aWSAccountIds The AWS account number of the <a
-     *         href="http://docs.amazonwebservices.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
+     *         href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">principal</a>
      *         who will be given permission. The principal must have an AWS account,
      *         but does not need to be signed up for Amazon SQS.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddPermissionRequest withAWSAccountIds(java.util.Collection<String> aWSAccountIds) {
         if (aWSAccountIds == null) {
             this.aWSAccountIds = null;
         } else {
-            java.util.List<String> aWSAccountIdsCopy = new java.util.ArrayList<String>(aWSAccountIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> aWSAccountIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(aWSAccountIds.size());
             aWSAccountIdsCopy.addAll(aWSAccountIds);
             this.aWSAccountIds = aWSAccountIdsCopy;
         }
@@ -278,7 +280,8 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     public java.util.List<String> getActions() {
         
         if (actions == null) {
-            actions = new java.util.ArrayList<String>();
+              actions = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              actions.setAutoConstruct(true);
         }
         return actions;
     }
@@ -293,8 +296,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
             this.actions = null;
             return;
         }
-
-        java.util.List<String> actionsCopy = new java.util.ArrayList<String>(actions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> actionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(actions.size());
         actionsCopy.addAll(actions);
         this.actions = actionsCopy;
     }
@@ -307,7 +309,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * @param actions The action the client wants to allow for the specified principal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddPermissionRequest withActions(String... actions) {
         if (getActions() == null) setActions(new java.util.ArrayList<String>(actions.length));
@@ -325,13 +327,13 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * @param actions The action the client wants to allow for the specified principal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddPermissionRequest withActions(java.util.Collection<String> actions) {
         if (actions == null) {
             this.actions = null;
         } else {
-            java.util.List<String> actionsCopy = new java.util.ArrayList<String>(actions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> actionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(actions.size());
             actionsCopy.addAll(actions);
             this.actions = actionsCopy;
         }
@@ -350,10 +352,10 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
-        if (getLabel() != null) sb.append("Label: " + getLabel() + ",");    	
-        if (getAWSAccountIds() != null) sb.append("AWSAccountIds: " + getAWSAccountIds() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
+        if (getLabel() != null) sb.append("Label: " + getLabel() + ",");
+        if (getAWSAccountIds() != null) sb.append("AWSAccountIds: " + getAWSAccountIds() + ",");
         if (getActions() != null) sb.append("Actions: " + getActions() );
         sb.append("}");
         return sb.toString();

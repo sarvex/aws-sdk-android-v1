@@ -19,11 +19,11 @@ import java.io.Serializable;
  * <p>
  * The table name that consumed provisioned throughput, and the number of capacity units consumed by it. <i>ConsumedCapacity</i> is only returned if it
  * was asked for in the request. For more information, see <a
- * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"> Provisioned Throughput </a> in the <i>Amazon
- * DynamoDB Developer Guide</i> .
+ * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html"> Provisioned Throughput </a> in the Amazon
+ * DynamoDB Developer Guide.
  * </p>
  */
-public class ConsumedCapacity  implements Serializable  {
+public class ConsumedCapacity implements Serializable {
 
     /**
      * The table that consumed the provisioned throughput.
@@ -77,7 +77,7 @@ public class ConsumedCapacity  implements Serializable  {
      * @param tableName The table that consumed the provisioned throughput.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConsumedCapacity withTableName(String tableName) {
         this.tableName = tableName;
@@ -111,7 +111,7 @@ public class ConsumedCapacity  implements Serializable  {
      * @param capacityUnits The total number of capacity units consumed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConsumedCapacity withCapacityUnits(Double capacityUnits) {
         this.capacityUnits = capacityUnits;
@@ -130,8 +130,8 @@ public class ConsumedCapacity  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");    	
+        sb.append("{");
+        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");
         if (getCapacityUnits() != null) sb.append("CapacityUnits: " + getCapacityUnits() );
         sb.append("}");
         return sb.toString();

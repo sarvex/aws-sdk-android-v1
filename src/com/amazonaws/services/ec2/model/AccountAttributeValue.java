@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Account Attribute Value
  */
-public class AccountAttributeValue  implements Serializable  {
+public class AccountAttributeValue implements Serializable {
 
     private String attributeValue;
 
@@ -48,7 +48,7 @@ public class AccountAttributeValue  implements Serializable  {
      * @param attributeValue The new value for the AttributeValue property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AccountAttributeValue withAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
@@ -67,7 +67,7 @@ public class AccountAttributeValue  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttributeValue() != null) sb.append("AttributeValue: " + getAttributeValue() );
         sb.append("}");
         return sb.toString();

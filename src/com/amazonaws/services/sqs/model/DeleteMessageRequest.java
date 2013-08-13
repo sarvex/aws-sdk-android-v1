@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#deleteMessage(DeleteMessageRequest)
  */
-public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteMessageRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The URL of the SQS queue to take action on.
@@ -43,6 +43,8 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
      */
     public DeleteMessageRequest() {}
     
+
+
     /**
      * Constructs a new DeleteMessageRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -53,8 +55,8 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
      * delete.
      */
     public DeleteMessageRequest(String queueUrl, String receiptHandle) {
-        this.queueUrl = queueUrl;
-        this.receiptHandle = receiptHandle;
+        setQueueUrl(queueUrl);
+        setReceiptHandle(receiptHandle);
     }
 
     
@@ -85,7 +87,7 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
      * @param queueUrl The URL of the SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
@@ -119,7 +121,7 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
      * @param receiptHandle The receipt handle associated with the message to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageRequest withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
@@ -138,8 +140,8 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
         if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() );
         sb.append("}");
         return sb.toString();

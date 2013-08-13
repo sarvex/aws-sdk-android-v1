@@ -49,6 +49,8 @@ public class SetTopicAttributesRequest extends AmazonWebServiceRequest  implemen
      */
     public SetTopicAttributesRequest() {}
     
+
+
     /**
      * Constructs a new SetTopicAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -62,9 +64,9 @@ public class SetTopicAttributesRequest extends AmazonWebServiceRequest  implemen
      * @param attributeValue The new value for the attribute.
      */
     public SetTopicAttributesRequest(String topicArn, String attributeName, String attributeValue) {
-        this.topicArn = topicArn;
-        this.attributeName = attributeName;
-        this.attributeValue = attributeValue;
+        setTopicArn(topicArn);
+        setAttributeName(attributeName);
+        setAttributeValue(attributeValue);
     }
 
     
@@ -194,9 +196,9 @@ public class SetTopicAttributesRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeValue() != null) sb.append("AttributeValue: " + getAttributeValue() );
         sb.append("}");
         return sb.toString();

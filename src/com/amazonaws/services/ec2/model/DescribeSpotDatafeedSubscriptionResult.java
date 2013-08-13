@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Describe Spot Datafeed Subscription Result
  */
-public class DescribeSpotDatafeedSubscriptionResult  implements Serializable  {
+public class DescribeSpotDatafeedSubscriptionResult implements Serializable {
 
     /**
      * The Spot Instance datafeed subscription.
@@ -51,7 +51,7 @@ public class DescribeSpotDatafeedSubscriptionResult  implements Serializable  {
      * @param spotDatafeedSubscription The Spot Instance datafeed subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotDatafeedSubscriptionResult withSpotDatafeedSubscription(SpotDatafeedSubscription spotDatafeedSubscription) {
         this.spotDatafeedSubscription = spotDatafeedSubscription;
@@ -70,7 +70,7 @@ public class DescribeSpotDatafeedSubscriptionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSpotDatafeedSubscription() != null) sb.append("SpotDatafeedSubscription: " + getSpotDatafeedSubscription() );
         sb.append("}");
         return sb.toString();

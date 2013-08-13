@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ResetImageAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -27,7 +29,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#resetImageAttribute(ResetImageAttributeRequest)
  */
-public class ResetImageAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ResetImageAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ResetImageAttributeRequest> {
 
     /**
      * The ID of the AMI whose attribute is being reset.
@@ -46,6 +48,8 @@ public class ResetImageAttributeRequest extends AmazonWebServiceRequest  impleme
      */
     public ResetImageAttributeRequest() {}
     
+
+
     /**
      * Constructs a new ResetImageAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +60,8 @@ public class ResetImageAttributeRequest extends AmazonWebServiceRequest  impleme
      * attribute names: <code>launchPermission</code>
      */
     public ResetImageAttributeRequest(String imageId, String attribute) {
-        this.imageId = imageId;
-        this.attribute = attribute;
+        setImageId(imageId);
+        setAttribute(attribute);
     }
 
     
@@ -88,7 +92,7 @@ public class ResetImageAttributeRequest extends AmazonWebServiceRequest  impleme
      * @param imageId The ID of the AMI whose attribute is being reset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetImageAttributeRequest withImageId(String imageId) {
         this.imageId = imageId;
@@ -128,13 +132,25 @@ public class ResetImageAttributeRequest extends AmazonWebServiceRequest  impleme
      *         <code>launchPermission</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetImageAttributeRequest withAttribute(String attribute) {
         this.attribute = attribute;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ResetImageAttributeRequest> getDryRunRequest() {
+        Request<ResetImageAttributeRequest> request = new ResetImageAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -147,8 +163,8 @@ public class ResetImageAttributeRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
+        sb.append("{");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

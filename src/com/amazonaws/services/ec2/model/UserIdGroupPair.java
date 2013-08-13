@@ -17,10 +17,10 @@ import java.io.Serializable;
 
 /**
  * <p>
- * An AWS user ID identifiying an AWS account, and the name of a security group within that account.
+ * An AWS user ID identifying an AWS account, and the name of a security group within that account.
  * </p>
  */
-public class UserIdGroupPair  implements Serializable  {
+public class UserIdGroupPair implements Serializable {
 
     /**
      * The AWS user ID of an account.
@@ -65,7 +65,7 @@ public class UserIdGroupPair  implements Serializable  {
      * @param userId The AWS user ID of an account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UserIdGroupPair withUserId(String userId) {
         this.userId = userId;
@@ -105,7 +105,7 @@ public class UserIdGroupPair  implements Serializable  {
      *         used when specifying a CIDR IP address range.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UserIdGroupPair withGroupName(String groupName) {
         this.groupName = groupName;
@@ -145,7 +145,7 @@ public class UserIdGroupPair  implements Serializable  {
      *         when specifying a CIDR IP address range.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UserIdGroupPair withGroupId(String groupId) {
         this.groupId = groupId;
@@ -164,9 +164,9 @@ public class UserIdGroupPair  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
+        sb.append("{");
+        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
         if (getGroupId() != null) sb.append("GroupId: " + getGroupId() );
         sb.append("}");
         return sb.toString();

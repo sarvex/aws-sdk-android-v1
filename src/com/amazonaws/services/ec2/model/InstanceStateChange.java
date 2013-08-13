@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a state change for a specific EC2 instance.
  * </p>
  */
-public class InstanceStateChange  implements Serializable  {
+public class InstanceStateChange implements Serializable {
 
     /**
      * The ID of the instance whose state changed.
@@ -63,7 +63,7 @@ public class InstanceStateChange  implements Serializable  {
      * @param instanceId The ID of the instance whose state changed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStateChange withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -97,7 +97,7 @@ public class InstanceStateChange  implements Serializable  {
      * @param currentState The current state of the specified instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStateChange withCurrentState(InstanceState currentState) {
         this.currentState = currentState;
@@ -131,7 +131,7 @@ public class InstanceStateChange  implements Serializable  {
      * @param previousState The previous state of the specified instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStateChange withPreviousState(InstanceState previousState) {
         this.previousState = previousState;
@@ -150,9 +150,9 @@ public class InstanceStateChange  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getCurrentState() != null) sb.append("CurrentState: " + getCurrentState() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getCurrentState() != null) sb.append("CurrentState: " + getCurrentState() + ",");
         if (getPreviousState() != null) sb.append("PreviousState: " + getPreviousState() );
         sb.append("}");
         return sb.toString();

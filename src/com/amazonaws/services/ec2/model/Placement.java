@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes where an Amazon EC2 instance is running within an Amazon EC2 region.
  * </p>
  */
-public class Placement  implements Serializable  {
+public class Placement implements Serializable {
 
     /**
      * The availability zone in which an Amazon EC2 instance runs.
@@ -50,6 +50,8 @@ public class Placement  implements Serializable  {
      */
     public Placement() {}
     
+
+
     /**
      * Constructs a new Placement object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -59,7 +61,7 @@ public class Placement  implements Serializable  {
      * instance runs.
      */
     public Placement(String availabilityZone) {
-        this.availabilityZone = availabilityZone;
+        setAvailabilityZone(availabilityZone);
     }
 
     
@@ -90,7 +92,7 @@ public class Placement  implements Serializable  {
      * @param availabilityZone The availability zone in which an Amazon EC2 instance runs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Placement withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -142,7 +144,7 @@ public class Placement  implements Serializable  {
      *         connection speeds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Placement withGroupName(String groupName) {
         this.groupName = groupName;
@@ -200,7 +202,7 @@ public class Placement  implements Serializable  {
      *         instance at launch.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Placement withTenancy(String tenancy) {
         this.tenancy = tenancy;
@@ -219,9 +221,9 @@ public class Placement  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
+        sb.append("{");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
         if (getTenancy() != null) sb.append("Tenancy: " + getTenancy() );
         sb.append("}");
         return sb.toString();

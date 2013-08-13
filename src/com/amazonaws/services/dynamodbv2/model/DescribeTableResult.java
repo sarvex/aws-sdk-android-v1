@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the output of a <i>DescribeTable</i> operation.
  * </p>
  */
-public class DescribeTableResult  implements Serializable  {
+public class DescribeTableResult implements Serializable {
 
     /**
      * Contains the properties of a table.
@@ -53,7 +53,7 @@ public class DescribeTableResult  implements Serializable  {
      * @param table Contains the properties of a table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTableResult withTable(TableDescription table) {
         this.table = table;
@@ -72,7 +72,7 @@ public class DescribeTableResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTable() != null) sb.append("Table: " + getTable() );
         sb.append("}");
         return sb.toString();

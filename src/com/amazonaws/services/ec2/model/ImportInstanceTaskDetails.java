@@ -18,9 +18,9 @@ import java.io.Serializable;
 /**
  * Import Instance Task Details
  */
-public class ImportInstanceTaskDetails  implements Serializable  {
+public class ImportInstanceTaskDetails implements Serializable {
 
-    private java.util.List<ImportInstanceVolumeDetailItem> volumes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem> volumes;
 
     private String instanceId;
 
@@ -36,7 +36,8 @@ public class ImportInstanceTaskDetails  implements Serializable  {
     public java.util.List<ImportInstanceVolumeDetailItem> getVolumes() {
         
         if (volumes == null) {
-            volumes = new java.util.ArrayList<ImportInstanceVolumeDetailItem>();
+              volumes = new com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem>();
+              volumes.setAutoConstruct(true);
         }
         return volumes;
     }
@@ -51,8 +52,7 @@ public class ImportInstanceTaskDetails  implements Serializable  {
             this.volumes = null;
             return;
         }
-
-        java.util.List<ImportInstanceVolumeDetailItem> volumesCopy = new java.util.ArrayList<ImportInstanceVolumeDetailItem>(volumes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem>(volumes.size());
         volumesCopy.addAll(volumes);
         this.volumes = volumesCopy;
     }
@@ -65,7 +65,7 @@ public class ImportInstanceTaskDetails  implements Serializable  {
      * @param volumes The new value for the Volumes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withVolumes(ImportInstanceVolumeDetailItem... volumes) {
         if (getVolumes() == null) setVolumes(new java.util.ArrayList<ImportInstanceVolumeDetailItem>(volumes.length));
@@ -83,13 +83,13 @@ public class ImportInstanceTaskDetails  implements Serializable  {
      * @param volumes The new value for the Volumes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withVolumes(java.util.Collection<ImportInstanceVolumeDetailItem> volumes) {
         if (volumes == null) {
             this.volumes = null;
         } else {
-            java.util.List<ImportInstanceVolumeDetailItem> volumesCopy = new java.util.ArrayList<ImportInstanceVolumeDetailItem>(volumes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem>(volumes.size());
             volumesCopy.addAll(volumes);
             this.volumes = volumesCopy;
         }
@@ -123,7 +123,7 @@ public class ImportInstanceTaskDetails  implements Serializable  {
      * @param instanceId The new value for the InstanceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -157,7 +157,7 @@ public class ImportInstanceTaskDetails  implements Serializable  {
      * @param platform The new value for the Platform property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withPlatform(String platform) {
         this.platform = platform;
@@ -191,7 +191,7 @@ public class ImportInstanceTaskDetails  implements Serializable  {
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withDescription(String description) {
         this.description = description;
@@ -210,10 +210,10 @@ public class ImportInstanceTaskDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumes() != null) sb.append("Volumes: " + getVolumes() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");    	
+        sb.append("{");
+        if (getVolumes() != null) sb.append("Volumes: " + getVolumes() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

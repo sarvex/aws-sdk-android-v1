@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Disk Image Detail
  */
-public class DiskImageDetail  implements Serializable  {
+public class DiskImageDetail implements Serializable {
 
     private String format;
 
@@ -52,7 +52,7 @@ public class DiskImageDetail  implements Serializable  {
      * @param format The new value for the Format property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageDetail withFormat(String format) {
         this.format = format;
@@ -86,7 +86,7 @@ public class DiskImageDetail  implements Serializable  {
      * @param bytes The new value for the Bytes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageDetail withBytes(Long bytes) {
         this.bytes = bytes;
@@ -120,7 +120,7 @@ public class DiskImageDetail  implements Serializable  {
      * @param importManifestUrl The new value for the ImportManifestUrl property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageDetail withImportManifestUrl(String importManifestUrl) {
         this.importManifestUrl = importManifestUrl;
@@ -139,9 +139,9 @@ public class DiskImageDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");    	
-        if (getBytes() != null) sb.append("Bytes: " + getBytes() + ",");    	
+        sb.append("{");
+        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");
+        if (getBytes() != null) sb.append("Bytes: " + getBytes() + ",");
         if (getImportManifestUrl() != null) sb.append("ImportManifestUrl: " + getImportManifestUrl() );
         sb.append("}");
         return sb.toString();

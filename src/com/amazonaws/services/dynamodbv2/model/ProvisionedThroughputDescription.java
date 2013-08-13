@@ -21,7 +21,7 @@ import java.io.Serializable;
  * decreases.
  * </p>
  */
-public class ProvisionedThroughputDescription  implements Serializable  {
+public class ProvisionedThroughputDescription implements Serializable {
 
     /**
      * The date and time of the last provisioned throughput increase for this
@@ -40,7 +40,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      * this UTC calendar day. For current maximums on provisioned throughput
      * decreases, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
@@ -101,7 +101,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      *         table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProvisionedThroughputDescription withLastIncreaseDateTime(java.util.Date lastIncreaseDateTime) {
         this.lastIncreaseDateTime = lastIncreaseDateTime;
@@ -141,7 +141,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      *         table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProvisionedThroughputDescription withLastDecreaseDateTime(java.util.Date lastDecreaseDateTime) {
         this.lastDecreaseDateTime = lastDecreaseDateTime;
@@ -154,7 +154,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      * this UTC calendar day. For current maximums on provisioned throughput
      * decreases, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
@@ -163,7 +163,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      *         this UTC calendar day. For current maximums on provisioned throughput
      *         decreases, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     *         in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         in the Amazon DynamoDB Developer Guide.
      */
     public Long getNumberOfDecreasesToday() {
         return numberOfDecreasesToday;
@@ -174,7 +174,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      * this UTC calendar day. For current maximums on provisioned throughput
      * decreases, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
@@ -183,7 +183,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      *         this UTC calendar day. For current maximums on provisioned throughput
      *         decreases, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     *         in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         in the Amazon DynamoDB Developer Guide.
      */
     public void setNumberOfDecreasesToday(Long numberOfDecreasesToday) {
         this.numberOfDecreasesToday = numberOfDecreasesToday;
@@ -194,7 +194,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      * this UTC calendar day. For current maximums on provisioned throughput
      * decreases, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -205,10 +205,10 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      *         this UTC calendar day. For current maximums on provisioned throughput
      *         decreases, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     *         in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         in the Amazon DynamoDB Developer Guide.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProvisionedThroughputDescription withNumberOfDecreasesToday(Long numberOfDecreasesToday) {
         this.numberOfDecreasesToday = numberOfDecreasesToday;
@@ -281,7 +281,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      *         second.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProvisionedThroughputDescription withReadCapacityUnits(Long readCapacityUnits) {
         this.readCapacityUnits = readCapacityUnits;
@@ -330,7 +330,7 @@ public class ProvisionedThroughputDescription  implements Serializable  {
      *         DynamoDB returns a <i>ThrottlingException</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProvisionedThroughputDescription withWriteCapacityUnits(Long writeCapacityUnits) {
         this.writeCapacityUnits = writeCapacityUnits;
@@ -349,11 +349,11 @@ public class ProvisionedThroughputDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLastIncreaseDateTime() != null) sb.append("LastIncreaseDateTime: " + getLastIncreaseDateTime() + ",");    	
-        if (getLastDecreaseDateTime() != null) sb.append("LastDecreaseDateTime: " + getLastDecreaseDateTime() + ",");    	
-        if (getNumberOfDecreasesToday() != null) sb.append("NumberOfDecreasesToday: " + getNumberOfDecreasesToday() + ",");    	
-        if (getReadCapacityUnits() != null) sb.append("ReadCapacityUnits: " + getReadCapacityUnits() + ",");    	
+        sb.append("{");
+        if (getLastIncreaseDateTime() != null) sb.append("LastIncreaseDateTime: " + getLastIncreaseDateTime() + ",");
+        if (getLastDecreaseDateTime() != null) sb.append("LastDecreaseDateTime: " + getLastDecreaseDateTime() + ",");
+        if (getNumberOfDecreasesToday() != null) sb.append("NumberOfDecreasesToday: " + getNumberOfDecreasesToday() + ",");
+        if (getReadCapacityUnits() != null) sb.append("ReadCapacityUnits: " + getReadCapacityUnits() + ",");
         if (getWriteCapacityUnits() != null) sb.append("WriteCapacityUnits: " + getWriteCapacityUnits() );
         sb.append("}");
         return sb.toString();

@@ -17,10 +17,10 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Encloses a receipt handle and an entry id for each message in ChangeMessageVisibilityBatchRequest.
+ * Encloses a receipt handle and an entry id for each message in ChangeMessageVisibilityBatch.
  * </p>
  */
-public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  {
+public class ChangeMessageVisibilityBatchRequestEntry implements Serializable {
 
     /**
      * An identifier for this particular receipt handle. This is used to
@@ -45,6 +45,8 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      */
     public ChangeMessageVisibilityBatchRequestEntry() {}
     
+
+
     /**
      * Constructs a new ChangeMessageVisibilityBatchRequestEntry object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +58,8 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      * @param receiptHandle A receipt handle.
      */
     public ChangeMessageVisibilityBatchRequestEntry(String id, String receiptHandle) {
-        this.id = id;
-        this.receiptHandle = receiptHandle;
+        setId(id);
+        setReceiptHandle(receiptHandle);
     }
 
     
@@ -100,7 +102,7 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      *         request need to be unique within the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequestEntry withId(String id) {
         this.id = id;
@@ -134,7 +136,7 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      * @param receiptHandle A receipt handle.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequestEntry withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
@@ -168,7 +170,7 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      * @param visibilityTimeout The new value (in seconds) for the message's visibility timeout.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequestEntry withVisibilityTimeout(Integer visibilityTimeout) {
         this.visibilityTimeout = visibilityTimeout;
@@ -187,9 +189,9 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");
         if (getVisibilityTimeout() != null) sb.append("VisibilityTimeout: " + getVisibilityTimeout() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteSnapshotRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -25,7 +27,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteSnapshot(DeleteSnapshotRequest)
  */
-public class DeleteSnapshotRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteSnapshotRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteSnapshotRequest> {
 
     /**
      * The ID of the snapshot to delete.
@@ -38,6 +40,8 @@ public class DeleteSnapshotRequest extends AmazonWebServiceRequest  implements S
      */
     public DeleteSnapshotRequest() {}
     
+
+
     /**
      * Constructs a new DeleteSnapshotRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -46,7 +50,7 @@ public class DeleteSnapshotRequest extends AmazonWebServiceRequest  implements S
      * @param snapshotId The ID of the snapshot to delete.
      */
     public DeleteSnapshotRequest(String snapshotId) {
-        this.snapshotId = snapshotId;
+        setSnapshotId(snapshotId);
     }
 
     
@@ -77,13 +81,25 @@ public class DeleteSnapshotRequest extends AmazonWebServiceRequest  implements S
      * @param snapshotId The ID of the snapshot to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteSnapshotRequest withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteSnapshotRequest> getDryRunRequest() {
+        Request<DeleteSnapshotRequest> request = new DeleteSnapshotRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -96,7 +112,7 @@ public class DeleteSnapshotRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() );
         sb.append("}");
         return sb.toString();

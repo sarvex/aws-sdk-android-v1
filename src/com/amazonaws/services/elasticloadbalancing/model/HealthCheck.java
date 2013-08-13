@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The HealthCheck data type.
  * </p>
  */
-public class HealthCheck  implements Serializable  {
+public class HealthCheck implements Serializable {
 
     /**
      * Specifies the instance being checked. The protocol is either TCP,
@@ -84,6 +84,8 @@ public class HealthCheck  implements Serializable  {
      */
     public HealthCheck() {}
     
+
+
     /**
      * Constructs a new HealthCheck object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -117,11 +119,11 @@ public class HealthCheck  implements Serializable  {
      * <i>Healthy</i> state.
      */
     public HealthCheck(String target, Integer interval, Integer timeout, Integer unhealthyThreshold, Integer healthyThreshold) {
-        this.target = target;
-        this.interval = interval;
-        this.timeout = timeout;
-        this.unhealthyThreshold = unhealthyThreshold;
-        this.healthyThreshold = healthyThreshold;
+        setTarget(target);
+        setInterval(interval);
+        setTimeout(timeout);
+        setUnhealthyThreshold(unhealthyThreshold);
+        setHealthyThreshold(healthyThreshold);
     }
 
     
@@ -236,7 +238,7 @@ public class HealthCheck  implements Serializable  {
      *         Unicode characters or less. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withTarget(String target) {
         this.target = target;
@@ -285,7 +287,7 @@ public class HealthCheck  implements Serializable  {
      *         of an individual instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withInterval(Integer interval) {
         this.interval = interval;
@@ -340,7 +342,7 @@ public class HealthCheck  implements Serializable  {
      *         <i>Interval</i> value. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withTimeout(Integer timeout) {
         this.timeout = timeout;
@@ -389,7 +391,7 @@ public class HealthCheck  implements Serializable  {
      *         before moving the instance to the <i>Unhealthy</i> state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withUnhealthyThreshold(Integer unhealthyThreshold) {
         this.unhealthyThreshold = unhealthyThreshold;
@@ -438,7 +440,7 @@ public class HealthCheck  implements Serializable  {
      *         before moving the instance to the <i>Healthy</i> state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withHealthyThreshold(Integer healthyThreshold) {
         this.healthyThreshold = healthyThreshold;
@@ -457,11 +459,11 @@ public class HealthCheck  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTarget() != null) sb.append("Target: " + getTarget() + ",");    	
-        if (getInterval() != null) sb.append("Interval: " + getInterval() + ",");    	
-        if (getTimeout() != null) sb.append("Timeout: " + getTimeout() + ",");    	
-        if (getUnhealthyThreshold() != null) sb.append("UnhealthyThreshold: " + getUnhealthyThreshold() + ",");    	
+        sb.append("{");
+        if (getTarget() != null) sb.append("Target: " + getTarget() + ",");
+        if (getInterval() != null) sb.append("Interval: " + getInterval() + ",");
+        if (getTimeout() != null) sb.append("Timeout: " + getTimeout() + ",");
+        if (getUnhealthyThreshold() != null) sb.append("UnhealthyThreshold: " + getUnhealthyThreshold() + ",");
         if (getHealthyThreshold() != null) sb.append("HealthyThreshold: " + getHealthyThreshold() );
         sb.append("}");
         return sb.toString();

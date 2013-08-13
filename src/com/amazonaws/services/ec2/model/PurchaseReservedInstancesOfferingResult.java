@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of purchasing a Reserved Instances offering. Contains the new, unique ID of the Reserved Instances purchased for your account.
  * </p>
  */
-public class PurchaseReservedInstancesOfferingResult  implements Serializable  {
+public class PurchaseReservedInstancesOfferingResult implements Serializable {
 
     /**
      * The unique ID of the Reserved Instances purchased for your account.
@@ -53,7 +53,7 @@ public class PurchaseReservedInstancesOfferingResult  implements Serializable  {
      * @param reservedInstancesId The unique ID of the Reserved Instances purchased for your account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PurchaseReservedInstancesOfferingResult withReservedInstancesId(String reservedInstancesId) {
         this.reservedInstancesId = reservedInstancesId;
@@ -72,7 +72,7 @@ public class PurchaseReservedInstancesOfferingResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservedInstancesId() != null) sb.append("ReservedInstancesId: " + getReservedInstancesId() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Result returned from allocating an Elastic IP.
  * </p>
  */
-public class AllocateAddressResult  implements Serializable  {
+public class AllocateAddressResult implements Serializable {
 
     /**
      * IP address for use with your account.
@@ -57,7 +57,7 @@ public class AllocateAddressResult  implements Serializable  {
      * @param publicIp IP address for use with your account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AllocateAddressResult withPublicIp(String publicIp) {
         this.publicIp = publicIp;
@@ -104,7 +104,7 @@ public class AllocateAddressResult  implements Serializable  {
      * @param domain The new value for the Domain property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
@@ -139,7 +139,7 @@ public class AllocateAddressResult  implements Serializable  {
      * @param domain The new value for the Domain property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
@@ -174,7 +174,7 @@ public class AllocateAddressResult  implements Serializable  {
      * @param allocationId The new value for the AllocationId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AllocateAddressResult withAllocationId(String allocationId) {
         this.allocationId = allocationId;
@@ -193,9 +193,9 @@ public class AllocateAddressResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
+        sb.append("{");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
         if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes how block devices are mapped on an Amazon EC2 instance.
  * </p>
  */
-public class InstanceBlockDeviceMapping  implements Serializable  {
+public class InstanceBlockDeviceMapping implements Serializable {
 
     /**
      * The device name (e.g., <code>/dev/sdh</code>) at which the block
@@ -65,7 +65,7 @@ public class InstanceBlockDeviceMapping  implements Serializable  {
      *         device is exposed on the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceBlockDeviceMapping withDeviceName(String deviceName) {
         this.deviceName = deviceName;
@@ -99,7 +99,7 @@ public class InstanceBlockDeviceMapping  implements Serializable  {
      * @param ebs The optional EBS device mapped to the specified device name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceBlockDeviceMapping withEbs(EbsInstanceBlockDevice ebs) {
         this.ebs = ebs;
@@ -118,8 +118,8 @@ public class InstanceBlockDeviceMapping  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");    	
+        sb.append("{");
+        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");
         if (getEbs() != null) sb.append("Ebs: " + getEbs() );
         sb.append("}");
         return sb.toString();

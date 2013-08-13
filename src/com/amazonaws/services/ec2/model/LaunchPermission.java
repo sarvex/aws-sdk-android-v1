@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes a permission to launch an Amazon Machine Image (AMI).
  * </p>
  */
-public class LaunchPermission  implements Serializable  {
+public class LaunchPermission implements Serializable {
 
     /**
      * The AWS user ID of the user involved in this launch permission.
@@ -59,7 +59,7 @@ public class LaunchPermission  implements Serializable  {
      * @param userId The AWS user ID of the user involved in this launch permission.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchPermission withUserId(String userId) {
         this.userId = userId;
@@ -99,7 +99,7 @@ public class LaunchPermission  implements Serializable  {
      *         Available groups: <code>all</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchPermission withGroup(String group) {
         this.group = group;
@@ -118,8 +118,8 @@ public class LaunchPermission  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");    	
+        sb.append("{");
+        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");
         if (getGroup() != null) sb.append("Group: " + getGroup() );
         sb.append("}");
         return sb.toString();

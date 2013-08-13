@@ -18,9 +18,9 @@ import java.io.Serializable;
 /**
  * Describe Spot Price History Result
  */
-public class DescribeSpotPriceHistoryResult  implements Serializable  {
+public class DescribeSpotPriceHistoryResult implements Serializable {
 
-    private java.util.List<SpotPrice> spotPriceHistory;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice> spotPriceHistory;
 
     /**
      * The string marking the next set of results returned. Displays empty if
@@ -36,7 +36,8 @@ public class DescribeSpotPriceHistoryResult  implements Serializable  {
     public java.util.List<SpotPrice> getSpotPriceHistory() {
         
         if (spotPriceHistory == null) {
-            spotPriceHistory = new java.util.ArrayList<SpotPrice>();
+              spotPriceHistory = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice>();
+              spotPriceHistory.setAutoConstruct(true);
         }
         return spotPriceHistory;
     }
@@ -51,8 +52,7 @@ public class DescribeSpotPriceHistoryResult  implements Serializable  {
             this.spotPriceHistory = null;
             return;
         }
-
-        java.util.List<SpotPrice> spotPriceHistoryCopy = new java.util.ArrayList<SpotPrice>(spotPriceHistory.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice> spotPriceHistoryCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice>(spotPriceHistory.size());
         spotPriceHistoryCopy.addAll(spotPriceHistory);
         this.spotPriceHistory = spotPriceHistoryCopy;
     }
@@ -65,7 +65,7 @@ public class DescribeSpotPriceHistoryResult  implements Serializable  {
      * @param spotPriceHistory The new value for the SpotPriceHistory property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryResult withSpotPriceHistory(SpotPrice... spotPriceHistory) {
         if (getSpotPriceHistory() == null) setSpotPriceHistory(new java.util.ArrayList<SpotPrice>(spotPriceHistory.length));
@@ -83,13 +83,13 @@ public class DescribeSpotPriceHistoryResult  implements Serializable  {
      * @param spotPriceHistory The new value for the SpotPriceHistory property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryResult withSpotPriceHistory(java.util.Collection<SpotPrice> spotPriceHistory) {
         if (spotPriceHistory == null) {
             this.spotPriceHistory = null;
         } else {
-            java.util.List<SpotPrice> spotPriceHistoryCopy = new java.util.ArrayList<SpotPrice>(spotPriceHistory.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice> spotPriceHistoryCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice>(spotPriceHistory.size());
             spotPriceHistoryCopy.addAll(spotPriceHistory);
             this.spotPriceHistory = spotPriceHistoryCopy;
         }
@@ -129,7 +129,7 @@ public class DescribeSpotPriceHistoryResult  implements Serializable  {
      *         there are no more results to be returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -148,8 +148,8 @@ public class DescribeSpotPriceHistoryResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSpotPriceHistory() != null) sb.append("SpotPriceHistory: " + getSpotPriceHistory() + ",");    	
+        sb.append("{");
+        if (getSpotPriceHistory() != null) sb.append("SpotPriceHistory: " + getSpotPriceHistory() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

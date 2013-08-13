@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents an Amazon EC2 region. EC2 regions are completely isolated from each other.
  * </p>
  */
-public class Region  implements Serializable  {
+public class Region implements Serializable {
 
     /**
      * Name of the region.
@@ -58,7 +58,7 @@ public class Region  implements Serializable  {
      * @param regionName Name of the region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Region withRegionName(String regionName) {
         this.regionName = regionName;
@@ -92,7 +92,7 @@ public class Region  implements Serializable  {
      * @param endpoint Region service endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Region withEndpoint(String endpoint) {
         this.endpoint = endpoint;
@@ -111,8 +111,8 @@ public class Region  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRegionName() != null) sb.append("RegionName: " + getRegionName() + ",");    	
+        sb.append("{");
+        if (getRegionName() != null) sb.append("RegionName: " + getRegionName() + ",");
         if (getEndpoint() != null) sb.append("Endpoint: " + getEndpoint() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateVolumeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createVolume(CreateVolumeRequest)
  */
-public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateVolumeRequest> {
 
     /**
      * The size of the volume, in gigabytes. Required if you are not creating
@@ -52,6 +54,8 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      */
     public CreateVolumeRequest() {}
     
+
+
     /**
      * Constructs a new CreateVolumeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -63,12 +67,14 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * new volume.
      */
     public CreateVolumeRequest(Integer size, String availabilityZone) {
-        this.size = size;
-        this.availabilityZone = availabilityZone;
+        setSize(size);
+        setAvailabilityZone(availabilityZone);
     }
 
     
     
+
+
     /**
      * Constructs a new CreateVolumeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -80,8 +86,8 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * new volume.
      */
     public CreateVolumeRequest(String snapshotId, String availabilityZone) {
-        this.snapshotId = snapshotId;
-        this.availabilityZone = availabilityZone;
+        setSnapshotId(snapshotId);
+        setAvailabilityZone(availabilityZone);
     }
 
     
@@ -118,7 +124,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      *         a volume from a snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumeRequest withSize(Integer size) {
         this.size = size;
@@ -152,7 +158,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param snapshotId The ID of the snapshot from which to create the new volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumeRequest withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -186,7 +192,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param availabilityZone The Availability Zone in which to create the new volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumeRequest withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -233,7 +239,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param volumeType The new value for the VolumeType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeType
      */
@@ -268,7 +274,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param volumeType The new value for the VolumeType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VolumeType
      */
@@ -303,13 +309,25 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param iops The new value for the Iops property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumeRequest withIops(Integer iops) {
         this.iops = iops;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateVolumeRequest> getDryRunRequest() {
+        Request<CreateVolumeRequest> request = new CreateVolumeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -322,11 +340,11 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSize() != null) sb.append("Size: " + getSize() + ",");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getVolumeType() != null) sb.append("VolumeType: " + getVolumeType() + ",");    	
+        sb.append("{");
+        if (getSize() != null) sb.append("Size: " + getSize() + ",");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getVolumeType() != null) sb.append("VolumeType: " + getVolumeType() + ",");
         if (getIops() != null) sb.append("Iops: " + getIops() );
         sb.append("}");
         return sb.toString();

@@ -20,13 +20,13 @@ import java.io.Serializable;
  * Represents the output of a <i>ListTables</i> operation.
  * </p>
  */
-public class ListTablesResult  implements Serializable  {
+public class ListTablesResult implements Serializable {
 
     /**
      * The names of the tables associated with the current account at the
      * current endpoint.
      */
-    private java.util.List<String> tableNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tableNames;
 
     /**
      * The name of the last table in the current list, only if some tables
@@ -65,8 +65,7 @@ public class ListTablesResult  implements Serializable  {
             this.tableNames = null;
             return;
         }
-
-        java.util.List<String> tableNamesCopy = new java.util.ArrayList<String>(tableNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tableNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tableNames.size());
         tableNamesCopy.addAll(tableNames);
         this.tableNames = tableNamesCopy;
     }
@@ -81,7 +80,7 @@ public class ListTablesResult  implements Serializable  {
      *         current endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTablesResult withTableNames(String... tableNames) {
         if (getTableNames() == null) setTableNames(new java.util.ArrayList<String>(tableNames.length));
@@ -101,13 +100,13 @@ public class ListTablesResult  implements Serializable  {
      *         current endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTablesResult withTableNames(java.util.Collection<String> tableNames) {
         if (tableNames == null) {
             this.tableNames = null;
         } else {
-            java.util.List<String> tableNamesCopy = new java.util.ArrayList<String>(tableNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tableNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tableNames.size());
             tableNamesCopy.addAll(tableNames);
             this.tableNames = tableNamesCopy;
         }
@@ -177,7 +176,7 @@ public class ListTablesResult  implements Serializable  {
      *         continue the list until all the table names are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTablesResult withLastEvaluatedTableName(String lastEvaluatedTableName) {
         this.lastEvaluatedTableName = lastEvaluatedTableName;
@@ -196,8 +195,8 @@ public class ListTablesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTableNames() != null) sb.append("TableNames: " + getTableNames() + ",");    	
+        sb.append("{");
+        if (getTableNames() != null) sb.append("TableNames: " + getTableNames() + ",");
         if (getLastEvaluatedTableName() != null) sb.append("LastEvaluatedTableName: " + getLastEvaluatedTableName() );
         sb.append("}");
         return sb.toString();

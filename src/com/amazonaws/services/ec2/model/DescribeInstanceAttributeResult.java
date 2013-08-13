@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of describing an instance's attribute.
  * </p>
  */
-public class DescribeInstanceAttributeResult  implements Serializable  {
+public class DescribeInstanceAttributeResult implements Serializable {
 
     /**
      * The described instance attribute.
@@ -53,7 +53,7 @@ public class DescribeInstanceAttributeResult  implements Serializable  {
      * @param instanceAttribute The described instance attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceAttributeResult withInstanceAttribute(InstanceAttribute instanceAttribute) {
         this.instanceAttribute = instanceAttribute;
@@ -72,7 +72,7 @@ public class DescribeInstanceAttributeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceAttribute() != null) sb.append("InstanceAttribute: " + getInstanceAttribute() );
         sb.append("}");
         return sb.toString();

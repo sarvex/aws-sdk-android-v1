@@ -21,7 +21,7 @@ import java.io.Serializable;
  * attributes, which are automatically projected.
  * </p>
  */
-public class Projection  implements Serializable  {
+public class Projection implements Serializable {
 
     /**
      * Represents the set of attributes that are projected into the index:
@@ -48,7 +48,7 @@ public class Projection  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 20<br/>
      */
-    private java.util.List<String> nonKeyAttributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> nonKeyAttributes;
 
     /**
      * Represents the set of attributes that are projected into the index:
@@ -125,7 +125,7 @@ public class Projection  implements Serializable  {
      *         into the index. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ProjectionType
      */
@@ -184,7 +184,7 @@ public class Projection  implements Serializable  {
      *         into the index. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ProjectionType
      */
@@ -239,8 +239,7 @@ public class Projection  implements Serializable  {
             this.nonKeyAttributes = null;
             return;
         }
-
-        java.util.List<String> nonKeyAttributesCopy = new java.util.ArrayList<String>(nonKeyAttributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> nonKeyAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(nonKeyAttributes.size());
         nonKeyAttributesCopy.addAll(nonKeyAttributes);
         this.nonKeyAttributes = nonKeyAttributesCopy;
     }
@@ -266,7 +265,7 @@ public class Projection  implements Serializable  {
      *         determining the total.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Projection withNonKeyAttributes(String... nonKeyAttributes) {
         if (getNonKeyAttributes() == null) setNonKeyAttributes(new java.util.ArrayList<String>(nonKeyAttributes.length));
@@ -297,13 +296,13 @@ public class Projection  implements Serializable  {
      *         determining the total.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Projection withNonKeyAttributes(java.util.Collection<String> nonKeyAttributes) {
         if (nonKeyAttributes == null) {
             this.nonKeyAttributes = null;
         } else {
-            java.util.List<String> nonKeyAttributesCopy = new java.util.ArrayList<String>(nonKeyAttributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> nonKeyAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(nonKeyAttributes.size());
             nonKeyAttributesCopy.addAll(nonKeyAttributes);
             this.nonKeyAttributes = nonKeyAttributesCopy;
         }
@@ -322,8 +321,8 @@ public class Projection  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProjectionType() != null) sb.append("ProjectionType: " + getProjectionType() + ",");    	
+        sb.append("{");
+        if (getProjectionType() != null) sb.append("ProjectionType: " + getProjectionType() + ",");
         if (getNonKeyAttributes() != null) sb.append("NonKeyAttributes: " + getNonKeyAttributes() );
         sb.append("}");
         return sb.toString();

@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the DescribeLoadBalancers action.
  * </p>
  */
-public class DescribeLoadBalancersResult  implements Serializable  {
+public class DescribeLoadBalancersResult implements Serializable {
 
     /**
      * A list of LoadBalancer description structures.
      */
-    private java.util.List<LoadBalancerDescription> loadBalancerDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancerDescription> loadBalancerDescriptions;
 
     /**
      * An optional parameter reserved for future use.
@@ -40,7 +40,8 @@ public class DescribeLoadBalancersResult  implements Serializable  {
     public java.util.List<LoadBalancerDescription> getLoadBalancerDescriptions() {
         
         if (loadBalancerDescriptions == null) {
-            loadBalancerDescriptions = new java.util.ArrayList<LoadBalancerDescription>();
+              loadBalancerDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancerDescription>();
+              loadBalancerDescriptions.setAutoConstruct(true);
         }
         return loadBalancerDescriptions;
     }
@@ -55,8 +56,7 @@ public class DescribeLoadBalancersResult  implements Serializable  {
             this.loadBalancerDescriptions = null;
             return;
         }
-
-        java.util.List<LoadBalancerDescription> loadBalancerDescriptionsCopy = new java.util.ArrayList<LoadBalancerDescription>(loadBalancerDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancerDescription> loadBalancerDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancerDescription>(loadBalancerDescriptions.size());
         loadBalancerDescriptionsCopy.addAll(loadBalancerDescriptions);
         this.loadBalancerDescriptions = loadBalancerDescriptionsCopy;
     }
@@ -69,7 +69,7 @@ public class DescribeLoadBalancersResult  implements Serializable  {
      * @param loadBalancerDescriptions A list of LoadBalancer description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancersResult withLoadBalancerDescriptions(LoadBalancerDescription... loadBalancerDescriptions) {
         if (getLoadBalancerDescriptions() == null) setLoadBalancerDescriptions(new java.util.ArrayList<LoadBalancerDescription>(loadBalancerDescriptions.length));
@@ -87,13 +87,13 @@ public class DescribeLoadBalancersResult  implements Serializable  {
      * @param loadBalancerDescriptions A list of LoadBalancer description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancersResult withLoadBalancerDescriptions(java.util.Collection<LoadBalancerDescription> loadBalancerDescriptions) {
         if (loadBalancerDescriptions == null) {
             this.loadBalancerDescriptions = null;
         } else {
-            java.util.List<LoadBalancerDescription> loadBalancerDescriptionsCopy = new java.util.ArrayList<LoadBalancerDescription>(loadBalancerDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancerDescription> loadBalancerDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancerDescription>(loadBalancerDescriptions.size());
             loadBalancerDescriptionsCopy.addAll(loadBalancerDescriptions);
             this.loadBalancerDescriptions = loadBalancerDescriptionsCopy;
         }
@@ -127,7 +127,7 @@ public class DescribeLoadBalancersResult  implements Serializable  {
      * @param nextMarker An optional parameter reserved for future use.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancersResult withNextMarker(String nextMarker) {
         this.nextMarker = nextMarker;
@@ -146,8 +146,8 @@ public class DescribeLoadBalancersResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerDescriptions() != null) sb.append("LoadBalancerDescriptions: " + getLoadBalancerDescriptions() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerDescriptions() != null) sb.append("LoadBalancerDescriptions: " + getLoadBalancerDescriptions() + ",");
         if (getNextMarker() != null) sb.append("NextMarker: " + getNextMarker() );
         sb.append("}");
         return sb.toString();

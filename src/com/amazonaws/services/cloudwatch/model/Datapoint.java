@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>Datapoint</code> data type encapsulates the statistical data that Amazon CloudWatch computes from metric data.
  * </p>
  */
-public class Datapoint  implements Serializable  {
+public class Datapoint implements Serializable {
 
     /**
      * The time stamp used for the datapoint.
@@ -87,7 +87,7 @@ public class Datapoint  implements Serializable  {
      * @param timestamp The time stamp used for the datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Datapoint withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
@@ -127,7 +127,7 @@ public class Datapoint  implements Serializable  {
      *         this datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Datapoint withSampleCount(Double sampleCount) {
         this.sampleCount = sampleCount;
@@ -161,7 +161,7 @@ public class Datapoint  implements Serializable  {
      * @param average The average of metric values that correspond to the datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Datapoint withAverage(Double average) {
         this.average = average;
@@ -195,7 +195,7 @@ public class Datapoint  implements Serializable  {
      * @param sum The sum of metric values used for the datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Datapoint withSum(Double sum) {
         this.sum = sum;
@@ -229,7 +229,7 @@ public class Datapoint  implements Serializable  {
      * @param minimum The minimum metric value used for the datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Datapoint withMinimum(Double minimum) {
         this.minimum = minimum;
@@ -263,7 +263,7 @@ public class Datapoint  implements Serializable  {
      * @param maximum The maximum of the metric value used for the datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Datapoint withMaximum(Double maximum) {
         this.maximum = maximum;
@@ -310,7 +310,7 @@ public class Datapoint  implements Serializable  {
      * @param unit The standard unit used for the datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -345,7 +345,7 @@ public class Datapoint  implements Serializable  {
      * @param unit The standard unit used for the datapoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -365,13 +365,13 @@ public class Datapoint  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
-        if (getSampleCount() != null) sb.append("SampleCount: " + getSampleCount() + ",");    	
-        if (getAverage() != null) sb.append("Average: " + getAverage() + ",");    	
-        if (getSum() != null) sb.append("Sum: " + getSum() + ",");    	
-        if (getMinimum() != null) sb.append("Minimum: " + getMinimum() + ",");    	
-        if (getMaximum() != null) sb.append("Maximum: " + getMaximum() + ",");    	
+        sb.append("{");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
+        if (getSampleCount() != null) sb.append("SampleCount: " + getSampleCount() + ",");
+        if (getAverage() != null) sb.append("Average: " + getAverage() + ",");
+        if (getSum() != null) sb.append("Sum: " + getSum() + ",");
+        if (getMinimum() != null) sb.append("Minimum: " + getMinimum() + ",");
+        if (getMaximum() != null) sb.append("Maximum: " + getMaximum() + ",");
         if (getUnit() != null) sb.append("Unit: " + getUnit() );
         sb.append("}");
         return sb.toString();

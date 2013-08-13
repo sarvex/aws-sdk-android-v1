@@ -18,13 +18,13 @@ import java.io.Serializable;
 /**
  * Describe Instance Status Result
  */
-public class DescribeInstanceStatusResult  implements Serializable  {
+public class DescribeInstanceStatusResult implements Serializable {
 
     /**
      * Collection of instance statuses describing the state of the requested
      * instances.
      */
-    private java.util.List<InstanceStatus> instanceStatuses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus> instanceStatuses;
 
     /**
      * A string specifying the next paginated set of results to return.
@@ -41,7 +41,8 @@ public class DescribeInstanceStatusResult  implements Serializable  {
     public java.util.List<InstanceStatus> getInstanceStatuses() {
         
         if (instanceStatuses == null) {
-            instanceStatuses = new java.util.ArrayList<InstanceStatus>();
+              instanceStatuses = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus>();
+              instanceStatuses.setAutoConstruct(true);
         }
         return instanceStatuses;
     }
@@ -58,8 +59,7 @@ public class DescribeInstanceStatusResult  implements Serializable  {
             this.instanceStatuses = null;
             return;
         }
-
-        java.util.List<InstanceStatus> instanceStatusesCopy = new java.util.ArrayList<InstanceStatus>(instanceStatuses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus> instanceStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus>(instanceStatuses.size());
         instanceStatusesCopy.addAll(instanceStatuses);
         this.instanceStatuses = instanceStatusesCopy;
     }
@@ -74,7 +74,7 @@ public class DescribeInstanceStatusResult  implements Serializable  {
      *         instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceStatusResult withInstanceStatuses(InstanceStatus... instanceStatuses) {
         if (getInstanceStatuses() == null) setInstanceStatuses(new java.util.ArrayList<InstanceStatus>(instanceStatuses.length));
@@ -94,13 +94,13 @@ public class DescribeInstanceStatusResult  implements Serializable  {
      *         instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceStatusResult withInstanceStatuses(java.util.Collection<InstanceStatus> instanceStatuses) {
         if (instanceStatuses == null) {
             this.instanceStatuses = null;
         } else {
-            java.util.List<InstanceStatus> instanceStatusesCopy = new java.util.ArrayList<InstanceStatus>(instanceStatuses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus> instanceStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus>(instanceStatuses.size());
             instanceStatusesCopy.addAll(instanceStatuses);
             this.instanceStatuses = instanceStatusesCopy;
         }
@@ -134,7 +134,7 @@ public class DescribeInstanceStatusResult  implements Serializable  {
      * @param nextToken A string specifying the next paginated set of results to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceStatusResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -153,8 +153,8 @@ public class DescribeInstanceStatusResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceStatuses() != null) sb.append("InstanceStatuses: " + getInstanceStatuses() + ",");    	
+        sb.append("{");
+        if (getInstanceStatuses() != null) sb.append("InstanceStatuses: " + getInstanceStatuses() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

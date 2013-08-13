@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CancelSpotInstanceRequestsRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -33,12 +35,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#cancelSpotInstanceRequests(CancelSpotInstanceRequestsRequest)
  */
-public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CancelSpotInstanceRequestsRequest> {
 
     /**
      * Specifies the ID of the Spot Instance request.
      */
-    private java.util.List<String> spotInstanceRequestIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> spotInstanceRequestIds;
 
     /**
      * Default constructor for a new CancelSpotInstanceRequestsRequest object.  Callers should use the
@@ -46,6 +48,8 @@ public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  
      */
     public CancelSpotInstanceRequestsRequest() {}
     
+
+
     /**
      * Constructs a new CancelSpotInstanceRequestsRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -55,7 +59,7 @@ public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  
      * request.
      */
     public CancelSpotInstanceRequestsRequest(java.util.List<String> spotInstanceRequestIds) {
-        this.spotInstanceRequestIds = spotInstanceRequestIds;
+        setSpotInstanceRequestIds(spotInstanceRequestIds);
     }
 
     
@@ -68,7 +72,8 @@ public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  
     public java.util.List<String> getSpotInstanceRequestIds() {
         
         if (spotInstanceRequestIds == null) {
-            spotInstanceRequestIds = new java.util.ArrayList<String>();
+              spotInstanceRequestIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              spotInstanceRequestIds.setAutoConstruct(true);
         }
         return spotInstanceRequestIds;
     }
@@ -83,8 +88,7 @@ public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  
             this.spotInstanceRequestIds = null;
             return;
         }
-
-        java.util.List<String> spotInstanceRequestIdsCopy = new java.util.ArrayList<String>(spotInstanceRequestIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> spotInstanceRequestIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(spotInstanceRequestIds.size());
         spotInstanceRequestIdsCopy.addAll(spotInstanceRequestIds);
         this.spotInstanceRequestIds = spotInstanceRequestIdsCopy;
     }
@@ -97,7 +101,7 @@ public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  
      * @param spotInstanceRequestIds Specifies the ID of the Spot Instance request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelSpotInstanceRequestsRequest withSpotInstanceRequestIds(String... spotInstanceRequestIds) {
         if (getSpotInstanceRequestIds() == null) setSpotInstanceRequestIds(new java.util.ArrayList<String>(spotInstanceRequestIds.length));
@@ -115,18 +119,30 @@ public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  
      * @param spotInstanceRequestIds Specifies the ID of the Spot Instance request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelSpotInstanceRequestsRequest withSpotInstanceRequestIds(java.util.Collection<String> spotInstanceRequestIds) {
         if (spotInstanceRequestIds == null) {
             this.spotInstanceRequestIds = null;
         } else {
-            java.util.List<String> spotInstanceRequestIdsCopy = new java.util.ArrayList<String>(spotInstanceRequestIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> spotInstanceRequestIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(spotInstanceRequestIds.size());
             spotInstanceRequestIdsCopy.addAll(spotInstanceRequestIds);
             this.spotInstanceRequestIds = spotInstanceRequestIdsCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CancelSpotInstanceRequestsRequest> getDryRunRequest() {
+        Request<CancelSpotInstanceRequestsRequest> request = new CancelSpotInstanceRequestsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -140,7 +156,7 @@ public class CancelSpotInstanceRequestsRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSpotInstanceRequestIds() != null) sb.append("SpotInstanceRequestIds: " + getSpotInstanceRequestIds() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the properties of a secondary index.
  * </p>
  */
-public class LocalSecondaryIndexDescription  implements Serializable  {
+public class LocalSecondaryIndexDescription implements Serializable {
 
     /**
      * Represents the name of the secondary index.
@@ -39,7 +39,7 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      */
-    private java.util.List<KeySchemaElement> keySchema;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> keySchema;
 
     /**
      * Represents attributes that are copied (projected) from the table into
@@ -100,7 +100,7 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
      * @param indexName Represents the name of the secondary index.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LocalSecondaryIndexDescription withIndexName(String indexName) {
         this.indexName = indexName;
@@ -142,8 +142,7 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
             this.keySchema = null;
             return;
         }
-
-        java.util.List<KeySchemaElement> keySchemaCopy = new java.util.ArrayList<KeySchemaElement>(keySchema.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> keySchemaCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement>(keySchema.size());
         keySchemaCopy.addAll(keySchema);
         this.keySchema = keySchemaCopy;
     }
@@ -163,7 +162,7 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
      *         <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LocalSecondaryIndexDescription withKeySchema(KeySchemaElement... keySchema) {
         if (getKeySchema() == null) setKeySchema(new java.util.ArrayList<KeySchemaElement>(keySchema.length));
@@ -188,13 +187,13 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
      *         <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LocalSecondaryIndexDescription withKeySchema(java.util.Collection<KeySchemaElement> keySchema) {
         if (keySchema == null) {
             this.keySchema = null;
         } else {
-            java.util.List<KeySchemaElement> keySchemaCopy = new java.util.ArrayList<KeySchemaElement>(keySchema.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> keySchemaCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement>(keySchema.size());
             keySchemaCopy.addAll(keySchema);
             this.keySchema = keySchemaCopy;
         }
@@ -240,7 +239,7 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
      *         index key attributes, which are automatically projected.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LocalSecondaryIndexDescription withProjection(Projection projection) {
         this.projection = projection;
@@ -286,7 +285,7 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
      *         not be reflected in this value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LocalSecondaryIndexDescription withIndexSizeBytes(Long indexSizeBytes) {
         this.indexSizeBytes = indexSizeBytes;
@@ -332,7 +331,7 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
      *         reflected in this value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LocalSecondaryIndexDescription withItemCount(Long itemCount) {
         this.itemCount = itemCount;
@@ -351,11 +350,11 @@ public class LocalSecondaryIndexDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIndexName() != null) sb.append("IndexName: " + getIndexName() + ",");    	
-        if (getKeySchema() != null) sb.append("KeySchema: " + getKeySchema() + ",");    	
-        if (getProjection() != null) sb.append("Projection: " + getProjection() + ",");    	
-        if (getIndexSizeBytes() != null) sb.append("IndexSizeBytes: " + getIndexSizeBytes() + ",");    	
+        sb.append("{");
+        if (getIndexName() != null) sb.append("IndexName: " + getIndexName() + ",");
+        if (getKeySchema() != null) sb.append("KeySchema: " + getKeySchema() + ",");
+        if (getProjection() != null) sb.append("Projection: " + getProjection() + ",");
+        if (getIndexSizeBytes() != null) sb.append("IndexSizeBytes: " + getIndexSizeBytes() + ",");
         if (getItemCount() != null) sb.append("ItemCount: " + getItemCount() );
         sb.append("}");
         return sb.toString();

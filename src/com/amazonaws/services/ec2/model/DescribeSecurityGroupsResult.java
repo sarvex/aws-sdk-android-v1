@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The result of describing the Amazon EC2 security groups for your account.
  * </p>
  */
-public class DescribeSecurityGroupsResult  implements Serializable  {
+public class DescribeSecurityGroupsResult implements Serializable {
 
     /**
      * The list of described Amazon EC2 security groups.
      */
-    private java.util.List<SecurityGroup> securityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SecurityGroup> securityGroups;
 
     /**
      * The list of described Amazon EC2 security groups.
@@ -35,7 +35,8 @@ public class DescribeSecurityGroupsResult  implements Serializable  {
     public java.util.List<SecurityGroup> getSecurityGroups() {
         
         if (securityGroups == null) {
-            securityGroups = new java.util.ArrayList<SecurityGroup>();
+              securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<SecurityGroup>();
+              securityGroups.setAutoConstruct(true);
         }
         return securityGroups;
     }
@@ -50,8 +51,7 @@ public class DescribeSecurityGroupsResult  implements Serializable  {
             this.securityGroups = null;
             return;
         }
-
-        java.util.List<SecurityGroup> securityGroupsCopy = new java.util.ArrayList<SecurityGroup>(securityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SecurityGroup> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SecurityGroup>(securityGroups.size());
         securityGroupsCopy.addAll(securityGroups);
         this.securityGroups = securityGroupsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeSecurityGroupsResult  implements Serializable  {
      * @param securityGroups The list of described Amazon EC2 security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsResult withSecurityGroups(SecurityGroup... securityGroups) {
         if (getSecurityGroups() == null) setSecurityGroups(new java.util.ArrayList<SecurityGroup>(securityGroups.length));
@@ -82,13 +82,13 @@ public class DescribeSecurityGroupsResult  implements Serializable  {
      * @param securityGroups The list of described Amazon EC2 security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsResult withSecurityGroups(java.util.Collection<SecurityGroup> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
         } else {
-            java.util.List<SecurityGroup> securityGroupsCopy = new java.util.ArrayList<SecurityGroup>(securityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SecurityGroup> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SecurityGroup>(securityGroups.size());
             securityGroupsCopy.addAll(securityGroups);
             this.securityGroups = securityGroupsCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeSecurityGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() );
         sb.append("}");
         return sb.toString();

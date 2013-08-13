@@ -46,7 +46,7 @@ import com.amazonaws.services.sns.model.transform.*;
  * Amazon Simple Notification Service (Amazon SNS) is a web service that enables you to build distributed web-enabled applications. Applications can use
  * Amazon SNS to easily push real-time notification messages to interested subscribers over multiple delivery protocols. For more information about this
  * product see <a href="http://aws.amazon.com/sns/"> http://aws.amazon.com/sns </a> . For detailed information about Amazon SNS features and their
- * associated API calls, see the <a href="http://docs.aws.amazon.com/sns/latest/gsg/"> Amazon SNS Getting Started Guide </a> .
+ * associated API calls, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/"> Amazon SNS Developer Guide </a> .
  * </p>
  * <p>
  * We also provide SDKs that enable you to access Amazon SNS from your preferred programming language. The SDKs contain functionality that automatically
@@ -70,7 +70,7 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
 
     
     /** AWS signer for authenticating requests. */
-    private QueryStringSigner signer;
+    private AWS4Signer signer;
 
 
     /**
@@ -192,17 +192,21 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
     }
 
     private void init() {
-        exceptionUnmarshallers.add(new AuthorizationErrorExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TopicLimitExceededExceptionUnmarshaller());
         exceptionUnmarshallers.add(new NotFoundExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new EndpointDisabledExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new PlatformApplicationDisabledExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InvalidParameterExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new AuthorizationErrorExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InternalErrorExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SubscriptionLimitExceededExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new InvalidParameterExceptionUnmarshaller());
         
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
         setEndpoint("sns.us-east-1.amazonaws.com");
 
-        signer = new QueryStringSigner();
+        signer = new AWS4Signer();
+        
+        signer.setServiceName("sns");
         
 
         HandlerChainFactory chainFactory = new HandlerChainFactory();
@@ -246,6 +250,53 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
             throws AmazonServiceException, AmazonClientException {
         Request<ConfirmSubscriptionRequest> request = new ConfirmSubscriptionRequestMarshaller().marshall(confirmSubscriptionRequest);
         return invoke(request, new ConfirmSubscriptionResultStaxUnmarshaller());
+    }
+    
+    /**
+     * <p>
+     * The <code>CreatePlatformApplication</code> action creates a platform
+     * application object for one of the supported push notification
+     * services, such as APNS and GCM, to which devices and mobile apps may
+     * register. You must specify PlatformPrincipal and PlatformCredential
+     * attributes when using the <code>CreatePlatformApplication</code>
+     * action. The PlatformPrincipal is received from the notification
+     * service. For APNS/APNS_SANDBOX, PlatformPrincipal is "SSL
+     * certificate". For GCM, PlatformPrincipal is not applicable. For ADM,
+     * PlatformPrincipal is "client id". The PlatformCredential is also
+     * received from the notification service. For APNS/APNS_SANDBOX,
+     * PlatformCredential is "private key". For GCM, PlatformCredential is
+     * "API key". For ADM, PlatformCredential is "client secret". The
+     * PlatformApplicationArn that is returned when using
+     * <code>CreatePlatformApplication</code> is then used as an attribute
+     * for the <code>CreatePlatformEndpoint</code> action. For more
+     * information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param createPlatformApplicationRequest Container for the necessary
+     *           parameters to execute the CreatePlatformApplication service method on
+     *           AmazonSNS.
+     * 
+     * @return The response from the CreatePlatformApplication service
+     *         method, as returned by AmazonSNS.
+     * 
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CreatePlatformApplicationResult createPlatformApplication(CreatePlatformApplicationRequest createPlatformApplicationRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<CreatePlatformApplicationRequest> request = new CreatePlatformApplicationRequestMarshaller().marshall(createPlatformApplicationRequest);
+        return invoke(request, new CreatePlatformApplicationResultStaxUnmarshaller());
     }
     
     /**
@@ -314,6 +365,35 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
             throws AmazonServiceException, AmazonClientException {
         Request<SubscribeRequest> request = new SubscribeRequestMarshaller().marshall(subscribeRequest);
         return invoke(request, new SubscribeResultStaxUnmarshaller());
+    }
+    
+    /**
+     * <p>
+     * The <code>DeleteEndpoint</code> action, which is idempotent, deletes
+     * the endpoint from SNS. For more information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param deleteEndpointRequest Container for the necessary parameters to
+     *           execute the DeleteEndpoint service method on AmazonSNS.
+     * 
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void deleteEndpoint(DeleteEndpointRequest deleteEndpointRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<DeleteEndpointRequest> request = new DeleteEndpointRequestMarshaller().marshall(deleteEndpointRequest);
+        invoke(request, null);
     }
     
     /**
@@ -406,12 +486,82 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
     
     /**
      * <p>
+     * The <code>GetEndpointAttributes</code> retrieves the endpoint
+     * attributes for a device on one of the supported push notification
+     * services, such as GCM and APNS. For more information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param getEndpointAttributesRequest Container for the necessary
+     *           parameters to execute the GetEndpointAttributes service method on
+     *           AmazonSNS.
+     * 
+     * @return The response from the GetEndpointAttributes service method, as
+     *         returned by AmazonSNS.
+     * 
+     * @throws NotFoundException
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public GetEndpointAttributesResult getEndpointAttributes(GetEndpointAttributesRequest getEndpointAttributesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<GetEndpointAttributesRequest> request = new GetEndpointAttributesRequestMarshaller().marshall(getEndpointAttributesRequest);
+        return invoke(request, new GetEndpointAttributesResultStaxUnmarshaller());
+    }
+    
+    /**
+     * <p>
+     * The <code>GetPlatformApplicationAttributes</code> action retrieves the
+     * attributes of the platform application object for the supported push
+     * notification services, such as APNS and GCM. For more information, see
+     * <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param getPlatformApplicationAttributesRequest Container for the
+     *           necessary parameters to execute the GetPlatformApplicationAttributes
+     *           service method on AmazonSNS.
+     * 
+     * @return The response from the GetPlatformApplicationAttributes service
+     *         method, as returned by AmazonSNS.
+     * 
+     * @throws NotFoundException
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public GetPlatformApplicationAttributesResult getPlatformApplicationAttributes(GetPlatformApplicationAttributesRequest getPlatformApplicationAttributesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<GetPlatformApplicationAttributesRequest> request = new GetPlatformApplicationAttributesRequestMarshaller().marshall(getPlatformApplicationAttributesRequest);
+        return invoke(request, new GetPlatformApplicationAttributesResultStaxUnmarshaller());
+    }
+    
+    /**
+     * <p>
      * The <code>ListSubscriptions</code> action returns a list of the
      * requester's subscriptions. Each call returns a limited list of
      * subscriptions, up to 100. If there are more subscriptions, a
      * <code>NextToken</code> is also returned. Use the
-     * <code>NextToken</code> parameter in a new ListSubscriptions call to
-     * get further results.
+     * <code>NextToken</code> parameter in a new
+     * <code>ListSubscriptions</code> call to get further results.
      * </p>
      *
      * @param listSubscriptionsRequest Container for the necessary parameters
@@ -469,6 +619,79 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
     
     /**
      * <p>
+     * The <code>SetPlatformApplicationAttributes</code> action sets the
+     * attributes of the platform application object for the supported push
+     * notification services, such as APNS and GCM. For more information, see
+     * <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param setPlatformApplicationAttributesRequest Container for the
+     *           necessary parameters to execute the SetPlatformApplicationAttributes
+     *           service method on AmazonSNS.
+     * 
+     * @throws NotFoundException
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void setPlatformApplicationAttributes(SetPlatformApplicationAttributesRequest setPlatformApplicationAttributesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<SetPlatformApplicationAttributesRequest> request = new SetPlatformApplicationAttributesRequestMarshaller().marshall(setPlatformApplicationAttributesRequest);
+        invoke(request, null);
+    }
+    
+    /**
+     * <p>
+     * The <code>CreatePlatformEndpoint</code> creates an endpoint for a
+     * device and mobile app on one of the supported push notification
+     * services, such as GCM and APNS. <code>CreatePlatformEndpoint</code>
+     * requires the PlatformApplicationArn that is returned from
+     * <code>CreatePlatformApplication</code> . The EndpointArn that is
+     * returned when using <code>CreatePlatformEndpoint</code> can then be
+     * used by the <code>Publish</code> action to send a message to a mobile
+     * app or by the <code>Subscribe</code> action for subscription to a
+     * topic. For more information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param createPlatformEndpointRequest Container for the necessary
+     *           parameters to execute the CreatePlatformEndpoint service method on
+     *           AmazonSNS.
+     * 
+     * @return The response from the CreatePlatformEndpoint service method,
+     *         as returned by AmazonSNS.
+     * 
+     * @throws NotFoundException
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CreatePlatformEndpointResult createPlatformEndpoint(CreatePlatformEndpointRequest createPlatformEndpointRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<CreatePlatformEndpointRequest> request = new CreatePlatformEndpointRequestMarshaller().marshall(createPlatformEndpointRequest);
+        return invoke(request, new CreatePlatformEndpointResultStaxUnmarshaller());
+    }
+    
+    /**
+     * <p>
      * The <code>AddPermission</code> action adds a statement to a topic's
      * access control policy, granting access for the specified AWS accounts
      * to the specified actions.
@@ -494,6 +717,38 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
             throws AmazonServiceException, AmazonClientException {
         Request<AddPermissionRequest> request = new AddPermissionRequestMarshaller().marshall(addPermissionRequest);
         invoke(request, null);
+    }
+    
+    /**
+     * <p>
+     * The <code>GetSubscriptionAttribtues</code> action returns all of the
+     * properties of a subscription.
+     * </p>
+     *
+     * @param getSubscriptionAttributesRequest Container for the necessary
+     *           parameters to execute the GetSubscriptionAttributes service method on
+     *           AmazonSNS.
+     * 
+     * @return The response from the GetSubscriptionAttributes service
+     *         method, as returned by AmazonSNS.
+     * 
+     * @throws NotFoundException
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public GetSubscriptionAttributesResult getSubscriptionAttributes(GetSubscriptionAttributesRequest getSubscriptionAttributesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<GetSubscriptionAttributesRequest> request = new GetSubscriptionAttributesRequestMarshaller().marshall(getSubscriptionAttributesRequest);
+        return invoke(request, new GetSubscriptionAttributesResultStaxUnmarshaller());
     }
     
     /**
@@ -533,38 +788,6 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
     
     /**
      * <p>
-     * The <code>GetSubscriptionAttribtues</code> action returns all of the
-     * properties of a subscription.
-     * </p>
-     *
-     * @param getSubscriptionAttributesRequest Container for the necessary
-     *           parameters to execute the GetSubscriptionAttributes service method on
-     *           AmazonSNS.
-     * 
-     * @return The response from the GetSubscriptionAttributes service
-     *         method, as returned by AmazonSNS.
-     * 
-     * @throws NotFoundException
-     * @throws AuthorizationErrorException
-     * @throws InternalErrorException
-     * @throws InvalidParameterException
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonSNS indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public GetSubscriptionAttributesResult getSubscriptionAttributes(GetSubscriptionAttributesRequest getSubscriptionAttributesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetSubscriptionAttributesRequest> request = new GetSubscriptionAttributesRequestMarshaller().marshall(getSubscriptionAttributesRequest);
-        return invoke(request, new GetSubscriptionAttributesResultStaxUnmarshaller());
-    }
-    
-    /**
-     * <p>
      * The <code>ListTopics</code> action returns a list of the requester's
      * topics. Each call returns a limited list of topics, up to 100. If
      * there are more topics, a <code>NextToken</code> is also returned. Use
@@ -598,9 +821,155 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
     
     /**
      * <p>
+     * The <code>ListEndpointsByPlatformApplication</code> action lists the
+     * endpoints and endpoint attributes for devices in a supported push
+     * notification service, such as GCM and APNS. The results for
+     * <code>ListEndpointsByPlatformApplication</code> are paginated and
+     * return a limited list of endpoints, up to 100. If additional records
+     * are available after the first page results, then a NextToken string
+     * will be returned. To receive the next page, you call
+     * <code>ListEndpointsByPlatformApplication</code> again using the
+     * NextToken string received from the previous call. When there are no
+     * more records to return, NextToken will be null. For more information,
+     * see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param listEndpointsByPlatformApplicationRequest Container for the
+     *           necessary parameters to execute the ListEndpointsByPlatformApplication
+     *           service method on AmazonSNS.
+     * 
+     * @return The response from the ListEndpointsByPlatformApplication
+     *         service method, as returned by AmazonSNS.
+     * 
+     * @throws NotFoundException
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public ListEndpointsByPlatformApplicationResult listEndpointsByPlatformApplication(ListEndpointsByPlatformApplicationRequest listEndpointsByPlatformApplicationRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<ListEndpointsByPlatformApplicationRequest> request = new ListEndpointsByPlatformApplicationRequestMarshaller().marshall(listEndpointsByPlatformApplicationRequest);
+        return invoke(request, new ListEndpointsByPlatformApplicationResultStaxUnmarshaller());
+    }
+    
+    /**
+     * <p>
+     * The <code>DeletePlatformApplication</code> action deletes a platform
+     * application object for one of the supported push notification
+     * services, such as APNS and GCM. For more information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param deletePlatformApplicationRequest Container for the necessary
+     *           parameters to execute the DeletePlatformApplication service method on
+     *           AmazonSNS.
+     * 
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void deletePlatformApplication(DeletePlatformApplicationRequest deletePlatformApplicationRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<DeletePlatformApplicationRequest> request = new DeletePlatformApplicationRequestMarshaller().marshall(deletePlatformApplicationRequest);
+        invoke(request, null);
+    }
+    
+    /**
+     * <p>
+     * The <code>ListPlatformApplications</code> action lists the platform
+     * application objects for the supported push notification services, such
+     * as APNS and GCM. The results for <code>ListPlatformApplications</code>
+     * are paginated and return a limited list of applications, up to 100. If
+     * additional records are available after the first page results, then a
+     * NextToken string will be returned. To receive the next page, you call
+     * <code>ListPlatformApplications</code> using the NextToken string
+     * received from the previous call. When there are no more records to
+     * return, NextToken will be null. For more information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param listPlatformApplicationsRequest Container for the necessary
+     *           parameters to execute the ListPlatformApplications service method on
+     *           AmazonSNS.
+     * 
+     * @return The response from the ListPlatformApplications service method,
+     *         as returned by AmazonSNS.
+     * 
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public ListPlatformApplicationsResult listPlatformApplications(ListPlatformApplicationsRequest listPlatformApplicationsRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<ListPlatformApplicationsRequest> request = new ListPlatformApplicationsRequestMarshaller().marshall(listPlatformApplicationsRequest);
+        return invoke(request, new ListPlatformApplicationsResultStaxUnmarshaller());
+    }
+    
+    /**
+     * <p>
+     * The <code>SetEndpointAttributes</code> action sets the attributes for
+     * an endpoint for a device on one of the supported push notification
+     * services, such as GCM and APNS. For more information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     *
+     * @param setEndpointAttributesRequest Container for the necessary
+     *           parameters to execute the SetEndpointAttributes service method on
+     *           AmazonSNS.
+     * 
+     * @throws NotFoundException
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void setEndpointAttributes(SetEndpointAttributesRequest setEndpointAttributesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<SetEndpointAttributesRequest> request = new SetEndpointAttributesRequestMarshaller().marshall(setEndpointAttributesRequest);
+        invoke(request, null);
+    }
+    
+    /**
+     * <p>
      * The <code>Unsubscribe</code> action deletes a subscription. If the
      * subscription requires authentication for deletion, only the owner of
-     * the subscription or the its topic's owner can unsubscribe, and an AWS
+     * the subscription or the topic's owner can unsubscribe, and an AWS
      * signature is required. If the <code>Unsubscribe</code> call does not
      * require authentication and the requester is not the subscription
      * owner, a final cancellation message is delivered to the endpoint, so
@@ -675,6 +1044,14 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * each subscribed endpoint depends on the notification protocol
      * selected.
      * </p>
+     * <p>
+     * To use the <code>Publish</code> action for sending a message to a
+     * mobile endpoint, such as an app on a Kindle device or mobile phone,
+     * you must specify the EndpointArn. The EndpointArn is returned when
+     * making a call with the <code>CreatePlatformEndpoint</code> action. The
+     * second example below shows a request and response for publishing to a
+     * mobile endpoint.
+     * </p>
      *
      * @param publishRequest Container for the necessary parameters to
      *           execute the Publish service method on AmazonSNS.
@@ -683,6 +1060,8 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      *         AmazonSNS.
      * 
      * @throws NotFoundException
+     * @throws PlatformApplicationDisabledException
+     * @throws EndpointDisabledException
      * @throws AuthorizationErrorException
      * @throws InternalErrorException
      * @throws InvalidParameterException
@@ -707,8 +1086,8 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      * requester's subscriptions. Each call returns a limited list of
      * subscriptions, up to 100. If there are more subscriptions, a
      * <code>NextToken</code> is also returned. Use the
-     * <code>NextToken</code> parameter in a new ListSubscriptions call to
-     * get further results.
+     * <code>NextToken</code> parameter in a new
+     * <code>ListSubscriptions</code> call to get further results.
      * </p>
      * 
      * @return The response from the ListSubscriptions service method, as
@@ -756,6 +1135,81 @@ public class AmazonSNSClient extends AmazonWebServiceClient implements AmazonSNS
      */
     public ListTopicsResult listTopics() throws AmazonServiceException, AmazonClientException {
         return listTopics(new ListTopicsRequest());
+    }
+    
+    /**
+     * <p>
+     * The <code>ListPlatformApplications</code> action lists the platform
+     * application objects for the supported push notification services, such
+     * as APNS and GCM. The results for <code>ListPlatformApplications</code>
+     * are paginated and return a limited list of applications, up to 100. If
+     * additional records are available after the first page results, then a
+     * NextToken string will be returned. To receive the next page, you call
+     * <code>ListPlatformApplications</code> using the NextToken string
+     * received from the previous call. When there are no more records to
+     * return, NextToken will be null. For more information, see <a
+     * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">
+     * Using Amazon SNS Mobile Push Notifications </a> .
+     * </p>
+     * 
+     * @return The response from the ListPlatformApplications service method,
+     *         as returned by AmazonSNS.
+     * 
+     * @throws AuthorizationErrorException
+     * @throws InternalErrorException
+     * @throws InvalidParameterException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonSNS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public ListPlatformApplicationsResult listPlatformApplications() throws AmazonServiceException, AmazonClientException {
+        return listPlatformApplications(new ListPlatformApplicationsRequest());
+    }
+    
+    /**
+     * Overrides the default endpoint for this client ("https://sns.us-east-1.amazonaws.com") and explicitly provides
+     * an AWS region ID and AWS service name to use when the client calculates a signature
+     * for requests.  In almost all cases, this region ID and service name
+     * are automatically determined from the endpoint, and callers should use the simpler
+     * one-argument form of setEndpoint instead of this method.
+     * <p>
+     * <b>This method is not threadsafe. Endpoints should be configured when the
+     * client is created and before any service requests are made. Changing it
+     * afterwards creates inevitable race conditions for any service requests in
+     * transit.</b>
+     * <p>
+     * Callers can pass in just the endpoint (ex: "sns.us-east-1.amazonaws.com") or a full
+     * URL, including the protocol (ex: "https://sns.us-east-1.amazonaws.com"). If the
+     * protocol is not specified here, the default protocol from this client's
+     * {@link ClientConfiguration} will be used, which by default is HTTPS.
+     * <p>
+     * For more information on using AWS regions with the AWS SDK for Java, and
+     * a complete list of all available endpoints for all AWS services, see:
+     * <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
+     * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
+     *
+     * @param endpoint
+     *            The endpoint (ex: "sns.us-east-1.amazonaws.com") or a full URL,
+     *            including the protocol (ex: "https://sns.us-east-1.amazonaws.com") of
+     *            the region specific AWS endpoint this client will communicate
+     *            with.
+     * @param serviceName
+     *            The name of the AWS service to use when signing requests.
+     * @param regionId
+     *            The ID of the region in which this service resides.
+     *
+     * @throws IllegalArgumentException
+     *             If any problems are detected with the specified endpoint.
+     */
+    public void setEndpoint(String endpoint, String serviceName, String regionId) throws IllegalArgumentException {
+        setEndpoint(endpoint);
+        signer.setServiceName(serviceName);
+        signer.setRegionName(regionId);
     }
     
     @Override

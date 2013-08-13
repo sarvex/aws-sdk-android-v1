@@ -45,13 +45,13 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/index.html?AWSCredentials.html">Your
      * AWS Identifiers</aulink> in the &service; Developer Guide.-->
      */
-    private java.util.List<String> aWSAccountIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> aWSAccountIds;
 
     /**
      * The action you want to allow for the specified principal(s). <p>Valid
      * values: any Amazon SNS action name.
      */
-    private java.util.List<String> actionNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> actionNames;
 
     /**
      * Default constructor for a new AddPermissionRequest object.  Callers should use the
@@ -59,6 +59,8 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      */
     public AddPermissionRequest() {}
     
+
+
     /**
      * Constructs a new AddPermissionRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -77,10 +79,10 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
      * principal(s). <p>Valid values: any Amazon SNS action name.
      */
     public AddPermissionRequest(String topicArn, String label, java.util.List<String> aWSAccountIds, java.util.List<String> actionNames) {
-        this.topicArn = topicArn;
-        this.label = label;
-        this.aWSAccountIds = aWSAccountIds;
-        this.actionNames = actionNames;
+        setTopicArn(topicArn);
+        setLabel(label);
+        setAWSAccountIds(aWSAccountIds);
+        setActionNames(actionNames);
     }
 
     
@@ -171,7 +173,8 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     public java.util.List<String> getAWSAccountIds() {
         
         if (aWSAccountIds == null) {
-            aWSAccountIds = new java.util.ArrayList<String>();
+              aWSAccountIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              aWSAccountIds.setAutoConstruct(true);
         }
         return aWSAccountIds;
     }
@@ -196,8 +199,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
             this.aWSAccountIds = null;
             return;
         }
-
-        java.util.List<String> aWSAccountIdsCopy = new java.util.ArrayList<String>(aWSAccountIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> aWSAccountIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(aWSAccountIds.size());
         aWSAccountIdsCopy.addAll(aWSAccountIds);
         this.aWSAccountIds = aWSAccountIdsCopy;
     }
@@ -254,7 +256,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
         if (aWSAccountIds == null) {
             this.aWSAccountIds = null;
         } else {
-            java.util.List<String> aWSAccountIdsCopy = new java.util.ArrayList<String>(aWSAccountIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> aWSAccountIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(aWSAccountIds.size());
             aWSAccountIdsCopy.addAll(aWSAccountIds);
             this.aWSAccountIds = aWSAccountIdsCopy;
         }
@@ -272,7 +274,8 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     public java.util.List<String> getActionNames() {
         
         if (actionNames == null) {
-            actionNames = new java.util.ArrayList<String>();
+              actionNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              actionNames.setAutoConstruct(true);
         }
         return actionNames;
     }
@@ -289,8 +292,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
             this.actionNames = null;
             return;
         }
-
-        java.util.List<String> actionNamesCopy = new java.util.ArrayList<String>(actionNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> actionNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(actionNames.size());
         actionNamesCopy.addAll(actionNames);
         this.actionNames = actionNamesCopy;
     }
@@ -331,7 +333,7 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
         if (actionNames == null) {
             this.actionNames = null;
         } else {
-            java.util.List<String> actionNamesCopy = new java.util.ArrayList<String>(actionNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> actionNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(actionNames.size());
             actionNamesCopy.addAll(actionNames);
             this.actionNames = actionNamesCopy;
         }
@@ -350,10 +352,10 @@ public class AddPermissionRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");    	
-        if (getLabel() != null) sb.append("Label: " + getLabel() + ",");    	
-        if (getAWSAccountIds() != null) sb.append("AWSAccountIds: " + getAWSAccountIds() + ",");    	
+        sb.append("{");
+        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");
+        if (getLabel() != null) sb.append("Label: " + getLabel() + ",");
+        if (getAWSAccountIds() != null) sb.append("AWSAccountIds: " + getAWSAccountIds() + ",");
         if (getActionNames() != null) sb.append("ActionNames: " + getActionNames() );
         sb.append("}");
         return sb.toString();

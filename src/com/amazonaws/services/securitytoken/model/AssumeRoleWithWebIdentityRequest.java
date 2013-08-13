@@ -23,8 +23,8 @@ import java.io.Serializable;
  * such as Login with Amazon, Facebook, or Google. <code>AssumeRoleWithWebIdentity</code> is an API call that does not require the use of AWS security
  * credentials. Therefore, you can distribute an application (for example, on mobile devices) that requests temporary security credentials without
  * including long-term AWS credentials in the application or by deploying server-based proxy services that use long-term AWS credentials. For more
- * information, see <a href="http://aws-docs-alpha.integ.amazon.com/STS/latest/UsingSTS/STSUseCases.html#MobileApplication-KnownProvider"> Creating a
- * Mobile Application with Third-Party Sign-In </a> in <i>AWS Security Token Service</i> .
+ * information, see <a href="http://docs.aws.amazon.com/STS/latest/UsingSTS/STSUseCases.html#MobileApplication-KnownProvider"> Creating a Mobile
+ * Application with Third-Party Sign-In </a> in <i>AWS Security Token Service</i> .
  * 
  * </p>
  * <p>
@@ -99,12 +99,12 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
     private String webIdentityToken;
 
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
@@ -176,7 +176,7 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         assuming.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withRoleArn(String roleArn) {
         this.roleArn = roleArn;
@@ -252,7 +252,7 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         <code>AssumedRoleUser</code> response element.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withRoleSessionName(String roleSessionName) {
         this.roleSessionName = roleSessionName;
@@ -319,7 +319,7 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         <code>AssumeRoleWithWebIdentity</code> call.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withWebIdentityToken(String webIdentityToken) {
         this.webIdentityToken = webIdentityToken;
@@ -328,71 +328,71 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
     
     
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
      *
-     * @return Specify this value only for OAuth access tokens. Do not specify this
-     *         value for OpenID Connect ID tokens, such as
-     *         <code>accounts.google.com</code>. This is the fully-qualified host
-     *         component of the domain name of the identity provider. Do not include
-     *         URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     *         and <code>graph.facebook.com</code> are supported.
+     * @return The fully-qualified host component of the domain name of the identity
+     *         provider. Specify this value only for OAuth access tokens. Do not
+     *         specify this value for OpenID Connect ID tokens, such as
+     *         <code>accounts.google.com</code>. Do not include URL schemes and port
+     *         numbers. Currently, <code>www.amazon.com</code> and
+     *         <code>graph.facebook.com</code> are supported.
      */
     public String getProviderId() {
         return providerId;
     }
     
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
      *
-     * @param providerId Specify this value only for OAuth access tokens. Do not specify this
-     *         value for OpenID Connect ID tokens, such as
-     *         <code>accounts.google.com</code>. This is the fully-qualified host
-     *         component of the domain name of the identity provider. Do not include
-     *         URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     *         and <code>graph.facebook.com</code> are supported.
+     * @param providerId The fully-qualified host component of the domain name of the identity
+     *         provider. Specify this value only for OAuth access tokens. Do not
+     *         specify this value for OpenID Connect ID tokens, such as
+     *         <code>accounts.google.com</code>. Do not include URL schemes and port
+     *         numbers. Currently, <code>www.amazon.com</code> and
+     *         <code>graph.facebook.com</code> are supported.
      */
     public void setProviderId(String providerId) {
         this.providerId = providerId;
     }
     
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
      *
-     * @param providerId Specify this value only for OAuth access tokens. Do not specify this
-     *         value for OpenID Connect ID tokens, such as
-     *         <code>accounts.google.com</code>. This is the fully-qualified host
-     *         component of the domain name of the identity provider. Do not include
-     *         URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     *         and <code>graph.facebook.com</code> are supported.
+     * @param providerId The fully-qualified host component of the domain name of the identity
+     *         provider. Specify this value only for OAuth access tokens. Do not
+     *         specify this value for OpenID Connect ID tokens, such as
+     *         <code>accounts.google.com</code>. Do not include URL schemes and port
+     *         numbers. Currently, <code>www.amazon.com</code> and
+     *         <code>graph.facebook.com</code> are supported.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withProviderId(String providerId) {
         this.providerId = providerId;
@@ -468,7 +468,7 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         the temporary security credentials.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withPolicy(String policy) {
         this.policy = policy;
@@ -523,7 +523,7 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         the value is set to 3600 seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withDurationSeconds(Integer durationSeconds) {
         this.durationSeconds = durationSeconds;
@@ -542,12 +542,12 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRoleArn() != null) sb.append("RoleArn: " + getRoleArn() + ",");    	
-        if (getRoleSessionName() != null) sb.append("RoleSessionName: " + getRoleSessionName() + ",");    	
-        if (getWebIdentityToken() != null) sb.append("WebIdentityToken: " + getWebIdentityToken() + ",");    	
-        if (getProviderId() != null) sb.append("ProviderId: " + getProviderId() + ",");    	
-        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");    	
+        sb.append("{");
+        if (getRoleArn() != null) sb.append("RoleArn: " + getRoleArn() + ",");
+        if (getRoleSessionName() != null) sb.append("RoleSessionName: " + getRoleSessionName() + ",");
+        if (getWebIdentityToken() != null) sb.append("WebIdentityToken: " + getWebIdentityToken() + ",");
+        if (getProviderId() != null) sb.append("ProviderId: " + getProviderId() + ",");
+        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");
         if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() );
         sb.append("}");
         return sb.toString();

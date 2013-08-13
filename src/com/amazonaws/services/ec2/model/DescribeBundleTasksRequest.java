@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeBundleTasksRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -25,12 +27,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeBundleTasks(DescribeBundleTasksRequest)
  */
-public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeBundleTasksRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeBundleTasksRequest> {
 
     /**
      * The list of bundle task IDs to describe.
      */
-    private java.util.List<String> bundleIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> bundleIds;
 
     /**
      * A list of filters used to match properties for BundleTasks. For a
@@ -39,7 +41,7 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The list of bundle task IDs to describe.
@@ -49,7 +51,8 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
     public java.util.List<String> getBundleIds() {
         
         if (bundleIds == null) {
-            bundleIds = new java.util.ArrayList<String>();
+              bundleIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              bundleIds.setAutoConstruct(true);
         }
         return bundleIds;
     }
@@ -64,8 +67,7 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
             this.bundleIds = null;
             return;
         }
-
-        java.util.List<String> bundleIdsCopy = new java.util.ArrayList<String>(bundleIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> bundleIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(bundleIds.size());
         bundleIdsCopy.addAll(bundleIds);
         this.bundleIds = bundleIdsCopy;
     }
@@ -78,7 +80,7 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
      * @param bundleIds The list of bundle task IDs to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withBundleIds(String... bundleIds) {
         if (getBundleIds() == null) setBundleIds(new java.util.ArrayList<String>(bundleIds.length));
@@ -96,13 +98,13 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
      * @param bundleIds The list of bundle task IDs to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withBundleIds(java.util.Collection<String> bundleIds) {
         if (bundleIds == null) {
             this.bundleIds = null;
         } else {
-            java.util.List<String> bundleIdsCopy = new java.util.ArrayList<String>(bundleIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> bundleIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(bundleIds.size());
             bundleIdsCopy.addAll(bundleIds);
             this.bundleIds = bundleIdsCopy;
         }
@@ -126,7 +128,8 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -149,8 +152,7 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -171,7 +173,7 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -197,18 +199,30 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeBundleTasksRequest> getDryRunRequest() {
+        Request<DescribeBundleTasksRequest> request = new DescribeBundleTasksRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -222,8 +236,8 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBundleIds() != null) sb.append("BundleIds: " + getBundleIds() + ",");    	
+        sb.append("{");
+        if (getBundleIds() != null) sb.append("BundleIds: " + getBundleIds() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

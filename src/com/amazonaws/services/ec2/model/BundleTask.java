@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a task to bundle an EC2 Windows instance into a new image.
  * </p>
  */
-public class BundleTask  implements Serializable  {
+public class BundleTask implements Serializable {
 
     /**
      * Instance associated with this bundle task.
@@ -88,7 +88,7 @@ public class BundleTask  implements Serializable  {
      * @param instanceId Instance associated with this bundle task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -122,7 +122,7 @@ public class BundleTask  implements Serializable  {
      * @param bundleId Unique identifier for this task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withBundleId(String bundleId) {
         this.bundleId = bundleId;
@@ -156,7 +156,7 @@ public class BundleTask  implements Serializable  {
      * @param state The state of this task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withState(String state) {
         this.state = state;
@@ -190,7 +190,7 @@ public class BundleTask  implements Serializable  {
      * @param startTime The time this task started.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -224,7 +224,7 @@ public class BundleTask  implements Serializable  {
      * @param updateTime The time of the most recent update for the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withUpdateTime(java.util.Date updateTime) {
         this.updateTime = updateTime;
@@ -258,7 +258,7 @@ public class BundleTask  implements Serializable  {
      * @param storage Amazon S3 storage locations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withStorage(Storage storage) {
         this.storage = storage;
@@ -292,7 +292,7 @@ public class BundleTask  implements Serializable  {
      * @param progress The level of task completion, in percent (e.g., 20%).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withProgress(String progress) {
         this.progress = progress;
@@ -326,7 +326,7 @@ public class BundleTask  implements Serializable  {
      * @param bundleTaskError If the task fails, a description of the error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withBundleTaskError(BundleTaskError bundleTaskError) {
         this.bundleTaskError = bundleTaskError;
@@ -345,14 +345,14 @@ public class BundleTask  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getBundleId() != null) sb.append("BundleId: " + getBundleId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getUpdateTime() != null) sb.append("UpdateTime: " + getUpdateTime() + ",");    	
-        if (getStorage() != null) sb.append("Storage: " + getStorage() + ",");    	
-        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getBundleId() != null) sb.append("BundleId: " + getBundleId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getUpdateTime() != null) sb.append("UpdateTime: " + getUpdateTime() + ",");
+        if (getStorage() != null) sb.append("Storage: " + getStorage() + ",");
+        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");
         if (getBundleTaskError() != null) sb.append("BundleTaskError: " + getBundleTaskError() );
         sb.append("}");
         return sb.toString();

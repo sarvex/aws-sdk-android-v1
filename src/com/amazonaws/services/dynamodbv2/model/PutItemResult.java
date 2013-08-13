@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the output of a <i>PutItem</i> operation.
  * </p>
  */
-public class PutItemResult  implements Serializable  {
+public class PutItemResult implements Serializable {
 
     /**
      * The attribute values as they appeared before the <i>PutItem</i>
@@ -36,7 +36,7 @@ public class PutItemResult  implements Serializable  {
      * returned if it was asked for in the request. For more information, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      */
     private ConsumedCapacity consumedCapacity;
 
@@ -73,7 +73,6 @@ public class PutItemResult  implements Serializable  {
     public java.util.Map<String,AttributeValue> getAttributes() {
         
         return attributes;
-
     }
     
     /**
@@ -105,27 +104,61 @@ public class PutItemResult  implements Serializable  {
      *         attribute name and an attribute value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutItemResult withAttributes(java.util.Map<String,AttributeValue> attributes) {
         setAttributes(attributes);
         return this;
     }
     
+   	
+    /**
+     * The attribute values as they appeared before the <i>PutItem</i>
+     * operation, but only if <i>ReturnValues</i> is specified as
+     * <code>ALL_OLD</code> in the request. Each element consists of an
+     * attribute name and an attribute value.
+     * <p>
+     * The method adds a new key-value pair into Attributes parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Attributes.
+     * @param value The corresponding value of the entry to be added into Attributes.
+     */
+	public PutItemResult addAttributesEntry(String key, AttributeValue value) {
+		if (null == this.attributes) {
+			this.attributes = new java.util.HashMap<String,AttributeValue>();
+		}
+		if (this.attributes.containsKey(key))
+			throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+		this.attributes.put(key, value);
+		return this;
+	}
+	
+	/**
+	 * Removes all the entries added into Attributes.
+	 * <p>
+	 * Returns a reference to this object so that method calls can be chained together.
+	 */
+	public PutItemResult clearAttributesEntries() {
+		this.attributes = null;
+		return this;
+	}
+	
     /**
      * The table name that consumed provisioned throughput, and the number of
      * capacity units consumed by it. <i>ConsumedCapacity</i> is only
      * returned if it was asked for in the request. For more information, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      *
      * @return The table name that consumed provisioned throughput, and the number of
      *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
      *         returned if it was asked for in the request. For more information, see
      *         <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         Throughput</a> in the Amazon DynamoDB Developer Guide.
      */
     public ConsumedCapacity getConsumedCapacity() {
         return consumedCapacity;
@@ -137,14 +170,14 @@ public class PutItemResult  implements Serializable  {
      * returned if it was asked for in the request. For more information, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      *
      * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
      *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
      *         returned if it was asked for in the request. For more information, see
      *         <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         Throughput</a> in the Amazon DynamoDB Developer Guide.
      */
     public void setConsumedCapacity(ConsumedCapacity consumedCapacity) {
         this.consumedCapacity = consumedCapacity;
@@ -156,7 +189,7 @@ public class PutItemResult  implements Serializable  {
      * returned if it was asked for in the request. For more information, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -165,10 +198,10 @@ public class PutItemResult  implements Serializable  {
      *         returned if it was asked for in the request. For more information, see
      *         <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         Throughput</a> in the Amazon DynamoDB Developer Guide.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutItemResult withConsumedCapacity(ConsumedCapacity consumedCapacity) {
         this.consumedCapacity = consumedCapacity;
@@ -286,7 +319,7 @@ public class PutItemResult  implements Serializable  {
      *         not rely on the precision or accuracy of the estimate. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutItemResult withItemCollectionMetrics(ItemCollectionMetrics itemCollectionMetrics) {
         this.itemCollectionMetrics = itemCollectionMetrics;
@@ -305,9 +338,9 @@ public class PutItemResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");    	
-        if (getConsumedCapacity() != null) sb.append("ConsumedCapacity: " + getConsumedCapacity() + ",");    	
+        sb.append("{");
+        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");
+        if (getConsumedCapacity() != null) sb.append("ConsumedCapacity: " + getConsumedCapacity() + ",");
         if (getItemCollectionMetrics() != null) sb.append("ItemCollectionMetrics: " + getItemCollectionMetrics() );
         sb.append("}");
         return sb.toString();

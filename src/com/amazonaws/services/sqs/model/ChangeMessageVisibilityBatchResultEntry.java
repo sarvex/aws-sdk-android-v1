@@ -17,10 +17,10 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Encloses the id of an entry in ChangeMessageVisibilityBatchRequest.
+ * Encloses the id of an entry in ChangeMessageVisibilityBatch.
  * </p>
  */
-public class ChangeMessageVisibilityBatchResultEntry  implements Serializable  {
+public class ChangeMessageVisibilityBatchResultEntry implements Serializable {
 
     /**
      * Represents a message whose visibility timeout has been changed
@@ -60,7 +60,7 @@ public class ChangeMessageVisibilityBatchResultEntry  implements Serializable  {
      *         successfully.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchResultEntry withId(String id) {
         this.id = id;
@@ -79,7 +79,7 @@ public class ChangeMessageVisibilityBatchResultEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getId() != null) sb.append("Id: " + getId() );
         sb.append("}");
         return sb.toString();

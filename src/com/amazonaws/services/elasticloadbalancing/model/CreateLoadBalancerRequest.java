@@ -38,7 +38,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#createLoadBalancer(CreateLoadBalancerRequest)
  */
-public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateLoadBalancerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name associated with the LoadBalancer. The name must be unique
@@ -50,7 +50,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * A list of the following tuples: LoadBalancerPort, InstancePort, and
      * Protocol.
      */
-    private java.util.List<Listener> listeners;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listeners;
 
     /**
      * A list of Availability Zones. <p> At least one Availability Zone must
@@ -59,17 +59,17 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * all zones. <p> This list can be modified after the creation of the
      * LoadBalancer.
      */
-    private java.util.List<String> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
      * A list of subnet IDs in your VPC to attach to your LoadBalancer.
      */
-    private java.util.List<String> subnets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnets;
 
     /**
      * The security groups assigned to your LoadBalancer within your VPC.
      */
-    private java.util.List<String> securityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroups;
 
     /**
      * The type of a LoadBalancer. This option is only available for
@@ -87,6 +87,8 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      */
     public CreateLoadBalancerRequest() {}
     
+
+
     /**
      * Constructs a new CreateLoadBalancerRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -96,11 +98,13 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * name must be unique within your set of LoadBalancers.
      */
     public CreateLoadBalancerRequest(String loadBalancerName) {
-        this.loadBalancerName = loadBalancerName;
+        setLoadBalancerName(loadBalancerName);
     }
 
     
     
+
+
     /**
      * Constructs a new CreateLoadBalancerRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -117,9 +121,9 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * after the creation of the LoadBalancer.
      */
     public CreateLoadBalancerRequest(String loadBalancerName, java.util.List<Listener> listeners, java.util.List<String> availabilityZones) {
-        this.loadBalancerName = loadBalancerName;
-        this.listeners = listeners;
-        this.availabilityZones = availabilityZones;
+        setLoadBalancerName(loadBalancerName);
+        setListeners(listeners);
+        setAvailabilityZones(availabilityZones);
     }
 
     
@@ -156,7 +160,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      *         within your set of LoadBalancers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -174,7 +178,8 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
     public java.util.List<Listener> getListeners() {
         
         if (listeners == null) {
-            listeners = new java.util.ArrayList<Listener>();
+              listeners = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>();
+              listeners.setAutoConstruct(true);
         }
         return listeners;
     }
@@ -191,8 +196,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
             this.listeners = null;
             return;
         }
-
-        java.util.List<Listener> listenersCopy = new java.util.ArrayList<Listener>(listeners.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listenersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>(listeners.size());
         listenersCopy.addAll(listeners);
         this.listeners = listenersCopy;
     }
@@ -207,7 +211,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      *         Protocol.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withListeners(Listener... listeners) {
         if (getListeners() == null) setListeners(new java.util.ArrayList<Listener>(listeners.length));
@@ -227,13 +231,13 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      *         Protocol.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withListeners(java.util.Collection<Listener> listeners) {
         if (listeners == null) {
             this.listeners = null;
         } else {
-            java.util.List<Listener> listenersCopy = new java.util.ArrayList<Listener>(listeners.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listenersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>(listeners.size());
             listenersCopy.addAll(listeners);
             this.listeners = listenersCopy;
         }
@@ -257,7 +261,8 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
     public java.util.List<String> getAvailabilityZones() {
         
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
@@ -280,8 +285,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
@@ -302,7 +306,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      *         LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -328,13 +332,13 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      *         LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
@@ -350,7 +354,8 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
     public java.util.List<String> getSubnets() {
         
         if (subnets == null) {
-            subnets = new java.util.ArrayList<String>();
+              subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnets.setAutoConstruct(true);
         }
         return subnets;
     }
@@ -365,8 +370,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
             this.subnets = null;
             return;
         }
-
-        java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
         subnetsCopy.addAll(subnets);
         this.subnets = subnetsCopy;
     }
@@ -379,7 +383,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * @param subnets A list of subnet IDs in your VPC to attach to your LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withSubnets(String... subnets) {
         if (getSubnets() == null) setSubnets(new java.util.ArrayList<String>(subnets.length));
@@ -397,13 +401,13 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * @param subnets A list of subnet IDs in your VPC to attach to your LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
             this.subnets = null;
         } else {
-            java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
             subnetsCopy.addAll(subnets);
             this.subnets = subnetsCopy;
         }
@@ -419,7 +423,8 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
     public java.util.List<String> getSecurityGroups() {
         
         if (securityGroups == null) {
-            securityGroups = new java.util.ArrayList<String>();
+              securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              securityGroups.setAutoConstruct(true);
         }
         return securityGroups;
     }
@@ -434,8 +439,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
             this.securityGroups = null;
             return;
         }
-
-        java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
         securityGroupsCopy.addAll(securityGroups);
         this.securityGroups = securityGroupsCopy;
     }
@@ -448,7 +452,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * @param securityGroups The security groups assigned to your LoadBalancer within your VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withSecurityGroups(String... securityGroups) {
         if (getSecurityGroups() == null) setSecurityGroups(new java.util.ArrayList<String>(securityGroups.length));
@@ -466,13 +470,13 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      * @param securityGroups The security groups assigned to your LoadBalancer within your VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
         } else {
-            java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
             securityGroupsCopy.addAll(securityGroups);
             this.securityGroups = securityGroupsCopy;
         }
@@ -536,7 +540,7 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
      *         balancer with a DNS name that resolves to private IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerRequest withScheme(String scheme) {
         this.scheme = scheme;
@@ -555,12 +559,12 @@ public class CreateLoadBalancerRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
-        if (getListeners() != null) sb.append("Listeners: " + getListeners() + ",");    	
-        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");    	
-        if (getSubnets() != null) sb.append("Subnets: " + getSubnets() + ",");    	
-        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+        if (getListeners() != null) sb.append("Listeners: " + getListeners() + ",");
+        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+        if (getSubnets() != null) sb.append("Subnets: " + getSubnets() + ",");
+        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");
         if (getScheme() != null) sb.append("Scheme: " + getScheme() );
         sb.append("}");
         return sb.toString();

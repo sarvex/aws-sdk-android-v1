@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#domainMetadata(DomainMetadataRequest)
  */
-public class DomainMetadataRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DomainMetadataRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain for which to display the metadata of.
@@ -38,6 +38,8 @@ public class DomainMetadataRequest extends AmazonWebServiceRequest  implements S
      */
     public DomainMetadataRequest() {}
     
+
+
     /**
      * Constructs a new DomainMetadataRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -47,7 +49,7 @@ public class DomainMetadataRequest extends AmazonWebServiceRequest  implements S
      * metadata of.
      */
     public DomainMetadataRequest(String domainName) {
-        this.domainName = domainName;
+        setDomainName(domainName);
     }
 
     
@@ -78,7 +80,7 @@ public class DomainMetadataRequest extends AmazonWebServiceRequest  implements S
      * @param domainName The name of the domain for which to display the metadata of.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataRequest withDomainName(String domainName) {
         this.domainName = domainName;
@@ -97,7 +99,7 @@ public class DomainMetadataRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomainName() != null) sb.append("DomainName: " + getDomainName() );
         sb.append("}");
         return sb.toString();

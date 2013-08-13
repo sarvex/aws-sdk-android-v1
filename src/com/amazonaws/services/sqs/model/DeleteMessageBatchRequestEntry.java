@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Encloses a receipt handle and an identifier for it.
  * </p>
  */
-public class DeleteMessageBatchRequestEntry  implements Serializable  {
+public class DeleteMessageBatchRequestEntry implements Serializable {
 
     /**
      * An identifier for this particular receipt handle. This is used to
@@ -40,6 +40,8 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
      */
     public DeleteMessageBatchRequestEntry() {}
     
+
+
     /**
      * Constructs a new DeleteMessageBatchRequestEntry object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -51,8 +53,8 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
      * @param receiptHandle A receipt handle.
      */
     public DeleteMessageBatchRequestEntry(String id, String receiptHandle) {
-        this.id = id;
-        this.receiptHandle = receiptHandle;
+        setId(id);
+        setReceiptHandle(receiptHandle);
     }
 
     
@@ -95,7 +97,7 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
      *         request need to be unique within the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchRequestEntry withId(String id) {
         this.id = id;
@@ -129,7 +131,7 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
      * @param receiptHandle A receipt handle.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchRequestEntry withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
@@ -148,8 +150,8 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() );
         sb.append("}");
         return sb.toString();

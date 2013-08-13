@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the EnableAvailabilityZonesForLoadBalancer action.
  * </p>
  */
-public class EnableAvailabilityZonesForLoadBalancerResult  implements Serializable  {
+public class EnableAvailabilityZonesForLoadBalancerResult implements Serializable {
 
     /**
      * An updated list of Availability Zones for the LoadBalancer.
      */
-    private java.util.List<String> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
      * An updated list of Availability Zones for the LoadBalancer.
@@ -35,7 +35,8 @@ public class EnableAvailabilityZonesForLoadBalancerResult  implements Serializab
     public java.util.List<String> getAvailabilityZones() {
         
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
@@ -50,8 +51,7 @@ public class EnableAvailabilityZonesForLoadBalancerResult  implements Serializab
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
@@ -64,7 +64,7 @@ public class EnableAvailabilityZonesForLoadBalancerResult  implements Serializab
      * @param availabilityZones An updated list of Availability Zones for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableAvailabilityZonesForLoadBalancerResult withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -82,13 +82,13 @@ public class EnableAvailabilityZonesForLoadBalancerResult  implements Serializab
      * @param availabilityZones An updated list of Availability Zones for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableAvailabilityZonesForLoadBalancerResult withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
@@ -107,7 +107,7 @@ public class EnableAvailabilityZonesForLoadBalancerResult  implements Serializab
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() );
         sb.append("}");
         return sb.toString();

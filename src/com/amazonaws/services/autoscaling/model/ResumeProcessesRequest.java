@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#resumeProcesses(ResumeProcessesRequest)
  */
-public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ResumeProcessesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or Amazon Resource Name (ARN) of the Auto Scaling group.
@@ -43,7 +43,7 @@ public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements 
      * <li>AddToLoadBalancer</li> </ul> <p> To suspend all process types,
      * omit this parameter.
      */
-    private java.util.List<String> scalingProcesses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> scalingProcesses;
 
     /**
      * The name or Amazon Resource Name (ARN) of the Auto Scaling group.
@@ -83,7 +83,7 @@ public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements 
      * @param autoScalingGroupName The name or Amazon Resource Name (ARN) of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResumeProcessesRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -109,7 +109,8 @@ public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements 
     public java.util.List<String> getScalingProcesses() {
         
         if (scalingProcesses == null) {
-            scalingProcesses = new java.util.ArrayList<String>();
+              scalingProcesses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              scalingProcesses.setAutoConstruct(true);
         }
         return scalingProcesses;
     }
@@ -134,8 +135,7 @@ public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements 
             this.scalingProcesses = null;
             return;
         }
-
-        java.util.List<String> scalingProcessesCopy = new java.util.ArrayList<String>(scalingProcesses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> scalingProcessesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(scalingProcesses.size());
         scalingProcessesCopy.addAll(scalingProcesses);
         this.scalingProcesses = scalingProcessesCopy;
     }
@@ -158,7 +158,7 @@ public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements 
      *         omit this parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResumeProcessesRequest withScalingProcesses(String... scalingProcesses) {
         if (getScalingProcesses() == null) setScalingProcesses(new java.util.ArrayList<String>(scalingProcesses.length));
@@ -186,13 +186,13 @@ public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements 
      *         omit this parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResumeProcessesRequest withScalingProcesses(java.util.Collection<String> scalingProcesses) {
         if (scalingProcesses == null) {
             this.scalingProcesses = null;
         } else {
-            java.util.List<String> scalingProcessesCopy = new java.util.ArrayList<String>(scalingProcesses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> scalingProcessesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(scalingProcesses.size());
             scalingProcessesCopy.addAll(scalingProcesses);
             this.scalingProcesses = scalingProcessesCopy;
         }
@@ -211,8 +211,8 @@ public class ResumeProcessesRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getScalingProcesses() != null) sb.append("ScalingProcesses: " + getScalingProcesses() );
         sb.append("}");
         return sb.toString();

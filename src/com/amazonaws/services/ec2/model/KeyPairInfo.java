@@ -23,7 +23,7 @@ import java.io.Serializable;
  * The private key material is only available when initially creating the key pair.
  * </p>
  */
-public class KeyPairInfo  implements Serializable  {
+public class KeyPairInfo implements Serializable {
 
     /**
      * The name of the key pair.
@@ -61,7 +61,7 @@ public class KeyPairInfo  implements Serializable  {
      * @param keyName The name of the key pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeyPairInfo withKeyName(String keyName) {
         this.keyName = keyName;
@@ -95,7 +95,7 @@ public class KeyPairInfo  implements Serializable  {
      * @param keyFingerprint The SHA-1 digest of the DER encoded private key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeyPairInfo withKeyFingerprint(String keyFingerprint) {
         this.keyFingerprint = keyFingerprint;
@@ -114,8 +114,8 @@ public class KeyPairInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");    	
+        sb.append("{");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");
         if (getKeyFingerprint() != null) sb.append("KeyFingerprint: " + getKeyFingerprint() );
         sb.append("}");
         return sb.toString();

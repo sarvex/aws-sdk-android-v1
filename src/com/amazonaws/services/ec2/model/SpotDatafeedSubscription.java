@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The SpotDatafeedSubscriptionType data type.
  * </p>
  */
-public class SpotDatafeedSubscription  implements Serializable  {
+public class SpotDatafeedSubscription implements Serializable {
 
     /**
      * Specifies the AWS account ID of the account.
@@ -74,7 +74,7 @@ public class SpotDatafeedSubscription  implements Serializable  {
      * @param ownerId Specifies the AWS account ID of the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotDatafeedSubscription withOwnerId(String ownerId) {
         this.ownerId = ownerId;
@@ -114,7 +114,7 @@ public class SpotDatafeedSubscription  implements Serializable  {
      *         located.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotDatafeedSubscription withBucket(String bucket) {
         this.bucket = bucket;
@@ -148,7 +148,7 @@ public class SpotDatafeedSubscription  implements Serializable  {
      * @param prefix Contains the prefix that is prepended to data feed files.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotDatafeedSubscription withPrefix(String prefix) {
         this.prefix = prefix;
@@ -182,7 +182,7 @@ public class SpotDatafeedSubscription  implements Serializable  {
      * @param state Specifies the state of the Spot Instance request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotDatafeedSubscription withState(String state) {
         this.state = state;
@@ -216,7 +216,7 @@ public class SpotDatafeedSubscription  implements Serializable  {
      * @param fault Specifies a fault code for the Spot Instance request, if present.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotDatafeedSubscription withFault(SpotInstanceStateFault fault) {
         this.fault = fault;
@@ -235,11 +235,11 @@ public class SpotDatafeedSubscription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");    	
-        if (getPrefix() != null) sb.append("Prefix: " + getPrefix() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
+        sb.append("{");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");
+        if (getPrefix() != null) sb.append("Prefix: " + getPrefix() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
         if (getFault() != null) sb.append("Fault: " + getFault() );
         sb.append("}");
         return sb.toString();

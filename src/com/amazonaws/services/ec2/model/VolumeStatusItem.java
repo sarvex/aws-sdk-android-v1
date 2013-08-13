@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Volume Status Item
  */
-public class VolumeStatusItem  implements Serializable  {
+public class VolumeStatusItem implements Serializable {
 
     private String volumeId;
 
@@ -26,9 +26,9 @@ public class VolumeStatusItem  implements Serializable  {
 
     private VolumeStatusInfo volumeStatus;
 
-    private java.util.List<VolumeStatusEvent> events;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent> events;
 
-    private java.util.List<VolumeStatusAction> actions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction> actions;
 
     /**
      * Returns the value of the VolumeId property for this object.
@@ -56,7 +56,7 @@ public class VolumeStatusItem  implements Serializable  {
      * @param volumeId The new value for the VolumeId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -90,7 +90,7 @@ public class VolumeStatusItem  implements Serializable  {
      * @param availabilityZone The new value for the AvailabilityZone property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -124,7 +124,7 @@ public class VolumeStatusItem  implements Serializable  {
      * @param volumeStatus The new value for the VolumeStatus property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withVolumeStatus(VolumeStatusInfo volumeStatus) {
         this.volumeStatus = volumeStatus;
@@ -140,7 +140,8 @@ public class VolumeStatusItem  implements Serializable  {
     public java.util.List<VolumeStatusEvent> getEvents() {
         
         if (events == null) {
-            events = new java.util.ArrayList<VolumeStatusEvent>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
@@ -155,8 +156,7 @@ public class VolumeStatusItem  implements Serializable  {
             this.events = null;
             return;
         }
-
-        java.util.List<VolumeStatusEvent> eventsCopy = new java.util.ArrayList<VolumeStatusEvent>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
@@ -169,7 +169,7 @@ public class VolumeStatusItem  implements Serializable  {
      * @param events The new value for the Events property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withEvents(VolumeStatusEvent... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<VolumeStatusEvent>(events.length));
@@ -187,13 +187,13 @@ public class VolumeStatusItem  implements Serializable  {
      * @param events The new value for the Events property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withEvents(java.util.Collection<VolumeStatusEvent> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<VolumeStatusEvent> eventsCopy = new java.util.ArrayList<VolumeStatusEvent>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
@@ -209,7 +209,8 @@ public class VolumeStatusItem  implements Serializable  {
     public java.util.List<VolumeStatusAction> getActions() {
         
         if (actions == null) {
-            actions = new java.util.ArrayList<VolumeStatusAction>();
+              actions = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction>();
+              actions.setAutoConstruct(true);
         }
         return actions;
     }
@@ -224,8 +225,7 @@ public class VolumeStatusItem  implements Serializable  {
             this.actions = null;
             return;
         }
-
-        java.util.List<VolumeStatusAction> actionsCopy = new java.util.ArrayList<VolumeStatusAction>(actions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction> actionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction>(actions.size());
         actionsCopy.addAll(actions);
         this.actions = actionsCopy;
     }
@@ -238,7 +238,7 @@ public class VolumeStatusItem  implements Serializable  {
      * @param actions The new value for the Actions property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withActions(VolumeStatusAction... actions) {
         if (getActions() == null) setActions(new java.util.ArrayList<VolumeStatusAction>(actions.length));
@@ -256,13 +256,13 @@ public class VolumeStatusItem  implements Serializable  {
      * @param actions The new value for the Actions property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withActions(java.util.Collection<VolumeStatusAction> actions) {
         if (actions == null) {
             this.actions = null;
         } else {
-            java.util.List<VolumeStatusAction> actionsCopy = new java.util.ArrayList<VolumeStatusAction>(actions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction> actionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction>(actions.size());
             actionsCopy.addAll(actions);
             this.actions = actionsCopy;
         }
@@ -281,11 +281,11 @@ public class VolumeStatusItem  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getVolumeStatus() != null) sb.append("VolumeStatus: " + getVolumeStatus() + ",");    	
-        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getVolumeStatus() != null) sb.append("VolumeStatus: " + getVolumeStatus() + ",");
+        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");
         if (getActions() != null) sb.append("Actions: " + getActions() );
         sb.append("}");
         return sb.toString();

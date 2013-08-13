@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityNotificationTopic(SetIdentityNotificationTopicRequest)
  */
-public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity for which the topic will be set. Examples:
@@ -84,7 +84,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
      *         <code>user@example.com</code>, <code>example.com</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityNotificationTopicRequest withIdentity(String identity) {
         this.identity = identity;
@@ -137,7 +137,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
      *         specified topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see NotificationType
      */
@@ -176,7 +176,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
      *         specified topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see NotificationType
      */
@@ -229,7 +229,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
      *         is disabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityNotificationTopicRequest withSnsTopic(String snsTopic) {
         this.snsTopic = snsTopic;
@@ -248,9 +248,9 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");    	
-        if (getNotificationType() != null) sb.append("NotificationType: " + getNotificationType() + ",");    	
+        sb.append("{");
+        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");
+        if (getNotificationType() != null) sb.append("NotificationType: " + getNotificationType() + ",");
         if (getSnsTopic() != null) sb.append("SnsTopic: " + getSnsTopic() );
         sb.append("}");
         return sb.toString();

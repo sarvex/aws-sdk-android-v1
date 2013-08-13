@@ -33,7 +33,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#createLaunchConfiguration(CreateLaunchConfigurationRequest)
  */
-public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the launch configuration to create.
@@ -78,7 +78,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * href="http://docs.amazonwebservices.com/AmazonVPC/latest/UserGuide/index.html?VPC_SecurityGroups.html">
      * Security Groups</a> in the Amazon VPC product documentation.
      */
-    private java.util.List<String> securityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroups;
 
     /**
      * The user data available to the launched Amazon EC2 instances. For more
@@ -131,7 +131,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/index.html?block-device-mapping-concepts.html">
      * Block Device Mapping</a> in the Amazon EC2 product documentation.
      */
-    private java.util.List<BlockDeviceMapping> blockDeviceMappings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappings;
 
     /**
      * Enables detailed monitoring, which is enabled by default. <p> When
@@ -212,7 +212,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * @param launchConfigurationName The name of the launch configuration to create.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
@@ -276,7 +276,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         documentation</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withImageId(String imageId) {
         this.imageId = imageId;
@@ -322,7 +322,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * @param keyName The name of the Amazon EC2 key pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withKeyName(String keyName) {
         this.keyName = keyName;
@@ -358,7 +358,8 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
     public java.util.List<String> getSecurityGroups() {
         
         if (securityGroups == null) {
-            securityGroups = new java.util.ArrayList<String>();
+              securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              securityGroups.setAutoConstruct(true);
         }
         return securityGroups;
     }
@@ -393,8 +394,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
             this.securityGroups = null;
             return;
         }
-
-        java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
         securityGroupsCopy.addAll(securityGroups);
         this.securityGroups = securityGroupsCopy;
     }
@@ -427,7 +427,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         Security Groups</a> in the Amazon VPC product documentation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withSecurityGroups(String... securityGroups) {
         if (getSecurityGroups() == null) setSecurityGroups(new java.util.ArrayList<String>(securityGroups.length));
@@ -465,13 +465,13 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         Security Groups</a> in the Amazon VPC product documentation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
         } else {
-            java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
             securityGroupsCopy.addAll(securityGroups);
             this.securityGroups = securityGroupsCopy;
         }
@@ -535,7 +535,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         documentation</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withUserData(String userData) {
         this.userData = userData;
@@ -599,7 +599,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         documentation</a>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withInstanceType(String instanceType) {
         this.instanceType = instanceType;
@@ -645,7 +645,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * @param kernelId The ID of the kernel associated with the Amazon EC2 AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withKernelId(String kernelId) {
         this.kernelId = kernelId;
@@ -691,7 +691,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * @param ramdiskId The ID of the RAM disk associated with the Amazon EC2 AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
@@ -719,7 +719,8 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
     public java.util.List<BlockDeviceMapping> getBlockDeviceMappings() {
         
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<BlockDeviceMapping>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
@@ -746,8 +747,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
@@ -772,7 +772,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         Block Device Mapping</a> in the Amazon EC2 product documentation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withBlockDeviceMappings(BlockDeviceMapping... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.length));
@@ -802,13 +802,13 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         Block Device Mapping</a> in the Amazon EC2 product documentation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
@@ -878,7 +878,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         CloudWatch</a> product page.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withInstanceMonitoring(InstanceMonitoring instanceMonitoring) {
         this.instanceMonitoring = instanceMonitoring;
@@ -957,7 +957,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withSpotPrice(String spotPrice) {
         this.spotPrice = spotPrice;
@@ -1033,7 +1033,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      *         Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withIamInstanceProfile(String iamInstanceProfile) {
         this.iamInstanceProfile = iamInstanceProfile;
@@ -1067,7 +1067,7 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * @param ebsOptimized The new value for the EbsOptimized property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLaunchConfigurationRequest withEbsOptimized(Boolean ebsOptimized) {
         this.ebsOptimized = ebsOptimized;
@@ -1095,19 +1095,19 @@ public class CreateLaunchConfigurationRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");    	
-        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");    	
-        if (getUserData() != null) sb.append("UserData: " + getUserData() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");    	
-        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");    	
-        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");    	
-        if (getInstanceMonitoring() != null) sb.append("InstanceMonitoring: " + getInstanceMonitoring() + ",");    	
-        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");    	
-        if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");    	
+        sb.append("{");
+        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");
+        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+        if (getUserData() != null) sb.append("UserData: " + getUserData() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");
+        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+        if (getInstanceMonitoring() != null) sb.append("InstanceMonitoring: " + getInstanceMonitoring() + ",");
+        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");
+        if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");
         if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() );
         sb.append("}");
         return sb.toString();

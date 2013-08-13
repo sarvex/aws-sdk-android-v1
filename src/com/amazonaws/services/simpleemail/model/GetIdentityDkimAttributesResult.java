@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a list of all the DKIM attributes for the specified identity.
  * </p>
  */
-public class GetIdentityDkimAttributesResult  implements Serializable  {
+public class GetIdentityDkimAttributesResult implements Serializable {
 
     /**
      * The DKIM attributes for an email address or a domain.
@@ -38,7 +38,6 @@ public class GetIdentityDkimAttributesResult  implements Serializable  {
             dkimAttributes = new java.util.HashMap<String,IdentityDkimAttributes>();
         }
         return dkimAttributes;
-
     }
     
     /**
@@ -58,13 +57,44 @@ public class GetIdentityDkimAttributesResult  implements Serializable  {
      * @param dkimAttributes The DKIM attributes for an email address or a domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetIdentityDkimAttributesResult withDkimAttributes(java.util.Map<String,IdentityDkimAttributes> dkimAttributes) {
         setDkimAttributes(dkimAttributes);
         return this;
     }
     
+   	
+    /**
+     * The DKIM attributes for an email address or a domain.
+     * <p>
+     * The method adds a new key-value pair into DkimAttributes parameter,
+     * and returns a reference to this object so that method calls can be
+     * chained together.
+     *
+     * @param key The key of the entry to be added into DkimAttributes.
+     * @param value The corresponding value of the entry to be added into DkimAttributes.
+     */
+	public GetIdentityDkimAttributesResult addDkimAttributesEntry(String key, IdentityDkimAttributes value) {
+		if (null == this.dkimAttributes) {
+			this.dkimAttributes = new java.util.HashMap<String,IdentityDkimAttributes>();
+		}
+		if (this.dkimAttributes.containsKey(key))
+			throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+		this.dkimAttributes.put(key, value);
+		return this;
+	}
+	
+	/**
+	 * Removes all the entries added into DkimAttributes.
+	 * <p>
+	 * Returns a reference to this object so that method calls can be chained together.
+	 */
+	public GetIdentityDkimAttributesResult clearDkimAttributesEntries() {
+		this.dkimAttributes = null;
+		return this;
+	}
+	
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -76,7 +106,7 @@ public class GetIdentityDkimAttributesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDkimAttributes() != null) sb.append("DkimAttributes: " + getDkimAttributes() );
         sb.append("}");
         return sb.toString();

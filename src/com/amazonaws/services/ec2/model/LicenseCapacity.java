@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the capacity that a license is able to support.
  * </p>
  */
-public class LicenseCapacity  implements Serializable  {
+public class LicenseCapacity implements Serializable {
 
     /**
      * The number of licenses available.
@@ -72,7 +72,7 @@ public class LicenseCapacity  implements Serializable  {
      * @param capacity The number of licenses available.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LicenseCapacity withCapacity(Integer capacity) {
         this.capacity = capacity;
@@ -112,7 +112,7 @@ public class LicenseCapacity  implements Serializable  {
      *         license's capacity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LicenseCapacity withInstanceCapacity(Integer instanceCapacity) {
         this.instanceCapacity = instanceCapacity;
@@ -152,7 +152,7 @@ public class LicenseCapacity  implements Serializable  {
      *         actively being used or not.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LicenseCapacity withState(String state) {
         this.state = state;
@@ -198,7 +198,7 @@ public class LicenseCapacity  implements Serializable  {
      *         reactivated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LicenseCapacity withEarliestAllowedDeactivationTime(java.util.Date earliestAllowedDeactivationTime) {
         this.earliestAllowedDeactivationTime = earliestAllowedDeactivationTime;
@@ -217,10 +217,10 @@ public class LicenseCapacity  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCapacity() != null) sb.append("Capacity: " + getCapacity() + ",");    	
-        if (getInstanceCapacity() != null) sb.append("InstanceCapacity: " + getInstanceCapacity() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
+        sb.append("{");
+        if (getCapacity() != null) sb.append("Capacity: " + getCapacity() + ",");
+        if (getInstanceCapacity() != null) sb.append("InstanceCapacity: " + getInstanceCapacity() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
         if (getEarliestAllowedDeactivationTime() != null) sb.append("EarliestAllowedDeactivationTime: " + getEarliestAllowedDeactivationTime() );
         sb.append("}");
         return sb.toString();

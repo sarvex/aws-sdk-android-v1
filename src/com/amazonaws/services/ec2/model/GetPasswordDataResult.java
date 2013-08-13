@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of the GetPasswordData operation.
  * </p>
  */
-public class GetPasswordDataResult  implements Serializable  {
+public class GetPasswordDataResult implements Serializable {
 
     /**
      * The ID of the instance whose Windows administrator password was
@@ -70,7 +70,7 @@ public class GetPasswordDataResult  implements Serializable  {
      *         requested.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPasswordDataResult withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -104,7 +104,7 @@ public class GetPasswordDataResult  implements Serializable  {
      * @param timestamp The time the data was last updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPasswordDataResult withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
@@ -138,7 +138,7 @@ public class GetPasswordDataResult  implements Serializable  {
      * @param passwordData The Windows administrator password of the specified instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPasswordDataResult withPasswordData(String passwordData) {
         this.passwordData = passwordData;
@@ -157,9 +157,9 @@ public class GetPasswordDataResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
         if (getPasswordData() != null) sb.append("PasswordData: " + getPasswordData() );
         sb.append("}");
         return sb.toString();

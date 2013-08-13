@@ -21,7 +21,7 @@ import java.io.Serializable;
  * aggregated into an existing metric.
  * </p>
  */
-public class MetricDatum  implements Serializable  {
+public class MetricDatum implements Serializable {
 
     /**
      * The name of the metric.
@@ -32,14 +32,12 @@ public class MetricDatum  implements Serializable  {
     private String metricName;
 
     /**
-     * A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).
+     * A list of dimensions associated with the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<Dimension> dimensions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensions;
 
     /**
      * The time stamp used for the metric. If not specified, the default
@@ -50,10 +48,10 @@ public class MetricDatum  implements Serializable  {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
-     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
-     * NaN, +Infinity, -Infinity) are not supported. </important>
+     * CloudWatch truncates values with very large exponents. Values with
+     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
+     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
+     * are also truncated. </important>
      */
     private Double value;
 
@@ -105,7 +103,7 @@ public class MetricDatum  implements Serializable  {
      * @param metricName The name of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withMetricName(String metricName) {
         this.metricName = metricName;
@@ -114,64 +112,52 @@ public class MetricDatum  implements Serializable  {
     
     
     /**
-     * A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).
+     * A list of dimensions associated with the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @return A list of dimensions associated with the metric. Note, when using the
-     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
-     *         Dimensions.member.N).
+     * @return A list of dimensions associated with the metric.
      */
     public java.util.List<Dimension> getDimensions() {
         
         if (dimensions == null) {
-            dimensions = new java.util.ArrayList<Dimension>();
+              dimensions = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>();
+              dimensions.setAutoConstruct(true);
         }
         return dimensions;
     }
     
     /**
-     * A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).
+     * A list of dimensions associated with the metric.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param dimensions A list of dimensions associated with the metric. Note, when using the
-     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
-     *         Dimensions.member.N).
+     * @param dimensions A list of dimensions associated with the metric.
      */
     public void setDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
             return;
         }
-
-        java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
         dimensionsCopy.addAll(dimensions);
         this.dimensions = dimensionsCopy;
     }
     
     /**
-     * A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).
+     * A list of dimensions associated with the metric.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param dimensions A list of dimensions associated with the metric. Note, when using the
-     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
-     *         Dimensions.member.N).
+     * @param dimensions A list of dimensions associated with the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withDimensions(Dimension... dimensions) {
         if (getDimensions() == null) setDimensions(new java.util.ArrayList<Dimension>(dimensions.length));
@@ -182,27 +168,23 @@ public class MetricDatum  implements Serializable  {
     }
     
     /**
-     * A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).
+     * A list of dimensions associated with the metric.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param dimensions A list of dimensions associated with the metric. Note, when using the
-     *         Dimensions value in a query, you need to append .member.N to it (e.g.,
-     *         Dimensions.member.N).
+     * @param dimensions A list of dimensions associated with the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
         } else {
-            java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
             dimensionsCopy.addAll(dimensions);
             this.dimensions = dimensionsCopy;
         }
@@ -242,7 +224,7 @@ public class MetricDatum  implements Serializable  {
      *         value is set to the time the metric data was received.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
@@ -253,17 +235,17 @@ public class MetricDatum  implements Serializable  {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
-     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
-     * NaN, +Infinity, -Infinity) are not supported. </important>
+     * CloudWatch truncates values with very large exponents. Values with
+     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
+     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
+     * are also truncated. </important>
      *
      * @return The value for the metric. <important>Although the <code>Value</code>
      *         parameter accepts numbers of type <code>Double</code>, Amazon
-     *         CloudWatch rejects values that are either too small or too large.
-     *         Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
-     *         10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
-     *         NaN, +Infinity, -Infinity) are not supported. </important>
+     *         CloudWatch truncates values with very large exponents. Values with
+     *         base-10 exponents greater than 126 (1 x 10^126) are truncated.
+     *         Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
+     *         are also truncated. </important>
      */
     public Double getValue() {
         return value;
@@ -272,17 +254,17 @@ public class MetricDatum  implements Serializable  {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
-     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
-     * NaN, +Infinity, -Infinity) are not supported. </important>
+     * CloudWatch truncates values with very large exponents. Values with
+     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
+     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
+     * are also truncated. </important>
      *
      * @param value The value for the metric. <important>Although the <code>Value</code>
      *         parameter accepts numbers of type <code>Double</code>, Amazon
-     *         CloudWatch rejects values that are either too small or too large.
-     *         Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
-     *         10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
-     *         NaN, +Infinity, -Infinity) are not supported. </important>
+     *         CloudWatch truncates values with very large exponents. Values with
+     *         base-10 exponents greater than 126 (1 x 10^126) are truncated.
+     *         Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
+     *         are also truncated. </important>
      */
     public void setValue(Double value) {
         this.value = value;
@@ -291,22 +273,22 @@ public class MetricDatum  implements Serializable  {
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
-     * CloudWatch rejects values that are either too small or too large.
-     * Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
-     * 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
-     * NaN, +Infinity, -Infinity) are not supported. </important>
+     * CloudWatch truncates values with very large exponents. Values with
+     * base-10 exponents greater than 126 (1 x 10^126) are truncated.
+     * Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
+     * are also truncated. </important>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param value The value for the metric. <important>Although the <code>Value</code>
      *         parameter accepts numbers of type <code>Double</code>, Amazon
-     *         CloudWatch rejects values that are either too small or too large.
-     *         Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base
-     *         10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g.,
-     *         NaN, +Infinity, -Infinity) are not supported. </important>
+     *         CloudWatch truncates values with very large exponents. Values with
+     *         base-10 exponents greater than 126 (1 x 10^126) are truncated.
+     *         Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
+     *         are also truncated. </important>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withValue(Double value) {
         this.value = value;
@@ -340,7 +322,7 @@ public class MetricDatum  implements Serializable  {
      * @param statisticValues A set of statistical values describing the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withStatisticValues(StatisticSet statisticValues) {
         this.statisticValues = statisticValues;
@@ -387,7 +369,7 @@ public class MetricDatum  implements Serializable  {
      * @param unit The unit of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -422,7 +404,7 @@ public class MetricDatum  implements Serializable  {
      * @param unit The unit of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -442,12 +424,12 @@ public class MetricDatum  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
-        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
-        if (getStatisticValues() != null) sb.append("StatisticValues: " + getStatisticValues() + ",");    	
+        sb.append("{");
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");
+        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
+        if (getStatisticValues() != null) sb.append("StatisticValues: " + getStatisticValues() + ",");
         if (getUnit() != null) sb.append("Unit: " + getUnit() );
         sb.append("}");
         return sb.toString();

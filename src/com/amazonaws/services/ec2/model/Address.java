@@ -20,7 +20,7 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class Address  implements Serializable  {
+public class Address implements Serializable {
 
     /**
      * 
@@ -70,7 +70,7 @@ public class Address  implements Serializable  {
      * @param instanceId 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Address withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -104,7 +104,7 @@ public class Address  implements Serializable  {
      * @param publicIp 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Address withPublicIp(String publicIp) {
         this.publicIp = publicIp;
@@ -138,7 +138,7 @@ public class Address  implements Serializable  {
      * @param allocationId The new value for the AllocationId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Address withAllocationId(String allocationId) {
         this.allocationId = allocationId;
@@ -172,7 +172,7 @@ public class Address  implements Serializable  {
      * @param associationId The new value for the AssociationId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Address withAssociationId(String associationId) {
         this.associationId = associationId;
@@ -219,7 +219,7 @@ public class Address  implements Serializable  {
      * @param domain The new value for the Domain property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
@@ -254,7 +254,7 @@ public class Address  implements Serializable  {
      * @param domain The new value for the Domain property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
@@ -289,7 +289,7 @@ public class Address  implements Serializable  {
      * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Address withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
@@ -328,7 +328,7 @@ public class Address  implements Serializable  {
      *         object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Address withNetworkInterfaceOwnerId(String networkInterfaceOwnerId) {
         this.networkInterfaceOwnerId = networkInterfaceOwnerId;
@@ -362,7 +362,7 @@ public class Address  implements Serializable  {
      * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Address withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
@@ -381,14 +381,14 @@ public class Address  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
-        if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() + ",");    	
-        if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() + ",");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
-        if (getNetworkInterfaceOwnerId() != null) sb.append("NetworkInterfaceOwnerId: " + getNetworkInterfaceOwnerId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
+        if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() + ",");
+        if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() + ",");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+        if (getNetworkInterfaceOwnerId() != null) sb.append("NetworkInterfaceOwnerId: " + getNetworkInterfaceOwnerId() + ",");
         if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() );
         sb.append("}");
         return sb.toString();

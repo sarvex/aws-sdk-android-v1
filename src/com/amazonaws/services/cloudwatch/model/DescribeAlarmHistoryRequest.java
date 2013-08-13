@@ -28,7 +28,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#describeAlarmHistory(DescribeAlarmHistoryRequest)
  */
-public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the alarm.
@@ -105,7 +105,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param alarmName The name of the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withAlarmName(String alarmName) {
         this.alarmName = alarmName;
@@ -152,7 +152,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param historyItemType The type of alarm histories to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HistoryItemType
      */
@@ -187,7 +187,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param historyItemType The type of alarm histories to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HistoryItemType
      */
@@ -222,7 +222,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param startDate The starting date to retrieve alarm history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withStartDate(java.util.Date startDate) {
         this.startDate = startDate;
@@ -256,7 +256,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param endDate The ending date to retrieve alarm history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withEndDate(java.util.Date endDate) {
         this.endDate = endDate;
@@ -299,7 +299,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param maxRecords The maximum number of alarm history records to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
@@ -339,7 +339,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      *         data available.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -358,12 +358,12 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");    	
-        if (getHistoryItemType() != null) sb.append("HistoryItemType: " + getHistoryItemType() + ",");    	
-        if (getStartDate() != null) sb.append("StartDate: " + getStartDate() + ",");    	
-        if (getEndDate() != null) sb.append("EndDate: " + getEndDate() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");
+        if (getHistoryItemType() != null) sb.append("HistoryItemType: " + getHistoryItemType() + ",");
+        if (getStartDate() != null) sb.append("StartDate: " + getStartDate() + ",");
+        if (getEndDate() != null) sb.append("EndDate: " + getEndDate() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

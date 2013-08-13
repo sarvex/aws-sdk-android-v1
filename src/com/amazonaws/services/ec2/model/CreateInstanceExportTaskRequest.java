@@ -22,7 +22,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createInstanceExportTask(CreateInstanceExportTaskRequest)
  */
-public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest implements Serializable {
 
     private String description;
 
@@ -58,7 +58,7 @@ public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest  im
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInstanceExportTaskRequest withDescription(String description) {
         this.description = description;
@@ -92,7 +92,7 @@ public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest  im
      * @param instanceId The new value for the InstanceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInstanceExportTaskRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -139,7 +139,7 @@ public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest  im
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExportEnvironment
      */
@@ -174,7 +174,7 @@ public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest  im
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExportEnvironment
      */
@@ -209,7 +209,7 @@ public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest  im
      * @param exportToS3Task The new value for the ExportToS3Task property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInstanceExportTaskRequest withExportToS3Task(ExportToS3TaskSpecification exportToS3Task) {
         this.exportToS3Task = exportToS3Task;
@@ -228,10 +228,10 @@ public class CreateInstanceExportTaskRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getTargetEnvironment() != null) sb.append("TargetEnvironment: " + getTargetEnvironment() + ",");    	
+        sb.append("{");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getTargetEnvironment() != null) sb.append("TargetEnvironment: " + getTargetEnvironment() + ",");
         if (getExportToS3Task() != null) sb.append("ExportToS3Task: " + getExportToS3Task() );
         sb.append("}");
         return sb.toString();

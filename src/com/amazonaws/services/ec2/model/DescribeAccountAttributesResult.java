@@ -18,9 +18,9 @@ import java.io.Serializable;
 /**
  * Describe Account Attributes Result
  */
-public class DescribeAccountAttributesResult  implements Serializable  {
+public class DescribeAccountAttributesResult implements Serializable {
 
-    private java.util.List<AccountAttribute> accountAttributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute> accountAttributes;
 
     /**
      * Returns the value of the AccountAttributes property for this object.
@@ -30,7 +30,8 @@ public class DescribeAccountAttributesResult  implements Serializable  {
     public java.util.List<AccountAttribute> getAccountAttributes() {
         
         if (accountAttributes == null) {
-            accountAttributes = new java.util.ArrayList<AccountAttribute>();
+              accountAttributes = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute>();
+              accountAttributes.setAutoConstruct(true);
         }
         return accountAttributes;
     }
@@ -45,8 +46,7 @@ public class DescribeAccountAttributesResult  implements Serializable  {
             this.accountAttributes = null;
             return;
         }
-
-        java.util.List<AccountAttribute> accountAttributesCopy = new java.util.ArrayList<AccountAttribute>(accountAttributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute> accountAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute>(accountAttributes.size());
         accountAttributesCopy.addAll(accountAttributes);
         this.accountAttributes = accountAttributesCopy;
     }
@@ -59,7 +59,7 @@ public class DescribeAccountAttributesResult  implements Serializable  {
      * @param accountAttributes The new value for the AccountAttributes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesResult withAccountAttributes(AccountAttribute... accountAttributes) {
         if (getAccountAttributes() == null) setAccountAttributes(new java.util.ArrayList<AccountAttribute>(accountAttributes.length));
@@ -77,13 +77,13 @@ public class DescribeAccountAttributesResult  implements Serializable  {
      * @param accountAttributes The new value for the AccountAttributes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesResult withAccountAttributes(java.util.Collection<AccountAttribute> accountAttributes) {
         if (accountAttributes == null) {
             this.accountAttributes = null;
         } else {
-            java.util.List<AccountAttribute> accountAttributesCopy = new java.util.ArrayList<AccountAttribute>(accountAttributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute> accountAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute>(accountAttributes.size());
             accountAttributesCopy.addAll(accountAttributes);
             this.accountAttributes = accountAttributesCopy;
         }
@@ -102,7 +102,7 @@ public class DescribeAccountAttributesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAccountAttributes() != null) sb.append("AccountAttributes: " + getAccountAttributes() );
         sb.append("}");
         return sb.toString();

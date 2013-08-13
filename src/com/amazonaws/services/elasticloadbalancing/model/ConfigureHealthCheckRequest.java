@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#configureHealthCheck(ConfigureHealthCheckRequest)
  */
-public class ConfigureHealthCheckRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ConfigureHealthCheckRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The mnemonic name associated with the LoadBalancer. This name must be
@@ -44,6 +44,8 @@ public class ConfigureHealthCheckRequest extends AmazonWebServiceRequest  implem
      */
     public ConfigureHealthCheckRequest() {}
     
+
+
     /**
      * Constructs a new ConfigureHealthCheckRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -55,8 +57,8 @@ public class ConfigureHealthCheckRequest extends AmazonWebServiceRequest  implem
      * information for the new healthcheck.
      */
     public ConfigureHealthCheckRequest(String loadBalancerName, HealthCheck healthCheck) {
-        this.loadBalancerName = loadBalancerName;
-        this.healthCheck = healthCheck;
+        setLoadBalancerName(loadBalancerName);
+        setHealthCheck(healthCheck);
     }
 
     
@@ -93,7 +95,7 @@ public class ConfigureHealthCheckRequest extends AmazonWebServiceRequest  implem
      *         unique within the client AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigureHealthCheckRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -133,7 +135,7 @@ public class ConfigureHealthCheckRequest extends AmazonWebServiceRequest  implem
      *         healthcheck.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigureHealthCheckRequest withHealthCheck(HealthCheck healthCheck) {
         this.healthCheck = healthCheck;
@@ -152,8 +154,8 @@ public class ConfigureHealthCheckRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getHealthCheck() != null) sb.append("HealthCheck: " + getHealthCheck() );
         sb.append("}");
         return sb.toString();

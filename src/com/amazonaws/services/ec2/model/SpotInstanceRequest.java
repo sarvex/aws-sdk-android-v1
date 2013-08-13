@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Spot Instance Request
  */
-public class SpotInstanceRequest  implements Serializable  {
+public class SpotInstanceRequest implements Serializable {
 
     private String spotInstanceRequestId;
 
@@ -54,7 +54,7 @@ public class SpotInstanceRequest  implements Serializable  {
     /**
      * A list of tags for this spot instance request.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * The Availability Zone in which the bid is launched.
@@ -88,7 +88,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param spotInstanceRequestId The new value for the SpotInstanceRequestId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withSpotInstanceRequestId(String spotInstanceRequestId) {
         this.spotInstanceRequestId = spotInstanceRequestId;
@@ -122,7 +122,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param spotPrice The new value for the SpotPrice property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withSpotPrice(String spotPrice) {
         this.spotPrice = spotPrice;
@@ -169,7 +169,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param type The new value for the Type property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SpotInstanceType
      */
@@ -204,7 +204,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param type The new value for the Type property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SpotInstanceType
      */
@@ -239,7 +239,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param state The new value for the State property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withState(String state) {
         this.state = state;
@@ -273,7 +273,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param fault The new value for the Fault property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withFault(SpotInstanceStateFault fault) {
         this.fault = fault;
@@ -307,7 +307,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param status The new value for the Status property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withStatus(SpotInstanceStatus status) {
         this.status = status;
@@ -341,7 +341,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param validFrom The new value for the ValidFrom property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withValidFrom(java.util.Date validFrom) {
         this.validFrom = validFrom;
@@ -375,7 +375,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param validUntil The new value for the ValidUntil property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withValidUntil(java.util.Date validUntil) {
         this.validUntil = validUntil;
@@ -409,7 +409,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param launchGroup The new value for the LaunchGroup property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withLaunchGroup(String launchGroup) {
         this.launchGroup = launchGroup;
@@ -444,7 +444,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param availabilityZoneGroup The new value for the AvailabilityZoneGroup property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withAvailabilityZoneGroup(String availabilityZoneGroup) {
         this.availabilityZoneGroup = availabilityZoneGroup;
@@ -478,7 +478,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param launchSpecification The LaunchSpecificationType data type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withLaunchSpecification(LaunchSpecification launchSpecification) {
         this.launchSpecification = launchSpecification;
@@ -512,7 +512,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param instanceId The new value for the InstanceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -546,7 +546,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param createTime The new value for the CreateTime property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withCreateTime(java.util.Date createTime) {
         this.createTime = createTime;
@@ -580,7 +580,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param productDescription The new value for the ProductDescription property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withProductDescription(String productDescription) {
         this.productDescription = productDescription;
@@ -596,7 +596,8 @@ public class SpotInstanceRequest  implements Serializable  {
     public java.util.List<Tag> getTags() {
         
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -611,8 +612,7 @@ public class SpotInstanceRequest  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -625,7 +625,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param tags A list of tags for this spot instance request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -643,13 +643,13 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param tags A list of tags for this spot instance request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
@@ -683,7 +683,7 @@ public class SpotInstanceRequest  implements Serializable  {
      * @param launchedAvailabilityZone The Availability Zone in which the bid is launched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceRequest withLaunchedAvailabilityZone(String launchedAvailabilityZone) {
         this.launchedAvailabilityZone = launchedAvailabilityZone;
@@ -702,22 +702,22 @@ public class SpotInstanceRequest  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");    	
-        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getFault() != null) sb.append("Fault: " + getFault() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getValidFrom() != null) sb.append("ValidFrom: " + getValidFrom() + ",");    	
-        if (getValidUntil() != null) sb.append("ValidUntil: " + getValidUntil() + ",");    	
-        if (getLaunchGroup() != null) sb.append("LaunchGroup: " + getLaunchGroup() + ",");    	
-        if (getAvailabilityZoneGroup() != null) sb.append("AvailabilityZoneGroup: " + getAvailabilityZoneGroup() + ",");    	
-        if (getLaunchSpecification() != null) sb.append("LaunchSpecification: " + getLaunchSpecification() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getCreateTime() != null) sb.append("CreateTime: " + getCreateTime() + ",");    	
-        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
+        sb.append("{");
+        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");
+        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getFault() != null) sb.append("Fault: " + getFault() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getValidFrom() != null) sb.append("ValidFrom: " + getValidFrom() + ",");
+        if (getValidUntil() != null) sb.append("ValidUntil: " + getValidUntil() + ",");
+        if (getLaunchGroup() != null) sb.append("LaunchGroup: " + getLaunchGroup() + ",");
+        if (getAvailabilityZoneGroup() != null) sb.append("AvailabilityZoneGroup: " + getAvailabilityZoneGroup() + ",");
+        if (getLaunchSpecification() != null) sb.append("LaunchSpecification: " + getLaunchSpecification() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getCreateTime() != null) sb.append("CreateTime: " + getCreateTime() + ",");
+        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
         if (getLaunchedAvailabilityZone() != null) sb.append("LaunchedAvailabilityZone: " + getLaunchedAvailabilityZone() );
         sb.append("}");
         return sb.toString();

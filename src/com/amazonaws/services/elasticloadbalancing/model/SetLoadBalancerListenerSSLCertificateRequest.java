@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#setLoadBalancerListenerSSLCertificate(SetLoadBalancerListenerSSLCertificateRequest)
  */
-public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the the LoadBalancer.
@@ -52,6 +52,8 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
      */
     public SetLoadBalancerListenerSSLCertificateRequest() {}
     
+
+
     /**
      * Constructs a new SetLoadBalancerListenerSSLCertificateRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -67,9 +69,9 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
      * Management documentation.
      */
     public SetLoadBalancerListenerSSLCertificateRequest(String loadBalancerName, Integer loadBalancerPort, String sSLCertificateId) {
-        this.loadBalancerName = loadBalancerName;
-        this.loadBalancerPort = loadBalancerPort;
-        this.sSLCertificateId = sSLCertificateId;
+        setLoadBalancerName(loadBalancerName);
+        setLoadBalancerPort(loadBalancerPort);
+        setSSLCertificateId(sSLCertificateId);
     }
 
     
@@ -100,7 +102,7 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
      * @param loadBalancerName The name of the the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerListenerSSLCertificateRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -134,7 +136,7 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
      * @param loadBalancerPort The port that uses the specified SSL certificate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerListenerSSLCertificateRequest withLoadBalancerPort(Integer loadBalancerPort) {
         this.loadBalancerPort = loadBalancerPort;
@@ -192,7 +194,7 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
      *         Management documentation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerListenerSSLCertificateRequest withSSLCertificateId(String sSLCertificateId) {
         this.sSLCertificateId = sSLCertificateId;
@@ -211,9 +213,9 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
-        if (getLoadBalancerPort() != null) sb.append("LoadBalancerPort: " + getLoadBalancerPort() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+        if (getLoadBalancerPort() != null) sb.append("LoadBalancerPort: " + getLoadBalancerPort() + ",");
         if (getSSLCertificateId() != null) sb.append("SSLCertificateId: " + getSSLCertificateId() );
         sb.append("}");
         return sb.toString();

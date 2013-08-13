@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of creating a new EC2 image. Contains the ID of the new image.
  * </p>
  */
-public class CreateImageResult  implements Serializable  {
+public class CreateImageResult implements Serializable {
 
     /**
      * The ID of the new AMI.
@@ -53,7 +53,7 @@ public class CreateImageResult  implements Serializable  {
      * @param imageId The ID of the new AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateImageResult withImageId(String imageId) {
         this.imageId = imageId;
@@ -72,7 +72,7 @@ public class CreateImageResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageId() != null) sb.append("ImageId: " + getImageId() );
         sb.append("}");
         return sb.toString();

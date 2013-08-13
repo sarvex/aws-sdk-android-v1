@@ -28,7 +28,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#detachLoadBalancerFromSubnets(DetachLoadBalancerFromSubnetsRequest)
  */
-public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name associated with the LoadBalancer to be detached. The name
@@ -40,7 +40,7 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
      * A list of subnet IDs to remove from the set of configured subnets for
      * the LoadBalancer.
      */
-    private java.util.List<String> subnets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnets;
 
     /**
      * The name associated with the LoadBalancer to be detached. The name
@@ -74,7 +74,7 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
      *         must be unique within the client AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachLoadBalancerFromSubnetsRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -92,7 +92,8 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
     public java.util.List<String> getSubnets() {
         
         if (subnets == null) {
-            subnets = new java.util.ArrayList<String>();
+              subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnets.setAutoConstruct(true);
         }
         return subnets;
     }
@@ -109,8 +110,7 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
             this.subnets = null;
             return;
         }
-
-        java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
         subnetsCopy.addAll(subnets);
         this.subnets = subnetsCopy;
     }
@@ -125,7 +125,7 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
      *         the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachLoadBalancerFromSubnetsRequest withSubnets(String... subnets) {
         if (getSubnets() == null) setSubnets(new java.util.ArrayList<String>(subnets.length));
@@ -145,13 +145,13 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
      *         the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachLoadBalancerFromSubnetsRequest withSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
             this.subnets = null;
         } else {
-            java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
             subnetsCopy.addAll(subnets);
             this.subnets = subnetsCopy;
         }
@@ -170,8 +170,8 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getSubnets() != null) sb.append("Subnets: " + getSubnets() );
         sb.append("}");
         return sb.toString();

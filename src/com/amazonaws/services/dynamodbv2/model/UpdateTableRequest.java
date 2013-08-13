@@ -24,8 +24,7 @@ import java.io.Serializable;
  * </p>
  * <p>
  * The provisioned throughput values can be upgraded or downgraded based on the maximums and minimums listed in the <a
- * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html"> Limits </a> section in the <i>Amazon DynamoDB Developer
- * Guide</i> .
+ * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html"> Limits </a> section in the Amazon DynamoDB Developer Guide.
  * </p>
  * <p>
  * The table must be in the <code>ACTIVE</code> state for this operation to succeed. <i>UpdateTable</i> is an asynchronous operation; while executing the
@@ -40,7 +39,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#updateTable(UpdateTableRequest)
  */
-public class UpdateTableRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateTableRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the table to be updated.
@@ -57,10 +56,38 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
      * <p>For current minimum and maximum provisioned throughput values, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      */
     private ProvisionedThroughput provisionedThroughput;
 
+    /**
+     * Default constructor for a new UpdateTableRequest object.  Callers should use the
+     * setter or fluent setter (with...) methods to initialize this object after creating it.
+     */
+    public UpdateTableRequest() {}
+    
+
+
+    /**
+     * Constructs a new UpdateTableRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param tableName The name of the table to be updated.
+     * @param provisionedThroughput The provisioned throughput settings for
+     * the specified table. The settings can be modified using the
+     * <i>UpdateTable</i> operation. <p>For current minimum and maximum
+     * provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the Amazon DynamoDB Developer Guide.
+     */
+    public UpdateTableRequest(String tableName, ProvisionedThroughput provisionedThroughput) {
+        setTableName(tableName);
+        setProvisionedThroughput(provisionedThroughput);
+    }
+
+    
+    
     /**
      * The name of the table to be updated.
      * <p>
@@ -99,7 +126,7 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
      * @param tableName The name of the table to be updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateTableRequest withTableName(String tableName) {
         this.tableName = tableName;
@@ -113,14 +140,14 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
      * <p>For current minimum and maximum provisioned throughput values, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      *
      * @return The provisioned throughput settings for the specified table. The
      *         settings can be modified using the <i>UpdateTable</i> operation.
      *         <p>For current minimum and maximum provisioned throughput values, see
      *         <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     *         in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         in the Amazon DynamoDB Developer Guide.
      */
     public ProvisionedThroughput getProvisionedThroughput() {
         return provisionedThroughput;
@@ -132,14 +159,14 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
      * <p>For current minimum and maximum provisioned throughput values, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      *
      * @param provisionedThroughput The provisioned throughput settings for the specified table. The
      *         settings can be modified using the <i>UpdateTable</i> operation.
      *         <p>For current minimum and maximum provisioned throughput values, see
      *         <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     *         in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         in the Amazon DynamoDB Developer Guide.
      */
     public void setProvisionedThroughput(ProvisionedThroughput provisionedThroughput) {
         this.provisionedThroughput = provisionedThroughput;
@@ -151,7 +178,7 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
      * <p>For current minimum and maximum provisioned throughput values, see
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     * in the <i>Amazon DynamoDB Developer Guide</i>.
+     * in the Amazon DynamoDB Developer Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -160,10 +187,10 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
      *         <p>For current minimum and maximum provisioned throughput values, see
      *         <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
-     *         in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         in the Amazon DynamoDB Developer Guide.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateTableRequest withProvisionedThroughput(ProvisionedThroughput provisionedThroughput) {
         this.provisionedThroughput = provisionedThroughput;
@@ -182,8 +209,8 @@ public class UpdateTableRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");    	
+        sb.append("{");
+        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");
         if (getProvisionedThroughput() != null) sb.append("ProvisionedThroughput: " + getProvisionedThroughput() );
         sb.append("}");
         return sb.toString();

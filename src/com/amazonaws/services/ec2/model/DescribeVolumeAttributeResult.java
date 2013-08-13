@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Describe Volume Attribute Result
  */
-public class DescribeVolumeAttributeResult  implements Serializable  {
+public class DescribeVolumeAttributeResult implements Serializable {
 
     private String volumeId;
 
@@ -27,7 +27,7 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
      */
     private Boolean autoEnableIO;
 
-    private java.util.List<ProductCode> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodes;
 
     /**
      * Returns the value of the VolumeId property for this object.
@@ -55,7 +55,7 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
      * @param volumeId The new value for the VolumeId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeAttributeResult withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -89,7 +89,7 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
      * @param autoEnableIO Boolean value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeAttributeResult withAutoEnableIO(Boolean autoEnableIO) {
         this.autoEnableIO = autoEnableIO;
@@ -114,7 +114,8 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
     public java.util.List<ProductCode> getProductCodes() {
         
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<ProductCode>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
@@ -129,8 +130,7 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
@@ -143,7 +143,7 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
      * @param productCodes The new value for the ProductCodes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeAttributeResult withProductCodes(ProductCode... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<ProductCode>(productCodes.length));
@@ -161,13 +161,13 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
      * @param productCodes The new value for the ProductCodes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeAttributeResult withProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
@@ -186,9 +186,9 @@ public class DescribeVolumeAttributeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (isAutoEnableIO() != null) sb.append("AutoEnableIO: " + isAutoEnableIO() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (isAutoEnableIO() != null) sb.append("AutoEnableIO: " + isAutoEnableIO() + ",");
         if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() );
         sb.append("}");
         return sb.toString();

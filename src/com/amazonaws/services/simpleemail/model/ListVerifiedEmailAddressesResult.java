@@ -20,12 +20,12 @@ import java.io.Serializable;
  * Represents a list of all the email addresses verified for the current user.
  * </p>
  */
-public class ListVerifiedEmailAddressesResult  implements Serializable  {
+public class ListVerifiedEmailAddressesResult implements Serializable {
 
     /**
      * A list of email addresses that have been verified.
      */
-    private java.util.List<String> verifiedEmailAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> verifiedEmailAddresses;
 
     /**
      * A list of email addresses that have been verified.
@@ -35,7 +35,8 @@ public class ListVerifiedEmailAddressesResult  implements Serializable  {
     public java.util.List<String> getVerifiedEmailAddresses() {
         
         if (verifiedEmailAddresses == null) {
-            verifiedEmailAddresses = new java.util.ArrayList<String>();
+              verifiedEmailAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              verifiedEmailAddresses.setAutoConstruct(true);
         }
         return verifiedEmailAddresses;
     }
@@ -50,8 +51,7 @@ public class ListVerifiedEmailAddressesResult  implements Serializable  {
             this.verifiedEmailAddresses = null;
             return;
         }
-
-        java.util.List<String> verifiedEmailAddressesCopy = new java.util.ArrayList<String>(verifiedEmailAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> verifiedEmailAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(verifiedEmailAddresses.size());
         verifiedEmailAddressesCopy.addAll(verifiedEmailAddresses);
         this.verifiedEmailAddresses = verifiedEmailAddressesCopy;
     }
@@ -64,7 +64,7 @@ public class ListVerifiedEmailAddressesResult  implements Serializable  {
      * @param verifiedEmailAddresses A list of email addresses that have been verified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVerifiedEmailAddressesResult withVerifiedEmailAddresses(String... verifiedEmailAddresses) {
         if (getVerifiedEmailAddresses() == null) setVerifiedEmailAddresses(new java.util.ArrayList<String>(verifiedEmailAddresses.length));
@@ -82,13 +82,13 @@ public class ListVerifiedEmailAddressesResult  implements Serializable  {
      * @param verifiedEmailAddresses A list of email addresses that have been verified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVerifiedEmailAddressesResult withVerifiedEmailAddresses(java.util.Collection<String> verifiedEmailAddresses) {
         if (verifiedEmailAddresses == null) {
             this.verifiedEmailAddresses = null;
         } else {
-            java.util.List<String> verifiedEmailAddressesCopy = new java.util.ArrayList<String>(verifiedEmailAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> verifiedEmailAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(verifiedEmailAddresses.size());
             verifiedEmailAddressesCopy.addAll(verifiedEmailAddresses);
             this.verifiedEmailAddresses = verifiedEmailAddressesCopy;
         }
@@ -107,7 +107,7 @@ public class ListVerifiedEmailAddressesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVerifiedEmailAddresses() != null) sb.append("VerifiedEmailAddresses: " + getVerifiedEmailAddresses() );
         sb.append("}");
         return sb.toString();

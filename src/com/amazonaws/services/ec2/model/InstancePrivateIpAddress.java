@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Instance Private Ip Address
  */
-public class InstancePrivateIpAddress  implements Serializable  {
+public class InstancePrivateIpAddress implements Serializable {
 
     private String privateIpAddress;
 
@@ -54,7 +54,7 @@ public class InstancePrivateIpAddress  implements Serializable  {
      * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstancePrivateIpAddress withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
@@ -88,7 +88,7 @@ public class InstancePrivateIpAddress  implements Serializable  {
      * @param privateDnsName The new value for the PrivateDnsName property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstancePrivateIpAddress withPrivateDnsName(String privateDnsName) {
         this.privateDnsName = privateDnsName;
@@ -122,7 +122,7 @@ public class InstancePrivateIpAddress  implements Serializable  {
      * @param primary The new value for the Primary property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstancePrivateIpAddress withPrimary(Boolean primary) {
         this.primary = primary;
@@ -165,7 +165,7 @@ public class InstancePrivateIpAddress  implements Serializable  {
      * @param association The new value for the Association property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstancePrivateIpAddress withAssociation(InstanceNetworkInterfaceAssociation association) {
         this.association = association;
@@ -184,10 +184,10 @@ public class InstancePrivateIpAddress  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
-        if (getPrivateDnsName() != null) sb.append("PrivateDnsName: " + getPrivateDnsName() + ",");    	
-        if (isPrimary() != null) sb.append("Primary: " + isPrimary() + ",");    	
+        sb.append("{");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+        if (getPrivateDnsName() != null) sb.append("PrivateDnsName: " + getPrivateDnsName() + ",");
+        if (isPrimary() != null) sb.append("Primary: " + isPrimary() + ",");
         if (getAssociation() != null) sb.append("Association: " + getAssociation() );
         sb.append("}");
         return sb.toString();

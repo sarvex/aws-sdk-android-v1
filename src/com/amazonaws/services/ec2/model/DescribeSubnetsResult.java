@@ -20,12 +20,12 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class DescribeSubnetsResult  implements Serializable  {
+public class DescribeSubnetsResult implements Serializable {
 
     /**
      * Contains a set of one or more <a>Subnet</a> instances.
      */
-    private java.util.List<Subnet> subnets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Subnet> subnets;
 
     /**
      * Contains a set of one or more <a>Subnet</a> instances.
@@ -35,7 +35,8 @@ public class DescribeSubnetsResult  implements Serializable  {
     public java.util.List<Subnet> getSubnets() {
         
         if (subnets == null) {
-            subnets = new java.util.ArrayList<Subnet>();
+              subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<Subnet>();
+              subnets.setAutoConstruct(true);
         }
         return subnets;
     }
@@ -50,8 +51,7 @@ public class DescribeSubnetsResult  implements Serializable  {
             this.subnets = null;
             return;
         }
-
-        java.util.List<Subnet> subnetsCopy = new java.util.ArrayList<Subnet>(subnets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Subnet> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Subnet>(subnets.size());
         subnetsCopy.addAll(subnets);
         this.subnets = subnetsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeSubnetsResult  implements Serializable  {
      * @param subnets Contains a set of one or more <a>Subnet</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSubnetsResult withSubnets(Subnet... subnets) {
         if (getSubnets() == null) setSubnets(new java.util.ArrayList<Subnet>(subnets.length));
@@ -82,13 +82,13 @@ public class DescribeSubnetsResult  implements Serializable  {
      * @param subnets Contains a set of one or more <a>Subnet</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSubnetsResult withSubnets(java.util.Collection<Subnet> subnets) {
         if (subnets == null) {
             this.subnets = null;
         } else {
-            java.util.List<Subnet> subnetsCopy = new java.util.ArrayList<Subnet>(subnets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Subnet> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Subnet>(subnets.size());
             subnetsCopy.addAll(subnets);
             this.subnets = subnetsCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeSubnetsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSubnets() != null) sb.append("Subnets: " + getSubnets() );
         sb.append("}");
         return sb.toString();

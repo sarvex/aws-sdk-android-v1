@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The output for the TerminateInstanceInAutoScalingGroup action.
  * </p>
  */
-public class TerminateInstanceInAutoScalingGroupResult  implements Serializable  {
+public class TerminateInstanceInAutoScalingGroupResult implements Serializable {
 
     /**
      * A scaling Activity.
@@ -53,7 +53,7 @@ public class TerminateInstanceInAutoScalingGroupResult  implements Serializable 
      * @param activity A scaling Activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateInstanceInAutoScalingGroupResult withActivity(Activity activity) {
         this.activity = activity;
@@ -72,7 +72,7 @@ public class TerminateInstanceInAutoScalingGroupResult  implements Serializable 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getActivity() != null) sb.append("Activity: " + getActivity() );
         sb.append("}");
         return sb.toString();

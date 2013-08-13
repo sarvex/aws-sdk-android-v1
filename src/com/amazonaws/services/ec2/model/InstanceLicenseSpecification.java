@@ -21,7 +21,7 @@ import java.io.Serializable;
  * instance.
  * </p>
  */
-public class InstanceLicenseSpecification  implements Serializable  {
+public class InstanceLicenseSpecification implements Serializable {
 
     /**
      * The license pool from which to take a license when starting Amazon EC2
@@ -61,7 +61,7 @@ public class InstanceLicenseSpecification  implements Serializable  {
      *         instances in the associated <code>RunInstances</code> request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceLicenseSpecification withPool(String pool) {
         this.pool = pool;
@@ -80,7 +80,7 @@ public class InstanceLicenseSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPool() != null) sb.append("Pool: " + getPool() );
         sb.append("}");
         return sb.toString();

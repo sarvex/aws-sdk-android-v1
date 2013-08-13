@@ -42,7 +42,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#batchDeleteAttributes(BatchDeleteAttributesRequest)
  */
-public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which the attributes are being deleted.
@@ -52,7 +52,7 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
     /**
      * A list of items on which to perform the operation.
      */
-    private java.util.List<DeletableItem> items;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DeletableItem> items;
 
     /**
      * Default constructor for a new BatchDeleteAttributesRequest object.  Callers should use the
@@ -60,6 +60,8 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
      */
     public BatchDeleteAttributesRequest() {}
     
+
+
     /**
      * Constructs a new BatchDeleteAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -70,8 +72,8 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
      * @param items A list of items on which to perform the operation.
      */
     public BatchDeleteAttributesRequest(String domainName, java.util.List<DeletableItem> items) {
-        this.domainName = domainName;
-        this.items = items;
+        setDomainName(domainName);
+        setItems(items);
     }
 
     
@@ -102,7 +104,7 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
      * @param domainName The name of the domain in which the attributes are being deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BatchDeleteAttributesRequest withDomainName(String domainName) {
         this.domainName = domainName;
@@ -118,7 +120,8 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
     public java.util.List<DeletableItem> getItems() {
         
         if (items == null) {
-            items = new java.util.ArrayList<DeletableItem>();
+              items = new com.amazonaws.internal.ListWithAutoConstructFlag<DeletableItem>();
+              items.setAutoConstruct(true);
         }
         return items;
     }
@@ -133,8 +136,7 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
             this.items = null;
             return;
         }
-
-        java.util.List<DeletableItem> itemsCopy = new java.util.ArrayList<DeletableItem>(items.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DeletableItem> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DeletableItem>(items.size());
         itemsCopy.addAll(items);
         this.items = itemsCopy;
     }
@@ -147,7 +149,7 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
      * @param items A list of items on which to perform the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BatchDeleteAttributesRequest withItems(DeletableItem... items) {
         if (getItems() == null) setItems(new java.util.ArrayList<DeletableItem>(items.length));
@@ -165,13 +167,13 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
      * @param items A list of items on which to perform the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BatchDeleteAttributesRequest withItems(java.util.Collection<DeletableItem> items) {
         if (items == null) {
             this.items = null;
         } else {
-            java.util.List<DeletableItem> itemsCopy = new java.util.ArrayList<DeletableItem>(items.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DeletableItem> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DeletableItem>(items.size());
             itemsCopy.addAll(items);
             this.items = itemsCopy;
         }
@@ -190,8 +192,8 @@ public class BatchDeleteAttributesRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getItems() != null) sb.append("Items: " + getItems() );
         sb.append("}");
         return sb.toString();

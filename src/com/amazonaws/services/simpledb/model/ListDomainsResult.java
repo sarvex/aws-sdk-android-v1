@@ -18,12 +18,12 @@ import java.io.Serializable;
 /**
  * List Domains Result
  */
-public class ListDomainsResult  implements Serializable  {
+public class ListDomainsResult implements Serializable {
 
     /**
      * A list of domain names that match the expression.
      */
-    private java.util.List<String> domainNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> domainNames;
 
     /**
      * An opaque token indicating that there are more domains than the
@@ -39,7 +39,8 @@ public class ListDomainsResult  implements Serializable  {
     public java.util.List<String> getDomainNames() {
         
         if (domainNames == null) {
-            domainNames = new java.util.ArrayList<String>();
+              domainNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              domainNames.setAutoConstruct(true);
         }
         return domainNames;
     }
@@ -54,8 +55,7 @@ public class ListDomainsResult  implements Serializable  {
             this.domainNames = null;
             return;
         }
-
-        java.util.List<String> domainNamesCopy = new java.util.ArrayList<String>(domainNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> domainNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domainNames.size());
         domainNamesCopy.addAll(domainNames);
         this.domainNames = domainNamesCopy;
     }
@@ -68,7 +68,7 @@ public class ListDomainsResult  implements Serializable  {
      * @param domainNames A list of domain names that match the expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDomainsResult withDomainNames(String... domainNames) {
         if (getDomainNames() == null) setDomainNames(new java.util.ArrayList<String>(domainNames.length));
@@ -86,13 +86,13 @@ public class ListDomainsResult  implements Serializable  {
      * @param domainNames A list of domain names that match the expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDomainsResult withDomainNames(java.util.Collection<String> domainNames) {
         if (domainNames == null) {
             this.domainNames = null;
         } else {
-            java.util.List<String> domainNamesCopy = new java.util.ArrayList<String>(domainNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> domainNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domainNames.size());
             domainNamesCopy.addAll(domainNames);
             this.domainNames = domainNamesCopy;
         }
@@ -132,7 +132,7 @@ public class ListDomainsResult  implements Serializable  {
      *         specified <code>MaxNumberOfDomains</code> still available.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDomainsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -151,8 +151,8 @@ public class ListDomainsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainNames() != null) sb.append("DomainNames: " + getDomainNames() + ",");    	
+        sb.append("{");
+        if (getDomainNames() != null) sb.append("DomainNames: " + getDomainNames() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

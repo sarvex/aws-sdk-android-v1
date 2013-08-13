@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#listIdentities(ListIdentitiesRequest)
  */
-public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListIdentitiesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The type of the identities to list. Possible values are "EmailAddress"
@@ -98,7 +98,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      *         be listed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see IdentityType
      */
@@ -141,7 +141,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      *         be listed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see IdentityType
      */
@@ -176,7 +176,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      * @param nextToken The token to use for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListIdentitiesRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -216,7 +216,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      *         inclusive.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListIdentitiesRequest withMaxItems(Integer maxItems) {
         this.maxItems = maxItems;
@@ -235,9 +235,9 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentityType() != null) sb.append("IdentityType: " + getIdentityType() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getIdentityType() != null) sb.append("IdentityType: " + getIdentityType() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

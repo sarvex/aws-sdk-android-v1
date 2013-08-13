@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Volume Status Event
  */
-public class VolumeStatusEvent  implements Serializable  {
+public class VolumeStatusEvent implements Serializable {
 
     private String eventType;
 
@@ -56,7 +56,7 @@ public class VolumeStatusEvent  implements Serializable  {
      * @param eventType The new value for the EventType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusEvent withEventType(String eventType) {
         this.eventType = eventType;
@@ -90,7 +90,7 @@ public class VolumeStatusEvent  implements Serializable  {
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusEvent withDescription(String description) {
         this.description = description;
@@ -124,7 +124,7 @@ public class VolumeStatusEvent  implements Serializable  {
      * @param notBefore The new value for the NotBefore property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusEvent withNotBefore(java.util.Date notBefore) {
         this.notBefore = notBefore;
@@ -158,7 +158,7 @@ public class VolumeStatusEvent  implements Serializable  {
      * @param notAfter The new value for the NotAfter property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusEvent withNotAfter(java.util.Date notAfter) {
         this.notAfter = notAfter;
@@ -192,7 +192,7 @@ public class VolumeStatusEvent  implements Serializable  {
      * @param eventId The new value for the EventId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusEvent withEventId(String eventId) {
         this.eventId = eventId;
@@ -211,11 +211,11 @@ public class VolumeStatusEvent  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEventType() != null) sb.append("EventType: " + getEventType() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getNotBefore() != null) sb.append("NotBefore: " + getNotBefore() + ",");    	
-        if (getNotAfter() != null) sb.append("NotAfter: " + getNotAfter() + ",");    	
+        sb.append("{");
+        if (getEventType() != null) sb.append("EventType: " + getEventType() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getNotBefore() != null) sb.append("NotBefore: " + getNotBefore() + ",");
+        if (getNotAfter() != null) sb.append("NotAfter: " + getNotAfter() + ",");
         if (getEventId() != null) sb.append("EventId: " + getEventId() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * This is used in the responses of batch API to give a detailed description of the result of an operation on each entry in the request.
  * </p>
  */
-public class BatchResultErrorEntry  implements Serializable  {
+public class BatchResultErrorEntry implements Serializable {
 
     /**
      * The id of an entry in a batch request.
@@ -68,7 +68,7 @@ public class BatchResultErrorEntry  implements Serializable  {
      * @param id The id of an entry in a batch request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BatchResultErrorEntry withId(String id) {
         this.id = id;
@@ -102,7 +102,7 @@ public class BatchResultErrorEntry  implements Serializable  {
      * @param senderFault Whether the error happened due to the sender's fault.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BatchResultErrorEntry withSenderFault(Boolean senderFault) {
         this.senderFault = senderFault;
@@ -145,7 +145,7 @@ public class BatchResultErrorEntry  implements Serializable  {
      * @param code An error code representing why the operation failed on this entry.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BatchResultErrorEntry withCode(String code) {
         this.code = code;
@@ -179,7 +179,7 @@ public class BatchResultErrorEntry  implements Serializable  {
      * @param message A message explaining why the operation failed on this entry.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BatchResultErrorEntry withMessage(String message) {
         this.message = message;
@@ -198,10 +198,10 @@ public class BatchResultErrorEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (isSenderFault() != null) sb.append("SenderFault: " + isSenderFault() + ",");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (isSenderFault() != null) sb.append("SenderFault: " + isSenderFault() + ",");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

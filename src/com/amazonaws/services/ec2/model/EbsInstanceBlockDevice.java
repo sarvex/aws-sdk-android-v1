@@ -20,7 +20,7 @@ import java.io.Serializable;
  * An EBS volume backed block device which is attached to an instance.
  * </p>
  */
-public class EbsInstanceBlockDevice  implements Serializable  {
+public class EbsInstanceBlockDevice implements Serializable {
 
     /**
      * The ID of the EBS volume.
@@ -70,7 +70,7 @@ public class EbsInstanceBlockDevice  implements Serializable  {
      * @param volumeId The ID of the EBS volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsInstanceBlockDevice withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -104,7 +104,7 @@ public class EbsInstanceBlockDevice  implements Serializable  {
      * @param status The status of the EBS volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsInstanceBlockDevice withStatus(String status) {
         this.status = status;
@@ -144,7 +144,7 @@ public class EbsInstanceBlockDevice  implements Serializable  {
      *         instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsInstanceBlockDevice withAttachTime(java.util.Date attachTime) {
         this.attachTime = attachTime;
@@ -184,7 +184,7 @@ public class EbsInstanceBlockDevice  implements Serializable  {
      *         termination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsInstanceBlockDevice withDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
@@ -214,10 +214,10 @@ public class EbsInstanceBlockDevice  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getAttachTime() != null) sb.append("AttachTime: " + getAttachTime() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getAttachTime() != null) sb.append("AttachTime: " + getAttachTime() + ",");
         if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() );
         sb.append("}");
         return sb.toString();

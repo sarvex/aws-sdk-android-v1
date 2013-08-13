@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Pricing Detail
  */
-public class PricingDetail  implements Serializable  {
+public class PricingDetail implements Serializable {
 
     private Double price;
 
@@ -50,7 +50,7 @@ public class PricingDetail  implements Serializable  {
      * @param price The new value for the Price property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PricingDetail withPrice(Double price) {
         this.price = price;
@@ -84,7 +84,7 @@ public class PricingDetail  implements Serializable  {
      * @param count The new value for the Count property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PricingDetail withCount(Integer count) {
         this.count = count;
@@ -103,8 +103,8 @@ public class PricingDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");    	
+        sb.append("{");
+        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");
         if (getCount() != null) sb.append("Count: " + getCount() );
         sb.append("}");
         return sb.toString();

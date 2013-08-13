@@ -21,7 +21,7 @@ import java.io.Serializable;
  * be a process to replace an instance, or a process to perform any other long-running operations supported by the API.
  * </p>
  */
-public class Activity  implements Serializable  {
+public class Activity implements Serializable {
 
     /**
      * Specifies the ID of the activity.
@@ -133,7 +133,7 @@ public class Activity  implements Serializable  {
      * @param activityId Specifies the ID of the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withActivityId(String activityId) {
         this.activityId = activityId;
@@ -179,7 +179,7 @@ public class Activity  implements Serializable  {
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -222,7 +222,7 @@ public class Activity  implements Serializable  {
      * @param description Contains a friendly, more verbose description of the scaling activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withDescription(String description) {
         this.description = description;
@@ -268,7 +268,7 @@ public class Activity  implements Serializable  {
      * @param cause Contains the reason the activity was begun.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withCause(String cause) {
         this.cause = cause;
@@ -302,7 +302,7 @@ public class Activity  implements Serializable  {
      * @param startTime Provides the start time of this activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -336,7 +336,7 @@ public class Activity  implements Serializable  {
      * @param endTime Provides the end time of this activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
@@ -383,7 +383,7 @@ public class Activity  implements Serializable  {
      * @param statusCode Contains the current status of the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalingActivityStatusCode
      */
@@ -418,7 +418,7 @@ public class Activity  implements Serializable  {
      * @param statusCode Contains the current status of the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalingActivityStatusCode
      */
@@ -465,7 +465,7 @@ public class Activity  implements Serializable  {
      * @param statusMessage Contains a friendly, more verbose description of the activity status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
@@ -505,7 +505,7 @@ public class Activity  implements Serializable  {
      *         activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withProgress(Integer progress) {
         this.progress = progress;
@@ -548,7 +548,7 @@ public class Activity  implements Serializable  {
      * @param details Contains details of the scaling activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withDetails(String details) {
         this.details = details;
@@ -567,16 +567,16 @@ public class Activity  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getCause() != null) sb.append("Cause: " + getCause() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getStatusCode() != null) sb.append("StatusCode: " + getStatusCode() + ",");    	
-        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");    	
-        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");    	
+        sb.append("{");
+        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getCause() != null) sb.append("Cause: " + getCause() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getStatusCode() != null) sb.append("StatusCode: " + getStatusCode() + ",");
+        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");
+        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");
         if (getDetails() != null) sb.append("Details: " + getDetails() );
         sb.append("}");
         return sb.toString();

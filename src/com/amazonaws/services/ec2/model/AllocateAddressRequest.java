@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AllocateAddressRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#allocateAddress(AllocateAddressRequest)
  */
-public class AllocateAddressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AllocateAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AllocateAddressRequest> {
 
     /**
      * Set to <code>vpc</code> to allocate the address to your VPC. By
@@ -80,7 +82,7 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
      *         default, will allocate to EC2.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
@@ -119,13 +121,25 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
      *         default, will allocate to EC2.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
     public AllocateAddressRequest withDomain(DomainType domain) {
         this.domain = domain.toString();
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AllocateAddressRequest> getDryRunRequest() {
+        Request<AllocateAddressRequest> request = new AllocateAddressRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -139,7 +153,7 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomain() != null) sb.append("Domain: " + getDomain() );
         sb.append("}");
         return sb.toString();

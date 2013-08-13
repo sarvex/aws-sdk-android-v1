@@ -18,12 +18,12 @@ import java.io.Serializable;
 /**
  * Select Result
  */
-public class SelectResult  implements Serializable  {
+public class SelectResult implements Serializable {
 
     /**
      * A list of items that match the select expression.
      */
-    private java.util.List<Item> items;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Item> items;
 
     /**
      * An opaque token indicating that more items than
@@ -40,7 +40,8 @@ public class SelectResult  implements Serializable  {
     public java.util.List<Item> getItems() {
         
         if (items == null) {
-            items = new java.util.ArrayList<Item>();
+              items = new com.amazonaws.internal.ListWithAutoConstructFlag<Item>();
+              items.setAutoConstruct(true);
         }
         return items;
     }
@@ -55,8 +56,7 @@ public class SelectResult  implements Serializable  {
             this.items = null;
             return;
         }
-
-        java.util.List<Item> itemsCopy = new java.util.ArrayList<Item>(items.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Item> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Item>(items.size());
         itemsCopy.addAll(items);
         this.items = itemsCopy;
     }
@@ -69,7 +69,7 @@ public class SelectResult  implements Serializable  {
      * @param items A list of items that match the select expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectResult withItems(Item... items) {
         if (getItems() == null) setItems(new java.util.ArrayList<Item>(items.length));
@@ -87,13 +87,13 @@ public class SelectResult  implements Serializable  {
      * @param items A list of items that match the select expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectResult withItems(java.util.Collection<Item> items) {
         if (items == null) {
             this.items = null;
         } else {
-            java.util.List<Item> itemsCopy = new java.util.ArrayList<Item>(items.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Item> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Item>(items.size());
             itemsCopy.addAll(items);
             this.items = itemsCopy;
         }
@@ -139,7 +139,7 @@ public class SelectResult  implements Serializable  {
      *         1 megabyte, or the execution time exceeded 5 seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -158,8 +158,8 @@ public class SelectResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getItems() != null) sb.append("Items: " + getItems() + ",");    	
+        sb.append("{");
+        if (getItems() != null) sb.append("Items: " + getItems() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

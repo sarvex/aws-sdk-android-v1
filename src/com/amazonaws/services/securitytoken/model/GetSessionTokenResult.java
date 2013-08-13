@@ -53,7 +53,7 @@ public class GetSessionTokenResult  implements Serializable  {
      * @param credentials The session credentials for API authentication.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenResult withCredentials(Credentials credentials) {
         this.credentials = credentials;
@@ -72,7 +72,7 @@ public class GetSessionTokenResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCredentials() != null) sb.append("Credentials: " + getCredentials() );
         sb.append("}");
         return sb.toString();

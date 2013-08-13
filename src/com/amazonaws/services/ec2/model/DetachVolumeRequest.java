@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DetachVolumeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#detachVolume(DetachVolumeRequest)
  */
-public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DetachVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DetachVolumeRequest> {
 
     /**
      * The ID of the volume to detach.
@@ -60,6 +62,8 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      */
     public DetachVolumeRequest() {}
     
+
+
     /**
      * Constructs a new DetachVolumeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -68,7 +72,7 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param volumeId The ID of the volume to detach.
      */
     public DetachVolumeRequest(String volumeId) {
-        this.volumeId = volumeId;
+        setVolumeId(volumeId);
     }
 
     
@@ -99,7 +103,7 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param volumeId The ID of the volume to detach.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachVolumeRequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -133,7 +137,7 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param instanceId The ID of the instance from which to detach the the specified volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachVolumeRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -173,7 +177,7 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      *         instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachVolumeRequest withDevice(String device) {
         this.device = device;
@@ -249,7 +253,7 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      *         procedures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachVolumeRequest withForce(Boolean force) {
         this.force = force;
@@ -281,6 +285,18 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
     }
     
     /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DetachVolumeRequest> getDryRunRequest() {
+        Request<DetachVolumeRequest> request = new DetachVolumeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
+    
+    /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
      *
@@ -291,10 +307,10 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");
         if (isForce() != null) sb.append("Force: " + isForce() );
         sb.append("}");
         return sb.toString();

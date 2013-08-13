@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ModifyInstanceAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifyInstanceAttribute(ModifyInstanceAttributeRequest)
  */
-public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifyInstanceAttributeRequest> {
 
     /**
      * The ID of the instance whose attribute is being modified.
@@ -58,7 +60,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * being modified. <p> Only valid when blockDeviceMapping is specified as
      * the attribute being modified.
      */
-    private java.util.List<InstanceBlockDeviceMappingSpecification> blockDeviceMappings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMappingSpecification> blockDeviceMappings;
 
     /**
      * Boolean value
@@ -95,7 +97,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      */
     private String instanceInitiatedShutdownBehavior;
 
-    private java.util.List<String> groups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groups;
 
     /**
      * Boolean value
@@ -108,6 +110,8 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      */
     public ModifyInstanceAttributeRequest() {}
     
+
+
     /**
      * Constructs a new ModifyInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -123,8 +127,8 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * <code>rootDevice</code>, <code>blockDeviceMapping</code>
      */
     public ModifyInstanceAttributeRequest(String instanceId, String attribute) {
-        this.instanceId = instanceId;
-        this.attribute = attribute;
+        setInstanceId(instanceId);
+        setAttribute(attribute);
     }
 
     
@@ -174,7 +178,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param instanceId The ID of the instance whose attribute is being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -251,7 +255,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      *         <code>rootDevice</code>, <code>blockDeviceMapping</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
@@ -306,7 +310,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      *         <code>rootDevice</code>, <code>blockDeviceMapping</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
@@ -365,7 +369,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      *         attribute being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withValue(String value) {
         this.value = value;
@@ -385,7 +389,8 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
     public java.util.List<InstanceBlockDeviceMappingSpecification> getBlockDeviceMappings() {
         
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<InstanceBlockDeviceMappingSpecification>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMappingSpecification>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
@@ -404,8 +409,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<InstanceBlockDeviceMappingSpecification> blockDeviceMappingsCopy = new java.util.ArrayList<InstanceBlockDeviceMappingSpecification>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMappingSpecification> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMappingSpecification>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
@@ -422,7 +426,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      *         the attribute being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withBlockDeviceMappings(InstanceBlockDeviceMappingSpecification... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<InstanceBlockDeviceMappingSpecification>(blockDeviceMappings.length));
@@ -444,13 +448,13 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      *         the attribute being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withBlockDeviceMappings(java.util.Collection<InstanceBlockDeviceMappingSpecification> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<InstanceBlockDeviceMappingSpecification> blockDeviceMappingsCopy = new java.util.ArrayList<InstanceBlockDeviceMappingSpecification>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMappingSpecification> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMappingSpecification>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
@@ -484,7 +488,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param sourceDestCheck Boolean value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withSourceDestCheck(Boolean sourceDestCheck) {
         this.sourceDestCheck = sourceDestCheck;
@@ -527,7 +531,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param disableApiTermination Boolean value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withDisableApiTermination(Boolean disableApiTermination) {
         this.disableApiTermination = disableApiTermination;
@@ -570,7 +574,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param instanceType String value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withInstanceType(String instanceType) {
         this.instanceType = instanceType;
@@ -604,7 +608,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param kernel String value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withKernel(String kernel) {
         this.kernel = kernel;
@@ -638,7 +642,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param ramdisk String value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withRamdisk(String ramdisk) {
         this.ramdisk = ramdisk;
@@ -672,7 +676,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param userData String value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withUserData(String userData) {
         this.userData = userData;
@@ -706,7 +710,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param instanceInitiatedShutdownBehavior String value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withInstanceInitiatedShutdownBehavior(String instanceInitiatedShutdownBehavior) {
         this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior;
@@ -722,7 +726,8 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
     public java.util.List<String> getGroups() {
         
         if (groups == null) {
-            groups = new java.util.ArrayList<String>();
+              groups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groups.setAutoConstruct(true);
         }
         return groups;
     }
@@ -737,8 +742,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
             this.groups = null;
             return;
         }
-
-        java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
         groupsCopy.addAll(groups);
         this.groups = groupsCopy;
     }
@@ -751,7 +755,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param groups The new value for the Groups property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withGroups(String... groups) {
         if (getGroups() == null) setGroups(new java.util.ArrayList<String>(groups.length));
@@ -769,13 +773,13 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param groups The new value for the Groups property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withGroups(java.util.Collection<String> groups) {
         if (groups == null) {
             this.groups = null;
         } else {
-            java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
             groupsCopy.addAll(groups);
             this.groups = groupsCopy;
         }
@@ -809,7 +813,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
      * @param ebsOptimized Boolean value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceAttributeRequest withEbsOptimized(Boolean ebsOptimized) {
         this.ebsOptimized = ebsOptimized;
@@ -827,6 +831,18 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
     }
     
     /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ModifyInstanceAttributeRequest> getDryRunRequest() {
+        Request<ModifyInstanceAttributeRequest> request = new ModifyInstanceAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
+    
+    /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
      *
@@ -837,19 +853,19 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
-        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");    	
-        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");    	
-        if (isDisableApiTermination() != null) sb.append("DisableApiTermination: " + isDisableApiTermination() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getKernel() != null) sb.append("Kernel: " + getKernel() + ",");    	
-        if (getRamdisk() != null) sb.append("Ramdisk: " + getRamdisk() + ",");    	
-        if (getUserData() != null) sb.append("UserData: " + getUserData() + ",");    	
-        if (getInstanceInitiatedShutdownBehavior() != null) sb.append("InstanceInitiatedShutdownBehavior: " + getInstanceInitiatedShutdownBehavior() + ",");    	
-        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
+        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");
+        if (isDisableApiTermination() != null) sb.append("DisableApiTermination: " + isDisableApiTermination() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getKernel() != null) sb.append("Kernel: " + getKernel() + ",");
+        if (getRamdisk() != null) sb.append("Ramdisk: " + getRamdisk() + ",");
+        if (getUserData() != null) sb.append("UserData: " + getUserData() + ",");
+        if (getInstanceInitiatedShutdownBehavior() != null) sb.append("InstanceInitiatedShutdownBehavior: " + getInstanceInitiatedShutdownBehavior() + ",");
+        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");
         if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() );
         sb.append("}");
         return sb.toString();

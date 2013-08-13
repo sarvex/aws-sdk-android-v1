@@ -40,7 +40,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#updateAutoScalingGroup(UpdateAutoScalingGroupRequest)
  */
-public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -87,7 +87,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<String> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
      * The service of interest for the health status check, either "EC2" for
@@ -140,7 +140,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * Termination Policy for Your Auto Scaling Group</a> in the the <i>Auto
      * Scaling Developer Guide</i>.
      */
-    private java.util.List<String> terminationPolicies;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> terminationPolicies;
 
     /**
      * The name of the Auto Scaling group.
@@ -180,7 +180,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -226,7 +226,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param launchConfigurationName The name of the launch configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
@@ -260,7 +260,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param minSize The minimum size of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withMinSize(Integer minSize) {
         this.minSize = minSize;
@@ -294,7 +294,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param maxSize The maximum size of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withMaxSize(Integer maxSize) {
         this.maxSize = maxSize;
@@ -328,7 +328,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param desiredCapacity The desired capacity for the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withDesiredCapacity(Integer desiredCapacity) {
         this.desiredCapacity = desiredCapacity;
@@ -368,7 +368,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         before any further trigger-related scaling activities can start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withDefaultCooldown(Integer defaultCooldown) {
         this.defaultCooldown = defaultCooldown;
@@ -387,7 +387,8 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
     public java.util.List<String> getAvailabilityZones() {
         
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
@@ -405,8 +406,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
@@ -422,7 +422,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param availabilityZones Availability Zones for the group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -443,13 +443,13 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param availabilityZones Availability Zones for the group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
@@ -501,7 +501,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         Amazon EC2 or "ELB" for Elastic Load Balancing.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withHealthCheckType(String healthCheckType) {
         this.healthCheckType = healthCheckType;
@@ -547,7 +547,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         comes into service.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withHealthCheckGracePeriod(Integer healthCheckGracePeriod) {
         this.healthCheckGracePeriod = healthCheckGracePeriod;
@@ -611,7 +611,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         Using Cluster Instances</a> in the Amazon EC2 User Guide.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withPlacementGroup(String placementGroup) {
         this.placementGroup = placementGroup;
@@ -681,7 +681,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         Zones match the values you specify for <code>AvailabilityZones</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withVPCZoneIdentifier(String vPCZoneIdentifier) {
         this.vPCZoneIdentifier = vPCZoneIdentifier;
@@ -709,7 +709,8 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
     public java.util.List<String> getTerminationPolicies() {
         
         if (terminationPolicies == null) {
-            terminationPolicies = new java.util.ArrayList<String>();
+              terminationPolicies = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              terminationPolicies.setAutoConstruct(true);
         }
         return terminationPolicies;
     }
@@ -736,8 +737,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
             this.terminationPolicies = null;
             return;
         }
-
-        java.util.List<String> terminationPoliciesCopy = new java.util.ArrayList<String>(terminationPolicies.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> terminationPoliciesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(terminationPolicies.size());
         terminationPoliciesCopy.addAll(terminationPolicies);
         this.terminationPolicies = terminationPoliciesCopy;
     }
@@ -762,7 +762,7 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         Scaling Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withTerminationPolicies(String... terminationPolicies) {
         if (getTerminationPolicies() == null) setTerminationPolicies(new java.util.ArrayList<String>(terminationPolicies.length));
@@ -792,13 +792,13 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         Scaling Developer Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAutoScalingGroupRequest withTerminationPolicies(java.util.Collection<String> terminationPolicies) {
         if (terminationPolicies == null) {
             this.terminationPolicies = null;
         } else {
-            java.util.List<String> terminationPoliciesCopy = new java.util.ArrayList<String>(terminationPolicies.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> terminationPoliciesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(terminationPolicies.size());
             terminationPoliciesCopy.addAll(terminationPolicies);
             this.terminationPolicies = terminationPoliciesCopy;
         }
@@ -817,18 +817,18 @@ public class UpdateAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");    	
-        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");    	
-        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");    	
-        if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() + ",");    	
-        if (getDefaultCooldown() != null) sb.append("DefaultCooldown: " + getDefaultCooldown() + ",");    	
-        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");    	
-        if (getHealthCheckType() != null) sb.append("HealthCheckType: " + getHealthCheckType() + ",");    	
-        if (getHealthCheckGracePeriod() != null) sb.append("HealthCheckGracePeriod: " + getHealthCheckGracePeriod() + ",");    	
-        if (getPlacementGroup() != null) sb.append("PlacementGroup: " + getPlacementGroup() + ",");    	
-        if (getVPCZoneIdentifier() != null) sb.append("VPCZoneIdentifier: " + getVPCZoneIdentifier() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");
+        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");
+        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");
+        if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() + ",");
+        if (getDefaultCooldown() != null) sb.append("DefaultCooldown: " + getDefaultCooldown() + ",");
+        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+        if (getHealthCheckType() != null) sb.append("HealthCheckType: " + getHealthCheckType() + ",");
+        if (getHealthCheckGracePeriod() != null) sb.append("HealthCheckGracePeriod: " + getHealthCheckGracePeriod() + ",");
+        if (getPlacementGroup() != null) sb.append("PlacementGroup: " + getPlacementGroup() + ",");
+        if (getVPCZoneIdentifier() != null) sb.append("VPCZoneIdentifier: " + getVPCZoneIdentifier() + ",");
         if (getTerminationPolicies() != null) sb.append("TerminationPolicies: " + getTerminationPolicies() );
         sb.append("}");
         return sb.toString();

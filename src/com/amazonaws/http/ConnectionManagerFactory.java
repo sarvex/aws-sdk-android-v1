@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,34 +14,20 @@
  */
 package com.amazonaws.http;
 
-import org.apache.http.conn.params.ConnManagerParams;
-import org.apache.http.conn.params.ConnPerRouteBean;
-
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-
-import org.apache.http.conn.ssl.SSLSocketFactory;
-
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.params.HttpParams;
+
 import com.amazonaws.ClientConfiguration;
 
 /** Responsible for creating and configuring instances of Apache HttpClient4's Connection Manager. */
 class ConnectionManagerFactory {
 
-    public static ThreadSafeClientConnManager createThreadSafeClientConnManager( ClientConfiguration config, HttpParams httpClientParams ) {
-        ConnManagerParams.setMaxConnectionsPerRoute( httpClientParams, new ConnPerRouteBean( 20 ) );
-            
-        SSLSocketFactory sslSocketFactory = SSLSocketFactory.getSocketFactory();   
-        sslSocketFactory.setHostnameVerifier( SSLSocketFactory.STRICT_HOSTNAME_VERIFIER );
-            
-        SchemeRegistry registry = new SchemeRegistry( );
-        registry.register( new Scheme("http", PlainSocketFactory.getSocketFactory(), 80) );
-        registry.register( new Scheme("https", sslSocketFactory, 443) );
-        
-        return new ThreadSafeClientConnManager(httpClientParams,registry);
-    }
+    public static PoolingClientConnectionManager createPoolingClientConnManager( ClientConfiguration config, HttpParams httpClientParams ) {
+        PoolingClientConnectionManager connectionManager = new PoolingClientConnectionManager();
+        connectionManager.setDefaultMaxPerRoute(config.getMaxConnections());
+        connectionManager.setMaxTotal(config.getMaxConnections());
 
+        IdleConnectionReaper.registerConnectionManager(connectionManager);
+        return connectionManager;
+    }
 }

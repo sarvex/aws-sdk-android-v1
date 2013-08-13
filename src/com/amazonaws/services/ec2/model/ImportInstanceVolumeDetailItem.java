@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Import Instance Volume Detail Item
  */
-public class ImportInstanceVolumeDetailItem  implements Serializable  {
+public class ImportInstanceVolumeDetailItem implements Serializable {
 
     private Long bytesConverted;
 
@@ -60,7 +60,7 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
      * @param bytesConverted The new value for the BytesConverted property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceVolumeDetailItem withBytesConverted(Long bytesConverted) {
         this.bytesConverted = bytesConverted;
@@ -94,7 +94,7 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
      * @param availabilityZone The new value for the AvailabilityZone property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceVolumeDetailItem withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -128,7 +128,7 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
      * @param image The new value for the Image property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceVolumeDetailItem withImage(DiskImageDescription image) {
         this.image = image;
@@ -162,7 +162,7 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
      * @param volume The new value for the Volume property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceVolumeDetailItem withVolume(DiskImageVolumeDescription volume) {
         this.volume = volume;
@@ -196,7 +196,7 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
      * @param status The new value for the Status property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceVolumeDetailItem withStatus(String status) {
         this.status = status;
@@ -230,7 +230,7 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
      * @param statusMessage The new value for the StatusMessage property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceVolumeDetailItem withStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
@@ -264,7 +264,7 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceVolumeDetailItem withDescription(String description) {
         this.description = description;
@@ -283,13 +283,13 @@ public class ImportInstanceVolumeDetailItem  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBytesConverted() != null) sb.append("BytesConverted: " + getBytesConverted() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getImage() != null) sb.append("Image: " + getImage() + ",");    	
-        if (getVolume() != null) sb.append("Volume: " + getVolume() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");    	
+        sb.append("{");
+        if (getBytesConverted() != null) sb.append("BytesConverted: " + getBytesConverted() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getImage() != null) sb.append("Image: " + getImage() + ",");
+        if (getVolume() != null) sb.append("Volume: " + getVolume() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

@@ -30,12 +30,6 @@ import java.io.Serializable;
  * until the table deletion is complete.
  * </p>
  * <p>
- * Tables are unique among those associated with the AWS Account issuing the request, and the AWS region that receives the request (such as
- * dynamodb.us-east-1.amazonaws.com). Each Amazon DynamoDB endpoint is entirely independent. For example, if you have two tables called "MyTable," one in
- * dynamodb.us-east-1.amazonaws.com and one in dynamodb.us-west-1.amazonaws.com, they are completely independent and do not share any data; deleting one
- * does not delete the other.
- * </p>
- * <p>
  * When you delete a table, any local secondary indexes on that table are also deleted.
  * </p>
  * <p>
@@ -44,7 +38,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteTable(DeleteTableRequest)
  */
-public class DeleteTableRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteTableRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the table to delete.
@@ -61,6 +55,8 @@ public class DeleteTableRequest extends AmazonWebServiceRequest  implements Seri
      */
     public DeleteTableRequest() {}
     
+
+
     /**
      * Constructs a new DeleteTableRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -69,7 +65,7 @@ public class DeleteTableRequest extends AmazonWebServiceRequest  implements Seri
      * @param tableName The name of the table to delete.
      */
     public DeleteTableRequest(String tableName) {
-        this.tableName = tableName;
+        setTableName(tableName);
     }
 
     
@@ -112,7 +108,7 @@ public class DeleteTableRequest extends AmazonWebServiceRequest  implements Seri
      * @param tableName The name of the table to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteTableRequest withTableName(String tableName) {
         this.tableName = tableName;
@@ -131,7 +127,7 @@ public class DeleteTableRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTableName() != null) sb.append("TableName: " + getTableName() );
         sb.append("}");
         return sb.toString();

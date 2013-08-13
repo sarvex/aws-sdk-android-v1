@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeKeyPairsRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -25,12 +27,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeKeyPairs(DescribeKeyPairsRequest)
  */
-public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeKeyPairsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeKeyPairsRequest> {
 
     /**
      * The optional list of key pair names to describe.
      */
-    private java.util.List<String> keyNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> keyNames;
 
     /**
      * A list of filters used to match properties for KeyPairs. For a
@@ -39,7 +41,7 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The optional list of key pair names to describe.
@@ -49,7 +51,8 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
     public java.util.List<String> getKeyNames() {
         
         if (keyNames == null) {
-            keyNames = new java.util.ArrayList<String>();
+              keyNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              keyNames.setAutoConstruct(true);
         }
         return keyNames;
     }
@@ -64,8 +67,7 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
             this.keyNames = null;
             return;
         }
-
-        java.util.List<String> keyNamesCopy = new java.util.ArrayList<String>(keyNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> keyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(keyNames.size());
         keyNamesCopy.addAll(keyNames);
         this.keyNames = keyNamesCopy;
     }
@@ -78,7 +80,7 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
      * @param keyNames The optional list of key pair names to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeKeyPairsRequest withKeyNames(String... keyNames) {
         if (getKeyNames() == null) setKeyNames(new java.util.ArrayList<String>(keyNames.length));
@@ -96,13 +98,13 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
      * @param keyNames The optional list of key pair names to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeKeyPairsRequest withKeyNames(java.util.Collection<String> keyNames) {
         if (keyNames == null) {
             this.keyNames = null;
         } else {
-            java.util.List<String> keyNamesCopy = new java.util.ArrayList<String>(keyNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> keyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(keyNames.size());
             keyNamesCopy.addAll(keyNames);
             this.keyNames = keyNamesCopy;
         }
@@ -126,7 +128,8 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -149,8 +152,7 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -171,7 +173,7 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeKeyPairsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -197,18 +199,30 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeKeyPairsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeKeyPairsRequest> getDryRunRequest() {
+        Request<DescribeKeyPairsRequest> request = new DescribeKeyPairsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -222,8 +236,8 @@ public class DescribeKeyPairsRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKeyNames() != null) sb.append("KeyNames: " + getKeyNames() + ",");    	
+        sb.append("{");
+        if (getKeyNames() != null) sb.append("KeyNames: " + getKeyNames() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

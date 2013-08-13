@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>PolicyAttributeTypeDescription</code> data type. This data type is used to describe values that are acceptable for the policy attribute.
  * </p>
  */
-public class PolicyAttributeTypeDescription  implements Serializable  {
+public class PolicyAttributeTypeDescription implements Serializable {
 
     /**
      * The name of the attribute associated with the policy type.
@@ -77,7 +77,7 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param attributeName The name of the attribute associated with the policy type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withAttributeName(String attributeName) {
         this.attributeName = attributeName;
@@ -111,7 +111,7 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param attributeType The type of attribute. For example, Boolean, Integer, etc.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withAttributeType(String attributeType) {
         this.attributeType = attributeType;
@@ -145,7 +145,7 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param description A human-readable description of the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withDescription(String description) {
         this.description = description;
@@ -179,7 +179,7 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param defaultValue The default value of the attribute, if applicable.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
@@ -237,7 +237,7 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      *         are allowed</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withCardinality(String cardinality) {
         this.cardinality = cardinality;
@@ -256,11 +256,11 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
-        if (getAttributeType() != null) sb.append("AttributeType: " + getAttributeType() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
+        if (getAttributeType() != null) sb.append("AttributeType: " + getAttributeType() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
         if (getCardinality() != null) sb.append("Cardinality: " + getCardinality() );
         sb.append("}");
         return sb.toString();

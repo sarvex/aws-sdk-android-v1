@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the DNS records that must be published in the domain name's DNS to complete DKIM setup.
  * </p>
  */
-public class VerifyDomainDkimResult  implements Serializable  {
+public class VerifyDomainDkimResult implements Serializable {
 
     /**
      * A set of DNS records (tokens) that must be published in the domain
@@ -28,7 +28,7 @@ public class VerifyDomainDkimResult  implements Serializable  {
      * published in order for DKIM signing to succeed. The tokens are CNAME
      * DNS records pointing to DKIM public keys hosted by Amazon SES.
      */
-    private java.util.List<String> dkimTokens;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> dkimTokens;
 
     /**
      * A set of DNS records (tokens) that must be published in the domain
@@ -44,7 +44,8 @@ public class VerifyDomainDkimResult  implements Serializable  {
     public java.util.List<String> getDkimTokens() {
         
         if (dkimTokens == null) {
-            dkimTokens = new java.util.ArrayList<String>();
+              dkimTokens = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              dkimTokens.setAutoConstruct(true);
         }
         return dkimTokens;
     }
@@ -65,8 +66,7 @@ public class VerifyDomainDkimResult  implements Serializable  {
             this.dkimTokens = null;
             return;
         }
-
-        java.util.List<String> dkimTokensCopy = new java.util.ArrayList<String>(dkimTokens.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> dkimTokensCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(dkimTokens.size());
         dkimTokensCopy.addAll(dkimTokens);
         this.dkimTokens = dkimTokensCopy;
     }
@@ -85,7 +85,7 @@ public class VerifyDomainDkimResult  implements Serializable  {
      *         DNS records pointing to DKIM public keys hosted by Amazon SES.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyDomainDkimResult withDkimTokens(String... dkimTokens) {
         if (getDkimTokens() == null) setDkimTokens(new java.util.ArrayList<String>(dkimTokens.length));
@@ -109,13 +109,13 @@ public class VerifyDomainDkimResult  implements Serializable  {
      *         DNS records pointing to DKIM public keys hosted by Amazon SES.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyDomainDkimResult withDkimTokens(java.util.Collection<String> dkimTokens) {
         if (dkimTokens == null) {
             this.dkimTokens = null;
         } else {
-            java.util.List<String> dkimTokensCopy = new java.util.ArrayList<String>(dkimTokens.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> dkimTokensCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(dkimTokens.size());
             dkimTokensCopy.addAll(dkimTokens);
             this.dkimTokens = dkimTokensCopy;
         }
@@ -134,7 +134,7 @@ public class VerifyDomainDkimResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDkimTokens() != null) sb.append("DkimTokens: " + getDkimTokens() );
         sb.append("}");
         return sb.toString();

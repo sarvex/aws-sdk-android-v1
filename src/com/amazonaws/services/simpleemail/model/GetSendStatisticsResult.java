@@ -21,13 +21,13 @@ import java.io.Serializable;
  * data from the previous two weeks of sending activity.
  * </p>
  */
-public class GetSendStatisticsResult  implements Serializable  {
+public class GetSendStatisticsResult implements Serializable {
 
     /**
      * A list of data points, each of which represents 15 minutes of
      * activity.
      */
-    private java.util.List<SendDataPoint> sendDataPoints;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SendDataPoint> sendDataPoints;
 
     /**
      * A list of data points, each of which represents 15 minutes of
@@ -39,7 +39,8 @@ public class GetSendStatisticsResult  implements Serializable  {
     public java.util.List<SendDataPoint> getSendDataPoints() {
         
         if (sendDataPoints == null) {
-            sendDataPoints = new java.util.ArrayList<SendDataPoint>();
+              sendDataPoints = new com.amazonaws.internal.ListWithAutoConstructFlag<SendDataPoint>();
+              sendDataPoints.setAutoConstruct(true);
         }
         return sendDataPoints;
     }
@@ -56,8 +57,7 @@ public class GetSendStatisticsResult  implements Serializable  {
             this.sendDataPoints = null;
             return;
         }
-
-        java.util.List<SendDataPoint> sendDataPointsCopy = new java.util.ArrayList<SendDataPoint>(sendDataPoints.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SendDataPoint> sendDataPointsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SendDataPoint>(sendDataPoints.size());
         sendDataPointsCopy.addAll(sendDataPoints);
         this.sendDataPoints = sendDataPointsCopy;
     }
@@ -72,7 +72,7 @@ public class GetSendStatisticsResult  implements Serializable  {
      *         activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSendStatisticsResult withSendDataPoints(SendDataPoint... sendDataPoints) {
         if (getSendDataPoints() == null) setSendDataPoints(new java.util.ArrayList<SendDataPoint>(sendDataPoints.length));
@@ -92,13 +92,13 @@ public class GetSendStatisticsResult  implements Serializable  {
      *         activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSendStatisticsResult withSendDataPoints(java.util.Collection<SendDataPoint> sendDataPoints) {
         if (sendDataPoints == null) {
             this.sendDataPoints = null;
         } else {
-            java.util.List<SendDataPoint> sendDataPointsCopy = new java.util.ArrayList<SendDataPoint>(sendDataPoints.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SendDataPoint> sendDataPointsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SendDataPoint>(sendDataPoints.size());
             sendDataPointsCopy.addAll(sendDataPoints);
             this.sendDataPoints = sendDataPointsCopy;
         }
@@ -117,7 +117,7 @@ public class GetSendStatisticsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSendDataPoints() != null) sb.append("SendDataPoints: " + getSendDataPoints() );
         sb.append("}");
         return sb.toString();

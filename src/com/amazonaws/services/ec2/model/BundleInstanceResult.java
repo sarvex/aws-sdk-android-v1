@@ -20,7 +20,7 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class BundleInstanceResult  implements Serializable  {
+public class BundleInstanceResult implements Serializable {
 
     /**
      * 
@@ -53,7 +53,7 @@ public class BundleInstanceResult  implements Serializable  {
      * @param bundleTask 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleInstanceResult withBundleTask(BundleTask bundleTask) {
         this.bundleTask = bundleTask;
@@ -72,7 +72,7 @@ public class BundleInstanceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getBundleTask() != null) sb.append("BundleTask: " + getBundleTask() );
         sb.append("}");
         return sb.toString();

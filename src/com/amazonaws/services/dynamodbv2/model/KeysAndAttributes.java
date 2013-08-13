@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a set of primary keys and, for each key, the attributes to retrieve from the table.
  * </p>
  */
-public class KeysAndAttributes  implements Serializable  {
+public class KeysAndAttributes implements Serializable {
 
     /**
      * Represents the primary key attribute values that define the items and
@@ -29,7 +29,7 @@ public class KeysAndAttributes  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 100<br/>
      */
-    private java.util.List<java.util.Map<String,AttributeValue>> keys;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<java.util.Map<String,AttributeValue>> keys;
 
     /**
      * Represents one or more attributes to retrieve from the table or index.
@@ -45,7 +45,7 @@ public class KeysAndAttributes  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<String> attributesToGet;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGet;
 
     /**
      * Represents the consistency of a read operation. If set to
@@ -84,8 +84,7 @@ public class KeysAndAttributes  implements Serializable  {
             this.keys = null;
             return;
         }
-
-        java.util.List<java.util.Map<String,AttributeValue>> keysCopy = new java.util.ArrayList<java.util.Map<String,AttributeValue>>(keys.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<java.util.Map<String,AttributeValue>> keysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<java.util.Map<String,AttributeValue>>(keys.size());
         keysCopy.addAll(keys);
         this.keys = keysCopy;
     }
@@ -103,7 +102,7 @@ public class KeysAndAttributes  implements Serializable  {
      *         the attributes associated with the items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeysAndAttributes withKeys(java.util.Map<String,AttributeValue>... keys) {
         if (getKeys() == null) setKeys(new java.util.ArrayList<java.util.Map<String,AttributeValue>>(keys.length));
@@ -126,13 +125,13 @@ public class KeysAndAttributes  implements Serializable  {
      *         the attributes associated with the items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeysAndAttributes withKeys(java.util.Collection<java.util.Map<String,AttributeValue>> keys) {
         if (keys == null) {
             this.keys = null;
         } else {
-            java.util.List<java.util.Map<String,AttributeValue>> keysCopy = new java.util.ArrayList<java.util.Map<String,AttributeValue>>(keys.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<java.util.Map<String,AttributeValue>> keysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<java.util.Map<String,AttributeValue>>(keys.size());
             keysCopy.addAll(keys);
             this.keys = keysCopy;
         }
@@ -198,8 +197,7 @@ public class KeysAndAttributes  implements Serializable  {
             this.attributesToGet = null;
             return;
         }
-
-        java.util.List<String> attributesToGetCopy = new java.util.ArrayList<String>(attributesToGet.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributesToGet.size());
         attributesToGetCopy.addAll(attributesToGet);
         this.attributesToGet = attributesToGetCopy;
     }
@@ -231,7 +229,7 @@ public class KeysAndAttributes  implements Serializable  {
      *         additional throughput cost and latency.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeysAndAttributes withAttributesToGet(String... attributesToGet) {
         if (getAttributesToGet() == null) setAttributesToGet(new java.util.ArrayList<String>(attributesToGet.length));
@@ -268,13 +266,13 @@ public class KeysAndAttributes  implements Serializable  {
      *         additional throughput cost and latency.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeysAndAttributes withAttributesToGet(java.util.Collection<String> attributesToGet) {
         if (attributesToGet == null) {
             this.attributesToGet = null;
         } else {
-            java.util.List<String> attributesToGetCopy = new java.util.ArrayList<String>(attributesToGet.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributesToGet.size());
             attributesToGetCopy.addAll(attributesToGet);
             this.attributesToGet = attributesToGetCopy;
         }
@@ -320,7 +318,7 @@ public class KeysAndAttributes  implements Serializable  {
      *         an eventually consistent read is used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeysAndAttributes withConsistentRead(Boolean consistentRead) {
         this.consistentRead = consistentRead;
@@ -352,9 +350,9 @@ public class KeysAndAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKeys() != null) sb.append("Keys: " + getKeys() + ",");    	
-        if (getAttributesToGet() != null) sb.append("AttributesToGet: " + getAttributesToGet() + ",");    	
+        sb.append("{");
+        if (getKeys() != null) sb.append("Keys: " + getKeys() + ",");
+        if (getAttributesToGet() != null) sb.append("AttributesToGet: " + getAttributesToGet() + ",");
         if (isConsistentRead() != null) sb.append("ConsistentRead: " + isConsistentRead() );
         sb.append("}");
         return sb.toString();

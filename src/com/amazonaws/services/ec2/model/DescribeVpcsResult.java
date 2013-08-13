@@ -20,12 +20,12 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class DescribeVpcsResult  implements Serializable  {
+public class DescribeVpcsResult implements Serializable {
 
     /**
      * 
      */
-    private java.util.List<Vpc> vpcs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Vpc> vpcs;
 
     /**
      * 
@@ -35,7 +35,8 @@ public class DescribeVpcsResult  implements Serializable  {
     public java.util.List<Vpc> getVpcs() {
         
         if (vpcs == null) {
-            vpcs = new java.util.ArrayList<Vpc>();
+              vpcs = new com.amazonaws.internal.ListWithAutoConstructFlag<Vpc>();
+              vpcs.setAutoConstruct(true);
         }
         return vpcs;
     }
@@ -50,8 +51,7 @@ public class DescribeVpcsResult  implements Serializable  {
             this.vpcs = null;
             return;
         }
-
-        java.util.List<Vpc> vpcsCopy = new java.util.ArrayList<Vpc>(vpcs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Vpc> vpcsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Vpc>(vpcs.size());
         vpcsCopy.addAll(vpcs);
         this.vpcs = vpcsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeVpcsResult  implements Serializable  {
      * @param vpcs 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsResult withVpcs(Vpc... vpcs) {
         if (getVpcs() == null) setVpcs(new java.util.ArrayList<Vpc>(vpcs.length));
@@ -82,13 +82,13 @@ public class DescribeVpcsResult  implements Serializable  {
      * @param vpcs 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsResult withVpcs(java.util.Collection<Vpc> vpcs) {
         if (vpcs == null) {
             this.vpcs = null;
         } else {
-            java.util.List<Vpc> vpcsCopy = new java.util.ArrayList<Vpc>(vpcs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Vpc> vpcsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Vpc>(vpcs.size());
             vpcsCopy.addAll(vpcs);
             this.vpcs = vpcsCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeVpcsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVpcs() != null) sb.append("Vpcs: " + getVpcs() );
         sb.append("}");
         return sb.toString();

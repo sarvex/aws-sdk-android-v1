@@ -24,7 +24,7 @@ import java.io.Serializable;
  * also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.
  * </p>
  */
-public class Content  implements Serializable  {
+public class Content implements Serializable {
 
     /**
      * The textual data of the content.
@@ -42,6 +42,8 @@ public class Content  implements Serializable  {
      */
     public Content() {}
     
+
+
     /**
      * Constructs a new Content object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -50,7 +52,7 @@ public class Content  implements Serializable  {
      * @param data The textual data of the content.
      */
     public Content(String data) {
-        this.data = data;
+        setData(data);
     }
 
     
@@ -81,7 +83,7 @@ public class Content  implements Serializable  {
      * @param data The textual data of the content.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Content withData(String data) {
         this.data = data;
@@ -115,7 +117,7 @@ public class Content  implements Serializable  {
      * @param charset The character set of the content.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Content withCharset(String charset) {
         this.charset = charset;
@@ -134,8 +136,8 @@ public class Content  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getData() != null) sb.append("Data: " + getData() + ",");    	
+        sb.append("{");
+        if (getData() != null) sb.append("Data: " + getData() + ",");
         if (getCharset() != null) sb.append("Charset: " + getCharset() );
         sb.append("}");
         return sb.toString();

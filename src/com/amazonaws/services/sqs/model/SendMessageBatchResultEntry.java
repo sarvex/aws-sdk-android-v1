@@ -17,10 +17,10 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Encloses a message ID for successfully enqueued message of a SendMessageBatchRequest.
+ * Encloses a message ID for successfully enqueued message of a SendMessageBatch.
  * </p>
  */
-public class SendMessageBatchResultEntry  implements Serializable  {
+public class SendMessageBatchResultEntry implements Serializable {
 
     /**
      * An identifier for the message in this batch.
@@ -67,7 +67,7 @@ public class SendMessageBatchResultEntry  implements Serializable  {
      * @param id An identifier for the message in this batch.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchResultEntry withId(String id) {
         this.id = id;
@@ -101,7 +101,7 @@ public class SendMessageBatchResultEntry  implements Serializable  {
      * @param messageId An identifier for the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchResultEntry withMessageId(String messageId) {
         this.messageId = messageId;
@@ -159,7 +159,7 @@ public class SendMessageBatchResultEntry  implements Serializable  {
      *         href="http://faqs.org/rfcs/rfc1321.html">http://faqs.org/rfcs/rfc1321.html</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchResultEntry withMD5OfMessageBody(String mD5OfMessageBody) {
         this.mD5OfMessageBody = mD5OfMessageBody;
@@ -178,9 +178,9 @@ public class SendMessageBatchResultEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getMessageId() != null) sb.append("MessageId: " + getMessageId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getMessageId() != null) sb.append("MessageId: " + getMessageId() + ",");
         if (getMD5OfMessageBody() != null) sb.append("MD5OfMessageBody: " + getMD5OfMessageBody() );
         sb.append("}");
         return sb.toString();

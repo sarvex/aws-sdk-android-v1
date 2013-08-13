@@ -57,7 +57,7 @@ import java.io.Serializable;
  * </p>
  * <p>
  * <b>Important:</b> You cannot call <code>Assumerole</code> by using AWS account credentials; access will be denied. You must use IAM user credentials
- * to call <code>AssumeRole</code> .
+ * or temporary security credentials to call <code>AssumeRole</code> .
  * 
  * </p>
  * <p>
@@ -178,7 +178,7 @@ public class AssumeRoleRequest extends AmazonWebServiceRequest  implements Seria
      *         assuming.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleRequest withRoleArn(String roleArn) {
         this.roleArn = roleArn;
@@ -230,7 +230,7 @@ public class AssumeRoleRequest extends AmazonWebServiceRequest  implements Seria
      *         included as part of the <code>AssumedRoleUser</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleRequest withRoleSessionName(String roleSessionName) {
         this.roleSessionName = roleSessionName;
@@ -306,7 +306,7 @@ public class AssumeRoleRequest extends AmazonWebServiceRequest  implements Seria
      *         security credentials.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleRequest withPolicy(String policy) {
         this.policy = policy;
@@ -361,7 +361,7 @@ public class AssumeRoleRequest extends AmazonWebServiceRequest  implements Seria
      *         the value is set to 3600 seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleRequest withDurationSeconds(Integer durationSeconds) {
         this.durationSeconds = durationSeconds;
@@ -467,7 +467,7 @@ public class AssumeRoleRequest extends AmazonWebServiceRequest  implements Seria
      *         Security Credentials</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleRequest withExternalId(String externalId) {
         this.externalId = externalId;
@@ -486,11 +486,11 @@ public class AssumeRoleRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRoleArn() != null) sb.append("RoleArn: " + getRoleArn() + ",");    	
-        if (getRoleSessionName() != null) sb.append("RoleSessionName: " + getRoleSessionName() + ",");    	
-        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");    	
-        if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() + ",");    	
+        sb.append("{");
+        if (getRoleArn() != null) sb.append("RoleArn: " + getRoleArn() + ",");
+        if (getRoleSessionName() != null) sb.append("RoleSessionName: " + getRoleSessionName() + ",");
+        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");
+        if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() + ",");
         if (getExternalId() != null) sb.append("ExternalId: " + getExternalId() );
         sb.append("}");
         return sb.toString();

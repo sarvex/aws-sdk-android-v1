@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of canceling an Amazon EC2 bundle task.
  * </p>
  */
-public class CancelBundleTaskResult  implements Serializable  {
+public class CancelBundleTaskResult implements Serializable {
 
     /**
      * The canceled bundle task.
@@ -53,7 +53,7 @@ public class CancelBundleTaskResult  implements Serializable  {
      * @param bundleTask The canceled bundle task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelBundleTaskResult withBundleTask(BundleTask bundleTask) {
         this.bundleTask = bundleTask;
@@ -72,7 +72,7 @@ public class CancelBundleTaskResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getBundleTask() != null) sb.append("BundleTask: " + getBundleTask() );
         sb.append("}");
         return sb.toString();

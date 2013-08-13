@@ -32,7 +32,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#putMetricAlarm(PutMetricAlarmRequest)
  */
-public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutMetricAlarmRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The descriptive name for the alarm. This name must be unique within
@@ -67,7 +67,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> oKActions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> oKActions;
 
     /**
      * The list of actions to execute when this alarm transitions into an
@@ -79,7 +79,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> alarmActions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmActions;
 
     /**
      * The list of actions to execute when this alarm transitions into an
@@ -91,7 +91,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> insufficientDataActions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> insufficientDataActions;
 
     /**
      * The name for the alarm's associated metric.
@@ -124,7 +124,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<Dimension> dimensions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensions;
 
     /**
      * The period in seconds over which the specified statistic is applied.
@@ -207,7 +207,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         the user's AWS account
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withAlarmName(String alarmName) {
         this.alarmName = alarmName;
@@ -250,7 +250,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param alarmDescription The description for the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withAlarmDescription(String alarmDescription) {
         this.alarmDescription = alarmDescription;
@@ -290,7 +290,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         to the alarm's state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withActionsEnabled(Boolean actionsEnabled) {
         this.actionsEnabled = actionsEnabled;
@@ -328,7 +328,8 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
     public java.util.List<String> getOKActions() {
         
         if (oKActions == null) {
-            oKActions = new java.util.ArrayList<String>();
+              oKActions = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              oKActions.setAutoConstruct(true);
         }
         return oKActions;
     }
@@ -354,8 +355,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
             this.oKActions = null;
             return;
         }
-
-        java.util.List<String> oKActionsCopy = new java.util.ArrayList<String>(oKActions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> oKActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(oKActions.size());
         oKActionsCopy.addAll(oKActions);
         this.oKActions = oKActionsCopy;
     }
@@ -379,7 +379,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         Scaling policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withOKActions(String... oKActions) {
         if (getOKActions() == null) setOKActions(new java.util.ArrayList<String>(oKActions.length));
@@ -408,13 +408,13 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         Scaling policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withOKActions(java.util.Collection<String> oKActions) {
         if (oKActions == null) {
             this.oKActions = null;
         } else {
-            java.util.List<String> oKActionsCopy = new java.util.ArrayList<String>(oKActions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> oKActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(oKActions.size());
             oKActionsCopy.addAll(oKActions);
             this.oKActions = oKActionsCopy;
         }
@@ -441,7 +441,8 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
     public java.util.List<String> getAlarmActions() {
         
         if (alarmActions == null) {
-            alarmActions = new java.util.ArrayList<String>();
+              alarmActions = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              alarmActions.setAutoConstruct(true);
         }
         return alarmActions;
     }
@@ -467,8 +468,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
             this.alarmActions = null;
             return;
         }
-
-        java.util.List<String> alarmActionsCopy = new java.util.ArrayList<String>(alarmActions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmActions.size());
         alarmActionsCopy.addAll(alarmActions);
         this.alarmActions = alarmActionsCopy;
     }
@@ -492,7 +492,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         Auto Scaling policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withAlarmActions(String... alarmActions) {
         if (getAlarmActions() == null) setAlarmActions(new java.util.ArrayList<String>(alarmActions.length));
@@ -521,13 +521,13 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         Auto Scaling policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withAlarmActions(java.util.Collection<String> alarmActions) {
         if (alarmActions == null) {
             this.alarmActions = null;
         } else {
-            java.util.List<String> alarmActionsCopy = new java.util.ArrayList<String>(alarmActions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmActions.size());
             alarmActionsCopy.addAll(alarmActions);
             this.alarmActions = alarmActionsCopy;
         }
@@ -554,7 +554,8 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
     public java.util.List<String> getInsufficientDataActions() {
         
         if (insufficientDataActions == null) {
-            insufficientDataActions = new java.util.ArrayList<String>();
+              insufficientDataActions = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              insufficientDataActions.setAutoConstruct(true);
         }
         return insufficientDataActions;
     }
@@ -580,8 +581,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
             this.insufficientDataActions = null;
             return;
         }
-
-        java.util.List<String> insufficientDataActionsCopy = new java.util.ArrayList<String>(insufficientDataActions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> insufficientDataActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(insufficientDataActions.size());
         insufficientDataActionsCopy.addAll(insufficientDataActions);
         this.insufficientDataActions = insufficientDataActionsCopy;
     }
@@ -605,7 +605,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         Auto Scaling policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withInsufficientDataActions(String... insufficientDataActions) {
         if (getInsufficientDataActions() == null) setInsufficientDataActions(new java.util.ArrayList<String>(insufficientDataActions.length));
@@ -634,13 +634,13 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         Auto Scaling policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withInsufficientDataActions(java.util.Collection<String> insufficientDataActions) {
         if (insufficientDataActions == null) {
             this.insufficientDataActions = null;
         } else {
-            java.util.List<String> insufficientDataActionsCopy = new java.util.ArrayList<String>(insufficientDataActions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> insufficientDataActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(insufficientDataActions.size());
             insufficientDataActionsCopy.addAll(insufficientDataActions);
             this.insufficientDataActions = insufficientDataActionsCopy;
         }
@@ -683,7 +683,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param metricName The name for the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withMetricName(String metricName) {
         this.metricName = metricName;
@@ -729,7 +729,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param namespace The namespace for the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withNamespace(String namespace) {
         this.namespace = namespace;
@@ -776,7 +776,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param statistic The statistic to apply to the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see Statistic
      */
@@ -811,7 +811,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param statistic The statistic to apply to the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see Statistic
      */
@@ -831,7 +831,8 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
     public java.util.List<Dimension> getDimensions() {
         
         if (dimensions == null) {
-            dimensions = new java.util.ArrayList<Dimension>();
+              dimensions = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>();
+              dimensions.setAutoConstruct(true);
         }
         return dimensions;
     }
@@ -849,8 +850,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
             this.dimensions = null;
             return;
         }
-
-        java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
         dimensionsCopy.addAll(dimensions);
         this.dimensions = dimensionsCopy;
     }
@@ -866,7 +866,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param dimensions The dimensions for the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withDimensions(Dimension... dimensions) {
         if (getDimensions() == null) setDimensions(new java.util.ArrayList<Dimension>(dimensions.length));
@@ -887,13 +887,13 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param dimensions The dimensions for the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
         } else {
-            java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
             dimensionsCopy.addAll(dimensions);
             this.dimensions = dimensionsCopy;
         }
@@ -936,7 +936,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param period The period in seconds over which the specified statistic is applied.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withPeriod(Integer period) {
         this.period = period;
@@ -983,7 +983,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param unit The unit for the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -1018,7 +1018,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param unit The unit for the alarm's associated metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -1068,7 +1068,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         threshold.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withEvaluationPeriods(Integer evaluationPeriods) {
         this.evaluationPeriods = evaluationPeriods;
@@ -1102,7 +1102,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      * @param threshold The value against which the specified statistic is compared.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutMetricAlarmRequest withThreshold(Double threshold) {
         this.threshold = threshold;
@@ -1161,7 +1161,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         <code>Statistic</code> value is used as the first operand.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ComparisonOperator
      */
@@ -1204,7 +1204,7 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
      *         <code>Statistic</code> value is used as the first operand.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ComparisonOperator
      */
@@ -1224,21 +1224,21 @@ public class PutMetricAlarmRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");    	
-        if (getAlarmDescription() != null) sb.append("AlarmDescription: " + getAlarmDescription() + ",");    	
-        if (isActionsEnabled() != null) sb.append("ActionsEnabled: " + isActionsEnabled() + ",");    	
-        if (getOKActions() != null) sb.append("OKActions: " + getOKActions() + ",");    	
-        if (getAlarmActions() != null) sb.append("AlarmActions: " + getAlarmActions() + ",");    	
-        if (getInsufficientDataActions() != null) sb.append("InsufficientDataActions: " + getInsufficientDataActions() + ",");    	
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
-        if (getStatistic() != null) sb.append("Statistic: " + getStatistic() + ",");    	
-        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");    	
-        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ",");    	
-        if (getUnit() != null) sb.append("Unit: " + getUnit() + ",");    	
-        if (getEvaluationPeriods() != null) sb.append("EvaluationPeriods: " + getEvaluationPeriods() + ",");    	
-        if (getThreshold() != null) sb.append("Threshold: " + getThreshold() + ",");    	
+        sb.append("{");
+        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");
+        if (getAlarmDescription() != null) sb.append("AlarmDescription: " + getAlarmDescription() + ",");
+        if (isActionsEnabled() != null) sb.append("ActionsEnabled: " + isActionsEnabled() + ",");
+        if (getOKActions() != null) sb.append("OKActions: " + getOKActions() + ",");
+        if (getAlarmActions() != null) sb.append("AlarmActions: " + getAlarmActions() + ",");
+        if (getInsufficientDataActions() != null) sb.append("InsufficientDataActions: " + getInsufficientDataActions() + ",");
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
+        if (getStatistic() != null) sb.append("Statistic: " + getStatistic() + ",");
+        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");
+        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ",");
+        if (getUnit() != null) sb.append("Unit: " + getUnit() + ",");
+        if (getEvaluationPeriods() != null) sb.append("EvaluationPeriods: " + getEvaluationPeriods() + ",");
+        if (getThreshold() != null) sb.append("Threshold: " + getThreshold() + ",");
         if (getComparisonOperator() != null) sb.append("ComparisonOperator: " + getComparisonOperator() );
         sb.append("}");
         return sb.toString();

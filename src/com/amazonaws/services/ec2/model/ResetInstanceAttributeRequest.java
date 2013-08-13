@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ResetInstanceAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#resetInstanceAttribute(ResetInstanceAttributeRequest)
  */
-public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ResetInstanceAttributeRequest> {
 
     /**
      * The ID of the Amazon EC2 instance whose attribute is being reset.
@@ -46,6 +48,8 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
      */
     public ResetInstanceAttributeRequest() {}
     
+
+
     /**
      * Constructs a new ResetInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,8 +61,8 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
      * attribute names: <code>kernel</code>, <code>ramdisk</code>
      */
     public ResetInstanceAttributeRequest(String instanceId, String attribute) {
-        this.instanceId = instanceId;
-        this.attribute = attribute;
+        setInstanceId(instanceId);
+        setAttribute(attribute);
     }
 
     
@@ -104,7 +108,7 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
      * @param instanceId The ID of the Amazon EC2 instance whose attribute is being reset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetInstanceAttributeRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -157,7 +161,7 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
      *         <code>kernel</code>, <code>ramdisk</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
@@ -196,13 +200,25 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
      *         <code>kernel</code>, <code>ramdisk</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
     public ResetInstanceAttributeRequest withAttribute(InstanceAttributeName attribute) {
         this.attribute = attribute.toString();
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ResetInstanceAttributeRequest> getDryRunRequest() {
+        Request<ResetInstanceAttributeRequest> request = new ResetInstanceAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -216,8 +232,8 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

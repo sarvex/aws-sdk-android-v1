@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Instance Export Details
  */
-public class InstanceExportDetails  implements Serializable  {
+public class InstanceExportDetails implements Serializable {
 
     private String instanceId;
 
@@ -50,7 +50,7 @@ public class InstanceExportDetails  implements Serializable  {
      * @param instanceId The new value for the InstanceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceExportDetails withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -97,7 +97,7 @@ public class InstanceExportDetails  implements Serializable  {
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExportEnvironment
      */
@@ -132,7 +132,7 @@ public class InstanceExportDetails  implements Serializable  {
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExportEnvironment
      */
@@ -152,8 +152,8 @@ public class InstanceExportDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getTargetEnvironment() != null) sb.append("TargetEnvironment: " + getTargetEnvironment() );
         sb.append("}");
         return sb.toString();

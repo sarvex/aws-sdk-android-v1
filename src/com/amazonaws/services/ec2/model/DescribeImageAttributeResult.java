@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of describing an AMI attribute.
  * </p>
  */
-public class DescribeImageAttributeResult  implements Serializable  {
+public class DescribeImageAttributeResult implements Serializable {
 
     /**
      * The described image attribute of the associated AMI.
@@ -53,7 +53,7 @@ public class DescribeImageAttributeResult  implements Serializable  {
      * @param imageAttribute The described image attribute of the associated AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImageAttributeResult withImageAttribute(ImageAttribute imageAttribute) {
         this.imageAttribute = imageAttribute;
@@ -72,7 +72,7 @@ public class DescribeImageAttributeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageAttribute() != null) sb.append("ImageAttribute: " + getImageAttribute() );
         sb.append("}");
         return sb.toString();

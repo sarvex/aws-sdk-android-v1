@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Availability Zone Message
  */
-public class AvailabilityZoneMessage  implements Serializable  {
+public class AvailabilityZoneMessage implements Serializable {
 
     private String message;
 
@@ -48,7 +48,7 @@ public class AvailabilityZoneMessage  implements Serializable  {
      * @param message The new value for the Message property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZoneMessage withMessage(String message) {
         this.message = message;
@@ -67,7 +67,7 @@ public class AvailabilityZoneMessage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

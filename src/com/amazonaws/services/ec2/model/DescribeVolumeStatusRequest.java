@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeVolumeStatusRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,11 +26,11 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeVolumeStatus(DescribeVolumeStatusRequest)
  */
-public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeVolumeStatusRequest> {
 
-    private java.util.List<String> volumeIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeIds;
 
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     private String nextToken;
 
@@ -42,7 +44,8 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
     public java.util.List<String> getVolumeIds() {
         
         if (volumeIds == null) {
-            volumeIds = new java.util.ArrayList<String>();
+              volumeIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              volumeIds.setAutoConstruct(true);
         }
         return volumeIds;
     }
@@ -57,8 +60,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
             this.volumeIds = null;
             return;
         }
-
-        java.util.List<String> volumeIdsCopy = new java.util.ArrayList<String>(volumeIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(volumeIds.size());
         volumeIdsCopy.addAll(volumeIds);
         this.volumeIds = volumeIdsCopy;
     }
@@ -71,7 +73,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
      * @param volumeIds The new value for the VolumeIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusRequest withVolumeIds(String... volumeIds) {
         if (getVolumeIds() == null) setVolumeIds(new java.util.ArrayList<String>(volumeIds.length));
@@ -89,13 +91,13 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
      * @param volumeIds The new value for the VolumeIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusRequest withVolumeIds(java.util.Collection<String> volumeIds) {
         if (volumeIds == null) {
             this.volumeIds = null;
         } else {
-            java.util.List<String> volumeIdsCopy = new java.util.ArrayList<String>(volumeIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(volumeIds.size());
             volumeIdsCopy.addAll(volumeIds);
             this.volumeIds = volumeIdsCopy;
         }
@@ -111,7 +113,8 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -126,8 +129,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -140,7 +142,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
      * @param filters The new value for the Filters property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -158,13 +160,13 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
      * @param filters The new value for the Filters property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
@@ -198,7 +200,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
      * @param nextToken The new value for the NextToken property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -232,13 +234,25 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
      * @param maxResults The new value for the MaxResults property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusRequest withMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeVolumeStatusRequest> getDryRunRequest() {
+        Request<DescribeVolumeStatusRequest> request = new DescribeVolumeStatusRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -251,10 +265,10 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeIds() != null) sb.append("VolumeIds: " + getVolumeIds() + ",");    	
-        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getVolumeIds() != null) sb.append("VolumeIds: " + getVolumeIds() + ",");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() );
         sb.append("}");
         return sb.toString();

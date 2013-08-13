@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Result of attaching an Amazon EBS volume to a running instance.
  * </p>
  */
-public class AttachVolumeResult  implements Serializable  {
+public class AttachVolumeResult implements Serializable {
 
     /**
      * 
@@ -53,7 +53,7 @@ public class AttachVolumeResult  implements Serializable  {
      * @param attachment 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachVolumeResult withAttachment(VolumeAttachment attachment) {
         this.attachment = attachment;
@@ -72,7 +72,7 @@ public class AttachVolumeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttachment() != null) sb.append("Attachment: " + getAttachment() );
         sb.append("}");
         return sb.toString();

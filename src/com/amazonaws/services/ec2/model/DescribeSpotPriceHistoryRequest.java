@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeSpotPriceHistoryRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -33,7 +35,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSpotPriceHistory(DescribeSpotPriceHistoryRequest)
  */
-public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSpotPriceHistoryRequest> {
 
     /**
      * The start date and time of the Spot Instance price history data.
@@ -48,12 +50,12 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
     /**
      * Specifies the instance type to return.
      */
-    private java.util.List<String> instanceTypes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceTypes;
 
     /**
      * The description of the AMI.
      */
-    private java.util.List<String> productDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> productDescriptions;
 
     /**
      * A list of filters used to match properties for SpotPriceHistory. For a
@@ -62,7 +64,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * Filters the results by availability zone (ex: 'us-east-1a').
@@ -105,7 +107,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param startTime The start date and time of the Spot Instance price history data.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -139,7 +141,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param endTime The end date and time of the Spot Instance price history data.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
@@ -155,7 +157,8 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
     public java.util.List<String> getInstanceTypes() {
         
         if (instanceTypes == null) {
-            instanceTypes = new java.util.ArrayList<String>();
+              instanceTypes = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceTypes.setAutoConstruct(true);
         }
         return instanceTypes;
     }
@@ -170,8 +173,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
             this.instanceTypes = null;
             return;
         }
-
-        java.util.List<String> instanceTypesCopy = new java.util.ArrayList<String>(instanceTypes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceTypes.size());
         instanceTypesCopy.addAll(instanceTypes);
         this.instanceTypes = instanceTypesCopy;
     }
@@ -184,7 +186,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param instanceTypes Specifies the instance type to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withInstanceTypes(String... instanceTypes) {
         if (getInstanceTypes() == null) setInstanceTypes(new java.util.ArrayList<String>(instanceTypes.length));
@@ -202,13 +204,13 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param instanceTypes Specifies the instance type to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withInstanceTypes(java.util.Collection<String> instanceTypes) {
         if (instanceTypes == null) {
             this.instanceTypes = null;
         } else {
-            java.util.List<String> instanceTypesCopy = new java.util.ArrayList<String>(instanceTypes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceTypes.size());
             instanceTypesCopy.addAll(instanceTypes);
             this.instanceTypes = instanceTypesCopy;
         }
@@ -224,7 +226,8 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
     public java.util.List<String> getProductDescriptions() {
         
         if (productDescriptions == null) {
-            productDescriptions = new java.util.ArrayList<String>();
+              productDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              productDescriptions.setAutoConstruct(true);
         }
         return productDescriptions;
     }
@@ -239,8 +242,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
             this.productDescriptions = null;
             return;
         }
-
-        java.util.List<String> productDescriptionsCopy = new java.util.ArrayList<String>(productDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> productDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(productDescriptions.size());
         productDescriptionsCopy.addAll(productDescriptions);
         this.productDescriptions = productDescriptionsCopy;
     }
@@ -253,7 +255,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param productDescriptions The description of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withProductDescriptions(String... productDescriptions) {
         if (getProductDescriptions() == null) setProductDescriptions(new java.util.ArrayList<String>(productDescriptions.length));
@@ -271,13 +273,13 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param productDescriptions The description of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withProductDescriptions(java.util.Collection<String> productDescriptions) {
         if (productDescriptions == null) {
             this.productDescriptions = null;
         } else {
-            java.util.List<String> productDescriptionsCopy = new java.util.ArrayList<String>(productDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> productDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(productDescriptions.size());
             productDescriptionsCopy.addAll(productDescriptions);
             this.productDescriptions = productDescriptionsCopy;
         }
@@ -301,7 +303,8 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -324,8 +327,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -346,7 +348,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -372,13 +374,13 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
@@ -412,7 +414,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param availabilityZone Filters the results by availability zone (ex: 'us-east-1a').
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -446,7 +448,7 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param maxResults Specifies the number of rows to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
@@ -480,13 +482,25 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
      * @param nextToken Specifies the next set of rows to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotPriceHistoryRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeSpotPriceHistoryRequest> getDryRunRequest() {
+        Request<DescribeSpotPriceHistoryRequest> request = new DescribeSpotPriceHistoryRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -499,14 +513,14 @@ public class DescribeSpotPriceHistoryRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getInstanceTypes() != null) sb.append("InstanceTypes: " + getInstanceTypes() + ",");    	
-        if (getProductDescriptions() != null) sb.append("ProductDescriptions: " + getProductDescriptions() + ",");    	
-        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() + ",");    	
+        sb.append("{");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getInstanceTypes() != null) sb.append("InstanceTypes: " + getInstanceTypes() + ",");
+        if (getProductDescriptions() != null) sb.append("ProductDescriptions: " + getProductDescriptions() + ",");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

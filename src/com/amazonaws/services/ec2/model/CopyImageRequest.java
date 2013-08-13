@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CopyImageRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#copyImage(CopyImageRequest)
  */
-public class CopyImageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CopyImageRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CopyImageRequest> {
 
     private String sourceRegion;
 
@@ -60,7 +62,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest  implements Serial
      * @param sourceRegion The new value for the SourceRegion property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withSourceRegion(String sourceRegion) {
         this.sourceRegion = sourceRegion;
@@ -94,7 +96,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest  implements Serial
      * @param sourceImageId The new value for the SourceImageId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withSourceImageId(String sourceImageId) {
         this.sourceImageId = sourceImageId;
@@ -128,7 +130,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest  implements Serial
      * @param name The new value for the Name property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withName(String name) {
         this.name = name;
@@ -162,7 +164,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest  implements Serial
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withDescription(String description) {
         this.description = description;
@@ -196,13 +198,25 @@ public class CopyImageRequest extends AmazonWebServiceRequest  implements Serial
      * @param clientToken The new value for the ClientToken property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CopyImageRequest> getDryRunRequest() {
+        Request<CopyImageRequest> request = new CopyImageRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -215,11 +229,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceRegion() != null) sb.append("SourceRegion: " + getSourceRegion() + ",");    	
-        if (getSourceImageId() != null) sb.append("SourceImageId: " + getSourceImageId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getSourceRegion() != null) sb.append("SourceRegion: " + getSourceRegion() + ",");
+        if (getSourceImageId() != null) sb.append("SourceImageId: " + getSourceImageId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getClientToken() != null) sb.append("ClientToken: " + getClientToken() );
         sb.append("}");
         return sb.toString();

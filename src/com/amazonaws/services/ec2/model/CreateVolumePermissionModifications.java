@@ -18,11 +18,11 @@ import java.io.Serializable;
 /**
  * Create Volume Permission Modifications
  */
-public class CreateVolumePermissionModifications  implements Serializable  {
+public class CreateVolumePermissionModifications implements Serializable {
 
-    private java.util.List<CreateVolumePermission> add;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> add;
 
-    private java.util.List<CreateVolumePermission> remove;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> remove;
 
     /**
      * Returns the value of the Add property for this object.
@@ -32,7 +32,8 @@ public class CreateVolumePermissionModifications  implements Serializable  {
     public java.util.List<CreateVolumePermission> getAdd() {
         
         if (add == null) {
-            add = new java.util.ArrayList<CreateVolumePermission>();
+              add = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>();
+              add.setAutoConstruct(true);
         }
         return add;
     }
@@ -47,8 +48,7 @@ public class CreateVolumePermissionModifications  implements Serializable  {
             this.add = null;
             return;
         }
-
-        java.util.List<CreateVolumePermission> addCopy = new java.util.ArrayList<CreateVolumePermission>(add.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> addCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(add.size());
         addCopy.addAll(add);
         this.add = addCopy;
     }
@@ -61,7 +61,7 @@ public class CreateVolumePermissionModifications  implements Serializable  {
      * @param add The new value for the Add property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumePermissionModifications withAdd(CreateVolumePermission... add) {
         if (getAdd() == null) setAdd(new java.util.ArrayList<CreateVolumePermission>(add.length));
@@ -79,13 +79,13 @@ public class CreateVolumePermissionModifications  implements Serializable  {
      * @param add The new value for the Add property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumePermissionModifications withAdd(java.util.Collection<CreateVolumePermission> add) {
         if (add == null) {
             this.add = null;
         } else {
-            java.util.List<CreateVolumePermission> addCopy = new java.util.ArrayList<CreateVolumePermission>(add.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> addCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(add.size());
             addCopy.addAll(add);
             this.add = addCopy;
         }
@@ -101,7 +101,8 @@ public class CreateVolumePermissionModifications  implements Serializable  {
     public java.util.List<CreateVolumePermission> getRemove() {
         
         if (remove == null) {
-            remove = new java.util.ArrayList<CreateVolumePermission>();
+              remove = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>();
+              remove.setAutoConstruct(true);
         }
         return remove;
     }
@@ -116,8 +117,7 @@ public class CreateVolumePermissionModifications  implements Serializable  {
             this.remove = null;
             return;
         }
-
-        java.util.List<CreateVolumePermission> removeCopy = new java.util.ArrayList<CreateVolumePermission>(remove.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> removeCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(remove.size());
         removeCopy.addAll(remove);
         this.remove = removeCopy;
     }
@@ -130,7 +130,7 @@ public class CreateVolumePermissionModifications  implements Serializable  {
      * @param remove The new value for the Remove property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumePermissionModifications withRemove(CreateVolumePermission... remove) {
         if (getRemove() == null) setRemove(new java.util.ArrayList<CreateVolumePermission>(remove.length));
@@ -148,13 +148,13 @@ public class CreateVolumePermissionModifications  implements Serializable  {
      * @param remove The new value for the Remove property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumePermissionModifications withRemove(java.util.Collection<CreateVolumePermission> remove) {
         if (remove == null) {
             this.remove = null;
         } else {
-            java.util.List<CreateVolumePermission> removeCopy = new java.util.ArrayList<CreateVolumePermission>(remove.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> removeCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(remove.size());
             removeCopy.addAll(remove);
             this.remove = removeCopy;
         }
@@ -173,8 +173,8 @@ public class CreateVolumePermissionModifications  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAdd() != null) sb.append("Add: " + getAdd() + ",");    	
+        sb.append("{");
+        if (getAdd() != null) sb.append("Add: " + getAdd() + ",");
         if (getRemove() != null) sb.append("Remove: " + getRemove() );
         sb.append("}");
         return sb.toString();

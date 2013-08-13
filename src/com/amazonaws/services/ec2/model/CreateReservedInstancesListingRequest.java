@@ -22,13 +22,13 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createReservedInstancesListing(CreateReservedInstancesListingRequest)
  */
-public class CreateReservedInstancesListingRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateReservedInstancesListingRequest extends AmazonWebServiceRequest implements Serializable {
 
     private String reservedInstancesId;
 
     private Integer instanceCount;
 
-    private java.util.List<PriceScheduleSpecification> priceSchedules;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PriceScheduleSpecification> priceSchedules;
 
     private String clientToken;
 
@@ -58,7 +58,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
      * @param reservedInstancesId The new value for the ReservedInstancesId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateReservedInstancesListingRequest withReservedInstancesId(String reservedInstancesId) {
         this.reservedInstancesId = reservedInstancesId;
@@ -92,7 +92,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
      * @param instanceCount The new value for the InstanceCount property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateReservedInstancesListingRequest withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
@@ -108,7 +108,8 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
     public java.util.List<PriceScheduleSpecification> getPriceSchedules() {
         
         if (priceSchedules == null) {
-            priceSchedules = new java.util.ArrayList<PriceScheduleSpecification>();
+              priceSchedules = new com.amazonaws.internal.ListWithAutoConstructFlag<PriceScheduleSpecification>();
+              priceSchedules.setAutoConstruct(true);
         }
         return priceSchedules;
     }
@@ -123,8 +124,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
             this.priceSchedules = null;
             return;
         }
-
-        java.util.List<PriceScheduleSpecification> priceSchedulesCopy = new java.util.ArrayList<PriceScheduleSpecification>(priceSchedules.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PriceScheduleSpecification> priceSchedulesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PriceScheduleSpecification>(priceSchedules.size());
         priceSchedulesCopy.addAll(priceSchedules);
         this.priceSchedules = priceSchedulesCopy;
     }
@@ -137,7 +137,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
      * @param priceSchedules The new value for the PriceSchedules property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateReservedInstancesListingRequest withPriceSchedules(PriceScheduleSpecification... priceSchedules) {
         if (getPriceSchedules() == null) setPriceSchedules(new java.util.ArrayList<PriceScheduleSpecification>(priceSchedules.length));
@@ -155,13 +155,13 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
      * @param priceSchedules The new value for the PriceSchedules property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateReservedInstancesListingRequest withPriceSchedules(java.util.Collection<PriceScheduleSpecification> priceSchedules) {
         if (priceSchedules == null) {
             this.priceSchedules = null;
         } else {
-            java.util.List<PriceScheduleSpecification> priceSchedulesCopy = new java.util.ArrayList<PriceScheduleSpecification>(priceSchedules.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PriceScheduleSpecification> priceSchedulesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PriceScheduleSpecification>(priceSchedules.size());
             priceSchedulesCopy.addAll(priceSchedules);
             this.priceSchedules = priceSchedulesCopy;
         }
@@ -195,7 +195,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
      * @param clientToken The new value for the ClientToken property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateReservedInstancesListingRequest withClientToken(String clientToken) {
         this.clientToken = clientToken;
@@ -214,10 +214,10 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedInstancesId() != null) sb.append("ReservedInstancesId: " + getReservedInstancesId() + ",");    	
-        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");    	
-        if (getPriceSchedules() != null) sb.append("PriceSchedules: " + getPriceSchedules() + ",");    	
+        sb.append("{");
+        if (getReservedInstancesId() != null) sb.append("ReservedInstancesId: " + getReservedInstancesId() + ",");
+        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");
+        if (getPriceSchedules() != null) sb.append("PriceSchedules: " + getPriceSchedules() + ",");
         if (getClientToken() != null) sb.append("ClientToken: " + getClientToken() );
         sb.append("}");
         return sb.toString();

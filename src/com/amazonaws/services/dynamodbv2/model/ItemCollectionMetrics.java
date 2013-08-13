@@ -21,7 +21,7 @@ import java.io.Serializable;
  * the request. If the table does not have any secondary indexes, this information is not returned in the response.
  * </p>
  */
-public class ItemCollectionMetrics  implements Serializable  {
+public class ItemCollectionMetrics implements Serializable {
 
     /**
      * The hash key value of the item collection. This is the same as the
@@ -39,7 +39,7 @@ public class ItemCollectionMetrics  implements Serializable  {
      * subject to change over time; therefore, do not rely on the precision
      * or accuracy of the estimate.
      */
-    private java.util.List<Double> sizeEstimateRangeGB;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Double> sizeEstimateRangeGB;
 
     /**
      * The hash key value of the item collection. This is the same as the
@@ -51,7 +51,6 @@ public class ItemCollectionMetrics  implements Serializable  {
     public java.util.Map<String,AttributeValue> getItemCollectionKey() {
         
         return itemCollectionKey;
-
     }
     
     /**
@@ -75,13 +74,45 @@ public class ItemCollectionMetrics  implements Serializable  {
      *         hash key of the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ItemCollectionMetrics withItemCollectionKey(java.util.Map<String,AttributeValue> itemCollectionKey) {
         setItemCollectionKey(itemCollectionKey);
         return this;
     }
     
+   	
+    /**
+     * The hash key value of the item collection. This is the same as the
+     * hash key of the item.
+     * <p>
+     * The method adds a new key-value pair into ItemCollectionKey parameter,
+     * and returns a reference to this object so that method calls can be
+     * chained together.
+     *
+     * @param key The key of the entry to be added into ItemCollectionKey.
+     * @param value The corresponding value of the entry to be added into ItemCollectionKey.
+     */
+	public ItemCollectionMetrics addItemCollectionKeyEntry(String key, AttributeValue value) {
+		if (null == this.itemCollectionKey) {
+			this.itemCollectionKey = new java.util.HashMap<String,AttributeValue>();
+		}
+		if (this.itemCollectionKey.containsKey(key))
+			throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+		this.itemCollectionKey.put(key, value);
+		return this;
+	}
+	
+	/**
+	 * Removes all the entries added into ItemCollectionKey.
+	 * <p>
+	 * Returns a reference to this object so that method calls can be chained together.
+	 */
+	public ItemCollectionMetrics clearItemCollectionKeyEntries() {
+		this.itemCollectionKey = null;
+		return this;
+	}
+	
     /**
      * An estimate of item collection size, measured in gigabytes. This is a
      * two-element array containing a lower bound and an upper bound for the
@@ -130,8 +161,7 @@ public class ItemCollectionMetrics  implements Serializable  {
             this.sizeEstimateRangeGB = null;
             return;
         }
-
-        java.util.List<Double> sizeEstimateRangeGBCopy = new java.util.ArrayList<Double>(sizeEstimateRangeGB.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Double> sizeEstimateRangeGBCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Double>(sizeEstimateRangeGB.size());
         sizeEstimateRangeGBCopy.addAll(sizeEstimateRangeGB);
         this.sizeEstimateRangeGB = sizeEstimateRangeGBCopy;
     }
@@ -158,7 +188,7 @@ public class ItemCollectionMetrics  implements Serializable  {
      *         or accuracy of the estimate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ItemCollectionMetrics withSizeEstimateRangeGB(Double... sizeEstimateRangeGB) {
         if (getSizeEstimateRangeGB() == null) setSizeEstimateRangeGB(new java.util.ArrayList<Double>(sizeEstimateRangeGB.length));
@@ -190,13 +220,13 @@ public class ItemCollectionMetrics  implements Serializable  {
      *         or accuracy of the estimate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ItemCollectionMetrics withSizeEstimateRangeGB(java.util.Collection<Double> sizeEstimateRangeGB) {
         if (sizeEstimateRangeGB == null) {
             this.sizeEstimateRangeGB = null;
         } else {
-            java.util.List<Double> sizeEstimateRangeGBCopy = new java.util.ArrayList<Double>(sizeEstimateRangeGB.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Double> sizeEstimateRangeGBCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Double>(sizeEstimateRangeGB.size());
             sizeEstimateRangeGBCopy.addAll(sizeEstimateRangeGB);
             this.sizeEstimateRangeGB = sizeEstimateRangeGBCopy;
         }
@@ -215,8 +245,8 @@ public class ItemCollectionMetrics  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getItemCollectionKey() != null) sb.append("ItemCollectionKey: " + getItemCollectionKey() + ",");    	
+        sb.append("{");
+        if (getItemCollectionKey() != null) sb.append("ItemCollectionKey: " + getItemCollectionKey() + ",");
         if (getSizeEstimateRangeGB() != null) sb.append("SizeEstimateRangeGB: " + getSizeEstimateRangeGB() );
         sb.append("}");
         return sb.toString();

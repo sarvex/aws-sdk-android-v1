@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ModifySnapshotAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifySnapshotAttribute(ModifySnapshotAttributeRequest)
  */
-public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifySnapshotAttributeRequest> {
 
     /**
      * The ID of the EBS snapshot whose attributes are being modified.
@@ -53,7 +55,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      * <code>createVolumePermission</code> attribute is being modified.
      * </note>
      */
-    private java.util.List<String> userIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> userIds;
 
     /**
      * The AWS group names to add to or remove from the list of groups that
@@ -62,7 +64,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      * <code>createVolumePermission</code> attribute is being modified.
      * </note>
      */
-    private java.util.List<String> groupNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNames;
 
     private CreateVolumePermissionModifications createVolumePermission;
 
@@ -72,6 +74,8 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      */
     public ModifySnapshotAttributeRequest() {}
     
+
+
     /**
      * Constructs a new ModifySnapshotAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -85,9 +89,9 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      * Available operation names: <code>add</code>, <code>remove</code>
      */
     public ModifySnapshotAttributeRequest(String snapshotId, String attribute, String operationType) {
-        this.snapshotId = snapshotId;
-        this.attribute = attribute;
-        this.operationType = operationType;
+        setSnapshotId(snapshotId);
+        setAttribute(attribute);
+        setOperationType(operationType);
     }
 
     
@@ -136,7 +140,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      * @param snapshotId The ID of the EBS snapshot whose attributes are being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifySnapshotAttributeRequest withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -189,7 +193,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      *         names: <code>createVolumePermission</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotAttributeName
      */
@@ -228,7 +232,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      *         names: <code>createVolumePermission</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotAttributeName
      */
@@ -269,7 +273,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      *         names: <code>add</code>, <code>remove</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifySnapshotAttributeRequest withOperationType(String operationType) {
         this.operationType = operationType;
@@ -293,7 +297,8 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
     public java.util.List<String> getUserIds() {
         
         if (userIds == null) {
-            userIds = new java.util.ArrayList<String>();
+              userIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              userIds.setAutoConstruct(true);
         }
         return userIds;
     }
@@ -316,8 +321,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
             this.userIds = null;
             return;
         }
-
-        java.util.List<String> userIdsCopy = new java.util.ArrayList<String>(userIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> userIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userIds.size());
         userIdsCopy.addAll(userIds);
         this.userIds = userIdsCopy;
     }
@@ -338,7 +342,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      *         </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifySnapshotAttributeRequest withUserIds(String... userIds) {
         if (getUserIds() == null) setUserIds(new java.util.ArrayList<String>(userIds.length));
@@ -364,13 +368,13 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      *         </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifySnapshotAttributeRequest withUserIds(java.util.Collection<String> userIds) {
         if (userIds == null) {
             this.userIds = null;
         } else {
-            java.util.List<String> userIdsCopy = new java.util.ArrayList<String>(userIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> userIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userIds.size());
             userIdsCopy.addAll(userIds);
             this.userIds = userIdsCopy;
         }
@@ -394,7 +398,8 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
     public java.util.List<String> getGroupNames() {
         
         if (groupNames == null) {
-            groupNames = new java.util.ArrayList<String>();
+              groupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groupNames.setAutoConstruct(true);
         }
         return groupNames;
     }
@@ -417,8 +422,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
             this.groupNames = null;
             return;
         }
-
-        java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
         groupNamesCopy.addAll(groupNames);
         this.groupNames = groupNamesCopy;
     }
@@ -439,7 +443,7 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      *         </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifySnapshotAttributeRequest withGroupNames(String... groupNames) {
         if (getGroupNames() == null) setGroupNames(new java.util.ArrayList<String>(groupNames.length));
@@ -465,13 +469,13 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      *         </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifySnapshotAttributeRequest withGroupNames(java.util.Collection<String> groupNames) {
         if (groupNames == null) {
             this.groupNames = null;
         } else {
-            java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
             groupNamesCopy.addAll(groupNames);
             this.groupNames = groupNamesCopy;
         }
@@ -506,13 +510,25 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
      * @param createVolumePermission The new value for the CreateVolumePermission property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifySnapshotAttributeRequest withCreateVolumePermission(CreateVolumePermissionModifications createVolumePermission) {
         this.createVolumePermission = createVolumePermission;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ModifySnapshotAttributeRequest> getDryRunRequest() {
+        Request<ModifySnapshotAttributeRequest> request = new ModifySnapshotAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -525,12 +541,12 @@ public class ModifySnapshotAttributeRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");    	
-        if (getOperationType() != null) sb.append("OperationType: " + getOperationType() + ",");    	
-        if (getUserIds() != null) sb.append("UserIds: " + getUserIds() + ",");    	
-        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");
+        if (getOperationType() != null) sb.append("OperationType: " + getOperationType() + ",");
+        if (getUserIds() != null) sb.append("UserIds: " + getUserIds() + ",");
+        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");
         if (getCreateVolumePermission() != null) sb.append("CreateVolumePermission: " + getCreateVolumePermission() );
         sb.append("}");
         return sb.toString();

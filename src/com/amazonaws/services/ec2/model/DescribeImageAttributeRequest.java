@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeImageAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeImageAttribute(DescribeImageAttributeRequest)
  */
-public class DescribeImageAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeImageAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeImageAttributeRequest> {
 
     /**
      * The ID of the AMI whose attribute is to be described.
@@ -44,6 +46,8 @@ public class DescribeImageAttributeRequest extends AmazonWebServiceRequest  impl
      */
     public DescribeImageAttributeRequest() {}
     
+
+
     /**
      * Constructs a new DescribeImageAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +60,8 @@ public class DescribeImageAttributeRequest extends AmazonWebServiceRequest  impl
      * <code>blockDeviceMapping</code>
      */
     public DescribeImageAttributeRequest(String imageId, String attribute) {
-        this.imageId = imageId;
-        this.attribute = attribute;
+        setImageId(imageId);
+        setAttribute(attribute);
     }
 
     
@@ -88,7 +92,7 @@ public class DescribeImageAttributeRequest extends AmazonWebServiceRequest  impl
      * @param imageId The ID of the AMI whose attribute is to be described.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImageAttributeRequest withImageId(String imageId) {
         this.imageId = imageId;
@@ -134,13 +138,25 @@ public class DescribeImageAttributeRequest extends AmazonWebServiceRequest  impl
      *         <code>launchPermisson</code>, <code>blockDeviceMapping</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImageAttributeRequest withAttribute(String attribute) {
         this.attribute = attribute;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeImageAttributeRequest> getDryRunRequest() {
+        Request<DescribeImageAttributeRequest> request = new DescribeImageAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -153,8 +169,8 @@ public class DescribeImageAttributeRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
+        sb.append("{");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>BlockDeviceMapping</code> data type.
  * </p>
  */
-public class BlockDeviceMapping  implements Serializable  {
+public class BlockDeviceMapping implements Serializable {
 
     /**
      * The virtual name associated with the device.
@@ -83,7 +83,7 @@ public class BlockDeviceMapping  implements Serializable  {
      * @param virtualName The virtual name associated with the device.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BlockDeviceMapping withVirtualName(String virtualName) {
         this.virtualName = virtualName;
@@ -129,7 +129,7 @@ public class BlockDeviceMapping  implements Serializable  {
      * @param deviceName The name of the device within Amazon EC2.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BlockDeviceMapping withDeviceName(String deviceName) {
         this.deviceName = deviceName;
@@ -163,7 +163,7 @@ public class BlockDeviceMapping  implements Serializable  {
      * @param ebs The Elastic Block Storage volume information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BlockDeviceMapping withEbs(Ebs ebs) {
         this.ebs = ebs;
@@ -182,9 +182,9 @@ public class BlockDeviceMapping  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVirtualName() != null) sb.append("VirtualName: " + getVirtualName() + ",");    	
-        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");    	
+        sb.append("{");
+        if (getVirtualName() != null) sb.append("VirtualName: " + getVirtualName() + ",");
+        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");
         if (getEbs() != null) sb.append("Ebs: " + getEbs() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>InstanceMonitoring</code> data type.
  * </p>
  */
-public class InstanceMonitoring  implements Serializable  {
+public class InstanceMonitoring implements Serializable {
 
     /**
      * If <code>True</code>, instance monitoring is enabled.
@@ -53,7 +53,7 @@ public class InstanceMonitoring  implements Serializable  {
      * @param enabled If <code>True</code>, instance monitoring is enabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceMonitoring withEnabled(Boolean enabled) {
         this.enabled = enabled;
@@ -81,7 +81,7 @@ public class InstanceMonitoring  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (isEnabled() != null) sb.append("Enabled: " + isEnabled() );
         sb.append("}");
         return sb.toString();

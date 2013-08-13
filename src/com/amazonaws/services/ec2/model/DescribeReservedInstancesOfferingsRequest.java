@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeReservedInstancesOfferingsRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -26,19 +28,19 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeReservedInstancesOfferings(DescribeReservedInstancesOfferingsRequest)
  */
-public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeReservedInstancesOfferingsRequest> {
 
     /**
      * An optional list of the unique IDs of the Reserved Instance offerings
      * to describe.
      */
-    private java.util.List<String> reservedInstancesOfferingIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> reservedInstancesOfferingIds;
 
     /**
      * The instance type on which the Reserved Instance can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      */
     private String instanceType;
 
@@ -59,7 +61,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The tenancy of the Reserved Instance offering. A Reserved Instance
@@ -78,6 +80,23 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
     private Integer maxResults;
 
     /**
+     * Include Marketplace offerings in the response.
+     */
+    private Boolean includeMarketplace;
+
+    /**
+     * Minimum duration (in seconds) to filter when searching for offerings.
+     */
+    private Long minDuration;
+
+    /**
+     * Maximum duration (in seconds) to filter when searching for offerings.
+     */
+    private Long maxDuration;
+
+    private Integer maxInstanceCount;
+
+    /**
      * An optional list of the unique IDs of the Reserved Instance offerings
      * to describe.
      *
@@ -87,7 +106,8 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
     public java.util.List<String> getReservedInstancesOfferingIds() {
         
         if (reservedInstancesOfferingIds == null) {
-            reservedInstancesOfferingIds = new java.util.ArrayList<String>();
+              reservedInstancesOfferingIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              reservedInstancesOfferingIds.setAutoConstruct(true);
         }
         return reservedInstancesOfferingIds;
     }
@@ -104,8 +124,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
             this.reservedInstancesOfferingIds = null;
             return;
         }
-
-        java.util.List<String> reservedInstancesOfferingIdsCopy = new java.util.ArrayList<String>(reservedInstancesOfferingIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> reservedInstancesOfferingIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(reservedInstancesOfferingIds.size());
         reservedInstancesOfferingIdsCopy.addAll(reservedInstancesOfferingIds);
         this.reservedInstancesOfferingIds = reservedInstancesOfferingIdsCopy;
     }
@@ -120,7 +139,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      *         to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withReservedInstancesOfferingIds(String... reservedInstancesOfferingIds) {
         if (getReservedInstancesOfferingIds() == null) setReservedInstancesOfferingIds(new java.util.ArrayList<String>(reservedInstancesOfferingIds.length));
@@ -140,13 +159,13 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      *         to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withReservedInstancesOfferingIds(java.util.Collection<String> reservedInstancesOfferingIds) {
         if (reservedInstancesOfferingIds == null) {
             this.reservedInstancesOfferingIds = null;
         } else {
-            java.util.List<String> reservedInstancesOfferingIdsCopy = new java.util.ArrayList<String>(reservedInstancesOfferingIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> reservedInstancesOfferingIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(reservedInstancesOfferingIds.size());
             reservedInstancesOfferingIdsCopy.addAll(reservedInstancesOfferingIds);
             this.reservedInstancesOfferingIds = reservedInstancesOfferingIdsCopy;
         }
@@ -158,7 +177,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * The instance type on which the Reserved Instance can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @return The instance type on which the Reserved Instance can be used.
      *
@@ -172,7 +191,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * The instance type on which the Reserved Instance can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instance can be used.
      *
@@ -188,12 +207,12 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instance can be used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceType
      */
@@ -207,7 +226,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * The instance type on which the Reserved Instance can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instance can be used.
      *
@@ -223,12 +242,12 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instance can be used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceType
      */
@@ -263,7 +282,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * @param availabilityZone The Availability Zone in which the Reserved Instance can be used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -297,7 +316,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * @param productDescription The Reserved Instance product description.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withProductDescription(String productDescription) {
         this.productDescription = productDescription;
@@ -321,7 +340,8 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -344,8 +364,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -366,7 +385,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -392,13 +411,13 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
@@ -444,7 +463,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      *         only be launched within a VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withInstanceTenancy(String instanceTenancy) {
         this.instanceTenancy = instanceTenancy;
@@ -478,7 +497,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * @param offeringType The Reserved Instance offering type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withOfferingType(String offeringType) {
         this.offeringType = offeringType;
@@ -512,7 +531,7 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * @param nextToken The new value for the NextToken property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -546,13 +565,170 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
      * @param maxResults The new value for the MaxResults property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsRequest withMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
         return this;
     }
     
+    
+    /**
+     * Include Marketplace offerings in the response.
+     *
+     * @return Include Marketplace offerings in the response.
+     */
+    public Boolean isIncludeMarketplace() {
+        return includeMarketplace;
+    }
+    
+    /**
+     * Include Marketplace offerings in the response.
+     *
+     * @param includeMarketplace Include Marketplace offerings in the response.
+     */
+    public void setIncludeMarketplace(Boolean includeMarketplace) {
+        this.includeMarketplace = includeMarketplace;
+    }
+    
+    /**
+     * Include Marketplace offerings in the response.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param includeMarketplace Include Marketplace offerings in the response.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeReservedInstancesOfferingsRequest withIncludeMarketplace(Boolean includeMarketplace) {
+        this.includeMarketplace = includeMarketplace;
+        return this;
+    }
+    
+    
+    /**
+     * Include Marketplace offerings in the response.
+     *
+     * @return Include Marketplace offerings in the response.
+     */
+    public Boolean getIncludeMarketplace() {
+        return includeMarketplace;
+    }
+    
+    /**
+     * Minimum duration (in seconds) to filter when searching for offerings.
+     *
+     * @return Minimum duration (in seconds) to filter when searching for offerings.
+     */
+    public Long getMinDuration() {
+        return minDuration;
+    }
+    
+    /**
+     * Minimum duration (in seconds) to filter when searching for offerings.
+     *
+     * @param minDuration Minimum duration (in seconds) to filter when searching for offerings.
+     */
+    public void setMinDuration(Long minDuration) {
+        this.minDuration = minDuration;
+    }
+    
+    /**
+     * Minimum duration (in seconds) to filter when searching for offerings.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param minDuration Minimum duration (in seconds) to filter when searching for offerings.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeReservedInstancesOfferingsRequest withMinDuration(Long minDuration) {
+        this.minDuration = minDuration;
+        return this;
+    }
+    
+    
+    /**
+     * Maximum duration (in seconds) to filter when searching for offerings.
+     *
+     * @return Maximum duration (in seconds) to filter when searching for offerings.
+     */
+    public Long getMaxDuration() {
+        return maxDuration;
+    }
+    
+    /**
+     * Maximum duration (in seconds) to filter when searching for offerings.
+     *
+     * @param maxDuration Maximum duration (in seconds) to filter when searching for offerings.
+     */
+    public void setMaxDuration(Long maxDuration) {
+        this.maxDuration = maxDuration;
+    }
+    
+    /**
+     * Maximum duration (in seconds) to filter when searching for offerings.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param maxDuration Maximum duration (in seconds) to filter when searching for offerings.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeReservedInstancesOfferingsRequest withMaxDuration(Long maxDuration) {
+        this.maxDuration = maxDuration;
+        return this;
+    }
+    
+    
+    /**
+     * Returns the value of the MaxInstanceCount property for this object.
+     *
+     * @return The value of the MaxInstanceCount property for this object.
+     */
+    public Integer getMaxInstanceCount() {
+        return maxInstanceCount;
+    }
+    
+    /**
+     * Sets the value of the MaxInstanceCount property for this object.
+     *
+     * @param maxInstanceCount The new value for the MaxInstanceCount property for this object.
+     */
+    public void setMaxInstanceCount(Integer maxInstanceCount) {
+        this.maxInstanceCount = maxInstanceCount;
+    }
+    
+    /**
+     * Sets the value of the MaxInstanceCount property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param maxInstanceCount The new value for the MaxInstanceCount property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeReservedInstancesOfferingsRequest withMaxInstanceCount(Integer maxInstanceCount) {
+        this.maxInstanceCount = maxInstanceCount;
+        return this;
+    }
+    
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeReservedInstancesOfferingsRequest> getDryRunRequest() {
+        Request<DescribeReservedInstancesOfferingsRequest> request = new DescribeReservedInstancesOfferingsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -565,16 +741,20 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedInstancesOfferingIds() != null) sb.append("ReservedInstancesOfferingIds: " + getReservedInstancesOfferingIds() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");    	
-        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");    	
-        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");    	
-        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
-        if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() );
+        sb.append("{");
+        if (getReservedInstancesOfferingIds() != null) sb.append("ReservedInstancesOfferingIds: " + getReservedInstancesOfferingIds() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");
+        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
+        if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() + ",");
+        if (isIncludeMarketplace() != null) sb.append("IncludeMarketplace: " + isIncludeMarketplace() + ",");
+        if (getMinDuration() != null) sb.append("MinDuration: " + getMinDuration() + ",");
+        if (getMaxDuration() != null) sb.append("MaxDuration: " + getMaxDuration() + ",");
+        if (getMaxInstanceCount() != null) sb.append("MaxInstanceCount: " + getMaxInstanceCount() );
         sb.append("}");
         return sb.toString();
     }
@@ -593,6 +773,10 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
         hashCode = prime * hashCode + ((getOfferingType() == null) ? 0 : getOfferingType().hashCode()); 
         hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode()); 
         hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode()); 
+        hashCode = prime * hashCode + ((isIncludeMarketplace() == null) ? 0 : isIncludeMarketplace().hashCode()); 
+        hashCode = prime * hashCode + ((getMinDuration() == null) ? 0 : getMinDuration().hashCode()); 
+        hashCode = prime * hashCode + ((getMaxDuration() == null) ? 0 : getMaxDuration().hashCode()); 
+        hashCode = prime * hashCode + ((getMaxInstanceCount() == null) ? 0 : getMaxInstanceCount().hashCode()); 
         return hashCode;
     }
     
@@ -622,6 +806,14 @@ public class DescribeReservedInstancesOfferingsRequest extends AmazonWebServiceR
         if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false) return false; 
         if (other.getMaxResults() == null ^ this.getMaxResults() == null) return false;
         if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false) return false; 
+        if (other.isIncludeMarketplace() == null ^ this.isIncludeMarketplace() == null) return false;
+        if (other.isIncludeMarketplace() != null && other.isIncludeMarketplace().equals(this.isIncludeMarketplace()) == false) return false; 
+        if (other.getMinDuration() == null ^ this.getMinDuration() == null) return false;
+        if (other.getMinDuration() != null && other.getMinDuration().equals(this.getMinDuration()) == false) return false; 
+        if (other.getMaxDuration() == null ^ this.getMaxDuration() == null) return false;
+        if (other.getMaxDuration() != null && other.getMaxDuration().equals(this.getMaxDuration()) == false) return false; 
+        if (other.getMaxInstanceCount() == null ^ this.getMaxInstanceCount() == null) return false;
+        if (other.getMaxInstanceCount() != null && other.getMaxInstanceCount().equals(this.getMaxInstanceCount()) == false) return false; 
         return true;
     }
     

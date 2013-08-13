@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#putScalingPolicy(PutScalingPolicyRequest)
  */
-public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling group.
@@ -121,7 +121,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements
      * @param autoScalingGroupName The name or ARN of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScalingPolicyRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -167,7 +167,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements
      * @param policyName The name of the policy you want to create or update.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScalingPolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
@@ -225,7 +225,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements
      *         removes from the current capacity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScalingPolicyRequest withScalingAdjustment(Integer scalingAdjustment) {
         this.scalingAdjustment = scalingAdjustment;
@@ -289,7 +289,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements
      *         <code>PercentChangeInCapacity</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScalingPolicyRequest withAdjustmentType(String adjustmentType) {
         this.adjustmentType = adjustmentType;
@@ -329,7 +329,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements
      *         before any further trigger-related scaling activities can start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScalingPolicyRequest withCooldown(Integer cooldown) {
         this.cooldown = cooldown;
@@ -399,7 +399,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements
      *         <code>PercentChangeInCapacity</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScalingPolicyRequest withMinAdjustmentStep(Integer minAdjustmentStep) {
         this.minAdjustmentStep = minAdjustmentStep;
@@ -418,12 +418,12 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
-        if (getScalingAdjustment() != null) sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");    	
-        if (getAdjustmentType() != null) sb.append("AdjustmentType: " + getAdjustmentType() + ",");    	
-        if (getCooldown() != null) sb.append("Cooldown: " + getCooldown() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
+        if (getScalingAdjustment() != null) sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");
+        if (getAdjustmentType() != null) sb.append("AdjustmentType: " + getAdjustmentType() + ",");
+        if (getCooldown() != null) sb.append("Cooldown: " + getCooldown() + ",");
         if (getMinAdjustmentStep() != null) sb.append("MinAdjustmentStep: " + getMinAdjustmentStep() );
         sb.append("}");
         return sb.toString();

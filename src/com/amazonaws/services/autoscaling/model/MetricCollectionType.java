@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The MetricCollectionType data type.
  * </p>
  */
-public class MetricCollectionType  implements Serializable  {
+public class MetricCollectionType implements Serializable {
 
     /**
      * 
@@ -69,7 +69,7 @@ public class MetricCollectionType  implements Serializable  {
      * @param metric 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricCollectionType withMetric(String metric) {
         this.metric = metric;
@@ -88,7 +88,7 @@ public class MetricCollectionType  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMetric() != null) sb.append("Metric: " + getMetric() );
         sb.append("}");
         return sb.toString();

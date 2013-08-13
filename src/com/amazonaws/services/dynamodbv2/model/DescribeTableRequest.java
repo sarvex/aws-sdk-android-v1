@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#describeTable(DescribeTableRequest)
  */
-public class DescribeTableRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeTableRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the table to describe.
@@ -36,6 +36,27 @@ public class DescribeTableRequest extends AmazonWebServiceRequest  implements Se
      */
     private String tableName;
 
+    /**
+     * Default constructor for a new DescribeTableRequest object.  Callers should use the
+     * setter or fluent setter (with...) methods to initialize this object after creating it.
+     */
+    public DescribeTableRequest() {}
+    
+
+
+    /**
+     * Constructs a new DescribeTableRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param tableName The name of the table to describe.
+     */
+    public DescribeTableRequest(String tableName) {
+        setTableName(tableName);
+    }
+
+    
+    
     /**
      * The name of the table to describe.
      * <p>
@@ -74,7 +95,7 @@ public class DescribeTableRequest extends AmazonWebServiceRequest  implements Se
      * @param tableName The name of the table to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTableRequest withTableName(String tableName) {
         this.tableName = tableName;
@@ -93,7 +114,7 @@ public class DescribeTableRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTableName() != null) sb.append("TableName: " + getTableName() );
         sb.append("}");
         return sb.toString();

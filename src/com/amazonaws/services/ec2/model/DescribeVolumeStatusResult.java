@@ -18,9 +18,9 @@ import java.io.Serializable;
 /**
  * Describe Volume Status Result
  */
-public class DescribeVolumeStatusResult  implements Serializable  {
+public class DescribeVolumeStatusResult implements Serializable {
 
-    private java.util.List<VolumeStatusItem> volumeStatuses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem> volumeStatuses;
 
     private String nextToken;
 
@@ -32,7 +32,8 @@ public class DescribeVolumeStatusResult  implements Serializable  {
     public java.util.List<VolumeStatusItem> getVolumeStatuses() {
         
         if (volumeStatuses == null) {
-            volumeStatuses = new java.util.ArrayList<VolumeStatusItem>();
+              volumeStatuses = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem>();
+              volumeStatuses.setAutoConstruct(true);
         }
         return volumeStatuses;
     }
@@ -47,8 +48,7 @@ public class DescribeVolumeStatusResult  implements Serializable  {
             this.volumeStatuses = null;
             return;
         }
-
-        java.util.List<VolumeStatusItem> volumeStatusesCopy = new java.util.ArrayList<VolumeStatusItem>(volumeStatuses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem> volumeStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem>(volumeStatuses.size());
         volumeStatusesCopy.addAll(volumeStatuses);
         this.volumeStatuses = volumeStatusesCopy;
     }
@@ -61,7 +61,7 @@ public class DescribeVolumeStatusResult  implements Serializable  {
      * @param volumeStatuses The new value for the VolumeStatuses property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusResult withVolumeStatuses(VolumeStatusItem... volumeStatuses) {
         if (getVolumeStatuses() == null) setVolumeStatuses(new java.util.ArrayList<VolumeStatusItem>(volumeStatuses.length));
@@ -79,13 +79,13 @@ public class DescribeVolumeStatusResult  implements Serializable  {
      * @param volumeStatuses The new value for the VolumeStatuses property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusResult withVolumeStatuses(java.util.Collection<VolumeStatusItem> volumeStatuses) {
         if (volumeStatuses == null) {
             this.volumeStatuses = null;
         } else {
-            java.util.List<VolumeStatusItem> volumeStatusesCopy = new java.util.ArrayList<VolumeStatusItem>(volumeStatuses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem> volumeStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem>(volumeStatuses.size());
             volumeStatusesCopy.addAll(volumeStatuses);
             this.volumeStatuses = volumeStatusesCopy;
         }
@@ -119,7 +119,7 @@ public class DescribeVolumeStatusResult  implements Serializable  {
      * @param nextToken The new value for the NextToken property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -138,8 +138,8 @@ public class DescribeVolumeStatusResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeStatuses() != null) sb.append("VolumeStatuses: " + getVolumeStatuses() + ",");    	
+        sb.append("{");
+        if (getVolumeStatuses() != null) sb.append("VolumeStatuses: " + getVolumeStatuses() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ReleaseAddressRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -33,7 +35,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#releaseAddress(ReleaseAddressRequest)
  */
-public class ReleaseAddressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ReleaseAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ReleaseAddressRequest> {
 
     /**
      * The elastic IP address that you are releasing from your account.
@@ -52,6 +54,8 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest  implements S
      */
     public ReleaseAddressRequest() {}
     
+
+
     /**
      * Constructs a new ReleaseAddressRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -61,7 +65,7 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest  implements S
      * your account.
      */
     public ReleaseAddressRequest(String publicIp) {
-        this.publicIp = publicIp;
+        setPublicIp(publicIp);
     }
 
     
@@ -92,7 +96,7 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest  implements S
      * @param publicIp The elastic IP address that you are releasing from your account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReleaseAddressRequest withPublicIp(String publicIp) {
         this.publicIp = publicIp;
@@ -132,13 +136,25 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest  implements S
      *         use with Amazon VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReleaseAddressRequest withAllocationId(String allocationId) {
         this.allocationId = allocationId;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ReleaseAddressRequest> getDryRunRequest() {
+        Request<ReleaseAddressRequest> request = new ReleaseAddressRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -151,8 +167,8 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
+        sb.append("{");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
         if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() );
         sb.append("}");
         return sb.toString();

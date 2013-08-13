@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#terminateInstanceInAutoScalingGroup(TerminateInstanceInAutoScalingGroupRequest)
  */
-public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the Amazon EC2 instance to be terminated.
@@ -83,7 +83,7 @@ public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebService
      * @param instanceId The ID of the Amazon EC2 instance to be terminated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateInstanceInAutoScalingGroupRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -129,7 +129,7 @@ public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebService
      *         <a>AutoScalingGroup</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateInstanceInAutoScalingGroupRequest withShouldDecrementDesiredCapacity(Boolean shouldDecrementDesiredCapacity) {
         this.shouldDecrementDesiredCapacity = shouldDecrementDesiredCapacity;
@@ -161,8 +161,8 @@ public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebService
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (isShouldDecrementDesiredCapacity() != null) sb.append("ShouldDecrementDesiredCapacity: " + isShouldDecrementDesiredCapacity() );
         sb.append("}");
         return sb.toString();

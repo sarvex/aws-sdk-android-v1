@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Create Instance Export Task Result
  */
-public class CreateInstanceExportTaskResult  implements Serializable  {
+public class CreateInstanceExportTaskResult implements Serializable {
 
     private ExportTask exportTask;
 
@@ -48,7 +48,7 @@ public class CreateInstanceExportTaskResult  implements Serializable  {
      * @param exportTask The new value for the ExportTask property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInstanceExportTaskResult withExportTask(ExportTask exportTask) {
         this.exportTask = exportTask;
@@ -67,7 +67,7 @@ public class CreateInstanceExportTaskResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getExportTask() != null) sb.append("ExportTask: " + getExportTask() );
         sb.append("}");
         return sb.toString();

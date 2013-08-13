@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>DimensionFilter</code> data type is used to filter ListMetrics results.
  * </p>
  */
-public class DimensionFilter  implements Serializable  {
+public class DimensionFilter implements Serializable {
 
     /**
      * The dimension name to be matched.
@@ -75,7 +75,7 @@ public class DimensionFilter  implements Serializable  {
      * @param name The dimension name to be matched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DimensionFilter withName(String name) {
         this.name = name;
@@ -130,7 +130,7 @@ public class DimensionFilter  implements Serializable  {
      *         values associated with that <code>Name</code>. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DimensionFilter withValue(String value) {
         this.value = value;
@@ -149,8 +149,8 @@ public class DimensionFilter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

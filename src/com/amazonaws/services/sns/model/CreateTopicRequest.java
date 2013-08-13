@@ -42,6 +42,8 @@ public class CreateTopicRequest extends AmazonWebServiceRequest  implements Seri
      */
     public CreateTopicRequest() {}
     
+
+
     /**
      * Constructs a new CreateTopicRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -53,7 +55,7 @@ public class CreateTopicRequest extends AmazonWebServiceRequest  implements Seri
      * 256 characters long.
      */
     public CreateTopicRequest(String name) {
-        this.name = name;
+        setName(name);
     }
 
     
@@ -121,7 +123,7 @@ public class CreateTopicRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

@@ -21,7 +21,7 @@ import java.io.Serializable;
  * variety of email clients.
  * </p>
  */
-public class Body  implements Serializable  {
+public class Body implements Serializable {
 
     /**
      * The content of the message, in text format. Use this for text-based
@@ -43,6 +43,8 @@ public class Body  implements Serializable  {
      */
     public Body() {}
     
+
+
     /**
      * Constructs a new Body object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -53,7 +55,7 @@ public class Body  implements Serializable  {
      * mobile devices).
      */
     public Body(Content text) {
-        this.text = text;
+        setText(text);
     }
 
     
@@ -96,7 +98,7 @@ public class Body  implements Serializable  {
      *         devices).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Body withText(Content text) {
         this.text = text;
@@ -142,7 +144,7 @@ public class Body  implements Serializable  {
      *         text, and much more in an HTML message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Body withHtml(Content html) {
         this.html = html;
@@ -161,8 +163,8 @@ public class Body  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getText() != null) sb.append("Text: " + getText() + ",");    	
+        sb.append("{");
+        if (getText() != null) sb.append("Text: " + getText() + ",");
         if (getHtml() != null) sb.append("Html: " + getHtml() );
         sb.append("}");
         return sb.toString();

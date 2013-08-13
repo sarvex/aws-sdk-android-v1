@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteVolumeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteVolume(DeleteVolumeRequest)
  */
-public class DeleteVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteVolumeRequest> {
 
     /**
      * The ID of the EBS volume to delete.
@@ -37,6 +39,8 @@ public class DeleteVolumeRequest extends AmazonWebServiceRequest  implements Ser
      */
     public DeleteVolumeRequest() {}
     
+
+
     /**
      * Constructs a new DeleteVolumeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -45,7 +49,7 @@ public class DeleteVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param volumeId The ID of the EBS volume to delete.
      */
     public DeleteVolumeRequest(String volumeId) {
-        this.volumeId = volumeId;
+        setVolumeId(volumeId);
     }
 
     
@@ -76,13 +80,25 @@ public class DeleteVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param volumeId The ID of the EBS volume to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteVolumeRequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteVolumeRequest> getDryRunRequest() {
+        Request<DeleteVolumeRequest> request = new DeleteVolumeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -95,7 +111,7 @@ public class DeleteVolumeRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() );
         sb.append("}");
         return sb.toString();

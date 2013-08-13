@@ -20,7 +20,7 @@ import java.io.Serializable;
  * An active offer for Amazon EC2 Reserved Instances.
  * </p>
  */
-public class ReservedInstancesOffering  implements Serializable  {
+public class ReservedInstancesOffering implements Serializable {
 
     /**
      * The unique ID of this Reserved Instances offering.
@@ -31,7 +31,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      */
     private String instanceType;
 
@@ -79,11 +79,11 @@ public class ReservedInstancesOffering  implements Serializable  {
     /**
      * The recurring charge tag assigned to the resource.
      */
-    private java.util.List<RecurringCharge> recurringCharges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringCharges;
 
     private Boolean marketplace;
 
-    private java.util.List<PricingDetail> pricingDetails;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PricingDetail> pricingDetails;
 
     /**
      * The unique ID of this Reserved Instances offering.
@@ -111,7 +111,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param reservedInstancesOfferingId The unique ID of this Reserved Instances offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withReservedInstancesOfferingId(String reservedInstancesOfferingId) {
         this.reservedInstancesOfferingId = reservedInstancesOfferingId;
@@ -123,7 +123,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @return The instance type on which the Reserved Instances can be used.
      *
@@ -137,7 +137,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
@@ -153,12 +153,12 @@ public class ReservedInstancesOffering  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceType
      */
@@ -172,7 +172,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
@@ -188,12 +188,12 @@ public class ReservedInstancesOffering  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceType
      */
@@ -228,7 +228,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param availabilityZone The Availability Zone in which the Reserved Instances can be used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -262,7 +262,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param duration The duration of the Reserved Instance, in seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withDuration(Long duration) {
         this.duration = duration;
@@ -296,7 +296,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param usagePrice The usage price of the Reserved Instance, per hour.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withUsagePrice(Float usagePrice) {
         this.usagePrice = usagePrice;
@@ -330,7 +330,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param fixedPrice The purchase price of the Reserved Instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withFixedPrice(Float fixedPrice) {
         this.fixedPrice = fixedPrice;
@@ -364,7 +364,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param productDescription The Reserved Instances description (ex: Windows or Unix/Linux).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withProductDescription(String productDescription) {
         this.productDescription = productDescription;
@@ -398,7 +398,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param instanceTenancy The tenancy of the reserved instance (ex: default or dedicated).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withInstanceTenancy(String instanceTenancy) {
         this.instanceTenancy = instanceTenancy;
@@ -438,7 +438,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      *         standard (e.g., USD, JPY).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
@@ -472,7 +472,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param offeringType The Reserved Instance offering type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withOfferingType(String offeringType) {
         this.offeringType = offeringType;
@@ -488,7 +488,8 @@ public class ReservedInstancesOffering  implements Serializable  {
     public java.util.List<RecurringCharge> getRecurringCharges() {
         
         if (recurringCharges == null) {
-            recurringCharges = new java.util.ArrayList<RecurringCharge>();
+              recurringCharges = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>();
+              recurringCharges.setAutoConstruct(true);
         }
         return recurringCharges;
     }
@@ -503,8 +504,7 @@ public class ReservedInstancesOffering  implements Serializable  {
             this.recurringCharges = null;
             return;
         }
-
-        java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
         recurringChargesCopy.addAll(recurringCharges);
         this.recurringCharges = recurringChargesCopy;
     }
@@ -517,7 +517,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param recurringCharges The recurring charge tag assigned to the resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withRecurringCharges(RecurringCharge... recurringCharges) {
         if (getRecurringCharges() == null) setRecurringCharges(new java.util.ArrayList<RecurringCharge>(recurringCharges.length));
@@ -535,13 +535,13 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param recurringCharges The recurring charge tag assigned to the resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withRecurringCharges(java.util.Collection<RecurringCharge> recurringCharges) {
         if (recurringCharges == null) {
             this.recurringCharges = null;
         } else {
-            java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
             recurringChargesCopy.addAll(recurringCharges);
             this.recurringCharges = recurringChargesCopy;
         }
@@ -575,7 +575,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param marketplace The new value for the Marketplace property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withMarketplace(Boolean marketplace) {
         this.marketplace = marketplace;
@@ -600,7 +600,8 @@ public class ReservedInstancesOffering  implements Serializable  {
     public java.util.List<PricingDetail> getPricingDetails() {
         
         if (pricingDetails == null) {
-            pricingDetails = new java.util.ArrayList<PricingDetail>();
+              pricingDetails = new com.amazonaws.internal.ListWithAutoConstructFlag<PricingDetail>();
+              pricingDetails.setAutoConstruct(true);
         }
         return pricingDetails;
     }
@@ -615,8 +616,7 @@ public class ReservedInstancesOffering  implements Serializable  {
             this.pricingDetails = null;
             return;
         }
-
-        java.util.List<PricingDetail> pricingDetailsCopy = new java.util.ArrayList<PricingDetail>(pricingDetails.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PricingDetail> pricingDetailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PricingDetail>(pricingDetails.size());
         pricingDetailsCopy.addAll(pricingDetails);
         this.pricingDetails = pricingDetailsCopy;
     }
@@ -629,7 +629,7 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param pricingDetails The new value for the PricingDetails property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withPricingDetails(PricingDetail... pricingDetails) {
         if (getPricingDetails() == null) setPricingDetails(new java.util.ArrayList<PricingDetail>(pricingDetails.length));
@@ -647,13 +647,13 @@ public class ReservedInstancesOffering  implements Serializable  {
      * @param pricingDetails The new value for the PricingDetails property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstancesOffering withPricingDetails(java.util.Collection<PricingDetail> pricingDetails) {
         if (pricingDetails == null) {
             this.pricingDetails = null;
         } else {
-            java.util.List<PricingDetail> pricingDetailsCopy = new java.util.ArrayList<PricingDetail>(pricingDetails.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PricingDetail> pricingDetailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PricingDetail>(pricingDetails.size());
             pricingDetailsCopy.addAll(pricingDetails);
             this.pricingDetails = pricingDetailsCopy;
         }
@@ -672,19 +672,19 @@ public class ReservedInstancesOffering  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedInstancesOfferingId() != null) sb.append("ReservedInstancesOfferingId: " + getReservedInstancesOfferingId() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");    	
-        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");    	
-        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");    	
-        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");    	
-        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");    	
-        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");    	
-        if (getRecurringCharges() != null) sb.append("RecurringCharges: " + getRecurringCharges() + ",");    	
-        if (isMarketplace() != null) sb.append("Marketplace: " + isMarketplace() + ",");    	
+        sb.append("{");
+        if (getReservedInstancesOfferingId() != null) sb.append("ReservedInstancesOfferingId: " + getReservedInstancesOfferingId() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");
+        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");
+        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");
+        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");
+        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");
+        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");
+        if (getRecurringCharges() != null) sb.append("RecurringCharges: " + getRecurringCharges() + ",");
+        if (isMarketplace() != null) sb.append("Marketplace: " + isMarketplace() + ",");
         if (getPricingDetails() != null) sb.append("PricingDetails: " + getPricingDetails() );
         sb.append("}");
         return sb.toString();

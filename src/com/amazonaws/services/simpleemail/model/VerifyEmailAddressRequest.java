@@ -28,7 +28,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyEmailAddress(VerifyEmailAddressRequest)
  */
-public class VerifyEmailAddressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class VerifyEmailAddressRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The email address to be verified.
@@ -61,7 +61,7 @@ public class VerifyEmailAddressRequest extends AmazonWebServiceRequest  implemen
      * @param emailAddress The email address to be verified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyEmailAddressRequest withEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
@@ -80,7 +80,7 @@ public class VerifyEmailAddressRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getEmailAddress() != null) sb.append("EmailAddress: " + getEmailAddress() );
         sb.append("}");
         return sb.toString();

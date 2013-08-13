@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of the GetConsoleOutput operation.
  * </p>
  */
-public class GetConsoleOutputResult  implements Serializable  {
+public class GetConsoleOutputResult implements Serializable {
 
     /**
      * The ID of the instance whose console output was requested.
@@ -63,7 +63,7 @@ public class GetConsoleOutputResult  implements Serializable  {
      * @param instanceId The ID of the instance whose console output was requested.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetConsoleOutputResult withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -97,7 +97,7 @@ public class GetConsoleOutputResult  implements Serializable  {
      * @param timestamp The time the output was last updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetConsoleOutputResult withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
@@ -131,7 +131,7 @@ public class GetConsoleOutputResult  implements Serializable  {
      * @param output The console output, Base64 encoded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetConsoleOutputResult withOutput(String output) {
         this.output = output;
@@ -150,9 +150,9 @@ public class GetConsoleOutputResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
         if (getOutput() != null) sb.append("Output: " + getOutput() );
         sb.append("}");
         return sb.toString();

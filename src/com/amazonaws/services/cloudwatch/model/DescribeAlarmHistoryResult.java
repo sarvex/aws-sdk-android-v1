@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the DescribeAlarmHistory action.
  * </p>
  */
-public class DescribeAlarmHistoryResult  implements Serializable  {
+public class DescribeAlarmHistoryResult implements Serializable {
 
     /**
      * A list of alarm histories in JSON format.
      */
-    private java.util.List<AlarmHistoryItem> alarmHistoryItems;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AlarmHistoryItem> alarmHistoryItems;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -40,7 +40,8 @@ public class DescribeAlarmHistoryResult  implements Serializable  {
     public java.util.List<AlarmHistoryItem> getAlarmHistoryItems() {
         
         if (alarmHistoryItems == null) {
-            alarmHistoryItems = new java.util.ArrayList<AlarmHistoryItem>();
+              alarmHistoryItems = new com.amazonaws.internal.ListWithAutoConstructFlag<AlarmHistoryItem>();
+              alarmHistoryItems.setAutoConstruct(true);
         }
         return alarmHistoryItems;
     }
@@ -55,8 +56,7 @@ public class DescribeAlarmHistoryResult  implements Serializable  {
             this.alarmHistoryItems = null;
             return;
         }
-
-        java.util.List<AlarmHistoryItem> alarmHistoryItemsCopy = new java.util.ArrayList<AlarmHistoryItem>(alarmHistoryItems.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AlarmHistoryItem> alarmHistoryItemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AlarmHistoryItem>(alarmHistoryItems.size());
         alarmHistoryItemsCopy.addAll(alarmHistoryItems);
         this.alarmHistoryItems = alarmHistoryItemsCopy;
     }
@@ -69,7 +69,7 @@ public class DescribeAlarmHistoryResult  implements Serializable  {
      * @param alarmHistoryItems A list of alarm histories in JSON format.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryResult withAlarmHistoryItems(AlarmHistoryItem... alarmHistoryItems) {
         if (getAlarmHistoryItems() == null) setAlarmHistoryItems(new java.util.ArrayList<AlarmHistoryItem>(alarmHistoryItems.length));
@@ -87,13 +87,13 @@ public class DescribeAlarmHistoryResult  implements Serializable  {
      * @param alarmHistoryItems A list of alarm histories in JSON format.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryResult withAlarmHistoryItems(java.util.Collection<AlarmHistoryItem> alarmHistoryItems) {
         if (alarmHistoryItems == null) {
             this.alarmHistoryItems = null;
         } else {
-            java.util.List<AlarmHistoryItem> alarmHistoryItemsCopy = new java.util.ArrayList<AlarmHistoryItem>(alarmHistoryItems.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AlarmHistoryItem> alarmHistoryItemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AlarmHistoryItem>(alarmHistoryItems.size());
             alarmHistoryItemsCopy.addAll(alarmHistoryItems);
             this.alarmHistoryItems = alarmHistoryItemsCopy;
         }
@@ -127,7 +127,7 @@ public class DescribeAlarmHistoryResult  implements Serializable  {
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -146,8 +146,8 @@ public class DescribeAlarmHistoryResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmHistoryItems() != null) sb.append("AlarmHistoryItems: " + getAlarmHistoryItems() + ",");    	
+        sb.append("{");
+        if (getAlarmHistoryItems() != null) sb.append("AlarmHistoryItems: " + getAlarmHistoryItems() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

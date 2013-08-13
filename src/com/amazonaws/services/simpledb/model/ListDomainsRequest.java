@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#listDomains(ListDomainsRequest)
  */
-public class ListDomainsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListDomainsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The maximum number of domain names you want returned. The range is 1
@@ -79,7 +79,7 @@ public class ListDomainsRequest extends AmazonWebServiceRequest  implements Seri
      *         to 100. The default setting is 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDomainsRequest withMaxNumberOfDomains(Integer maxNumberOfDomains) {
         this.maxNumberOfDomains = maxNumberOfDomains;
@@ -119,7 +119,7 @@ public class ListDomainsRequest extends AmazonWebServiceRequest  implements Seri
      *         domain names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDomainsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -138,8 +138,8 @@ public class ListDomainsRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMaxNumberOfDomains() != null) sb.append("MaxNumberOfDomains: " + getMaxNumberOfDomains() + ",");    	
+        sb.append("{");
+        if (getMaxNumberOfDomains() != null) sb.append("MaxNumberOfDomains: " + getMaxNumberOfDomains() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

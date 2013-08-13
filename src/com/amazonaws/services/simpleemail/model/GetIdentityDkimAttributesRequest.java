@@ -41,13 +41,13 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getIdentityDkimAttributes(GetIdentityDkimAttributesRequest)
  */
-public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list of one or more verified identities - email addresses, domains,
      * or both.
      */
-    private java.util.List<String> identities;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> identities;
 
     /**
      * A list of one or more verified identities - email addresses, domains,
@@ -59,7 +59,8 @@ public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest  i
     public java.util.List<String> getIdentities() {
         
         if (identities == null) {
-            identities = new java.util.ArrayList<String>();
+              identities = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              identities.setAutoConstruct(true);
         }
         return identities;
     }
@@ -76,8 +77,7 @@ public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest  i
             this.identities = null;
             return;
         }
-
-        java.util.List<String> identitiesCopy = new java.util.ArrayList<String>(identities.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> identitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(identities.size());
         identitiesCopy.addAll(identities);
         this.identities = identitiesCopy;
     }
@@ -92,7 +92,7 @@ public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest  i
      *         or both.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetIdentityDkimAttributesRequest withIdentities(String... identities) {
         if (getIdentities() == null) setIdentities(new java.util.ArrayList<String>(identities.length));
@@ -112,13 +112,13 @@ public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest  i
      *         or both.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetIdentityDkimAttributesRequest withIdentities(java.util.Collection<String> identities) {
         if (identities == null) {
             this.identities = null;
         } else {
-            java.util.List<String> identitiesCopy = new java.util.ArrayList<String>(identities.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> identitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(identities.size());
             identitiesCopy.addAll(identities);
             this.identities = identitiesCopy;
         }
@@ -137,7 +137,7 @@ public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getIdentities() != null) sb.append("Identities: " + getIdentities() );
         sb.append("}");
         return sb.toString();

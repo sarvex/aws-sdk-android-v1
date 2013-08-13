@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Instance Network Interface Attachment
  */
-public class InstanceNetworkInterfaceAttachment  implements Serializable  {
+public class InstanceNetworkInterfaceAttachment implements Serializable {
 
     private String attachmentId;
 
@@ -56,7 +56,7 @@ public class InstanceNetworkInterfaceAttachment  implements Serializable  {
      * @param attachmentId The new value for the AttachmentId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAttachment withAttachmentId(String attachmentId) {
         this.attachmentId = attachmentId;
@@ -90,7 +90,7 @@ public class InstanceNetworkInterfaceAttachment  implements Serializable  {
      * @param deviceIndex The new value for the DeviceIndex property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAttachment withDeviceIndex(Integer deviceIndex) {
         this.deviceIndex = deviceIndex;
@@ -124,7 +124,7 @@ public class InstanceNetworkInterfaceAttachment  implements Serializable  {
      * @param status The new value for the Status property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAttachment withStatus(String status) {
         this.status = status;
@@ -158,7 +158,7 @@ public class InstanceNetworkInterfaceAttachment  implements Serializable  {
      * @param attachTime The new value for the AttachTime property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAttachment withAttachTime(java.util.Date attachTime) {
         this.attachTime = attachTime;
@@ -192,7 +192,7 @@ public class InstanceNetworkInterfaceAttachment  implements Serializable  {
      * @param deleteOnTermination The new value for the DeleteOnTermination property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAttachment withDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
@@ -220,11 +220,11 @@ public class InstanceNetworkInterfaceAttachment  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttachmentId() != null) sb.append("AttachmentId: " + getAttachmentId() + ",");    	
-        if (getDeviceIndex() != null) sb.append("DeviceIndex: " + getDeviceIndex() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getAttachTime() != null) sb.append("AttachTime: " + getAttachTime() + ",");    	
+        sb.append("{");
+        if (getAttachmentId() != null) sb.append("AttachmentId: " + getAttachmentId() + ",");
+        if (getDeviceIndex() != null) sb.append("DeviceIndex: " + getDeviceIndex() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getAttachTime() != null) sb.append("AttachTime: " + getAttachTime() + ",");
         if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() );
         sb.append("}");
         return sb.toString();

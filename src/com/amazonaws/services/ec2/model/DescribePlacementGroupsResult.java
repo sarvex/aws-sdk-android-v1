@@ -19,12 +19,12 @@ import java.io.Serializable;
  * <p>
  * </p>
  */
-public class DescribePlacementGroupsResult  implements Serializable  {
+public class DescribePlacementGroupsResult implements Serializable {
 
     /**
      * Contains information about the specified <code>PlacementGroups</code>.
      */
-    private java.util.List<PlacementGroup> placementGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PlacementGroup> placementGroups;
 
     /**
      * Contains information about the specified <code>PlacementGroups</code>.
@@ -34,7 +34,8 @@ public class DescribePlacementGroupsResult  implements Serializable  {
     public java.util.List<PlacementGroup> getPlacementGroups() {
         
         if (placementGroups == null) {
-            placementGroups = new java.util.ArrayList<PlacementGroup>();
+              placementGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<PlacementGroup>();
+              placementGroups.setAutoConstruct(true);
         }
         return placementGroups;
     }
@@ -49,8 +50,7 @@ public class DescribePlacementGroupsResult  implements Serializable  {
             this.placementGroups = null;
             return;
         }
-
-        java.util.List<PlacementGroup> placementGroupsCopy = new java.util.ArrayList<PlacementGroup>(placementGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PlacementGroup> placementGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PlacementGroup>(placementGroups.size());
         placementGroupsCopy.addAll(placementGroups);
         this.placementGroups = placementGroupsCopy;
     }
@@ -63,7 +63,7 @@ public class DescribePlacementGroupsResult  implements Serializable  {
      * @param placementGroups Contains information about the specified <code>PlacementGroups</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePlacementGroupsResult withPlacementGroups(PlacementGroup... placementGroups) {
         if (getPlacementGroups() == null) setPlacementGroups(new java.util.ArrayList<PlacementGroup>(placementGroups.length));
@@ -81,13 +81,13 @@ public class DescribePlacementGroupsResult  implements Serializable  {
      * @param placementGroups Contains information about the specified <code>PlacementGroups</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePlacementGroupsResult withPlacementGroups(java.util.Collection<PlacementGroup> placementGroups) {
         if (placementGroups == null) {
             this.placementGroups = null;
         } else {
-            java.util.List<PlacementGroup> placementGroupsCopy = new java.util.ArrayList<PlacementGroup>(placementGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PlacementGroup> placementGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PlacementGroup>(placementGroups.size());
             placementGroupsCopy.addAll(placementGroups);
             this.placementGroups = placementGroupsCopy;
         }
@@ -106,7 +106,7 @@ public class DescribePlacementGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPlacementGroups() != null) sb.append("PlacementGroups: " + getPlacementGroups() );
         sb.append("}");
         return sb.toString();

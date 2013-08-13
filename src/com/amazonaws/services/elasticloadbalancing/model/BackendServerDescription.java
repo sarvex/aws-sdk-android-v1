@@ -20,7 +20,7 @@ import java.io.Serializable;
  * This data type is used as a response element in the DescribeLoadBalancers action to describe the configuration of the back-end server.
  * </p>
  */
-public class BackendServerDescription  implements Serializable  {
+public class BackendServerDescription implements Serializable {
 
     /**
      * Provides the port on which the back-end server is listening.
@@ -33,7 +33,7 @@ public class BackendServerDescription  implements Serializable  {
     /**
      * Provides a list of policy names enabled for the back-end server.
      */
-    private java.util.List<String> policyNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNames;
 
     /**
      * Provides the port on which the back-end server is listening.
@@ -70,7 +70,7 @@ public class BackendServerDescription  implements Serializable  {
      * @param instancePort Provides the port on which the back-end server is listening.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BackendServerDescription withInstancePort(Integer instancePort) {
         this.instancePort = instancePort;
@@ -86,7 +86,8 @@ public class BackendServerDescription  implements Serializable  {
     public java.util.List<String> getPolicyNames() {
         
         if (policyNames == null) {
-            policyNames = new java.util.ArrayList<String>();
+              policyNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              policyNames.setAutoConstruct(true);
         }
         return policyNames;
     }
@@ -101,8 +102,7 @@ public class BackendServerDescription  implements Serializable  {
             this.policyNames = null;
             return;
         }
-
-        java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
         policyNamesCopy.addAll(policyNames);
         this.policyNames = policyNamesCopy;
     }
@@ -115,7 +115,7 @@ public class BackendServerDescription  implements Serializable  {
      * @param policyNames Provides a list of policy names enabled for the back-end server.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BackendServerDescription withPolicyNames(String... policyNames) {
         if (getPolicyNames() == null) setPolicyNames(new java.util.ArrayList<String>(policyNames.length));
@@ -133,13 +133,13 @@ public class BackendServerDescription  implements Serializable  {
      * @param policyNames Provides a list of policy names enabled for the back-end server.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BackendServerDescription withPolicyNames(java.util.Collection<String> policyNames) {
         if (policyNames == null) {
             this.policyNames = null;
         } else {
-            java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
             policyNamesCopy.addAll(policyNames);
             this.policyNames = policyNamesCopy;
         }
@@ -158,8 +158,8 @@ public class BackendServerDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstancePort() != null) sb.append("InstancePort: " + getInstancePort() + ",");    	
+        sb.append("{");
+        if (getInstancePort() != null) sb.append("InstancePort: " + getInstancePort() + ",");
         if (getPolicyNames() != null) sb.append("PolicyNames: " + getPolicyNames() );
         sb.append("}");
         return sb.toString();

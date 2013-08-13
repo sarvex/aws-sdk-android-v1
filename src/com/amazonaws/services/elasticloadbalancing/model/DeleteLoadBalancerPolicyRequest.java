@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest)
  */
-public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The mnemonic name associated with the LoadBalancer. The name must be
@@ -43,6 +43,8 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
      */
     public DeleteLoadBalancerPolicyRequest() {}
     
+
+
     /**
      * Constructs a new DeleteLoadBalancerPolicyRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -53,8 +55,8 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
      * @param policyName The mnemonic name for the policy being deleted.
      */
     public DeleteLoadBalancerPolicyRequest(String loadBalancerName, String policyName) {
-        this.loadBalancerName = loadBalancerName;
-        this.policyName = policyName;
+        setLoadBalancerName(loadBalancerName);
+        setPolicyName(policyName);
     }
 
     
@@ -91,7 +93,7 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
      *         unique within your AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteLoadBalancerPolicyRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -125,7 +127,7 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
      * @param policyName The mnemonic name for the policy being deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteLoadBalancerPolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
@@ -144,8 +146,8 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() );
         sb.append("}");
         return sb.toString();

@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The result of describing the available Amazon EC2 regions.
  * </p>
  */
-public class DescribeRegionsResult  implements Serializable  {
+public class DescribeRegionsResult implements Serializable {
 
     /**
      * The list of described Amazon EC2 regions.
      */
-    private java.util.List<Region> regions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Region> regions;
 
     /**
      * The list of described Amazon EC2 regions.
@@ -35,7 +35,8 @@ public class DescribeRegionsResult  implements Serializable  {
     public java.util.List<Region> getRegions() {
         
         if (regions == null) {
-            regions = new java.util.ArrayList<Region>();
+              regions = new com.amazonaws.internal.ListWithAutoConstructFlag<Region>();
+              regions.setAutoConstruct(true);
         }
         return regions;
     }
@@ -50,8 +51,7 @@ public class DescribeRegionsResult  implements Serializable  {
             this.regions = null;
             return;
         }
-
-        java.util.List<Region> regionsCopy = new java.util.ArrayList<Region>(regions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Region> regionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Region>(regions.size());
         regionsCopy.addAll(regions);
         this.regions = regionsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeRegionsResult  implements Serializable  {
      * @param regions The list of described Amazon EC2 regions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsResult withRegions(Region... regions) {
         if (getRegions() == null) setRegions(new java.util.ArrayList<Region>(regions.length));
@@ -82,13 +82,13 @@ public class DescribeRegionsResult  implements Serializable  {
      * @param regions The list of described Amazon EC2 regions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsResult withRegions(java.util.Collection<Region> regions) {
         if (regions == null) {
             this.regions = null;
         } else {
-            java.util.List<Region> regionsCopy = new java.util.ArrayList<Region>(regions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Region> regionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Region>(regions.size());
             regionsCopy.addAll(regions);
             this.regions = regionsCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeRegionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRegions() != null) sb.append("Regions: " + getRegions() );
         sb.append("}");
         return sb.toString();

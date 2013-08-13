@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.RebootInstancesRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -26,12 +28,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#rebootInstances(RebootInstancesRequest)
  */
-public class RebootInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RebootInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<RebootInstancesRequest> {
 
     /**
      * The list of instances to terminate.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     /**
      * Default constructor for a new RebootInstancesRequest object.  Callers should use the
@@ -39,6 +41,8 @@ public class RebootInstancesRequest extends AmazonWebServiceRequest  implements 
      */
     public RebootInstancesRequest() {}
     
+
+
     /**
      * Constructs a new RebootInstancesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -47,7 +51,7 @@ public class RebootInstancesRequest extends AmazonWebServiceRequest  implements 
      * @param instanceIds The list of instances to terminate.
      */
     public RebootInstancesRequest(java.util.List<String> instanceIds) {
-        this.instanceIds = instanceIds;
+        setInstanceIds(instanceIds);
     }
 
     
@@ -60,7 +64,8 @@ public class RebootInstancesRequest extends AmazonWebServiceRequest  implements 
     public java.util.List<String> getInstanceIds() {
         
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
@@ -75,8 +80,7 @@ public class RebootInstancesRequest extends AmazonWebServiceRequest  implements 
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
@@ -89,7 +93,7 @@ public class RebootInstancesRequest extends AmazonWebServiceRequest  implements 
      * @param instanceIds The list of instances to terminate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RebootInstancesRequest withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -107,18 +111,30 @@ public class RebootInstancesRequest extends AmazonWebServiceRequest  implements 
      * @param instanceIds The list of instances to terminate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RebootInstancesRequest withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<RebootInstancesRequest> getDryRunRequest() {
+        Request<RebootInstancesRequest> request = new RebootInstancesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -132,7 +148,7 @@ public class RebootInstancesRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() );
         sb.append("}");
         return sb.toString();

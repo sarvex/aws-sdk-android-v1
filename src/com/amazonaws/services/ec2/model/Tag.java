@@ -21,7 +21,7 @@ import java.io.Serializable;
  * such as by purpose, owner, or environment.
  * </p>
  */
-public class Tag  implements Serializable  {
+public class Tag implements Serializable {
 
     /**
      * The tag's key.
@@ -39,6 +39,8 @@ public class Tag  implements Serializable  {
      */
     public Tag() {}
     
+
+
     /**
      * Constructs a new Tag object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -48,12 +50,14 @@ public class Tag  implements Serializable  {
      * @param value The tag's value.
      */
     public Tag(String key, String value) {
-        this.key = key;
-        this.value = value;
+        setKey(key);
+        setValue(value);
     }
 
     
     
+
+
     /**
      * Constructs a new Tag object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -62,7 +66,7 @@ public class Tag  implements Serializable  {
      * @param key The tag's key.
      */
     public Tag(String key) {
-        this.key = key;
+        setKey(key);
     }
 
     
@@ -93,7 +97,7 @@ public class Tag  implements Serializable  {
      * @param key The tag's key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withKey(String key) {
         this.key = key;
@@ -127,7 +131,7 @@ public class Tag  implements Serializable  {
      * @param value The tag's value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withValue(String value) {
         this.value = value;
@@ -146,8 +150,8 @@ public class Tag  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
+        sb.append("{");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

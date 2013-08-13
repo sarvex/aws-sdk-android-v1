@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>LaunchConfiguration</code> data type.
  * </p>
  */
-public class LaunchConfiguration  implements Serializable  {
+public class LaunchConfiguration implements Serializable {
 
     /**
      * Specifies the name of the launch configuration.
@@ -63,7 +63,7 @@ public class LaunchConfiguration  implements Serializable  {
      * A description of the security groups to associate with the Amazon EC2
      * instances.
      */
-    private java.util.List<String> securityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroups;
 
     /**
      * The user data available to the launched Amazon EC2 instances.
@@ -105,7 +105,7 @@ public class LaunchConfiguration  implements Serializable  {
      * Specifies how block devices are exposed to the instance. Each mapping
      * is made up of a <i>virtualName</i> and a <i>deviceName</i>.
      */
-    private java.util.List<BlockDeviceMapping> blockDeviceMappings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappings;
 
     /**
      * Controls whether instances in this group are launched with detailed
@@ -177,7 +177,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param launchConfigurationName Specifies the name of the launch configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
@@ -223,7 +223,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param launchConfigurationARN The launch configuration's Amazon Resource Name (ARN).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withLaunchConfigurationARN(String launchConfigurationARN) {
         this.launchConfigurationARN = launchConfigurationARN;
@@ -275,7 +275,7 @@ public class LaunchConfiguration  implements Serializable  {
      *         was assigned during registration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withImageId(String imageId) {
         this.imageId = imageId;
@@ -321,7 +321,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param keyName Provides the name of the Amazon EC2 key pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withKeyName(String keyName) {
         this.keyName = keyName;
@@ -339,7 +339,8 @@ public class LaunchConfiguration  implements Serializable  {
     public java.util.List<String> getSecurityGroups() {
         
         if (securityGroups == null) {
-            securityGroups = new java.util.ArrayList<String>();
+              securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              securityGroups.setAutoConstruct(true);
         }
         return securityGroups;
     }
@@ -356,8 +357,7 @@ public class LaunchConfiguration  implements Serializable  {
             this.securityGroups = null;
             return;
         }
-
-        java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
         securityGroupsCopy.addAll(securityGroups);
         this.securityGroups = securityGroupsCopy;
     }
@@ -372,7 +372,7 @@ public class LaunchConfiguration  implements Serializable  {
      *         instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withSecurityGroups(String... securityGroups) {
         if (getSecurityGroups() == null) setSecurityGroups(new java.util.ArrayList<String>(securityGroups.length));
@@ -392,13 +392,13 @@ public class LaunchConfiguration  implements Serializable  {
      *         instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
         } else {
-            java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
             securityGroupsCopy.addAll(securityGroups);
             this.securityGroups = securityGroupsCopy;
         }
@@ -444,7 +444,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param userData The user data available to the launched Amazon EC2 instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withUserData(String userData) {
         this.userData = userData;
@@ -490,7 +490,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param instanceType Specifies the instance type of the Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withInstanceType(String instanceType) {
         this.instanceType = instanceType;
@@ -536,7 +536,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param kernelId Provides the ID of the kernel associated with the Amazon EC2 AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withKernelId(String kernelId) {
         this.kernelId = kernelId;
@@ -582,7 +582,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param ramdiskId Provides ID of the RAM disk associated with the Amazon EC2 AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
@@ -600,7 +600,8 @@ public class LaunchConfiguration  implements Serializable  {
     public java.util.List<BlockDeviceMapping> getBlockDeviceMappings() {
         
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<BlockDeviceMapping>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
@@ -617,8 +618,7 @@ public class LaunchConfiguration  implements Serializable  {
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
@@ -633,7 +633,7 @@ public class LaunchConfiguration  implements Serializable  {
      *         is made up of a <i>virtualName</i> and a <i>deviceName</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withBlockDeviceMappings(BlockDeviceMapping... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.length));
@@ -653,13 +653,13 @@ public class LaunchConfiguration  implements Serializable  {
      *         is made up of a <i>virtualName</i> and a <i>deviceName</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
@@ -699,7 +699,7 @@ public class LaunchConfiguration  implements Serializable  {
      *         monitoring or not.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withInstanceMonitoring(InstanceMonitoring instanceMonitoring) {
         this.instanceMonitoring = instanceMonitoring;
@@ -742,7 +742,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param spotPrice Specifies the price to bid when launching Spot Instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withSpotPrice(String spotPrice) {
         this.spotPrice = spotPrice;
@@ -800,7 +800,7 @@ public class LaunchConfiguration  implements Serializable  {
      *         profile contains the IAM role.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withIamInstanceProfile(String iamInstanceProfile) {
         this.iamInstanceProfile = iamInstanceProfile;
@@ -834,7 +834,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param createdTime Provides the creation date and time for this launch configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withCreatedTime(java.util.Date createdTime) {
         this.createdTime = createdTime;
@@ -868,7 +868,7 @@ public class LaunchConfiguration  implements Serializable  {
      * @param ebsOptimized The new value for the EbsOptimized property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LaunchConfiguration withEbsOptimized(Boolean ebsOptimized) {
         this.ebsOptimized = ebsOptimized;
@@ -896,21 +896,21 @@ public class LaunchConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");    	
-        if (getLaunchConfigurationARN() != null) sb.append("LaunchConfigurationARN: " + getLaunchConfigurationARN() + ",");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");    	
-        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");    	
-        if (getUserData() != null) sb.append("UserData: " + getUserData() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");    	
-        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");    	
-        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");    	
-        if (getInstanceMonitoring() != null) sb.append("InstanceMonitoring: " + getInstanceMonitoring() + ",");    	
-        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");    	
-        if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");    	
-        if (getCreatedTime() != null) sb.append("CreatedTime: " + getCreatedTime() + ",");    	
+        sb.append("{");
+        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");
+        if (getLaunchConfigurationARN() != null) sb.append("LaunchConfigurationARN: " + getLaunchConfigurationARN() + ",");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");
+        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+        if (getUserData() != null) sb.append("UserData: " + getUserData() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");
+        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+        if (getInstanceMonitoring() != null) sb.append("InstanceMonitoring: " + getInstanceMonitoring() + ",");
+        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");
+        if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");
+        if (getCreatedTime() != null) sb.append("CreatedTime: " + getCreatedTime() + ",");
         if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() );
         sb.append("}");
         return sb.toString();

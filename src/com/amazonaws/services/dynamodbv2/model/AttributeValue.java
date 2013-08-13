@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the data for an attribute. You can set one, and only one, of the elements.
  * </p>
  */
-public class AttributeValue  implements Serializable  {
+public class AttributeValue implements Serializable {
 
     /**
      * Represents a String data type
@@ -40,17 +40,17 @@ public class AttributeValue  implements Serializable  {
     /**
      * Represents a String set data type
      */
-    private java.util.List<String> sS;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> sS;
 
     /**
      * Represents a Number set data type
      */
-    private java.util.List<String> nS;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> nS;
 
     /**
      * Represents a Binary set data type
      */
-    private java.util.List<java.nio.ByteBuffer> bS;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer> bS;
 
     /**
      * Default constructor for a new AttributeValue object.  Callers should use the
@@ -58,6 +58,8 @@ public class AttributeValue  implements Serializable  {
      */
     public AttributeValue() {}
     
+
+
     /**
      * Constructs a new AttributeValue object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -66,11 +68,13 @@ public class AttributeValue  implements Serializable  {
      * @param s Represents a String data type
      */
     public AttributeValue(String s) {
-        this.s = s;
+        setS(s);
     }
 
     
     
+
+
     /**
      * Constructs a new AttributeValue object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -79,7 +83,7 @@ public class AttributeValue  implements Serializable  {
      * @param sS Represents a String set data type
      */
     public AttributeValue(java.util.List<String> sS) {
-        this.sS = sS;
+        setSS(sS);
     }
 
     
@@ -110,7 +114,7 @@ public class AttributeValue  implements Serializable  {
      * @param s Represents a String data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withS(String s) {
         this.s = s;
@@ -144,7 +148,7 @@ public class AttributeValue  implements Serializable  {
      * @param n Represents a Number data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withN(String n) {
         this.n = n;
@@ -178,7 +182,7 @@ public class AttributeValue  implements Serializable  {
      * @param b Represents a Binary data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withB(java.nio.ByteBuffer b) {
         this.b = b;
@@ -206,8 +210,7 @@ public class AttributeValue  implements Serializable  {
             this.sS = null;
             return;
         }
-
-        java.util.List<String> sSCopy = new java.util.ArrayList<String>(sS.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> sSCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(sS.size());
         sSCopy.addAll(sS);
         this.sS = sSCopy;
     }
@@ -220,7 +223,7 @@ public class AttributeValue  implements Serializable  {
      * @param sS Represents a String set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withSS(String... sS) {
         if (getSS() == null) setSS(new java.util.ArrayList<String>(sS.length));
@@ -238,13 +241,13 @@ public class AttributeValue  implements Serializable  {
      * @param sS Represents a String set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withSS(java.util.Collection<String> sS) {
         if (sS == null) {
             this.sS = null;
         } else {
-            java.util.List<String> sSCopy = new java.util.ArrayList<String>(sS.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> sSCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(sS.size());
             sSCopy.addAll(sS);
             this.sS = sSCopy;
         }
@@ -272,8 +275,7 @@ public class AttributeValue  implements Serializable  {
             this.nS = null;
             return;
         }
-
-        java.util.List<String> nSCopy = new java.util.ArrayList<String>(nS.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> nSCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(nS.size());
         nSCopy.addAll(nS);
         this.nS = nSCopy;
     }
@@ -286,7 +288,7 @@ public class AttributeValue  implements Serializable  {
      * @param nS Represents a Number set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withNS(String... nS) {
         if (getNS() == null) setNS(new java.util.ArrayList<String>(nS.length));
@@ -304,13 +306,13 @@ public class AttributeValue  implements Serializable  {
      * @param nS Represents a Number set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withNS(java.util.Collection<String> nS) {
         if (nS == null) {
             this.nS = null;
         } else {
-            java.util.List<String> nSCopy = new java.util.ArrayList<String>(nS.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> nSCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(nS.size());
             nSCopy.addAll(nS);
             this.nS = nSCopy;
         }
@@ -338,8 +340,7 @@ public class AttributeValue  implements Serializable  {
             this.bS = null;
             return;
         }
-
-        java.util.List<java.nio.ByteBuffer> bSCopy = new java.util.ArrayList<java.nio.ByteBuffer>(bS.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer> bSCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer>(bS.size());
         bSCopy.addAll(bS);
         this.bS = bSCopy;
     }
@@ -352,7 +353,7 @@ public class AttributeValue  implements Serializable  {
      * @param bS Represents a Binary set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withBS(java.nio.ByteBuffer... bS) {
         if (getBS() == null) setBS(new java.util.ArrayList<java.nio.ByteBuffer>(bS.length));
@@ -370,13 +371,13 @@ public class AttributeValue  implements Serializable  {
      * @param bS Represents a Binary set data type
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeValue withBS(java.util.Collection<java.nio.ByteBuffer> bS) {
         if (bS == null) {
             this.bS = null;
         } else {
-            java.util.List<java.nio.ByteBuffer> bSCopy = new java.util.ArrayList<java.nio.ByteBuffer>(bS.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer> bSCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer>(bS.size());
             bSCopy.addAll(bS);
             this.bS = bSCopy;
         }
@@ -395,12 +396,12 @@ public class AttributeValue  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getS() != null) sb.append("S: " + getS() + ",");    	
-        if (getN() != null) sb.append("N: " + getN() + ",");    	
-        if (getB() != null) sb.append("B: " + getB() + ",");    	
-        if (getSS() != null) sb.append("SS: " + getSS() + ",");    	
-        if (getNS() != null) sb.append("NS: " + getNS() + ",");    	
+        sb.append("{");
+        if (getS() != null) sb.append("S: " + getS() + ",");
+        if (getN() != null) sb.append("N: " + getN() + ",");
+        if (getB() != null) sb.append("B: " + getB() + ",");
+        if (getSS() != null) sb.append("SS: " + getSS() + ",");
+        if (getNS() != null) sb.append("NS: " + getNS() + ",");
         if (getBS() != null) sb.append("BS: " + getBS() );
         sb.append("}");
         return sb.toString();

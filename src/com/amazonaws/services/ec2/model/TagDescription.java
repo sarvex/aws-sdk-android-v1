@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Provides information about an Amazon EC2 resource Tag.
  * </p>
  */
-public class TagDescription  implements Serializable  {
+public class TagDescription implements Serializable {
 
     /**
      * The resource ID for the tag.
@@ -72,7 +72,7 @@ public class TagDescription  implements Serializable  {
      * @param resourceId The resource ID for the tag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withResourceId(String resourceId) {
         this.resourceId = resourceId;
@@ -125,7 +125,7 @@ public class TagDescription  implements Serializable  {
      *         instance, AMI, EBS volume, etc).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceType
      */
@@ -164,7 +164,7 @@ public class TagDescription  implements Serializable  {
      *         instance, AMI, EBS volume, etc).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceType
      */
@@ -199,7 +199,7 @@ public class TagDescription  implements Serializable  {
      * @param key The tag's key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withKey(String key) {
         this.key = key;
@@ -233,7 +233,7 @@ public class TagDescription  implements Serializable  {
      * @param value The tag's value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withValue(String value) {
         this.value = value;
@@ -252,10 +252,10 @@ public class TagDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");    	
-        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
+        sb.append("{");
+        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");
+        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

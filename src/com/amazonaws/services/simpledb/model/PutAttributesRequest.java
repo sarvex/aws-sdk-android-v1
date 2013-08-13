@@ -60,7 +60,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#putAttributes(PutAttributesRequest)
  */
-public class PutAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which to perform the operation.
@@ -75,7 +75,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
     /**
      * The list of attributes.
      */
-    private java.util.List<ReplaceableAttribute> attributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributes;
 
     /**
      * The update condition which, if specified, determines whether the
@@ -91,6 +91,8 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      */
     public PutAttributesRequest() {}
     
+
+
     /**
      * Constructs a new PutAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -102,13 +104,15 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributes The list of attributes.
      */
     public PutAttributesRequest(String domainName, String itemName, java.util.List<ReplaceableAttribute> attributes) {
-        this.domainName = domainName;
-        this.itemName = itemName;
-        this.attributes = attributes;
+        setDomainName(domainName);
+        setItemName(itemName);
+        setAttributes(attributes);
     }
 
     
     
+
+
     /**
      * Constructs a new PutAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -124,10 +128,10 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * and the attributes to be updated.
      */
     public PutAttributesRequest(String domainName, String itemName, java.util.List<ReplaceableAttribute> attributes, UpdateCondition expected) {
-        this.domainName = domainName;
-        this.itemName = itemName;
-        this.attributes = attributes;
-        this.expected = expected;
+        setDomainName(domainName);
+        setItemName(itemName);
+        setAttributes(attributes);
+        setExpected(expected);
     }
 
     
@@ -158,7 +162,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param domainName The name of the domain in which to perform the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withDomainName(String domainName) {
         this.domainName = domainName;
@@ -192,7 +196,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param itemName The name of the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withItemName(String itemName) {
         this.itemName = itemName;
@@ -208,7 +212,8 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
     public java.util.List<ReplaceableAttribute> getAttributes() {
         
         if (attributes == null) {
-            attributes = new java.util.ArrayList<ReplaceableAttribute>();
+              attributes = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>();
+              attributes.setAutoConstruct(true);
         }
         return attributes;
     }
@@ -223,8 +228,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
             this.attributes = null;
             return;
         }
-
-        java.util.List<ReplaceableAttribute> attributesCopy = new java.util.ArrayList<ReplaceableAttribute>(attributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>(attributes.size());
         attributesCopy.addAll(attributes);
         this.attributes = attributesCopy;
     }
@@ -237,7 +241,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributes The list of attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withAttributes(ReplaceableAttribute... attributes) {
         if (getAttributes() == null) setAttributes(new java.util.ArrayList<ReplaceableAttribute>(attributes.length));
@@ -255,13 +259,13 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributes The list of attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withAttributes(java.util.Collection<ReplaceableAttribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
         } else {
-            java.util.List<ReplaceableAttribute> attributesCopy = new java.util.ArrayList<ReplaceableAttribute>(attributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>(attributes.size());
             attributesCopy.addAll(attributes);
             this.attributes = attributesCopy;
         }
@@ -313,7 +317,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      *         attributes to be updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withExpected(UpdateCondition expected) {
         this.expected = expected;
@@ -332,10 +336,10 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");    	
-        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");
+        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");
         if (getExpected() != null) sb.append("Expected: " + getExpected() );
         sb.append("}");
         return sb.toString();

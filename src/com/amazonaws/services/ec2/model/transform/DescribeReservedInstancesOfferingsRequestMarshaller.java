@@ -38,7 +38,7 @@ public class DescribeReservedInstancesOfferingsRequestMarshaller implements Mars
 
         Request<DescribeReservedInstancesOfferingsRequest> request = new DefaultRequest<DescribeReservedInstancesOfferingsRequest>(describeReservedInstancesOfferingsRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeReservedInstancesOfferings");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-06-15");
 
 
         java.util.List<String> reservedInstancesOfferingIdsList = describeReservedInstancesOfferingsRequest.getReservedInstancesOfferingIds();
@@ -96,6 +96,18 @@ public class DescribeReservedInstancesOfferingsRequestMarshaller implements Mars
         }
         if (describeReservedInstancesOfferingsRequest.getMaxResults() != null) {
             request.addParameter("MaxResults", StringUtils.fromInteger(describeReservedInstancesOfferingsRequest.getMaxResults()));
+        }
+        if (describeReservedInstancesOfferingsRequest.isIncludeMarketplace() != null) {
+            request.addParameter("IncludeMarketplace", StringUtils.fromBoolean(describeReservedInstancesOfferingsRequest.isIncludeMarketplace()));
+        }
+        if (describeReservedInstancesOfferingsRequest.getMinDuration() != null) {
+            request.addParameter("MinDuration", StringUtils.fromLong(describeReservedInstancesOfferingsRequest.getMinDuration()));
+        }
+        if (describeReservedInstancesOfferingsRequest.getMaxDuration() != null) {
+            request.addParameter("MaxDuration", StringUtils.fromLong(describeReservedInstancesOfferingsRequest.getMaxDuration()));
+        }
+        if (describeReservedInstancesOfferingsRequest.getMaxInstanceCount() != null) {
+            request.addParameter("MaxInstanceCount", StringUtils.fromInteger(describeReservedInstancesOfferingsRequest.getMaxInstanceCount()));
         }
 
 

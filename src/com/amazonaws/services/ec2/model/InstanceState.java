@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the state of an Amazon EC2 instance.
  * </p>
  */
-public class InstanceState  implements Serializable  {
+public class InstanceState implements Serializable {
 
     /**
      * A 16-bit unsigned integer. The high byte is an opaque internal value
@@ -75,7 +75,7 @@ public class InstanceState  implements Serializable  {
      *         represented.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceState withCode(Integer code) {
         this.code = code;
@@ -122,7 +122,7 @@ public class InstanceState  implements Serializable  {
      * @param name The current state of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceStateName
      */
@@ -157,7 +157,7 @@ public class InstanceState  implements Serializable  {
      * @param name The current state of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceStateName
      */
@@ -177,8 +177,8 @@ public class InstanceState  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

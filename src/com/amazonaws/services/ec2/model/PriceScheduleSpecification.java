@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Price Schedule Specification
  */
-public class PriceScheduleSpecification  implements Serializable  {
+public class PriceScheduleSpecification implements Serializable {
 
     private Long term;
 
@@ -52,7 +52,7 @@ public class PriceScheduleSpecification  implements Serializable  {
      * @param term The new value for the Term property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceScheduleSpecification withTerm(Long term) {
         this.term = term;
@@ -86,7 +86,7 @@ public class PriceScheduleSpecification  implements Serializable  {
      * @param price The new value for the Price property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceScheduleSpecification withPrice(Double price) {
         this.price = price;
@@ -120,7 +120,7 @@ public class PriceScheduleSpecification  implements Serializable  {
      * @param currencyCode The new value for the CurrencyCode property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceScheduleSpecification withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
@@ -139,9 +139,9 @@ public class PriceScheduleSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTerm() != null) sb.append("Term: " + getTerm() + ",");    	
-        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");    	
+        sb.append("{");
+        if (getTerm() != null) sb.append("Term: " + getTerm() + ",");
+        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");
         if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() );
         sb.append("}");
         return sb.toString();

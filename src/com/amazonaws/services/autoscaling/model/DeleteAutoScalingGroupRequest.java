@@ -28,7 +28,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteAutoScalingGroup(DeleteAutoScalingGroupRequest)
  */
-public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -84,7 +84,7 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAutoScalingGroupRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -130,7 +130,7 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         group, without waiting for all instances to be terminated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAutoScalingGroupRequest withForceDelete(Boolean forceDelete) {
         this.forceDelete = forceDelete;
@@ -162,8 +162,8 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (isForceDelete() != null) sb.append("ForceDelete: " + isForceDelete() );
         sb.append("}");
         return sb.toString();

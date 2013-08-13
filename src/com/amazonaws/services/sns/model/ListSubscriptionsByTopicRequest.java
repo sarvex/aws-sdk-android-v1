@@ -45,6 +45,8 @@ public class ListSubscriptionsByTopicRequest extends AmazonWebServiceRequest  im
      */
     public ListSubscriptionsByTopicRequest() {}
     
+
+
     /**
      * Constructs a new ListSubscriptionsByTopicRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -54,11 +56,13 @@ public class ListSubscriptionsByTopicRequest extends AmazonWebServiceRequest  im
      * subscriptions.
      */
     public ListSubscriptionsByTopicRequest(String topicArn) {
-        this.topicArn = topicArn;
+        setTopicArn(topicArn);
     }
 
     
     
+
+
     /**
      * Constructs a new ListSubscriptionsByTopicRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -70,8 +74,8 @@ public class ListSubscriptionsByTopicRequest extends AmazonWebServiceRequest  im
      * <code>ListSubscriptionsByTopic</code> request.
      */
     public ListSubscriptionsByTopicRequest(String topicArn, String nextToken) {
-        this.topicArn = topicArn;
-        this.nextToken = nextToken;
+        setTopicArn(topicArn);
+        setNextToken(nextToken);
     }
 
     
@@ -161,8 +165,8 @@ public class ListSubscriptionsByTopicRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");    	
+        sb.append("{");
+        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

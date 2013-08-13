@@ -19,7 +19,7 @@ import java.io.Serializable;
  * <p>
  * </p>
  */
-public class ImportKeyPairResult  implements Serializable  {
+public class ImportKeyPairResult implements Serializable {
 
     /**
      * The specified unique key pair name.
@@ -58,7 +58,7 @@ public class ImportKeyPairResult  implements Serializable  {
      * @param keyName The specified unique key pair name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportKeyPairResult withKeyName(String keyName) {
         this.keyName = keyName;
@@ -98,7 +98,7 @@ public class ImportKeyPairResult  implements Serializable  {
      *         href="http://tools.ietf.org/html/rfc4716"> RFC4716 </a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportKeyPairResult withKeyFingerprint(String keyFingerprint) {
         this.keyFingerprint = keyFingerprint;
@@ -117,8 +117,8 @@ public class ImportKeyPairResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");    	
+        sb.append("{");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");
         if (getKeyFingerprint() != null) sb.append("KeyFingerprint: " + getKeyFingerprint() );
         sb.append("}");
         return sb.toString();

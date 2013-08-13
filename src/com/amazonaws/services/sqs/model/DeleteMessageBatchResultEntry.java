@@ -17,10 +17,10 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Encloses the id an entry in DeleteMessageBatchRequest.
+ * Encloses the id an entry in DeleteMessageBatch.
  * </p>
  */
-public class DeleteMessageBatchResultEntry  implements Serializable  {
+public class DeleteMessageBatchResultEntry implements Serializable {
 
     /**
      * Represents a successfully deleted message.
@@ -53,7 +53,7 @@ public class DeleteMessageBatchResultEntry  implements Serializable  {
      * @param id Represents a successfully deleted message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchResultEntry withId(String id) {
         this.id = id;
@@ -72,7 +72,7 @@ public class DeleteMessageBatchResultEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getId() != null) sb.append("Id: " + getId() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a usage charge for Amazon EC2 resources that repeats on a schedule.
  * </p>
  */
-public class RecurringCharge  implements Serializable  {
+public class RecurringCharge implements Serializable {
 
     /**
      * The frequency of the recurring charge.
@@ -58,7 +58,7 @@ public class RecurringCharge  implements Serializable  {
      * @param frequency The frequency of the recurring charge.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecurringCharge withFrequency(String frequency) {
         this.frequency = frequency;
@@ -92,7 +92,7 @@ public class RecurringCharge  implements Serializable  {
      * @param amount The amount of the recurring charge.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecurringCharge withAmount(Double amount) {
         this.amount = amount;
@@ -111,8 +111,8 @@ public class RecurringCharge  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFrequency() != null) sb.append("Frequency: " + getFrequency() + ",");    	
+        sb.append("{");
+        if (getFrequency() != null) sb.append("Frequency: " + getFrequency() + ",");
         if (getAmount() != null) sb.append("Amount: " + getAmount() );
         sb.append("}");
         return sb.toString();

@@ -41,7 +41,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#sendEmail(SendEmailRequest)
  */
-public class SendEmailRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SendEmailRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity's email address.
@@ -62,7 +62,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * The reply-to email address(es) for the message. If the recipient
      * replies to the message, each reply-to address will receive the reply.
      */
-    private java.util.List<String> replyToAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> replyToAddresses;
 
     /**
      * The email address to which bounce notifications are to be forwarded.
@@ -79,6 +79,8 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      */
     public SendEmailRequest() {}
     
+
+
     /**
      * Constructs a new SendEmailRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -90,9 +92,9 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * @param message The message to be sent.
      */
     public SendEmailRequest(String source, Destination destination, Message message) {
-        this.source = source;
-        this.destination = destination;
-        this.message = message;
+        setSource(source);
+        setDestination(destination);
+        setMessage(message);
     }
 
     
@@ -123,7 +125,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * @param source The identity's email address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withSource(String source) {
         this.source = source;
@@ -157,7 +159,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * @param destination The destination for this email, composed of To:, CC:, and BCC: fields.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withDestination(Destination destination) {
         this.destination = destination;
@@ -191,7 +193,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * @param message The message to be sent.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withMessage(Message message) {
         this.message = message;
@@ -209,7 +211,8 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
     public java.util.List<String> getReplyToAddresses() {
         
         if (replyToAddresses == null) {
-            replyToAddresses = new java.util.ArrayList<String>();
+              replyToAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              replyToAddresses.setAutoConstruct(true);
         }
         return replyToAddresses;
     }
@@ -226,8 +229,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
             this.replyToAddresses = null;
             return;
         }
-
-        java.util.List<String> replyToAddressesCopy = new java.util.ArrayList<String>(replyToAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> replyToAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(replyToAddresses.size());
         replyToAddressesCopy.addAll(replyToAddresses);
         this.replyToAddresses = replyToAddressesCopy;
     }
@@ -242,7 +244,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      *         replies to the message, each reply-to address will receive the reply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withReplyToAddresses(String... replyToAddresses) {
         if (getReplyToAddresses() == null) setReplyToAddresses(new java.util.ArrayList<String>(replyToAddresses.length));
@@ -262,13 +264,13 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      *         replies to the message, each reply-to address will receive the reply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withReplyToAddresses(java.util.Collection<String> replyToAddresses) {
         if (replyToAddresses == null) {
             this.replyToAddresses = null;
         } else {
-            java.util.List<String> replyToAddressesCopy = new java.util.ArrayList<String>(replyToAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> replyToAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(replyToAddresses.size());
             replyToAddressesCopy.addAll(replyToAddresses);
             this.replyToAddresses = replyToAddressesCopy;
         }
@@ -326,7 +328,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      *         <code>ReturnPath</code> parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withReturnPath(String returnPath) {
         this.returnPath = returnPath;
@@ -345,11 +347,11 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getDestination() != null) sb.append("Destination: " + getDestination() + ",");    	
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
-        if (getReplyToAddresses() != null) sb.append("ReplyToAddresses: " + getReplyToAddresses() + ",");    	
+        sb.append("{");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getDestination() != null) sb.append("Destination: " + getDestination() + ",");
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");
+        if (getReplyToAddresses() != null) sb.append("ReplyToAddresses: " + getReplyToAddresses() + ",");
         if (getReturnPath() != null) sb.append("ReturnPath: " + getReturnPath() );
         sb.append("}");
         return sb.toString();

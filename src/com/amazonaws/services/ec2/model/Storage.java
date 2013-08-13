@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes the storage destination for a BundleTask when bundling a Windows instance.
  * </p>
  */
-public class Storage  implements Serializable  {
+public class Storage implements Serializable {
 
     /**
      * The details of S3 storage for bundling a Windows instance.
@@ -53,7 +53,7 @@ public class Storage  implements Serializable  {
      * @param s3 The details of S3 storage for bundling a Windows instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Storage withS3(S3Storage s3) {
         this.s3 = s3;
@@ -72,7 +72,7 @@ public class Storage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getS3() != null) sb.append("S3: " + getS3() );
         sb.append("}");
         return sb.toString();

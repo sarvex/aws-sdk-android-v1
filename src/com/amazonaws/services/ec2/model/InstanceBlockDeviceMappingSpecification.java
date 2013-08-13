@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Specifies how an instance's block devices should be mapped on a running instance.
  * </p>
  */
-public class InstanceBlockDeviceMappingSpecification  implements Serializable  {
+public class InstanceBlockDeviceMappingSpecification implements Serializable {
 
     /**
      * The device name (e.g., <code>/dev/sdh</code>) at which the block
@@ -77,7 +77,7 @@ public class InstanceBlockDeviceMappingSpecification  implements Serializable  {
      *         device is exposed on the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceBlockDeviceMappingSpecification withDeviceName(String deviceName) {
         this.deviceName = deviceName;
@@ -117,7 +117,7 @@ public class InstanceBlockDeviceMappingSpecification  implements Serializable  {
      *         device to map to the specified device name on a running instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceBlockDeviceMappingSpecification withEbs(EbsInstanceBlockDeviceSpecification ebs) {
         this.ebs = ebs;
@@ -151,7 +151,7 @@ public class InstanceBlockDeviceMappingSpecification  implements Serializable  {
      * @param virtualName The virtual device name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceBlockDeviceMappingSpecification withVirtualName(String virtualName) {
         this.virtualName = virtualName;
@@ -191,7 +191,7 @@ public class InstanceBlockDeviceMappingSpecification  implements Serializable  {
      *         object should not be mapped to any real device.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceBlockDeviceMappingSpecification withNoDevice(String noDevice) {
         this.noDevice = noDevice;
@@ -210,10 +210,10 @@ public class InstanceBlockDeviceMappingSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");    	
-        if (getEbs() != null) sb.append("Ebs: " + getEbs() + ",");    	
-        if (getVirtualName() != null) sb.append("VirtualName: " + getVirtualName() + ",");    	
+        sb.append("{");
+        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");
+        if (getEbs() != null) sb.append("Ebs: " + getEbs() + ",");
+        if (getVirtualName() != null) sb.append("VirtualName: " + getVirtualName() + ",");
         if (getNoDevice() != null) sb.append("NoDevice: " + getNoDevice() );
         sb.append("}");
         return sb.toString();

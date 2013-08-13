@@ -21,7 +21,7 @@ import java.io.Serializable;
  * enabled.
  * </p>
  */
-public class IdentityNotificationAttributes  implements Serializable  {
+public class IdentityNotificationAttributes implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
@@ -83,7 +83,7 @@ public class IdentityNotificationAttributes  implements Serializable  {
      *         notifications.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityNotificationAttributes withBounceTopic(String bounceTopic) {
         this.bounceTopic = bounceTopic;
@@ -129,7 +129,7 @@ public class IdentityNotificationAttributes  implements Serializable  {
      *         notifications.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityNotificationAttributes withComplaintTopic(String complaintTopic) {
         this.complaintTopic = complaintTopic;
@@ -181,7 +181,7 @@ public class IdentityNotificationAttributes  implements Serializable  {
      *         published only to the specified Bounce and Complaint topics.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityNotificationAttributes withForwardingEnabled(Boolean forwardingEnabled) {
         this.forwardingEnabled = forwardingEnabled;
@@ -215,9 +215,9 @@ public class IdentityNotificationAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBounceTopic() != null) sb.append("BounceTopic: " + getBounceTopic() + ",");    	
-        if (getComplaintTopic() != null) sb.append("ComplaintTopic: " + getComplaintTopic() + ",");    	
+        sb.append("{");
+        if (getBounceTopic() != null) sb.append("BounceTopic: " + getBounceTopic() + ",");
+        if (getComplaintTopic() != null) sb.append("ComplaintTopic: " + getComplaintTopic() + ",");
         if (isForwardingEnabled() != null) sb.append("ForwardingEnabled: " + isForwardingEnabled() );
         sb.append("}");
         return sb.toString();

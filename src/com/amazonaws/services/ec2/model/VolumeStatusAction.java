@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Volume Status Action
  */
-public class VolumeStatusAction  implements Serializable  {
+public class VolumeStatusAction implements Serializable {
 
     private String code;
 
@@ -54,7 +54,7 @@ public class VolumeStatusAction  implements Serializable  {
      * @param code The new value for the Code property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusAction withCode(String code) {
         this.code = code;
@@ -88,7 +88,7 @@ public class VolumeStatusAction  implements Serializable  {
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusAction withDescription(String description) {
         this.description = description;
@@ -122,7 +122,7 @@ public class VolumeStatusAction  implements Serializable  {
      * @param eventType The new value for the EventType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusAction withEventType(String eventType) {
         this.eventType = eventType;
@@ -156,7 +156,7 @@ public class VolumeStatusAction  implements Serializable  {
      * @param eventId The new value for the EventId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusAction withEventId(String eventId) {
         this.eventId = eventId;
@@ -175,10 +175,10 @@ public class VolumeStatusAction  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getEventType() != null) sb.append("EventType: " + getEventType() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getEventType() != null) sb.append("EventType: " + getEventType() + ",");
         if (getEventId() != null) sb.append("EventId: " + getEventId() );
         sb.append("}");
         return sb.toString();

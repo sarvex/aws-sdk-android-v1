@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The <code>AutoScalingInstancesType</code> data type.
  * </p>
  */
-public class DescribeAutoScalingInstancesResult  implements Serializable  {
+public class DescribeAutoScalingInstancesResult implements Serializable {
 
     /**
      * A list of Auto Scaling instances.
      */
-    private java.util.List<AutoScalingInstanceDetails> autoScalingInstances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingInstanceDetails> autoScalingInstances;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -43,7 +43,8 @@ public class DescribeAutoScalingInstancesResult  implements Serializable  {
     public java.util.List<AutoScalingInstanceDetails> getAutoScalingInstances() {
         
         if (autoScalingInstances == null) {
-            autoScalingInstances = new java.util.ArrayList<AutoScalingInstanceDetails>();
+              autoScalingInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingInstanceDetails>();
+              autoScalingInstances.setAutoConstruct(true);
         }
         return autoScalingInstances;
     }
@@ -58,8 +59,7 @@ public class DescribeAutoScalingInstancesResult  implements Serializable  {
             this.autoScalingInstances = null;
             return;
         }
-
-        java.util.List<AutoScalingInstanceDetails> autoScalingInstancesCopy = new java.util.ArrayList<AutoScalingInstanceDetails>(autoScalingInstances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingInstanceDetails> autoScalingInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingInstanceDetails>(autoScalingInstances.size());
         autoScalingInstancesCopy.addAll(autoScalingInstances);
         this.autoScalingInstances = autoScalingInstancesCopy;
     }
@@ -72,7 +72,7 @@ public class DescribeAutoScalingInstancesResult  implements Serializable  {
      * @param autoScalingInstances A list of Auto Scaling instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingInstancesResult withAutoScalingInstances(AutoScalingInstanceDetails... autoScalingInstances) {
         if (getAutoScalingInstances() == null) setAutoScalingInstances(new java.util.ArrayList<AutoScalingInstanceDetails>(autoScalingInstances.length));
@@ -90,13 +90,13 @@ public class DescribeAutoScalingInstancesResult  implements Serializable  {
      * @param autoScalingInstances A list of Auto Scaling instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingInstancesResult withAutoScalingInstances(java.util.Collection<AutoScalingInstanceDetails> autoScalingInstances) {
         if (autoScalingInstances == null) {
             this.autoScalingInstances = null;
         } else {
-            java.util.List<AutoScalingInstanceDetails> autoScalingInstancesCopy = new java.util.ArrayList<AutoScalingInstanceDetails>(autoScalingInstances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingInstanceDetails> autoScalingInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingInstanceDetails>(autoScalingInstances.size());
             autoScalingInstancesCopy.addAll(autoScalingInstances);
             this.autoScalingInstances = autoScalingInstancesCopy;
         }
@@ -139,7 +139,7 @@ public class DescribeAutoScalingInstancesResult  implements Serializable  {
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingInstancesResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -158,8 +158,8 @@ public class DescribeAutoScalingInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingInstances() != null) sb.append("AutoScalingInstances: " + getAutoScalingInstances() + ",");    	
+        sb.append("{");
+        if (getAutoScalingInstances() != null) sb.append("AutoScalingInstances: " + getAutoScalingInstances() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

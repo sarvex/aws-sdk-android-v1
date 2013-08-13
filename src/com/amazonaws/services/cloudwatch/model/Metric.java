@@ -20,12 +20,8 @@ import java.io.Serializable;
  * The <code>Metric</code> data type contains information about a specific metric. If you call ListMetrics, Amazon CloudWatch returns information
  * contained by this data type.
  * </p>
- * <p>
- * The example in the Examples section publishes two metrics named buffers and latency. Both metrics are in the examples namespace. Both metrics have
- * two dimensions, InstanceID and InstanceType.
- * </p>
  */
-public class Metric  implements Serializable  {
+public class Metric implements Serializable {
 
     /**
      * The namespace of the metric.
@@ -50,7 +46,7 @@ public class Metric  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<Dimension> dimensions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensions;
 
     /**
      * The namespace of the metric.
@@ -90,7 +86,7 @@ public class Metric  implements Serializable  {
      * @param namespace The namespace of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Metric withNamespace(String namespace) {
         this.namespace = namespace;
@@ -133,7 +129,7 @@ public class Metric  implements Serializable  {
      * @param metricName The name of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Metric withMetricName(String metricName) {
         this.metricName = metricName;
@@ -152,7 +148,8 @@ public class Metric  implements Serializable  {
     public java.util.List<Dimension> getDimensions() {
         
         if (dimensions == null) {
-            dimensions = new java.util.ArrayList<Dimension>();
+              dimensions = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>();
+              dimensions.setAutoConstruct(true);
         }
         return dimensions;
     }
@@ -170,8 +167,7 @@ public class Metric  implements Serializable  {
             this.dimensions = null;
             return;
         }
-
-        java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
         dimensionsCopy.addAll(dimensions);
         this.dimensions = dimensionsCopy;
     }
@@ -187,7 +183,7 @@ public class Metric  implements Serializable  {
      * @param dimensions A list of dimensions associated with the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Metric withDimensions(Dimension... dimensions) {
         if (getDimensions() == null) setDimensions(new java.util.ArrayList<Dimension>(dimensions.length));
@@ -208,13 +204,13 @@ public class Metric  implements Serializable  {
      * @param dimensions A list of dimensions associated with the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Metric withDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
         } else {
-            java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
             dimensionsCopy.addAll(dimensions);
             this.dimensions = dimensionsCopy;
         }
@@ -233,9 +229,9 @@ public class Metric  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
+        sb.append("{");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");
         if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() );
         sb.append("}");
         return sb.toString();

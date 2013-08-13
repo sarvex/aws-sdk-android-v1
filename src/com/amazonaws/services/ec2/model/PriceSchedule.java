@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Price Schedule
  */
-public class PriceSchedule  implements Serializable  {
+public class PriceSchedule implements Serializable {
 
     private Long term;
 
@@ -54,7 +54,7 @@ public class PriceSchedule  implements Serializable  {
      * @param term The new value for the Term property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceSchedule withTerm(Long term) {
         this.term = term;
@@ -88,7 +88,7 @@ public class PriceSchedule  implements Serializable  {
      * @param price The new value for the Price property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceSchedule withPrice(Double price) {
         this.price = price;
@@ -122,7 +122,7 @@ public class PriceSchedule  implements Serializable  {
      * @param currencyCode The new value for the CurrencyCode property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceSchedule withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
@@ -156,7 +156,7 @@ public class PriceSchedule  implements Serializable  {
      * @param active The new value for the Active property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceSchedule withActive(Boolean active) {
         this.active = active;
@@ -184,10 +184,10 @@ public class PriceSchedule  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTerm() != null) sb.append("Term: " + getTerm() + ",");    	
-        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");    	
-        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");    	
+        sb.append("{");
+        if (getTerm() != null) sb.append("Term: " + getTerm() + ",");
+        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");
+        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");
         if (isActive() != null) sb.append("Active: " + isActive() );
         sb.append("}");
         return sb.toString();

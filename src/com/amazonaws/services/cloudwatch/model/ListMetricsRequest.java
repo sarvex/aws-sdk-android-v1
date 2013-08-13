@@ -19,8 +19,8 @@ import java.io.Serializable;
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudwatch.AmazonCloudWatch#listMetrics(ListMetricsRequest) ListMetrics operation}.
  * <p>
- * Returns a list of valid metrics stored for the AWS account owner. Returned metrics can be used with GetMetricStatistics to obtain statistical data
- * for a given metric.
+ * Returns a list of valid metrics stored for the AWS account owner. Returned metrics can be used with <code>GetMetricStatistics</code> to obtain
+ * statistical data for a given metric.
  * </p>
  * <p>
  * <b>NOTE:</b> Up to 500 results are returned for any one call. To retrieve further results, use returned NextToken values with subsequent ListMetrics
@@ -28,12 +28,12 @@ import java.io.Serializable;
  * </p>
  * <p>
  * <b>NOTE:</b> If you create a metric with the PutMetricData action, allow up to fifteen minutes for the metric to appear in calls to the ListMetrics
- * action. Statistics about the metric, however, are available sooner using GetMetricStatistics.
+ * action.
  * </p>
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#listMetrics(ListMetricsRequest)
  */
-public class ListMetricsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListMetricsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The namespace to filter against.
@@ -58,7 +58,7 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<DimensionFilter> dimensions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DimensionFilter> dimensions;
 
     /**
      * The token returned by a previous call to indicate that there is more
@@ -104,7 +104,7 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
      * @param namespace The namespace to filter against.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsRequest withNamespace(String namespace) {
         this.namespace = namespace;
@@ -147,7 +147,7 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
      * @param metricName The name of the metric to filter against.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsRequest withMetricName(String metricName) {
         this.metricName = metricName;
@@ -166,7 +166,8 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
     public java.util.List<DimensionFilter> getDimensions() {
         
         if (dimensions == null) {
-            dimensions = new java.util.ArrayList<DimensionFilter>();
+              dimensions = new com.amazonaws.internal.ListWithAutoConstructFlag<DimensionFilter>();
+              dimensions.setAutoConstruct(true);
         }
         return dimensions;
     }
@@ -184,8 +185,7 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
             this.dimensions = null;
             return;
         }
-
-        java.util.List<DimensionFilter> dimensionsCopy = new java.util.ArrayList<DimensionFilter>(dimensions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DimensionFilter> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DimensionFilter>(dimensions.size());
         dimensionsCopy.addAll(dimensions);
         this.dimensions = dimensionsCopy;
     }
@@ -201,7 +201,7 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
      * @param dimensions A list of dimensions to filter against.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsRequest withDimensions(DimensionFilter... dimensions) {
         if (getDimensions() == null) setDimensions(new java.util.ArrayList<DimensionFilter>(dimensions.length));
@@ -222,13 +222,13 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
      * @param dimensions A list of dimensions to filter against.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsRequest withDimensions(java.util.Collection<DimensionFilter> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
         } else {
-            java.util.List<DimensionFilter> dimensionsCopy = new java.util.ArrayList<DimensionFilter>(dimensions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DimensionFilter> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DimensionFilter>(dimensions.size());
             dimensionsCopy.addAll(dimensions);
             this.dimensions = dimensionsCopy;
         }
@@ -268,7 +268,7 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
      *         data available.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -287,10 +287,10 @@ public class ListMetricsRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
-        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");    	
+        sb.append("{");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");
+        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

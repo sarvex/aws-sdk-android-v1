@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the output of a <i>DeleteTable</i> operation.
  * </p>
  */
-public class DeleteTableResult  implements Serializable  {
+public class DeleteTableResult implements Serializable {
 
     /**
      * Contains the properties of a table.
@@ -53,7 +53,7 @@ public class DeleteTableResult  implements Serializable  {
      * @param tableDescription Contains the properties of a table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteTableResult withTableDescription(TableDescription tableDescription) {
         this.tableDescription = tableDescription;
@@ -72,7 +72,7 @@ public class DeleteTableResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTableDescription() != null) sb.append("TableDescription: " + getTableDescription() );
         sb.append("}");
         return sb.toString();

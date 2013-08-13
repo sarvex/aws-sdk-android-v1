@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeInstanceAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeInstanceAttribute(DescribeInstanceAttributeRequest)
  */
-public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeInstanceAttributeRequest> {
 
     /**
      * The ID of the instance whose instance attribute is being described.
@@ -49,6 +51,8 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest  i
      */
     public DescribeInstanceAttributeRequest() {}
     
+
+
     /**
      * Constructs a new DescribeInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -64,8 +68,8 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest  i
      * <code>rootDeviceName</code>, <code>blockDeviceMapping</code>
      */
     public DescribeInstanceAttributeRequest(String instanceId, String attribute) {
-        this.instanceId = instanceId;
-        this.attribute = attribute;
+        setInstanceId(instanceId);
+        setAttribute(attribute);
     }
 
     
@@ -115,7 +119,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest  i
      * @param instanceId The ID of the instance whose instance attribute is being described.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceAttributeRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -186,7 +190,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest  i
      *         <code>rootDeviceName</code>, <code>blockDeviceMapping</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
@@ -237,13 +241,25 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest  i
      *         <code>rootDeviceName</code>, <code>blockDeviceMapping</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
     public DescribeInstanceAttributeRequest withAttribute(InstanceAttributeName attribute) {
         this.attribute = attribute.toString();
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeInstanceAttributeRequest> getDryRunRequest() {
+        Request<DescribeInstanceAttributeRequest> request = new DescribeInstanceAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -257,8 +273,8 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

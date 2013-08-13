@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeregisterImageRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deregisterImage(DeregisterImageRequest)
  */
-public class DeregisterImageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeregisterImageRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeregisterImageRequest> {
 
     /**
      * The ID of the AMI to deregister.
@@ -37,6 +39,8 @@ public class DeregisterImageRequest extends AmazonWebServiceRequest  implements 
      */
     public DeregisterImageRequest() {}
     
+
+
     /**
      * Constructs a new DeregisterImageRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -45,7 +49,7 @@ public class DeregisterImageRequest extends AmazonWebServiceRequest  implements 
      * @param imageId The ID of the AMI to deregister.
      */
     public DeregisterImageRequest(String imageId) {
-        this.imageId = imageId;
+        setImageId(imageId);
     }
 
     
@@ -76,13 +80,25 @@ public class DeregisterImageRequest extends AmazonWebServiceRequest  implements 
      * @param imageId The ID of the AMI to deregister.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeregisterImageRequest withImageId(String imageId) {
         this.imageId = imageId;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeregisterImageRequest> getDryRunRequest() {
+        Request<DeregisterImageRequest> request = new DeregisterImageRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -95,7 +111,7 @@ public class DeregisterImageRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageId() != null) sb.append("ImageId: " + getImageId() );
         sb.append("}");
         return sb.toString();

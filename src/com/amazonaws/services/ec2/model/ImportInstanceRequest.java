@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ImportInstanceRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,13 +24,13 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#importInstance(ImportInstanceRequest)
  */
-public class ImportInstanceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ImportInstanceRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ImportInstanceRequest> {
 
     private String description;
 
     private ImportInstanceLaunchSpecification launchSpecification;
 
-    private java.util.List<DiskImage> diskImages;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DiskImage> diskImages;
 
     private String platform;
 
@@ -58,7 +60,7 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceRequest withDescription(String description) {
         this.description = description;
@@ -92,7 +94,7 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param launchSpecification The new value for the LaunchSpecification property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceRequest withLaunchSpecification(ImportInstanceLaunchSpecification launchSpecification) {
         this.launchSpecification = launchSpecification;
@@ -108,7 +110,8 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
     public java.util.List<DiskImage> getDiskImages() {
         
         if (diskImages == null) {
-            diskImages = new java.util.ArrayList<DiskImage>();
+              diskImages = new com.amazonaws.internal.ListWithAutoConstructFlag<DiskImage>();
+              diskImages.setAutoConstruct(true);
         }
         return diskImages;
     }
@@ -123,8 +126,7 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
             this.diskImages = null;
             return;
         }
-
-        java.util.List<DiskImage> diskImagesCopy = new java.util.ArrayList<DiskImage>(diskImages.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DiskImage> diskImagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DiskImage>(diskImages.size());
         diskImagesCopy.addAll(diskImages);
         this.diskImages = diskImagesCopy;
     }
@@ -137,7 +139,7 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param diskImages The new value for the DiskImages property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceRequest withDiskImages(DiskImage... diskImages) {
         if (getDiskImages() == null) setDiskImages(new java.util.ArrayList<DiskImage>(diskImages.length));
@@ -155,13 +157,13 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param diskImages The new value for the DiskImages property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceRequest withDiskImages(java.util.Collection<DiskImage> diskImages) {
         if (diskImages == null) {
             this.diskImages = null;
         } else {
-            java.util.List<DiskImage> diskImagesCopy = new java.util.ArrayList<DiskImage>(diskImages.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DiskImage> diskImagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DiskImage>(diskImages.size());
             diskImagesCopy.addAll(diskImages);
             this.diskImages = diskImagesCopy;
         }
@@ -195,13 +197,25 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param platform The new value for the Platform property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceRequest withPlatform(String platform) {
         this.platform = platform;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ImportInstanceRequest> getDryRunRequest() {
+        Request<ImportInstanceRequest> request = new ImportInstanceRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -214,10 +228,10 @@ public class ImportInstanceRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getLaunchSpecification() != null) sb.append("LaunchSpecification: " + getLaunchSpecification() + ",");    	
-        if (getDiskImages() != null) sb.append("DiskImages: " + getDiskImages() + ",");    	
+        sb.append("{");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getLaunchSpecification() != null) sb.append("LaunchSpecification: " + getLaunchSpecification() + ",");
+        if (getDiskImages() != null) sb.append("DiskImages: " + getDiskImages() + ",");
         if (getPlatform() != null) sb.append("Platform: " + getPlatform() );
         sb.append("}");
         return sb.toString();

@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Export To S3 Task Specification
  */
-public class ExportToS3TaskSpecification  implements Serializable  {
+public class ExportToS3TaskSpecification implements Serializable {
 
     private String diskImageFormat;
 
@@ -67,7 +67,7 @@ public class ExportToS3TaskSpecification  implements Serializable  {
      * @param diskImageFormat The new value for the DiskImageFormat property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DiskImageFormat
      */
@@ -102,7 +102,7 @@ public class ExportToS3TaskSpecification  implements Serializable  {
      * @param diskImageFormat The new value for the DiskImageFormat property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DiskImageFormat
      */
@@ -150,7 +150,7 @@ public class ExportToS3TaskSpecification  implements Serializable  {
      * @param containerFormat The new value for the ContainerFormat property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ContainerFormat
      */
@@ -185,7 +185,7 @@ public class ExportToS3TaskSpecification  implements Serializable  {
      * @param containerFormat The new value for the ContainerFormat property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ContainerFormat
      */
@@ -220,7 +220,7 @@ public class ExportToS3TaskSpecification  implements Serializable  {
      * @param s3Bucket The new value for the S3Bucket property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportToS3TaskSpecification withS3Bucket(String s3Bucket) {
         this.s3Bucket = s3Bucket;
@@ -254,7 +254,7 @@ public class ExportToS3TaskSpecification  implements Serializable  {
      * @param s3Prefix The new value for the S3Prefix property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportToS3TaskSpecification withS3Prefix(String s3Prefix) {
         this.s3Prefix = s3Prefix;
@@ -273,10 +273,10 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDiskImageFormat() != null) sb.append("DiskImageFormat: " + getDiskImageFormat() + ",");    	
-        if (getContainerFormat() != null) sb.append("ContainerFormat: " + getContainerFormat() + ",");    	
-        if (getS3Bucket() != null) sb.append("S3Bucket: " + getS3Bucket() + ",");    	
+        sb.append("{");
+        if (getDiskImageFormat() != null) sb.append("DiskImageFormat: " + getDiskImageFormat() + ",");
+        if (getContainerFormat() != null) sb.append("ContainerFormat: " + getContainerFormat() + ",");
+        if (getS3Bucket() != null) sb.append("S3Bucket: " + getS3Bucket() + ",");
         if (getS3Prefix() != null) sb.append("S3Prefix: " + getS3Prefix() );
         sb.append("}");
         return sb.toString();

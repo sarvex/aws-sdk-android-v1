@@ -39,7 +39,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityDkimEnabled(SetIdentityDkimEnabledRequest)
  */
-public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity for which DKIM signing should be enabled or disabled.
@@ -79,7 +79,7 @@ public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest  impl
      * @param identity The identity for which DKIM signing should be enabled or disabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityDkimEnabledRequest withIdentity(String identity) {
         this.identity = identity;
@@ -125,7 +125,7 @@ public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest  impl
      *         <code>false</code> to disable it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityDkimEnabledRequest withDkimEnabled(Boolean dkimEnabled) {
         this.dkimEnabled = dkimEnabled;
@@ -157,8 +157,8 @@ public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");    	
+        sb.append("{");
+        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");
         if (isDkimEnabled() != null) sb.append("DkimEnabled: " + isDkimEnabled() );
         sb.append("}");
         return sb.toString();

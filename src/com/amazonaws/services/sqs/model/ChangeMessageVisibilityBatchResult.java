@@ -18,17 +18,17 @@ import java.io.Serializable;
 /**
  * 
  */
-public class ChangeMessageVisibilityBatchResult  implements Serializable  {
+public class ChangeMessageVisibilityBatchResult implements Serializable {
 
     /**
      * A list of <a>ChangeMessageVisibilityBatchResultEntry</a>s.
      */
-    private java.util.List<ChangeMessageVisibilityBatchResultEntry> successful;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchResultEntry> successful;
 
     /**
      * A list of <a>BatchResultErrorEntry</a>s.
      */
-    private java.util.List<BatchResultErrorEntry> failed;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry> failed;
 
     /**
      * A list of <a>ChangeMessageVisibilityBatchResultEntry</a>s.
@@ -38,7 +38,8 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
     public java.util.List<ChangeMessageVisibilityBatchResultEntry> getSuccessful() {
         
         if (successful == null) {
-            successful = new java.util.ArrayList<ChangeMessageVisibilityBatchResultEntry>();
+              successful = new com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchResultEntry>();
+              successful.setAutoConstruct(true);
         }
         return successful;
     }
@@ -53,8 +54,7 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
             this.successful = null;
             return;
         }
-
-        java.util.List<ChangeMessageVisibilityBatchResultEntry> successfulCopy = new java.util.ArrayList<ChangeMessageVisibilityBatchResultEntry>(successful.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchResultEntry> successfulCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchResultEntry>(successful.size());
         successfulCopy.addAll(successful);
         this.successful = successfulCopy;
     }
@@ -67,7 +67,7 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
      * @param successful A list of <a>ChangeMessageVisibilityBatchResultEntry</a>s.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchResult withSuccessful(ChangeMessageVisibilityBatchResultEntry... successful) {
         if (getSuccessful() == null) setSuccessful(new java.util.ArrayList<ChangeMessageVisibilityBatchResultEntry>(successful.length));
@@ -85,13 +85,13 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
      * @param successful A list of <a>ChangeMessageVisibilityBatchResultEntry</a>s.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchResult withSuccessful(java.util.Collection<ChangeMessageVisibilityBatchResultEntry> successful) {
         if (successful == null) {
             this.successful = null;
         } else {
-            java.util.List<ChangeMessageVisibilityBatchResultEntry> successfulCopy = new java.util.ArrayList<ChangeMessageVisibilityBatchResultEntry>(successful.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchResultEntry> successfulCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchResultEntry>(successful.size());
             successfulCopy.addAll(successful);
             this.successful = successfulCopy;
         }
@@ -107,7 +107,8 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
     public java.util.List<BatchResultErrorEntry> getFailed() {
         
         if (failed == null) {
-            failed = new java.util.ArrayList<BatchResultErrorEntry>();
+              failed = new com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry>();
+              failed.setAutoConstruct(true);
         }
         return failed;
     }
@@ -122,8 +123,7 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
             this.failed = null;
             return;
         }
-
-        java.util.List<BatchResultErrorEntry> failedCopy = new java.util.ArrayList<BatchResultErrorEntry>(failed.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry> failedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry>(failed.size());
         failedCopy.addAll(failed);
         this.failed = failedCopy;
     }
@@ -136,7 +136,7 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
      * @param failed A list of <a>BatchResultErrorEntry</a>s.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchResult withFailed(BatchResultErrorEntry... failed) {
         if (getFailed() == null) setFailed(new java.util.ArrayList<BatchResultErrorEntry>(failed.length));
@@ -154,13 +154,13 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
      * @param failed A list of <a>BatchResultErrorEntry</a>s.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchResult withFailed(java.util.Collection<BatchResultErrorEntry> failed) {
         if (failed == null) {
             this.failed = null;
         } else {
-            java.util.List<BatchResultErrorEntry> failedCopy = new java.util.ArrayList<BatchResultErrorEntry>(failed.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry> failedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry>(failed.size());
             failedCopy.addAll(failed);
             this.failed = failedCopy;
         }
@@ -179,8 +179,8 @@ public class ChangeMessageVisibilityBatchResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSuccessful() != null) sb.append("Successful: " + getSuccessful() + ",");    	
+        sb.append("{");
+        if (getSuccessful() != null) sb.append("Successful: " + getSuccessful() + ",");
         if (getFailed() != null) sb.append("Failed: " + getFailed() );
         sb.append("}");
         return sb.toString();

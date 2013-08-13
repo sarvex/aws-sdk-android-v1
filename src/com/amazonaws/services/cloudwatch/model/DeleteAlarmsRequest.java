@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#deleteAlarms(DeleteAlarmsRequest)
  */
-public class DeleteAlarmsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteAlarmsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list of alarms to be deleted.
@@ -32,7 +32,7 @@ public class DeleteAlarmsRequest extends AmazonWebServiceRequest  implements Ser
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      */
-    private java.util.List<String> alarmNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNames;
 
     /**
      * A list of alarms to be deleted.
@@ -45,7 +45,8 @@ public class DeleteAlarmsRequest extends AmazonWebServiceRequest  implements Ser
     public java.util.List<String> getAlarmNames() {
         
         if (alarmNames == null) {
-            alarmNames = new java.util.ArrayList<String>();
+              alarmNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              alarmNames.setAutoConstruct(true);
         }
         return alarmNames;
     }
@@ -63,8 +64,7 @@ public class DeleteAlarmsRequest extends AmazonWebServiceRequest  implements Ser
             this.alarmNames = null;
             return;
         }
-
-        java.util.List<String> alarmNamesCopy = new java.util.ArrayList<String>(alarmNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmNames.size());
         alarmNamesCopy.addAll(alarmNames);
         this.alarmNames = alarmNamesCopy;
     }
@@ -80,7 +80,7 @@ public class DeleteAlarmsRequest extends AmazonWebServiceRequest  implements Ser
      * @param alarmNames A list of alarms to be deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAlarmsRequest withAlarmNames(String... alarmNames) {
         if (getAlarmNames() == null) setAlarmNames(new java.util.ArrayList<String>(alarmNames.length));
@@ -101,13 +101,13 @@ public class DeleteAlarmsRequest extends AmazonWebServiceRequest  implements Ser
      * @param alarmNames A list of alarms to be deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAlarmsRequest withAlarmNames(java.util.Collection<String> alarmNames) {
         if (alarmNames == null) {
             this.alarmNames = null;
         } else {
-            java.util.List<String> alarmNamesCopy = new java.util.ArrayList<String>(alarmNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmNames.size());
             alarmNamesCopy.addAll(alarmNames);
             this.alarmNames = alarmNamesCopy;
         }
@@ -126,7 +126,7 @@ public class DeleteAlarmsRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAlarmNames() != null) sb.append("AlarmNames: " + getAlarmNames() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The Ebs data type.
  * </p>
  */
-public class Ebs  implements Serializable  {
+public class Ebs implements Serializable {
 
     /**
      * The snapshot ID.
@@ -77,7 +77,7 @@ public class Ebs  implements Serializable  {
      * @param snapshotId The snapshot ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Ebs withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -120,7 +120,7 @@ public class Ebs  implements Serializable  {
      * @param volumeSize The volume size, in gigabytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Ebs withVolumeSize(Integer volumeSize) {
         this.volumeSize = volumeSize;
@@ -139,8 +139,8 @@ public class Ebs  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
         if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() );
         sb.append("}");
         return sb.toString();

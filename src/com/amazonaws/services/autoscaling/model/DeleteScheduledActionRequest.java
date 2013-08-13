@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteScheduledAction(DeleteScheduledActionRequest)
  */
-public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteScheduledActionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -82,7 +82,7 @@ public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  imple
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteScheduledActionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -128,7 +128,7 @@ public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  imple
      * @param scheduledActionName The name of the action you want to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteScheduledActionRequest withScheduledActionName(String scheduledActionName) {
         this.scheduledActionName = scheduledActionName;
@@ -147,8 +147,8 @@ public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() );
         sb.append("}");
         return sb.toString();

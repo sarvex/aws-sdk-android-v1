@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.RegisterImageRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -33,7 +35,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#registerImage(RegisterImageRequest)
  */
-public class RegisterImageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RegisterImageRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<RegisterImageRequest> {
 
     /**
      * The full path to your AMI manifest in Amazon S3 storage.
@@ -82,7 +84,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      * block devices (ex: EBS volumes and ephemeral drives) will be exposed
      * on instances launched from the new image.
      */
-    private java.util.List<BlockDeviceMapping> blockDeviceMappings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappings;
 
     /**
      * Default constructor for a new RegisterImageRequest object.  Callers should use the
@@ -90,6 +92,8 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      */
     public RegisterImageRequest() {}
     
+
+
     /**
      * Constructs a new RegisterImageRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -99,7 +103,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      * storage.
      */
     public RegisterImageRequest(String imageLocation) {
-        this.imageLocation = imageLocation;
+        setImageLocation(imageLocation);
     }
 
     
@@ -130,7 +134,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      * @param imageLocation The full path to your AMI manifest in Amazon S3 storage.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withImageLocation(String imageLocation) {
         this.imageLocation = imageLocation;
@@ -182,7 +186,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      *         or underscores(<code>_</code>)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withName(String name) {
         this.name = name;
@@ -216,7 +220,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      * @param description The description describing the new AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withDescription(String description) {
         this.description = description;
@@ -256,7 +260,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      *         <code>x86_64</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withArchitecture(String architecture) {
         this.architecture = architecture;
@@ -290,7 +294,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      * @param kernelId The optional ID of a specific kernel to register with the new AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withKernelId(String kernelId) {
         this.kernelId = kernelId;
@@ -342,7 +346,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      *         RAM disk.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
@@ -376,7 +380,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      * @param rootDeviceName The root device name (e.g., <code>/dev/sda1</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withRootDeviceName(String rootDeviceName) {
         this.rootDeviceName = rootDeviceName;
@@ -396,7 +400,8 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
     public java.util.List<BlockDeviceMapping> getBlockDeviceMappings() {
         
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<BlockDeviceMapping>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
@@ -415,8 +420,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
@@ -433,7 +437,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      *         on instances launched from the new image.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withBlockDeviceMappings(BlockDeviceMapping... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.length));
@@ -455,18 +459,30 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
      *         on instances launched from the new image.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageRequest withBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<RegisterImageRequest> getDryRunRequest() {
+        Request<RegisterImageRequest> request = new RegisterImageRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -480,14 +496,14 @@ public class RegisterImageRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageLocation() != null) sb.append("ImageLocation: " + getImageLocation() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");    	
-        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");    	
-        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");    	
-        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ",");    	
+        sb.append("{");
+        if (getImageLocation() != null) sb.append("ImageLocation: " + getImageLocation() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");
+        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ",");
         if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() );
         sb.append("}");
         return sb.toString();

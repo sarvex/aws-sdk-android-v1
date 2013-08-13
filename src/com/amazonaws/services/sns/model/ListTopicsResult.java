@@ -23,7 +23,7 @@ public class ListTopicsResult  implements Serializable  {
     /**
      * A list of topic ARNs.
      */
-    private java.util.List<Topic> topics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Topic> topics;
 
     /**
      * Token to pass along to the next <code>ListTopics</code> request. This
@@ -39,7 +39,8 @@ public class ListTopicsResult  implements Serializable  {
     public java.util.List<Topic> getTopics() {
         
         if (topics == null) {
-            topics = new java.util.ArrayList<Topic>();
+              topics = new com.amazonaws.internal.ListWithAutoConstructFlag<Topic>();
+              topics.setAutoConstruct(true);
         }
         return topics;
     }
@@ -54,8 +55,7 @@ public class ListTopicsResult  implements Serializable  {
             this.topics = null;
             return;
         }
-
-        java.util.List<Topic> topicsCopy = new java.util.ArrayList<Topic>(topics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Topic> topicsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Topic>(topics.size());
         topicsCopy.addAll(topics);
         this.topics = topicsCopy;
     }
@@ -92,7 +92,7 @@ public class ListTopicsResult  implements Serializable  {
         if (topics == null) {
             this.topics = null;
         } else {
-            java.util.List<Topic> topicsCopy = new java.util.ArrayList<Topic>(topics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Topic> topicsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Topic>(topics.size());
             topicsCopy.addAll(topics);
             this.topics = topicsCopy;
         }
@@ -151,8 +151,8 @@ public class ListTopicsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTopics() != null) sb.append("Topics: " + getTopics() + ",");    	
+        sb.append("{");
+        if (getTopics() != null) sb.append("Topics: " + getTopics() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

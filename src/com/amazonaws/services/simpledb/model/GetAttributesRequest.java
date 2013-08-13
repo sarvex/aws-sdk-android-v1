@@ -32,7 +32,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#getAttributes(GetAttributesRequest)
  */
-public class GetAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which to perform the operation.
@@ -47,7 +47,7 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
     /**
      * The names of the attributes.
      */
-    private java.util.List<String> attributeNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNames;
 
     /**
      * Determines whether or not strong consistency should be enforced when
@@ -64,6 +64,8 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
      */
     public GetAttributesRequest() {}
     
+
+
     /**
      * Constructs a new GetAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -74,8 +76,8 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param itemName The name of the item.
      */
     public GetAttributesRequest(String domainName, String itemName) {
-        this.domainName = domainName;
-        this.itemName = itemName;
+        setDomainName(domainName);
+        setItemName(itemName);
     }
 
     
@@ -106,7 +108,7 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param domainName The name of the domain in which to perform the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetAttributesRequest withDomainName(String domainName) {
         this.domainName = domainName;
@@ -140,7 +142,7 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param itemName The name of the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetAttributesRequest withItemName(String itemName) {
         this.itemName = itemName;
@@ -156,7 +158,8 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
     public java.util.List<String> getAttributeNames() {
         
         if (attributeNames == null) {
-            attributeNames = new java.util.ArrayList<String>();
+              attributeNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              attributeNames.setAutoConstruct(true);
         }
         return attributeNames;
     }
@@ -171,8 +174,7 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
             this.attributeNames = null;
             return;
         }
-
-        java.util.List<String> attributeNamesCopy = new java.util.ArrayList<String>(attributeNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributeNames.size());
         attributeNamesCopy.addAll(attributeNames);
         this.attributeNames = attributeNamesCopy;
     }
@@ -185,7 +187,7 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributeNames The names of the attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetAttributesRequest withAttributeNames(String... attributeNames) {
         if (getAttributeNames() == null) setAttributeNames(new java.util.ArrayList<String>(attributeNames.length));
@@ -203,13 +205,13 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributeNames The names of the attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetAttributesRequest withAttributeNames(java.util.Collection<String> attributeNames) {
         if (attributeNames == null) {
             this.attributeNames = null;
         } else {
-            java.util.List<String> attributeNamesCopy = new java.util.ArrayList<String>(attributeNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributeNames.size());
             attributeNamesCopy.addAll(attributeNames);
             this.attributeNames = attributeNamesCopy;
         }
@@ -267,7 +269,7 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
      *         written immediately before your read.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetAttributesRequest withConsistentRead(Boolean consistentRead) {
         this.consistentRead = consistentRead;
@@ -303,10 +305,10 @@ public class GetAttributesRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");    	
-        if (getAttributeNames() != null) sb.append("AttributeNames: " + getAttributeNames() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");
+        if (getAttributeNames() != null) sb.append("AttributeNames: " + getAttributeNames() + ",");
         if (isConsistentRead() != null) sb.append("ConsistentRead: " + isConsistentRead() );
         sb.append("}");
         return sb.toString();

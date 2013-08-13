@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#putScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest)
  */
-public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling group.
@@ -137,7 +137,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param autoScalingGroupName The name or ARN of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -183,7 +183,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param scheduledActionName The name of this scaling action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withScheduledActionName(String scheduledActionName) {
         this.scheduledActionName = scheduledActionName;
@@ -247,7 +247,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      *         <code>PutScheduledUpdateGroupAction</code> will return an error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withTime(java.util.Date time) {
         this.time = time;
@@ -299,7 +299,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      *         form the boundaries of when the recurring action will start and stop.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -333,7 +333,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param endTime The time for this action to end.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
@@ -415,7 +415,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      *         form the boundaries of when the recurring action will start and stop.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withRecurrence(String recurrence) {
         this.recurrence = recurrence;
@@ -449,7 +449,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param minSize The minimum size for the new Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withMinSize(Integer minSize) {
         this.minSize = minSize;
@@ -483,7 +483,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param maxSize The maximum size for the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withMaxSize(Integer maxSize) {
         this.maxSize = maxSize;
@@ -523,7 +523,7 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      *         group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withDesiredCapacity(Integer desiredCapacity) {
         this.desiredCapacity = desiredCapacity;
@@ -542,15 +542,15 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() + ",");    	
-        if (getTime() != null) sb.append("Time: " + getTime() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getRecurrence() != null) sb.append("Recurrence: " + getRecurrence() + ",");    	
-        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");    	
-        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() + ",");
+        if (getTime() != null) sb.append("Time: " + getTime() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getRecurrence() != null) sb.append("Recurrence: " + getRecurrence() + ",");
+        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");
+        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");
         if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() );
         sb.append("}");
         return sb.toString();

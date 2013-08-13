@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes a permission allowing either a user or group to create a new EBS volume from a snapshot.
  * </p>
  */
-public class CreateVolumePermission  implements Serializable  {
+public class CreateVolumePermission implements Serializable {
 
     /**
      * The user ID of the user that can create volumes from the snapshot.
@@ -59,7 +59,7 @@ public class CreateVolumePermission  implements Serializable  {
      * @param userId The user ID of the user that can create volumes from the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumePermission withUserId(String userId) {
         this.userId = userId;
@@ -99,7 +99,7 @@ public class CreateVolumePermission  implements Serializable  {
      *         (currently supports "all").
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumePermission withGroup(String group) {
         this.group = group;
@@ -118,8 +118,8 @@ public class CreateVolumePermission  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");    	
+        sb.append("{");
+        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");
         if (getGroup() != null) sb.append("Group: " + getGroup() );
         sb.append("}");
         return sb.toString();

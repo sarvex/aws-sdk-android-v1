@@ -19,7 +19,7 @@ import java.io.Serializable;
  * <p>
  * </p>
  */
-public class ReplaceableItem  implements Serializable  {
+public class ReplaceableItem implements Serializable {
 
     /**
      * The name of the replaceable item.
@@ -29,7 +29,7 @@ public class ReplaceableItem  implements Serializable  {
     /**
      * The list of attributes for a replaceable item.
      */
-    private java.util.List<ReplaceableAttribute> attributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributes;
 
     /**
      * Default constructor for a new ReplaceableItem object.  Callers should use the
@@ -37,6 +37,8 @@ public class ReplaceableItem  implements Serializable  {
      */
     public ReplaceableItem() {}
     
+
+
     /**
      * Constructs a new ReplaceableItem object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -45,11 +47,13 @@ public class ReplaceableItem  implements Serializable  {
      * @param name The name of the replaceable item.
      */
     public ReplaceableItem(String name) {
-        this.name = name;
+        setName(name);
     }
 
     
     
+
+
     /**
      * Constructs a new ReplaceableItem object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -59,8 +63,8 @@ public class ReplaceableItem  implements Serializable  {
      * @param attributes The list of attributes for a replaceable item.
      */
     public ReplaceableItem(String name, java.util.List<ReplaceableAttribute> attributes) {
-        this.name = name;
-        this.attributes = attributes;
+        setName(name);
+        setAttributes(attributes);
     }
 
     
@@ -91,7 +95,7 @@ public class ReplaceableItem  implements Serializable  {
      * @param name The name of the replaceable item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableItem withName(String name) {
         this.name = name;
@@ -107,7 +111,8 @@ public class ReplaceableItem  implements Serializable  {
     public java.util.List<ReplaceableAttribute> getAttributes() {
         
         if (attributes == null) {
-            attributes = new java.util.ArrayList<ReplaceableAttribute>();
+              attributes = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>();
+              attributes.setAutoConstruct(true);
         }
         return attributes;
     }
@@ -122,8 +127,7 @@ public class ReplaceableItem  implements Serializable  {
             this.attributes = null;
             return;
         }
-
-        java.util.List<ReplaceableAttribute> attributesCopy = new java.util.ArrayList<ReplaceableAttribute>(attributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>(attributes.size());
         attributesCopy.addAll(attributes);
         this.attributes = attributesCopy;
     }
@@ -136,7 +140,7 @@ public class ReplaceableItem  implements Serializable  {
      * @param attributes The list of attributes for a replaceable item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableItem withAttributes(ReplaceableAttribute... attributes) {
         if (getAttributes() == null) setAttributes(new java.util.ArrayList<ReplaceableAttribute>(attributes.length));
@@ -154,13 +158,13 @@ public class ReplaceableItem  implements Serializable  {
      * @param attributes The list of attributes for a replaceable item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableItem withAttributes(java.util.Collection<ReplaceableAttribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
         } else {
-            java.util.List<ReplaceableAttribute> attributesCopy = new java.util.ArrayList<ReplaceableAttribute>(attributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>(attributes.size());
             attributesCopy.addAll(attributes);
             this.attributes = attributesCopy;
         }
@@ -179,8 +183,8 @@ public class ReplaceableItem  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

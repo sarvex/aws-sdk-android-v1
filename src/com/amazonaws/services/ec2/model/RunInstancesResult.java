@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of calling the RunInstancesResult, contains the new reservation created by Amazon EC2.
  * </p>
  */
-public class RunInstancesResult  implements Serializable  {
+public class RunInstancesResult implements Serializable {
 
     /**
      * The newly created reservation, containing the new instances.
@@ -53,7 +53,7 @@ public class RunInstancesResult  implements Serializable  {
      * @param reservation The newly created reservation, containing the new instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RunInstancesResult withReservation(Reservation reservation) {
         this.reservation = reservation;
@@ -72,7 +72,7 @@ public class RunInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservation() != null) sb.append("Reservation: " + getReservation() );
         sb.append("}");
         return sb.toString();

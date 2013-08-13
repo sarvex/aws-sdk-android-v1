@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents an event that affects the status of an Amazon EC2 instance.
  * </p>
  */
-public class InstanceStatusEvent  implements Serializable  {
+public class InstanceStatusEvent implements Serializable {
 
     /**
      * The associated code of the event. Valid values: instance-reboot,
@@ -75,7 +75,7 @@ public class InstanceStatusEvent  implements Serializable  {
      *         system-reboot, instance-retirement
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusEvent withCode(String code) {
         this.code = code;
@@ -109,7 +109,7 @@ public class InstanceStatusEvent  implements Serializable  {
      * @param description A description of the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusEvent withDescription(String description) {
         this.description = description;
@@ -143,7 +143,7 @@ public class InstanceStatusEvent  implements Serializable  {
      * @param notBefore The earliest scheduled start time for the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusEvent withNotBefore(java.util.Date notBefore) {
         this.notBefore = notBefore;
@@ -177,7 +177,7 @@ public class InstanceStatusEvent  implements Serializable  {
      * @param notAfter The latest scheduled end time for the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusEvent withNotAfter(java.util.Date notAfter) {
         this.notAfter = notAfter;
@@ -196,10 +196,10 @@ public class InstanceStatusEvent  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getNotBefore() != null) sb.append("NotBefore: " + getNotBefore() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getNotBefore() != null) sb.append("NotBefore: " + getNotBefore() + ",");
         if (getNotAfter() != null) sb.append("NotAfter: " + getNotAfter() );
         sb.append("}");
         return sb.toString();

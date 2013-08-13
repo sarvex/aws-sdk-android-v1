@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The PolicyAttribute data type. This data type contains a key/value pair that defines properties of a specific policy.
  * </p>
  */
-public class PolicyAttribute  implements Serializable  {
+public class PolicyAttribute implements Serializable {
 
     /**
      * The name of the attribute associated with the policy.
@@ -38,6 +38,8 @@ public class PolicyAttribute  implements Serializable  {
      */
     public PolicyAttribute() {}
     
+
+
     /**
      * Constructs a new PolicyAttribute object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -49,8 +51,8 @@ public class PolicyAttribute  implements Serializable  {
      * policy.
      */
     public PolicyAttribute(String attributeName, String attributeValue) {
-        this.attributeName = attributeName;
-        this.attributeValue = attributeValue;
+        setAttributeName(attributeName);
+        setAttributeValue(attributeValue);
     }
 
     
@@ -81,7 +83,7 @@ public class PolicyAttribute  implements Serializable  {
      * @param attributeName The name of the attribute associated with the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttribute withAttributeName(String attributeName) {
         this.attributeName = attributeName;
@@ -115,7 +117,7 @@ public class PolicyAttribute  implements Serializable  {
      * @param attributeValue The value of the attribute associated with the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttribute withAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
@@ -134,8 +136,8 @@ public class PolicyAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeValue() != null) sb.append("AttributeValue: " + getAttributeValue() );
         sb.append("}");
         return sb.toString();

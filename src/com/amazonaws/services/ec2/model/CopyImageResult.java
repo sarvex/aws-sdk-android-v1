@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Copy Image Result
  */
-public class CopyImageResult  implements Serializable  {
+public class CopyImageResult implements Serializable {
 
     private String imageId;
 
@@ -48,7 +48,7 @@ public class CopyImageResult  implements Serializable  {
      * @param imageId The new value for the ImageId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageResult withImageId(String imageId) {
         this.imageId = imageId;
@@ -67,7 +67,7 @@ public class CopyImageResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageId() != null) sb.append("ImageId: " + getImageId() );
         sb.append("}");
         return sb.toString();

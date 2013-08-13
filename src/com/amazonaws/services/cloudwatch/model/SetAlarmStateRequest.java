@@ -26,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#setAlarmState(SetAlarmStateRequest)
  */
-public class SetAlarmStateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetAlarmStateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The descriptive name for the alarm. This name must be unique within
@@ -104,7 +104,7 @@ public class SetAlarmStateRequest extends AmazonWebServiceRequest  implements Se
      *         the user's AWS account. The maximum length is 255 characters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetAlarmStateRequest withAlarmName(String alarmName) {
         this.alarmName = alarmName;
@@ -151,7 +151,7 @@ public class SetAlarmStateRequest extends AmazonWebServiceRequest  implements Se
      * @param stateValue The value of the state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StateValue
      */
@@ -186,7 +186,7 @@ public class SetAlarmStateRequest extends AmazonWebServiceRequest  implements Se
      * @param stateValue The value of the state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StateValue
      */
@@ -236,7 +236,7 @@ public class SetAlarmStateRequest extends AmazonWebServiceRequest  implements Se
      *         human-readable text format)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetAlarmStateRequest withStateReason(String stateReason) {
         this.stateReason = stateReason;
@@ -285,7 +285,7 @@ public class SetAlarmStateRequest extends AmazonWebServiceRequest  implements Se
      *         machine-readable JSON format)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetAlarmStateRequest withStateReasonData(String stateReasonData) {
         this.stateReasonData = stateReasonData;
@@ -304,10 +304,10 @@ public class SetAlarmStateRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");    	
-        if (getStateValue() != null) sb.append("StateValue: " + getStateValue() + ",");    	
-        if (getStateReason() != null) sb.append("StateReason: " + getStateReason() + ",");    	
+        sb.append("{");
+        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");
+        if (getStateValue() != null) sb.append("StateValue: " + getStateValue() + ",");
+        if (getStateReason() != null) sb.append("StateReason: " + getStateReason() + ",");
         if (getStateReasonData() != null) sb.append("StateReasonData: " + getStateReasonData() );
         sb.append("}");
         return sb.toString();

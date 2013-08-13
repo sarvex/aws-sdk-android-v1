@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the monitoring state of an EC2 instance.
  * </p>
  */
-public class InstanceMonitoring  implements Serializable  {
+public class InstanceMonitoring implements Serializable {
 
     /**
      * Instance ID.
@@ -58,7 +58,7 @@ public class InstanceMonitoring  implements Serializable  {
      * @param instanceId Instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceMonitoring withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -92,7 +92,7 @@ public class InstanceMonitoring  implements Serializable  {
      * @param monitoring Monitoring state for the associated instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceMonitoring withMonitoring(Monitoring monitoring) {
         this.monitoring = monitoring;
@@ -111,8 +111,8 @@ public class InstanceMonitoring  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getMonitoring() != null) sb.append("Monitoring: " + getMonitoring() );
         sb.append("}");
         return sb.toString();

@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Associate Address Result
  */
-public class AssociateAddressResult  implements Serializable  {
+public class AssociateAddressResult implements Serializable {
 
     private String associationId;
 
@@ -48,7 +48,7 @@ public class AssociateAddressResult  implements Serializable  {
      * @param associationId The new value for the AssociationId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateAddressResult withAssociationId(String associationId) {
         this.associationId = associationId;
@@ -67,7 +67,7 @@ public class AssociateAddressResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() );
         sb.append("}");
         return sb.toString();

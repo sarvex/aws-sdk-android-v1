@@ -18,9 +18,9 @@ import java.io.Serializable;
 /**
  * Describe Conversion Tasks Result
  */
-public class DescribeConversionTasksResult  implements Serializable  {
+public class DescribeConversionTasksResult implements Serializable {
 
-    private java.util.List<ConversionTask> conversionTasks;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask> conversionTasks;
 
     /**
      * Returns the value of the ConversionTasks property for this object.
@@ -30,7 +30,8 @@ public class DescribeConversionTasksResult  implements Serializable  {
     public java.util.List<ConversionTask> getConversionTasks() {
         
         if (conversionTasks == null) {
-            conversionTasks = new java.util.ArrayList<ConversionTask>();
+              conversionTasks = new com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask>();
+              conversionTasks.setAutoConstruct(true);
         }
         return conversionTasks;
     }
@@ -45,8 +46,7 @@ public class DescribeConversionTasksResult  implements Serializable  {
             this.conversionTasks = null;
             return;
         }
-
-        java.util.List<ConversionTask> conversionTasksCopy = new java.util.ArrayList<ConversionTask>(conversionTasks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask> conversionTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask>(conversionTasks.size());
         conversionTasksCopy.addAll(conversionTasks);
         this.conversionTasks = conversionTasksCopy;
     }
@@ -59,7 +59,7 @@ public class DescribeConversionTasksResult  implements Serializable  {
      * @param conversionTasks The new value for the ConversionTasks property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksResult withConversionTasks(ConversionTask... conversionTasks) {
         if (getConversionTasks() == null) setConversionTasks(new java.util.ArrayList<ConversionTask>(conversionTasks.length));
@@ -77,13 +77,13 @@ public class DescribeConversionTasksResult  implements Serializable  {
      * @param conversionTasks The new value for the ConversionTasks property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksResult withConversionTasks(java.util.Collection<ConversionTask> conversionTasks) {
         if (conversionTasks == null) {
             this.conversionTasks = null;
         } else {
-            java.util.List<ConversionTask> conversionTasksCopy = new java.util.ArrayList<ConversionTask>(conversionTasks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask> conversionTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask>(conversionTasks.size());
             conversionTasksCopy.addAll(conversionTasks);
             this.conversionTasks = conversionTasksCopy;
         }
@@ -102,7 +102,7 @@ public class DescribeConversionTasksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getConversionTasks() != null) sb.append("ConversionTasks: " + getConversionTasks() );
         sb.append("}");
         return sb.toString();

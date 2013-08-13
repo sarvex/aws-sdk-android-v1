@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The MetricGranularityType data type.
  * </p>
  */
-public class MetricGranularityType  implements Serializable  {
+public class MetricGranularityType implements Serializable {
 
     /**
      * The granularity of a Metric.
@@ -69,7 +69,7 @@ public class MetricGranularityType  implements Serializable  {
      * @param granularity The granularity of a Metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricGranularityType withGranularity(String granularity) {
         this.granularity = granularity;
@@ -88,7 +88,7 @@ public class MetricGranularityType  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGranularity() != null) sb.append("Granularity: " + getGranularity() );
         sb.append("}");
         return sb.toString();

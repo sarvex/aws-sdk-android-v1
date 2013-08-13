@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * 
  */
-public class Message  implements Serializable  {
+public class Message implements Serializable {
 
     /**
      * 
@@ -77,7 +77,7 @@ public class Message  implements Serializable  {
      * @param messageId 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withMessageId(String messageId) {
         this.messageId = messageId;
@@ -111,7 +111,7 @@ public class Message  implements Serializable  {
      * @param receiptHandle 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
@@ -145,7 +145,7 @@ public class Message  implements Serializable  {
      * @param mD5OfBody 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withMD5OfBody(String mD5OfBody) {
         this.mD5OfBody = mD5OfBody;
@@ -179,7 +179,7 @@ public class Message  implements Serializable  {
      * @param body 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withBody(String body) {
         this.body = body;
@@ -198,7 +198,6 @@ public class Message  implements Serializable  {
             attributes = new java.util.HashMap<String,String>();
         }
         return attributes;
-
     }
     
     /**
@@ -218,13 +217,44 @@ public class Message  implements Serializable  {
      * @param attributes 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withAttributes(java.util.Map<String,String> attributes) {
         setAttributes(attributes);
         return this;
     }
     
+   	
+    /**
+     * 
+     * <p>
+     * The method adds a new key-value pair into Attributes parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Attributes.
+     * @param value The corresponding value of the entry to be added into Attributes.
+     */
+	public Message addAttributesEntry(String key, String value) {
+		if (null == this.attributes) {
+			this.attributes = new java.util.HashMap<String,String>();
+		}
+		if (this.attributes.containsKey(key))
+			throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+		this.attributes.put(key, value);
+		return this;
+	}
+	
+	/**
+	 * Removes all the entries added into Attributes.
+	 * <p>
+	 * Returns a reference to this object so that method calls can be chained together.
+	 */
+	public Message clearAttributesEntries() {
+		this.attributes = null;
+		return this;
+	}
+	
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -236,11 +266,11 @@ public class Message  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMessageId() != null) sb.append("MessageId: " + getMessageId() + ",");    	
-        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");    	
-        if (getMD5OfBody() != null) sb.append("MD5OfBody: " + getMD5OfBody() + ",");    	
-        if (getBody() != null) sb.append("Body: " + getBody() + ",");    	
+        sb.append("{");
+        if (getMessageId() != null) sb.append("MessageId: " + getMessageId() + ",");
+        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");
+        if (getMD5OfBody() != null) sb.append("MD5OfBody: " + getMD5OfBody() + ",");
+        if (getBody() != null) sb.append("Body: " + getBody() + ",");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

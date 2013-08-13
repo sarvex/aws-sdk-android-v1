@@ -22,7 +22,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#cancelReservedInstancesListing(CancelReservedInstancesListingRequest)
  */
-public class CancelReservedInstancesListingRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CancelReservedInstancesListingRequest extends AmazonWebServiceRequest implements Serializable {
 
     private String reservedInstancesListingId;
 
@@ -57,7 +57,7 @@ public class CancelReservedInstancesListingRequest extends AmazonWebServiceReque
      *         object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelReservedInstancesListingRequest withReservedInstancesListingId(String reservedInstancesListingId) {
         this.reservedInstancesListingId = reservedInstancesListingId;
@@ -76,7 +76,7 @@ public class CancelReservedInstancesListingRequest extends AmazonWebServiceReque
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservedInstancesListingId() != null) sb.append("ReservedInstancesListingId: " + getReservedInstancesListingId() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.UnmonitorInstancesRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,12 +26,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#unmonitorInstances(UnmonitorInstancesRequest)
  */
-public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UnmonitorInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<UnmonitorInstancesRequest> {
 
     /**
      * The list of Amazon EC2 instances on which to disable monitoring.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     /**
      * Default constructor for a new UnmonitorInstancesRequest object.  Callers should use the
@@ -37,6 +39,8 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implemen
      */
     public UnmonitorInstancesRequest() {}
     
+
+
     /**
      * Constructs a new UnmonitorInstancesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -46,7 +50,7 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implemen
      * disable monitoring.
      */
     public UnmonitorInstancesRequest(java.util.List<String> instanceIds) {
-        this.instanceIds = instanceIds;
+        setInstanceIds(instanceIds);
     }
 
     
@@ -59,7 +63,8 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implemen
     public java.util.List<String> getInstanceIds() {
         
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
@@ -74,8 +79,7 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implemen
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
@@ -88,7 +92,7 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implemen
      * @param instanceIds The list of Amazon EC2 instances on which to disable monitoring.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UnmonitorInstancesRequest withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -106,18 +110,30 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implemen
      * @param instanceIds The list of Amazon EC2 instances on which to disable monitoring.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UnmonitorInstancesRequest withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<UnmonitorInstancesRequest> getDryRunRequest() {
+        Request<UnmonitorInstancesRequest> request = new UnmonitorInstancesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -131,7 +147,7 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() );
         sb.append("}");
         return sb.toString();

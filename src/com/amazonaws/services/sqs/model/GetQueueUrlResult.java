@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * 
  */
-public class GetQueueUrlResult  implements Serializable  {
+public class GetQueueUrlResult implements Serializable {
 
     /**
      * The URL for the queue.
@@ -51,7 +51,7 @@ public class GetQueueUrlResult  implements Serializable  {
      * @param queueUrl The URL for the queue.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetQueueUrlResult withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
@@ -70,7 +70,7 @@ public class GetQueueUrlResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() );
         sb.append("}");
         return sb.toString();

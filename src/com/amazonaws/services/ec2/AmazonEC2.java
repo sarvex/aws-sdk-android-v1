@@ -65,7 +65,7 @@ public interface AmazonEC2 {
      * @throws IllegalArgumentException
      *             If any problems are detected with the specified endpoint.
      */
-    public void setEndpoint(String endpoint) throws java.lang.IllegalArgumentException;    
+    public void setEndpoint(String endpoint) throws java.lang.IllegalArgumentException;
 
     /**
      * An alternative to {@link AmazonEC2#setEndpoint(String)}, sets the
@@ -80,7 +80,7 @@ public interface AmazonEC2 {
      * client is created and before any service requests are made. Changing it
      * afterwards creates inevitable race conditions for any service requests in
      * transit or retrying.</b>
-     * 
+     *
      * @param region
      *            The region this client will communicate with. See
      *            {@link com.amazonaws.regions.Region#getRegion(com.amazonaws.regions.Regions)} for
@@ -92,8 +92,8 @@ public interface AmazonEC2 {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      */
-    public void setRegion(com.amazonaws.regions.Region region) throws java.lang.IllegalArgumentException;    
-	
+    public void setRegion(com.amazonaws.regions.Region region) throws java.lang.IllegalArgumentException;
+    
     /**
      * <p>
      * The RebootInstances operation requests a reboot of one or more
@@ -3593,6 +3593,32 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public RegisterImageResult registerImage() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * Checks whether you have the required permissions for the provided
+     * AmazonEC2 operation, without actually running it. The returned
+     * DryRunResult object contains the information of whether the dry-run was
+     * successful. This method will throw exception when the service response
+     * does not clearly indicate whether you have the permission.
+     * 
+     * @param request
+     *            The request object for any AmazonEC2 operation suppored with
+     *            dry-run.
+     * 
+     * @return A DryRunResult object that contains the information of whether
+     *         the dry-run was successful.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client
+     *             while attempting to make the request or handle the response.
+     *             Or if the service response does not clearly indicate whether
+     *             you have the permission.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server
+     *             side issue.
+     */
+    public <X extends AmazonWebServiceRequest> DryRunResult<X> dryRun(DryRunSupportedRequest<X> request) throws AmazonServiceException, AmazonClientException;
     
     /**
      * Shuts down this client object, releasing any resources that might be held

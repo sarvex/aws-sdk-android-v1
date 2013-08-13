@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Import Instance Result
  */
-public class ImportInstanceResult  implements Serializable  {
+public class ImportInstanceResult implements Serializable {
 
     private ConversionTask conversionTask;
 
@@ -48,7 +48,7 @@ public class ImportInstanceResult  implements Serializable  {
      * @param conversionTask The new value for the ConversionTask property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceResult withConversionTask(ConversionTask conversionTask) {
         this.conversionTask = conversionTask;
@@ -67,7 +67,7 @@ public class ImportInstanceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getConversionTask() != null) sb.append("ConversionTask: " + getConversionTask() );
         sb.append("}");
         return sb.toString();

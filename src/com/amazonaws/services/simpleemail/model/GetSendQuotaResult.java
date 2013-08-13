@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the user's current activity limits returned from a successful <code>GetSendQuota</code> request.
  * </p>
  */
-public class GetSendQuotaResult  implements Serializable  {
+public class GetSendQuotaResult implements Serializable {
 
     /**
      * The maximum number of emails the user is allowed to send in a 24-hour
@@ -70,7 +70,7 @@ public class GetSendQuotaResult  implements Serializable  {
      *         interval.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSendQuotaResult withMax24HourSend(Double max24HourSend) {
         this.max24HourSend = max24HourSend;
@@ -104,7 +104,7 @@ public class GetSendQuotaResult  implements Serializable  {
      * @param maxSendRate The maximum number of emails the user is allowed to send per second.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSendQuotaResult withMaxSendRate(Double maxSendRate) {
         this.maxSendRate = maxSendRate;
@@ -138,7 +138,7 @@ public class GetSendQuotaResult  implements Serializable  {
      * @param sentLast24Hours The number of emails sent during the previous 24 hours.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSendQuotaResult withSentLast24Hours(Double sentLast24Hours) {
         this.sentLast24Hours = sentLast24Hours;
@@ -157,9 +157,9 @@ public class GetSendQuotaResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMax24HourSend() != null) sb.append("Max24HourSend: " + getMax24HourSend() + ",");    	
-        if (getMaxSendRate() != null) sb.append("MaxSendRate: " + getMaxSendRate() + ",");    	
+        sb.append("{");
+        if (getMax24HourSend() != null) sb.append("Max24HourSend: " + getMax24HourSend() + ",");
+        if (getMaxSendRate() != null) sb.append("MaxSendRate: " + getMaxSendRate() + ",");
         if (getSentLast24Hours() != null) sb.append("SentLast24Hours: " + getSentLast24Hours() );
         sb.append("}");
         return sb.toString();

@@ -159,7 +159,7 @@ public interface AmazonSQSAsync extends AmazonSQS {
      * you can't extend the timeout of a message in an existing queue to more
      * than a total visibility timeout of 12 hours. (For more information
      * visibility timeout, see <a
-     * ices.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">
+     * azon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">
      * Visibility Timeout </a> in the Amazon SQS Developer Guide.)
      * </p>
      * <p>
@@ -212,7 +212,7 @@ public interface AmazonSQSAsync extends AmazonSQS {
      * you can't extend the timeout of a message in an existing queue to more
      * than a total visibility timeout of 12 hours. (For more information
      * visibility timeout, see <a
-     * ices.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">
+     * azon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">
      * Visibility Timeout </a> in the Amazon SQS Developer Guide.)
      * </p>
      * <p>
@@ -930,7 +930,7 @@ public interface AmazonSQSAsync extends AmazonSQS {
      * <p>
      * The AddPermission action adds a permission to a queue for a specific
      * <a
-     * .com/AWSSimpleQueueService/latest/APIReference/Glossary.html#d0e3892">
+     * s.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">
      * principal </a> . This allows for sharing access to the queue.
      * </p>
      * <p>
@@ -970,7 +970,7 @@ public interface AmazonSQSAsync extends AmazonSQS {
      * <p>
      * The AddPermission action adds a permission to a queue for a specific
      * <a
-     * .com/AWSSimpleQueueService/latest/APIReference/Glossary.html#d0e3892">
+     * s.amazon.com/AWSSimpleQueueService/latest/APIReference/Glossary.html">
      * principal </a> . This allows for sharing access to the queue.
      * </p>
      * <p>

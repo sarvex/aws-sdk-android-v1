@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ModifyVolumeAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifyVolumeAttribute(ModifyVolumeAttributeRequest)
  */
-public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifyVolumeAttributeRequest> {
 
     private String volumeId;
 
@@ -54,7 +56,7 @@ public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest  imple
      * @param volumeId The new value for the VolumeId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyVolumeAttributeRequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -88,7 +90,7 @@ public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest  imple
      * @param autoEnableIO The new value for the AutoEnableIO property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyVolumeAttributeRequest withAutoEnableIO(Boolean autoEnableIO) {
         this.autoEnableIO = autoEnableIO;
@@ -106,6 +108,18 @@ public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest  imple
     }
     
     /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ModifyVolumeAttributeRequest> getDryRunRequest() {
+        Request<ModifyVolumeAttributeRequest> request = new ModifyVolumeAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
+    
+    /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
      *
@@ -116,8 +130,8 @@ public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
         if (isAutoEnableIO() != null) sb.append("AutoEnableIO: " + isAutoEnableIO() );
         sb.append("}");
         return sb.toString();

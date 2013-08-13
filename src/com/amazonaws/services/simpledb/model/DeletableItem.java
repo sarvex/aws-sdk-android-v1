@@ -18,11 +18,11 @@ import java.io.Serializable;
 /**
  * Deletable Item
  */
-public class DeletableItem  implements Serializable  {
+public class DeletableItem implements Serializable {
 
     private String name;
 
-    private java.util.List<Attribute> attributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributes;
 
     /**
      * Default constructor for a new DeletableItem object.  Callers should use the
@@ -30,6 +30,8 @@ public class DeletableItem  implements Serializable  {
      */
     public DeletableItem() {}
     
+
+
     /**
      * Constructs a new DeletableItem object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -39,8 +41,8 @@ public class DeletableItem  implements Serializable  {
      * @param attributes
      */
     public DeletableItem(String name, java.util.List<Attribute> attributes) {
-        this.name = name;
-        this.attributes = attributes;
+        setName(name);
+        setAttributes(attributes);
     }
 
     
@@ -71,7 +73,7 @@ public class DeletableItem  implements Serializable  {
      * @param name The new value for the Name property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeletableItem withName(String name) {
         this.name = name;
@@ -87,7 +89,8 @@ public class DeletableItem  implements Serializable  {
     public java.util.List<Attribute> getAttributes() {
         
         if (attributes == null) {
-            attributes = new java.util.ArrayList<Attribute>();
+              attributes = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>();
+              attributes.setAutoConstruct(true);
         }
         return attributes;
     }
@@ -102,8 +105,7 @@ public class DeletableItem  implements Serializable  {
             this.attributes = null;
             return;
         }
-
-        java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
         attributesCopy.addAll(attributes);
         this.attributes = attributesCopy;
     }
@@ -116,7 +118,7 @@ public class DeletableItem  implements Serializable  {
      * @param attributes The new value for the Attributes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeletableItem withAttributes(Attribute... attributes) {
         if (getAttributes() == null) setAttributes(new java.util.ArrayList<Attribute>(attributes.length));
@@ -134,13 +136,13 @@ public class DeletableItem  implements Serializable  {
      * @param attributes The new value for the Attributes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeletableItem withAttributes(java.util.Collection<Attribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
         } else {
-            java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
             attributesCopy.addAll(attributes);
             this.attributes = attributesCopy;
         }
@@ -159,8 +161,8 @@ public class DeletableItem  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreatePlacementGroupRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -25,7 +27,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createPlacementGroup(CreatePlacementGroupRequest)
  */
-public class CreatePlacementGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreatePlacementGroupRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreatePlacementGroupRequest> {
 
     /**
      * The name of the <code>PlacementGroup</code>.
@@ -46,6 +48,8 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest  implem
      */
     public CreatePlacementGroupRequest() {}
     
+
+
     /**
      * Constructs a new CreatePlacementGroupRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -55,8 +59,8 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest  implem
      * @param strategy The <code>PlacementGroup</code> strategy.
      */
     public CreatePlacementGroupRequest(String groupName, String strategy) {
-        this.groupName = groupName;
-        this.strategy = strategy;
+        setGroupName(groupName);
+        setStrategy(strategy);
     }
 
     
@@ -100,7 +104,7 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest  implem
      * @param groupName The name of the <code>PlacementGroup</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePlacementGroupRequest withGroupName(String groupName) {
         this.groupName = groupName;
@@ -147,7 +151,7 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest  implem
      * @param strategy The <code>PlacementGroup</code> strategy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementStrategy
      */
@@ -182,13 +186,25 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest  implem
      * @param strategy The <code>PlacementGroup</code> strategy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementStrategy
      */
     public CreatePlacementGroupRequest withStrategy(PlacementStrategy strategy) {
         this.strategy = strategy.toString();
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreatePlacementGroupRequest> getDryRunRequest() {
+        Request<CreatePlacementGroupRequest> request = new CreatePlacementGroupRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -202,8 +218,8 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
         if (getStrategy() != null) sb.append("Strategy: " + getStrategy() );
         sb.append("}");
         return sb.toString();

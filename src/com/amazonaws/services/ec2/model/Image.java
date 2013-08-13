@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents an <i>Amazon Machine Image</i> (AMI) that can be run on an Amazon EC2 instance.
  * </p>
  */
-public class Image  implements Serializable  {
+public class Image implements Serializable {
 
     /**
      * The unique ID of the AMI.
@@ -57,7 +57,7 @@ public class Image  implements Serializable  {
     /**
      * Product codes of the AMI.
      */
-    private java.util.List<ProductCode> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodes;
 
     /**
      * The architecture of the image.
@@ -121,14 +121,14 @@ public class Image  implements Serializable  {
     /**
      * Specifies how block devices are exposed to the instance.
      */
-    private java.util.List<BlockDeviceMapping> blockDeviceMappings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappings;
 
     private String virtualizationType;
 
     /**
      * A list of tags for the Image.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     private String hypervisor;
 
@@ -158,7 +158,7 @@ public class Image  implements Serializable  {
      * @param imageId The unique ID of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withImageId(String imageId) {
         this.imageId = imageId;
@@ -192,7 +192,7 @@ public class Image  implements Serializable  {
      * @param imageLocation The location of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withImageLocation(String imageLocation) {
         this.imageLocation = imageLocation;
@@ -257,7 +257,7 @@ public class Image  implements Serializable  {
      *         longer available for launching.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ImageState
      */
@@ -304,7 +304,7 @@ public class Image  implements Serializable  {
      *         longer available for launching.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ImageState
      */
@@ -339,7 +339,7 @@ public class Image  implements Serializable  {
      * @param ownerId AWS Access Key ID of the image owner.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withOwnerId(String ownerId) {
         this.ownerId = ownerId;
@@ -379,7 +379,7 @@ public class Image  implements Serializable  {
      *         implicit and explicit launch permissions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withPublic(Boolean publicValue) {
         this.publicValue = publicValue;
@@ -406,7 +406,8 @@ public class Image  implements Serializable  {
     public java.util.List<ProductCode> getProductCodes() {
         
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<ProductCode>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
@@ -421,8 +422,7 @@ public class Image  implements Serializable  {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
@@ -435,7 +435,7 @@ public class Image  implements Serializable  {
      * @param productCodes Product codes of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withProductCodes(ProductCode... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<ProductCode>(productCodes.length));
@@ -453,13 +453,13 @@ public class Image  implements Serializable  {
      * @param productCodes Product codes of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
@@ -493,7 +493,7 @@ public class Image  implements Serializable  {
      * @param architecture The architecture of the image.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withArchitecture(String architecture) {
         this.architecture = architecture;
@@ -527,7 +527,7 @@ public class Image  implements Serializable  {
      * @param imageType The type of image (machine, kernel, or ramdisk).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withImageType(String imageType) {
         this.imageType = imageType;
@@ -567,7 +567,7 @@ public class Image  implements Serializable  {
      *         machine images.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withKernelId(String kernelId) {
         this.kernelId = kernelId;
@@ -607,7 +607,7 @@ public class Image  implements Serializable  {
      *         machine images.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
@@ -641,7 +641,7 @@ public class Image  implements Serializable  {
      * @param platform The operating platform of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withPlatform(String platform) {
         this.platform = platform;
@@ -675,7 +675,7 @@ public class Image  implements Serializable  {
      * @param stateReason The reason for the state change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withStateReason(StateReason stateReason) {
         this.stateReason = stateReason;
@@ -715,7 +715,7 @@ public class Image  implements Serializable  {
      *         account ID that owns the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withImageOwnerAlias(String imageOwnerAlias) {
         this.imageOwnerAlias = imageOwnerAlias;
@@ -749,7 +749,7 @@ public class Image  implements Serializable  {
      * @param name The name of the AMI that was provided during image creation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withName(String name) {
         this.name = name;
@@ -783,7 +783,7 @@ public class Image  implements Serializable  {
      * @param description The description of the AMI that was provided during image creation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withDescription(String description) {
         this.description = description;
@@ -823,7 +823,7 @@ public class Image  implements Serializable  {
      *         instance store root device.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withRootDeviceType(String rootDeviceType) {
         this.rootDeviceType = rootDeviceType;
@@ -857,7 +857,7 @@ public class Image  implements Serializable  {
      * @param rootDeviceName The root device name (e.g., <code>/dev/sda1</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withRootDeviceName(String rootDeviceName) {
         this.rootDeviceName = rootDeviceName;
@@ -873,7 +873,8 @@ public class Image  implements Serializable  {
     public java.util.List<BlockDeviceMapping> getBlockDeviceMappings() {
         
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<BlockDeviceMapping>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
@@ -888,8 +889,7 @@ public class Image  implements Serializable  {
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
@@ -902,7 +902,7 @@ public class Image  implements Serializable  {
      * @param blockDeviceMappings Specifies how block devices are exposed to the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withBlockDeviceMappings(BlockDeviceMapping... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.length));
@@ -920,13 +920,13 @@ public class Image  implements Serializable  {
      * @param blockDeviceMappings Specifies how block devices are exposed to the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
@@ -973,7 +973,7 @@ public class Image  implements Serializable  {
      * @param virtualizationType The new value for the VirtualizationType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualizationType
      */
@@ -1008,7 +1008,7 @@ public class Image  implements Serializable  {
      * @param virtualizationType The new value for the VirtualizationType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualizationType
      */
@@ -1025,7 +1025,8 @@ public class Image  implements Serializable  {
     public java.util.List<Tag> getTags() {
         
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -1040,8 +1041,7 @@ public class Image  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -1054,7 +1054,7 @@ public class Image  implements Serializable  {
      * @param tags A list of tags for the Image.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -1072,13 +1072,13 @@ public class Image  implements Serializable  {
      * @param tags A list of tags for the Image.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Image withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
@@ -1125,7 +1125,7 @@ public class Image  implements Serializable  {
      * @param hypervisor The new value for the Hypervisor property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HypervisorType
      */
@@ -1160,7 +1160,7 @@ public class Image  implements Serializable  {
      * @param hypervisor The new value for the Hypervisor property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HypervisorType
      */
@@ -1180,27 +1180,27 @@ public class Image  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getImageLocation() != null) sb.append("ImageLocation: " + getImageLocation() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (isPublic() != null) sb.append("Public: " + isPublic() + ",");    	
-        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");    	
-        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");    	
-        if (getImageType() != null) sb.append("ImageType: " + getImageType() + ",");    	
-        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");    	
-        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");    	
-        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");    	
-        if (getStateReason() != null) sb.append("StateReason: " + getStateReason() + ",");    	
-        if (getImageOwnerAlias() != null) sb.append("ImageOwnerAlias: " + getImageOwnerAlias() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getRootDeviceType() != null) sb.append("RootDeviceType: " + getRootDeviceType() + ",");    	
-        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ",");    	
-        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");    	
-        if (getVirtualizationType() != null) sb.append("VirtualizationType: " + getVirtualizationType() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
+        sb.append("{");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getImageLocation() != null) sb.append("ImageLocation: " + getImageLocation() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (isPublic() != null) sb.append("Public: " + isPublic() + ",");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");
+        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");
+        if (getImageType() != null) sb.append("ImageType: " + getImageType() + ",");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");
+        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");
+        if (getStateReason() != null) sb.append("StateReason: " + getStateReason() + ",");
+        if (getImageOwnerAlias() != null) sb.append("ImageOwnerAlias: " + getImageOwnerAlias() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getRootDeviceType() != null) sb.append("RootDeviceType: " + getRootDeviceType() + ",");
+        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ",");
+        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+        if (getVirtualizationType() != null) sb.append("VirtualizationType: " + getVirtualizationType() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
         if (getHypervisor() != null) sb.append("Hypervisor: " + getHypervisor() );
         sb.append("}");
         return sb.toString();

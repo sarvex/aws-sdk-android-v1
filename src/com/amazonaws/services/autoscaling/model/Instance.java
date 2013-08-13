@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>Instance</code> data type.
  * </p>
  */
-public class Instance  implements Serializable  {
+public class Instance implements Serializable {
 
     /**
      * Specifies the ID of the Amazon EC2 instance.
@@ -104,7 +104,7 @@ public class Instance  implements Serializable  {
      * @param instanceId Specifies the ID of the Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -150,7 +150,7 @@ public class Instance  implements Serializable  {
      * @param availabilityZone Availability Zones associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -197,7 +197,7 @@ public class Instance  implements Serializable  {
      * @param lifecycleState Contains a description of the current <i>lifecycle</i> state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see LifecycleState
      */
@@ -232,7 +232,7 @@ public class Instance  implements Serializable  {
      * @param lifecycleState Contains a description of the current <i>lifecycle</i> state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see LifecycleState
      */
@@ -279,7 +279,7 @@ public class Instance  implements Serializable  {
      * @param healthStatus The instance's health status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withHealthStatus(String healthStatus) {
         this.healthStatus = healthStatus;
@@ -325,7 +325,7 @@ public class Instance  implements Serializable  {
      * @param launchConfigurationName The launch configuration associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
@@ -344,11 +344,11 @@ public class Instance  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getLifecycleState() != null) sb.append("LifecycleState: " + getLifecycleState() + ",");    	
-        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getLifecycleState() != null) sb.append("LifecycleState: " + getLifecycleState() + ",");
+        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");
         if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() );
         sb.append("}");
         return sb.toString();

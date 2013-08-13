@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the DescribeInstanceHealth action.
  * </p>
  */
-public class DescribeInstanceHealthResult  implements Serializable  {
+public class DescribeInstanceHealthResult implements Serializable {
 
     /**
      * A list containing health information for the specified instances.
      */
-    private java.util.List<InstanceState> instanceStates;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceState> instanceStates;
 
     /**
      * A list containing health information for the specified instances.
@@ -35,7 +35,8 @@ public class DescribeInstanceHealthResult  implements Serializable  {
     public java.util.List<InstanceState> getInstanceStates() {
         
         if (instanceStates == null) {
-            instanceStates = new java.util.ArrayList<InstanceState>();
+              instanceStates = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceState>();
+              instanceStates.setAutoConstruct(true);
         }
         return instanceStates;
     }
@@ -50,8 +51,7 @@ public class DescribeInstanceHealthResult  implements Serializable  {
             this.instanceStates = null;
             return;
         }
-
-        java.util.List<InstanceState> instanceStatesCopy = new java.util.ArrayList<InstanceState>(instanceStates.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceState> instanceStatesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceState>(instanceStates.size());
         instanceStatesCopy.addAll(instanceStates);
         this.instanceStates = instanceStatesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeInstanceHealthResult  implements Serializable  {
      * @param instanceStates A list containing health information for the specified instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthResult withInstanceStates(InstanceState... instanceStates) {
         if (getInstanceStates() == null) setInstanceStates(new java.util.ArrayList<InstanceState>(instanceStates.length));
@@ -82,13 +82,13 @@ public class DescribeInstanceHealthResult  implements Serializable  {
      * @param instanceStates A list containing health information for the specified instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthResult withInstanceStates(java.util.Collection<InstanceState> instanceStates) {
         if (instanceStates == null) {
             this.instanceStates = null;
         } else {
-            java.util.List<InstanceState> instanceStatesCopy = new java.util.ArrayList<InstanceState>(instanceStates.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceState> instanceStatesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceState>(instanceStates.size());
             instanceStatesCopy.addAll(instanceStates);
             this.instanceStates = instanceStatesCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeInstanceHealthResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceStates() != null) sb.append("InstanceStates: " + getInstanceStates() );
         sb.append("}");
         return sb.toString();

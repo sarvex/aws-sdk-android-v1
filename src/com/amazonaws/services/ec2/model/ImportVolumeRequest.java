@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ImportVolumeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -22,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#importVolume(ImportVolumeRequest)
  */
-public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ImportVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ImportVolumeRequest> {
 
     private String availabilityZone;
 
@@ -58,7 +60,7 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param availabilityZone The new value for the AvailabilityZone property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -92,7 +94,7 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param image The new value for the Image property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withImage(DiskImageDetail image) {
         this.image = image;
@@ -126,7 +128,7 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param description The new value for the Description property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withDescription(String description) {
         this.description = description;
@@ -160,13 +162,25 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * @param volume The new value for the Volume property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withVolume(VolumeDetail volume) {
         this.volume = volume;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ImportVolumeRequest> getDryRunRequest() {
+        Request<ImportVolumeRequest> request = new ImportVolumeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -179,10 +193,10 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getImage() != null) sb.append("Image: " + getImage() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getImage() != null) sb.append("Image: " + getImage() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getVolume() != null) sb.append("Volume: " + getVolume() );
         sb.append("}");
         return sb.toString();

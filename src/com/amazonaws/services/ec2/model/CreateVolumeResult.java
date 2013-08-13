@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of creating a new EBS volume.
  * </p>
  */
-public class CreateVolumeResult  implements Serializable  {
+public class CreateVolumeResult implements Serializable {
 
     /**
      * The newly created EBS volume.
@@ -53,7 +53,7 @@ public class CreateVolumeResult  implements Serializable  {
      * @param volume The newly created EBS volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumeResult withVolume(Volume volume) {
         this.volume = volume;
@@ -72,7 +72,7 @@ public class CreateVolumeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolume() != null) sb.append("Volume: " + getVolume() );
         sb.append("}");
         return sb.toString();

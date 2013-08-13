@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AssociateAddressRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -28,7 +30,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#associateAddress(AssociateAddressRequest)
  */
-public class AssociateAddressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AssociateAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AssociateAddressRequest> {
 
     /**
      * The instance to associate with the IP address.
@@ -58,6 +60,8 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      */
     public AssociateAddressRequest() {}
     
+
+
     /**
      * Constructs a new AssociateAddressRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -67,8 +71,8 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      * @param publicIp IP address that you are assigning to the instance.
      */
     public AssociateAddressRequest(String instanceId, String publicIp) {
-        this.instanceId = instanceId;
-        this.publicIp = publicIp;
+        setInstanceId(instanceId);
+        setPublicIp(publicIp);
     }
 
     
@@ -99,7 +103,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      * @param instanceId The instance to associate with the IP address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateAddressRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -133,7 +137,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      * @param publicIp IP address that you are assigning to the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateAddressRequest withPublicIp(String publicIp) {
         this.publicIp = publicIp;
@@ -173,7 +177,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      *         address for use with Amazon VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateAddressRequest withAllocationId(String allocationId) {
         this.allocationId = allocationId;
@@ -207,7 +211,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateAddressRequest withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
@@ -241,7 +245,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateAddressRequest withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
@@ -275,7 +279,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
      * @param allowReassociation The new value for the AllowReassociation property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateAddressRequest withAllowReassociation(Boolean allowReassociation) {
         this.allowReassociation = allowReassociation;
@@ -293,6 +297,18 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
     }
     
     /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AssociateAddressRequest> getDryRunRequest() {
+        Request<AssociateAddressRequest> request = new AssociateAddressRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
+    
+    /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
      *
@@ -303,12 +319,12 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
-        if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() + ",");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
+        if (getAllocationId() != null) sb.append("AllocationId: " + getAllocationId() + ",");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
         if (isAllowReassociation() != null) sb.append("AllowReassociation: " + isAllowReassociation() );
         sb.append("}");
         return sb.toString();

@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#deleteIdentity(DeleteIdentityRequest)
  */
-public class DeleteIdentityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity to be removed from the list of identities for the AWS
@@ -64,7 +64,7 @@ public class DeleteIdentityRequest extends AmazonWebServiceRequest  implements S
      *         Account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteIdentityRequest withIdentity(String identity) {
         this.identity = identity;
@@ -83,7 +83,7 @@ public class DeleteIdentityRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getIdentity() != null) sb.append("Identity: " + getIdentity() );
         sb.append("}");
         return sb.toString();

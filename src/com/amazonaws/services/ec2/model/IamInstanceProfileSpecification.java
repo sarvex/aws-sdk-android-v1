@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Iam Instance Profile Specification
  */
-public class IamInstanceProfileSpecification  implements Serializable  {
+public class IamInstanceProfileSpecification implements Serializable {
 
     private String arn;
 
@@ -50,7 +50,7 @@ public class IamInstanceProfileSpecification  implements Serializable  {
      * @param arn The new value for the Arn property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IamInstanceProfileSpecification withArn(String arn) {
         this.arn = arn;
@@ -84,7 +84,7 @@ public class IamInstanceProfileSpecification  implements Serializable  {
      * @param name The new value for the Name property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IamInstanceProfileSpecification withName(String name) {
         this.name = name;
@@ -103,8 +103,8 @@ public class IamInstanceProfileSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getArn() != null) sb.append("Arn: " + getArn() + ",");    	
+        sb.append("{");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

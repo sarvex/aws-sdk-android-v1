@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Spot Instance State Fault
  */
-public class SpotInstanceStateFault  implements Serializable  {
+public class SpotInstanceStateFault implements Serializable {
 
     private String code;
 
@@ -50,7 +50,7 @@ public class SpotInstanceStateFault  implements Serializable  {
      * @param code The new value for the Code property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceStateFault withCode(String code) {
         this.code = code;
@@ -84,7 +84,7 @@ public class SpotInstanceStateFault  implements Serializable  {
      * @param message The new value for the Message property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SpotInstanceStateFault withMessage(String message) {
         this.message = message;
@@ -103,8 +103,8 @@ public class SpotInstanceStateFault  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

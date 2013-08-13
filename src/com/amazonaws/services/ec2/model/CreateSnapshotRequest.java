@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateSnapshotRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -29,7 +31,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createSnapshot(CreateSnapshotRequest)
  */
-public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateSnapshotRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateSnapshotRequest> {
 
     /**
      * The ID of the volume from which to create the snapshot.
@@ -47,6 +49,8 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
      */
     public CreateSnapshotRequest() {}
     
+
+
     /**
      * Constructs a new CreateSnapshotRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,8 +61,8 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
      * @param description The description for the new snapshot.
      */
     public CreateSnapshotRequest(String volumeId, String description) {
-        this.volumeId = volumeId;
-        this.description = description;
+        setVolumeId(volumeId);
+        setDescription(description);
     }
 
     
@@ -89,7 +93,7 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
      * @param volumeId The ID of the volume from which to create the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotRequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -123,13 +127,25 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
      * @param description The description for the new snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotRequest withDescription(String description) {
         this.description = description;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateSnapshotRequest> getDryRunRequest() {
+        Request<CreateSnapshotRequest> request = new CreateSnapshotRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -142,8 +158,8 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

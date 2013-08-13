@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.StopInstancesRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -31,12 +33,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#stopInstances(StopInstancesRequest)
  */
-public class StopInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class StopInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<StopInstancesRequest> {
 
     /**
      * The list of Amazon EC2 instances to stop.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     /**
      * Forces the instance to stop. The instance will not have an opportunity
@@ -52,6 +54,8 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
      */
     public StopInstancesRequest() {}
     
+
+
     /**
      * Constructs a new StopInstancesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -60,7 +64,7 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
      * @param instanceIds The list of Amazon EC2 instances to stop.
      */
     public StopInstancesRequest(java.util.List<String> instanceIds) {
-        this.instanceIds = instanceIds;
+        setInstanceIds(instanceIds);
     }
 
     
@@ -73,7 +77,8 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
     public java.util.List<String> getInstanceIds() {
         
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
@@ -88,8 +93,7 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
@@ -102,7 +106,7 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
      * @param instanceIds The list of Amazon EC2 instances to stop.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StopInstancesRequest withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -120,13 +124,13 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
      * @param instanceIds The list of Amazon EC2 instances to stop.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StopInstancesRequest withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
@@ -178,7 +182,7 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
      *         option is not recommended for Windows instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StopInstancesRequest withForce(Boolean force) {
         this.force = force;
@@ -202,6 +206,18 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
     }
     
     /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<StopInstancesRequest> getDryRunRequest() {
+        Request<StopInstancesRequest> request = new StopInstancesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
+    
+    /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
      *
@@ -212,8 +228,8 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");    	
+        sb.append("{");
+        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");
         if (isForce() != null) sb.append("Force: " + isForce() );
         sb.append("}");
         return sb.toString();

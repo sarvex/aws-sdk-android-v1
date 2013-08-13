@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Instance Status Details
  */
-public class InstanceStatusDetails  implements Serializable  {
+public class InstanceStatusDetails implements Serializable {
 
     private String name;
 
@@ -52,7 +52,7 @@ public class InstanceStatusDetails  implements Serializable  {
      * @param name The new value for the Name property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusDetails withName(String name) {
         this.name = name;
@@ -86,7 +86,7 @@ public class InstanceStatusDetails  implements Serializable  {
      * @param status The new value for the Status property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusDetails withStatus(String status) {
         this.status = status;
@@ -120,7 +120,7 @@ public class InstanceStatusDetails  implements Serializable  {
      * @param impairedSince The new value for the ImpairedSince property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusDetails withImpairedSince(java.util.Date impairedSince) {
         this.impairedSince = impairedSince;
@@ -139,9 +139,9 @@ public class InstanceStatusDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getImpairedSince() != null) sb.append("ImpairedSince: " + getImpairedSince() );
         sb.append("}");
         return sb.toString();

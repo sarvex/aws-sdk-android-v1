@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a unique message ID returned from a successful <code>SendRawEmail</code> request.
  * </p>
  */
-public class SendRawEmailResult  implements Serializable  {
+public class SendRawEmailResult implements Serializable {
 
     /**
      * The unique message identifier returned from the
@@ -60,7 +60,7 @@ public class SendRawEmailResult  implements Serializable  {
      *         <code>SendRawEmail</code> action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailResult withMessageId(String messageId) {
         this.messageId = messageId;
@@ -79,7 +79,7 @@ public class SendRawEmailResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMessageId() != null) sb.append("MessageId: " + getMessageId() );
         sb.append("}");
         return sb.toString();

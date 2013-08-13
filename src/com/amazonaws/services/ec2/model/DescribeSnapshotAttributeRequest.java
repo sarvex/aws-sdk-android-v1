@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeSnapshotAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSnapshotAttribute(DescribeSnapshotAttributeRequest)
  */
-public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSnapshotAttributeRequest> {
 
     /**
      * The ID of the EBS snapshot whose attribute is being described.
@@ -46,6 +48,8 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest  i
      */
     public DescribeSnapshotAttributeRequest() {}
     
+
+
     /**
      * Constructs a new DescribeSnapshotAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,8 +61,8 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest  i
      * Available attribute names: createVolumePermission
      */
     public DescribeSnapshotAttributeRequest(String snapshotId, String attribute) {
-        this.snapshotId = snapshotId;
-        this.attribute = attribute;
+        setSnapshotId(snapshotId);
+        setAttribute(attribute);
     }
 
     
@@ -104,7 +108,7 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest  i
      * @param snapshotId The ID of the EBS snapshot whose attribute is being described.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeRequest withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -157,7 +161,7 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest  i
      *         names: createVolumePermission
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotAttributeName
      */
@@ -196,13 +200,25 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest  i
      *         names: createVolumePermission
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotAttributeName
      */
     public DescribeSnapshotAttributeRequest withAttribute(SnapshotAttributeName attribute) {
         this.attribute = attribute.toString();
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeSnapshotAttributeRequest> getDryRunRequest() {
+        Request<DescribeSnapshotAttributeRequest> request = new DescribeSnapshotAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -216,8 +232,8 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

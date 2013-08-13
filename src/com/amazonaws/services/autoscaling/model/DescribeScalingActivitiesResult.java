@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The output for the DescribeScalingActivities action.
  * </p>
  */
-public class DescribeScalingActivitiesResult  implements Serializable  {
+public class DescribeScalingActivitiesResult implements Serializable {
 
     /**
      * A list of the requested scaling activities.
      */
-    private java.util.List<Activity> activities;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Activity> activities;
 
     /**
      * Acts as a paging mechanism for large result sets. Set to a non-empty
@@ -45,7 +45,8 @@ public class DescribeScalingActivitiesResult  implements Serializable  {
     public java.util.List<Activity> getActivities() {
         
         if (activities == null) {
-            activities = new java.util.ArrayList<Activity>();
+              activities = new com.amazonaws.internal.ListWithAutoConstructFlag<Activity>();
+              activities.setAutoConstruct(true);
         }
         return activities;
     }
@@ -60,8 +61,7 @@ public class DescribeScalingActivitiesResult  implements Serializable  {
             this.activities = null;
             return;
         }
-
-        java.util.List<Activity> activitiesCopy = new java.util.ArrayList<Activity>(activities.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Activity> activitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Activity>(activities.size());
         activitiesCopy.addAll(activities);
         this.activities = activitiesCopy;
     }
@@ -74,7 +74,7 @@ public class DescribeScalingActivitiesResult  implements Serializable  {
      * @param activities A list of the requested scaling activities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesResult withActivities(Activity... activities) {
         if (getActivities() == null) setActivities(new java.util.ArrayList<Activity>(activities.length));
@@ -92,13 +92,13 @@ public class DescribeScalingActivitiesResult  implements Serializable  {
      * @param activities A list of the requested scaling activities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesResult withActivities(java.util.Collection<Activity> activities) {
         if (activities == null) {
             this.activities = null;
         } else {
-            java.util.List<Activity> activitiesCopy = new java.util.ArrayList<Activity>(activities.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Activity> activitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Activity>(activities.size());
             activitiesCopy.addAll(activities);
             this.activities = activitiesCopy;
         }
@@ -153,7 +153,7 @@ public class DescribeScalingActivitiesResult  implements Serializable  {
      *         this in to subsequent calls to return additional results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScalingActivitiesResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -172,8 +172,8 @@ public class DescribeScalingActivitiesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getActivities() != null) sb.append("Activities: " + getActivities() + ",");    	
+        sb.append("{");
+        if (getActivities() != null) sb.append("Activities: " + getActivities() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

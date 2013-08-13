@@ -6,7 +6,7 @@
     <artifactId>aws-android-sdk</artifactId>
     <packaging>jar</packaging>
     <name>AWS SDK for Android</name>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <description>The Amazon Web Services SDK for Android provides Android APIs for building software on AWS’ cost-effective, scalable, and reliable infrastructure products. The AWS SDK for Android allows developers to code against APIs for all of Amazon's infrastructure web services (Amazon S3, Amazon EC2, Amazon SQS, Auto Scaling, etc).</description>
     <url>http://aws.amazon.com/sdkforandroid</url>
 
@@ -32,6 +32,12 @@
     </licenses>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>[4.2, 4.2.5)</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
@@ -73,7 +79,7 @@
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
-            <version>2.2.1</version>
+            <version>2.3.3</version>
             <scope>provided</scope>
         </dependency>	
     </dependencies>
@@ -127,6 +133,10 @@
                 <include>org.codehaus.jackson:jackson-mapper-asl</include>
               </includes>
               <rules>
+		<rule>
+			<pattern>org.apache.http.**</pattern>
+			<result>com.amazonaws.org.apache.http.@1</result>
+		</rule>
 		<rule>
 			<pattern>javax.xml.namespace.**</pattern>
 			<result>com.amazonaws.javax.xml.namespace.@1</result>

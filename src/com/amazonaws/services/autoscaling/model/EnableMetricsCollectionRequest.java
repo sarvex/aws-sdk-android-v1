@@ -30,7 +30,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#enableMetricsCollection(EnableMetricsCollectionRequest)
  */
-public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling group.
@@ -50,7 +50,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      * <li><p>GroupTerminatingInstances</li> <li><p>GroupTotalInstances</li>
      * </ul>
      */
-    private java.util.List<String> metrics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> metrics;
 
     /**
      * The granularity to associate with the metrics to collect. Currently,
@@ -100,7 +100,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      * @param autoScalingGroupName The name or ARN of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -128,7 +128,8 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
     public java.util.List<String> getMetrics() {
         
         if (metrics == null) {
-            metrics = new java.util.ArrayList<String>();
+              metrics = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              metrics.setAutoConstruct(true);
         }
         return metrics;
     }
@@ -155,8 +156,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
             this.metrics = null;
             return;
         }
-
-        java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
         metricsCopy.addAll(metrics);
         this.metrics = metricsCopy;
     }
@@ -181,7 +181,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withMetrics(String... metrics) {
         if (getMetrics() == null) setMetrics(new java.util.ArrayList<String>(metrics.length));
@@ -211,13 +211,13 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withMetrics(java.util.Collection<String> metrics) {
         if (metrics == null) {
             this.metrics = null;
         } else {
-            java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
             metricsCopy.addAll(metrics);
             this.metrics = metricsCopy;
         }
@@ -269,7 +269,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      *         the only legal granularity is "1Minute".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withGranularity(String granularity) {
         this.granularity = granularity;
@@ -288,9 +288,9 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");
         if (getGranularity() != null) sb.append("Granularity: " + getGranularity() );
         sb.append("}");
         return sb.toString();

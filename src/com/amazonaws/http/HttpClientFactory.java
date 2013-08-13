@@ -14,44 +14,25 @@
  */
 package com.amazonaws.http;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
-import org.apache.http.Header;
 import org.apache.http.HttpHost;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.ProtocolException;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.NTCredentials;
 import org.apache.http.client.HttpClient;
-import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.client.params.HttpClientParams;
 import org.apache.http.conn.params.ConnRoutePNames;
-//import org.apache.http.conn.scheme.LayeredSchemeSocketFactory;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
-//import org.apache.http.conn.scheme.SchemeSocketFactory;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HttpContext;
-import org.apache.http.client.params.HttpClientParams;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.ClientConfiguration;
@@ -70,16 +51,9 @@ class HttpClientFactory {
      * @return The new, configured HttpClient.
      */
     public HttpClient createHttpClient(ClientConfiguration config) {
-        /* Form User-Agent information */
-        String userAgent = config.getUserAgent();
-        if (!(userAgent.equals(ClientConfiguration.DEFAULT_USER_AGENT))) {
-            userAgent += ", " + ClientConfiguration.DEFAULT_USER_AGENT;
-        }
-
         /* Set HTTP client parameters */
         HttpParams httpClientParams = new BasicHttpParams();
         HttpClientParams.setRedirecting(httpClientParams, false);
-        HttpProtocolParams.setUserAgent(httpClientParams, userAgent);
         HttpConnectionParams.setConnectionTimeout(httpClientParams, config.getConnectionTimeout());
         HttpConnectionParams.setSoTimeout(httpClientParams, config.getSocketTimeout());
         HttpConnectionParams.setStaleCheckingEnabled(httpClientParams, true);
@@ -93,8 +67,23 @@ class HttpClientFactory {
         }
 
         /* Set connection manager */
-        ThreadSafeClientConnManager connectionManager = ConnectionManagerFactory.createThreadSafeClientConnManager(config, httpClientParams);
+        PoolingClientConnectionManager connectionManager = ConnectionManagerFactory.createPoolingClientConnManager(config, httpClientParams);
         DefaultHttpClient httpClient = new DefaultHttpClient(connectionManager, httpClientParams);
+
+        try {
+            Scheme http = new Scheme("http", 80, PlainSocketFactory.getSocketFactory());
+
+            SSLSocketFactory sf = new SSLSocketFactory(
+                    SSLContext.getDefault(),
+                    SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+            Scheme https = new Scheme("https", 443, sf);
+
+            SchemeRegistry sr = connectionManager.getSchemeRegistry();
+            sr.register(http);
+            sr.register(https);
+        } catch (NoSuchAlgorithmException e) {
+            throw new AmazonClientException("Unable to access default SSL context", e);
+        }
 
         /* Set proxy if configured */
         String proxyHost = config.getProxyHost();

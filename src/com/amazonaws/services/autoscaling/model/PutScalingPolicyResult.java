@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>PolicyARNType</code> data type.
  * </p>
  */
-public class PutScalingPolicyResult  implements Serializable  {
+public class PutScalingPolicyResult implements Serializable {
 
     /**
      * A policy's Amazon Resource Name (ARN).
@@ -69,7 +69,7 @@ public class PutScalingPolicyResult  implements Serializable  {
      * @param policyARN A policy's Amazon Resource Name (ARN).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScalingPolicyResult withPolicyARN(String policyARN) {
         this.policyARN = policyARN;
@@ -88,7 +88,7 @@ public class PutScalingPolicyResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPolicyARN() != null) sb.append("PolicyARN: " + getPolicyARN() );
         sb.append("}");
         return sb.toString();

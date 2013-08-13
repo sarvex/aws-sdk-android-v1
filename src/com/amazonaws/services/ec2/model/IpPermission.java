@@ -20,7 +20,7 @@ import java.io.Serializable;
  * An IP permission describing allowed incoming IP traffic to an Amazon EC2 security group.
  * </p>
  */
-public class IpPermission  implements Serializable  {
+public class IpPermission implements Serializable {
 
     /**
      * The IP protocol of this permission. <p> Valid protocol values:
@@ -45,12 +45,12 @@ public class IpPermission  implements Serializable  {
     /**
      * The list of AWS user IDs and groups included in this permission.
      */
-    private java.util.List<UserIdGroupPair> userIdGroupPairs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair> userIdGroupPairs;
 
     /**
      * The list of CIDR IP ranges included in this permission.
      */
-    private java.util.List<String> ipRanges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> ipRanges;
 
     /**
      * The IP protocol of this permission. <p> Valid protocol values:
@@ -84,7 +84,7 @@ public class IpPermission  implements Serializable  {
      *         <code>tcp</code>, <code>udp</code>, <code>icmp</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withIpProtocol(String ipProtocol) {
         this.ipProtocol = ipProtocol;
@@ -130,7 +130,7 @@ public class IpPermission  implements Serializable  {
      *         (i.e., any ICMP type number).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withFromPort(Integer fromPort) {
         this.fromPort = fromPort;
@@ -176,7 +176,7 @@ public class IpPermission  implements Serializable  {
      *         code).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withToPort(Integer toPort) {
         this.toPort = toPort;
@@ -192,7 +192,8 @@ public class IpPermission  implements Serializable  {
     public java.util.List<UserIdGroupPair> getUserIdGroupPairs() {
         
         if (userIdGroupPairs == null) {
-            userIdGroupPairs = new java.util.ArrayList<UserIdGroupPair>();
+              userIdGroupPairs = new com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair>();
+              userIdGroupPairs.setAutoConstruct(true);
         }
         return userIdGroupPairs;
     }
@@ -207,8 +208,7 @@ public class IpPermission  implements Serializable  {
             this.userIdGroupPairs = null;
             return;
         }
-
-        java.util.List<UserIdGroupPair> userIdGroupPairsCopy = new java.util.ArrayList<UserIdGroupPair>(userIdGroupPairs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair> userIdGroupPairsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair>(userIdGroupPairs.size());
         userIdGroupPairsCopy.addAll(userIdGroupPairs);
         this.userIdGroupPairs = userIdGroupPairsCopy;
     }
@@ -221,7 +221,7 @@ public class IpPermission  implements Serializable  {
      * @param userIdGroupPairs The list of AWS user IDs and groups included in this permission.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withUserIdGroupPairs(UserIdGroupPair... userIdGroupPairs) {
         if (getUserIdGroupPairs() == null) setUserIdGroupPairs(new java.util.ArrayList<UserIdGroupPair>(userIdGroupPairs.length));
@@ -239,13 +239,13 @@ public class IpPermission  implements Serializable  {
      * @param userIdGroupPairs The list of AWS user IDs and groups included in this permission.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withUserIdGroupPairs(java.util.Collection<UserIdGroupPair> userIdGroupPairs) {
         if (userIdGroupPairs == null) {
             this.userIdGroupPairs = null;
         } else {
-            java.util.List<UserIdGroupPair> userIdGroupPairsCopy = new java.util.ArrayList<UserIdGroupPair>(userIdGroupPairs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair> userIdGroupPairsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair>(userIdGroupPairs.size());
             userIdGroupPairsCopy.addAll(userIdGroupPairs);
             this.userIdGroupPairs = userIdGroupPairsCopy;
         }
@@ -261,7 +261,8 @@ public class IpPermission  implements Serializable  {
     public java.util.List<String> getIpRanges() {
         
         if (ipRanges == null) {
-            ipRanges = new java.util.ArrayList<String>();
+              ipRanges = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              ipRanges.setAutoConstruct(true);
         }
         return ipRanges;
     }
@@ -276,8 +277,7 @@ public class IpPermission  implements Serializable  {
             this.ipRanges = null;
             return;
         }
-
-        java.util.List<String> ipRangesCopy = new java.util.ArrayList<String>(ipRanges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> ipRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ipRanges.size());
         ipRangesCopy.addAll(ipRanges);
         this.ipRanges = ipRangesCopy;
     }
@@ -290,7 +290,7 @@ public class IpPermission  implements Serializable  {
      * @param ipRanges The list of CIDR IP ranges included in this permission.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withIpRanges(String... ipRanges) {
         if (getIpRanges() == null) setIpRanges(new java.util.ArrayList<String>(ipRanges.length));
@@ -308,13 +308,13 @@ public class IpPermission  implements Serializable  {
      * @param ipRanges The list of CIDR IP ranges included in this permission.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withIpRanges(java.util.Collection<String> ipRanges) {
         if (ipRanges == null) {
             this.ipRanges = null;
         } else {
-            java.util.List<String> ipRangesCopy = new java.util.ArrayList<String>(ipRanges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> ipRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ipRanges.size());
             ipRangesCopy.addAll(ipRanges);
             this.ipRanges = ipRangesCopy;
         }
@@ -333,11 +333,11 @@ public class IpPermission  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIpProtocol() != null) sb.append("IpProtocol: " + getIpProtocol() + ",");    	
-        if (getFromPort() != null) sb.append("FromPort: " + getFromPort() + ",");    	
-        if (getToPort() != null) sb.append("ToPort: " + getToPort() + ",");    	
-        if (getUserIdGroupPairs() != null) sb.append("UserIdGroupPairs: " + getUserIdGroupPairs() + ",");    	
+        sb.append("{");
+        if (getIpProtocol() != null) sb.append("IpProtocol: " + getIpProtocol() + ",");
+        if (getFromPort() != null) sb.append("FromPort: " + getFromPort() + ",");
+        if (getToPort() != null) sb.append("ToPort: " + getToPort() + ",");
+        if (getUserIdGroupPairs() != null) sb.append("UserIdGroupPairs: " + getUserIdGroupPairs() + ",");
         if (getIpRanges() != null) sb.append("IpRanges: " + getIpRanges() );
         sb.append("}");
         return sb.toString();

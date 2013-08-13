@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#sendMessage(SendMessageRequest)
  */
-public class SendMessageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SendMessageRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The URL of the SQS queue to take action on.
@@ -47,6 +47,8 @@ public class SendMessageRequest extends AmazonWebServiceRequest  implements Seri
      */
     public SendMessageRequest() {}
     
+
+
     /**
      * Constructs a new SendMessageRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +58,8 @@ public class SendMessageRequest extends AmazonWebServiceRequest  implements Seri
      * @param messageBody The message to send.
      */
     public SendMessageRequest(String queueUrl, String messageBody) {
-        this.queueUrl = queueUrl;
-        this.messageBody = messageBody;
+        setQueueUrl(queueUrl);
+        setMessageBody(messageBody);
     }
 
     
@@ -88,7 +90,7 @@ public class SendMessageRequest extends AmazonWebServiceRequest  implements Seri
      * @param queueUrl The URL of the SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
@@ -122,7 +124,7 @@ public class SendMessageRequest extends AmazonWebServiceRequest  implements Seri
      * @param messageBody The message to send.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageRequest withMessageBody(String messageBody) {
         this.messageBody = messageBody;
@@ -156,7 +158,7 @@ public class SendMessageRequest extends AmazonWebServiceRequest  implements Seri
      * @param delaySeconds The number of seconds the message has to be delayed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageRequest withDelaySeconds(Integer delaySeconds) {
         this.delaySeconds = delaySeconds;
@@ -175,9 +177,9 @@ public class SendMessageRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
-        if (getMessageBody() != null) sb.append("MessageBody: " + getMessageBody() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
+        if (getMessageBody() != null) sb.append("MessageBody: " + getMessageBody() + ",");
         if (getDelaySeconds() != null) sb.append("DelaySeconds: " + getDelaySeconds() );
         sb.append("}");
         return sb.toString();

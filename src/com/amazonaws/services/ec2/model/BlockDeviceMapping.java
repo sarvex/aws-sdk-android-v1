@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The BlockDeviceMappingItemType data type.
  * </p>
  */
-public class BlockDeviceMapping  implements Serializable  {
+public class BlockDeviceMapping implements Serializable {
 
     /**
      * Specifies the virtual device name.
@@ -69,7 +69,7 @@ public class BlockDeviceMapping  implements Serializable  {
      * @param virtualName Specifies the virtual device name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BlockDeviceMapping withVirtualName(String virtualName) {
         this.virtualName = virtualName;
@@ -103,7 +103,7 @@ public class BlockDeviceMapping  implements Serializable  {
      * @param deviceName Specifies the device name (e.g., <code>/dev/sdh</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BlockDeviceMapping withDeviceName(String deviceName) {
         this.deviceName = deviceName;
@@ -143,7 +143,7 @@ public class BlockDeviceMapping  implements Serializable  {
      *         when the instance is launched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BlockDeviceMapping withEbs(EbsBlockDevice ebs) {
         this.ebs = ebs;
@@ -177,7 +177,7 @@ public class BlockDeviceMapping  implements Serializable  {
      * @param noDevice Specifies the device name to suppress during instance launch.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BlockDeviceMapping withNoDevice(String noDevice) {
         this.noDevice = noDevice;
@@ -196,10 +196,10 @@ public class BlockDeviceMapping  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVirtualName() != null) sb.append("VirtualName: " + getVirtualName() + ",");    	
-        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");    	
-        if (getEbs() != null) sb.append("Ebs: " + getEbs() + ",");    	
+        sb.append("{");
+        if (getVirtualName() != null) sb.append("VirtualName: " + getVirtualName() + ",");
+        if (getDeviceName() != null) sb.append("DeviceName: " + getDeviceName() + ",");
+        if (getEbs() != null) sb.append("Ebs: " + getEbs() + ",");
         if (getNoDevice() != null) sb.append("NoDevice: " + getNoDevice() );
         sb.append("}");
         return sb.toString();

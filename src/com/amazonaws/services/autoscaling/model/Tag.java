@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The tag applied to an Auto Scaling group.
  * </p>
  */
-public class Tag  implements Serializable  {
+public class Tag implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -100,7 +100,7 @@ public class Tag  implements Serializable  {
      * @param resourceId The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withResourceId(String resourceId) {
         this.resourceId = resourceId;
@@ -149,7 +149,7 @@ public class Tag  implements Serializable  {
      *         Scaling supports the <code>auto-scaling-group</code> resource type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withResourceType(String resourceType) {
         this.resourceType = resourceType;
@@ -195,7 +195,7 @@ public class Tag  implements Serializable  {
      * @param key The key of the tag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withKey(String key) {
         this.key = key;
@@ -241,7 +241,7 @@ public class Tag  implements Serializable  {
      * @param value The value of the tag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withValue(String value) {
         this.value = value;
@@ -293,7 +293,7 @@ public class Tag  implements Serializable  {
      *         launched after you made the change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withPropagateAtLaunch(Boolean propagateAtLaunch) {
         this.propagateAtLaunch = propagateAtLaunch;
@@ -327,11 +327,11 @@ public class Tag  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");    	
-        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");
+        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (isPropagateAtLaunch() != null) sb.append("PropagateAtLaunch: " + isPropagateAtLaunch() );
         sb.append("}");
         return sb.toString();

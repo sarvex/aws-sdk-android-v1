@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyDomainIdentity(VerifyDomainIdentityRequest)
  */
-public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The domain to be verified.
@@ -57,7 +57,7 @@ public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest  implem
      * @param domain The domain to be verified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyDomainIdentityRequest withDomain(String domain) {
         this.domain = domain;
@@ -76,7 +76,7 @@ public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomain() != null) sb.append("Domain: " + getDomain() );
         sb.append("}");
         return sb.toString();

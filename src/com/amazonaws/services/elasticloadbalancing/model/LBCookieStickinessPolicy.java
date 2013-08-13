@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The LBCookieStickinessPolicy data type.
  * </p>
  */
-public class LBCookieStickinessPolicy  implements Serializable  {
+public class LBCookieStickinessPolicy implements Serializable {
 
     /**
      * The name for the policy being created. The name must be unique within
@@ -41,6 +41,8 @@ public class LBCookieStickinessPolicy  implements Serializable  {
      */
     public LBCookieStickinessPolicy() {}
     
+
+
     /**
      * Constructs a new LBCookieStickinessPolicy object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -54,8 +56,8 @@ public class LBCookieStickinessPolicy  implements Serializable  {
      * the browser session.
      */
     public LBCookieStickinessPolicy(String policyName, Long cookieExpirationPeriod) {
-        this.policyName = policyName;
-        this.cookieExpirationPeriod = cookieExpirationPeriod;
+        setPolicyName(policyName);
+        setCookieExpirationPeriod(cookieExpirationPeriod);
     }
 
     
@@ -92,7 +94,7 @@ public class LBCookieStickinessPolicy  implements Serializable  {
      *         the set of policies for this LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LBCookieStickinessPolicy withPolicyName(String policyName) {
         this.policyName = policyName;
@@ -138,7 +140,7 @@ public class LBCookieStickinessPolicy  implements Serializable  {
      *         session will last for the duration of the browser session.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LBCookieStickinessPolicy withCookieExpirationPeriod(Long cookieExpirationPeriod) {
         this.cookieExpirationPeriod = cookieExpirationPeriod;
@@ -157,8 +159,8 @@ public class LBCookieStickinessPolicy  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (getCookieExpirationPeriod() != null) sb.append("CookieExpirationPeriod: " + getCookieExpirationPeriod() );
         sb.append("}");
         return sb.toString();

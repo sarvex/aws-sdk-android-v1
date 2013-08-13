@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#deleteQueue(DeleteQueueRequest)
  */
-public class DeleteQueueRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteQueueRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The URL of the SQS queue to take action on.
@@ -40,6 +40,8 @@ public class DeleteQueueRequest extends AmazonWebServiceRequest  implements Seri
      */
     public DeleteQueueRequest() {}
     
+
+
     /**
      * Constructs a new DeleteQueueRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -48,7 +50,7 @@ public class DeleteQueueRequest extends AmazonWebServiceRequest  implements Seri
      * @param queueUrl The URL of the SQS queue to take action on.
      */
     public DeleteQueueRequest(String queueUrl) {
-        this.queueUrl = queueUrl;
+        setQueueUrl(queueUrl);
     }
 
     
@@ -79,7 +81,7 @@ public class DeleteQueueRequest extends AmazonWebServiceRequest  implements Seri
      * @param queueUrl The URL of the SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteQueueRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
@@ -98,7 +100,7 @@ public class DeleteQueueRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents an error that occurred during a bundle task.
  * </p>
  */
-public class BundleTaskError  implements Serializable  {
+public class BundleTaskError implements Serializable {
 
     /**
      * Error code.
@@ -58,7 +58,7 @@ public class BundleTaskError  implements Serializable  {
      * @param code Error code.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTaskError withCode(String code) {
         this.code = code;
@@ -92,7 +92,7 @@ public class BundleTaskError  implements Serializable  {
      * @param message Error message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTaskError withMessage(String message) {
         this.message = message;
@@ -111,8 +111,8 @@ public class BundleTaskError  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

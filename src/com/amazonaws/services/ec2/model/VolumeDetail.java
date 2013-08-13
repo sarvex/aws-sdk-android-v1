@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Volume Detail
  */
-public class VolumeDetail  implements Serializable  {
+public class VolumeDetail implements Serializable {
 
     private Long size;
 
@@ -48,7 +48,7 @@ public class VolumeDetail  implements Serializable  {
      * @param size The new value for the Size property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeDetail withSize(Long size) {
         this.size = size;
@@ -67,7 +67,7 @@ public class VolumeDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSize() != null) sb.append("Size: " + getSize() );
         sb.append("}");
         return sb.toString();

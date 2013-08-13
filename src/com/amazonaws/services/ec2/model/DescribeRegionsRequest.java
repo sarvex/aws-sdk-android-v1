@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeRegionsRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,12 +26,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeRegions(DescribeRegionsRequest)
  */
-public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeRegionsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeRegionsRequest> {
 
     /**
      * The optional list of regions to describe.
      */
-    private java.util.List<String> regionNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> regionNames;
 
     /**
      * A list of filters used to match properties for Regions. For a complete
@@ -37,7 +39,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
      * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
      * EC2 API reference</a>.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The optional list of regions to describe.
@@ -47,7 +49,8 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
     public java.util.List<String> getRegionNames() {
         
         if (regionNames == null) {
-            regionNames = new java.util.ArrayList<String>();
+              regionNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              regionNames.setAutoConstruct(true);
         }
         return regionNames;
     }
@@ -62,8 +65,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
             this.regionNames = null;
             return;
         }
-
-        java.util.List<String> regionNamesCopy = new java.util.ArrayList<String>(regionNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> regionNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(regionNames.size());
         regionNamesCopy.addAll(regionNames);
         this.regionNames = regionNamesCopy;
     }
@@ -76,7 +78,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
      * @param regionNames The optional list of regions to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsRequest withRegionNames(String... regionNames) {
         if (getRegionNames() == null) setRegionNames(new java.util.ArrayList<String>(regionNames.length));
@@ -94,13 +96,13 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
      * @param regionNames The optional list of regions to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsRequest withRegionNames(java.util.Collection<String> regionNames) {
         if (regionNames == null) {
             this.regionNames = null;
         } else {
-            java.util.List<String> regionNamesCopy = new java.util.ArrayList<String>(regionNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> regionNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(regionNames.size());
             regionNamesCopy.addAll(regionNames);
             this.regionNames = regionNamesCopy;
         }
@@ -122,7 +124,8 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
     public java.util.List<Filter> getFilters() {
         
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -143,8 +146,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -163,7 +165,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -187,18 +189,30 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
      *         EC2 API reference</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeRegionsRequest> getDryRunRequest() {
+        Request<DescribeRegionsRequest> request = new DescribeRegionsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -212,8 +226,8 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRegionNames() != null) sb.append("RegionNames: " + getRegionNames() + ",");    	
+        sb.append("{");
+        if (getRegionNames() != null) sb.append("RegionNames: " + getRegionNames() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

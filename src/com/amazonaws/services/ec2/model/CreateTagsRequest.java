@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateTagsRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -25,19 +27,19 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createTags(CreateTagsRequest)
  */
-public class CreateTagsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateTagsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateTagsRequest> {
 
     /**
      * One or more IDs of resources to tag. This could be the ID of an AMI,
      * an instance, an EBS volume, or snapshot, etc.
      */
-    private java.util.List<String> resources;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> resources;
 
     /**
      * The tags to add or overwrite for the specified resources. Each tag
      * item consists of a key-value pair.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * Default constructor for a new CreateTagsRequest object.  Callers should use the
@@ -45,6 +47,8 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
      */
     public CreateTagsRequest() {}
     
+
+
     /**
      * Constructs a new CreateTagsRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +60,8 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
      * Each tag item consists of a key-value pair.
      */
     public CreateTagsRequest(java.util.List<String> resources, java.util.List<Tag> tags) {
-        this.resources = resources;
-        this.tags = tags;
+        setResources(resources);
+        setTags(tags);
     }
 
     
@@ -72,7 +76,8 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
     public java.util.List<String> getResources() {
         
         if (resources == null) {
-            resources = new java.util.ArrayList<String>();
+              resources = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              resources.setAutoConstruct(true);
         }
         return resources;
     }
@@ -89,8 +94,7 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
             this.resources = null;
             return;
         }
-
-        java.util.List<String> resourcesCopy = new java.util.ArrayList<String>(resources.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> resourcesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(resources.size());
         resourcesCopy.addAll(resources);
         this.resources = resourcesCopy;
     }
@@ -105,7 +109,7 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
      *         an instance, an EBS volume, or snapshot, etc.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateTagsRequest withResources(String... resources) {
         if (getResources() == null) setResources(new java.util.ArrayList<String>(resources.length));
@@ -125,13 +129,13 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
      *         an instance, an EBS volume, or snapshot, etc.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateTagsRequest withResources(java.util.Collection<String> resources) {
         if (resources == null) {
             this.resources = null;
         } else {
-            java.util.List<String> resourcesCopy = new java.util.ArrayList<String>(resources.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> resourcesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(resources.size());
             resourcesCopy.addAll(resources);
             this.resources = resourcesCopy;
         }
@@ -149,7 +153,8 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
     public java.util.List<Tag> getTags() {
         
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -166,8 +171,7 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -182,7 +186,7 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
      *         item consists of a key-value pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateTagsRequest withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -202,18 +206,30 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
      *         item consists of a key-value pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateTagsRequest withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
+    }
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateTagsRequest> getDryRunRequest() {
+        Request<CreateTagsRequest> request = new CreateTagsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -227,8 +243,8 @@ public class CreateTagsRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResources() != null) sb.append("Resources: " + getResources() + ",");    	
+        sb.append("{");
+        if (getResources() != null) sb.append("Resources: " + getResources() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

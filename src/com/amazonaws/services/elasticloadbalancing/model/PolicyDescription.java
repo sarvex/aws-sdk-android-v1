@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>PolicyDescription</code> data type.
  * </p>
  */
-public class PolicyDescription  implements Serializable  {
+public class PolicyDescription implements Serializable {
 
     /**
      * The name mof the policy associated with the LoadBalancer.
@@ -35,7 +35,7 @@ public class PolicyDescription  implements Serializable  {
     /**
      * A list of policy attribute description structures.
      */
-    private java.util.List<PolicyAttributeDescription> policyAttributeDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription> policyAttributeDescriptions;
 
     /**
      * The name mof the policy associated with the LoadBalancer.
@@ -63,7 +63,7 @@ public class PolicyDescription  implements Serializable  {
      * @param policyName The name mof the policy associated with the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyName(String policyName) {
         this.policyName = policyName;
@@ -97,7 +97,7 @@ public class PolicyDescription  implements Serializable  {
      * @param policyTypeName The name of the policy type associated with the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyTypeName(String policyTypeName) {
         this.policyTypeName = policyTypeName;
@@ -113,7 +113,8 @@ public class PolicyDescription  implements Serializable  {
     public java.util.List<PolicyAttributeDescription> getPolicyAttributeDescriptions() {
         
         if (policyAttributeDescriptions == null) {
-            policyAttributeDescriptions = new java.util.ArrayList<PolicyAttributeDescription>();
+              policyAttributeDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription>();
+              policyAttributeDescriptions.setAutoConstruct(true);
         }
         return policyAttributeDescriptions;
     }
@@ -128,8 +129,7 @@ public class PolicyDescription  implements Serializable  {
             this.policyAttributeDescriptions = null;
             return;
         }
-
-        java.util.List<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new java.util.ArrayList<PolicyAttributeDescription>(policyAttributeDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription>(policyAttributeDescriptions.size());
         policyAttributeDescriptionsCopy.addAll(policyAttributeDescriptions);
         this.policyAttributeDescriptions = policyAttributeDescriptionsCopy;
     }
@@ -142,7 +142,7 @@ public class PolicyDescription  implements Serializable  {
      * @param policyAttributeDescriptions A list of policy attribute description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyAttributeDescriptions(PolicyAttributeDescription... policyAttributeDescriptions) {
         if (getPolicyAttributeDescriptions() == null) setPolicyAttributeDescriptions(new java.util.ArrayList<PolicyAttributeDescription>(policyAttributeDescriptions.length));
@@ -160,13 +160,13 @@ public class PolicyDescription  implements Serializable  {
      * @param policyAttributeDescriptions A list of policy attribute description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyAttributeDescriptions(java.util.Collection<PolicyAttributeDescription> policyAttributeDescriptions) {
         if (policyAttributeDescriptions == null) {
             this.policyAttributeDescriptions = null;
         } else {
-            java.util.List<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new java.util.ArrayList<PolicyAttributeDescription>(policyAttributeDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription>(policyAttributeDescriptions.size());
             policyAttributeDescriptionsCopy.addAll(policyAttributeDescriptions);
             this.policyAttributeDescriptions = policyAttributeDescriptionsCopy;
         }
@@ -185,9 +185,9 @@ public class PolicyDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
-        if (getPolicyTypeName() != null) sb.append("PolicyTypeName: " + getPolicyTypeName() + ",");    	
+        sb.append("{");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
+        if (getPolicyTypeName() != null) sb.append("PolicyTypeName: " + getPolicyTypeName() + ",");
         if (getPolicyAttributeDescriptions() != null) sb.append("PolicyAttributeDescriptions: " + getPolicyAttributeDescriptions() );
         sb.append("}");
         return sb.toString();

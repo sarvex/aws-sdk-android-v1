@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The result of calling the ConfirmProductInstance operation.
  * </p>
  */
-public class ConfirmProductInstanceResult  implements Serializable  {
+public class ConfirmProductInstanceResult implements Serializable {
 
     /**
      * The instance owner's account ID. Only present if the product code is
@@ -60,7 +60,7 @@ public class ConfirmProductInstanceResult  implements Serializable  {
      *         attached to the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfirmProductInstanceResult withOwnerId(String ownerId) {
         this.ownerId = ownerId;
@@ -79,7 +79,7 @@ public class ConfirmProductInstanceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() );
         sb.append("}");
         return sb.toString();

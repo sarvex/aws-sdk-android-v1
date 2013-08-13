@@ -36,7 +36,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteItem(DeleteItemRequest)
  */
-public class DeleteItemRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteItemRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the table from which to delete the item.
@@ -131,6 +131,8 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      */
     public DeleteItemRequest() {}
     
+
+
     /**
      * Constructs a new DeleteItemRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -141,8 +143,8 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      * representing the primary key of the item to delete.
      */
     public DeleteItemRequest(String tableName, java.util.Map<String,AttributeValue> key) {
-        this.tableName = tableName;
-        this.key = key;
+        setTableName(tableName);
+        setKey(key);
     }
 
     
@@ -185,7 +187,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      * @param tableName The name of the table from which to delete the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteItemRequest withTableName(String tableName) {
         this.tableName = tableName;
@@ -203,7 +205,6 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     public java.util.Map<String,AttributeValue> getKey() {
         
         return key;
-
     }
     
     /**
@@ -227,13 +228,84 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         representing the primary key of the item to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteItemRequest withKey(java.util.Map<String,AttributeValue> key) {
         setKey(key);
         return this;
     }
     
+   	
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
+     * <p>
+     * This method accepts the hashKey, rangeKey of Key as
+     * java.util.Map.Entry<String, AttributeValue> objects.
+     *
+     * @param hashKey Primary hash key.
+     * @param rangeKey Primary range key. (null if it a hash-only table)
+     */
+    public void setKey(java.util.Map.Entry<String, AttributeValue> hashKey, java.util.Map.Entry<String, AttributeValue> rangeKey) throws IllegalArgumentException {
+        java.util.HashMap<String,AttributeValue> key = new java.util.HashMap<String,AttributeValue>();
+    	
+    	if (hashKey != null) {
+    	    key.put(hashKey.getKey(), hashKey.getValue());
+    	} else
+            throw new IllegalArgumentException("hashKey must be non-null object.");
+    	if (rangeKey != null) {
+    	    key.put(rangeKey.getKey(), rangeKey.getValue());
+    	} 
+        setKey(key);
+    }
+    
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
+     * <p>
+     * This method accepts the hashKey, rangeKey of Key as
+     * java.util.Map.Entry<String, AttributeValue> objects.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param hashKey Primary hash key.
+     * @param rangeKey Primary range key. (null if it a hash-only table)
+     */    
+    public DeleteItemRequest withKey(java.util.Map.Entry<String, AttributeValue> hashKey, java.util.Map.Entry<String, AttributeValue> rangeKey) throws IllegalArgumentException {
+    	setKey(hashKey, rangeKey);
+    	return this;
+    }
+	
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
+     * <p>
+     * The method adds a new key-value pair into Key parameter, and returns a
+     * reference to this object so that method calls can be chained together.
+     *
+     * @param key The key of the entry to be added into Key.
+     * @param value The corresponding value of the entry to be added into Key.
+     */
+	public DeleteItemRequest addKeyEntry(String key, AttributeValue value) {
+		if (null == this.key) {
+			this.key = new java.util.HashMap<String,AttributeValue>();
+		}
+		if (this.key.containsKey(key))
+			throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+		this.key.put(key, value);
+		return this;
+	}
+	
+	/**
+	 * Removes all the entries added into Key.
+	 * <p>
+	 * Returns a reference to this object so that method calls can be chained together.
+	 */
+	public DeleteItemRequest clearKeyEntries() {
+		this.key = null;
+		return this;
+	}
+	
     /**
      * A map of attribute/condition pairs. This is the conditional block for
      * the <i>DeleteItem</i>operation. All the conditions must be met for the
@@ -306,7 +378,6 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     public java.util.Map<String,ExpectedAttributeValue> getExpected() {
         
         return expected;
-
     }
     
     /**
@@ -454,13 +525,76 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         ANDed together.) Otherwise, the conditional operation will fail.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteItemRequest withExpected(java.util.Map<String,ExpectedAttributeValue> expected) {
         setExpected(expected);
         return this;
     }
     
+   	
+    /**
+     * A map of attribute/condition pairs. This is the conditional block for
+     * the <i>DeleteItem</i>operation. All the conditions must be met for the
+     * operation to succeed. <p><i>Expected</i> allows you to provide an
+     * attribute name, and whether or not Amazon DynamoDB should check to see
+     * if the attribute value already exists; or if the attribute value
+     * exists and has a particular value before changing it. <p>Each item in
+     * <i>Expected</i> represents an attribute name for Amazon DynamoDB to
+     * check, along with the following: <ul> <li> <p><i>Value</i> - The
+     * attribute value for Amazon DynamoDB to check. </li> <li>
+     * <p><i>Exists</i> - Causes Amazon DynamoDB to evaluate the value before
+     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
+     * value already exists in the table. If it is found, then the operation
+     * succeeds. If it is not found, the operation fails with a
+     * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
+     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
+     * value does <i>not</i> exist in the table. If in fact the value does
+     * not exist, then the assumption is valid and the operation succeeds. If
+     * the value is found, despite the assumption that it does not exist, the
+     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
+     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
+     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
+     * the attribute exists: You don't have to set <i>Exists</i> to
+     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
+     * <code>true</code> but there is no <i>Value</i> to check. (You expect a
+     * value to exist, but don't specify what that value is.) </li> <li>
+     * <p><i>Exists</i> is <code>false</code> but you also specify a
+     * <i>Value</i>. (You cannot expect an attribute to have a value, while
+     * also expecting it not to exist.) </li> </ul> </li> </ul> <p>If you
+     * specify more than one condition for <i>Exists</i>, then all of the
+     * conditions must evaluate to true. (In other words, the conditions are
+     * ANDed together.) Otherwise, the conditional operation will fail.
+     * <p>
+     * The method adds a new key-value pair into Expected parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Expected.
+     * @param value The corresponding value of the entry to be added into Expected.
+     */
+	public DeleteItemRequest addExpectedEntry(String key, ExpectedAttributeValue value) {
+		if (null == this.expected) {
+			this.expected = new java.util.HashMap<String,ExpectedAttributeValue>();
+		}
+		if (this.expected.containsKey(key))
+			throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+		this.expected.put(key, value);
+		return this;
+	}
+	
+	/**
+	 * Removes all the entries added into Expected.
+	 * <p>
+	 * Returns a reference to this object so that method calls can be chained together.
+	 */
+	public DeleteItemRequest clearExpectedEntries() {
+		this.expected = null;
+		return this;
+	}
+	
     /**
      * Use <i>ReturnValues</i> if you want to get the item attributes as they
      * appeared before they were deleted. For <i>DeleteItem</i>, the valid
@@ -536,7 +670,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnValue
      */
@@ -595,7 +729,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnValue
      */
@@ -655,7 +789,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnConsumedCapacity
      */
@@ -698,7 +832,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         <i>ConsumedCapacity</i> is not included.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnConsumedCapacity
      */
@@ -764,7 +898,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -811,7 +945,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
      *         returned..
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnItemCollectionMetrics
      */
@@ -831,12 +965,12 @@ public class DeleteItemRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
-        if (getExpected() != null) sb.append("Expected: " + getExpected() + ",");    	
-        if (getReturnValues() != null) sb.append("ReturnValues: " + getReturnValues() + ",");    	
-        if (getReturnConsumedCapacity() != null) sb.append("ReturnConsumedCapacity: " + getReturnConsumedCapacity() + ",");    	
+        sb.append("{");
+        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
+        if (getExpected() != null) sb.append("Expected: " + getExpected() + ",");
+        if (getReturnValues() != null) sb.append("ReturnValues: " + getReturnValues() + ",");
+        if (getReturnConsumedCapacity() != null) sb.append("ReturnConsumedCapacity: " + getReturnConsumedCapacity() + ",");
         if (getReturnItemCollectionMetrics() != null) sb.append("ReturnItemCollectionMetrics: " + getReturnItemCollectionMetrics() );
         sb.append("}");
         return sb.toString();

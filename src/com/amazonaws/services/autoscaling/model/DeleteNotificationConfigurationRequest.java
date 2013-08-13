@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteNotificationConfiguration(DeleteNotificationConfigurationRequest)
  */
-public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -83,7 +83,7 @@ public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequ
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteNotificationConfigurationRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -135,7 +135,7 @@ public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequ
      *         Service (SNS) topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteNotificationConfigurationRequest withTopicARN(String topicARN) {
         this.topicARN = topicARN;
@@ -154,8 +154,8 @@ public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getTopicARN() != null) sb.append("TopicARN: " + getTopicARN() );
         sb.append("}");
         return sb.toString();

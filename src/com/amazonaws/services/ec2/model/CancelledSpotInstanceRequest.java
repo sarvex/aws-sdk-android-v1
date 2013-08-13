@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Cancelled Spot Instance Request
  */
-public class CancelledSpotInstanceRequest  implements Serializable  {
+public class CancelledSpotInstanceRequest implements Serializable {
 
     private String spotInstanceRequestId;
 
@@ -51,7 +51,7 @@ public class CancelledSpotInstanceRequest  implements Serializable  {
      * @param spotInstanceRequestId The new value for the SpotInstanceRequestId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelledSpotInstanceRequest withSpotInstanceRequestId(String spotInstanceRequestId) {
         this.spotInstanceRequestId = spotInstanceRequestId;
@@ -85,7 +85,7 @@ public class CancelledSpotInstanceRequest  implements Serializable  {
      * @param state The new value for the State property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelledSpotInstanceRequest withState(String state) {
         this.state = state;
@@ -104,8 +104,8 @@ public class CancelledSpotInstanceRequest  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");    	
+        sb.append("{");
+        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");
         if (getState() != null) sb.append("State: " + getState() );
         sb.append("}");
         return sb.toString();

@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Copy Snapshot Result
  */
-public class CopySnapshotResult  implements Serializable  {
+public class CopySnapshotResult implements Serializable {
 
     private String snapshotId;
 
@@ -48,7 +48,7 @@ public class CopySnapshotResult  implements Serializable  {
      * @param snapshotId The new value for the SnapshotId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopySnapshotResult withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -67,7 +67,7 @@ public class CopySnapshotResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() );
         sb.append("}");
         return sb.toString();

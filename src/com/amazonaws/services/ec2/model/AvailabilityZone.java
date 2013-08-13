@@ -20,7 +20,7 @@ import java.io.Serializable;
  * An EC2 availability zone, separate and fault tolerant from other availability zones.
  * </p>
  */
-public class AvailabilityZone  implements Serializable  {
+public class AvailabilityZone implements Serializable {
 
     /**
      * Name of the Availability Zone.
@@ -40,7 +40,7 @@ public class AvailabilityZone  implements Serializable  {
     /**
      * A list of messages about the Availability Zone.
      */
-    private java.util.List<AvailabilityZoneMessage> messages;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage> messages;
 
     /**
      * Name of the Availability Zone.
@@ -68,7 +68,7 @@ public class AvailabilityZone  implements Serializable  {
      * @param zoneName Name of the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withZoneName(String zoneName) {
         this.zoneName = zoneName;
@@ -102,7 +102,7 @@ public class AvailabilityZone  implements Serializable  {
      * @param state State of the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withState(String state) {
         this.state = state;
@@ -136,7 +136,7 @@ public class AvailabilityZone  implements Serializable  {
      * @param regionName Name of the region in which this zone resides.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withRegionName(String regionName) {
         this.regionName = regionName;
@@ -152,7 +152,8 @@ public class AvailabilityZone  implements Serializable  {
     public java.util.List<AvailabilityZoneMessage> getMessages() {
         
         if (messages == null) {
-            messages = new java.util.ArrayList<AvailabilityZoneMessage>();
+              messages = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage>();
+              messages.setAutoConstruct(true);
         }
         return messages;
     }
@@ -167,8 +168,7 @@ public class AvailabilityZone  implements Serializable  {
             this.messages = null;
             return;
         }
-
-        java.util.List<AvailabilityZoneMessage> messagesCopy = new java.util.ArrayList<AvailabilityZoneMessage>(messages.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage>(messages.size());
         messagesCopy.addAll(messages);
         this.messages = messagesCopy;
     }
@@ -181,7 +181,7 @@ public class AvailabilityZone  implements Serializable  {
      * @param messages A list of messages about the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withMessages(AvailabilityZoneMessage... messages) {
         if (getMessages() == null) setMessages(new java.util.ArrayList<AvailabilityZoneMessage>(messages.length));
@@ -199,13 +199,13 @@ public class AvailabilityZone  implements Serializable  {
      * @param messages A list of messages about the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withMessages(java.util.Collection<AvailabilityZoneMessage> messages) {
         if (messages == null) {
             this.messages = null;
         } else {
-            java.util.List<AvailabilityZoneMessage> messagesCopy = new java.util.ArrayList<AvailabilityZoneMessage>(messages.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage>(messages.size());
             messagesCopy.addAll(messages);
             this.messages = messagesCopy;
         }
@@ -224,10 +224,10 @@ public class AvailabilityZone  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getZoneName() != null) sb.append("ZoneName: " + getZoneName() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getRegionName() != null) sb.append("RegionName: " + getRegionName() + ",");    	
+        sb.append("{");
+        if (getZoneName() != null) sb.append("ZoneName: " + getZoneName() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getRegionName() != null) sb.append("RegionName: " + getRegionName() + ",");
         if (getMessages() != null) sb.append("Messages: " + getMessages() );
         sb.append("}");
         return sb.toString();

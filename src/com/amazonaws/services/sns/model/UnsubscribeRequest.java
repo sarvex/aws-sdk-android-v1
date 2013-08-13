@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#unsubscribe(UnsubscribeRequest) Unsubscribe operation}.
  * <p>
  * The <code>Unsubscribe</code> action deletes a subscription. If the subscription requires authentication for deletion, only the owner of the
- * subscription or the its topic's owner can unsubscribe, and an AWS signature is required. If the <code>Unsubscribe</code> call does not require
+ * subscription or the topic's owner can unsubscribe, and an AWS signature is required. If the <code>Unsubscribe</code> call does not require
  * authentication and the requester is not the subscription owner, a final cancellation message is delivered to the endpoint, so that the endpoint owner
  * can easily resubscribe to the topic if the <code>Unsubscribe</code> request was unintended.
  * </p>
@@ -40,6 +40,8 @@ public class UnsubscribeRequest extends AmazonWebServiceRequest  implements Seri
      */
     public UnsubscribeRequest() {}
     
+
+
     /**
      * Constructs a new UnsubscribeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -48,7 +50,7 @@ public class UnsubscribeRequest extends AmazonWebServiceRequest  implements Seri
      * @param subscriptionArn The ARN of the subscription to be deleted.
      */
     public UnsubscribeRequest(String subscriptionArn) {
-        this.subscriptionArn = subscriptionArn;
+        setSubscriptionArn(subscriptionArn);
     }
 
     
@@ -98,7 +100,7 @@ public class UnsubscribeRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSubscriptionArn() != null) sb.append("SubscriptionArn: " + getSubscriptionArn() );
         sb.append("}");
         return sb.toString();

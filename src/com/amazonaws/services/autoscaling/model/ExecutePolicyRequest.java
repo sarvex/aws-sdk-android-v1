@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#executePolicy(ExecutePolicyRequest)
  */
-public class ExecutePolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ExecutePolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling group.
@@ -88,7 +88,7 @@ public class ExecutePolicyRequest extends AmazonWebServiceRequest  implements Se
      * @param autoScalingGroupName The name or ARN of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExecutePolicyRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -134,7 +134,7 @@ public class ExecutePolicyRequest extends AmazonWebServiceRequest  implements Se
      * @param policyName The name or PolicyARN of the policy you want to run.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExecutePolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
@@ -174,7 +174,7 @@ public class ExecutePolicyRequest extends AmazonWebServiceRequest  implements Se
      *         request when the Auto Scaling group is in cooldown.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExecutePolicyRequest withHonorCooldown(Boolean honorCooldown) {
         this.honorCooldown = honorCooldown;
@@ -204,9 +204,9 @@ public class ExecutePolicyRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (isHonorCooldown() != null) sb.append("HonorCooldown: " + isHonorCooldown() );
         sb.append("}");
         return sb.toString();

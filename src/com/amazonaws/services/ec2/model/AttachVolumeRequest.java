@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AttachVolumeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#attachVolume(AttachVolumeRequest)
  */
-public class AttachVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AttachVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AttachVolumeRequest> {
 
     /**
      * The ID of the Amazon EBS volume. The volume and instance must be
@@ -51,6 +53,8 @@ public class AttachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      */
     public AttachVolumeRequest() {}
     
+
+
     /**
      * Constructs a new AttachVolumeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -66,9 +70,9 @@ public class AttachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      * (e.g., <code>/dev/sdh</code>).
      */
     public AttachVolumeRequest(String volumeId, String instanceId, String device) {
-        this.volumeId = volumeId;
-        this.instanceId = instanceId;
-        this.device = device;
+        setVolumeId(volumeId);
+        setInstanceId(instanceId);
+        setDevice(device);
     }
 
     
@@ -105,7 +109,7 @@ public class AttachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      *         within the same Availability Zone and the instance must be running.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachVolumeRequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -151,7 +155,7 @@ public class AttachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      *         must be running.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachVolumeRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -191,13 +195,25 @@ public class AttachVolumeRequest extends AmazonWebServiceRequest  implements Ser
      *         <code>/dev/sdh</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachVolumeRequest withDevice(String device) {
         this.device = device;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AttachVolumeRequest> getDryRunRequest() {
+        Request<AttachVolumeRequest> request = new AttachVolumeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -210,9 +226,9 @@ public class AttachVolumeRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getDevice() != null) sb.append("Device: " + getDevice() );
         sb.append("}");
         return sb.toString();

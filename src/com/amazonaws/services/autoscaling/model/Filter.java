@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>Filter</code> data type.
  * </p>
  */
-public class Filter  implements Serializable  {
+public class Filter implements Serializable {
 
     /**
      * The name of the filter. Valid Name values are:
@@ -35,7 +35,7 @@ public class Filter  implements Serializable  {
     /**
      * The value of the filter.
      */
-    private java.util.List<String> values;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> values;
 
     /**
      * The name of the filter. Valid Name values are:
@@ -84,7 +84,7 @@ public class Filter  implements Serializable  {
      *         <code>"value"</code>, and <code>"propagate-at-launch"</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Filter withName(String name) {
         this.name = name;
@@ -100,7 +100,8 @@ public class Filter  implements Serializable  {
     public java.util.List<String> getValues() {
         
         if (values == null) {
-            values = new java.util.ArrayList<String>();
+              values = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              values.setAutoConstruct(true);
         }
         return values;
     }
@@ -115,8 +116,7 @@ public class Filter  implements Serializable  {
             this.values = null;
             return;
         }
-
-        java.util.List<String> valuesCopy = new java.util.ArrayList<String>(values.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> valuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(values.size());
         valuesCopy.addAll(values);
         this.values = valuesCopy;
     }
@@ -129,7 +129,7 @@ public class Filter  implements Serializable  {
      * @param values The value of the filter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Filter withValues(String... values) {
         if (getValues() == null) setValues(new java.util.ArrayList<String>(values.length));
@@ -147,13 +147,13 @@ public class Filter  implements Serializable  {
      * @param values The value of the filter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Filter withValues(java.util.Collection<String> values) {
         if (values == null) {
             this.values = null;
         } else {
-            java.util.List<String> valuesCopy = new java.util.ArrayList<String>(values.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> valuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(values.size());
             valuesCopy.addAll(values);
             this.values = valuesCopy;
         }
@@ -172,8 +172,8 @@ public class Filter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getValues() != null) sb.append("Values: " + getValues() );
         sb.append("}");
         return sb.toString();

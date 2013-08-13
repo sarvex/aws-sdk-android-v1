@@ -43,7 +43,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#setDesiredCapacity(SetDesiredCapacityRequest)
  */
-public class SetDesiredCapacityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetDesiredCapacityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -104,7 +104,7 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest  implemen
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetDesiredCapacityRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -138,7 +138,7 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest  implemen
      * @param desiredCapacity The new capacity setting for the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetDesiredCapacityRequest withDesiredCapacity(Integer desiredCapacity) {
         this.desiredCapacity = desiredCapacity;
@@ -184,7 +184,7 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest  implemen
      *         this request when the Auto Scaling group is in cooldown.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetDesiredCapacityRequest withHonorCooldown(Boolean honorCooldown) {
         this.honorCooldown = honorCooldown;
@@ -216,9 +216,9 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() + ",");
         if (isHonorCooldown() != null) sb.append("HonorCooldown: " + isHonorCooldown() );
         sb.append("}");
         return sb.toString();

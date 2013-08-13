@@ -35,7 +35,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#createLBCookieStickinessPolicy(CreateLBCookieStickinessPolicyRequest)
  */
-public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name associated with the LoadBalancer. The name must be unique
@@ -62,6 +62,8 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
      */
     public CreateLBCookieStickinessPolicyRequest() {}
     
+
+
     /**
      * Constructs a new CreateLBCookieStickinessPolicyRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -73,8 +75,8 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
      * be unique within the set of policies for this LoadBalancer.
      */
     public CreateLBCookieStickinessPolicyRequest(String loadBalancerName, String policyName) {
-        this.loadBalancerName = loadBalancerName;
-        this.policyName = policyName;
+        setLoadBalancerName(loadBalancerName);
+        setPolicyName(policyName);
     }
 
     
@@ -111,7 +113,7 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
      *         within the client AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLBCookieStickinessPolicyRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -151,7 +153,7 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
      *         the set of policies for this LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLBCookieStickinessPolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
@@ -197,7 +199,7 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
      *         will last for the duration of the browser session.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLBCookieStickinessPolicyRequest withCookieExpirationPeriod(Long cookieExpirationPeriod) {
         this.cookieExpirationPeriod = cookieExpirationPeriod;
@@ -216,9 +218,9 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (getCookieExpirationPeriod() != null) sb.append("CookieExpirationPeriod: " + getCookieExpirationPeriod() );
         sb.append("}");
         return sb.toString();

@@ -21,16 +21,10 @@ import java.io.Serializable;
  * <p>
  * Returns an array of all the tables associated with the current account and endpoint.
  * </p>
- * <p>
- * Each Amazon DynamoDB endpoint is entirely independent. For example, if you have two tables called "MyTable," one in
- * <i>dynamodb.us-east-1.amazonaws.com</i> and one in <i>dynamodb.us-west-1.amazonaws.com</i> , they are completely independent and do not share any
- * data. The <i>ListTables</i> operation returns all of the table names associated with the account making the request, for the endpoint that receives
- * the request.
- * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#listTables(ListTablesRequest)
  */
-public class ListTablesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListTablesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the table that starts the list. If you already ran a
@@ -52,6 +46,50 @@ public class ListTablesRequest extends AmazonWebServiceRequest  implements Seria
      */
     private Integer limit;
 
+    /**
+     * Default constructor for a new ListTablesRequest object.  Callers should use the
+     * setter or fluent setter (with...) methods to initialize this object after creating it.
+     */
+    public ListTablesRequest() {}
+    
+
+
+    /**
+     * Constructs a new ListTablesRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param exclusiveStartTableName The name of the table that starts the
+     * list. If you already ran a <i>ListTables</i> operation and received a
+     * <i>LastEvaluatedTableName</i> value in the response, use that value
+     * here to continue the list.
+     */
+    public ListTablesRequest(String exclusiveStartTableName) {
+        setExclusiveStartTableName(exclusiveStartTableName);
+    }
+
+    
+    
+
+
+    /**
+     * Constructs a new ListTablesRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param exclusiveStartTableName The name of the table that starts the
+     * list. If you already ran a <i>ListTables</i> operation and received a
+     * <i>LastEvaluatedTableName</i> value in the response, use that value
+     * here to continue the list.
+     * @param limit A maximum number of table names to return.
+     */
+    public ListTablesRequest(String exclusiveStartTableName, Integer limit) {
+        setExclusiveStartTableName(exclusiveStartTableName);
+        setLimit(limit);
+    }
+
+    
+    
     /**
      * The name of the table that starts the list. If you already ran a
      * <i>ListTables</i> operation and received a
@@ -108,7 +146,7 @@ public class ListTablesRequest extends AmazonWebServiceRequest  implements Seria
      *         here to continue the list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTablesRequest withExclusiveStartTableName(String exclusiveStartTableName) {
         this.exclusiveStartTableName = exclusiveStartTableName;
@@ -151,7 +189,7 @@ public class ListTablesRequest extends AmazonWebServiceRequest  implements Seria
      * @param limit A maximum number of table names to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTablesRequest withLimit(Integer limit) {
         this.limit = limit;
@@ -170,8 +208,8 @@ public class ListTablesRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExclusiveStartTableName() != null) sb.append("ExclusiveStartTableName: " + getExclusiveStartTableName() + ",");    	
+        sb.append("{");
+        if (getExclusiveStartTableName() != null) sb.append("ExclusiveStartTableName: " + getExclusiveStartTableName() + ",");
         if (getLimit() != null) sb.append("Limit: " + getLimit() );
         sb.append("}");
         return sb.toString();

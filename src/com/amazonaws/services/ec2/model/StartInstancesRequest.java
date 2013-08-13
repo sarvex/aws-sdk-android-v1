@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.StartInstancesRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -30,12 +32,12 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#startInstances(StartInstancesRequest)
  */
-public class StartInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class StartInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<StartInstancesRequest> {
 
     /**
      * The list of Amazon EC2 instances to start.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     private String additionalInfo;
 
@@ -45,6 +47,8 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
      */
     public StartInstancesRequest() {}
     
+
+
     /**
      * Constructs a new StartInstancesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -53,7 +57,7 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
      * @param instanceIds The list of Amazon EC2 instances to start.
      */
     public StartInstancesRequest(java.util.List<String> instanceIds) {
-        this.instanceIds = instanceIds;
+        setInstanceIds(instanceIds);
     }
 
     
@@ -66,7 +70,8 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
     public java.util.List<String> getInstanceIds() {
         
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
@@ -81,8 +86,7 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
@@ -95,7 +99,7 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
      * @param instanceIds The list of Amazon EC2 instances to start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartInstancesRequest withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -113,13 +117,13 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
      * @param instanceIds The list of Amazon EC2 instances to start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartInstancesRequest withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
@@ -153,13 +157,25 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
      * @param additionalInfo The new value for the AdditionalInfo property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartInstancesRequest withAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<StartInstancesRequest> getDryRunRequest() {
+        Request<StartInstancesRequest> request = new StartInstancesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -172,8 +188,8 @@ public class StartInstancesRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");    	
+        sb.append("{");
+        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");
         if (getAdditionalInfo() != null) sb.append("AdditionalInfo: " + getAdditionalInfo() );
         sb.append("}");
         return sb.toString();

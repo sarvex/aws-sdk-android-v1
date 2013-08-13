@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The output for the CreateLoadBalancer action.
  * </p>
  */
-public class CreateLoadBalancerResult  implements Serializable  {
+public class CreateLoadBalancerResult implements Serializable {
 
     /**
      * The DNS name for the LoadBalancer.
@@ -53,7 +53,7 @@ public class CreateLoadBalancerResult  implements Serializable  {
      * @param dNSName The DNS name for the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerResult withDNSName(String dNSName) {
         this.dNSName = dNSName;
@@ -72,7 +72,7 @@ public class CreateLoadBalancerResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDNSName() != null) sb.append("DNSName: " + getDNSName() );
         sb.append("}");
         return sb.toString();

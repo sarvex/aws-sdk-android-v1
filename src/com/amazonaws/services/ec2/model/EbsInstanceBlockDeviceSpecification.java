@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Specifies how an EBS volume should be mapped as part of a block device mapping specification when launching a new instance.
  * </p>
  */
-public class EbsInstanceBlockDeviceSpecification  implements Serializable  {
+public class EbsInstanceBlockDeviceSpecification implements Serializable {
 
     /**
      * The ID of the EBS volume that should be mounted as a block device on
@@ -66,7 +66,7 @@ public class EbsInstanceBlockDeviceSpecification  implements Serializable  {
      *         an Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsInstanceBlockDeviceSpecification withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -106,7 +106,7 @@ public class EbsInstanceBlockDeviceSpecification  implements Serializable  {
      *         termination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EbsInstanceBlockDeviceSpecification withDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
@@ -136,8 +136,8 @@ public class EbsInstanceBlockDeviceSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
         if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() );
         sb.append("}");
         return sb.toString();

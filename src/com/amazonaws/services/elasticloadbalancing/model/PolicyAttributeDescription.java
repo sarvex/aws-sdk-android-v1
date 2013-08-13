@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>PolicyAttributeDescription</code> data type. This data type is used to describe the attributes and values associated with a policy.
  * </p>
  */
-public class PolicyAttributeDescription  implements Serializable  {
+public class PolicyAttributeDescription implements Serializable {
 
     /**
      * The name of the attribute associated with the policy.
@@ -58,7 +58,7 @@ public class PolicyAttributeDescription  implements Serializable  {
      * @param attributeName The name of the attribute associated with the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeDescription withAttributeName(String attributeName) {
         this.attributeName = attributeName;
@@ -92,7 +92,7 @@ public class PolicyAttributeDescription  implements Serializable  {
      * @param attributeValue The value of the attribute associated with the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeDescription withAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
@@ -111,8 +111,8 @@ public class PolicyAttributeDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeValue() != null) sb.append("AttributeValue: " + getAttributeValue() );
         sb.append("}");
         return sb.toString();

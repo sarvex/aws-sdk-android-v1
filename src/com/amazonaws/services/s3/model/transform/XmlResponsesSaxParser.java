@@ -109,9 +109,6 @@ public class XmlResponsesSaxParser {
         try {
             xr = XMLReaderFactory.createXMLReader();
         } catch (SAXException e) {
-            log.warn("Unable to load XMLReader. Retry with org.xmlpull.v1.sax2.Driver. "
-                + e.getMessage(), e);
-            // oops, lets try doing this (needed in 1.4)
             System.setProperty("org.xml.sax.driver", "org.xmlpull.v1.sax2.Driver");
             try {
                 // Try once more...

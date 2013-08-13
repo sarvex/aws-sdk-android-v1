@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#createLoadBalancerListeners(CreateLoadBalancerListenersRequest)
  */
-public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the new LoadBalancer. The name must be unique within your
@@ -37,7 +37,7 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      * A list of <code>LoadBalancerPort</code>, <code>InstancePort</code>,
      * <code>Protocol</code>, and <code>SSLCertificateId</code> items.
      */
-    private java.util.List<Listener> listeners;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listeners;
 
     /**
      * Default constructor for a new CreateLoadBalancerListenersRequest object.  Callers should use the
@@ -45,6 +45,8 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      */
     public CreateLoadBalancerListenersRequest() {}
     
+
+
     /**
      * Constructs a new CreateLoadBalancerListenersRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,8 +59,8 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      * <code>SSLCertificateId</code> items.
      */
     public CreateLoadBalancerListenersRequest(String loadBalancerName, java.util.List<Listener> listeners) {
-        this.loadBalancerName = loadBalancerName;
-        this.listeners = listeners;
+        setLoadBalancerName(loadBalancerName);
+        setListeners(listeners);
     }
 
     
@@ -95,7 +97,7 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      *         AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerListenersRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
@@ -113,7 +115,8 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
     public java.util.List<Listener> getListeners() {
         
         if (listeners == null) {
-            listeners = new java.util.ArrayList<Listener>();
+              listeners = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>();
+              listeners.setAutoConstruct(true);
         }
         return listeners;
     }
@@ -130,8 +133,7 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
             this.listeners = null;
             return;
         }
-
-        java.util.List<Listener> listenersCopy = new java.util.ArrayList<Listener>(listeners.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listenersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>(listeners.size());
         listenersCopy.addAll(listeners);
         this.listeners = listenersCopy;
     }
@@ -146,7 +148,7 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      *         <code>Protocol</code>, and <code>SSLCertificateId</code> items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerListenersRequest withListeners(Listener... listeners) {
         if (getListeners() == null) setListeners(new java.util.ArrayList<Listener>(listeners.length));
@@ -166,13 +168,13 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      *         <code>Protocol</code>, and <code>SSLCertificateId</code> items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerListenersRequest withListeners(java.util.Collection<Listener> listeners) {
         if (listeners == null) {
             this.listeners = null;
         } else {
-            java.util.List<Listener> listenersCopy = new java.util.ArrayList<Listener>(listeners.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listenersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>(listeners.size());
             listenersCopy.addAll(listeners);
             this.listeners = listenersCopy;
         }
@@ -191,8 +193,8 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getListeners() != null) sb.append("Listeners: " + getListeners() );
         sb.append("}");
         return sb.toString();

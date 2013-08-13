@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a snapshot of an Amazon EC2 EBS volume.
  * </p>
  */
-public class Snapshot  implements Serializable  {
+public class Snapshot implements Serializable {
 
     /**
      * The unique ID of this snapshot.
@@ -74,7 +74,7 @@ public class Snapshot  implements Serializable  {
     /**
      * A list of tags for the Snapshot.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * The unique ID of this snapshot.
@@ -102,7 +102,7 @@ public class Snapshot  implements Serializable  {
      * @param snapshotId The unique ID of this snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -136,7 +136,7 @@ public class Snapshot  implements Serializable  {
      * @param volumeId The ID of the volume from which this snapshot was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -183,7 +183,7 @@ public class Snapshot  implements Serializable  {
      * @param state Snapshot state (e.g., pending, completed, or error).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotState
      */
@@ -218,7 +218,7 @@ public class Snapshot  implements Serializable  {
      * @param state Snapshot state (e.g., pending, completed, or error).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotState
      */
@@ -253,7 +253,7 @@ public class Snapshot  implements Serializable  {
      * @param startTime Time stamp when the snapshot was initiated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -287,7 +287,7 @@ public class Snapshot  implements Serializable  {
      * @param progress The progress of the snapshot, in percentage.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withProgress(String progress) {
         this.progress = progress;
@@ -321,7 +321,7 @@ public class Snapshot  implements Serializable  {
      * @param ownerId AWS Access Key ID of the user who owns the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withOwnerId(String ownerId) {
         this.ownerId = ownerId;
@@ -355,7 +355,7 @@ public class Snapshot  implements Serializable  {
      * @param description Description of the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withDescription(String description) {
         this.description = description;
@@ -389,7 +389,7 @@ public class Snapshot  implements Serializable  {
      * @param volumeSize The size of the volume, in gigabytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withVolumeSize(Integer volumeSize) {
         this.volumeSize = volumeSize;
@@ -429,7 +429,7 @@ public class Snapshot  implements Serializable  {
      *         account ID that owns the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withOwnerAlias(String ownerAlias) {
         this.ownerAlias = ownerAlias;
@@ -445,7 +445,8 @@ public class Snapshot  implements Serializable  {
     public java.util.List<Tag> getTags() {
         
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -460,8 +461,7 @@ public class Snapshot  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -474,7 +474,7 @@ public class Snapshot  implements Serializable  {
      * @param tags A list of tags for the Snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -492,13 +492,13 @@ public class Snapshot  implements Serializable  {
      * @param tags A list of tags for the Snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
@@ -517,16 +517,16 @@ public class Snapshot  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() + ",");    	
-        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() + ",");
+        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

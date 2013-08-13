@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Disk Image Description
  */
-public class DiskImageDescription  implements Serializable  {
+public class DiskImageDescription implements Serializable {
 
     private String format;
 
@@ -54,7 +54,7 @@ public class DiskImageDescription  implements Serializable  {
      * @param format The new value for the Format property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageDescription withFormat(String format) {
         this.format = format;
@@ -88,7 +88,7 @@ public class DiskImageDescription  implements Serializable  {
      * @param size The new value for the Size property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageDescription withSize(Long size) {
         this.size = size;
@@ -122,7 +122,7 @@ public class DiskImageDescription  implements Serializable  {
      * @param importManifestUrl The new value for the ImportManifestUrl property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageDescription withImportManifestUrl(String importManifestUrl) {
         this.importManifestUrl = importManifestUrl;
@@ -156,7 +156,7 @@ public class DiskImageDescription  implements Serializable  {
      * @param checksum The new value for the Checksum property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageDescription withChecksum(String checksum) {
         this.checksum = checksum;
@@ -175,10 +175,10 @@ public class DiskImageDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");    	
-        if (getSize() != null) sb.append("Size: " + getSize() + ",");    	
-        if (getImportManifestUrl() != null) sb.append("ImportManifestUrl: " + getImportManifestUrl() + ",");    	
+        sb.append("{");
+        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");
+        if (getSize() != null) sb.append("Size: " + getSize() + ",");
+        if (getImportManifestUrl() != null) sb.append("ImportManifestUrl: " + getImportManifestUrl() + ",");
         if (getChecksum() != null) sb.append("Checksum: " + getChecksum() );
         sb.append("}");
         return sb.toString();

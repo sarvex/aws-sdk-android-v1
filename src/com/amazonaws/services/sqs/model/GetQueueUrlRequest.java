@@ -24,7 +24,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#getQueueUrl(GetQueueUrlRequest)
  */
-public class GetQueueUrlRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetQueueUrlRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the queue whose URL must be fetched.
@@ -42,6 +42,8 @@ public class GetQueueUrlRequest extends AmazonWebServiceRequest  implements Seri
      */
     public GetQueueUrlRequest() {}
     
+
+
     /**
      * Constructs a new GetQueueUrlRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -50,7 +52,7 @@ public class GetQueueUrlRequest extends AmazonWebServiceRequest  implements Seri
      * @param queueName The name of the queue whose URL must be fetched.
      */
     public GetQueueUrlRequest(String queueName) {
-        this.queueName = queueName;
+        setQueueName(queueName);
     }
 
     
@@ -81,7 +83,7 @@ public class GetQueueUrlRequest extends AmazonWebServiceRequest  implements Seri
      * @param queueName The name of the queue whose URL must be fetched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetQueueUrlRequest withQueueName(String queueName) {
         this.queueName = queueName;
@@ -115,7 +117,7 @@ public class GetQueueUrlRequest extends AmazonWebServiceRequest  implements Seri
      * @param queueOwnerAWSAccountId The AWS account number of the queue's owner.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetQueueUrlRequest withQueueOwnerAWSAccountId(String queueOwnerAWSAccountId) {
         this.queueOwnerAWSAccountId = queueOwnerAWSAccountId;
@@ -134,8 +136,8 @@ public class GetQueueUrlRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueName() != null) sb.append("QueueName: " + getQueueName() + ",");    	
+        sb.append("{");
+        if (getQueueName() != null) sb.append("QueueName: " + getQueueName() + ",");
         if (getQueueOwnerAWSAccountId() != null) sb.append("QueueOwnerAWSAccountId: " + getQueueOwnerAWSAccountId() );
         sb.append("}");
         return sb.toString();

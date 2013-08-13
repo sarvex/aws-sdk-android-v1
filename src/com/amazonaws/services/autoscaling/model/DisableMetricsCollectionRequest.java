@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#disableMetricsCollection(DisableMetricsCollectionRequest)
  */
-public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling Group.
@@ -45,7 +45,7 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      * <li><p>GroupTerminatingInstances</li> <li><p>GroupTotalInstances</li>
      * </ul>
      */
-    private java.util.List<String> metrics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> metrics;
 
     /**
      * The name or ARN of the Auto Scaling Group.
@@ -85,7 +85,7 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      * @param autoScalingGroupName The name or ARN of the Auto Scaling Group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableMetricsCollectionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
@@ -113,7 +113,8 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
     public java.util.List<String> getMetrics() {
         
         if (metrics == null) {
-            metrics = new java.util.ArrayList<String>();
+              metrics = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              metrics.setAutoConstruct(true);
         }
         return metrics;
     }
@@ -140,8 +141,7 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
             this.metrics = null;
             return;
         }
-
-        java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
         metricsCopy.addAll(metrics);
         this.metrics = metricsCopy;
     }
@@ -166,7 +166,7 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableMetricsCollectionRequest withMetrics(String... metrics) {
         if (getMetrics() == null) setMetrics(new java.util.ArrayList<String>(metrics.length));
@@ -196,13 +196,13 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableMetricsCollectionRequest withMetrics(java.util.Collection<String> metrics) {
         if (metrics == null) {
             this.metrics = null;
         } else {
-            java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
             metricsCopy.addAll(metrics);
             this.metrics = metricsCopy;
         }
@@ -221,8 +221,8 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getMetrics() != null) sb.append("Metrics: " + getMetrics() );
         sb.append("}");
         return sb.toString();

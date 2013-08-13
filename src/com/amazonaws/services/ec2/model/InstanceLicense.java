@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents an active license in use and attached to an Amazon EC2 instance.
  * </p>
  */
-public class InstanceLicense  implements Serializable  {
+public class InstanceLicense implements Serializable {
 
     /**
      * The license pool from which this license was used (ex:
@@ -60,7 +60,7 @@ public class InstanceLicense  implements Serializable  {
      *         <code>'windows'</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceLicense withPool(String pool) {
         this.pool = pool;
@@ -79,7 +79,7 @@ public class InstanceLicense  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPool() != null) sb.append("Pool: " + getPool() );
         sb.append("}");
         return sb.toString();

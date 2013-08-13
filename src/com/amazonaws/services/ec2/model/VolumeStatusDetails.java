@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Volume Status Details
  */
-public class VolumeStatusDetails  implements Serializable  {
+public class VolumeStatusDetails implements Serializable {
 
     private String name;
 
@@ -50,7 +50,7 @@ public class VolumeStatusDetails  implements Serializable  {
      * @param name The new value for the Name property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusDetails withName(String name) {
         this.name = name;
@@ -84,7 +84,7 @@ public class VolumeStatusDetails  implements Serializable  {
      * @param status The new value for the Status property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusDetails withStatus(String status) {
         this.status = status;
@@ -103,8 +103,8 @@ public class VolumeStatusDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

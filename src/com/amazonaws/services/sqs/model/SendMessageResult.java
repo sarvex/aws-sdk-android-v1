@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * 
  */
-public class SendMessageResult  implements Serializable  {
+public class SendMessageResult implements Serializable {
 
     /**
      * An MD5 digest of the non-URL-encoded message body string. This can be
@@ -84,7 +84,7 @@ public class SendMessageResult  implements Serializable  {
      *         href="http://faqs.org/rfcs/rfc1321.html">http://faqs.org/rfcs/rfc1321.html</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageResult withMD5OfMessageBody(String mD5OfMessageBody) {
         this.mD5OfMessageBody = mD5OfMessageBody;
@@ -118,7 +118,7 @@ public class SendMessageResult  implements Serializable  {
      * @param messageId The message ID of the message added to the queue.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageResult withMessageId(String messageId) {
         this.messageId = messageId;
@@ -137,8 +137,8 @@ public class SendMessageResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMD5OfMessageBody() != null) sb.append("MD5OfMessageBody: " + getMD5OfMessageBody() + ",");    	
+        sb.append("{");
+        if (getMD5OfMessageBody() != null) sb.append("MD5OfMessageBody: " + getMD5OfMessageBody() + ",");
         if (getMessageId() != null) sb.append("MessageId: " + getMessageId() );
         sb.append("}");
         return sb.toString();

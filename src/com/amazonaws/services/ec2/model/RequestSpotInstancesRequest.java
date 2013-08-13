@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.RequestSpotInstancesRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -32,7 +34,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#requestSpotInstances(RequestSpotInstancesRequest)
  */
-public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RequestSpotInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<RequestSpotInstancesRequest> {
 
     /**
      * Specifies the maximum hourly price for any Spot Instance launched to
@@ -95,6 +97,8 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      */
     public RequestSpotInstancesRequest() {}
     
+
+
     /**
      * Constructs a new RequestSpotInstancesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -104,7 +108,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      * Instance launched to fulfill the request.
      */
     public RequestSpotInstancesRequest(String spotPrice) {
-        this.spotPrice = spotPrice;
+        setSpotPrice(spotPrice);
     }
 
     
@@ -141,7 +145,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      *         fulfill the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestSpotInstancesRequest withSpotPrice(String spotPrice) {
         this.spotPrice = spotPrice;
@@ -175,7 +179,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      * @param instanceCount Specifies the maximum number of Spot Instances to launch.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestSpotInstancesRequest withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
@@ -222,7 +226,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      * @param type Specifies the Spot Instance type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SpotInstanceType
      */
@@ -257,7 +261,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      * @param type Specifies the Spot Instance type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SpotInstanceType
      */
@@ -322,7 +326,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      *         canceled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestSpotInstancesRequest withValidFrom(java.util.Date validFrom) {
         this.validFrom = validFrom;
@@ -374,7 +378,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      *         remains active until it is canceled or this date and time is reached.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestSpotInstancesRequest withValidUntil(java.util.Date validUntil) {
         this.validUntil = validUntil;
@@ -414,7 +418,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      *         that launch and terminate together.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestSpotInstancesRequest withLaunchGroup(String launchGroup) {
         this.launchGroup = launchGroup;
@@ -460,7 +464,7 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      *         Instances are launched in the same Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestSpotInstancesRequest withAvailabilityZoneGroup(String availabilityZoneGroup) {
         this.availabilityZoneGroup = availabilityZoneGroup;
@@ -494,13 +498,25 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
      * @param launchSpecification Specifies additional launch instance information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestSpotInstancesRequest withLaunchSpecification(LaunchSpecification launchSpecification) {
         this.launchSpecification = launchSpecification;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<RequestSpotInstancesRequest> getDryRunRequest() {
+        Request<RequestSpotInstancesRequest> request = new RequestSpotInstancesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -513,14 +529,14 @@ public class RequestSpotInstancesRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");    	
-        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getValidFrom() != null) sb.append("ValidFrom: " + getValidFrom() + ",");    	
-        if (getValidUntil() != null) sb.append("ValidUntil: " + getValidUntil() + ",");    	
-        if (getLaunchGroup() != null) sb.append("LaunchGroup: " + getLaunchGroup() + ",");    	
-        if (getAvailabilityZoneGroup() != null) sb.append("AvailabilityZoneGroup: " + getAvailabilityZoneGroup() + ",");    	
+        sb.append("{");
+        if (getSpotPrice() != null) sb.append("SpotPrice: " + getSpotPrice() + ",");
+        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getValidFrom() != null) sb.append("ValidFrom: " + getValidFrom() + ",");
+        if (getValidUntil() != null) sb.append("ValidUntil: " + getValidUntil() + ",");
+        if (getLaunchGroup() != null) sb.append("LaunchGroup: " + getLaunchGroup() + ",");
+        if (getAvailabilityZoneGroup() != null) sb.append("AvailabilityZoneGroup: " + getAvailabilityZoneGroup() + ",");
         if (getLaunchSpecification() != null) sb.append("LaunchSpecification: " + getLaunchSpecification() );
         sb.append("}");
         return sb.toString();

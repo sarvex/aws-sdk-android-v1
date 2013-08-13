@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Create Security Group Result
  */
-public class CreateSecurityGroupResult  implements Serializable  {
+public class CreateSecurityGroupResult implements Serializable {
 
     private String groupId;
 
@@ -48,7 +48,7 @@ public class CreateSecurityGroupResult  implements Serializable  {
      * @param groupId The new value for the GroupId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSecurityGroupResult withGroupId(String groupId) {
         this.groupId = groupId;
@@ -67,7 +67,7 @@ public class CreateSecurityGroupResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGroupId() != null) sb.append("GroupId: " + getGroupId() );
         sb.append("}");
         return sb.toString();

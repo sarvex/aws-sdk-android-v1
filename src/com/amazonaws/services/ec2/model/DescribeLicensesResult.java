@@ -19,13 +19,13 @@ import java.io.Serializable;
  * <p>
  * </p>
  */
-public class DescribeLicensesResult  implements Serializable  {
+public class DescribeLicensesResult implements Serializable {
 
     /**
      * Specifies active licenses in use and attached to an Amazon EC2
      * instance.
      */
-    private java.util.List<License> licenses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<License> licenses;
 
     /**
      * Specifies active licenses in use and attached to an Amazon EC2
@@ -37,7 +37,8 @@ public class DescribeLicensesResult  implements Serializable  {
     public java.util.List<License> getLicenses() {
         
         if (licenses == null) {
-            licenses = new java.util.ArrayList<License>();
+              licenses = new com.amazonaws.internal.ListWithAutoConstructFlag<License>();
+              licenses.setAutoConstruct(true);
         }
         return licenses;
     }
@@ -54,8 +55,7 @@ public class DescribeLicensesResult  implements Serializable  {
             this.licenses = null;
             return;
         }
-
-        java.util.List<License> licensesCopy = new java.util.ArrayList<License>(licenses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<License> licensesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<License>(licenses.size());
         licensesCopy.addAll(licenses);
         this.licenses = licensesCopy;
     }
@@ -70,7 +70,7 @@ public class DescribeLicensesResult  implements Serializable  {
      *         instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLicensesResult withLicenses(License... licenses) {
         if (getLicenses() == null) setLicenses(new java.util.ArrayList<License>(licenses.length));
@@ -90,13 +90,13 @@ public class DescribeLicensesResult  implements Serializable  {
      *         instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLicensesResult withLicenses(java.util.Collection<License> licenses) {
         if (licenses == null) {
             this.licenses = null;
         } else {
-            java.util.List<License> licensesCopy = new java.util.ArrayList<License>(licenses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<License> licensesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<License>(licenses.size());
             licensesCopy.addAll(licenses);
             this.licenses = licensesCopy;
         }
@@ -115,7 +115,7 @@ public class DescribeLicensesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getLicenses() != null) sb.append("Licenses: " + getLicenses() );
         sb.append("}");
         return sb.toString();

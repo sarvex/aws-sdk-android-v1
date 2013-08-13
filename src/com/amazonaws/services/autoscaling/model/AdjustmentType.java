@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Specifies whether the PutScalingPolicy <code>ScalingAdjustment</code> parameter is an absolute number or a percentage of the current capacity.
  * </p>
  */
-public class AdjustmentType  implements Serializable  {
+public class AdjustmentType implements Serializable {
 
     /**
      * A policy adjustment type. Valid values are
@@ -83,7 +83,7 @@ public class AdjustmentType  implements Serializable  {
      *         <code>PercentChangeInCapacity</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AdjustmentType withAdjustmentType(String adjustmentType) {
         this.adjustmentType = adjustmentType;
@@ -102,7 +102,7 @@ public class AdjustmentType  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAdjustmentType() != null) sb.append("AdjustmentType: " + getAdjustmentType() );
         sb.append("}");
         return sb.toString();

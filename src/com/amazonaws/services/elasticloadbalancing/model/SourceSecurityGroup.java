@@ -23,7 +23,7 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class SourceSecurityGroup  implements Serializable  {
+public class SourceSecurityGroup implements Serializable {
 
     /**
      * Owner of the source security group. Use this value for the
@@ -85,7 +85,7 @@ public class SourceSecurityGroup  implements Serializable  {
      *         tool.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceSecurityGroup withOwnerAlias(String ownerAlias) {
         this.ownerAlias = ownerAlias;
@@ -137,7 +137,7 @@ public class SourceSecurityGroup  implements Serializable  {
      *         tool.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceSecurityGroup withGroupName(String groupName) {
         this.groupName = groupName;
@@ -156,8 +156,8 @@ public class SourceSecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");    	
+        sb.append("{");
+        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");
         if (getGroupName() != null) sb.append("GroupName: " + getGroupName() );
         sb.append("}");
         return sb.toString();

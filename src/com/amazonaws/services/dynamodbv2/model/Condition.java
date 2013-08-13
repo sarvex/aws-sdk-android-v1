@@ -35,7 +35,7 @@ import java.io.Serializable;
  * Multiple conditions are "ANDed" together. In other words, all of the conditions must be met to be included in the output.
  * </p>
  */
-public class Condition  implements Serializable  {
+public class Condition implements Serializable {
 
     /**
      * Represents one or more values to evaluate against the supplied
@@ -51,7 +51,7 @@ public class Condition  implements Serializable  {
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note>
      */
-    private java.util.List<AttributeValue> attributeValueList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue> attributeValueList;
 
     /**
      * Represents a comparator for evaluating attributes. For example,
@@ -62,7 +62,7 @@ public class Condition  implements Serializable  {
      * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      * data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -222,8 +222,7 @@ public class Condition  implements Serializable  {
             this.attributeValueList = null;
             return;
         }
-
-        java.util.List<AttributeValue> attributeValueListCopy = new java.util.ArrayList<AttributeValue>(attributeValueList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue> attributeValueListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue>(attributeValueList.size());
         attributeValueListCopy.addAll(attributeValueList);
         this.attributeValueList = attributeValueListCopy;
     }
@@ -258,7 +257,7 @@ public class Condition  implements Serializable  {
      *         query expressions. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Condition withAttributeValueList(AttributeValue... attributeValueList) {
         if (getAttributeValueList() == null) setAttributeValueList(new java.util.ArrayList<AttributeValue>(attributeValueList.length));
@@ -298,13 +297,13 @@ public class Condition  implements Serializable  {
      *         query expressions. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Condition withAttributeValueList(java.util.Collection<AttributeValue> attributeValueList) {
         if (attributeValueList == null) {
             this.attributeValueList = null;
         } else {
-            java.util.List<AttributeValue> attributeValueListCopy = new java.util.ArrayList<AttributeValue>(attributeValueList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue> attributeValueListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue>(attributeValueList.size());
             attributeValueListCopy.addAll(attributeValueList);
             this.attributeValueList = attributeValueListCopy;
         }
@@ -321,7 +320,7 @@ public class Condition  implements Serializable  {
      * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      * data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -417,7 +416,7 @@ public class Condition  implements Serializable  {
      *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      *         data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -517,7 +516,7 @@ public class Condition  implements Serializable  {
      * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      * data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -613,7 +612,7 @@ public class Condition  implements Serializable  {
      *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      *         data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -713,7 +712,7 @@ public class Condition  implements Serializable  {
      * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      * data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -811,7 +810,7 @@ public class Condition  implements Serializable  {
      *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      *         data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -897,7 +896,7 @@ public class Condition  implements Serializable  {
      *         to <code>{"NS":["6", "2", "1"]}</code> </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ComparisonOperator
      */
@@ -916,7 +915,7 @@ public class Condition  implements Serializable  {
      * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      * data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1012,7 +1011,7 @@ public class Condition  implements Serializable  {
      *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      *         data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1112,7 +1111,7 @@ public class Condition  implements Serializable  {
      * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      * data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1210,7 +1209,7 @@ public class Condition  implements Serializable  {
      *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
      *         data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1296,7 +1295,7 @@ public class Condition  implements Serializable  {
      *         to <code>{"NS":["6", "2", "1"]}</code> </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ComparisonOperator
      */
@@ -1316,8 +1315,8 @@ public class Condition  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeValueList() != null) sb.append("AttributeValueList: " + getAttributeValueList() + ",");    	
+        sb.append("{");
+        if (getAttributeValueList() != null) sb.append("AttributeValueList: " + getAttributeValueList() + ",");
         if (getComparisonOperator() != null) sb.append("ComparisonOperator: " + getComparisonOperator() );
         sb.append("}");
         return sb.toString();

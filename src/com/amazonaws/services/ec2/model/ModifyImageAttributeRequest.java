@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ModifyImageAttributeRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifyImageAttribute(ModifyImageAttributeRequest)
  */
-public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyImageAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifyImageAttributeRequest> {
 
     /**
      * The ID of the AMI whose attribute you want to modify.
@@ -48,7 +50,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      * launch permissions for this AMI. Only valid when the launchPermission
      * attribute is being modified.
      */
-    private java.util.List<String> userIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> userIds;
 
     /**
      * The user group being added to or removed from the list of user groups
@@ -56,13 +58,13 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      * launchPermission attribute is being modified. <p> Available user
      * groups: <code>all</code>
      */
-    private java.util.List<String> userGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> userGroups;
 
     /**
      * The list of product codes being added to or removed from the specified
      * AMI. Only valid when the productCodes attribute is being modified.
      */
-    private java.util.List<String> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> productCodes;
 
     /**
      * The value of the attribute being modified. Only valid when the
@@ -83,6 +85,8 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      */
     public ModifyImageAttributeRequest() {}
     
+
+
     /**
      * Constructs a new ModifyImageAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -94,8 +98,8 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      * <code>productCodes</code>
      */
     public ModifyImageAttributeRequest(String imageId, String attribute) {
-        this.imageId = imageId;
-        this.attribute = attribute;
+        setImageId(imageId);
+        setAttribute(attribute);
     }
 
     
@@ -126,7 +130,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      * @param imageId The ID of the AMI whose attribute you want to modify.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withImageId(String imageId) {
         this.imageId = imageId;
@@ -166,7 +170,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         attributes: <code>launchPermission</code>, <code>productCodes</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withAttribute(String attribute) {
         this.attribute = attribute;
@@ -206,7 +210,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         <code>add</code>, <code>remove</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withOperationType(String operationType) {
         this.operationType = operationType;
@@ -226,7 +230,8 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     public java.util.List<String> getUserIds() {
         
         if (userIds == null) {
-            userIds = new java.util.ArrayList<String>();
+              userIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              userIds.setAutoConstruct(true);
         }
         return userIds;
     }
@@ -245,8 +250,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
             this.userIds = null;
             return;
         }
-
-        java.util.List<String> userIdsCopy = new java.util.ArrayList<String>(userIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> userIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userIds.size());
         userIdsCopy.addAll(userIds);
         this.userIds = userIdsCopy;
     }
@@ -263,7 +267,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         attribute is being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserIds(String... userIds) {
         if (getUserIds() == null) setUserIds(new java.util.ArrayList<String>(userIds.length));
@@ -285,13 +289,13 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         attribute is being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserIds(java.util.Collection<String> userIds) {
         if (userIds == null) {
             this.userIds = null;
         } else {
-            java.util.List<String> userIdsCopy = new java.util.ArrayList<String>(userIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> userIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userIds.size());
             userIdsCopy.addAll(userIds);
             this.userIds = userIdsCopy;
         }
@@ -313,7 +317,8 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     public java.util.List<String> getUserGroups() {
         
         if (userGroups == null) {
-            userGroups = new java.util.ArrayList<String>();
+              userGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              userGroups.setAutoConstruct(true);
         }
         return userGroups;
     }
@@ -334,8 +339,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
             this.userGroups = null;
             return;
         }
-
-        java.util.List<String> userGroupsCopy = new java.util.ArrayList<String>(userGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> userGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userGroups.size());
         userGroupsCopy.addAll(userGroups);
         this.userGroups = userGroupsCopy;
     }
@@ -354,7 +358,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         groups: <code>all</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserGroups(String... userGroups) {
         if (getUserGroups() == null) setUserGroups(new java.util.ArrayList<String>(userGroups.length));
@@ -378,13 +382,13 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         groups: <code>all</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserGroups(java.util.Collection<String> userGroups) {
         if (userGroups == null) {
             this.userGroups = null;
         } else {
-            java.util.List<String> userGroupsCopy = new java.util.ArrayList<String>(userGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> userGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userGroups.size());
             userGroupsCopy.addAll(userGroups);
             this.userGroups = userGroupsCopy;
         }
@@ -402,7 +406,8 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     public java.util.List<String> getProductCodes() {
         
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<String>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
@@ -419,8 +424,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
             this.productCodes = null;
             return;
         }
-
-        java.util.List<String> productCodesCopy = new java.util.ArrayList<String>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
@@ -435,7 +439,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         AMI. Only valid when the productCodes attribute is being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withProductCodes(String... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<String>(productCodes.length));
@@ -455,13 +459,13 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         AMI. Only valid when the productCodes attribute is being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withProductCodes(java.util.Collection<String> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<String> productCodesCopy = new java.util.ArrayList<String>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
@@ -501,7 +505,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      *         description attribute is being modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withValue(String value) {
         this.value = value;
@@ -535,7 +539,7 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      * @param launchPermission The new value for the LaunchPermission property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withLaunchPermission(LaunchPermissionModifications launchPermission) {
         this.launchPermission = launchPermission;
@@ -569,13 +573,25 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      * @param description String value
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withDescription(String description) {
         this.description = description;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ModifyImageAttributeRequest> getDryRunRequest() {
+        Request<ModifyImageAttributeRequest> request = new ModifyImageAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -588,15 +604,15 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");    	
-        if (getOperationType() != null) sb.append("OperationType: " + getOperationType() + ",");    	
-        if (getUserIds() != null) sb.append("UserIds: " + getUserIds() + ",");    	
-        if (getUserGroups() != null) sb.append("UserGroups: " + getUserGroups() + ",");    	
-        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
-        if (getLaunchPermission() != null) sb.append("LaunchPermission: " + getLaunchPermission() + ",");    	
+        sb.append("{");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");
+        if (getOperationType() != null) sb.append("OperationType: " + getOperationType() + ",");
+        if (getUserIds() != null) sb.append("UserIds: " + getUserIds() + ",");
+        if (getUserGroups() != null) sb.append("UserGroups: " + getUserGroups() + ",");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
+        if (getLaunchPermission() != null) sb.append("LaunchPermission: " + getLaunchPermission() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

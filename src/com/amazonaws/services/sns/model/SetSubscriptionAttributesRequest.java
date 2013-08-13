@@ -49,6 +49,8 @@ public class SetSubscriptionAttributesRequest extends AmazonWebServiceRequest  i
      */
     public SetSubscriptionAttributesRequest() {}
     
+
+
     /**
      * Constructs a new SetSubscriptionAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -61,9 +63,9 @@ public class SetSubscriptionAttributesRequest extends AmazonWebServiceRequest  i
      * @param attributeValue The new value for the attribute in JSON format.
      */
     public SetSubscriptionAttributesRequest(String subscriptionArn, String attributeName, String attributeValue) {
-        this.subscriptionArn = subscriptionArn;
-        this.attributeName = attributeName;
-        this.attributeValue = attributeValue;
+        setSubscriptionArn(subscriptionArn);
+        setAttributeName(attributeName);
+        setAttributeValue(attributeValue);
     }
 
     
@@ -193,9 +195,9 @@ public class SetSubscriptionAttributesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubscriptionArn() != null) sb.append("SubscriptionArn: " + getSubscriptionArn() + ",");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getSubscriptionArn() != null) sb.append("SubscriptionArn: " + getSubscriptionArn() + ",");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeValue() != null) sb.append("AttributeValue: " + getAttributeValue() );
         sb.append("}");
         return sb.toString();

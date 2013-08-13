@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Describes the monitoring status of an Amazon EC2 instance.
  * </p>
  */
-public class Monitoring  implements Serializable  {
+public class Monitoring implements Serializable {
 
     /**
      * The state of monitoring on an Amazon EC2 instance (ex: enabled,
@@ -60,7 +60,7 @@ public class Monitoring  implements Serializable  {
      *         disabled).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Monitoring withState(String state) {
         this.state = state;
@@ -79,7 +79,7 @@ public class Monitoring  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getState() != null) sb.append("State: " + getState() );
         sb.append("}");
         return sb.toString();

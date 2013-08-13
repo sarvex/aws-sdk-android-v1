@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Reserved Instance Limit Price
  */
-public class ReservedInstanceLimitPrice  implements Serializable  {
+public class ReservedInstanceLimitPrice implements Serializable {
 
     private Double amount;
 
@@ -50,7 +50,7 @@ public class ReservedInstanceLimitPrice  implements Serializable  {
      * @param amount The new value for the Amount property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstanceLimitPrice withAmount(Double amount) {
         this.amount = amount;
@@ -84,7 +84,7 @@ public class ReservedInstanceLimitPrice  implements Serializable  {
      * @param currencyCode The new value for the CurrencyCode property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstanceLimitPrice withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
@@ -103,8 +103,8 @@ public class ReservedInstanceLimitPrice  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAmount() != null) sb.append("Amount: " + getAmount() + ",");    	
+        sb.append("{");
+        if (getAmount() != null) sb.append("Amount: " + getAmount() + ",");
         if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() );
         sb.append("}");
         return sb.toString();

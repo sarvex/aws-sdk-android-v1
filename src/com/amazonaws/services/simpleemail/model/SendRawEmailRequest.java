@@ -42,7 +42,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#sendRawEmail(SendRawEmailRequest)
  */
-public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SendRawEmailRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity's email address. <note>If you specify the
@@ -56,7 +56,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
     /**
      * A list of destinations for the message.
      */
-    private java.util.List<String> destinations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> destinations;
 
     /**
      * The raw text of the message. The client is responsible for ensuring
@@ -77,6 +77,8 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      */
     public SendRawEmailRequest() {}
     
+
+
     /**
      * Constructs a new SendRawEmailRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -94,7 +96,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * base64-encoded, if MIME requires it.</li> </ul>
      */
     public SendRawEmailRequest(RawMessage rawMessage) {
-        this.rawMessage = rawMessage;
+        setRawMessage(rawMessage);
     }
 
     
@@ -149,7 +151,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      *         text of the message. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withSource(String source) {
         this.source = source;
@@ -165,7 +167,8 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
     public java.util.List<String> getDestinations() {
         
         if (destinations == null) {
-            destinations = new java.util.ArrayList<String>();
+              destinations = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              destinations.setAutoConstruct(true);
         }
         return destinations;
     }
@@ -180,8 +183,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
             this.destinations = null;
             return;
         }
-
-        java.util.List<String> destinationsCopy = new java.util.ArrayList<String>(destinations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> destinationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(destinations.size());
         destinationsCopy.addAll(destinations);
         this.destinations = destinationsCopy;
     }
@@ -194,7 +196,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * @param destinations A list of destinations for the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withDestinations(String... destinations) {
         if (getDestinations() == null) setDestinations(new java.util.ArrayList<String>(destinations.length));
@@ -212,13 +214,13 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * @param destinations A list of destinations for the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withDestinations(java.util.Collection<String> destinations) {
         if (destinations == null) {
             this.destinations = null;
         } else {
-            java.util.List<String> destinationsCopy = new java.util.ArrayList<String>(destinations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> destinationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(destinations.size());
             destinationsCopy.addAll(destinations);
             this.destinations = destinationsCopy;
         }
@@ -300,7 +302,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      *         base64-encoded, if MIME requires it.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withRawMessage(RawMessage rawMessage) {
         this.rawMessage = rawMessage;
@@ -319,9 +321,9 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getDestinations() != null) sb.append("Destinations: " + getDestinations() + ",");    	
+        sb.append("{");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getDestinations() != null) sb.append("Destinations: " + getDestinations() + ",");
         if (getRawMessage() != null) sb.append("RawMessage: " + getRawMessage() );
         sb.append("}");
         return sb.toString();

@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The Listener data type.
  * </p>
  */
-public class Listener  implements Serializable  {
+public class Listener implements Serializable {
 
     /**
      * Specifies the LoadBalancer transport protocol to use for routing -
@@ -75,6 +75,8 @@ public class Listener  implements Serializable  {
      */
     public Listener() {}
     
+
+
     /**
      * Constructs a new Listener object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -91,9 +93,9 @@ public class Listener  implements Serializable  {
      * the LoadBalancer.
      */
     public Listener(String protocol, Integer loadBalancerPort, Integer instancePort) {
-        this.protocol = protocol;
-        this.loadBalancerPort = loadBalancerPort;
-        this.instancePort = instancePort;
+        setProtocol(protocol);
+        setLoadBalancerPort(loadBalancerPort);
+        setInstancePort(instancePort);
     }
 
     
@@ -136,7 +138,7 @@ public class Listener  implements Serializable  {
      *         of the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Listener withProtocol(String protocol) {
         this.protocol = protocol;
@@ -176,7 +178,7 @@ public class Listener  implements Serializable  {
      *         be modified for the life of the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Listener withLoadBalancerPort(Integer loadBalancerPort) {
         this.loadBalancerPort = loadBalancerPort;
@@ -282,7 +284,7 @@ public class Listener  implements Serializable  {
      *         <code>InstanceProtocol</code> must be either HTTP or TCP. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Listener withInstanceProtocol(String instanceProtocol) {
         this.instanceProtocol = instanceProtocol;
@@ -331,7 +333,7 @@ public class Listener  implements Serializable  {
      *         property cannot be modified for the life of the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Listener withInstancePort(Integer instancePort) {
         this.instancePort = instancePort;
@@ -383,7 +385,7 @@ public class Listener  implements Serializable  {
      *         </a> API.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Listener withSSLCertificateId(String sSLCertificateId) {
         this.sSLCertificateId = sSLCertificateId;
@@ -402,11 +404,11 @@ public class Listener  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProtocol() != null) sb.append("Protocol: " + getProtocol() + ",");    	
-        if (getLoadBalancerPort() != null) sb.append("LoadBalancerPort: " + getLoadBalancerPort() + ",");    	
-        if (getInstanceProtocol() != null) sb.append("InstanceProtocol: " + getInstanceProtocol() + ",");    	
-        if (getInstancePort() != null) sb.append("InstancePort: " + getInstancePort() + ",");    	
+        sb.append("{");
+        if (getProtocol() != null) sb.append("Protocol: " + getProtocol() + ",");
+        if (getLoadBalancerPort() != null) sb.append("LoadBalancerPort: " + getLoadBalancerPort() + ",");
+        if (getInstanceProtocol() != null) sb.append("InstanceProtocol: " + getInstanceProtocol() + ",");
+        if (getInstancePort() != null) sb.append("InstancePort: " + getInstancePort() + ",");
         if (getSSLCertificateId() != null) sb.append("SSLCertificateId: " + getSSLCertificateId() );
         sb.append("}");
         return sb.toString();

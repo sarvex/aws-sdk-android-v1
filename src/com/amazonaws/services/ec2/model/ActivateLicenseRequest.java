@@ -14,6 +14,8 @@
  */
 package com.amazonaws.services.ec2.model;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ActivateLicenseRequestMarshaller;
 import java.io.Serializable;
 
 /**
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#activateLicense(ActivateLicenseRequest)
  */
-public class ActivateLicenseRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ActivateLicenseRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ActivateLicenseRequest> {
 
     /**
      * Specifies the ID for the specific license to activate against.
@@ -42,6 +44,8 @@ public class ActivateLicenseRequest extends AmazonWebServiceRequest  implements 
      */
     public ActivateLicenseRequest() {}
     
+
+
     /**
      * Constructs a new ActivateLicenseRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -53,8 +57,8 @@ public class ActivateLicenseRequest extends AmazonWebServiceRequest  implements 
      * activate.
      */
     public ActivateLicenseRequest(String licenseId, Integer capacity) {
-        this.licenseId = licenseId;
-        this.capacity = capacity;
+        setLicenseId(licenseId);
+        setCapacity(capacity);
     }
 
     
@@ -85,7 +89,7 @@ public class ActivateLicenseRequest extends AmazonWebServiceRequest  implements 
      * @param licenseId Specifies the ID for the specific license to activate against.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivateLicenseRequest withLicenseId(String licenseId) {
         this.licenseId = licenseId;
@@ -119,13 +123,25 @@ public class ActivateLicenseRequest extends AmazonWebServiceRequest  implements 
      * @param capacity Specifies the additional number of licenses to activate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivateLicenseRequest withCapacity(Integer capacity) {
         this.capacity = capacity;
         return this;
     }
     
+    
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ActivateLicenseRequest> getDryRunRequest() {
+        Request<ActivateLicenseRequest> request = new ActivateLicenseRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -138,8 +154,8 @@ public class ActivateLicenseRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLicenseId() != null) sb.append("LicenseId: " + getLicenseId() + ",");    	
+        sb.append("{");
+        if (getLicenseId() != null) sb.append("LicenseId: " + getLicenseId() + ",");
         if (getCapacity() != null) sb.append("Capacity: " + getCapacity() );
         sb.append("}");
         return sb.toString();

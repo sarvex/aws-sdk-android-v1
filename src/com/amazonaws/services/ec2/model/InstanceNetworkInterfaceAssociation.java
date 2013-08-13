@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Instance Network Interface Association
  */
-public class InstanceNetworkInterfaceAssociation  implements Serializable  {
+public class InstanceNetworkInterfaceAssociation implements Serializable {
 
     private String publicIp;
 
@@ -52,7 +52,7 @@ public class InstanceNetworkInterfaceAssociation  implements Serializable  {
      * @param publicIp The new value for the PublicIp property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAssociation withPublicIp(String publicIp) {
         this.publicIp = publicIp;
@@ -86,7 +86,7 @@ public class InstanceNetworkInterfaceAssociation  implements Serializable  {
      * @param publicDnsName The new value for the PublicDnsName property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAssociation withPublicDnsName(String publicDnsName) {
         this.publicDnsName = publicDnsName;
@@ -120,7 +120,7 @@ public class InstanceNetworkInterfaceAssociation  implements Serializable  {
      * @param ipOwnerId The new value for the IpOwnerId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceNetworkInterfaceAssociation withIpOwnerId(String ipOwnerId) {
         this.ipOwnerId = ipOwnerId;
@@ -139,9 +139,9 @@ public class InstanceNetworkInterfaceAssociation  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
-        if (getPublicDnsName() != null) sb.append("PublicDnsName: " + getPublicDnsName() + ",");    	
+        sb.append("{");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
+        if (getPublicDnsName() != null) sb.append("PublicDnsName: " + getPublicDnsName() + ",");
         if (getIpOwnerId() != null) sb.append("IpOwnerId: " + getIpOwnerId() );
         sb.append("}");
         return sb.toString();

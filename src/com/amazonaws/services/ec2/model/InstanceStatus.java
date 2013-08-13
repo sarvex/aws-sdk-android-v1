@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents the status of an Amazon EC2 instance.
  * </p>
  */
-public class InstanceStatus  implements Serializable  {
+public class InstanceStatus implements Serializable {
 
     /**
      * The ID of the Amazon EC2 instance.
@@ -35,7 +35,7 @@ public class InstanceStatus  implements Serializable  {
     /**
      * Events that affect the status of the associated Amazon EC2 instance.
      */
-    private java.util.List<InstanceStatusEvent> events;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusEvent> events;
 
     /**
      * Represents the state of an Amazon EC2 instance.
@@ -72,7 +72,7 @@ public class InstanceStatus  implements Serializable  {
      * @param instanceId The ID of the Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatus withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -106,7 +106,7 @@ public class InstanceStatus  implements Serializable  {
      * @param availabilityZone The Amazon EC2 instance's availability zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatus withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
@@ -122,7 +122,8 @@ public class InstanceStatus  implements Serializable  {
     public java.util.List<InstanceStatusEvent> getEvents() {
         
         if (events == null) {
-            events = new java.util.ArrayList<InstanceStatusEvent>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusEvent>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
@@ -137,8 +138,7 @@ public class InstanceStatus  implements Serializable  {
             this.events = null;
             return;
         }
-
-        java.util.List<InstanceStatusEvent> eventsCopy = new java.util.ArrayList<InstanceStatusEvent>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusEvent>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
@@ -151,7 +151,7 @@ public class InstanceStatus  implements Serializable  {
      * @param events Events that affect the status of the associated Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatus withEvents(InstanceStatusEvent... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<InstanceStatusEvent>(events.length));
@@ -169,13 +169,13 @@ public class InstanceStatus  implements Serializable  {
      * @param events Events that affect the status of the associated Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatus withEvents(java.util.Collection<InstanceStatusEvent> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<InstanceStatusEvent> eventsCopy = new java.util.ArrayList<InstanceStatusEvent>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusEvent>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
@@ -209,7 +209,7 @@ public class InstanceStatus  implements Serializable  {
      * @param instanceState Represents the state of an Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatus withInstanceState(InstanceState instanceState) {
         this.instanceState = instanceState;
@@ -243,7 +243,7 @@ public class InstanceStatus  implements Serializable  {
      * @param systemStatus The new value for the SystemStatus property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatus withSystemStatus(InstanceStatusSummary systemStatus) {
         this.systemStatus = systemStatus;
@@ -277,7 +277,7 @@ public class InstanceStatus  implements Serializable  {
      * @param instanceStatus The new value for the InstanceStatus property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatus withInstanceStatus(InstanceStatusSummary instanceStatus) {
         this.instanceStatus = instanceStatus;
@@ -296,12 +296,12 @@ public class InstanceStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");    	
-        if (getInstanceState() != null) sb.append("InstanceState: " + getInstanceState() + ",");    	
-        if (getSystemStatus() != null) sb.append("SystemStatus: " + getSystemStatus() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");
+        if (getInstanceState() != null) sb.append("InstanceState: " + getInstanceState() + ",");
+        if (getSystemStatus() != null) sb.append("SystemStatus: " + getSystemStatus() + ",");
         if (getInstanceStatus() != null) sb.append("InstanceStatus: " + getInstanceStatus() );
         sb.append("}");
         return sb.toString();

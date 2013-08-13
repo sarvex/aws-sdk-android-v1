@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Specifies an attribute for describing the key schema for the table and indexes.
  * </p>
  */
-public class AttributeDefinition  implements Serializable  {
+public class AttributeDefinition implements Serializable {
 
     /**
      * A name for the attribute.
@@ -38,6 +38,42 @@ public class AttributeDefinition  implements Serializable  {
      */
     private String attributeType;
 
+    /**
+     * Default constructor for a new AttributeDefinition object.  Callers should use the
+     * setter or fluent setter (with...) methods to initialize this object after creating it.
+     */
+    public AttributeDefinition() {}
+    
+
+
+    /**
+     * Constructs a new AttributeDefinition object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param attributeName A name for the attribute.
+     * @param attributeType The data type for the attribute.
+     */
+    public AttributeDefinition(String attributeName, String attributeType) {
+        setAttributeName(attributeName);
+        setAttributeType(attributeType);
+    }
+
+    
+    
+    /**
+     * Constructs a new AttributeDefinition object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param attributeName A name for the attribute.
+     * @param attributeType The data type for the attribute.
+     */
+    public AttributeDefinition(String attributeName, ScalarAttributeType attributeType) {
+        this.attributeName = attributeName;
+        this.attributeType = attributeType.toString();
+    }
+    
     /**
      * A name for the attribute.
      * <p>
@@ -73,7 +109,7 @@ public class AttributeDefinition  implements Serializable  {
      * @param attributeName A name for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeDefinition withAttributeName(String attributeName) {
         this.attributeName = attributeName;
@@ -120,7 +156,7 @@ public class AttributeDefinition  implements Serializable  {
      * @param attributeType The data type for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalarAttributeType
      */
@@ -155,7 +191,7 @@ public class AttributeDefinition  implements Serializable  {
      * @param attributeType The data type for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalarAttributeType
      */
@@ -175,8 +211,8 @@ public class AttributeDefinition  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeType() != null) sb.append("AttributeType: " + getAttributeType() );
         sb.append("}");
         return sb.toString();

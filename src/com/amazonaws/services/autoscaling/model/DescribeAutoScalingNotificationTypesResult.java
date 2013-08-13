@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The <code>AutoScalingNotificationTypes</code> data type.
  * </p>
  */
-public class DescribeAutoScalingNotificationTypesResult  implements Serializable  {
+public class DescribeAutoScalingNotificationTypesResult implements Serializable {
 
     /**
      * Notification types supported by Auto Scaling. They are:
@@ -30,7 +30,7 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
      * autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
      * autoscaling:TEST_NOTIFICATION
      */
-    private java.util.List<String> autoScalingNotificationTypes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingNotificationTypes;
 
     /**
      * Notification types supported by Auto Scaling. They are:
@@ -50,7 +50,8 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
     public java.util.List<String> getAutoScalingNotificationTypes() {
         
         if (autoScalingNotificationTypes == null) {
-            autoScalingNotificationTypes = new java.util.ArrayList<String>();
+              autoScalingNotificationTypes = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              autoScalingNotificationTypes.setAutoConstruct(true);
         }
         return autoScalingNotificationTypes;
     }
@@ -75,8 +76,7 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
             this.autoScalingNotificationTypes = null;
             return;
         }
-
-        java.util.List<String> autoScalingNotificationTypesCopy = new java.util.ArrayList<String>(autoScalingNotificationTypes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingNotificationTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingNotificationTypes.size());
         autoScalingNotificationTypesCopy.addAll(autoScalingNotificationTypes);
         this.autoScalingNotificationTypes = autoScalingNotificationTypesCopy;
     }
@@ -99,7 +99,7 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
      *         autoscaling:TEST_NOTIFICATION
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingNotificationTypesResult withAutoScalingNotificationTypes(String... autoScalingNotificationTypes) {
         if (getAutoScalingNotificationTypes() == null) setAutoScalingNotificationTypes(new java.util.ArrayList<String>(autoScalingNotificationTypes.length));
@@ -127,13 +127,13 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
      *         autoscaling:TEST_NOTIFICATION
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingNotificationTypesResult withAutoScalingNotificationTypes(java.util.Collection<String> autoScalingNotificationTypes) {
         if (autoScalingNotificationTypes == null) {
             this.autoScalingNotificationTypes = null;
         } else {
-            java.util.List<String> autoScalingNotificationTypesCopy = new java.util.ArrayList<String>(autoScalingNotificationTypes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingNotificationTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingNotificationTypes.size());
             autoScalingNotificationTypesCopy.addAll(autoScalingNotificationTypes);
             this.autoScalingNotificationTypes = autoScalingNotificationTypesCopy;
         }
@@ -152,7 +152,7 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAutoScalingNotificationTypes() != null) sb.append("AutoScalingNotificationTypes: " + getAutoScalingNotificationTypes() );
         sb.append("}");
         return sb.toString();

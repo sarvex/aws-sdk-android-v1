@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents an Amazon EC2 instance.
  * </p>
  */
-public class Instance  implements Serializable  {
+public class Instance implements Serializable {
 
     /**
      * Unique ID of the instance launched.
@@ -72,7 +72,7 @@ public class Instance  implements Serializable  {
     /**
      * Product codes attached to this instance.
      */
-    private java.util.List<ProductCode> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodes;
 
     /**
      * The instance type. For more information on instance types, please see
@@ -81,7 +81,7 @@ public class Instance  implements Serializable  {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      */
     private String instanceType;
 
@@ -160,7 +160,7 @@ public class Instance  implements Serializable  {
     /**
      * Block device mapping set.
      */
-    private java.util.List<InstanceBlockDeviceMapping> blockDeviceMappings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMapping> blockDeviceMappings;
 
     private String virtualizationType;
 
@@ -185,15 +185,15 @@ public class Instance  implements Serializable  {
     /**
      * A list of tags for the Instance.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
-    private java.util.List<GroupIdentifier> securityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> securityGroups;
 
     private Boolean sourceDestCheck;
 
     private String hypervisor;
 
-    private java.util.List<InstanceNetworkInterface> networkInterfaces;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterface> networkInterfaces;
 
     private IamInstanceProfile iamInstanceProfile;
 
@@ -225,7 +225,7 @@ public class Instance  implements Serializable  {
      * @param instanceId Unique ID of the instance launched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -259,7 +259,7 @@ public class Instance  implements Serializable  {
      * @param imageId Image ID of the AMI used to launch the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withImageId(String imageId) {
         this.imageId = imageId;
@@ -293,7 +293,7 @@ public class Instance  implements Serializable  {
      * @param state The current state of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withState(InstanceState state) {
         this.state = state;
@@ -339,7 +339,7 @@ public class Instance  implements Serializable  {
      *         until the instance enters a running state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPrivateDnsName(String privateDnsName) {
         this.privateDnsName = privateDnsName;
@@ -385,7 +385,7 @@ public class Instance  implements Serializable  {
      *         empty until the instance enters a running state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPublicDnsName(String publicDnsName) {
         this.publicDnsName = publicDnsName;
@@ -425,7 +425,7 @@ public class Instance  implements Serializable  {
      *         string.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withStateTransitionReason(String stateTransitionReason) {
         this.stateTransitionReason = stateTransitionReason;
@@ -465,7 +465,7 @@ public class Instance  implements Serializable  {
      *         displays the key pair name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withKeyName(String keyName) {
         this.keyName = keyName;
@@ -505,7 +505,7 @@ public class Instance  implements Serializable  {
      *         the launch group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withAmiLaunchIndex(Integer amiLaunchIndex) {
         this.amiLaunchIndex = amiLaunchIndex;
@@ -521,7 +521,8 @@ public class Instance  implements Serializable  {
     public java.util.List<ProductCode> getProductCodes() {
         
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<ProductCode>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
@@ -536,8 +537,7 @@ public class Instance  implements Serializable  {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
@@ -550,7 +550,7 @@ public class Instance  implements Serializable  {
      * @param productCodes Product codes attached to this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withProductCodes(ProductCode... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<ProductCode>(productCodes.length));
@@ -568,13 +568,13 @@ public class Instance  implements Serializable  {
      * @param productCodes Product codes attached to this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
@@ -589,7 +589,7 @@ public class Instance  implements Serializable  {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @return The instance type. For more information on instance types, please see
      *         the <a
@@ -609,7 +609,7 @@ public class Instance  implements Serializable  {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -631,7 +631,7 @@ public class Instance  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -639,7 +639,7 @@ public class Instance  implements Serializable  {
      *         Amazon Elastic Compute Cloud Developer Guide</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceType
      */
@@ -656,7 +656,7 @@ public class Instance  implements Serializable  {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -678,7 +678,7 @@ public class Instance  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -686,7 +686,7 @@ public class Instance  implements Serializable  {
      *         Amazon Elastic Compute Cloud Developer Guide</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceType
      */
@@ -721,7 +721,7 @@ public class Instance  implements Serializable  {
      * @param launchTime The time this instance launched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withLaunchTime(java.util.Date launchTime) {
         this.launchTime = launchTime;
@@ -755,7 +755,7 @@ public class Instance  implements Serializable  {
      * @param placement The location where this instance launched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPlacement(Placement placement) {
         this.placement = placement;
@@ -789,7 +789,7 @@ public class Instance  implements Serializable  {
      * @param kernelId Kernel associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withKernelId(String kernelId) {
         this.kernelId = kernelId;
@@ -823,7 +823,7 @@ public class Instance  implements Serializable  {
      * @param ramdiskId RAM disk associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
@@ -857,7 +857,7 @@ public class Instance  implements Serializable  {
      * @param platform Platform of the instance (e.g., Windows).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPlatform(String platform) {
         this.platform = platform;
@@ -891,7 +891,7 @@ public class Instance  implements Serializable  {
      * @param monitoring Monitoring status for this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withMonitoring(Monitoring monitoring) {
         this.monitoring = monitoring;
@@ -925,7 +925,7 @@ public class Instance  implements Serializable  {
      * @param subnetId Specifies the Amazon VPC subnet ID in which the instance is running.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSubnetId(String subnetId) {
         this.subnetId = subnetId;
@@ -959,7 +959,7 @@ public class Instance  implements Serializable  {
      * @param vpcId Specifies the Amazon VPC in which the instance is running.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withVpcId(String vpcId) {
         this.vpcId = vpcId;
@@ -999,7 +999,7 @@ public class Instance  implements Serializable  {
      *         (Amazon VPC).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
@@ -1033,7 +1033,7 @@ public class Instance  implements Serializable  {
      * @param publicIpAddress Specifies the IP address of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPublicIpAddress(String publicIpAddress) {
         this.publicIpAddress = publicIpAddress;
@@ -1067,7 +1067,7 @@ public class Instance  implements Serializable  {
      * @param stateReason The reason for the state change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withStateReason(StateReason stateReason) {
         this.stateReason = stateReason;
@@ -1101,7 +1101,7 @@ public class Instance  implements Serializable  {
      * @param architecture The architecture of this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withArchitecture(String architecture) {
         this.architecture = architecture;
@@ -1141,7 +1141,7 @@ public class Instance  implements Serializable  {
      *         instance store root device.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withRootDeviceType(String rootDeviceType) {
         this.rootDeviceType = rootDeviceType;
@@ -1175,7 +1175,7 @@ public class Instance  implements Serializable  {
      * @param rootDeviceName The root device name (e.g., <code>/dev/sda1</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withRootDeviceName(String rootDeviceName) {
         this.rootDeviceName = rootDeviceName;
@@ -1191,7 +1191,8 @@ public class Instance  implements Serializable  {
     public java.util.List<InstanceBlockDeviceMapping> getBlockDeviceMappings() {
         
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<InstanceBlockDeviceMapping>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMapping>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
@@ -1206,8 +1207,7 @@ public class Instance  implements Serializable  {
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<InstanceBlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<InstanceBlockDeviceMapping>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMapping>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
@@ -1220,7 +1220,7 @@ public class Instance  implements Serializable  {
      * @param blockDeviceMappings Block device mapping set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withBlockDeviceMappings(InstanceBlockDeviceMapping... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<InstanceBlockDeviceMapping>(blockDeviceMappings.length));
@@ -1238,13 +1238,13 @@ public class Instance  implements Serializable  {
      * @param blockDeviceMappings Block device mapping set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withBlockDeviceMappings(java.util.Collection<InstanceBlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<InstanceBlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<InstanceBlockDeviceMapping>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMapping>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
@@ -1291,7 +1291,7 @@ public class Instance  implements Serializable  {
      * @param virtualizationType The new value for the VirtualizationType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualizationType
      */
@@ -1326,7 +1326,7 @@ public class Instance  implements Serializable  {
      * @param virtualizationType The new value for the VirtualizationType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualizationType
      */
@@ -1361,7 +1361,7 @@ public class Instance  implements Serializable  {
      * @param instanceLifecycle 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceLifecycle(String instanceLifecycle) {
         this.instanceLifecycle = instanceLifecycle;
@@ -1395,7 +1395,7 @@ public class Instance  implements Serializable  {
      * @param spotInstanceRequestId 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSpotInstanceRequestId(String spotInstanceRequestId) {
         this.spotInstanceRequestId = spotInstanceRequestId;
@@ -1435,7 +1435,7 @@ public class Instance  implements Serializable  {
      *         instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withLicense(InstanceLicense license) {
         this.license = license;
@@ -1469,7 +1469,7 @@ public class Instance  implements Serializable  {
      * @param clientToken The new value for the ClientToken property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withClientToken(String clientToken) {
         this.clientToken = clientToken;
@@ -1485,7 +1485,8 @@ public class Instance  implements Serializable  {
     public java.util.List<Tag> getTags() {
         
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -1500,8 +1501,7 @@ public class Instance  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -1514,7 +1514,7 @@ public class Instance  implements Serializable  {
      * @param tags A list of tags for the Instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -1532,13 +1532,13 @@ public class Instance  implements Serializable  {
      * @param tags A list of tags for the Instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
@@ -1554,7 +1554,8 @@ public class Instance  implements Serializable  {
     public java.util.List<GroupIdentifier> getSecurityGroups() {
         
         if (securityGroups == null) {
-            securityGroups = new java.util.ArrayList<GroupIdentifier>();
+              securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>();
+              securityGroups.setAutoConstruct(true);
         }
         return securityGroups;
     }
@@ -1569,8 +1570,7 @@ public class Instance  implements Serializable  {
             this.securityGroups = null;
             return;
         }
-
-        java.util.List<GroupIdentifier> securityGroupsCopy = new java.util.ArrayList<GroupIdentifier>(securityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>(securityGroups.size());
         securityGroupsCopy.addAll(securityGroups);
         this.securityGroups = securityGroupsCopy;
     }
@@ -1583,7 +1583,7 @@ public class Instance  implements Serializable  {
      * @param securityGroups The new value for the SecurityGroups property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSecurityGroups(GroupIdentifier... securityGroups) {
         if (getSecurityGroups() == null) setSecurityGroups(new java.util.ArrayList<GroupIdentifier>(securityGroups.length));
@@ -1601,13 +1601,13 @@ public class Instance  implements Serializable  {
      * @param securityGroups The new value for the SecurityGroups property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSecurityGroups(java.util.Collection<GroupIdentifier> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
         } else {
-            java.util.List<GroupIdentifier> securityGroupsCopy = new java.util.ArrayList<GroupIdentifier>(securityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>(securityGroups.size());
             securityGroupsCopy.addAll(securityGroups);
             this.securityGroups = securityGroupsCopy;
         }
@@ -1641,7 +1641,7 @@ public class Instance  implements Serializable  {
      * @param sourceDestCheck The new value for the SourceDestCheck property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSourceDestCheck(Boolean sourceDestCheck) {
         this.sourceDestCheck = sourceDestCheck;
@@ -1697,7 +1697,7 @@ public class Instance  implements Serializable  {
      * @param hypervisor The new value for the Hypervisor property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HypervisorType
      */
@@ -1732,7 +1732,7 @@ public class Instance  implements Serializable  {
      * @param hypervisor The new value for the Hypervisor property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HypervisorType
      */
@@ -1749,7 +1749,8 @@ public class Instance  implements Serializable  {
     public java.util.List<InstanceNetworkInterface> getNetworkInterfaces() {
         
         if (networkInterfaces == null) {
-            networkInterfaces = new java.util.ArrayList<InstanceNetworkInterface>();
+              networkInterfaces = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterface>();
+              networkInterfaces.setAutoConstruct(true);
         }
         return networkInterfaces;
     }
@@ -1764,8 +1765,7 @@ public class Instance  implements Serializable  {
             this.networkInterfaces = null;
             return;
         }
-
-        java.util.List<InstanceNetworkInterface> networkInterfacesCopy = new java.util.ArrayList<InstanceNetworkInterface>(networkInterfaces.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterface> networkInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterface>(networkInterfaces.size());
         networkInterfacesCopy.addAll(networkInterfaces);
         this.networkInterfaces = networkInterfacesCopy;
     }
@@ -1778,7 +1778,7 @@ public class Instance  implements Serializable  {
      * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withNetworkInterfaces(InstanceNetworkInterface... networkInterfaces) {
         if (getNetworkInterfaces() == null) setNetworkInterfaces(new java.util.ArrayList<InstanceNetworkInterface>(networkInterfaces.length));
@@ -1796,13 +1796,13 @@ public class Instance  implements Serializable  {
      * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withNetworkInterfaces(java.util.Collection<InstanceNetworkInterface> networkInterfaces) {
         if (networkInterfaces == null) {
             this.networkInterfaces = null;
         } else {
-            java.util.List<InstanceNetworkInterface> networkInterfacesCopy = new java.util.ArrayList<InstanceNetworkInterface>(networkInterfaces.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterface> networkInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterface>(networkInterfaces.size());
             networkInterfacesCopy.addAll(networkInterfaces);
             this.networkInterfaces = networkInterfacesCopy;
         }
@@ -1836,7 +1836,7 @@ public class Instance  implements Serializable  {
      * @param iamInstanceProfile The new value for the IamInstanceProfile property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withIamInstanceProfile(IamInstanceProfile iamInstanceProfile) {
         this.iamInstanceProfile = iamInstanceProfile;
@@ -1870,7 +1870,7 @@ public class Instance  implements Serializable  {
      * @param ebsOptimized The new value for the EbsOptimized property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withEbsOptimized(Boolean ebsOptimized) {
         this.ebsOptimized = ebsOptimized;
@@ -1898,43 +1898,43 @@ public class Instance  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getPrivateDnsName() != null) sb.append("PrivateDnsName: " + getPrivateDnsName() + ",");    	
-        if (getPublicDnsName() != null) sb.append("PublicDnsName: " + getPublicDnsName() + ",");    	
-        if (getStateTransitionReason() != null) sb.append("StateTransitionReason: " + getStateTransitionReason() + ",");    	
-        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");    	
-        if (getAmiLaunchIndex() != null) sb.append("AmiLaunchIndex: " + getAmiLaunchIndex() + ",");    	
-        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getLaunchTime() != null) sb.append("LaunchTime: " + getLaunchTime() + ",");    	
-        if (getPlacement() != null) sb.append("Placement: " + getPlacement() + ",");    	
-        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");    	
-        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");    	
-        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");    	
-        if (getMonitoring() != null) sb.append("Monitoring: " + getMonitoring() + ",");    	
-        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
-        if (getPublicIpAddress() != null) sb.append("PublicIpAddress: " + getPublicIpAddress() + ",");    	
-        if (getStateReason() != null) sb.append("StateReason: " + getStateReason() + ",");    	
-        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");    	
-        if (getRootDeviceType() != null) sb.append("RootDeviceType: " + getRootDeviceType() + ",");    	
-        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ",");    	
-        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");    	
-        if (getVirtualizationType() != null) sb.append("VirtualizationType: " + getVirtualizationType() + ",");    	
-        if (getInstanceLifecycle() != null) sb.append("InstanceLifecycle: " + getInstanceLifecycle() + ",");    	
-        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");    	
-        if (getLicense() != null) sb.append("License: " + getLicense() + ",");    	
-        if (getClientToken() != null) sb.append("ClientToken: " + getClientToken() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
-        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");    	
-        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");    	
-        if (getHypervisor() != null) sb.append("Hypervisor: " + getHypervisor() + ",");    	
-        if (getNetworkInterfaces() != null) sb.append("NetworkInterfaces: " + getNetworkInterfaces() + ",");    	
-        if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getPrivateDnsName() != null) sb.append("PrivateDnsName: " + getPrivateDnsName() + ",");
+        if (getPublicDnsName() != null) sb.append("PublicDnsName: " + getPublicDnsName() + ",");
+        if (getStateTransitionReason() != null) sb.append("StateTransitionReason: " + getStateTransitionReason() + ",");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");
+        if (getAmiLaunchIndex() != null) sb.append("AmiLaunchIndex: " + getAmiLaunchIndex() + ",");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getLaunchTime() != null) sb.append("LaunchTime: " + getLaunchTime() + ",");
+        if (getPlacement() != null) sb.append("Placement: " + getPlacement() + ",");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");
+        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");
+        if (getMonitoring() != null) sb.append("Monitoring: " + getMonitoring() + ",");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+        if (getPublicIpAddress() != null) sb.append("PublicIpAddress: " + getPublicIpAddress() + ",");
+        if (getStateReason() != null) sb.append("StateReason: " + getStateReason() + ",");
+        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");
+        if (getRootDeviceType() != null) sb.append("RootDeviceType: " + getRootDeviceType() + ",");
+        if (getRootDeviceName() != null) sb.append("RootDeviceName: " + getRootDeviceName() + ",");
+        if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() + ",");
+        if (getVirtualizationType() != null) sb.append("VirtualizationType: " + getVirtualizationType() + ",");
+        if (getInstanceLifecycle() != null) sb.append("InstanceLifecycle: " + getInstanceLifecycle() + ",");
+        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");
+        if (getLicense() != null) sb.append("License: " + getLicense() + ",");
+        if (getClientToken() != null) sb.append("ClientToken: " + getClientToken() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
+        if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");
+        if (getHypervisor() != null) sb.append("Hypervisor: " + getHypervisor() + ",");
+        if (getNetworkInterfaces() != null) sb.append("NetworkInterfaces: " + getNetworkInterfaces() + ",");
+        if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");
         if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() );
         sb.append("}");
         return sb.toString();

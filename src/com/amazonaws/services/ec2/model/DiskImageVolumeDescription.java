@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * Disk Image Volume Description
  */
-public class DiskImageVolumeDescription  implements Serializable  {
+public class DiskImageVolumeDescription implements Serializable {
 
     private Long size;
 
@@ -50,7 +50,7 @@ public class DiskImageVolumeDescription  implements Serializable  {
      * @param size The new value for the Size property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageVolumeDescription withSize(Long size) {
         this.size = size;
@@ -84,7 +84,7 @@ public class DiskImageVolumeDescription  implements Serializable  {
      * @param id The new value for the Id property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImageVolumeDescription withId(String id) {
         this.id = id;
@@ -103,8 +103,8 @@ public class DiskImageVolumeDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSize() != null) sb.append("Size: " + getSize() + ",");    	
+        sb.append("{");
+        if (getSize() != null) sb.append("Size: " + getSize() + ",");
         if (getId() != null) sb.append("Id: " + getId() );
         sb.append("}");
         return sb.toString();

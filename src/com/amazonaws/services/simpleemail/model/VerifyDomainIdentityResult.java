@@ -20,7 +20,7 @@ import java.io.Serializable;
  * Represents a token used for domain ownership verification.
  * </p>
  */
-public class VerifyDomainIdentityResult  implements Serializable  {
+public class VerifyDomainIdentityResult implements Serializable {
 
     /**
      * A TXT record that must be placed in the DNS settings for the domain,
@@ -60,7 +60,7 @@ public class VerifyDomainIdentityResult  implements Serializable  {
      *         in order to complete domain verification.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyDomainIdentityResult withVerificationToken(String verificationToken) {
         this.verificationToken = verificationToken;
@@ -79,7 +79,7 @@ public class VerifyDomainIdentityResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVerificationToken() != null) sb.append("VerificationToken: " + getVerificationToken() );
         sb.append("}");
         return sb.toString();

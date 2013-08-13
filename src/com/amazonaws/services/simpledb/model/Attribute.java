@@ -19,7 +19,7 @@ import java.io.Serializable;
  * <p>
  * </p>
  */
-public class Attribute  implements Serializable  {
+public class Attribute implements Serializable {
 
     /**
      * The name of the attribute.
@@ -47,6 +47,8 @@ public class Attribute  implements Serializable  {
      */
     public Attribute() {}
     
+
+
     /**
      * Constructs a new Attribute object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +58,8 @@ public class Attribute  implements Serializable  {
      * @param value The value of the attribute.
      */
     public Attribute(String name, String value) {
-        this.name = name;
-        this.value = value;
+        setName(name);
+        setValue(value);
     }
 
     
@@ -88,7 +90,7 @@ public class Attribute  implements Serializable  {
      * @param name The name of the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withName(String name) {
         this.name = name;
@@ -122,7 +124,7 @@ public class Attribute  implements Serializable  {
      * @param alternateNameEncoding 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withAlternateNameEncoding(String alternateNameEncoding) {
         this.alternateNameEncoding = alternateNameEncoding;
@@ -156,7 +158,7 @@ public class Attribute  implements Serializable  {
      * @param value The value of the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withValue(String value) {
         this.value = value;
@@ -190,7 +192,7 @@ public class Attribute  implements Serializable  {
      * @param alternateValueEncoding 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withAlternateValueEncoding(String alternateValueEncoding) {
         this.alternateValueEncoding = alternateValueEncoding;
@@ -209,10 +211,10 @@ public class Attribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getAlternateNameEncoding() != null) sb.append("AlternateNameEncoding: " + getAlternateNameEncoding() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getAlternateNameEncoding() != null) sb.append("AlternateNameEncoding: " + getAlternateNameEncoding() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (getAlternateValueEncoding() != null) sb.append("AlternateValueEncoding: " + getAlternateValueEncoding() );
         sb.append("}");
         return sb.toString();

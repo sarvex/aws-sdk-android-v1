@@ -20,7 +20,7 @@ import java.io.Serializable;
  * The InstanceState data type.
  * </p>
  */
-public class InstanceState  implements Serializable  {
+public class InstanceState implements Serializable {
 
     /**
      * Provides an EC2 instance ID.
@@ -76,7 +76,7 @@ public class InstanceState  implements Serializable  {
      * @param instanceId Provides an EC2 instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceState withInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -110,7 +110,7 @@ public class InstanceState  implements Serializable  {
      * @param state Specifies the current status of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceState withState(String state) {
         this.state = state;
@@ -156,7 +156,7 @@ public class InstanceState  implements Serializable  {
      *         or the instance behind the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceState withReasonCode(String reasonCode) {
         this.reasonCode = reasonCode;
@@ -190,7 +190,7 @@ public class InstanceState  implements Serializable  {
      * @param description Provides a description of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceState withDescription(String description) {
         this.description = description;
@@ -209,10 +209,10 @@ public class InstanceState  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getReasonCode() != null) sb.append("ReasonCode: " + getReasonCode() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getReasonCode() != null) sb.append("ReasonCode: " + getReasonCode() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

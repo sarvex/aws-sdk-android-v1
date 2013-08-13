@@ -20,12 +20,12 @@ import java.io.Serializable;
  * The result of describing an account's available Elastic IPs.
  * </p>
  */
-public class DescribeAddressesResult  implements Serializable  {
+public class DescribeAddressesResult implements Serializable {
 
     /**
      * The list of Elastic IPs.
      */
-    private java.util.List<Address> addresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Address> addresses;
 
     /**
      * The list of Elastic IPs.
@@ -35,7 +35,8 @@ public class DescribeAddressesResult  implements Serializable  {
     public java.util.List<Address> getAddresses() {
         
         if (addresses == null) {
-            addresses = new java.util.ArrayList<Address>();
+              addresses = new com.amazonaws.internal.ListWithAutoConstructFlag<Address>();
+              addresses.setAutoConstruct(true);
         }
         return addresses;
     }
@@ -50,8 +51,7 @@ public class DescribeAddressesResult  implements Serializable  {
             this.addresses = null;
             return;
         }
-
-        java.util.List<Address> addressesCopy = new java.util.ArrayList<Address>(addresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Address> addressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Address>(addresses.size());
         addressesCopy.addAll(addresses);
         this.addresses = addressesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeAddressesResult  implements Serializable  {
      * @param addresses The list of Elastic IPs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAddressesResult withAddresses(Address... addresses) {
         if (getAddresses() == null) setAddresses(new java.util.ArrayList<Address>(addresses.length));
@@ -82,13 +82,13 @@ public class DescribeAddressesResult  implements Serializable  {
      * @param addresses The list of Elastic IPs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAddressesResult withAddresses(java.util.Collection<Address> addresses) {
         if (addresses == null) {
             this.addresses = null;
         } else {
-            java.util.List<Address> addressesCopy = new java.util.ArrayList<Address>(addresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Address> addressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Address>(addresses.size());
             addressesCopy.addAll(addresses);
             this.addresses = addressesCopy;
         }
@@ -107,7 +107,7 @@ public class DescribeAddressesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAddresses() != null) sb.append("Addresses: " + getAddresses() );
         sb.append("}");
         return sb.toString();

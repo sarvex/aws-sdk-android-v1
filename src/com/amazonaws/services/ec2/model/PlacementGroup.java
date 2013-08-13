@@ -21,7 +21,7 @@ import java.io.Serializable;
  * physically located close enough to support HPC features, such as higher IO network connections between instances in the group.
  * </p>
  */
-public class PlacementGroup  implements Serializable  {
+public class PlacementGroup implements Serializable {
 
     /**
      * The name of this <code>PlacementGroup</code>.
@@ -51,6 +51,8 @@ public class PlacementGroup  implements Serializable  {
      */
     public PlacementGroup() {}
     
+
+
     /**
      * Constructs a new PlacementGroup object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -59,7 +61,7 @@ public class PlacementGroup  implements Serializable  {
      * @param groupName The name of this <code>PlacementGroup</code>.
      */
     public PlacementGroup(String groupName) {
-        this.groupName = groupName;
+        setGroupName(groupName);
     }
 
     
@@ -90,7 +92,7 @@ public class PlacementGroup  implements Serializable  {
      * @param groupName The name of this <code>PlacementGroup</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PlacementGroup withGroupName(String groupName) {
         this.groupName = groupName;
@@ -143,7 +145,7 @@ public class PlacementGroup  implements Serializable  {
      *         <code>PlacementGroup</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementStrategy
      */
@@ -182,7 +184,7 @@ public class PlacementGroup  implements Serializable  {
      *         <code>PlacementGroup</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementStrategy
      */
@@ -230,7 +232,7 @@ public class PlacementGroup  implements Serializable  {
      * @param state The state of this <code>PlacementGroup</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementGroupState
      */
@@ -265,7 +267,7 @@ public class PlacementGroup  implements Serializable  {
      * @param state The state of this <code>PlacementGroup</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementGroupState
      */
@@ -285,9 +287,9 @@ public class PlacementGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getStrategy() != null) sb.append("Strategy: " + getStrategy() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getStrategy() != null) sb.append("Strategy: " + getStrategy() + ",");
         if (getState() != null) sb.append("State: " + getState() );
         sb.append("}");
         return sb.toString();

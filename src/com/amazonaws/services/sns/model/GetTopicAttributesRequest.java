@@ -38,6 +38,8 @@ public class GetTopicAttributesRequest extends AmazonWebServiceRequest  implemen
      */
     public GetTopicAttributesRequest() {}
     
+
+
     /**
      * Constructs a new GetTopicAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -46,7 +48,7 @@ public class GetTopicAttributesRequest extends AmazonWebServiceRequest  implemen
      * @param topicArn The ARN of the topic whose properties you want to get.
      */
     public GetTopicAttributesRequest(String topicArn) {
-        this.topicArn = topicArn;
+        setTopicArn(topicArn);
     }
 
     
@@ -96,7 +98,7 @@ public class GetTopicAttributesRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() );
         sb.append("}");
         return sb.toString();
