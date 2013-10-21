@@ -28,34 +28,34 @@ import java.io.Serializable;
 public class DeleteEndpointRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * EndpointArn of endpoint to delete.
      */
     private String endpointArn;
 
     /**
-     * 
+     * EndpointArn of endpoint to delete.
      *
-     * @return 
+     * @return EndpointArn of endpoint to delete.
      */
     public String getEndpointArn() {
         return endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn of endpoint to delete.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn of endpoint to delete.
      */
     public void setEndpointArn(String endpointArn) {
         this.endpointArn = endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn of endpoint to delete.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn of endpoint to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

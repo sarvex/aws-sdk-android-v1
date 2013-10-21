@@ -13,7 +13,9 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
@@ -21,7 +23,7 @@ import java.io.Serializable;
  * AWS requests.
  * </p>
  */
-public class AssumeRoleWithWebIdentityResult  implements Serializable  {
+public class AssumeRoleWithWebIdentityResult implements Serializable {
 
     /**
      * The temporary security credentials, which include an access key ID, a

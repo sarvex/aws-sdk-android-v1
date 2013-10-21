@@ -16,44 +16,46 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Endpoint for mobile app and device.
+ * </p>
  */
 public class Endpoint  implements Serializable  {
 
     /**
-     * 
+     * EndpointArn for mobile app and device.
      */
     private String endpointArn;
 
     /**
-     * 
+     * Attributes for endpoint.
      */
     private java.util.Map<String,String> attributes;
 
     /**
-     * 
+     * EndpointArn for mobile app and device.
      *
-     * @return 
+     * @return EndpointArn for mobile app and device.
      */
     public String getEndpointArn() {
         return endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn for mobile app and device.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn for mobile app and device.
      */
     public void setEndpointArn(String endpointArn) {
         this.endpointArn = endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn for mobile app and device.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn for mobile app and device.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -65,9 +67,9 @@ public class Endpoint  implements Serializable  {
     
     
     /**
-     * 
+     * Attributes for endpoint.
      *
-     * @return 
+     * @return Attributes for endpoint.
      */
     public java.util.Map<String,String> getAttributes() {
         
@@ -79,20 +81,20 @@ public class Endpoint  implements Serializable  {
     }
     
     /**
-     * 
+     * Attributes for endpoint.
      *
-     * @param attributes 
+     * @param attributes Attributes for endpoint.
      */
     public void setAttributes(java.util.Map<String,String> attributes) {
         this.attributes = attributes;
     }
     
     /**
-     * 
+     * Attributes for endpoint.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributes 
+     * @param attributes Attributes for endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

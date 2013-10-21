@@ -13,11 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * Create Reserved Instances Listing Result
  */
+
+ 
 public class CreateReservedInstancesListingResult implements Serializable {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing> reservedInstancesListings;

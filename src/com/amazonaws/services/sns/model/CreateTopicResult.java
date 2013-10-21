@@ -16,7 +16,9 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response from CreateTopic action.
+ * </p>
  */
 public class CreateTopicResult  implements Serializable  {
 

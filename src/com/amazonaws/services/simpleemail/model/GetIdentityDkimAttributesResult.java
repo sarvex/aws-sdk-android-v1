@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Represents a list of all the DKIM attributes for the specified identity.
  * </p>
  */
+
+ 
 public class GetIdentityDkimAttributesResult implements Serializable {
 
     /**
@@ -84,7 +88,7 @@ public class GetIdentityDkimAttributesResult implements Serializable {
 		this.dkimAttributes.put(key, value);
 		return this;
 	}
-	
+
 	/**
 	 * Removes all the entries added into DkimAttributes.
 	 * <p>

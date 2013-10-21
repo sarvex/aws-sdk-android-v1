@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Represents a task to bundle an EC2 Windows instance into a new image.
  * </p>
  */
+
+ 
 public class BundleTask implements Serializable {
 
     /**
@@ -34,6 +38,9 @@ public class BundleTask implements Serializable {
 
     /**
      * The state of this task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      */
     private String state;
 
@@ -132,8 +139,13 @@ public class BundleTask implements Serializable {
     
     /**
      * The state of this task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      *
      * @return The state of this task.
+     *
+     * @see BundleTaskState
      */
     public String getState() {
         return state;
@@ -141,8 +153,13 @@ public class BundleTask implements Serializable {
     
     /**
      * The state of this task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      *
      * @param state The state of this task.
+     *
+     * @see BundleTaskState
      */
     public void setState(String state) {
         this.state = state;
@@ -152,17 +169,56 @@ public class BundleTask implements Serializable {
      * The state of this task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      *
      * @param state The state of this task.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
+     *
+     * @see BundleTaskState
      */
     public BundleTask withState(String state) {
         this.state = state;
         return this;
     }
     
+    
+    /**
+     * The state of this task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
+     *
+     * @param state The state of this task.
+     *
+     * @see BundleTaskState
+     */
+    public void setState(BundleTaskState state) {
+        this.state = state.toString();
+    }
+    
+    /**
+     * The state of this task.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
+     *
+     * @param state The state of this task.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see BundleTaskState
+     */
+    public BundleTask withState(BundleTaskState state) {
+        this.state = state.toString();
+        return this;
+    }
     
     /**
      * The time this task started.

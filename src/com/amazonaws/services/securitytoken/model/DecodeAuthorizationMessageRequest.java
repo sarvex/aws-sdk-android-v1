@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.securitytoken.AWSSecurityTokenService#decodeAuthorizationMessage(DecodeAuthorizationMessageRequest) DecodeAuthorizationMessage operation}.
@@ -54,7 +56,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.securitytoken.AWSSecurityTokenService#decodeAuthorizationMessage(DecodeAuthorizationMessageRequest)
  */
-public class DecodeAuthorizationMessageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DecodeAuthorizationMessageRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The encoded message that was returned with the response.

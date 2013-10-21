@@ -90,7 +90,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudWatchAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -114,7 +114,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      *                       client connects to AmazonCloudWatch
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudWatchAsyncClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());

@@ -16,24 +16,28 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response for ListEndpointsByPlatformApplication action.
+ * </p>
  */
 public class ListEndpointsByPlatformApplicationResult  implements Serializable  {
 
     /**
-     * 
+     * Endpoints returned for ListEndpointsByPlatformApplication action.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<Endpoint> endpoints;
 
     /**
-     * 
+     * NextToken string is returned when calling
+     * ListEndpointsByPlatformApplication action if additional records are
+     * available after the first page results.
      */
     private String nextToken;
 
     /**
-     * 
+     * Endpoints returned for ListEndpointsByPlatformApplication action.
      *
-     * @return 
+     * @return Endpoints returned for ListEndpointsByPlatformApplication action.
      */
     public java.util.List<Endpoint> getEndpoints() {
         
@@ -45,9 +49,9 @@ public class ListEndpointsByPlatformApplicationResult  implements Serializable  
     }
     
     /**
-     * 
+     * Endpoints returned for ListEndpointsByPlatformApplication action.
      *
-     * @param endpoints 
+     * @param endpoints Endpoints returned for ListEndpointsByPlatformApplication action.
      */
     public void setEndpoints(java.util.Collection<Endpoint> endpoints) {
         if (endpoints == null) {
@@ -60,11 +64,11 @@ public class ListEndpointsByPlatformApplicationResult  implements Serializable  
     }
     
     /**
-     * 
+     * Endpoints returned for ListEndpointsByPlatformApplication action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpoints 
+     * @param endpoints Endpoints returned for ListEndpointsByPlatformApplication action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -78,11 +82,11 @@ public class ListEndpointsByPlatformApplicationResult  implements Serializable  
     }
     
     /**
-     * 
+     * Endpoints returned for ListEndpointsByPlatformApplication action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpoints 
+     * @param endpoints Endpoints returned for ListEndpointsByPlatformApplication action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -100,29 +104,41 @@ public class ListEndpointsByPlatformApplicationResult  implements Serializable  
     }
     
     /**
-     * 
+     * NextToken string is returned when calling
+     * ListEndpointsByPlatformApplication action if additional records are
+     * available after the first page results.
      *
-     * @return 
+     * @return NextToken string is returned when calling
+     *         ListEndpointsByPlatformApplication action if additional records are
+     *         available after the first page results.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * 
+     * NextToken string is returned when calling
+     * ListEndpointsByPlatformApplication action if additional records are
+     * available after the first page results.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is returned when calling
+     *         ListEndpointsByPlatformApplication action if additional records are
+     *         available after the first page results.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * 
+     * NextToken string is returned when calling
+     * ListEndpointsByPlatformApplication action if additional records are
+     * available after the first page results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is returned when calling
+     *         ListEndpointsByPlatformApplication action if additional records are
+     *         available after the first page results.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

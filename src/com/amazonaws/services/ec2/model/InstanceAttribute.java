@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Represents an attribute of an Amazon EC2 instance.
  * </p>
  */
+
+ 
 public class InstanceAttribute implements Serializable {
 
     /**

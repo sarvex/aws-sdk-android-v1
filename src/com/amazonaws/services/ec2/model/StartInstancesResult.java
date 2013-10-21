@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The result of calling the StartInstances operation. Contains details on how the specified instances are changing state.
  * </p>
  */
+
+ 
 public class StartInstancesResult implements Serializable {
 
     /**

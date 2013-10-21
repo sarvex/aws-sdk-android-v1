@@ -13,11 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * Instance Network Interface Association
  */
+
+ 
 public class InstanceNetworkInterfaceAssociation implements Serializable {
 
     private String publicIp;

@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The result of describing the available Amazon EC2 regions.
  * </p>
  */
+
+ 
 public class DescribeRegionsResult implements Serializable {
 
     /**

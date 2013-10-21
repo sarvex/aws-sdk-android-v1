@@ -32,39 +32,48 @@ import java.io.Serializable;
 public class ListEndpointsByPlatformApplicationRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+     * action.
      */
     private String platformApplicationArn;
 
     /**
-     * 
+     * NextToken string is used when calling
+     * ListEndpointsByPlatformApplication action to retrieve additional
+     * records that are available after the first page results.
      */
     private String nextToken;
 
     /**
-     * 
+     * PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+     * action.
      *
-     * @return 
+     * @return PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+     *         action.
      */
     public String getPlatformApplicationArn() {
         return platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+     * action.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+     *         action.
      */
     public void setPlatformApplicationArn(String platformApplicationArn) {
         this.platformApplicationArn = platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+     * action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+     *         action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -76,29 +85,41 @@ public class ListEndpointsByPlatformApplicationRequest extends AmazonWebServiceR
     
     
     /**
-     * 
+     * NextToken string is used when calling
+     * ListEndpointsByPlatformApplication action to retrieve additional
+     * records that are available after the first page results.
      *
-     * @return 
+     * @return NextToken string is used when calling
+     *         ListEndpointsByPlatformApplication action to retrieve additional
+     *         records that are available after the first page results.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * 
+     * NextToken string is used when calling
+     * ListEndpointsByPlatformApplication action to retrieve additional
+     * records that are available after the first page results.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is used when calling
+     *         ListEndpointsByPlatformApplication action to retrieve additional
+     *         records that are available after the first page results.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * 
+     * NextToken string is used when calling
+     * ListEndpointsByPlatformApplication action to retrieve additional
+     * records that are available after the first page results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is used when calling
+     *         ListEndpointsByPlatformApplication action to retrieve additional
+     *         records that are available after the first page results.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

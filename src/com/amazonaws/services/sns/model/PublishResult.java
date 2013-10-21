@@ -16,7 +16,9 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response for Publish action.
+ * </p>
  */
 public class PublishResult  implements Serializable  {
 

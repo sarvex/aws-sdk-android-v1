@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Specifies how an EBS volume should be mapped as part of a block device mapping specification when launching a new instance.
  * </p>
  */
+
+ 
 public class EbsInstanceBlockDeviceSpecification implements Serializable {
 
     /**

@@ -13,11 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * Instance Export Details
  */
+
+ 
 public class InstanceExportDetails implements Serializable {
 
     private String instanceId;
@@ -62,7 +66,7 @@ public class InstanceExportDetails implements Serializable {
      * Returns the value of the TargetEnvironment property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
      * @return The value of the TargetEnvironment property for this object.
      *
@@ -76,7 +80,7 @@ public class InstanceExportDetails implements Serializable {
      * Sets the value of the TargetEnvironment property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *
@@ -92,7 +96,7 @@ public class InstanceExportDetails implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *
@@ -111,7 +115,7 @@ public class InstanceExportDetails implements Serializable {
      * Sets the value of the TargetEnvironment property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *
@@ -127,7 +131,7 @@ public class InstanceExportDetails implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
      * @param targetEnvironment The new value for the TargetEnvironment property for this object.
      *

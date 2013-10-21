@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Describes the storage destination for a BundleTask when bundling a Windows instance.
  * </p>
  */
+
+ 
 public class Storage implements Serializable {
 
     /**

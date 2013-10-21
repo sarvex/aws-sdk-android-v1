@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * AWS credentials for API authentication.
  * </p>
  */
-public class Credentials  implements Serializable  {
+public class Credentials implements Serializable {
 
     /**
      * The access key ID that identifies the temporary security credentials.

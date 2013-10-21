@@ -16,7 +16,9 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response from GetEndpointAttributes of the EndpointArn.
+ * </p>
  */
 public class GetEndpointAttributesResult  implements Serializable  {
 

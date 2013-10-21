@@ -26,6 +26,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,6 +36,9 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.event.ProgressListener;
+import com.amazonaws.event.ProgressListenerChain;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3EncryptionClient;
@@ -47,7 +52,6 @@ import com.amazonaws.services.s3.model.MultipartUpload;
 import com.amazonaws.services.s3.model.MultipartUploadListing;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.ProgressListener;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -58,7 +62,6 @@ import com.amazonaws.services.s3.transfer.internal.MultipleFileDownloadImpl;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileTransfer;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileTransferMonitor;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileUploadImpl;
-import com.amazonaws.services.s3.transfer.internal.ProgressListenerChain;
 import com.amazonaws.services.s3.transfer.internal.TransferManagerUtils;
 import com.amazonaws.services.s3.transfer.internal.TransferProgressImpl;
 import com.amazonaws.services.s3.transfer.internal.TransferProgressUpdatingListener;
@@ -124,10 +127,28 @@ public class TransferManager {
     private ThreadPoolExecutor threadPool;
 
     /** Thread used for periodicially checking transfers and updating thier state. */
-    private ScheduledExecutorService timedThreadPool = new ScheduledThreadPoolExecutor(1);
+    private ScheduledExecutorService timedThreadPool = new ScheduledThreadPoolExecutor(1, daemonThreadFactory);
 
     private static final Log log = LogFactory.getLog(TransferManager.class);
 
+
+    /**
+     * Constructs a new <code>TransferManager</code> and Amazon S3 client using
+     * the specified AWS security credentials provider.
+     * <p>
+     * <code>TransferManager</code> and client objects may pool connections and
+     * threads. Reuse <code>TransferManager</code> and client objects and share
+     * them throughout applications.
+     * <p>
+     * TransferManager and all AWS client objects are thread safe.
+     *
+     * @param credentialsProvider
+     *            The AWS security credentials provider to use when making
+     *            authenticated requests.
+     */
+    public TransferManager(AWSCredentialsProvider credentialsProvider) {
+        this(new AmazonS3Client(credentialsProvider));
+    }
 
     /**
      * Constructs a new <code>TransferManager</code> and Amazon S3 client using
@@ -243,7 +264,7 @@ public class TransferManager {
      * this can be very expensive, and should be avoided whenever possible.
      * </p>
      * <p>
-     * Use the returned <code>Upload<code> object to query the progress of the
+     * Use the returned <code>Upload</code> object to query the progress of the
      * transfer, add listeners for progress events, and wait for the upload to
      * complete.
      * </p>
@@ -265,7 +286,7 @@ public class TransferManager {
      *            including the size of the options, content type, additional
      *            custom user metadata, etc.
      *
-     * @return A new <code>Upload<code> object to use to check
+     * @return A new <code>Upload</code> object to use to check
      * 		   the state of the upload, listen for progress notifications,
      * 		   and otherwise manage the upload.
      *
@@ -324,7 +345,7 @@ public class TransferManager {
      * finished).
      * </p>
      * <p>
-     * Use the returned <code>Upload<code> object to query the progress of the
+     * Use the returned <code>Upload</code> object to query the progress of the
      * transfer, add listeners for progress events, and wait for the upload to
      * complete.
      * </p>
@@ -337,7 +358,7 @@ public class TransferManager {
      * @param putObjectRequest
      *            The request containing all the parameters for the upload.
      *
-     * @return A new <code>Upload<code> object to use to check
+     * @return A new <code>Upload</code> object to use to check
      * 		   the state of the upload, listen for progress notifications,
      * 		   and otherwise manage the upload.
      *
@@ -384,8 +405,8 @@ public class TransferManager {
             transferProgress.setTotalBytesToTransfer(TransferManagerUtils.getContentLength(putObjectRequest));
 
             ProgressListenerChain listenerChain = new ProgressListenerChain(new TransferProgressUpdatingListener(
-                    transferProgress), putObjectRequest.getProgressListener());
-            putObjectRequest.setProgressListener(listenerChain);
+                    transferProgress), putObjectRequest.getGeneralProgressListener());
+            putObjectRequest.setGeneralProgressListener(listenerChain);
 
             UploadImpl upload = new UploadImpl(description, transferProgress, listenerChain, stateListener);
 
@@ -473,8 +494,8 @@ public class TransferManager {
         // Add our own transfer progress listener
         TransferProgressImpl transferProgress = new TransferProgressImpl();
         ProgressListenerChain listenerChain = new ProgressListenerChain(new TransferProgressUpdatingListener(
-                transferProgress), getObjectRequest.getProgressListener());
-        getObjectRequest.setProgressListener(listenerChain);
+                transferProgress), getObjectRequest.getGeneralProgressListener());
+        getObjectRequest.setGeneralProgressListener(listenerChain);
         final ObjectMetadata objectMetadata = s3.getObjectMetadata(getObjectRequest.getBucketName(), getObjectRequest.getKey());
 
         final StartDownloadLock startDownloadLock = new StartDownloadLock();
@@ -503,25 +524,25 @@ public class TransferManager {
                      }
                     download.setState(TransferState.InProgress);
                     S3Object s3Object = ServiceUtils.retryableDownloadS3ObjectToFile(file, new ServiceUtils.RetryableS3DownloadTask() {
-						
-						@Override
-						public S3Object getS3ObjectStream() {
-							S3Object s3Object = s3.getObject(getObjectRequest);
-							download.setS3Object(s3Object);
-							return s3Object;
-						}
-						
-						@Override
-						public boolean needIntegrityCheck() {
-		                    // Don't perform the integrity check if the stream data is wrapped
-		                    // in a decryption stream, or if we're only looking at a range of
-		                    // the data, since otherwise the checksum won't match up.
-		                    boolean performIntegrityCheck = true;
-		                    if (getObjectRequest.getRange() != null) performIntegrityCheck = false;
-		                    if (s3 instanceof AmazonS3EncryptionClient) performIntegrityCheck = false;
-		                    return performIntegrityCheck;				
-						}
-					});
+                        
+                        @Override
+                        public S3Object getS3ObjectStream() {
+                            S3Object s3Object = s3.getObject(getObjectRequest);
+                            download.setS3Object(s3Object);
+                            return s3Object;
+                        }
+                        
+                        @Override
+                        public boolean needIntegrityCheck() {
+                            // Don't perform the integrity check if the stream data is wrapped
+                            // in a decryption stream, or if we're only looking at a range of
+                            // the data, since otherwise the checksum won't match up.
+                            boolean performIntegrityCheck = true;
+                            if (getObjectRequest.getRange() != null) performIntegrityCheck = false;
+                            if (s3 instanceof AmazonS3EncryptionClient) performIntegrityCheck = false;
+                            return performIntegrityCheck;
+                        }
+                    });
                     
 
                     if (s3Object == null) {
@@ -632,7 +653,7 @@ public class TransferManager {
             }
 
             downloads.add((DownloadImpl) download(
-                    new GetObjectRequest(summary.getBucketName(), summary.getKey()).withProgressListener(listener), f,
+                    new GetObjectRequest(summary.getBucketName(), summary.getKey()).withGeneralProgressListener(listener), f,
                     stateChangeListener));
         }
 
@@ -831,7 +852,7 @@ public class TransferManager {
         ProgressListener listener = new TransferProgressUpdatingListener(transferProgress);
 
         List<UploadImpl> uploads = new LinkedList<UploadImpl>();
-        MultipleFileUploadImpl multipleFileUpload = new MultipleFileUploadImpl("Uploading etc", transferProgress, null, virtualDirectoryKeyPrefix, bucketName, uploads);
+        MultipleFileUploadImpl multipleFileUpload = new MultipleFileUploadImpl("Uploading etc", transferProgress, (ProgressListenerChain)null, virtualDirectoryKeyPrefix, bucketName, uploads);
         multipleFileUpload.setMonitor(new MultipleFileTransferMonitor(multipleFileUpload, uploads));
 
         final AllDownloadsQueuedLock allTransfersQueuedLock = new AllDownloadsQueuedLock();
@@ -859,7 +880,7 @@ public class TransferManager {
                 }
                 
                 uploads.add((UploadImpl) upload(
-                        new PutObjectRequest(bucketName, virtualDirectoryKeyPrefix + key, f).withMetadata(metadata).withProgressListener(listener),
+                        new PutObjectRequest(bucketName, virtualDirectoryKeyPrefix + key, f).withMetadata(metadata).withGeneralProgressListener(listener),
                         stateChangeListener));
             }
         }
@@ -964,4 +985,19 @@ public class TransferManager {
     private static final String USER_AGENT = TransferManager.class.getName() + "/" + VersionInfoUtils.getVersion();
 
     private static final String DEFAULT_DELIMITER = "/";
+
+    /**
+     * There is no need for threads from timedThreadPool if there is no more running threads in current process,
+     * so we need a daemon thread factory for it.
+     */
+    private static final ThreadFactory daemonThreadFactory = new ThreadFactory() {
+        final AtomicInteger threadCount = new AtomicInteger( 0 );
+        public Thread newThread(Runnable r) {
+            int threadNumber = threadCount.incrementAndGet();
+            Thread thread = new Thread(r);
+            thread.setDaemon(true);
+            thread.setName("S3TransferManagerTimedThread-" + threadNumber);
+            return thread;
+        }
+    };
 }

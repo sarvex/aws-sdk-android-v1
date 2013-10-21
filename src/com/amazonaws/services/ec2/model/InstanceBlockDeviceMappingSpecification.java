@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Specifies how an instance's block devices should be mapped on a running instance.
  * </p>
  */
+
+ 
 public class InstanceBlockDeviceMappingSpecification implements Serializable {
 
     /**

@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Represents the DNS records that must be published in the domain name's DNS to complete DKIM setup.
  * </p>
  */
+
+ 
 public class VerifyDomainDkimResult implements Serializable {
 
     /**

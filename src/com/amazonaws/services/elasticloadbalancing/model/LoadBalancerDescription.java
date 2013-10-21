@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Contains the result of a successful invocation of DescribeLoadBalancers.
  * </p>
  */
+
+ 
 public class LoadBalancerDescription implements Serializable {
 
     /**

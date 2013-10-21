@@ -899,6 +899,32 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * The ModifyReservedInstances operation modifies the Availability Zone,
+     * instance count, instance type, or network platform (EC2-Classic or
+     * EC2-VPC) of your Reserved Instances.
+     * </p>
+     *
+     * @param modifyReservedInstancesRequest Container for the necessary
+     *           parameters to execute the ModifyReservedInstances service method on
+     *           AmazonEC2.
+     * 
+     * @return The response from the ModifyReservedInstances service method,
+     *         as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public ModifyReservedInstancesResult modifyReservedInstances(ModifyReservedInstancesRequest modifyReservedInstancesRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * Gives you information about your VPCs. You can filter the results to
      * return information only about VPCs that match criteria you specify.
      * </p>
@@ -1322,6 +1348,31 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Returns information about one or more PlacementGroup instances in a
+     * user's account.
+     * </p>
+     *
+     * @param describePlacementGroupsRequest Container for the necessary
+     *           parameters to execute the DescribePlacementGroups service method on
+     *           AmazonEC2.
+     * 
+     * @return The response from the DescribePlacementGroups service method,
+     *         as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribePlacementGroupsResult describePlacementGroups(DescribePlacementGroupsRequest describePlacementGroupsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * Gives you information about your subnets. You can filter the results
      * to return information only about subnets that match criteria you
      * specify.
@@ -1427,31 +1478,6 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public RunInstancesResult runInstances(RunInstancesRequest runInstancesRequest) 
-            throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
-     * Returns information about one or more PlacementGroup instances in a
-     * user's account.
-     * </p>
-     *
-     * @param describePlacementGroupsRequest Container for the necessary
-     *           parameters to execute the DescribePlacementGroups service method on
-     *           AmazonEC2.
-     * 
-     * @return The response from the DescribePlacementGroups service method,
-     *         as returned by AmazonEC2.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonEC2 indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public DescribePlacementGroupsResult describePlacementGroups(DescribePlacementGroupsRequest describePlacementGroupsRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -1993,6 +2019,31 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public void modifySnapshotAttribute(ModifySnapshotAttributeRequest modifySnapshotAttributeRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * The DescribeReservedInstancesModifications operation describes
+     * modifications made to Reserved Instances in your account.
+     * </p>
+     *
+     * @param describeReservedInstancesModificationsRequest Container for the
+     *           necessary parameters to execute the
+     *           DescribeReservedInstancesModifications service method on AmazonEC2.
+     * 
+     * @return The response from the DescribeReservedInstancesModifications
+     *         service method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications(DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -3044,6 +3095,26 @@ public interface AmazonEC2 {
     
     /**
      * <p>
+     * Returns information about one or more PlacementGroup instances in a
+     * user's account.
+     * </p>
+     * 
+     * @return The response from the DescribePlacementGroups service method,
+     *         as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribePlacementGroupsResult describePlacementGroups() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * <p>
      * Gives you information about your subnets. You can filter the results
      * to return information only about subnets that match criteria you
      * specify.
@@ -3074,26 +3145,6 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public DescribeSubnetsResult describeSubnets() throws AmazonServiceException, AmazonClientException;
-    
-    /**
-     * <p>
-     * Returns information about one or more PlacementGroup instances in a
-     * user's account.
-     * </p>
-     * 
-     * @return The response from the DescribePlacementGroups service method,
-     *         as returned by AmazonEC2.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonEC2 indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public DescribePlacementGroupsResult describePlacementGroups() throws AmazonServiceException, AmazonClientException;
     
     /**
      * <p>
@@ -3293,6 +3344,26 @@ public interface AmazonEC2 {
      *             either a problem with the data in the request, or a server side issue.
      */
     public DescribeTagsResult describeTags() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * <p>
+     * The DescribeReservedInstancesModifications operation describes
+     * modifications made to Reserved Instances in your account.
+     * </p>
+     * 
+     * @return The response from the DescribeReservedInstancesModifications
+     *         service method, as returned by AmazonEC2.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonEC2 indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications() throws AmazonServiceException, AmazonClientException;
     
     /**
      * <p>

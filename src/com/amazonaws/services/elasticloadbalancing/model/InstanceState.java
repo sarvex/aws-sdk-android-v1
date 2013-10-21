@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The InstanceState data type.
  * </p>
  */
+
+ 
 public class InstanceState implements Serializable {
 
     /**

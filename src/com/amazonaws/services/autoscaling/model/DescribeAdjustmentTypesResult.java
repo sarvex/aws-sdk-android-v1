@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The output of the DescribeAdjustmentTypes action.
  * </p>
  */
+
+ 
 public class DescribeAdjustmentTypesResult implements Serializable {
 
     /**

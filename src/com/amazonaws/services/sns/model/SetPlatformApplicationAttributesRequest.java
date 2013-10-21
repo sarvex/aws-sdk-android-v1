@@ -29,7 +29,7 @@ import java.io.Serializable;
 public class SetPlatformApplicationAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * PlatformApplicationArn for SetPlatformApplicationAttributes action.
      */
     private String platformApplicationArn;
 
@@ -69,29 +69,29 @@ public class SetPlatformApplicationAttributesRequest extends AmazonWebServiceReq
     private java.util.Map<String,String> attributes;
 
     /**
-     * 
+     * PlatformApplicationArn for SetPlatformApplicationAttributes action.
      *
-     * @return 
+     * @return PlatformApplicationArn for SetPlatformApplicationAttributes action.
      */
     public String getPlatformApplicationArn() {
         return platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn for SetPlatformApplicationAttributes action.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn for SetPlatformApplicationAttributes action.
      */
     public void setPlatformApplicationArn(String platformApplicationArn) {
         this.platformApplicationArn = platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn for SetPlatformApplicationAttributes action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn for SetPlatformApplicationAttributes action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

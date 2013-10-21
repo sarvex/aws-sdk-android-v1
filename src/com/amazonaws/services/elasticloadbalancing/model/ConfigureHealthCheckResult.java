@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The output for the ConfigureHealthCheck action.
  * </p>
  */
+
+ 
 public class ConfigureHealthCheckResult implements Serializable {
 
     /**

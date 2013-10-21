@@ -13,11 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * Copy Image Result
  */
+
+ 
 public class CopyImageResult implements Serializable {
 
     private String imageId;

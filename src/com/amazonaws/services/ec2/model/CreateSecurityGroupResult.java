@@ -13,11 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * Create Security Group Result
  */
+
+ 
 public class CreateSecurityGroupResult implements Serializable {
 
     private String groupId;

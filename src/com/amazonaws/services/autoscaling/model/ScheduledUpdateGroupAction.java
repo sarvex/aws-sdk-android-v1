@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * This data type stores information about a scheduled update to an Auto Scaling group.
  * </p>
  */
+
+ 
 public class ScheduledUpdateGroupAction implements Serializable {
 
     /**

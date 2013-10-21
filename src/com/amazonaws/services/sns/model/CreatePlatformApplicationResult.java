@@ -16,39 +16,41 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response from CreatePlatformApplication action.
+ * </p>
  */
 public class CreatePlatformApplicationResult  implements Serializable  {
 
     /**
-     * 
+     * PlatformApplicationArn is returned.
      */
     private String platformApplicationArn;
 
     /**
-     * 
+     * PlatformApplicationArn is returned.
      *
-     * @return 
+     * @return PlatformApplicationArn is returned.
      */
     public String getPlatformApplicationArn() {
         return platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn is returned.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn is returned.
      */
     public void setPlatformApplicationArn(String platformApplicationArn) {
         this.platformApplicationArn = platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn is returned.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn is returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

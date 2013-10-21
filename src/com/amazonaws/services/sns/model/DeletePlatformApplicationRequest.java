@@ -29,34 +29,34 @@ import java.io.Serializable;
 public class DeletePlatformApplicationRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * PlatformApplicationArn of platform application object to delete.
      */
     private String platformApplicationArn;
 
     /**
-     * 
+     * PlatformApplicationArn of platform application object to delete.
      *
-     * @return 
+     * @return PlatformApplicationArn of platform application object to delete.
      */
     public String getPlatformApplicationArn() {
         return platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn of platform application object to delete.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn of platform application object to delete.
      */
     public void setPlatformApplicationArn(String platformApplicationArn) {
         this.platformApplicationArn = platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn of platform application object to delete.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn of platform application object to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

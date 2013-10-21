@@ -13,11 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * Pricing Detail
  */
+
+ 
 public class PricingDetail implements Serializable {
 
     private Double price;

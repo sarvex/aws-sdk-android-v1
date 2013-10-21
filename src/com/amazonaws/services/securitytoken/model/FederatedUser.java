@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Identifiers for the federated user that is associated with the credentials.
  * </p>
  */
-public class FederatedUser  implements Serializable  {
+public class FederatedUser implements Serializable {
 
     /**
      * The string that identifies the federated user associated with the

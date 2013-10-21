@@ -32,34 +32,48 @@ import java.io.Serializable;
 public class ListPlatformApplicationsRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * NextToken string is used when calling ListPlatformApplications action
+     * to retrieve additional records that are available after the first page
+     * results.
      */
     private String nextToken;
 
     /**
-     * 
+     * NextToken string is used when calling ListPlatformApplications action
+     * to retrieve additional records that are available after the first page
+     * results.
      *
-     * @return 
+     * @return NextToken string is used when calling ListPlatformApplications action
+     *         to retrieve additional records that are available after the first page
+     *         results.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * 
+     * NextToken string is used when calling ListPlatformApplications action
+     * to retrieve additional records that are available after the first page
+     * results.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is used when calling ListPlatformApplications action
+     *         to retrieve additional records that are available after the first page
+     *         results.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * 
+     * NextToken string is used when calling ListPlatformApplications action
+     * to retrieve additional records that are available after the first page
+     * results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is used when calling ListPlatformApplications action
+     *         to retrieve additional records that are available after the first page
+     *         results.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

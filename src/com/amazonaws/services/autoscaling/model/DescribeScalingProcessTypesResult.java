@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The output of the DescribeScalingProcessTypes action.
  * </p>
  */
+
+ 
 public class DescribeScalingProcessTypesResult implements Serializable {
 
     /**

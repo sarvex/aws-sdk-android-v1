@@ -16,24 +16,31 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response for ListPlatformApplications action.
+ * </p>
  */
 public class ListPlatformApplicationsResult  implements Serializable  {
 
     /**
-     * 
+     * Platform applications returned when calling ListPlatformApplications
+     * action.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<PlatformApplication> platformApplications;
 
     /**
-     * 
+     * NextToken string is returned when calling ListPlatformApplications
+     * action if additional records are available after the first page
+     * results.
      */
     private String nextToken;
 
     /**
-     * 
+     * Platform applications returned when calling ListPlatformApplications
+     * action.
      *
-     * @return 
+     * @return Platform applications returned when calling ListPlatformApplications
+     *         action.
      */
     public java.util.List<PlatformApplication> getPlatformApplications() {
         
@@ -45,9 +52,11 @@ public class ListPlatformApplicationsResult  implements Serializable  {
     }
     
     /**
-     * 
+     * Platform applications returned when calling ListPlatformApplications
+     * action.
      *
-     * @param platformApplications 
+     * @param platformApplications Platform applications returned when calling ListPlatformApplications
+     *         action.
      */
     public void setPlatformApplications(java.util.Collection<PlatformApplication> platformApplications) {
         if (platformApplications == null) {
@@ -60,11 +69,13 @@ public class ListPlatformApplicationsResult  implements Serializable  {
     }
     
     /**
-     * 
+     * Platform applications returned when calling ListPlatformApplications
+     * action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplications 
+     * @param platformApplications Platform applications returned when calling ListPlatformApplications
+     *         action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -78,11 +89,13 @@ public class ListPlatformApplicationsResult  implements Serializable  {
     }
     
     /**
-     * 
+     * Platform applications returned when calling ListPlatformApplications
+     * action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplications 
+     * @param platformApplications Platform applications returned when calling ListPlatformApplications
+     *         action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -100,29 +113,41 @@ public class ListPlatformApplicationsResult  implements Serializable  {
     }
     
     /**
-     * 
+     * NextToken string is returned when calling ListPlatformApplications
+     * action if additional records are available after the first page
+     * results.
      *
-     * @return 
+     * @return NextToken string is returned when calling ListPlatformApplications
+     *         action if additional records are available after the first page
+     *         results.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * 
+     * NextToken string is returned when calling ListPlatformApplications
+     * action if additional records are available after the first page
+     * results.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is returned when calling ListPlatformApplications
+     *         action if additional records are available after the first page
+     *         results.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * 
+     * NextToken string is returned when calling ListPlatformApplications
+     * action if additional records are available after the first page
+     * results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken 
+     * @param nextToken NextToken string is returned when calling ListPlatformApplications
+     *         action if additional records are available after the first page
+     *         results.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

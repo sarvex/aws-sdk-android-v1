@@ -29,7 +29,7 @@ import java.io.Serializable;
 public class SetEndpointAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * EndpointArn used for SetEndpointAttributes action.
      */
     private String endpointArn;
 
@@ -52,29 +52,29 @@ public class SetEndpointAttributesRequest extends AmazonWebServiceRequest  imple
     private java.util.Map<String,String> attributes;
 
     /**
-     * 
+     * EndpointArn used for SetEndpointAttributes action.
      *
-     * @return 
+     * @return EndpointArn used for SetEndpointAttributes action.
      */
     public String getEndpointArn() {
         return endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn used for SetEndpointAttributes action.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn used for SetEndpointAttributes action.
      */
     public void setEndpointArn(String endpointArn) {
         this.endpointArn = endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn used for SetEndpointAttributes action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn used for SetEndpointAttributes action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

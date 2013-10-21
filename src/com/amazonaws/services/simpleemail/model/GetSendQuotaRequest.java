@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendQuota(GetSendQuotaRequest) GetSendQuota operation}.
@@ -24,6 +26,8 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendQuota(GetSendQuotaRequest)
  */
+
+ 
 public class GetSendQuotaRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

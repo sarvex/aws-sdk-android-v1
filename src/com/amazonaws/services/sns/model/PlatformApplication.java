@@ -16,44 +16,46 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Platform application object.
+ * </p>
  */
 public class PlatformApplication  implements Serializable  {
 
     /**
-     * 
+     * PlatformApplicationArn for platform application object.
      */
     private String platformApplicationArn;
 
     /**
-     * 
+     * Attributes for platform application object.
      */
     private java.util.Map<String,String> attributes;
 
     /**
-     * 
+     * PlatformApplicationArn for platform application object.
      *
-     * @return 
+     * @return PlatformApplicationArn for platform application object.
      */
     public String getPlatformApplicationArn() {
         return platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn for platform application object.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn for platform application object.
      */
     public void setPlatformApplicationArn(String platformApplicationArn) {
         this.platformApplicationArn = platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn for platform application object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn for platform application object.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 
@@ -65,9 +67,9 @@ public class PlatformApplication  implements Serializable  {
     
     
     /**
-     * 
+     * Attributes for platform application object.
      *
-     * @return 
+     * @return Attributes for platform application object.
      */
     public java.util.Map<String,String> getAttributes() {
         
@@ -79,20 +81,20 @@ public class PlatformApplication  implements Serializable  {
     }
     
     /**
-     * 
+     * Attributes for platform application object.
      *
-     * @param attributes 
+     * @param attributes Attributes for platform application object.
      */
     public void setAttributes(java.util.Map<String,String> attributes) {
         this.attributes = attributes;
     }
     
     /**
-     * 
+     * Attributes for platform application object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributes 
+     * @param attributes Attributes for platform application object.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

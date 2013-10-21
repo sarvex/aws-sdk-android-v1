@@ -29,34 +29,34 @@ import java.io.Serializable;
 public class GetEndpointAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * EndpointArn for GetEndpointAttributes input.
      */
     private String endpointArn;
 
     /**
-     * 
+     * EndpointArn for GetEndpointAttributes input.
      *
-     * @return 
+     * @return EndpointArn for GetEndpointAttributes input.
      */
     public String getEndpointArn() {
         return endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn for GetEndpointAttributes input.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn for GetEndpointAttributes input.
      */
     public void setEndpointArn(String endpointArn) {
         this.endpointArn = endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn for GetEndpointAttributes input.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn for GetEndpointAttributes input.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

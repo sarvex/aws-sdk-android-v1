@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The output of the DescribeMetricCollectionTypes action.
  * </p>
  */
+
+ 
 public class DescribeMetricCollectionTypesResult implements Serializable {
 
     /**

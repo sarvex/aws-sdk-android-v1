@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Contains the result of a successful invocation of the GetFederationToken action.
  * </p>
  */
-public class GetFederationTokenResult  implements Serializable  {
+public class GetFederationTokenResult implements Serializable {
 
     /**
      * Credentials for the service API authentication.

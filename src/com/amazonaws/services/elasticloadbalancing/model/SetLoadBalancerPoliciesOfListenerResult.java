@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * The output for the SetLoadBalancerPoliciesOfListener action.
  * </p>
  */
+
+ 
 public class SetLoadBalancerPoliciesOfListenerResult implements Serializable {
 
     /**

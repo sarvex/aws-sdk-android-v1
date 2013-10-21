@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Contains the result of a successful invocation of the GetSessionToken action.
  * </p>
  */
-public class GetSessionTokenResult  implements Serializable  {
+public class GetSessionTokenResult implements Serializable {
 
     /**
      * The session credentials for API authentication.

@@ -31,7 +31,8 @@ import java.io.Serializable;
 public class CreatePlatformEndpointRequest extends AmazonWebServiceRequest  implements Serializable  {
 
     /**
-     * 
+     * PlatformApplicationArn returned from CreatePlatformApplication is used
+     * to create a an endpoint.
      */
     private String platformApplicationArn;
 
@@ -58,29 +59,35 @@ public class CreatePlatformEndpointRequest extends AmazonWebServiceRequest  impl
     private java.util.Map<String,String> attributes;
 
     /**
-     * 
+     * PlatformApplicationArn returned from CreatePlatformApplication is used
+     * to create a an endpoint.
      *
-     * @return 
+     * @return PlatformApplicationArn returned from CreatePlatformApplication is used
+     *         to create a an endpoint.
      */
     public String getPlatformApplicationArn() {
         return platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn returned from CreatePlatformApplication is used
+     * to create a an endpoint.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn returned from CreatePlatformApplication is used
+     *         to create a an endpoint.
      */
     public void setPlatformApplicationArn(String platformApplicationArn) {
         this.platformApplicationArn = platformApplicationArn;
     }
     
     /**
-     * 
+     * PlatformApplicationArn returned from CreatePlatformApplication is used
+     * to create a an endpoint.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param platformApplicationArn 
+     * @param platformApplicationArn PlatformApplicationArn returned from CreatePlatformApplication is used
+     *         to create a an endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

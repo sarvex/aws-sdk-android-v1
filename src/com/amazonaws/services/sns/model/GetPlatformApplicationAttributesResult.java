@@ -16,7 +16,9 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response for GetPlatformApplicationAttributes action.
+ * </p>
  */
 public class GetPlatformApplicationAttributesResult  implements Serializable  {
 

@@ -16,39 +16,41 @@ package com.amazonaws.services.sns.model;
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Response from CreateEndpoint action.
+ * </p>
  */
 public class CreatePlatformEndpointResult  implements Serializable  {
 
     /**
-     * 
+     * EndpointArn returned from CreateEndpoint action.
      */
     private String endpointArn;
 
     /**
-     * 
+     * EndpointArn returned from CreateEndpoint action.
      *
-     * @return 
+     * @return EndpointArn returned from CreateEndpoint action.
      */
     public String getEndpointArn() {
         return endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn returned from CreateEndpoint action.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn returned from CreateEndpoint action.
      */
     public void setEndpointArn(String endpointArn) {
         this.endpointArn = endpointArn;
     }
     
     /**
-     * 
+     * EndpointArn returned from CreateEndpoint action.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpointArn 
+     * @param endpointArn EndpointArn returned from CreateEndpoint action.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together. 

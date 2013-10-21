@@ -13,12 +13,14 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
+
 
 /**
  * 
  */
-public class DecodeAuthorizationMessageResult  implements Serializable  {
+public class DecodeAuthorizationMessageResult implements Serializable {
 
     /**
      * An XML document that contains the decoded message.

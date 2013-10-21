@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Describes whether an identity has a bounce topic or complaint topic set, or feedback forwarding enabled.
  * </p>
  */
+
+ 
 public class GetIdentityNotificationAttributesResult implements Serializable {
 
     /**
@@ -84,7 +88,7 @@ public class GetIdentityNotificationAttributesResult implements Serializable {
 		this.notificationAttributes.put(key, value);
 		return this;
 	}
-	
+
 	/**
 	 * Removes all the entries added into NotificationAttributes.
 	 * <p>

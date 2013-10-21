@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeExportTasks(DescribeExportTasksRequest) DescribeExportTasks operation}.
@@ -22,6 +24,8 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeExportTasks(DescribeExportTasksRequest)
  */
+
+ 
 public class DescribeExportTasksRequest extends AmazonWebServiceRequest implements Serializable {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> exportTaskIds;

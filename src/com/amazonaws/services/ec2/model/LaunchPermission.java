@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Describes a permission to launch an Amazon Machine Image (AMI).
  * </p>
  */
+
+ 
 public class LaunchPermission implements Serializable {
 
     /**
@@ -30,6 +34,9 @@ public class LaunchPermission implements Serializable {
     /**
      * The AWS group of the user involved in this launch permission. <p>
      * Available groups: <code>all</code>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      */
     private String group;
 
@@ -70,9 +77,14 @@ public class LaunchPermission implements Serializable {
     /**
      * The AWS group of the user involved in this launch permission. <p>
      * Available groups: <code>all</code>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      *
      * @return The AWS group of the user involved in this launch permission. <p>
      *         Available groups: <code>all</code>
+     *
+     * @see PermissionGroup
      */
     public String getGroup() {
         return group;
@@ -81,9 +93,14 @@ public class LaunchPermission implements Serializable {
     /**
      * The AWS group of the user involved in this launch permission. <p>
      * Available groups: <code>all</code>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      *
      * @param group The AWS group of the user involved in this launch permission. <p>
      *         Available groups: <code>all</code>
+     *
+     * @see PermissionGroup
      */
     public void setGroup(String group) {
         this.group = group;
@@ -94,18 +111,61 @@ public class LaunchPermission implements Serializable {
      * Available groups: <code>all</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      *
      * @param group The AWS group of the user involved in this launch permission. <p>
      *         Available groups: <code>all</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
+     *
+     * @see PermissionGroup
      */
     public LaunchPermission withGroup(String group) {
         this.group = group;
         return this;
     }
     
+    
+    /**
+     * The AWS group of the user involved in this launch permission. <p>
+     * Available groups: <code>all</code>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
+     *
+     * @param group The AWS group of the user involved in this launch permission. <p>
+     *         Available groups: <code>all</code>
+     *
+     * @see PermissionGroup
+     */
+    public void setGroup(PermissionGroup group) {
+        this.group = group.toString();
+    }
+    
+    /**
+     * The AWS group of the user involved in this launch permission. <p>
+     * Available groups: <code>all</code>
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
+     *
+     * @param group The AWS group of the user involved in this launch permission. <p>
+     *         Available groups: <code>all</code>
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see PermissionGroup
+     */
+    public LaunchPermission withGroup(PermissionGroup group) {
+        this.group = group.toString();
+        return this;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and

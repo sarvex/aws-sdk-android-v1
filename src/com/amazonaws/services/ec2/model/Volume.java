@@ -13,13 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
+
 
 /**
  * <p>
  * Represents an Amazon <i>Elastic Block Storage</i> (EBS) volume.
  * </p>
  */
+
+ 
 public class Volume implements Serializable {
 
     /**
@@ -46,7 +50,7 @@ public class Volume implements Serializable {
      * State of this volume (e.g., creating, available).
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>creating, available, in-use, deleting, error
+     * <b>Allowed Values: </b>creating, available, in-use, deleting, deleted, error
      */
     private String state;
 
@@ -209,7 +213,7 @@ public class Volume implements Serializable {
      * State of this volume (e.g., creating, available).
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>creating, available, in-use, deleting, error
+     * <b>Allowed Values: </b>creating, available, in-use, deleting, deleted, error
      *
      * @return State of this volume (e.g., creating, available).
      *
@@ -223,7 +227,7 @@ public class Volume implements Serializable {
      * State of this volume (e.g., creating, available).
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>creating, available, in-use, deleting, error
+     * <b>Allowed Values: </b>creating, available, in-use, deleting, deleted, error
      *
      * @param state State of this volume (e.g., creating, available).
      *
@@ -239,7 +243,7 @@ public class Volume implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>creating, available, in-use, deleting, error
+     * <b>Allowed Values: </b>creating, available, in-use, deleting, deleted, error
      *
      * @param state State of this volume (e.g., creating, available).
      *
@@ -258,7 +262,7 @@ public class Volume implements Serializable {
      * State of this volume (e.g., creating, available).
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>creating, available, in-use, deleting, error
+     * <b>Allowed Values: </b>creating, available, in-use, deleting, deleted, error
      *
      * @param state State of this volume (e.g., creating, available).
      *
@@ -274,7 +278,7 @@ public class Volume implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>creating, available, in-use, deleting, error
+     * <b>Allowed Values: </b>creating, available, in-use, deleting, deleted, error
      *
      * @param state State of this volume (e.g., creating, available).
      *

@@ -13,10 +13,12 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
+import java.io.Serializable;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.RunInstancesRequestMarshaller;
-import java.io.Serializable;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#runInstances(RunInstancesRequest) RunInstances operation}.
@@ -57,6 +59,8 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#runInstances(RunInstancesRequest)
  */
+
+ 
 public class RunInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<RunInstancesRequest> {
 
     /**
@@ -93,6 +97,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * Specifies additional information to make available to the instance(s).
+     * This parameter must be passed as a Base64-encoded string.
      */
     private String userData;
 
@@ -151,6 +156,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * Specifies whether the instance's Amazon EBS volumes are stopped or
      * terminated when the instance is shut down.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>stop, terminate
      */
     private String instanceInitiatedShutdownBehavior;
 
@@ -179,6 +187,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      */
     private String additionalInfo;
 
+    /**
+     * List of network interfaces associated with the instance.
+     */
     private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterfaceSpecification> networkInterfaces;
 
     private IamInstanceProfileSpecification iamInstanceProfile;
@@ -523,8 +534,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     
     /**
      * Specifies additional information to make available to the instance(s).
+     * This parameter must be passed as a Base64-encoded string.
      *
      * @return Specifies additional information to make available to the instance(s).
+     *         This parameter must be passed as a Base64-encoded string.
      */
     public String getUserData() {
         return userData;
@@ -532,8 +545,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     
     /**
      * Specifies additional information to make available to the instance(s).
+     * This parameter must be passed as a Base64-encoded string.
      *
      * @param userData Specifies additional information to make available to the instance(s).
+     *         This parameter must be passed as a Base64-encoded string.
      */
     public void setUserData(String userData) {
         this.userData = userData;
@@ -541,10 +556,12 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     
     /**
      * Specifies additional information to make available to the instance(s).
+     * This parameter must be passed as a Base64-encoded string.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param userData Specifies additional information to make available to the instance(s).
+     *         This parameter must be passed as a Base64-encoded string.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -992,9 +1009,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * Specifies whether the instance's Amazon EBS volumes are stopped or
      * terminated when the instance is shut down.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>stop, terminate
      *
      * @return Specifies whether the instance's Amazon EBS volumes are stopped or
      *         terminated when the instance is shut down.
+     *
+     * @see ShutdownBehavior
      */
     public String getInstanceInitiatedShutdownBehavior() {
         return instanceInitiatedShutdownBehavior;
@@ -1003,9 +1025,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * Specifies whether the instance's Amazon EBS volumes are stopped or
      * terminated when the instance is shut down.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>stop, terminate
      *
      * @param instanceInitiatedShutdownBehavior Specifies whether the instance's Amazon EBS volumes are stopped or
      *         terminated when the instance is shut down.
+     *
+     * @see ShutdownBehavior
      */
     public void setInstanceInitiatedShutdownBehavior(String instanceInitiatedShutdownBehavior) {
         this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior;
@@ -1016,18 +1043,61 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * terminated when the instance is shut down.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>stop, terminate
      *
      * @param instanceInitiatedShutdownBehavior Specifies whether the instance's Amazon EBS volumes are stopped or
      *         terminated when the instance is shut down.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
+     *
+     * @see ShutdownBehavior
      */
     public RunInstancesRequest withInstanceInitiatedShutdownBehavior(String instanceInitiatedShutdownBehavior) {
         this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior;
         return this;
     }
     
+    
+    /**
+     * Specifies whether the instance's Amazon EBS volumes are stopped or
+     * terminated when the instance is shut down.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>stop, terminate
+     *
+     * @param instanceInitiatedShutdownBehavior Specifies whether the instance's Amazon EBS volumes are stopped or
+     *         terminated when the instance is shut down.
+     *
+     * @see ShutdownBehavior
+     */
+    public void setInstanceInitiatedShutdownBehavior(ShutdownBehavior instanceInitiatedShutdownBehavior) {
+        this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior.toString();
+    }
+    
+    /**
+     * Specifies whether the instance's Amazon EBS volumes are stopped or
+     * terminated when the instance is shut down.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>stop, terminate
+     *
+     * @param instanceInitiatedShutdownBehavior Specifies whether the instance's Amazon EBS volumes are stopped or
+     *         terminated when the instance is shut down.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see ShutdownBehavior
+     */
+    public RunInstancesRequest withInstanceInitiatedShutdownBehavior(ShutdownBehavior instanceInitiatedShutdownBehavior) {
+        this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior.toString();
+        return this;
+    }
     
     /**
      * Specifies active licenses in use and attached to an Amazon EC2
@@ -1196,9 +1266,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     
     
     /**
-     * Returns the value of the NetworkInterfaces property for this object.
+     * List of network interfaces associated with the instance.
      *
-     * @return The value of the NetworkInterfaces property for this object.
+     * @return List of network interfaces associated with the instance.
      */
     public java.util.List<InstanceNetworkInterfaceSpecification> getNetworkInterfaces() {
         
@@ -1210,9 +1280,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     }
     
     /**
-     * Sets the value of the NetworkInterfaces property for this object.
+     * List of network interfaces associated with the instance.
      *
-     * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
+     * @param networkInterfaces List of network interfaces associated with the instance.
      */
     public void setNetworkInterfaces(java.util.Collection<InstanceNetworkInterfaceSpecification> networkInterfaces) {
         if (networkInterfaces == null) {
@@ -1225,11 +1295,11 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     }
     
     /**
-     * Sets the value of the NetworkInterfaces property for this object.
+     * List of network interfaces associated with the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
+     * @param networkInterfaces List of network interfaces associated with the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -1243,11 +1313,11 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     }
     
     /**
-     * Sets the value of the NetworkInterfaces property for this object.
+     * List of network interfaces associated with the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
+     * @param networkInterfaces List of network interfaces associated with the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
