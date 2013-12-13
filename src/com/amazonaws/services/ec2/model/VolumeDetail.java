@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Volume Detail
  */
-
- 
 public class VolumeDetail implements Serializable {
 
     private Long size;
@@ -58,8 +56,7 @@ public class VolumeDetail implements Serializable {
         this.size = size;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

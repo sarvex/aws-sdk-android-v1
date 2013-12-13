@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents the user's current activity limits returned from a successful <code>GetSendQuota</code> request.
  * </p>
  */
-
- 
 public class GetSendQuotaResult implements Serializable {
 
     /**
@@ -80,8 +78,7 @@ public class GetSendQuotaResult implements Serializable {
         this.max24HourSend = max24HourSend;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of emails the user is allowed to send per second.
      *
@@ -114,8 +111,7 @@ public class GetSendQuotaResult implements Serializable {
         this.maxSendRate = maxSendRate;
         return this;
     }
-    
-    
+
     /**
      * The number of emails sent during the previous 24 hours.
      *
@@ -148,8 +144,7 @@ public class GetSendQuotaResult implements Serializable {
         this.sentLast24Hours = sentLast24Hours;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

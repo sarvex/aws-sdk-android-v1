@@ -16,24 +16,37 @@ package com.amazonaws.http;
 
 import java.util.List;
 
+import org.apache.http.annotation.NotThreadSafe;
+
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.Signer;
-import com.amazonaws.handlers.RequestHandler;
-import com.amazonaws.internal.CustomBackoffStrategy;
+import com.amazonaws.handlers.RequestHandler2;
 import com.amazonaws.util.AWSRequestMetrics;
+import com.amazonaws.util.AWSRequestMetricsFullSupport;
 
+@NotThreadSafe
 public class ExecutionContext {
-	private List<RequestHandler> requestHandlers;
-	private String contextUserAgent;
-	private AWSRequestMetrics awsRequestMetrics = new AWSRequestMetrics();
-	private CustomBackoffStrategy backoffStrategy;
+    private final AWSRequestMetrics awsRequestMetrics;
+    private List<RequestHandler2> requestHandler2s;
+    private String contextUserAgent;
 
-	/** Optional signer to enable the runtime layer to handle signing requests (and resigning on retries). */
-	private Signer signer;
+    /** Optional signer to enable the runtime layer to handle signing requests (and resigning on retries). */
+    private Signer signer;
 
-	/** Optional credentials to enable the runtime layer to handle signing requests (and resigning on retries). */
-	private AWSCredentials credentials;
+    /** Optional credentials to enable the runtime layer to handle signing requests (and resigning on retries). */
+    private AWSCredentials credentials;
 
+    /** For testing purposes. */
+    public ExecutionContext() {
+        this(null, false);
+    }
+
+    public ExecutionContext(List<RequestHandler2> requestHandler2s, boolean isMetricEnabled) {
+        this.requestHandler2s = requestHandler2s;
+        awsRequestMetrics = isMetricEnabled 
+                          ? new AWSRequestMetricsFullSupport()
+                          : new AWSRequestMetrics();
+    }
 
     public String getContextUserAgent() {
         return contextUserAgent;
@@ -43,94 +56,54 @@ public class ExecutionContext {
         this.contextUserAgent = contextUserAgent;
     }
 
-    public ExecutionContext() {}
-
-	public ExecutionContext(List<RequestHandler> requestHandlers) {
-		this.requestHandlers = requestHandlers;
-	}
-
-	/**
-	 * Returns a list of request handlers that should be run for a given
-	 * request's execution.
-	 *
-	 * @return The list of request handlers to run for the current request.
-	 */
-	public List<RequestHandler> getRequestHandlers() {
-		return requestHandlers;
-	}
+    public List<RequestHandler2> getRequestHandler2s() {
+        return requestHandler2s;
+    }
 
     public AWSRequestMetrics getAwsRequestMetrics() {
         return awsRequestMetrics;
     }
 
-    public void setAwsRequestMetrics(AWSRequestMetrics awsRequestMetrics) {
-        this.awsRequestMetrics = awsRequestMetrics;
+    /**
+     * Returns the optional signer used to sign the associated request.
+     *
+     * @return The optional signer used to sign the associated request.
+     */
+    public Signer getSigner() {
+        return signer;
     }
 
     /**
-	 * Returns the optional signer used to sign the associated request.
-	 *
-	 * @return The optional signer used to sign the associated request.
-	 */
-	public Signer getSigner() {
-		return signer;
-	}
-
-	/**
-	 * Sets the optional signer used to sign the associated request. If no
-	 * signer is specified as part of a request's ExecutionContext, then the
-	 * runtime layer will not attempt to sign (or resign on retries) requests.
-	 *
-	 * @param signer
-	 *            The optional signer used to sign the associated request.
-	 */
-	public void setSigner(Signer signer) {
-		this.signer = signer;
-	}
-
-	/**
-	 * Returns the optional credentials used to sign the associated request.
-	 *
-	 * @return The optional credentials used to sign the associated request.
-	 */
-	public AWSCredentials getCredentials() {
-		return credentials;
-	}
-
-	/**
-	 * Sets the optional credentials used to sign the associated request. If no
-	 * credentials are specified as part of a request's ExecutionContext, then
-	 * the runtime layer will not attempt to sign (or resign on retries)
-	 * requests.
-	 *
-	 * @param credentials
-	 *            The optional credentials used to sign the associated request.
-	 */
-	public void setCredentials(AWSCredentials credentials) {
-		this.credentials = credentials;
-	}
-
-    /**
-     * Returns the optional custom backoff strategy for controlling how long
-     * between retries on error responses. If no custom backoff strategy is
-     * specified, a default exponential backoff strategy is used.
+     * Sets the optional signer used to sign the associated request. If no
+     * signer is specified as part of a request's ExecutionContext, then the
+     * runtime layer will not attempt to sign (or resign on retries) requests.
      *
-     * @return the optional custom backoff strategy for the associated request.
+     * @param signer
+     *            The optional signer used to sign the associated request.
      */
-    public CustomBackoffStrategy getCustomBackoffStrategy() {
-        return backoffStrategy;
+    public void setSigner(Signer signer) {
+        this.signer = signer;
     }
 
     /**
-     * Sets the optional custom backoff strategy for controlling how long
-     * between retries on error responses. If no custom backoff strategy is
-     * specified, a default exponential backoff strategy is used.
+     * Returns the optional credentials used to sign the associated request.
      *
-     * @param backoffStrategy
-     *            The optional custom backoff strategy for the associated
-     *            request.
+     * @return The optional credentials used to sign the associated request.
      */
-    public void setCustomBackoffStrategy(CustomBackoffStrategy backoffStrategy) {
-        this.backoffStrategy = backoffStrategy;
+    public AWSCredentials getCredentials() {
+        return credentials;
+    }
+
+    /**
+     * Sets the optional credentials used to sign the associated request. If no
+     * credentials are specified as part of a request's ExecutionContext, then
+     * the runtime layer will not attempt to sign (or resign on retries)
+     * requests.
+     *
+     * @param credentials
+     *            The optional credentials used to sign the associated request.
+     */
+    public void setCredentials(AWSCredentials credentials) {
+        this.credentials = credentials;
     }
 }

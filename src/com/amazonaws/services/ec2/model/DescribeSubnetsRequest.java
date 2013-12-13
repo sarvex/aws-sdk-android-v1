@@ -36,8 +36,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeSubnetsRequestMarshall
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSubnets(DescribeSubnetsRequest)
  */
-
- 
 public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSubnetsRequest> {
 
     /**
@@ -59,7 +57,6 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      * @return A set of one or more subnet IDs.
      */
     public java.util.List<String> getSubnetIds() {
-        
         if (subnetIds == null) {
               subnetIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               subnetIds.setAutoConstruct(true);
@@ -121,7 +118,7 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for Subnets. For a complete
      * reference to the available filter keys for this operation, see the <a
@@ -134,7 +131,6 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -214,7 +210,7 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements S
 
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

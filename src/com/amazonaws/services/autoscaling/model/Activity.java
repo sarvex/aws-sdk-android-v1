@@ -23,8 +23,6 @@ import java.io.Serializable;
  * be a process to replace an instance, or a process to perform any other long-running operations supported by the API.
  * </p>
  */
-
- 
 public class Activity implements Serializable {
 
     /**
@@ -143,8 +141,7 @@ public class Activity implements Serializable {
         this.activityId = activityId;
         return this;
     }
-    
-    
+
     /**
      * The name of the Auto Scaling group.
      * <p>
@@ -189,8 +186,7 @@ public class Activity implements Serializable {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * Contains a friendly, more verbose description of the scaling activity.
      * <p>
@@ -232,8 +228,7 @@ public class Activity implements Serializable {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Contains the reason the activity was begun.
      * <p>
@@ -278,8 +273,7 @@ public class Activity implements Serializable {
         this.cause = cause;
         return this;
     }
-    
-    
+
     /**
      * Provides the start time of this activity.
      *
@@ -312,8 +306,7 @@ public class Activity implements Serializable {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * Provides the end time of this activity.
      *
@@ -346,8 +339,7 @@ public class Activity implements Serializable {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * Contains the current status of the activity.
      * <p>
@@ -395,8 +387,7 @@ public class Activity implements Serializable {
         this.statusCode = statusCode;
         return this;
     }
-    
-    
+
     /**
      * Contains the current status of the activity.
      * <p>
@@ -430,7 +421,7 @@ public class Activity implements Serializable {
         this.statusCode = statusCode.toString();
         return this;
     }
-    
+
     /**
      * Contains a friendly, more verbose description of the activity status.
      * <p>
@@ -475,8 +466,7 @@ public class Activity implements Serializable {
         this.statusMessage = statusMessage;
         return this;
     }
-    
-    
+
     /**
      * Specifies a value between 0 and 100 that indicates the progress of the
      * activity.
@@ -515,8 +505,7 @@ public class Activity implements Serializable {
         this.progress = progress;
         return this;
     }
-    
-    
+
     /**
      * Contains details of the scaling activity.
      * <p>
@@ -558,8 +547,7 @@ public class Activity implements Serializable {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

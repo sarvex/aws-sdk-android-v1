@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Specifies how an instance's block devices should be mapped on a running instance.
  * </p>
  */
-
- 
 public class InstanceBlockDeviceMappingSpecification implements Serializable {
 
     /**
@@ -87,8 +85,7 @@ public class InstanceBlockDeviceMappingSpecification implements Serializable {
         this.deviceName = deviceName;
         return this;
     }
-    
-    
+
     /**
      * The EBS instance block device specification describing the EBS block
      * device to map to the specified device name on a running instance.
@@ -127,8 +124,7 @@ public class InstanceBlockDeviceMappingSpecification implements Serializable {
         this.ebs = ebs;
         return this;
     }
-    
-    
+
     /**
      * The virtual device name.
      *
@@ -161,8 +157,7 @@ public class InstanceBlockDeviceMappingSpecification implements Serializable {
         this.virtualName = virtualName;
         return this;
     }
-    
-    
+
     /**
      * When set to the empty string, specifies that the device name in this
      * object should not be mapped to any real device.
@@ -201,8 +196,7 @@ public class InstanceBlockDeviceMappingSpecification implements Serializable {
         this.noDevice = noDevice;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

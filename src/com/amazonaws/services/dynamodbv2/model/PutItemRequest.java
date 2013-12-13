@@ -131,7 +131,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      */
     private String returnConsumedCapacity;
 
@@ -152,8 +152,6 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
      */
     public PutItemRequest() {}
     
-
-
     /**
      * Constructs a new PutItemRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -176,8 +174,70 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         setItem(item);
     }
 
-    
-    
+    /**
+     * Constructs a new PutItemRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param tableName The name of the table to contain the item.
+     * @param item A map of attribute name/value pairs, one for each
+     * attribute. Only the primary key attributes are required; you can
+     * optionally provide other attribute name-value pairs for the item.
+     * <p>If you specify any attributes that are part of an index key, then
+     * the data types for those attributes must match those of the schema in
+     * the table's attribute definition. <p>For more information about
+     * primary keys, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     * Key</a> in the Amazon DynamoDB Developer Guide. <p>Each element in the
+     * <i>Item</i> map is an <i>AttributeValue</i> object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the
+     * item attributes as they appeared before they were updated with the
+     * <i>PutItem</i> request. For <i>PutItem</i>, the valid values are: <ul>
+     * <li> <p><code>NONE</code> - If <i>ReturnValues</i> is not specified,
+     * or if its value is <code>NONE</code>, then nothing is returned. (This
+     * is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - If <i>PutItem</i> overwrote an attribute
+     * name-value pair, then the content of the old item is returned. </li>
+     * </ul>
+     */
+    public PutItemRequest(String tableName, java.util.Map<String,AttributeValue> item, String returnValues) {
+        setTableName(tableName);
+        setItem(item);
+        setReturnValues(returnValues);
+    }
+
+    /**
+     * Constructs a new PutItemRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param tableName The name of the table to contain the item.
+     * @param item A map of attribute name/value pairs, one for each
+     * attribute. Only the primary key attributes are required; you can
+     * optionally provide other attribute name-value pairs for the item.
+     * <p>If you specify any attributes that are part of an index key, then
+     * the data types for those attributes must match those of the schema in
+     * the table's attribute definition. <p>For more information about
+     * primary keys, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
+     * Key</a> in the Amazon DynamoDB Developer Guide. <p>Each element in the
+     * <i>Item</i> map is an <i>AttributeValue</i> object.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the
+     * item attributes as they appeared before they were updated with the
+     * <i>PutItem</i> request. For <i>PutItem</i>, the valid values are: <ul>
+     * <li> <p><code>NONE</code> - If <i>ReturnValues</i> is not specified,
+     * or if its value is <code>NONE</code>, then nothing is returned. (This
+     * is the default for <i>ReturnValues</i>.) </li> <li>
+     * <p><code>ALL_OLD</code> - If <i>PutItem</i> overwrote an attribute
+     * name-value pair, then the content of the old item is returned. </li>
+     * </ul>
+     */
+    public PutItemRequest(String tableName, java.util.Map<String,AttributeValue> item, ReturnValue returnValues) {
+        this.tableName = tableName;
+        this.item = item;
+        this.returnValues = returnValues.toString();
+    }
+
     /**
      * The name of the table to contain the item.
      * <p>
@@ -222,8 +282,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         this.tableName = tableName;
         return this;
     }
-    
-    
+
     /**
      * A map of attribute name/value pairs, one for each attribute. Only the
      * primary key attributes are required; you can optionally provide other
@@ -311,8 +370,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         setItem(item);
         return this;
     }
-    
-   	
+
     /**
      * A map of attribute name/value pairs, one for each attribute. Only the
      * primary key attributes are required; you can optionally provide other
@@ -341,7 +399,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
 		this.item.put(key, value);
 		return this;
 	}
-	
+
 	/**
 	 * Removes all the entries added into Item.
 	 * <p>
@@ -577,8 +635,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         setExpected(expected);
         return this;
     }
-    
-   	
+
     /**
      * A map of attribute/condition pairs. This is the conditional block for
      * the <i>PutItem</i> operation. All the conditions must be met for the
@@ -630,7 +687,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
 		this.expected.put(key, value);
 		return this;
 	}
-	
+
 	/**
 	 * Removes all the entries added into Expected.
 	 * <p>
@@ -730,8 +787,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         this.returnValues = returnValues;
         return this;
     }
-    
-    
+
     /**
      * Use <i>ReturnValues</i> if you want to get the item attributes as they
      * appeared before they were updated with the <i>PutItem</i> request. For
@@ -793,14 +849,14 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         this.returnValues = returnValues.toString();
         return this;
     }
-    
+
     /**
      * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      * the response; if set to <code>NONE</code> (the default),
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @return If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -818,7 +874,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -838,7 +894,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -853,15 +909,14 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         this.returnConsumedCapacity = returnConsumedCapacity;
         return this;
     }
-    
-    
+
     /**
      * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      * the response; if set to <code>NONE</code> (the default),
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -881,7 +936,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -896,7 +951,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         this.returnConsumedCapacity = returnConsumedCapacity.toString();
         return this;
     }
-    
+
     /**
      * If set to <code>SIZE</code>, statistics about item collections, if
      * any, that were modified during the operation are returned in the
@@ -962,8 +1017,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         this.returnItemCollectionMetrics = returnItemCollectionMetrics;
         return this;
     }
-    
-    
+
     /**
      * If set to <code>SIZE</code>, statistics about item collections, if
      * any, that were modified during the operation are returned in the
@@ -1009,7 +1063,7 @@ public class PutItemRequest extends AmazonWebServiceRequest implements Serializa
         this.returnItemCollectionMetrics = returnItemCollectionMetrics.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

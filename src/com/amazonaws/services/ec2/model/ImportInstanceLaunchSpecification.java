@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Import Instance Launch Specification
  */
-
- 
 public class ImportInstanceLaunchSpecification implements Serializable {
 
     private String architecture;
@@ -95,8 +93,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.architecture = architecture;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the Architecture property for this object.
      * <p>
@@ -130,14 +127,13 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.architecture = architecture.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the GroupNames property for this object.
      *
      * @return The value of the GroupNames property for this object.
      */
     public java.util.List<String> getGroupNames() {
-        
         if (groupNames == null) {
               groupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               groupNames.setAutoConstruct(true);
@@ -199,7 +195,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the AdditionalInfo property for this object.
      *
@@ -232,8 +228,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.additionalInfo = additionalInfo;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the UserData property for this object.
      *
@@ -266,13 +261,12 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.userData = userData;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the InstanceType property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @return The value of the InstanceType property for this object.
      *
@@ -286,7 +280,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
      * Sets the value of the InstanceType property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The new value for the InstanceType property for this object.
      *
@@ -302,7 +296,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The new value for the InstanceType property for this object.
      *
@@ -315,13 +309,12 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.instanceType = instanceType;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the InstanceType property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The new value for the InstanceType property for this object.
      *
@@ -337,7 +330,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The new value for the InstanceType property for this object.
      *
@@ -350,7 +343,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.instanceType = instanceType.toString();
         return this;
     }
-    
+
     /**
      * Describes where an Amazon EC2 instance is running within an Amazon EC2
      * region.
@@ -389,8 +382,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.placement = placement;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Monitoring property for this object.
      *
@@ -423,8 +415,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.monitoring = monitoring;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Monitoring property for this object.
      *
@@ -433,7 +424,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
     public Boolean getMonitoring() {
         return monitoring;
     }
-    
+
     /**
      * Returns the value of the SubnetId property for this object.
      *
@@ -466,8 +457,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the InstanceInitiatedShutdownBehavior property
      * for this object.
@@ -521,8 +511,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the InstanceInitiatedShutdownBehavior property for
      * this object.
@@ -560,7 +549,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the PrivateIpAddress property for this object.
      *
@@ -593,8 +582,7 @@ public class ImportInstanceLaunchSpecification implements Serializable {
         this.privateIpAddress = privateIpAddress;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

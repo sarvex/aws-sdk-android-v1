@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The <code>InstanceMonitoring</code> data type.
  * </p>
  */
-
- 
 public class InstanceMonitoring implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class InstanceMonitoring implements Serializable {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, instance monitoring is enabled.
      *
@@ -73,7 +70,7 @@ public class InstanceMonitoring implements Serializable {
     public Boolean getEnabled() {
         return enabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

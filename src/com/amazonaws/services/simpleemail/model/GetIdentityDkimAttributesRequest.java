@@ -43,8 +43,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getIdentityDkimAttributes(GetIdentityDkimAttributesRequest)
  */
-
- 
 public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -61,7 +59,6 @@ public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest im
      *         or both.
      */
     public java.util.List<String> getIdentities() {
-        
         if (identities == null) {
               identities = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               identities.setAutoConstruct(true);
@@ -129,7 +126,7 @@ public class GetIdentityDkimAttributesRequest extends AmazonWebServiceRequest im
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

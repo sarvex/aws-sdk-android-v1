@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The policies data type.
  * </p>
  */
-
- 
 public class Policies implements Serializable {
 
     /**
@@ -57,7 +55,6 @@ public class Policies implements Serializable {
      *         <a>CreateAppCookieStickinessPolicy</a>.
      */
     public java.util.List<AppCookieStickinessPolicy> getAppCookieStickinessPolicies() {
-        
         if (appCookieStickinessPolicies == null) {
               appCookieStickinessPolicies = new com.amazonaws.internal.ListWithAutoConstructFlag<AppCookieStickinessPolicy>();
               appCookieStickinessPolicies.setAutoConstruct(true);
@@ -125,7 +122,7 @@ public class Policies implements Serializable {
 
         return this;
     }
-    
+
     /**
      * A list of <a>LBCookieStickinessPolicy</a> objects created with
      * <a>CreateAppCookieStickinessPolicy</a>.
@@ -134,7 +131,6 @@ public class Policies implements Serializable {
      *         <a>CreateAppCookieStickinessPolicy</a>.
      */
     public java.util.List<LBCookieStickinessPolicy> getLBCookieStickinessPolicies() {
-        
         if (lBCookieStickinessPolicies == null) {
               lBCookieStickinessPolicies = new com.amazonaws.internal.ListWithAutoConstructFlag<LBCookieStickinessPolicy>();
               lBCookieStickinessPolicies.setAutoConstruct(true);
@@ -202,14 +198,13 @@ public class Policies implements Serializable {
 
         return this;
     }
-    
+
     /**
      * A list of policy names other than the stickiness policies.
      *
      * @return A list of policy names other than the stickiness policies.
      */
     public java.util.List<String> getOtherPolicies() {
-        
         if (otherPolicies == null) {
               otherPolicies = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               otherPolicies.setAutoConstruct(true);
@@ -271,7 +266,7 @@ public class Policies implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

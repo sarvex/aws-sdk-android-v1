@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents the DNS records that must be published in the domain name's DNS to complete DKIM setup.
  * </p>
  */
-
- 
 public class VerifyDomainDkimResult implements Serializable {
 
     /**
@@ -46,7 +44,6 @@ public class VerifyDomainDkimResult implements Serializable {
      *         DNS records pointing to DKIM public keys hosted by Amazon SES.
      */
     public java.util.List<String> getDkimTokens() {
-        
         if (dkimTokens == null) {
               dkimTokens = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               dkimTokens.setAutoConstruct(true);
@@ -126,7 +123,7 @@ public class VerifyDomainDkimResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

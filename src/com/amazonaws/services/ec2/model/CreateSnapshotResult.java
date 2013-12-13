@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of creating a snapshot from an EBS volume.
  * </p>
  */
-
- 
 public class CreateSnapshotResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class CreateSnapshotResult implements Serializable {
         this.snapshot = snapshot;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

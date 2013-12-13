@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Import Volume Result
  */
-
- 
 public class ImportVolumeResult implements Serializable {
 
     private ConversionTask conversionTask;
@@ -58,8 +56,7 @@ public class ImportVolumeResult implements Serializable {
         this.conversionTask = conversionTask;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

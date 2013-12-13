@@ -30,8 +30,6 @@ import com.amazonaws.services.ec2.model.transform.PurchaseReservedInstancesOffer
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#purchaseReservedInstancesOffering(PurchaseReservedInstancesOfferingRequest)
  */
-
- 
 public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<PurchaseReservedInstancesOfferingRequest> {
 
     /**
@@ -52,8 +50,6 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
      */
     public PurchaseReservedInstancesOfferingRequest() {}
     
-
-
     /**
      * Constructs a new PurchaseReservedInstancesOfferingRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -68,8 +64,6 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
         setInstanceCount(instanceCount);
     }
 
-    
-    
     /**
      * The unique ID of the Reserved Instances offering being purchased.
      *
@@ -102,8 +96,7 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
         this.reservedInstancesOfferingId = reservedInstancesOfferingId;
         return this;
     }
-    
-    
+
     /**
      * The number of Reserved Instances to purchase.
      *
@@ -136,8 +129,7 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
         this.instanceCount = instanceCount;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the LimitPrice property for this object.
      *
@@ -170,8 +162,7 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
         this.limitPrice = limitPrice;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

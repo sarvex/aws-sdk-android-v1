@@ -28,8 +28,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityFeedbackForwardingEnabled(SetIdentityFeedbackForwardingEnabledRequest)
  */
-
- 
 public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -87,8 +85,7 @@ public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServic
         this.identity = identity;
         return this;
     }
-    
-    
+
     /**
      * Sets whether Amazon SES will forward feedback notifications as email.
      * <code>true</code> specifies that Amazon SES will forward feedback
@@ -157,8 +154,7 @@ public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServic
         this.forwardingEnabled = forwardingEnabled;
         return this;
     }
-    
-    
+
     /**
      * Sets whether Amazon SES will forward feedback notifications as email.
      * <code>true</code> specifies that Amazon SES will forward feedback
@@ -179,7 +175,7 @@ public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServic
     public Boolean getForwardingEnabled() {
         return forwardingEnabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

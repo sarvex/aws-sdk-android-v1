@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Export Task
  */
-
- 
 public class ExportTask implements Serializable {
 
     private String exportTaskId;
@@ -68,8 +66,7 @@ public class ExportTask implements Serializable {
         this.exportTaskId = exportTaskId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Description property for this object.
      *
@@ -102,8 +99,7 @@ public class ExportTask implements Serializable {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the State property for this object.
      * <p>
@@ -151,8 +147,7 @@ public class ExportTask implements Serializable {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the State property for this object.
      * <p>
@@ -186,7 +181,7 @@ public class ExportTask implements Serializable {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the StatusMessage property for this object.
      *
@@ -219,8 +214,7 @@ public class ExportTask implements Serializable {
         this.statusMessage = statusMessage;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the InstanceExportDetails property for this
      * object.
@@ -254,8 +248,7 @@ public class ExportTask implements Serializable {
         this.instanceExportDetails = instanceExportDetails;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the ExportToS3Task property for this object.
      *
@@ -288,8 +281,7 @@ public class ExportTask implements Serializable {
         this.exportToS3Task = exportToS3Task;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

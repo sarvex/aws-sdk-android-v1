@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output for the ConfigureHealthCheck action.
  * </p>
  */
-
- 
 public class ConfigureHealthCheckResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class ConfigureHealthCheckResult implements Serializable {
         this.healthCheck = healthCheck;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Cancel Spot Instance Requests Result
  */
-
- 
 public class CancelSpotInstanceRequestsResult implements Serializable {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<CancelledSpotInstanceRequest> cancelledSpotInstanceRequests;
@@ -34,7 +32,6 @@ public class CancelSpotInstanceRequestsResult implements Serializable {
      *         object.
      */
     public java.util.List<CancelledSpotInstanceRequest> getCancelledSpotInstanceRequests() {
-        
         if (cancelledSpotInstanceRequests == null) {
               cancelledSpotInstanceRequests = new com.amazonaws.internal.ListWithAutoConstructFlag<CancelledSpotInstanceRequest>();
               cancelledSpotInstanceRequests.setAutoConstruct(true);
@@ -102,7 +99,7 @@ public class CancelSpotInstanceRequestsResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

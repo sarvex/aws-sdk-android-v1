@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of describing an AMI attribute.
  * </p>
  */
-
- 
 public class DescribeImageAttributeResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class DescribeImageAttributeResult implements Serializable {
         this.imageAttribute = imageAttribute;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -22,8 +22,6 @@ import java.io.Serializable;
  * An active offer for Amazon EC2 Reserved Instances.
  * </p>
  */
-
- 
 public class ReservedInstancesOffering implements Serializable {
 
     /**
@@ -35,7 +33,7 @@ public class ReservedInstancesOffering implements Serializable {
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      */
     private String instanceType;
 
@@ -133,13 +131,12 @@ public class ReservedInstancesOffering implements Serializable {
         this.reservedInstancesOfferingId = reservedInstancesOfferingId;
         return this;
     }
-    
-    
+
     /**
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @return The instance type on which the Reserved Instances can be used.
      *
@@ -153,7 +150,7 @@ public class ReservedInstancesOffering implements Serializable {
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
@@ -169,7 +166,7 @@ public class ReservedInstancesOffering implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
@@ -182,13 +179,12 @@ public class ReservedInstancesOffering implements Serializable {
         this.instanceType = instanceType;
         return this;
     }
-    
-    
+
     /**
      * The instance type on which the Reserved Instances can be used.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
@@ -204,7 +200,7 @@ public class ReservedInstancesOffering implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type on which the Reserved Instances can be used.
      *
@@ -217,7 +213,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.instanceType = instanceType.toString();
         return this;
     }
-    
+
     /**
      * The Availability Zone in which the Reserved Instances can be used.
      *
@@ -250,8 +246,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * The duration of the Reserved Instance, in seconds.
      *
@@ -284,8 +279,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
      * The usage price of the Reserved Instance, per hour.
      *
@@ -318,8 +312,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.usagePrice = usagePrice;
         return this;
     }
-    
-    
+
     /**
      * The purchase price of the Reserved Instance.
      *
@@ -352,8 +345,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.fixedPrice = fixedPrice;
         return this;
     }
-    
-    
+
     /**
      * The Reserved Instances description (ex: Windows or Unix/Linux).
      * <p>
@@ -401,8 +393,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.productDescription = productDescription;
         return this;
     }
-    
-    
+
     /**
      * The Reserved Instances description (ex: Windows or Unix/Linux).
      * <p>
@@ -436,7 +427,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.productDescription = productDescription.toString();
         return this;
     }
-    
+
     /**
      * The tenancy of the reserved instance (ex: default or dedicated).
      * <p>
@@ -484,8 +475,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.instanceTenancy = instanceTenancy;
         return this;
     }
-    
-    
+
     /**
      * The tenancy of the reserved instance (ex: default or dedicated).
      * <p>
@@ -519,7 +509,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.instanceTenancy = instanceTenancy.toString();
         return this;
     }
-    
+
     /**
      * The currency of the reserved instance. Specified using ISO 4217
      * standard (e.g., USD, JPY).
@@ -573,8 +563,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.currencyCode = currencyCode;
         return this;
     }
-    
-    
+
     /**
      * The currency of the reserved instance. Specified using ISO 4217
      * standard (e.g., USD, JPY).
@@ -612,7 +601,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.currencyCode = currencyCode.toString();
         return this;
     }
-    
+
     /**
      * The Reserved Instance offering type.
      * <p>
@@ -660,8 +649,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.offeringType = offeringType;
         return this;
     }
-    
-    
+
     /**
      * The Reserved Instance offering type.
      * <p>
@@ -695,14 +683,13 @@ public class ReservedInstancesOffering implements Serializable {
         this.offeringType = offeringType.toString();
         return this;
     }
-    
+
     /**
      * The recurring charge tag assigned to the resource.
      *
      * @return The recurring charge tag assigned to the resource.
      */
     public java.util.List<RecurringCharge> getRecurringCharges() {
-        
         if (recurringCharges == null) {
               recurringCharges = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>();
               recurringCharges.setAutoConstruct(true);
@@ -764,7 +751,7 @@ public class ReservedInstancesOffering implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the Marketplace property for this object.
      *
@@ -797,8 +784,7 @@ public class ReservedInstancesOffering implements Serializable {
         this.marketplace = marketplace;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Marketplace property for this object.
      *
@@ -807,14 +793,13 @@ public class ReservedInstancesOffering implements Serializable {
     public Boolean getMarketplace() {
         return marketplace;
     }
-    
+
     /**
      * Returns the value of the PricingDetails property for this object.
      *
      * @return The value of the PricingDetails property for this object.
      */
     public java.util.List<PricingDetail> getPricingDetails() {
-        
         if (pricingDetails == null) {
               pricingDetails = new com.amazonaws.internal.ListWithAutoConstructFlag<PricingDetail>();
               pricingDetails.setAutoConstruct(true);
@@ -876,7 +861,7 @@ public class ReservedInstancesOffering implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

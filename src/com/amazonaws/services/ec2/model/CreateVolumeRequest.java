@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.CreateVolumeRequestMarshaller;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createVolume(CreateVolumeRequest)
  */
-
- 
 public class CreateVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateVolumeRequest> {
 
     /**
@@ -58,8 +56,6 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      */
     public CreateVolumeRequest() {}
     
-
-
     /**
      * Constructs a new CreateVolumeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -74,10 +70,6 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         setSize(size);
         setAvailabilityZone(availabilityZone);
     }
-
-    
-    
-
 
     /**
      * Constructs a new CreateVolumeRequest object.
@@ -94,8 +86,6 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         setAvailabilityZone(availabilityZone);
     }
 
-    
-    
     /**
      * The size of the volume, in gigabytes. Required if you are not creating
      * a volume from a snapshot.
@@ -134,8 +124,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.size = size;
         return this;
     }
-    
-    
+
     /**
      * The ID of the snapshot from which to create the new volume.
      *
@@ -168,8 +157,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * The Availability Zone in which to create the new volume.
      *
@@ -202,8 +190,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the VolumeType property for this object.
      * <p>
@@ -251,8 +238,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.volumeType = volumeType;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the VolumeType property for this object.
      * <p>
@@ -286,7 +272,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.volumeType = volumeType.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the Iops property for this object.
      *
@@ -319,8 +305,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.iops = iops;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

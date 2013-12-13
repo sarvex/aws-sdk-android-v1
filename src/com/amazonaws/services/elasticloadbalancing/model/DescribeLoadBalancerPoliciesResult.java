@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output for the DescribeLoadBalancerPolicies action.
  * </p>
  */
-
- 
 public class DescribeLoadBalancerPoliciesResult implements Serializable {
 
     /**
@@ -37,7 +35,6 @@ public class DescribeLoadBalancerPoliciesResult implements Serializable {
      * @return A list of policy description structures.
      */
     public java.util.List<PolicyDescription> getPolicyDescriptions() {
-        
         if (policyDescriptions == null) {
               policyDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyDescription>();
               policyDescriptions.setAutoConstruct(true);
@@ -99,7 +96,7 @@ public class DescribeLoadBalancerPoliciesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

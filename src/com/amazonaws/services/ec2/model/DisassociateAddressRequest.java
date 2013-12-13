@@ -29,8 +29,6 @@ import com.amazonaws.services.ec2.model.transform.DisassociateAddressRequestMars
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#disassociateAddress(DisassociateAddressRequest)
  */
-
- 
 public class DisassociateAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DisassociateAddressRequest> {
 
     /**
@@ -50,8 +48,6 @@ public class DisassociateAddressRequest extends AmazonWebServiceRequest implemen
      */
     public DisassociateAddressRequest() {}
     
-
-
     /**
      * Constructs a new DisassociateAddressRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -64,8 +60,6 @@ public class DisassociateAddressRequest extends AmazonWebServiceRequest implemen
         setPublicIp(publicIp);
     }
 
-    
-    
     /**
      * The elastic IP address that you are disassociating from the instance.
      *
@@ -98,8 +92,7 @@ public class DisassociateAddressRequest extends AmazonWebServiceRequest implemen
         this.publicIp = publicIp;
         return this;
     }
-    
-    
+
     /**
      * Association ID corresponding to the VPC elastic IP address you want to
      * disassociate.
@@ -138,8 +131,7 @@ public class DisassociateAddressRequest extends AmazonWebServiceRequest implemen
         this.associationId = associationId;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

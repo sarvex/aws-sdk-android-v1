@@ -103,6 +103,46 @@ public class UpdateTableRequestMarshaller implements Marshaller<Request<UpdateTa
                 jsonWriter.endObject();
             }
 
+            com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexUpdate> globalSecondaryIndexUpdatesList = (com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexUpdate>)(updateTableRequest.getGlobalSecondaryIndexUpdates());
+            if (globalSecondaryIndexUpdatesList != null && !(globalSecondaryIndexUpdatesList.isAutoConstruct() && globalSecondaryIndexUpdatesList.isEmpty())) {
+
+                jsonWriter.key("GlobalSecondaryIndexUpdates");
+                jsonWriter.array();
+
+                for (GlobalSecondaryIndexUpdate globalSecondaryIndexUpdatesListValue : globalSecondaryIndexUpdatesList) {
+                    if (globalSecondaryIndexUpdatesListValue != null) {
+                        jsonWriter.object();
+                        UpdateGlobalSecondaryIndexAction update = globalSecondaryIndexUpdatesListValue.getUpdate();
+                        if (update != null) {
+
+                            jsonWriter.key("Update");
+                            jsonWriter.object();
+
+                            if (update.getIndexName() != null) {
+                                jsonWriter.key("IndexName").value(update.getIndexName());
+                            }
+                            ProvisionedThroughput provisionedThroughput2 = update.getProvisionedThroughput();
+                            if (provisionedThroughput2 != null) {
+
+                                jsonWriter.key("ProvisionedThroughput");
+                                jsonWriter.object();
+
+                                if (provisionedThroughput2.getReadCapacityUnits() != null) {
+                                    jsonWriter.key("ReadCapacityUnits").value(provisionedThroughput2.getReadCapacityUnits());
+                                }
+                                if (provisionedThroughput2.getWriteCapacityUnits() != null) {
+                                    jsonWriter.key("WriteCapacityUnits").value(provisionedThroughput2.getWriteCapacityUnits());
+                                }
+                                jsonWriter.endObject();
+                            }
+                            jsonWriter.endObject();
+                        }
+                        jsonWriter.endObject();
+                    }
+                }
+                jsonWriter.endArray();
+            }
+
           jsonWriter.endObject();
           
 
@@ -116,10 +156,5 @@ public class UpdateTableRequestMarshaller implements Marshaller<Request<UpdateTa
         
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

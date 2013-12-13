@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The BlockDeviceMappingItemType data type.
  * </p>
  */
-
- 
 public class BlockDeviceMapping implements Serializable {
 
     /**
@@ -79,8 +77,7 @@ public class BlockDeviceMapping implements Serializable {
         this.virtualName = virtualName;
         return this;
     }
-    
-    
+
     /**
      * Specifies the device name (e.g., <code>/dev/sdh</code>).
      *
@@ -113,8 +110,7 @@ public class BlockDeviceMapping implements Serializable {
         this.deviceName = deviceName;
         return this;
     }
-    
-    
+
     /**
      * Specifies parameters used to automatically setup Amazon EBS volumes
      * when the instance is launched.
@@ -153,8 +149,7 @@ public class BlockDeviceMapping implements Serializable {
         this.ebs = ebs;
         return this;
     }
-    
-    
+
     /**
      * Specifies the device name to suppress during instance launch.
      *
@@ -187,8 +182,7 @@ public class BlockDeviceMapping implements Serializable {
         this.noDevice = noDevice;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

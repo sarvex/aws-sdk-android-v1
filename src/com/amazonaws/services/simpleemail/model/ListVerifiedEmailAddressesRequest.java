@@ -30,8 +30,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#listVerifiedEmailAddresses(ListVerifiedEmailAddressesRequest)
  */
-
- 
 public class ListVerifiedEmailAddressesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

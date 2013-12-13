@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of calling the StartInstances operation. Contains details on how the specified instances are changing state.
  * </p>
  */
-
- 
 public class StartInstancesResult implements Serializable {
 
     /**
@@ -40,7 +38,6 @@ public class StartInstancesResult implements Serializable {
      *         changed.
      */
     public java.util.List<InstanceStateChange> getStartingInstances() {
-        
         if (startingInstances == null) {
               startingInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange>();
               startingInstances.setAutoConstruct(true);
@@ -108,7 +105,7 @@ public class StartInstancesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

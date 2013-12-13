@@ -144,20 +144,20 @@ public class CreateTableRequestMarshaller implements Marshaller<Request<CreateTa
                             jsonWriter.key("IndexName").value(localSecondaryIndexesListValue.getIndexName());
                         }
 
-                        com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> List = (com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement>)(localSecondaryIndexesListValue.getKeySchema());
-                        if (List != null && !(List.isAutoConstruct() && List.isEmpty())) {
+                        com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> keySchema2List = (com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement>)(localSecondaryIndexesListValue.getKeySchema());
+                        if (keySchema2List != null && !(keySchema2List.isAutoConstruct() && keySchema2List.isEmpty())) {
 
                             jsonWriter.key("KeySchema");
                             jsonWriter.array();
 
-                            for (KeySchemaElement ListValue : List) {
-                                if (ListValue != null) {
+                            for (KeySchemaElement keySchema2ListValue : keySchema2List) {
+                                if (keySchema2ListValue != null) {
                                     jsonWriter.object();
-                                    if (ListValue.getAttributeName() != null) {
-                                        jsonWriter.key("AttributeName").value(ListValue.getAttributeName());
+                                    if (keySchema2ListValue.getAttributeName() != null) {
+                                        jsonWriter.key("AttributeName").value(keySchema2ListValue.getAttributeName());
                                     }
-                                    if (ListValue.getKeyType() != null) {
-                                        jsonWriter.key("KeyType").value(ListValue.getKeyType());
+                                    if (keySchema2ListValue.getKeyType() != null) {
+                                        jsonWriter.key("KeyType").value(keySchema2ListValue.getKeyType());
                                     }
                                     jsonWriter.endObject();
                                 }
@@ -194,6 +194,84 @@ public class CreateTableRequestMarshaller implements Marshaller<Request<CreateTa
                 }
                 jsonWriter.endArray();
             }
+
+            com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndex> globalSecondaryIndexesList = (com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndex>)(createTableRequest.getGlobalSecondaryIndexes());
+            if (globalSecondaryIndexesList != null && !(globalSecondaryIndexesList.isAutoConstruct() && globalSecondaryIndexesList.isEmpty())) {
+
+                jsonWriter.key("GlobalSecondaryIndexes");
+                jsonWriter.array();
+
+                for (GlobalSecondaryIndex globalSecondaryIndexesListValue : globalSecondaryIndexesList) {
+                    if (globalSecondaryIndexesListValue != null) {
+                        jsonWriter.object();
+                        if (globalSecondaryIndexesListValue.getIndexName() != null) {
+                            jsonWriter.key("IndexName").value(globalSecondaryIndexesListValue.getIndexName());
+                        }
+
+                        com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> keySchema2List = (com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement>)(globalSecondaryIndexesListValue.getKeySchema());
+                        if (keySchema2List != null && !(keySchema2List.isAutoConstruct() && keySchema2List.isEmpty())) {
+
+                            jsonWriter.key("KeySchema");
+                            jsonWriter.array();
+
+                            for (KeySchemaElement keySchema2ListValue : keySchema2List) {
+                                if (keySchema2ListValue != null) {
+                                    jsonWriter.object();
+                                    if (keySchema2ListValue.getAttributeName() != null) {
+                                        jsonWriter.key("AttributeName").value(keySchema2ListValue.getAttributeName());
+                                    }
+                                    if (keySchema2ListValue.getKeyType() != null) {
+                                        jsonWriter.key("KeyType").value(keySchema2ListValue.getKeyType());
+                                    }
+                                    jsonWriter.endObject();
+                                }
+                            }
+                            jsonWriter.endArray();
+                        }
+                        Projection projection = globalSecondaryIndexesListValue.getProjection();
+                        if (projection != null) {
+
+                            jsonWriter.key("Projection");
+                            jsonWriter.object();
+
+                            if (projection.getProjectionType() != null) {
+                                jsonWriter.key("ProjectionType").value(projection.getProjectionType());
+                            }
+
+                            com.amazonaws.internal.ListWithAutoConstructFlag<String> nonKeyAttributesList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(projection.getNonKeyAttributes());
+                            if (nonKeyAttributesList != null && !(nonKeyAttributesList.isAutoConstruct() && nonKeyAttributesList.isEmpty())) {
+
+                                jsonWriter.key("NonKeyAttributes");
+                                jsonWriter.array();
+
+                                for (String nonKeyAttributesListValue : nonKeyAttributesList) {
+                                    if (nonKeyAttributesListValue != null) {
+                                        jsonWriter.value(nonKeyAttributesListValue);
+                                    }
+                                }
+                                jsonWriter.endArray();
+                            }
+                            jsonWriter.endObject();
+                        }
+                        ProvisionedThroughput provisionedThroughput = globalSecondaryIndexesListValue.getProvisionedThroughput();
+                        if (provisionedThroughput != null) {
+
+                            jsonWriter.key("ProvisionedThroughput");
+                            jsonWriter.object();
+
+                            if (provisionedThroughput.getReadCapacityUnits() != null) {
+                                jsonWriter.key("ReadCapacityUnits").value(provisionedThroughput.getReadCapacityUnits());
+                            }
+                            if (provisionedThroughput.getWriteCapacityUnits() != null) {
+                                jsonWriter.key("WriteCapacityUnits").value(provisionedThroughput.getWriteCapacityUnits());
+                            }
+                            jsonWriter.endObject();
+                        }
+                        jsonWriter.endObject();
+                    }
+                }
+                jsonWriter.endArray();
+            }
             ProvisionedThroughput provisionedThroughput = createTableRequest.getProvisionedThroughput();
             if (provisionedThroughput != null) {
 
@@ -222,10 +300,5 @@ public class CreateTableRequestMarshaller implements Marshaller<Request<CreateTa
         
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

@@ -33,8 +33,6 @@ import com.amazonaws.services.ec2.model.transform.CreateSnapshotRequestMarshalle
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createSnapshot(CreateSnapshotRequest)
  */
-
- 
 public class CreateSnapshotRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateSnapshotRequest> {
 
     /**
@@ -53,8 +51,6 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest implements Se
      */
     public CreateSnapshotRequest() {}
     
-
-
     /**
      * Constructs a new CreateSnapshotRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -69,8 +65,6 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest implements Se
         setDescription(description);
     }
 
-    
-    
     /**
      * The ID of the volume from which to create the snapshot.
      *
@@ -103,8 +97,7 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest implements Se
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
      * The description for the new snapshot.
      *
@@ -137,8 +130,7 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest implements Se
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

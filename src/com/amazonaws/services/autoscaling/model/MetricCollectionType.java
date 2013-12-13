@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The MetricCollectionType data type.
  * </p>
  */
-
- 
 public class MetricCollectionType implements Serializable {
 
     /**
@@ -79,8 +77,7 @@ public class MetricCollectionType implements Serializable {
         this.metric = metric;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

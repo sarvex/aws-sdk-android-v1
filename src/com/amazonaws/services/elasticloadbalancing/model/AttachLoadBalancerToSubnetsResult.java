@@ -22,22 +22,19 @@ import java.io.Serializable;
  * The output for the AttachLoadBalancerToSubnets action.
  * </p>
  */
-
- 
 public class AttachLoadBalancerToSubnetsResult implements Serializable {
 
     /**
-     * A list of subnet IDs added for the LoadBalancer.
+     * A list of subnet IDs attached to the load balancer.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnets;
 
     /**
-     * A list of subnet IDs added for the LoadBalancer.
+     * A list of subnet IDs attached to the load balancer.
      *
-     * @return A list of subnet IDs added for the LoadBalancer.
+     * @return A list of subnet IDs attached to the load balancer.
      */
     public java.util.List<String> getSubnets() {
-        
         if (subnets == null) {
               subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               subnets.setAutoConstruct(true);
@@ -46,9 +43,9 @@ public class AttachLoadBalancerToSubnetsResult implements Serializable {
     }
     
     /**
-     * A list of subnet IDs added for the LoadBalancer.
+     * A list of subnet IDs attached to the load balancer.
      *
-     * @param subnets A list of subnet IDs added for the LoadBalancer.
+     * @param subnets A list of subnet IDs attached to the load balancer.
      */
     public void setSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
@@ -61,11 +58,11 @@ public class AttachLoadBalancerToSubnetsResult implements Serializable {
     }
     
     /**
-     * A list of subnet IDs added for the LoadBalancer.
+     * A list of subnet IDs attached to the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnets A list of subnet IDs added for the LoadBalancer.
+     * @param subnets A list of subnet IDs attached to the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -79,11 +76,11 @@ public class AttachLoadBalancerToSubnetsResult implements Serializable {
     }
     
     /**
-     * A list of subnet IDs added for the LoadBalancer.
+     * A list of subnet IDs attached to the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnets A list of subnet IDs added for the LoadBalancer.
+     * @param subnets A list of subnet IDs attached to the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -99,7 +96,7 @@ public class AttachLoadBalancerToSubnetsResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

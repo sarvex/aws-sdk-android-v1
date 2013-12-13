@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Iam Instance Profile
  */
-
- 
 public class IamInstanceProfile implements Serializable {
 
     private String arn;
@@ -60,8 +58,7 @@ public class IamInstanceProfile implements Serializable {
         this.arn = arn;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Id property for this object.
      *
@@ -94,8 +91,7 @@ public class IamInstanceProfile implements Serializable {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Result of attaching an Amazon EBS volume to a running instance.
  * </p>
  */
-
- 
 public class AttachVolumeResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class AttachVolumeResult implements Serializable {
         this.attachment = attachment;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

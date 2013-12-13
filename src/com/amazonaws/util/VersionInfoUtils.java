@@ -95,7 +95,8 @@ public class VersionInfoUtils {
      * next time the data is needed.
      */
     private static void initializeVersion() {
-        InputStream inputStream = VersionInfoUtils.class.getClassLoader().getResourceAsStream(VERSION_INFO_FILE);
+        InputStream inputStream = ClassLoaderHelper.getResourceAsStream(
+                VERSION_INFO_FILE, true, VersionInfoUtils.class);
         Properties versionInfoProperties = new Properties();
         try {
             if (inputStream == null)
@@ -108,6 +109,10 @@ public class VersionInfoUtils {
             log.info("Unable to load version information for the running SDK: " + e.getMessage());
             version = "unknown-version";
             platform = "java";
+        } finally {
+            try {
+                inputStream.close();
+            } catch (Exception e) {}
         }
     }
 			

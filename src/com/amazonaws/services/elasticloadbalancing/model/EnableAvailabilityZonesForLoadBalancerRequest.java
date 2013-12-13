@@ -21,32 +21,32 @@ import com.amazonaws.AmazonWebServiceRequest;
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#enableAvailabilityZonesForLoadBalancer(EnableAvailabilityZonesForLoadBalancerRequest) EnableAvailabilityZonesForLoadBalancer operation}.
  * <p>
- * Adds one or more EC2 Availability Zones to the LoadBalancer.
+ * Adds one or more EC2 Availability Zones to the load balancer.
  * </p>
  * <p>
- * The LoadBalancer evenly distributes requests across all its registered Availability Zones that contain instances. As a result, the client must ensure
- * that its LoadBalancer is appropriately scaled for each registered Availability Zone.
+ * The load balancer evenly distributes requests across all its registered Availability Zones that contain instances.
  * </p>
  * <p>
- * <b>NOTE:</b> The new EC2 Availability Zones to be added must be in the same EC2 Region as the Availability Zones for which the LoadBalancer was
+ * <b>NOTE:</b> The new EC2 Availability Zones to be added must be in the same EC2 Region as the Availability Zones for which the load balancer was
  * created.
+ * </p>
+ * <p>
+ * For more information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/US_AddLBAvailabilityZone.html"> Expand a Load
+ * Balanced Application to an Additional Availability Zone </a> in the <i>Elastic Load Balancing Developer Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#enableAvailabilityZonesForLoadBalancer(EnableAvailabilityZonesForLoadBalancerRequest)
  */
-
- 
 public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      */
     private String loadBalancerName;
 
     /**
-     * A list of new Availability Zones for the LoadBalancer. Each
-     * Availability Zone must be in the same Region as the LoadBalancer.
+     * A list of new Availability Zones for the load balancer. Each
+     * Availability Zone must be in the same region as the load balancer.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
@@ -56,56 +56,45 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
      */
     public EnableAvailabilityZonesForLoadBalancerRequest() {}
     
-
-
     /**
      * Constructs a new EnableAvailabilityZonesForLoadBalancerRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The name associated with the LoadBalancer. The
-     * name must be unique within the client AWS account.
-     * @param availabilityZones A list of new Availability Zones for the
-     * LoadBalancer. Each Availability Zone must be in the same Region as the
-     * LoadBalancer.
+     * @param loadBalancerName The name associated with the load balancer.
+     * @param availabilityZones A list of new Availability Zones for the load
+     * balancer. Each Availability Zone must be in the same region as the
+     * load balancer.
      */
     public EnableAvailabilityZonesForLoadBalancerRequest(String loadBalancerName, java.util.List<String> availabilityZones) {
         setLoadBalancerName(loadBalancerName);
         setAvailabilityZones(availabilityZones);
     }
 
-    
-    
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      *
-     * @return The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @return The name associated with the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -114,17 +103,15 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
-     * A list of new Availability Zones for the LoadBalancer. Each
-     * Availability Zone must be in the same Region as the LoadBalancer.
+     * A list of new Availability Zones for the load balancer. Each
+     * Availability Zone must be in the same region as the load balancer.
      *
-     * @return A list of new Availability Zones for the LoadBalancer. Each
-     *         Availability Zone must be in the same Region as the LoadBalancer.
+     * @return A list of new Availability Zones for the load balancer. Each
+     *         Availability Zone must be in the same region as the load balancer.
      */
     public java.util.List<String> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
               availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               availabilityZones.setAutoConstruct(true);
@@ -133,11 +120,11 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
     }
     
     /**
-     * A list of new Availability Zones for the LoadBalancer. Each
-     * Availability Zone must be in the same Region as the LoadBalancer.
+     * A list of new Availability Zones for the load balancer. Each
+     * Availability Zone must be in the same region as the load balancer.
      *
-     * @param availabilityZones A list of new Availability Zones for the LoadBalancer. Each
-     *         Availability Zone must be in the same Region as the LoadBalancer.
+     * @param availabilityZones A list of new Availability Zones for the load balancer. Each
+     *         Availability Zone must be in the same region as the load balancer.
      */
     public void setAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
@@ -150,13 +137,13 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
     }
     
     /**
-     * A list of new Availability Zones for the LoadBalancer. Each
-     * Availability Zone must be in the same Region as the LoadBalancer.
+     * A list of new Availability Zones for the load balancer. Each
+     * Availability Zone must be in the same region as the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones A list of new Availability Zones for the LoadBalancer. Each
-     *         Availability Zone must be in the same Region as the LoadBalancer.
+     * @param availabilityZones A list of new Availability Zones for the load balancer. Each
+     *         Availability Zone must be in the same region as the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -170,13 +157,13 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
     }
     
     /**
-     * A list of new Availability Zones for the LoadBalancer. Each
-     * Availability Zone must be in the same Region as the LoadBalancer.
+     * A list of new Availability Zones for the load balancer. Each
+     * Availability Zone must be in the same region as the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones A list of new Availability Zones for the LoadBalancer. Each
-     *         Availability Zone must be in the same Region as the LoadBalancer.
+     * @param availabilityZones A list of new Availability Zones for the load balancer. Each
+     *         Availability Zone must be in the same region as the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -192,7 +179,7 @@ public class EnableAvailabilityZonesForLoadBalancerRequest extends AmazonWebServ
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

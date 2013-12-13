@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of describing the available Amazon EC2 regions.
  * </p>
  */
-
- 
 public class DescribeRegionsResult implements Serializable {
 
     /**
@@ -37,7 +35,6 @@ public class DescribeRegionsResult implements Serializable {
      * @return The list of described Amazon EC2 regions.
      */
     public java.util.List<Region> getRegions() {
-        
         if (regions == null) {
               regions = new com.amazonaws.internal.ListWithAutoConstructFlag<Region>();
               regions.setAutoConstruct(true);
@@ -99,7 +96,7 @@ public class DescribeRegionsResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

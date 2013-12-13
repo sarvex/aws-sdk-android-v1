@@ -29,8 +29,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeLaunchConfigurations(DescribeLaunchConfigurationsRequest)
  */
-
- 
 public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -60,7 +58,6 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
      * @return A list of launch configuration names.
      */
     public java.util.List<String> getLaunchConfigurationNames() {
-        
         if (launchConfigurationNames == null) {
               launchConfigurationNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               launchConfigurationNames.setAutoConstruct(true);
@@ -122,7 +119,7 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -164,8 +161,7 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of launch configurations. The default is 100.
      * <p>
@@ -207,8 +203,7 @@ public class DescribeLaunchConfigurationsRequest extends AmazonWebServiceRequest
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -41,8 +41,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityDkimEnabled(SetIdentityDkimEnabledRequest)
  */
-
- 
 public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -89,8 +87,7 @@ public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest imple
         this.identity = identity;
         return this;
     }
-    
-    
+
     /**
      * Sets whether DKIM signing is enabled for an identity. Set to
      * <code>true</code> to enable DKIM signing for this identity;
@@ -135,8 +132,7 @@ public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest imple
         this.dkimEnabled = dkimEnabled;
         return this;
     }
-    
-    
+
     /**
      * Sets whether DKIM signing is enabled for an identity. Set to
      * <code>true</code> to enable DKIM signing for this identity;
@@ -149,7 +145,7 @@ public class SetIdentityDkimEnabledRequest extends AmazonWebServiceRequest imple
     public Boolean getDkimEnabled() {
         return dkimEnabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

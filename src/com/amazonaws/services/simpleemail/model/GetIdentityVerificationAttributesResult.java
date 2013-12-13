@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents the verification attributes for a list of identities.
  * </p>
  */
-
- 
 public class GetIdentityVerificationAttributesResult implements Serializable {
 
     /**
@@ -67,8 +65,7 @@ public class GetIdentityVerificationAttributesResult implements Serializable {
         setVerificationAttributes(verificationAttributes);
         return this;
     }
-    
-   	
+
     /**
      * A map of Identities to IdentityVerificationAttributes objects.
      * <p>

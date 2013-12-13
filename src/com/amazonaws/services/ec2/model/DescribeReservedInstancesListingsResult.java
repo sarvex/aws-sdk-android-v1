@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Describe Reserved Instances Listings Result
  */
-
- 
 public class DescribeReservedInstancesListingsResult implements Serializable {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing> reservedInstancesListings;
@@ -33,7 +31,6 @@ public class DescribeReservedInstancesListingsResult implements Serializable {
      * @return The value of the ReservedInstancesListings property for this object.
      */
     public java.util.List<ReservedInstancesListing> getReservedInstancesListings() {
-        
         if (reservedInstancesListings == null) {
               reservedInstancesListings = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing>();
               reservedInstancesListings.setAutoConstruct(true);
@@ -101,7 +98,7 @@ public class DescribeReservedInstancesListingsResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

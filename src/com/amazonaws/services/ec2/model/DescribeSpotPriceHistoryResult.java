@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Describe Spot Price History Result
  */
-
- 
 public class DescribeSpotPriceHistoryResult implements Serializable {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice> spotPriceHistory;
@@ -38,7 +36,6 @@ public class DescribeSpotPriceHistoryResult implements Serializable {
      * @return The value of the SpotPriceHistory property for this object.
      */
     public java.util.List<SpotPrice> getSpotPriceHistory() {
-        
         if (spotPriceHistory == null) {
               spotPriceHistory = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotPrice>();
               spotPriceHistory.setAutoConstruct(true);
@@ -100,7 +97,7 @@ public class DescribeSpotPriceHistoryResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * The string marking the next set of results returned. Displays empty if
      * there are no more results to be returned.
@@ -139,8 +136,7 @@ public class DescribeSpotPriceHistoryResult implements Serializable {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

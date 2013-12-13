@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The <code>AutoScalingInstancesType</code> data type.
  * </p>
  */
-
- 
 public class DescribeAutoScalingInstancesResult implements Serializable {
 
     /**
@@ -45,7 +43,6 @@ public class DescribeAutoScalingInstancesResult implements Serializable {
      * @return A list of Auto Scaling instances.
      */
     public java.util.List<AutoScalingInstanceDetails> getAutoScalingInstances() {
-        
         if (autoScalingInstances == null) {
               autoScalingInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingInstanceDetails>();
               autoScalingInstances.setAutoConstruct(true);
@@ -107,7 +104,7 @@ public class DescribeAutoScalingInstancesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -149,8 +146,7 @@ public class DescribeAutoScalingInstancesResult implements Serializable {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

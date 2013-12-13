@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents the state of an Amazon EC2 instance.
  * </p>
  */
-
- 
 public class InstanceState implements Serializable {
 
     /**
@@ -85,8 +83,7 @@ public class InstanceState implements Serializable {
         this.code = code;
         return this;
     }
-    
-    
+
     /**
      * The current state of the instance.
      * <p>
@@ -134,8 +131,7 @@ public class InstanceState implements Serializable {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The current state of the instance.
      * <p>
@@ -169,7 +165,7 @@ public class InstanceState implements Serializable {
         this.name = name.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

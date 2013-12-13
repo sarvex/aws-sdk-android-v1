@@ -30,8 +30,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteLaunchConfiguration(DeleteLaunchConfigurationRequest)
  */
-
- 
 public class DeleteLaunchConfigurationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -87,8 +85,7 @@ public class DeleteLaunchConfigurationRequest extends AmazonWebServiceRequest im
         this.launchConfigurationName = launchConfigurationName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

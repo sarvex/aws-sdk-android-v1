@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.DeleteKeyPairRequestMarshaller
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteKeyPair(DeleteKeyPairRequest)
  */
-
- 
 public class DeleteKeyPairRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteKeyPairRequest> {
 
     /**
@@ -43,8 +41,6 @@ public class DeleteKeyPairRequest extends AmazonWebServiceRequest implements Ser
      */
     public DeleteKeyPairRequest() {}
     
-
-
     /**
      * Constructs a new DeleteKeyPairRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +52,6 @@ public class DeleteKeyPairRequest extends AmazonWebServiceRequest implements Ser
         setKeyName(keyName);
     }
 
-    
-    
     /**
      * The name of the Amazon EC2 key pair to delete.
      *
@@ -90,8 +84,7 @@ public class DeleteKeyPairRequest extends AmazonWebServiceRequest implements Ser
         this.keyName = keyName;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

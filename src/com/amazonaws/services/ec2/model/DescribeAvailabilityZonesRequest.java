@@ -32,8 +32,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeAvailabilityZonesReque
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeAvailabilityZones(DescribeAvailabilityZonesRequest)
  */
-
- 
 public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeAvailabilityZonesRequest> {
 
     /**
@@ -56,7 +54,6 @@ public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest im
      * @return A list of the availability zone names to describe.
      */
     public java.util.List<String> getZoneNames() {
-        
         if (zoneNames == null) {
               zoneNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               zoneNames.setAutoConstruct(true);
@@ -118,7 +115,7 @@ public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest im
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for AvailabilityZones. For
      * a complete reference to the available filter keys for this operation,
@@ -133,7 +130,6 @@ public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest im
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -219,7 +215,7 @@ public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest im
 
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

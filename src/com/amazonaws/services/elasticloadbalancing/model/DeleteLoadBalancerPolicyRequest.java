@@ -21,18 +21,15 @@ import com.amazonaws.AmazonWebServiceRequest;
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest) DeleteLoadBalancerPolicy operation}.
  * <p>
- * Deletes a policy from the LoadBalancer. The specified policy must not be enabled for any listeners.
+ * Deletes a policy from the load balancer. The specified policy must not be enabled for any listeners.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest)
  */
-
- 
 public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      */
     private String loadBalancerName;
 
@@ -47,15 +44,13 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest imp
      */
     public DeleteLoadBalancerPolicyRequest() {}
     
-
-
     /**
      * Constructs a new DeleteLoadBalancerPolicyRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The mnemonic name associated with the
-     * LoadBalancer. The name must be unique within your AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load
+     * balancer.
      * @param policyName The mnemonic name for the policy being deleted.
      */
     public DeleteLoadBalancerPolicyRequest(String loadBalancerName, String policyName) {
@@ -63,38 +58,30 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest imp
         setPolicyName(policyName);
     }
 
-    
-    
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      *
-     * @return The mnemonic name associated with the LoadBalancer. The name must be
-     *         unique within your AWS account.
+     * @return The mnemonic name associated with the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. The name must be
-     *         unique within your AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. The name must be
-     *         unique within your AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -103,8 +90,7 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest imp
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The mnemonic name for the policy being deleted.
      *
@@ -137,8 +123,7 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest imp
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -30,8 +30,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyEmailAddress(VerifyEmailAddressRequest)
  */
-
- 
 public class VerifyEmailAddressRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -71,8 +69,7 @@ public class VerifyEmailAddressRequest extends AmazonWebServiceRequest implement
         this.emailAddress = emailAddress;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

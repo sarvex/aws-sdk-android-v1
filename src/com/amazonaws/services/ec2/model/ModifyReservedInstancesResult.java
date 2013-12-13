@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of modifying Reserved Instances. Contains the ID of the modification request.
  * </p>
  */
-
- 
 public class ModifyReservedInstancesResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class ModifyReservedInstancesResult implements Serializable {
         this.reservedInstancesModificationId = reservedInstancesModificationId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

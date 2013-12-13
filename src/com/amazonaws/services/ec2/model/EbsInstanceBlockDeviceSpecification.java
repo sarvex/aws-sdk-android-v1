@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Specifies how an EBS volume should be mapped as part of a block device mapping specification when launching a new instance.
  * </p>
  */
-
- 
 public class EbsInstanceBlockDeviceSpecification implements Serializable {
 
     /**
@@ -76,8 +74,7 @@ public class EbsInstanceBlockDeviceSpecification implements Serializable {
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the Amazon EBS volume is deleted on instance
      * termination.
@@ -116,8 +113,7 @@ public class EbsInstanceBlockDeviceSpecification implements Serializable {
         this.deleteOnTermination = deleteOnTermination;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the Amazon EBS volume is deleted on instance
      * termination.
@@ -128,7 +124,7 @@ public class EbsInstanceBlockDeviceSpecification implements Serializable {
     public Boolean getDeleteOnTermination() {
         return deleteOnTermination;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

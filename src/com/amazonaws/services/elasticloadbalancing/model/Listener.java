@@ -22,27 +22,25 @@ import java.io.Serializable;
  * The Listener data type.
  * </p>
  */
-
- 
 public class Listener implements Serializable {
 
     /**
-     * Specifies the LoadBalancer transport protocol to use for routing -
+     * Specifies the load balancer transport protocol to use for routing -
      * HTTP, HTTPS, TCP or SSL. This property cannot be modified for the life
-     * of the LoadBalancer.
+     * of the load balancer.
      */
     private String protocol;
 
     /**
-     * Specifies the external LoadBalancer port number. This property cannot
-     * be modified for the life of the LoadBalancer.
+     * Specifies the external load balancer port number. This property cannot
+     * be modified for the life of the load balancer.
      */
     private Integer loadBalancerPort;
 
     /**
      * Specifies the protocol to use for routing traffic to back-end
      * instances - HTTP, HTTPS, TCP, or SSL. This property cannot be modified
-     * for the life of the LoadBalancer. <note> If the front-end protocol is
+     * for the life of the load balancer. <note> If the front-end protocol is
      * HTTP or HTTPS, <code>InstanceProtocol</code> has to be at the same
      * protocol layer, i.e., HTTP or HTTPS. Likewise, if the front-end
      * protocol is TCP or SSL, InstanceProtocol has to be TCP or SSL. </note>
@@ -58,7 +56,7 @@ public class Listener implements Serializable {
 
     /**
      * Specifies the TCP port on which the instance server is listening. This
-     * property cannot be modified for the life of the LoadBalancer.
+     * property cannot be modified for the life of the load balancer.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 65535<br/>
@@ -68,7 +66,7 @@ public class Listener implements Serializable {
     /**
      * The ARN string of the server certificate. To get the ARN of the server
      * certificate, call the AWS Identity and Access Management <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
      * </a> API.
      */
     private String sSLCertificateId;
@@ -79,22 +77,20 @@ public class Listener implements Serializable {
      */
     public Listener() {}
     
-
-
     /**
      * Constructs a new Listener object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param protocol Specifies the LoadBalancer transport protocol to use
+     * @param protocol Specifies the load balancer transport protocol to use
      * for routing - HTTP, HTTPS, TCP or SSL. This property cannot be
-     * modified for the life of the LoadBalancer.
-     * @param loadBalancerPort Specifies the external LoadBalancer port
-     * number. This property cannot be modified for the life of the
-     * LoadBalancer.
+     * modified for the life of the load balancer.
+     * @param loadBalancerPort Specifies the external load balancer port
+     * number. This property cannot be modified for the life of the load
+     * balancer.
      * @param instancePort Specifies the TCP port on which the instance
      * server is listening. This property cannot be modified for the life of
-     * the LoadBalancer.
+     * the load balancer.
      */
     public Listener(String protocol, Integer loadBalancerPort, Integer instancePort) {
         setProtocol(protocol);
@@ -102,44 +98,42 @@ public class Listener implements Serializable {
         setInstancePort(instancePort);
     }
 
-    
-    
     /**
-     * Specifies the LoadBalancer transport protocol to use for routing -
+     * Specifies the load balancer transport protocol to use for routing -
      * HTTP, HTTPS, TCP or SSL. This property cannot be modified for the life
-     * of the LoadBalancer.
+     * of the load balancer.
      *
-     * @return Specifies the LoadBalancer transport protocol to use for routing -
+     * @return Specifies the load balancer transport protocol to use for routing -
      *         HTTP, HTTPS, TCP or SSL. This property cannot be modified for the life
-     *         of the LoadBalancer.
+     *         of the load balancer.
      */
     public String getProtocol() {
         return protocol;
     }
     
     /**
-     * Specifies the LoadBalancer transport protocol to use for routing -
+     * Specifies the load balancer transport protocol to use for routing -
      * HTTP, HTTPS, TCP or SSL. This property cannot be modified for the life
-     * of the LoadBalancer.
+     * of the load balancer.
      *
-     * @param protocol Specifies the LoadBalancer transport protocol to use for routing -
+     * @param protocol Specifies the load balancer transport protocol to use for routing -
      *         HTTP, HTTPS, TCP or SSL. This property cannot be modified for the life
-     *         of the LoadBalancer.
+     *         of the load balancer.
      */
     public void setProtocol(String protocol) {
         this.protocol = protocol;
     }
     
     /**
-     * Specifies the LoadBalancer transport protocol to use for routing -
+     * Specifies the load balancer transport protocol to use for routing -
      * HTTP, HTTPS, TCP or SSL. This property cannot be modified for the life
-     * of the LoadBalancer.
+     * of the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param protocol Specifies the LoadBalancer transport protocol to use for routing -
+     * @param protocol Specifies the load balancer transport protocol to use for routing -
      *         HTTP, HTTPS, TCP or SSL. This property cannot be modified for the life
-     *         of the LoadBalancer.
+     *         of the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -148,38 +142,37 @@ public class Listener implements Serializable {
         this.protocol = protocol;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the external LoadBalancer port number. This property cannot
-     * be modified for the life of the LoadBalancer.
+     * Specifies the external load balancer port number. This property cannot
+     * be modified for the life of the load balancer.
      *
-     * @return Specifies the external LoadBalancer port number. This property cannot
-     *         be modified for the life of the LoadBalancer.
+     * @return Specifies the external load balancer port number. This property cannot
+     *         be modified for the life of the load balancer.
      */
     public Integer getLoadBalancerPort() {
         return loadBalancerPort;
     }
     
     /**
-     * Specifies the external LoadBalancer port number. This property cannot
-     * be modified for the life of the LoadBalancer.
+     * Specifies the external load balancer port number. This property cannot
+     * be modified for the life of the load balancer.
      *
-     * @param loadBalancerPort Specifies the external LoadBalancer port number. This property cannot
-     *         be modified for the life of the LoadBalancer.
+     * @param loadBalancerPort Specifies the external load balancer port number. This property cannot
+     *         be modified for the life of the load balancer.
      */
     public void setLoadBalancerPort(Integer loadBalancerPort) {
         this.loadBalancerPort = loadBalancerPort;
     }
     
     /**
-     * Specifies the external LoadBalancer port number. This property cannot
-     * be modified for the life of the LoadBalancer.
+     * Specifies the external load balancer port number. This property cannot
+     * be modified for the life of the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerPort Specifies the external LoadBalancer port number. This property cannot
-     *         be modified for the life of the LoadBalancer.
+     * @param loadBalancerPort Specifies the external load balancer port number. This property cannot
+     *         be modified for the life of the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -188,12 +181,11 @@ public class Listener implements Serializable {
         this.loadBalancerPort = loadBalancerPort;
         return this;
     }
-    
-    
+
     /**
      * Specifies the protocol to use for routing traffic to back-end
      * instances - HTTP, HTTPS, TCP, or SSL. This property cannot be modified
-     * for the life of the LoadBalancer. <note> If the front-end protocol is
+     * for the life of the load balancer. <note> If the front-end protocol is
      * HTTP or HTTPS, <code>InstanceProtocol</code> has to be at the same
      * protocol layer, i.e., HTTP or HTTPS. Likewise, if the front-end
      * protocol is TCP or SSL, InstanceProtocol has to be TCP or SSL. </note>
@@ -207,7 +199,7 @@ public class Listener implements Serializable {
      *
      * @return Specifies the protocol to use for routing traffic to back-end
      *         instances - HTTP, HTTPS, TCP, or SSL. This property cannot be modified
-     *         for the life of the LoadBalancer. <note> If the front-end protocol is
+     *         for the life of the load balancer. <note> If the front-end protocol is
      *         HTTP or HTTPS, <code>InstanceProtocol</code> has to be at the same
      *         protocol layer, i.e., HTTP or HTTPS. Likewise, if the front-end
      *         protocol is TCP or SSL, InstanceProtocol has to be TCP or SSL. </note>
@@ -226,7 +218,7 @@ public class Listener implements Serializable {
     /**
      * Specifies the protocol to use for routing traffic to back-end
      * instances - HTTP, HTTPS, TCP, or SSL. This property cannot be modified
-     * for the life of the LoadBalancer. <note> If the front-end protocol is
+     * for the life of the load balancer. <note> If the front-end protocol is
      * HTTP or HTTPS, <code>InstanceProtocol</code> has to be at the same
      * protocol layer, i.e., HTTP or HTTPS. Likewise, if the front-end
      * protocol is TCP or SSL, InstanceProtocol has to be TCP or SSL. </note>
@@ -240,7 +232,7 @@ public class Listener implements Serializable {
      *
      * @param instanceProtocol Specifies the protocol to use for routing traffic to back-end
      *         instances - HTTP, HTTPS, TCP, or SSL. This property cannot be modified
-     *         for the life of the LoadBalancer. <note> If the front-end protocol is
+     *         for the life of the load balancer. <note> If the front-end protocol is
      *         HTTP or HTTPS, <code>InstanceProtocol</code> has to be at the same
      *         protocol layer, i.e., HTTP or HTTPS. Likewise, if the front-end
      *         protocol is TCP or SSL, InstanceProtocol has to be TCP or SSL. </note>
@@ -259,7 +251,7 @@ public class Listener implements Serializable {
     /**
      * Specifies the protocol to use for routing traffic to back-end
      * instances - HTTP, HTTPS, TCP, or SSL. This property cannot be modified
-     * for the life of the LoadBalancer. <note> If the front-end protocol is
+     * for the life of the load balancer. <note> If the front-end protocol is
      * HTTP or HTTPS, <code>InstanceProtocol</code> has to be at the same
      * protocol layer, i.e., HTTP or HTTPS. Likewise, if the front-end
      * protocol is TCP or SSL, InstanceProtocol has to be TCP or SSL. </note>
@@ -275,7 +267,7 @@ public class Listener implements Serializable {
      *
      * @param instanceProtocol Specifies the protocol to use for routing traffic to back-end
      *         instances - HTTP, HTTPS, TCP, or SSL. This property cannot be modified
-     *         for the life of the LoadBalancer. <note> If the front-end protocol is
+     *         for the life of the load balancer. <note> If the front-end protocol is
      *         HTTP or HTTPS, <code>InstanceProtocol</code> has to be at the same
      *         protocol layer, i.e., HTTP or HTTPS. Likewise, if the front-end
      *         protocol is TCP or SSL, InstanceProtocol has to be TCP or SSL. </note>
@@ -294,17 +286,16 @@ public class Listener implements Serializable {
         this.instanceProtocol = instanceProtocol;
         return this;
     }
-    
-    
+
     /**
      * Specifies the TCP port on which the instance server is listening. This
-     * property cannot be modified for the life of the LoadBalancer.
+     * property cannot be modified for the life of the load balancer.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 65535<br/>
      *
      * @return Specifies the TCP port on which the instance server is listening. This
-     *         property cannot be modified for the life of the LoadBalancer.
+     *         property cannot be modified for the life of the load balancer.
      */
     public Integer getInstancePort() {
         return instancePort;
@@ -312,13 +303,13 @@ public class Listener implements Serializable {
     
     /**
      * Specifies the TCP port on which the instance server is listening. This
-     * property cannot be modified for the life of the LoadBalancer.
+     * property cannot be modified for the life of the load balancer.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 65535<br/>
      *
      * @param instancePort Specifies the TCP port on which the instance server is listening. This
-     *         property cannot be modified for the life of the LoadBalancer.
+     *         property cannot be modified for the life of the load balancer.
      */
     public void setInstancePort(Integer instancePort) {
         this.instancePort = instancePort;
@@ -326,7 +317,7 @@ public class Listener implements Serializable {
     
     /**
      * Specifies the TCP port on which the instance server is listening. This
-     * property cannot be modified for the life of the LoadBalancer.
+     * property cannot be modified for the life of the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -334,7 +325,7 @@ public class Listener implements Serializable {
      * <b>Range: </b>1 - 65535<br/>
      *
      * @param instancePort Specifies the TCP port on which the instance server is listening. This
-     *         property cannot be modified for the life of the LoadBalancer.
+     *         property cannot be modified for the life of the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -343,17 +334,16 @@ public class Listener implements Serializable {
         this.instancePort = instancePort;
         return this;
     }
-    
-    
+
     /**
      * The ARN string of the server certificate. To get the ARN of the server
      * certificate, call the AWS Identity and Access Management <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
      * </a> API.
      *
      * @return The ARN string of the server certificate. To get the ARN of the server
      *         certificate, call the AWS Identity and Access Management <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
+     *         href="http://docs.aws.amazon.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
      *         </a> API.
      */
     public String getSSLCertificateId() {
@@ -363,12 +353,12 @@ public class Listener implements Serializable {
     /**
      * The ARN string of the server certificate. To get the ARN of the server
      * certificate, call the AWS Identity and Access Management <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
      * </a> API.
      *
      * @param sSLCertificateId The ARN string of the server certificate. To get the ARN of the server
      *         certificate, call the AWS Identity and Access Management <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
+     *         href="http://docs.aws.amazon.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
      *         </a> API.
      */
     public void setSSLCertificateId(String sSLCertificateId) {
@@ -378,14 +368,14 @@ public class Listener implements Serializable {
     /**
      * The ARN string of the server certificate. To get the ARN of the server
      * certificate, call the AWS Identity and Access Management <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
      * </a> API.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param sSLCertificateId The ARN string of the server certificate. To get the ARN of the server
      *         certificate, call the AWS Identity and Access Management <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
+     *         href="http://docs.aws.amazon.com/IAM/latest/APIReference/index.html?API_UploadServerCertificate.html">UploadServerCertificate
      *         </a> API.
      *
      * @return A reference to this updated object so that method calls can be chained 
@@ -395,8 +385,7 @@ public class Listener implements Serializable {
         this.sSLCertificateId = sSLCertificateId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

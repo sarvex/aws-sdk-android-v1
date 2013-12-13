@@ -21,19 +21,20 @@ import com.amazonaws.AmazonWebServiceRequest;
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#createLoadBalancerListeners(CreateLoadBalancerListenersRequest) CreateLoadBalancerListeners operation}.
  * <p>
- * Creates one or more listeners on a LoadBalancer for the specified port. If a listener with the given port does not already exist, it will be created;
- * otherwise, the properties of the new listener must match the properties of the existing listener.
+ * Creates one or more listeners on a load balancer for the specified port. If a listener with the given port does not already exist, it will be
+ * created; otherwise, the properties of the new listener must match the properties of the existing listener.
+ * </p>
+ * <p>
+ * For more information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/us-add-listener.html"> Add a Listener to Your
+ * Load Balancer </a> in the <i>Elastic Load Balancing Developer Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#createLoadBalancerListeners(CreateLoadBalancerListenersRequest)
  */
-
- 
 public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the new LoadBalancer. The name must be unique within your
-     * AWS account.
+     * The name of the load balancer.
      */
     private String loadBalancerName;
 
@@ -49,15 +50,12 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      */
     public CreateLoadBalancerListenersRequest() {}
     
-
-
     /**
      * Constructs a new CreateLoadBalancerListenersRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The name of the new LoadBalancer. The name
-     * must be unique within your AWS account.
+     * @param loadBalancerName The name of the load balancer.
      * @param listeners A list of <code>LoadBalancerPort</code>,
      * <code>InstancePort</code>, <code>Protocol</code>, and
      * <code>SSLCertificateId</code> items.
@@ -67,38 +65,30 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
         setListeners(listeners);
     }
 
-    
-    
     /**
-     * The name of the new LoadBalancer. The name must be unique within your
-     * AWS account.
+     * The name of the load balancer.
      *
-     * @return The name of the new LoadBalancer. The name must be unique within your
-     *         AWS account.
+     * @return The name of the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The name of the new LoadBalancer. The name must be unique within your
-     * AWS account.
+     * The name of the load balancer.
      *
-     * @param loadBalancerName The name of the new LoadBalancer. The name must be unique within your
-     *         AWS account.
+     * @param loadBalancerName The name of the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The name of the new LoadBalancer. The name must be unique within your
-     * AWS account.
+     * The name of the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The name of the new LoadBalancer. The name must be unique within your
-     *         AWS account.
+     * @param loadBalancerName The name of the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -107,8 +97,7 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * A list of <code>LoadBalancerPort</code>, <code>InstancePort</code>,
      * <code>Protocol</code>, and <code>SSLCertificateId</code> items.
@@ -117,7 +106,6 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
      *         <code>Protocol</code>, and <code>SSLCertificateId</code> items.
      */
     public java.util.List<Listener> getListeners() {
-        
         if (listeners == null) {
               listeners = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>();
               listeners.setAutoConstruct(true);
@@ -185,7 +173,7 @@ public class CreateLoadBalancerListenersRequest extends AmazonWebServiceRequest 
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

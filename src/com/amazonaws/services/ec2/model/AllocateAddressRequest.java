@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.AllocateAddressRequestMarshall
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#allocateAddress(AllocateAddressRequest)
  */
-
- 
 public class AllocateAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AllocateAddressRequest> {
 
     /**
@@ -94,8 +92,7 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest implements S
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * Set to <code>vpc</code> to allocate the address to your VPC. By
      * default, will allocate to EC2.
@@ -133,7 +130,7 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest implements S
         this.domain = domain.toString();
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

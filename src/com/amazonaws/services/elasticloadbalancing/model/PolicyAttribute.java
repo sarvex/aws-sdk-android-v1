@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The PolicyAttribute data type. This data type contains a key/value pair that defines properties of a specific policy.
  * </p>
  */
-
- 
 public class PolicyAttribute implements Serializable {
 
     /**
@@ -42,8 +40,6 @@ public class PolicyAttribute implements Serializable {
      */
     public PolicyAttribute() {}
     
-
-
     /**
      * Constructs a new PolicyAttribute object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -59,8 +55,6 @@ public class PolicyAttribute implements Serializable {
         setAttributeValue(attributeValue);
     }
 
-    
-    
     /**
      * The name of the attribute associated with the policy.
      *
@@ -93,8 +87,7 @@ public class PolicyAttribute implements Serializable {
         this.attributeName = attributeName;
         return this;
     }
-    
-    
+
     /**
      * The value of the attribute associated with the policy.
      *
@@ -127,8 +120,7 @@ public class PolicyAttribute implements Serializable {
         this.attributeValue = attributeValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

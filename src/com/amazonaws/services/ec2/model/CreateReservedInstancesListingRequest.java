@@ -24,8 +24,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createReservedInstancesListing(CreateReservedInstancesListingRequest)
  */
-
- 
 public class CreateReservedInstancesListingRequest extends AmazonWebServiceRequest implements Serializable {
 
     private String reservedInstancesId;
@@ -68,8 +66,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
         this.reservedInstancesId = reservedInstancesId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the InstanceCount property for this object.
      *
@@ -102,15 +99,13 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
         this.instanceCount = instanceCount;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the PriceSchedules property for this object.
      *
      * @return The value of the PriceSchedules property for this object.
      */
     public java.util.List<PriceScheduleSpecification> getPriceSchedules() {
-        
         if (priceSchedules == null) {
               priceSchedules = new com.amazonaws.internal.ListWithAutoConstructFlag<PriceScheduleSpecification>();
               priceSchedules.setAutoConstruct(true);
@@ -172,7 +167,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
 
         return this;
     }
-    
+
     /**
      * Returns the value of the ClientToken property for this object.
      *
@@ -205,8 +200,7 @@ public class CreateReservedInstancesListingRequest extends AmazonWebServiceReque
         this.clientToken = clientToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

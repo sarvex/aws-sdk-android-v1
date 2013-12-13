@@ -22,8 +22,6 @@ import java.io.Serializable;
  * An EC2 availability zone, separate and fault tolerant from other availability zones.
  * </p>
  */
-
- 
 public class AvailabilityZone implements Serializable {
 
     /**
@@ -81,8 +79,7 @@ public class AvailabilityZone implements Serializable {
         this.zoneName = zoneName;
         return this;
     }
-    
-    
+
     /**
      * State of the Availability Zone.
      * <p>
@@ -130,8 +127,7 @@ public class AvailabilityZone implements Serializable {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * State of the Availability Zone.
      * <p>
@@ -165,7 +161,7 @@ public class AvailabilityZone implements Serializable {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * Name of the region in which this zone resides.
      *
@@ -198,15 +194,13 @@ public class AvailabilityZone implements Serializable {
         this.regionName = regionName;
         return this;
     }
-    
-    
+
     /**
      * A list of messages about the Availability Zone.
      *
      * @return A list of messages about the Availability Zone.
      */
     public java.util.List<AvailabilityZoneMessage> getMessages() {
-        
         if (messages == null) {
               messages = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage>();
               messages.setAutoConstruct(true);
@@ -268,7 +262,7 @@ public class AvailabilityZone implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -48,6 +48,7 @@ import com.amazonaws.ClientConfiguration;
 import com.amazonaws.DefaultRequest;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.Request;
+import com.amazonaws.Response;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSCredentialsProviderChain;
@@ -55,16 +56,17 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.ClasspathPropertiesFileCredentialsProvider;
 import com.amazonaws.auth.Signer;
 import com.amazonaws.auth.SystemPropertiesCredentialsProvider;
+import com.amazonaws.event.ProgressEvent;
+import com.amazonaws.event.ProgressListener;
 import com.amazonaws.event.ProgressListenerCallbackExecutor;
 import com.amazonaws.event.ProgressReportingInputStream;
-import com.amazonaws.event.ProgressListener;
-import com.amazonaws.event.ProgressEvent;
 import com.amazonaws.handlers.HandlerChainFactory;
-import com.amazonaws.handlers.RequestHandler;
+import com.amazonaws.handlers.RequestHandler2;
 import com.amazonaws.http.ExecutionContext;
 import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.http.HttpResponseHandler;
 import com.amazonaws.internal.StaticCredentialsProvider;
+import com.amazonaws.metrics.AwsSdkMetrics;
 import com.amazonaws.regions.RegionUtils;
 import com.amazonaws.services.s3.internal.BucketNameUtils;
 import com.amazonaws.services.s3.internal.Constants;
@@ -88,6 +90,7 @@ import com.amazonaws.services.s3.internal.S3XmlResponseHandler;
 import com.amazonaws.services.s3.internal.ServerSideEncryptionHeaderHandler;
 import com.amazonaws.services.s3.internal.ServiceUtils;
 import com.amazonaws.services.s3.internal.XmlWriter;
+import com.amazonaws.services.s3.metrics.S3ServiceMetric;
 import com.amazonaws.services.s3.model.AbortMultipartUploadRequest;
 import com.amazonaws.services.s3.model.AccessControlList;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
@@ -166,6 +169,8 @@ import com.amazonaws.services.s3.model.transform.Unmarshallers;
 import com.amazonaws.services.s3.model.transform.XmlResponsesSaxParser.CompleteMultipartUploadHandler;
 import com.amazonaws.services.s3.model.transform.XmlResponsesSaxParser.CopyObjectResultHandler;
 import com.amazonaws.transform.Unmarshaller;
+import com.amazonaws.util.AWSRequestMetrics;
+import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.util.BinaryUtils;
 import com.amazonaws.util.ContentLengthValidationInputStream;
 import com.amazonaws.util.DateUtils;
@@ -200,8 +205,14 @@ import com.amazonaws.util.Md5Utils;
  */
 public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
+    public static final String S3_SERVICE_NAME = "s3";
+
     /** Shared logger for client events */
     private static Log log = LogFactory.getLog(AmazonS3Client.class);
+
+    static { // enable S3 specific predefined request metrics
+        AwsSdkMetrics.addAll(Arrays.asList(S3ServiceMetric.values()));
+    }
 
     /** Responsible for handling error responses from all S3 service calls. */
     private S3ErrorResponseHandler errorResponseHandler = new S3ErrorResponseHandler();
@@ -391,16 +402,10 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         setEndpoint(Constants.S3_HOSTNAME);
 
         HandlerChainFactory chainFactory = new HandlerChainFactory();
-        requestHandlers.addAll(chainFactory.newRequestHandlerChain(
+        requestHandler2s.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/s3/request.handlers"));
-    }
-
-    /* (non-Javadoc)
-     * @see com.amazonaws.AmazonWebServiceClient#getServiceAbbreviation()
-     */
-    @Override
-    protected String getServiceAbbreviation() {
-        return "s3";
+        requestHandler2s.addAll(chainFactory.newRequestHandler2Chain(
+                "/com/amazonaws/services/s3/request.handler2s"));
     }
 
     /**
@@ -413,19 +418,6 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     public void setS3ClientOptions(S3ClientOptions clientOptions) {
       this.clientOptions = new S3ClientOptions(clientOptions);
     }
-
-    /**
-     * Appends a request handler to the list of registered handlers that are run
-     * as part of a request's lifecycle.
-     *
-     * @param requestHandler
-     *            The new handler to add to the current list of request
-     *            handlers.
-     */
-    public void addRequestHandler(RequestHandler requestHandler) {
-        requestHandlers.add(requestHandler);
-    }
-
 
     /* (non-Javadoc)
      * @see com.amazonaws.services.s3.AmazonS3#listNextBatchOfVersions(com.amazonaws.services.s3.model.S3VersionListing)
@@ -2141,7 +2133,14 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         }
 
         HttpMethodName httpMethod = HttpMethodName.valueOf(generatePresignedUrlRequest.getMethod().toString());
+        
+        // If the key starts with a slash character itself, the following method
+        // will actually add another slash before the resource path to prevent
+        // the HttpClient mistakenly treating the slash as a path delimiter.
+        // For presigned request, we need to remember to remove this extra slash
+        // before generating the URL.
         Request<GeneratePresignedUrlRequest> request = createRequest(bucketName, key, generatePresignedUrlRequest, httpMethod);
+        
         for (Entry<String, String> entry : generatePresignedUrlRequest.getRequestParameters().entrySet()) {
             request.addParameter(entry.getKey(), entry.getValue());
         }
@@ -2155,7 +2154,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         presignRequest(request, generatePresignedUrlRequest.getMethod(),
                 bucketName, key, generatePresignedUrlRequest.getExpiration(), null);
 
-        return ServiceUtils.convertRequestToUrl(request);
+        // Remove the leading slash (if any) in the resource-path
+        return ServiceUtils.convertRequestToUrl(request, true);
     }
 
     /* (non-Javadoc)
@@ -2651,16 +2651,19 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     protected <T> void presignRequest(Request<T> request, HttpMethod methodName,
             String bucketName, String key, Date expiration, String subResource) {
         // Run any additional request handlers if present
-        if (requestHandlers != null) {
-            for (RequestHandler requestHandler : requestHandlers) {
-                requestHandler.beforeRequest(request);
-            }
-        }
+        beforeRequest(request);
 
         String resourcePath = "/" +
             ((bucketName != null) ? bucketName + "/" : "") +
             ((key != null) ? HttpUtils.urlEncode(key, true) : "") +
             ((subResource != null) ? "?" + subResource : "");
+        
+        // Make sure the resource-path for signing does not contain
+        // any consecutive "/"s.
+        // Note that we should also follow the same rule to escape
+        // consecutive "/"s when generating the presigned URL.
+        // See ServiceUtils#convertRequestToUrl(...)
+        resourcePath = resourcePath.replaceAll("(?<=/)/", "%2F");
 
         AWSCredentials credentials = awsCredentialsProvider.getCredentials();
         AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
@@ -2677,6 +2680,14 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
             String value = request.getHeaders().get(Headers.SECURITY_TOKEN);
             request.addParameter(Headers.SECURITY_TOKEN, value);
             request.getHeaders().remove(Headers.SECURITY_TOKEN);
+        }
+    }
+
+    private <T> void beforeRequest(Request<T> request) {
+        if (requestHandler2s != null) {
+            for (RequestHandler2 requestHandler2 : requestHandler2s) {
+                requestHandler2.beforeRequest(request);
+            }
         }
     }
 
@@ -3076,32 +3087,50 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         return invoke(request, new S3XmlResponseHandler<X>(unmarshaller), bucketName, key);
     }
 
-    private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, String bucket, String key) {
-        for (Entry<String, String> entry : request.getOriginalRequest().copyPrivateRequestParameters().entrySet()) {
-            request.addParameter(entry.getKey(), entry.getValue());
-        }
-        request.setTimeOffset(timeOffset);
-
-        /*
-         * The string we sign needs to include the exact headers that we
-         * send with the request, but the client runtime layer adds the
-         * Content-Type header before the request is sent if one isn't set, so
-         * we have to set something here otherwise the request will fail.
-         */
-        if (request.getHeaders().get("Content-Type") == null) {
-            request.addHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-        }
-
-        AWSCredentials credentials = awsCredentialsProvider.getCredentials();
+    private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request,
+            HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            String bucket, String key) {
         AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
-        if (originalRequest != null && originalRequest.getRequestCredentials() != null) {
-            credentials = originalRequest.getRequestCredentials();
+        ExecutionContext executionContext = createExecutionContext(originalRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        // Binds the request metrics to the current request.
+        request.setAWSRequestMetrics(awsRequestMetrics);
+        // Having the ClientExecuteTime defined here is not ideal (for the
+        // timing measurement should start as close to the top of the call
+        // stack of the service client method as possible)
+        // but definitely a safe compromise for S3 at least for now.
+        // We can incrementally make it more elaborate should the need arise
+        // for individual method.
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Response<X> response = null;
+        try {
+            for (Entry<String, String> entry : request.getOriginalRequest()
+                    .copyPrivateRequestParameters().entrySet()) {
+                request.addParameter(entry.getKey(), entry.getValue());
+            }
+            request.setTimeOffset(timeOffset);
+            /*
+             * The string we sign needs to include the exact headers that we
+             * send with the request, but the client runtime layer adds the
+             * Content-Type header before the request is sent if one isn't set,
+             * so we have to set something here otherwise the request will fail.
+             */
+            if (request.getHeaders().get("Content-Type") == null) {
+                request.addHeader("Content-Type",
+                        "application/x-www-form-urlencoded; charset=utf-8");
+            }
+            AWSCredentials credentials = awsCredentialsProvider
+                    .getCredentials();
+            if (originalRequest.getRequestCredentials() != null) {
+                credentials = originalRequest.getRequestCredentials();
+            }
+            executionContext.setSigner(createSigner(request, bucket, key));
+            executionContext.setCredentials(credentials);
+            response = client.execute(request, responseHandler,
+                    errorResponseHandler, executionContext);
+            return response.getAwsResponse();
+         } finally {
+            endClientExecution(awsRequestMetrics, request, response);
         }
-
-        ExecutionContext executionContext = createExecutionContext();
-        executionContext.setSigner(createSigner(request, bucket, key));
-        executionContext.setCredentials(credentials);
-
-        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
-    }
+   }
 }

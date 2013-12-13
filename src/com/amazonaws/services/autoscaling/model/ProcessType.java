@@ -92,8 +92,6 @@ import java.io.Serializable;
  * scheduled actions might not function as expected.
  * </p>
  */
-
- 
 public class ProcessType implements Serializable {
 
     /**
@@ -149,8 +147,7 @@ public class ProcessType implements Serializable {
         this.processName = processName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

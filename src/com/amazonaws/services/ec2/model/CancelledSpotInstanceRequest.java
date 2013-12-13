@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Cancelled Spot Instance Request
  */
-
- 
 public class CancelledSpotInstanceRequest implements Serializable {
 
     private String spotInstanceRequestId;
@@ -61,8 +59,7 @@ public class CancelledSpotInstanceRequest implements Serializable {
         this.spotInstanceRequestId = spotInstanceRequestId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the State property for this object.
      * <p>
@@ -110,8 +107,7 @@ public class CancelledSpotInstanceRequest implements Serializable {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the State property for this object.
      * <p>
@@ -145,7 +141,7 @@ public class CancelledSpotInstanceRequest implements Serializable {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

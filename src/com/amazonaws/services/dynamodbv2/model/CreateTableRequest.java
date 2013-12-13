@@ -110,6 +110,8 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<LocalSecondaryIndex> localSecondaryIndexes;
 
+    private com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndex> globalSecondaryIndexes;
+
     /**
      * The provisioned throughput settings for the specified table. The
      * settings can be modified using the <i>UpdateTable</i> operation.
@@ -126,8 +128,6 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
      */
     public CreateTableRequest() {}
     
-
-
     /**
      * Constructs a new CreateTableRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -158,8 +158,46 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
         setKeySchema(keySchema);
     }
 
-    
-    
+    /**
+     * Constructs a new CreateTableRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param attributeDefinitions An array of attributes that describe the
+     * key schema for the table and indexes.
+     * @param tableName The name of the table to create.
+     * @param keySchema Specifies the attributes that make up the primary key
+     * for the table. The attributes in <i>KeySchema</i> must also be defined
+     * in the <i>AttributeDefinitions</i> array. For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data
+     * Model</a> in the Amazon DynamoDB Developer Guide. <p>Each
+     * <i>KeySchemaElement</i> in the array is composed of: <ul> <li>
+     * <p><i>AttributeName</i> - The name of this key attribute. </li> <li>
+     * <p><i>KeyType</i> - Determines whether the key attribute is
+     * <code>HASH</code> or <code>RANGE</code>. </li> </ul> <p>For a primary
+     * key that consists of a hash attribute, you must specify exactly one
+     * element with a <i>KeyType</i> of <code>HASH</code>. <p>For a primary
+     * key that consists of hash and range attributes, you must specify
+     * exactly two elements, in this order: The first element must have a
+     * <i>KeyType</i> of <code>HASH</code>, and the second element must have
+     * a <i>KeyType</i> of <code>RANGE</code>. <p>For more information, see
+     * <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDDTables.html#WorkingWithDDTables.primary.key">Specifying
+     * the Primary Key</a> in the Amazon DynamoDB Developer Guide.
+     * @param provisionedThroughput The provisioned throughput settings for
+     * the specified table. The settings can be modified using the
+     * <i>UpdateTable</i> operation. <p>For current minimum and maximum
+     * provisioned throughput values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the Amazon DynamoDB Developer Guide.
+     */
+    public CreateTableRequest(java.util.List<AttributeDefinition> attributeDefinitions, String tableName, java.util.List<KeySchemaElement> keySchema, ProvisionedThroughput provisionedThroughput) {
+        setAttributeDefinitions(attributeDefinitions);
+        setTableName(tableName);
+        setKeySchema(keySchema);
+        setProvisionedThroughput(provisionedThroughput);
+    }
+
     /**
      * An array of attributes that describe the key schema for the table and
      * indexes.
@@ -168,7 +206,6 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
      *         indexes.
      */
     public java.util.List<AttributeDefinition> getAttributeDefinitions() {
-        
         return attributeDefinitions;
     }
     
@@ -232,7 +269,7 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
 
         return this;
     }
-    
+
     /**
      * The name of the table to create.
      * <p>
@@ -277,8 +314,7 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
         this.tableName = tableName;
         return this;
     }
-    
-    
+
     /**
      * Specifies the attributes that make up the primary key for the table.
      * The attributes in <i>KeySchema</i> must also be defined in the
@@ -322,7 +358,6 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
      *         the Primary Key</a> in the Amazon DynamoDB Developer Guide.
      */
     public java.util.List<KeySchemaElement> getKeySchema() {
-        
         return keySchema;
     }
     
@@ -491,7 +526,7 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
 
         return this;
     }
-    
+
     /**
      * One or more secondary indexes (the maximum is five) to be created on
      * the table. Each index is scoped to a given hash key value. There is a
@@ -546,7 +581,6 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
      *         determining the total. </li> </ul> </li> </ul>
      */
     public java.util.List<LocalSecondaryIndex> getLocalSecondaryIndexes() {
-        
         return localSecondaryIndexes;
     }
     
@@ -748,7 +782,72 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
 
         return this;
     }
+
+    /**
+     * Returns the value of the GlobalSecondaryIndexes property for this
+     * object.
+     *
+     * @return The value of the GlobalSecondaryIndexes property for this object.
+     */
+    public java.util.List<GlobalSecondaryIndex> getGlobalSecondaryIndexes() {
+        return globalSecondaryIndexes;
+    }
     
+    /**
+     * Sets the value of the GlobalSecondaryIndexes property for this object.
+     *
+     * @param globalSecondaryIndexes The new value for the GlobalSecondaryIndexes property for this object.
+     */
+    public void setGlobalSecondaryIndexes(java.util.Collection<GlobalSecondaryIndex> globalSecondaryIndexes) {
+        if (globalSecondaryIndexes == null) {
+            this.globalSecondaryIndexes = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndex> globalSecondaryIndexesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndex>(globalSecondaryIndexes.size());
+        globalSecondaryIndexesCopy.addAll(globalSecondaryIndexes);
+        this.globalSecondaryIndexes = globalSecondaryIndexesCopy;
+    }
+    
+    /**
+     * Sets the value of the GlobalSecondaryIndexes property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param globalSecondaryIndexes The new value for the GlobalSecondaryIndexes property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreateTableRequest withGlobalSecondaryIndexes(GlobalSecondaryIndex... globalSecondaryIndexes) {
+        if (getGlobalSecondaryIndexes() == null) setGlobalSecondaryIndexes(new java.util.ArrayList<GlobalSecondaryIndex>(globalSecondaryIndexes.length));
+        for (GlobalSecondaryIndex value : globalSecondaryIndexes) {
+            getGlobalSecondaryIndexes().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * Sets the value of the GlobalSecondaryIndexes property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param globalSecondaryIndexes The new value for the GlobalSecondaryIndexes property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreateTableRequest withGlobalSecondaryIndexes(java.util.Collection<GlobalSecondaryIndex> globalSecondaryIndexes) {
+        if (globalSecondaryIndexes == null) {
+            this.globalSecondaryIndexes = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndex> globalSecondaryIndexesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndex>(globalSecondaryIndexes.size());
+            globalSecondaryIndexesCopy.addAll(globalSecondaryIndexes);
+            this.globalSecondaryIndexes = globalSecondaryIndexesCopy;
+        }
+
+        return this;
+    }
+
     /**
      * The provisioned throughput settings for the specified table. The
      * settings can be modified using the <i>UpdateTable</i> operation.
@@ -811,8 +910,7 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
         this.provisionedThroughput = provisionedThroughput;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -829,6 +927,7 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
         if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");
         if (getKeySchema() != null) sb.append("KeySchema: " + getKeySchema() + ",");
         if (getLocalSecondaryIndexes() != null) sb.append("LocalSecondaryIndexes: " + getLocalSecondaryIndexes() + ",");
+        if (getGlobalSecondaryIndexes() != null) sb.append("GlobalSecondaryIndexes: " + getGlobalSecondaryIndexes() + ",");
         if (getProvisionedThroughput() != null) sb.append("ProvisionedThroughput: " + getProvisionedThroughput() );
         sb.append("}");
         return sb.toString();
@@ -843,6 +942,7 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
         hashCode = prime * hashCode + ((getTableName() == null) ? 0 : getTableName().hashCode()); 
         hashCode = prime * hashCode + ((getKeySchema() == null) ? 0 : getKeySchema().hashCode()); 
         hashCode = prime * hashCode + ((getLocalSecondaryIndexes() == null) ? 0 : getLocalSecondaryIndexes().hashCode()); 
+        hashCode = prime * hashCode + ((getGlobalSecondaryIndexes() == null) ? 0 : getGlobalSecondaryIndexes().hashCode()); 
         hashCode = prime * hashCode + ((getProvisionedThroughput() == null) ? 0 : getProvisionedThroughput().hashCode()); 
         return hashCode;
     }
@@ -863,6 +963,8 @@ public class CreateTableRequest extends AmazonWebServiceRequest implements Seria
         if (other.getKeySchema() != null && other.getKeySchema().equals(this.getKeySchema()) == false) return false; 
         if (other.getLocalSecondaryIndexes() == null ^ this.getLocalSecondaryIndexes() == null) return false;
         if (other.getLocalSecondaryIndexes() != null && other.getLocalSecondaryIndexes().equals(this.getLocalSecondaryIndexes()) == false) return false; 
+        if (other.getGlobalSecondaryIndexes() == null ^ this.getGlobalSecondaryIndexes() == null) return false;
+        if (other.getGlobalSecondaryIndexes() != null && other.getGlobalSecondaryIndexes().equals(this.getGlobalSecondaryIndexes()) == false) return false; 
         if (other.getProvisionedThroughput() == null ^ this.getProvisionedThroughput() == null) return false;
         if (other.getProvisionedThroughput() != null && other.getProvisionedThroughput().equals(this.getProvisionedThroughput()) == false) return false; 
         return true;

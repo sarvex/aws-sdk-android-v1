@@ -26,8 +26,6 @@ import java.io.UnsupportedEncodingException;
  * The result of the GetConsoleOutput operation.
  * </p>
  */
-
- 
 public class GetConsoleOutputResult implements Serializable {
 
     /**
@@ -77,8 +75,7 @@ public class GetConsoleOutputResult implements Serializable {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The time the output was last updated.
      *
@@ -111,8 +108,7 @@ public class GetConsoleOutputResult implements Serializable {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
      * The console output, Base64 encoded.
      *
@@ -145,8 +141,7 @@ public class GetConsoleOutputResult implements Serializable {
         this.output = output;
         return this;
     }
-    
-    
+
     /**
      * The decoded console output.
      * 

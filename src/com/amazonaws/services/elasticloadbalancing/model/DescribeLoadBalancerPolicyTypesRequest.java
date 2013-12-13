@@ -21,15 +21,13 @@ import com.amazonaws.AmazonWebServiceRequest;
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancerPolicyTypes(DescribeLoadBalancerPolicyTypesRequest) DescribeLoadBalancerPolicyTypes operation}.
  * <p>
- * Returns meta-information on the specified LoadBalancer policies defined by the Elastic Load Balancing service. The policy types that are returned
- * from this action can be used in a CreateLoadBalancerPolicy action to instantiate specific policy configurations that will be applied to an Elastic
- * LoadBalancer.
+ * Returns meta-information on the specified load balancer policies defined by the Elastic Load Balancing service. The policy types that are returned
+ * from this action can be used in a CreateLoadBalancerPolicy action to instantiate specific policy configurations that will be applied to a load
+ * balancer.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancerPolicyTypes(DescribeLoadBalancerPolicyTypesRequest)
  */
-
- 
 public class DescribeLoadBalancerPolicyTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -49,7 +47,6 @@ public class DescribeLoadBalancerPolicyTypesRequest extends AmazonWebServiceRequ
      *         Load Balancing service.
      */
     public java.util.List<String> getPolicyTypeNames() {
-        
         if (policyTypeNames == null) {
               policyTypeNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               policyTypeNames.setAutoConstruct(true);
@@ -123,7 +120,7 @@ public class DescribeLoadBalancerPolicyTypesRequest extends AmazonWebServiceRequ
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -22,8 +22,6 @@ import java.io.Serializable;
  * This data type is used as a response element in the DescribeLoadBalancers action to describe the configuration of the back-end server.
  * </p>
  */
-
- 
 public class BackendServerDescription implements Serializable {
 
     /**
@@ -80,15 +78,13 @@ public class BackendServerDescription implements Serializable {
         this.instancePort = instancePort;
         return this;
     }
-    
-    
+
     /**
      * Provides a list of policy names enabled for the back-end server.
      *
      * @return Provides a list of policy names enabled for the back-end server.
      */
     public java.util.List<String> getPolicyNames() {
-        
         if (policyNames == null) {
               policyNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               policyNames.setAutoConstruct(true);
@@ -150,7 +146,7 @@ public class BackendServerDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

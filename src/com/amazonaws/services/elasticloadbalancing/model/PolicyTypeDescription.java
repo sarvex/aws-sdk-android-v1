@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The PolicyTypeDescription data type.
  * </p>
  */
-
- 
 public class PolicyTypeDescription implements Serializable {
 
     /**
@@ -37,8 +35,8 @@ public class PolicyTypeDescription implements Serializable {
     private String description;
 
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription> policyAttributeTypeDescriptions;
 
@@ -74,8 +72,7 @@ public class PolicyTypeDescription implements Serializable {
         this.policyTypeName = policyTypeName;
         return this;
     }
-    
-    
+
     /**
      * A human-readable description of the policy type.
      *
@@ -108,17 +105,15 @@ public class PolicyTypeDescription implements Serializable {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      *
-     * @return The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @return The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      */
     public java.util.List<PolicyAttributeTypeDescription> getPolicyAttributeTypeDescriptions() {
-        
         if (policyAttributeTypeDescriptions == null) {
               policyAttributeTypeDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription>();
               policyAttributeTypeDescriptions.setAutoConstruct(true);
@@ -127,11 +122,11 @@ public class PolicyTypeDescription implements Serializable {
     }
     
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      *
-     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      */
     public void setPolicyAttributeTypeDescriptions(java.util.Collection<PolicyAttributeTypeDescription> policyAttributeTypeDescriptions) {
         if (policyAttributeTypeDescriptions == null) {
@@ -144,13 +139,13 @@ public class PolicyTypeDescription implements Serializable {
     }
     
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -164,13 +159,13 @@ public class PolicyTypeDescription implements Serializable {
     }
     
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -186,7 +181,7 @@ public class PolicyTypeDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

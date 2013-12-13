@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of describing an EBS snapshot attribute.
  * </p>
  */
-
- 
 public class DescribeSnapshotAttributeResult implements Serializable {
 
     /**
@@ -72,8 +70,7 @@ public class DescribeSnapshotAttributeResult implements Serializable {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * The list of permissions describing who can create a volume from the
      * associated EBS snapshot. <p> Only available if the
@@ -84,7 +81,6 @@ public class DescribeSnapshotAttributeResult implements Serializable {
      *         createVolumePermission attribute is requested.
      */
     public java.util.List<CreateVolumePermission> getCreateVolumePermissions() {
-        
         if (createVolumePermissions == null) {
               createVolumePermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>();
               createVolumePermissions.setAutoConstruct(true);
@@ -158,14 +154,13 @@ public class DescribeSnapshotAttributeResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the ProductCodes property for this object.
      *
      * @return The value of the ProductCodes property for this object.
      */
     public java.util.List<ProductCode> getProductCodes() {
-        
         if (productCodes == null) {
               productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
               productCodes.setAutoConstruct(true);
@@ -227,7 +222,7 @@ public class DescribeSnapshotAttributeResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

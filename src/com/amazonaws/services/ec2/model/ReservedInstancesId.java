@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Reserved Instances Id
  */
-
- 
 public class ReservedInstancesId implements Serializable {
 
     private String reservedInstancesId;
@@ -58,8 +56,7 @@ public class ReservedInstancesId implements Serializable {
         this.reservedInstancesId = reservedInstancesId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

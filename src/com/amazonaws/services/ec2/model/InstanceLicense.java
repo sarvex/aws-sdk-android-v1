@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents an active license in use and attached to an Amazon EC2 instance.
  * </p>
  */
-
- 
 public class InstanceLicense implements Serializable {
 
     /**
@@ -70,8 +68,7 @@ public class InstanceLicense implements Serializable {
         this.pool = pool;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

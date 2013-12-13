@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output of the DescribeScalingProcessTypes action.
  * </p>
  */
-
- 
 public class DescribeScalingProcessTypesResult implements Serializable {
 
     /**
@@ -37,7 +35,6 @@ public class DescribeScalingProcessTypesResult implements Serializable {
      * @return A list of <a>ProcessType</a> names.
      */
     public java.util.List<ProcessType> getProcesses() {
-        
         if (processes == null) {
               processes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProcessType>();
               processes.setAutoConstruct(true);
@@ -99,7 +96,7 @@ public class DescribeScalingProcessTypesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

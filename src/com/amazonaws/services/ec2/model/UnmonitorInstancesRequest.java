@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.UnmonitorInstancesRequestMarsh
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#unmonitorInstances(UnmonitorInstancesRequest)
  */
-
- 
 public class UnmonitorInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<UnmonitorInstancesRequest> {
 
     /**
@@ -43,8 +41,6 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest implement
      */
     public UnmonitorInstancesRequest() {}
     
-
-
     /**
      * Constructs a new UnmonitorInstancesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,15 +53,12 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest implement
         setInstanceIds(instanceIds);
     }
 
-    
-    
     /**
      * The list of Amazon EC2 instances on which to disable monitoring.
      *
      * @return The list of Amazon EC2 instances on which to disable monitoring.
      */
     public java.util.List<String> getInstanceIds() {
-        
         if (instanceIds == null) {
               instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               instanceIds.setAutoConstruct(true);
@@ -127,7 +120,7 @@ public class UnmonitorInstancesRequest extends AmazonWebServiceRequest implement
 
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

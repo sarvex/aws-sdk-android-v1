@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#listIdentities(ListIdentitiesRequest)
  */
-
- 
 public class ListIdentitiesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -110,8 +108,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements Se
         this.identityType = identityType;
         return this;
     }
-    
-    
+
     /**
      * The type of the identities to list. Possible values are "EmailAddress"
      * and "Domain". If this parameter is omitted, then all identities will
@@ -153,7 +150,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements Se
         this.identityType = identityType.toString();
         return this;
     }
-    
+
     /**
      * The token to use for pagination.
      *
@@ -186,8 +183,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements Se
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of identities per page. Possible values are 1-100
      * inclusive.
@@ -226,8 +222,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements Se
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

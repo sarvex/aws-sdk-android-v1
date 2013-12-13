@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.ModifyInstanceAttributeRequest
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifyInstanceAttribute(ModifyInstanceAttributeRequest)
  */
-
- 
 public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifyInstanceAttributeRequest> {
 
     /**
@@ -109,13 +107,16 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     private Boolean ebsOptimized;
 
     /**
+     * String value
+     */
+    private String sriovNetSupport;
+
+    /**
      * Default constructor for a new ModifyInstanceAttributeRequest object.  Callers should use the
      * setter or fluent setter (with...) methods to initialize this object after creating it.
      */
     public ModifyInstanceAttributeRequest() {}
     
-
-
     /**
      * Constructs a new ModifyInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -135,8 +136,6 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         setAttribute(attribute);
     }
 
-    
-    
     /**
      * Constructs a new ModifyInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -155,7 +154,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.instanceId = instanceId;
         this.attribute = attribute.toString();
     }
-    
+
     /**
      * The ID of the instance whose attribute is being modified.
      *
@@ -188,8 +187,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute being modified. <p> Available attribute
      * names: <code>instanceType</code>, <code>kernel</code>,
@@ -267,8 +265,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.attribute = attribute;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute being modified. <p> Available attribute
      * names: <code>instanceType</code>, <code>kernel</code>,
@@ -322,7 +319,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.attribute = attribute.toString();
         return this;
     }
-    
+
     /**
      * The new value of the instance attribute being modified. <p> Only valid
      * when <code>kernel</code>, <code>ramdisk</code>, <code>userData</code>,
@@ -379,8 +376,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * The new block device mappings for the instance whose attributes are
      * being modified. <p> Only valid when blockDeviceMapping is specified as
@@ -391,7 +387,6 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
      *         the attribute being modified.
      */
     public java.util.List<InstanceBlockDeviceMappingSpecification> getBlockDeviceMappings() {
-        
         if (blockDeviceMappings == null) {
               blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMappingSpecification>();
               blockDeviceMappings.setAutoConstruct(true);
@@ -465,7 +460,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
 
         return this;
     }
-    
+
     /**
      * Boolean value
      *
@@ -498,8 +493,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.sourceDestCheck = sourceDestCheck;
         return this;
     }
-    
-    
+
     /**
      * Boolean value
      *
@@ -508,7 +502,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     public Boolean getSourceDestCheck() {
         return sourceDestCheck;
     }
-    
+
     /**
      * Boolean value
      *
@@ -541,8 +535,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.disableApiTermination = disableApiTermination;
         return this;
     }
-    
-    
+
     /**
      * Boolean value
      *
@@ -551,7 +544,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     public Boolean getDisableApiTermination() {
         return disableApiTermination;
     }
-    
+
     /**
      * String value
      *
@@ -584,8 +577,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.instanceType = instanceType;
         return this;
     }
-    
-    
+
     /**
      * String value
      *
@@ -618,8 +610,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.kernel = kernel;
         return this;
     }
-    
-    
+
     /**
      * String value
      *
@@ -652,8 +643,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.ramdisk = ramdisk;
         return this;
     }
-    
-    
+
     /**
      * String value
      *
@@ -686,8 +676,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.userData = userData;
         return this;
     }
-    
-    
+
     /**
      * String value
      *
@@ -720,15 +709,13 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Groups property for this object.
      *
      * @return The value of the Groups property for this object.
      */
     public java.util.List<String> getGroups() {
-        
         if (groups == null) {
               groups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               groups.setAutoConstruct(true);
@@ -790,7 +777,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
 
         return this;
     }
-    
+
     /**
      * Boolean value
      *
@@ -823,8 +810,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         this.ebsOptimized = ebsOptimized;
         return this;
     }
-    
-    
+
     /**
      * Boolean value
      *
@@ -833,7 +819,40 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     public Boolean getEbsOptimized() {
         return ebsOptimized;
     }
+
+    /**
+     * String value
+     *
+     * @return String value
+     */
+    public String getSriovNetSupport() {
+        return sriovNetSupport;
+    }
     
+    /**
+     * String value
+     *
+     * @param sriovNetSupport String value
+     */
+    public void setSriovNetSupport(String sriovNetSupport) {
+        this.sriovNetSupport = sriovNetSupport;
+    }
+    
+    /**
+     * String value
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param sriovNetSupport String value
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ModifyInstanceAttributeRequest withSriovNetSupport(String sriovNetSupport) {
+        this.sriovNetSupport = sriovNetSupport;
+        return this;
+    }
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to
@@ -870,7 +889,8 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         if (getUserData() != null) sb.append("UserData: " + getUserData() + ",");
         if (getInstanceInitiatedShutdownBehavior() != null) sb.append("InstanceInitiatedShutdownBehavior: " + getInstanceInitiatedShutdownBehavior() + ",");
         if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");
-        if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() );
+        if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() + ",");
+        if (getSriovNetSupport() != null) sb.append("SriovNetSupport: " + getSriovNetSupport() );
         sb.append("}");
         return sb.toString();
     }
@@ -893,6 +913,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getInstanceInitiatedShutdownBehavior() == null) ? 0 : getInstanceInitiatedShutdownBehavior().hashCode()); 
         hashCode = prime * hashCode + ((getGroups() == null) ? 0 : getGroups().hashCode()); 
         hashCode = prime * hashCode + ((isEbsOptimized() == null) ? 0 : isEbsOptimized().hashCode()); 
+        hashCode = prime * hashCode + ((getSriovNetSupport() == null) ? 0 : getSriovNetSupport().hashCode()); 
         return hashCode;
     }
     
@@ -930,6 +951,8 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
         if (other.getGroups() != null && other.getGroups().equals(this.getGroups()) == false) return false; 
         if (other.isEbsOptimized() == null ^ this.isEbsOptimized() == null) return false;
         if (other.isEbsOptimized() != null && other.isEbsOptimized().equals(this.isEbsOptimized()) == false) return false; 
+        if (other.getSriovNetSupport() == null ^ this.getSriovNetSupport() == null) return false;
+        if (other.getSriovNetSupport() != null && other.getSriovNetSupport().equals(this.getSriovNetSupport()) == false) return false; 
         return true;
     }
     

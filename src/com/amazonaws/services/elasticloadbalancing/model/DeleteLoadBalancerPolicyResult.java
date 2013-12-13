@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output for the DeleteLoadBalancerPolicy action.
  * </p>
  */
-
- 
 public class DeleteLoadBalancerPolicyResult implements Serializable {
 
     /**

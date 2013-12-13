@@ -24,8 +24,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#cancelExportTask(CancelExportTaskRequest)
  */
-
- 
 public class CancelExportTaskRequest extends AmazonWebServiceRequest implements Serializable {
 
     private String exportTaskId;
@@ -62,8 +60,7 @@ public class CancelExportTaskRequest extends AmazonWebServiceRequest implements 
         this.exportTaskId = exportTaskId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

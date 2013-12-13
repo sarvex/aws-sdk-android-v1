@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeMetricCollectionTypes(DescribeMetricCollectionTypesRequest)
  */
-
- 
 public class DescribeMetricCollectionTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

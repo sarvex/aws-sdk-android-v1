@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeInstanceAttributeReque
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeInstanceAttribute(DescribeInstanceAttributeRequest)
  */
-
- 
 public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeInstanceAttributeRequest> {
 
     /**
@@ -55,8 +53,6 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest im
      */
     public DescribeInstanceAttributeRequest() {}
     
-
-
     /**
      * Constructs a new DescribeInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -76,8 +72,6 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest im
         setAttribute(attribute);
     }
 
-    
-    
     /**
      * Constructs a new DescribeInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -96,7 +90,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest im
         this.instanceId = instanceId;
         this.attribute = attribute.toString();
     }
-    
+
     /**
      * The ID of the instance whose instance attribute is being described.
      *
@@ -129,8 +123,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest im
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute to describe. <p> Available attribute names:
      * <code>instanceType</code>, <code>kernel</code>, <code>ramdisk</code>,
@@ -202,8 +195,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest im
         this.attribute = attribute;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute to describe. <p> Available attribute names:
      * <code>instanceType</code>, <code>kernel</code>, <code>ramdisk</code>,
@@ -253,7 +245,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest im
         this.attribute = attribute.toString();
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

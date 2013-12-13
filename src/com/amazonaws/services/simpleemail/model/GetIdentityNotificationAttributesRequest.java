@@ -28,8 +28,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getIdentityNotificationAttributes(GetIdentityNotificationAttributesRequest)
  */
-
- 
 public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -43,7 +41,6 @@ public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRe
      * @return A list of one or more identities.
      */
     public java.util.List<String> getIdentities() {
-        
         if (identities == null) {
               identities = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               identities.setAutoConstruct(true);
@@ -105,7 +102,7 @@ public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRe
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

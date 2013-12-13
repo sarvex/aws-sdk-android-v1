@@ -24,8 +24,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeExportTasks(DescribeExportTasksRequest)
  */
-
- 
 public class DescribeExportTasksRequest extends AmazonWebServiceRequest implements Serializable {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> exportTaskIds;
@@ -36,7 +34,6 @@ public class DescribeExportTasksRequest extends AmazonWebServiceRequest implemen
      * @return The value of the ExportTaskIds property for this object.
      */
     public java.util.List<String> getExportTaskIds() {
-        
         if (exportTaskIds == null) {
               exportTaskIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               exportTaskIds.setAutoConstruct(true);
@@ -98,7 +95,7 @@ public class DescribeExportTasksRequest extends AmazonWebServiceRequest implemen
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

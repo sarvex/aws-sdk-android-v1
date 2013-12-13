@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeScalingProcessTypes(DescribeScalingProcessTypesRequest)
  */
-
- 
 public class DescribeScalingProcessTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents a list of all the DKIM attributes for the specified identity.
  * </p>
  */
-
- 
 public class GetIdentityDkimAttributesResult implements Serializable {
 
     /**
@@ -67,8 +65,7 @@ public class GetIdentityDkimAttributesResult implements Serializable {
         setDkimAttributes(dkimAttributes);
         return this;
     }
-    
-   	
+
     /**
      * The DKIM attributes for an email address or a domain.
      * <p>

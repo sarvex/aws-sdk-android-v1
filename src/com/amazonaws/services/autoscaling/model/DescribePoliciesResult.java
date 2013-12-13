@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The <code>PoliciesType</code> data type.
  * </p>
  */
-
- 
 public class DescribePoliciesResult implements Serializable {
 
     /**
@@ -45,7 +43,6 @@ public class DescribePoliciesResult implements Serializable {
      * @return A list of scaling policies.
      */
     public java.util.List<ScalingPolicy> getScalingPolicies() {
-        
         if (scalingPolicies == null) {
               scalingPolicies = new com.amazonaws.internal.ListWithAutoConstructFlag<ScalingPolicy>();
               scalingPolicies.setAutoConstruct(true);
@@ -107,7 +104,7 @@ public class DescribePoliciesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -149,8 +146,7 @@ public class DescribePoliciesResult implements Serializable {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

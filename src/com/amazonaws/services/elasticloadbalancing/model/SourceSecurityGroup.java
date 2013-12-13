@@ -20,13 +20,11 @@ import java.io.Serializable;
 /**
  * <p>
  * This data type is used as a response element in the DescribeLoadBalancers action. For information about Elastic Load Balancing security groups, go to
- * <a href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-features.html#using-elb-security-groups"> Using
- * Security Groups With Elastic Load Balancing </a> in the <i>Elastic Load Balancing Developer Guide</i> .
+ * <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-features.html#using-elb-security-groups"> Using Security
+ * Groups With Elastic Load Balancing </a> in the <i>Elastic Load Balancing Developer Guide</i> .
  * 
  * </p>
  */
-
- 
 public class SourceSecurityGroup implements Serializable {
 
     /**
@@ -95,8 +93,7 @@ public class SourceSecurityGroup implements Serializable {
         this.ownerAlias = ownerAlias;
         return this;
     }
-    
-    
+
     /**
      * Name of the source security group. Use this value for the
      * <code>--source-group</code> parameter of the
@@ -147,8 +144,7 @@ public class SourceSecurityGroup implements Serializable {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

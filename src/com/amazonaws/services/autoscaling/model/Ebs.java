@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The Ebs data type.
  * </p>
  */
-
- 
 public class Ebs implements Serializable {
 
     /**
@@ -87,8 +85,7 @@ public class Ebs implements Serializable {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * The volume size, in gigabytes.
      * <p>
@@ -130,8 +127,7 @@ public class Ebs implements Serializable {
         this.volumeSize = volumeSize;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Copy Image Result
  */
-
- 
 public class CopyImageResult implements Serializable {
 
     private String imageId;
@@ -58,8 +56,7 @@ public class CopyImageResult implements Serializable {
         this.imageId = imageId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

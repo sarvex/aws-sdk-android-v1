@@ -29,8 +29,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendStatistics(GetSendStatisticsRequest)
  */
-
- 
 public class GetSendStatisticsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

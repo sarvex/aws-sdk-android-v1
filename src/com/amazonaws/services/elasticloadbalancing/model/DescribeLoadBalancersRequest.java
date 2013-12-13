@@ -21,22 +21,19 @@ import com.amazonaws.AmazonWebServiceRequest;
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancers(DescribeLoadBalancersRequest) DescribeLoadBalancers operation}.
  * <p>
- * Returns detailed configuration information for the specified LoadBalancers. If no LoadBalancers are specified, the operation returns configuration
- * information for all LoadBalancers created by the caller.
+ * Returns detailed configuration information for all the load balancers created for the account. If you specify load balancer names, the action returns
+ * configuration information of the specified load balancers.
  * </p>
  * <p>
- * <b>NOTE:</b> The client must have created the specified input LoadBalancers in order to retrieve this information; the client must provide the same
- * account credentials as those that were used to create the LoadBalancer.
+ * <b>NOTE:</b> In order to retrieve this information, you must provide the same account credentials that was used to create the load balancer.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancers(DescribeLoadBalancersRequest)
  */
-
- 
 public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> loadBalancerNames;
 
@@ -51,29 +48,24 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implem
      */
     public DescribeLoadBalancersRequest() {}
     
-
-
     /**
      * Constructs a new DescribeLoadBalancersRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerNames A list of names associated with the
-     * LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with
+     * the account.
      */
     public DescribeLoadBalancersRequest(java.util.List<String> loadBalancerNames) {
         setLoadBalancerNames(loadBalancerNames);
     }
 
-    
-    
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      *
-     * @return A list of names associated with the LoadBalancers at creation time.
+     * @return A list of load balancer names associated with the account.
      */
     public java.util.List<String> getLoadBalancerNames() {
-        
         if (loadBalancerNames == null) {
               loadBalancerNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               loadBalancerNames.setAutoConstruct(true);
@@ -82,9 +74,9 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implem
     }
     
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      *
-     * @param loadBalancerNames A list of names associated with the LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with the account.
      */
     public void setLoadBalancerNames(java.util.Collection<String> loadBalancerNames) {
         if (loadBalancerNames == null) {
@@ -97,11 +89,11 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implem
     }
     
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerNames A list of names associated with the LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -115,11 +107,11 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implem
     }
     
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerNames A list of names associated with the LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -135,7 +127,7 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implem
 
         return this;
     }
-    
+
     /**
      * An optional parameter reserved for future use.
      *
@@ -168,8 +160,7 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implem
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

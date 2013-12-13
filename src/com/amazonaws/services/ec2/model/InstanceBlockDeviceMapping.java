@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Describes how block devices are mapped on an Amazon EC2 instance.
  * </p>
  */
-
- 
 public class InstanceBlockDeviceMapping implements Serializable {
 
     /**
@@ -75,8 +73,7 @@ public class InstanceBlockDeviceMapping implements Serializable {
         this.deviceName = deviceName;
         return this;
     }
-    
-    
+
     /**
      * The optional EBS device mapped to the specified device name.
      *
@@ -109,8 +106,7 @@ public class InstanceBlockDeviceMapping implements Serializable {
         this.ebs = ebs;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

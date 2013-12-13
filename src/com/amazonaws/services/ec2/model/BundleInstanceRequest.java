@@ -29,8 +29,6 @@ import com.amazonaws.services.ec2.model.transform.BundleInstanceRequestMarshalle
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#bundleInstance(BundleInstanceRequest)
  */
-
- 
 public class BundleInstanceRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<BundleInstanceRequest> {
 
     /**
@@ -49,8 +47,6 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest implements Se
      */
     public BundleInstanceRequest() {}
     
-
-
     /**
      * Constructs a new BundleInstanceRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -64,8 +60,6 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest implements Se
         setStorage(storage);
     }
 
-    
-    
     /**
      * The ID of the instance to bundle.
      *
@@ -98,8 +92,7 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest implements Se
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * 
      *
@@ -132,8 +125,7 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest implements Se
         this.storage = storage;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

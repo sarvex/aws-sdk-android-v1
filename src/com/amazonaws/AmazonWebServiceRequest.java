@@ -17,11 +17,15 @@ package com.amazonaws;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.annotation.NotThreadSafe;
+
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.metrics.RequestMetricCollector;
 
 /**
  * Base class for all user facing web service requests.
  */
+@NotThreadSafe
 public abstract class AmazonWebServiceRequest {
 
     /**
@@ -29,7 +33,14 @@ public abstract class AmazonWebServiceRequest {
      * field is not intended to be used by clients.
      */
     private final RequestClientOptions requestClientOptions = new RequestClientOptions();
-    
+
+    /**
+     * A request metric collector used for this specific service request; or
+     * null if there is none.  This collector always takes precedence over the
+     * ones specified at the http client level and AWS SDK level.
+     */
+    private RequestMetricCollector requestMetricCollector;
+
     /** The optional STS security token associated with this request */
     private String delegationToken;
 
@@ -117,5 +128,30 @@ public abstract class AmazonWebServiceRequest {
      */
     public RequestClientOptions getRequestClientOptions() {
         return requestClientOptions;
+    }
+
+    /**
+     * Returns a request level metric collector; or null if not specified.
+     */
+    public RequestMetricCollector getRequestMetricCollector() {
+        return requestMetricCollector;
+    }
+
+    /**
+     * Sets a request level request metric collector which takes precedence over
+     * the ones at the http client level and AWS SDK level.
+     */
+    public void setRequestMetricCollector(RequestMetricCollector requestMetricCollector) {
+        this.requestMetricCollector = requestMetricCollector;
+    }
+
+    /**
+     * Specifies a request level metric collector which takes precedence over
+     * the ones at the http client level and AWS SDK level.
+     */
+    public <T extends AmazonWebServiceRequest> T withRequestMetricCollector(RequestMetricCollector metricCollector) {
+        setRequestMetricCollector(metricCollector);
+        @SuppressWarnings("unchecked") T t = (T)this;
+        return t;
     }
 }

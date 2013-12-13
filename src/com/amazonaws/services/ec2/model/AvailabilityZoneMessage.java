@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Availability Zone Message
  */
-
- 
 public class AvailabilityZoneMessage implements Serializable {
 
     private String message;
@@ -58,8 +56,7 @@ public class AvailabilityZoneMessage implements Serializable {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

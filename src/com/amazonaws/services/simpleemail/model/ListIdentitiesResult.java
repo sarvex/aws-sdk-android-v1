@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents a list of all verified identities for the AWS Account.
  * </p>
  */
-
- 
 public class ListIdentitiesResult implements Serializable {
 
     /**
@@ -42,7 +40,6 @@ public class ListIdentitiesResult implements Serializable {
      * @return A list of identities.
      */
     public java.util.List<String> getIdentities() {
-        
         if (identities == null) {
               identities = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               identities.setAutoConstruct(true);
@@ -104,7 +101,7 @@ public class ListIdentitiesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * The token used for pagination.
      *
@@ -137,8 +134,7 @@ public class ListIdentitiesResult implements Serializable {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

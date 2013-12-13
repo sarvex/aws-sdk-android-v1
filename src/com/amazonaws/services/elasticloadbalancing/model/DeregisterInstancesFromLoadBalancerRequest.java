@@ -21,21 +21,25 @@ import com.amazonaws.AmazonWebServiceRequest;
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#deregisterInstancesFromLoadBalancer(DeregisterInstancesFromLoadBalancerRequest) DeregisterInstancesFromLoadBalancer operation}.
  * <p>
- * Deregisters instances from the LoadBalancer. Once the instance is deregistered, it will stop receiving traffic from the LoadBalancer.
+ * Deregisters instances from the load balancer. Once the instance is deregistered, it will stop receiving traffic from the load balancer.
  * </p>
  * <p>
- * In order to successfully call this API, the same account credentials as those used to create the LoadBalancer must be provided.
+ * In order to successfully call this API, the same account credentials as those used to create the load balancer must be provided.
+ * </p>
+ * <p>
+ * For more information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/US_DeReg_Reg_Instances.html"> De-register and
+ * Register Amazon EC2 Instances </a> in the <i>Elastic Load Balancing Developer Guide</i> .
+ * </p>
+ * <p>
+ * You can use DescribeLoadBalancers to verify if the instance is deregistered from the load balancer.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#deregisterInstancesFromLoadBalancer(DeregisterInstancesFromLoadBalancerRequest)
  */
-
- 
 public class DeregisterInstancesFromLoadBalancerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      */
     private String loadBalancerName;
 
@@ -51,15 +55,12 @@ public class DeregisterInstancesFromLoadBalancerRequest extends AmazonWebService
      */
     public DeregisterInstancesFromLoadBalancerRequest() {}
     
-
-
     /**
      * Constructs a new DeregisterInstancesFromLoadBalancerRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The name associated with the LoadBalancer. The
-     * name must be unique within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      * @param instances A list of EC2 instance IDs consisting of all
      * instances to be deregistered.
      */
@@ -68,38 +69,30 @@ public class DeregisterInstancesFromLoadBalancerRequest extends AmazonWebService
         setInstances(instances);
     }
 
-    
-    
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      *
-     * @return The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @return The name associated with the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -108,8 +101,7 @@ public class DeregisterInstancesFromLoadBalancerRequest extends AmazonWebService
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * A list of EC2 instance IDs consisting of all instances to be
      * deregistered.
@@ -118,7 +110,6 @@ public class DeregisterInstancesFromLoadBalancerRequest extends AmazonWebService
      *         deregistered.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
               instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
               instances.setAutoConstruct(true);
@@ -186,7 +177,7 @@ public class DeregisterInstancesFromLoadBalancerRequest extends AmazonWebService
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

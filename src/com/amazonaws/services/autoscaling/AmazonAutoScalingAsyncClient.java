@@ -323,6 +323,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingGroups service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -366,6 +367,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingGroups service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -415,6 +417,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         EnableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -460,6 +463,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         EnableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -501,6 +505,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         ResumeProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -539,6 +544,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         ResumeProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -583,6 +589,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteLaunchConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -624,6 +631,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteLaunchConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -664,6 +672,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribePolicies service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -700,6 +709,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribePolicies service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -741,6 +751,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeScalingProcessTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -777,6 +788,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeScalingProcessTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -823,6 +835,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         CreateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -865,6 +878,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         CreateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -916,6 +930,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeScalingActivities service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -963,6 +978,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeScalingActivities service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1004,6 +1020,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeNotificationConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1040,6 +1057,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeNotificationConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1080,6 +1098,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeTerminationPolicyTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1115,6 +1134,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeTerminationPolicyTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1165,6 +1185,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1210,6 +1231,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1248,6 +1270,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         ExecutePolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1282,6 +1305,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         ExecutePolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1319,6 +1343,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1353,6 +1378,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1393,6 +1419,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         PutScalingPolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1429,6 +1456,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         PutScalingPolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1480,6 +1508,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         PutNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1527,6 +1556,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         PutNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1564,6 +1594,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DeletePolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1598,6 +1629,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         DeletePolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1637,6 +1669,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1673,6 +1706,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1713,6 +1747,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteScheduledAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1750,6 +1785,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteScheduledAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1793,6 +1829,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         SetInstanceHealth service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1833,6 +1870,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         SetInstanceHealth service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1873,6 +1911,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingNotificationTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1909,6 +1948,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingNotificationTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1959,6 +1999,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateOrUpdateTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2005,6 +2046,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateOrUpdateTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2058,6 +2100,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         SuspendProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2108,6 +2151,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         SuspendProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2155,6 +2199,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingInstances service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2198,6 +2243,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingInstances service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2252,6 +2298,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         CreateLaunchConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2302,6 +2349,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         CreateLaunchConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2347,6 +2395,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2389,6 +2438,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DeleteAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2431,6 +2481,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DisableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2470,6 +2521,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DisableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2534,6 +2586,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         UpdateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2595,6 +2648,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         UpdateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2639,6 +2693,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeLaunchConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2679,6 +2734,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeLaunchConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2720,6 +2776,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAdjustmentTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2756,6 +2813,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeAdjustmentTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2798,6 +2856,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeScheduledActions service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2835,6 +2894,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeScheduledActions service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2888,6 +2948,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         PutScheduledUpdateGroupAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2937,6 +2998,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         PutScheduledUpdateGroupAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2977,6 +3039,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeMetricCollectionTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3013,6 +3076,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         DescribeMetricCollectionTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3052,6 +3116,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         SetDesiredCapacity service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3087,6 +3152,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * 
      * @return A Java Future object containing the response from the
      *         SetDesiredCapacity service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3131,6 +3197,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         TerminateInstanceInAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3171,6 +3238,7 @@ public class AmazonAutoScalingAsyncClient extends AmazonAutoScalingClient
      * @return A Java Future object containing the response from the
      *         TerminateInstanceInAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while

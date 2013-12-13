@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output for the TerminateInstanceInAutoScalingGroup action.
  * </p>
  */
-
- 
 public class TerminateInstanceInAutoScalingGroupResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class TerminateInstanceInAutoScalingGroupResult implements Serializable {
         this.activity = activity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

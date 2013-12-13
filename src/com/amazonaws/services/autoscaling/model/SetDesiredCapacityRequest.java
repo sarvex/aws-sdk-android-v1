@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#setDesiredCapacity(SetDesiredCapacityRequest)
  */
-
- 
 public class SetDesiredCapacityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -98,8 +96,7 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest implement
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The new capacity setting for the Auto Scaling group.
      *
@@ -132,8 +129,7 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest implement
         this.desiredCapacity = desiredCapacity;
         return this;
     }
-    
-    
+
     /**
      * By default, <code>SetDesiredCapacity</code> overrides any cooldown
      * period associated with the Auto Scaling group. Set to
@@ -196,8 +192,7 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest implement
         this.honorCooldown = honorCooldown;
         return this;
     }
-    
-    
+
     /**
      * By default, <code>SetDesiredCapacity</code> overrides any cooldown
      * period associated with the Auto Scaling group. Set to
@@ -216,7 +211,7 @@ public class SetDesiredCapacityRequest extends AmazonWebServiceRequest implement
     public Boolean getHonorCooldown() {
         return honorCooldown;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

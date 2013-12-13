@@ -44,6 +44,7 @@ public class TableDescriptionJsonUnmarshaller implements Unmarshaller<TableDescr
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
@@ -82,6 +83,9 @@ public class TableDescriptionJsonUnmarshaller implements Unmarshaller<TableDescr
                 }
                 if (context.testExpression("LocalSecondaryIndexes", targetDepth)) {
                     tableDescription.setLocalSecondaryIndexes(new ListUnmarshaller<LocalSecondaryIndexDescription>(LocalSecondaryIndexDescriptionJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("GlobalSecondaryIndexes", targetDepth)) {
+                    tableDescription.setGlobalSecondaryIndexes(new ListUnmarshaller<GlobalSecondaryIndexDescription>(GlobalSecondaryIndexDescriptionJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -106,6 +106,7 @@ public interface AmazonEC2 {
      * @param rebootInstancesRequest Container for the necessary parameters
      *           to execute the RebootInstances service method on AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -205,6 +206,7 @@ public interface AmazonEC2 {
      * @param deleteKeyPairRequest Container for the necessary parameters to
      *           execute the DeleteKeyPair service method on AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -284,6 +286,7 @@ public interface AmazonEC2 {
      * @param deleteSecurityGroupRequest Container for the necessary
      *           parameters to execute the DeleteSecurityGroup service method on
      *           AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -550,6 +553,7 @@ public interface AmazonEC2 {
      *           parameters to execute the ResetSnapshotAttribute service method on
      *           AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -622,6 +626,7 @@ public interface AmazonEC2 {
      * @param deregisterImageRequest Container for the necessary parameters
      *           to execute the DeregisterImage service method on AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -672,6 +677,7 @@ public interface AmazonEC2 {
      * @param deleteTagsRequest Container for the necessary parameters to
      *           execute the DeleteTags service method on AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -712,6 +718,7 @@ public interface AmazonEC2 {
      *
      * @param enableVolumeIORequest Container for the necessary parameters to
      *           execute the EnableVolumeIO service method on AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -806,6 +813,7 @@ public interface AmazonEC2 {
      * @param activateLicenseRequest Container for the necessary parameters
      *           to execute the ActivateLicense service method on AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -830,6 +838,7 @@ public interface AmazonEC2 {
      * @param resetImageAttributeRequest Container for the necessary
      *           parameters to execute the ResetImageAttribute service method on
      *           AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -884,6 +893,7 @@ public interface AmazonEC2 {
      *
      * @param deleteVolumeRequest Container for the necessary parameters to
      *           execute the DeleteVolume service method on AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -965,6 +975,7 @@ public interface AmazonEC2 {
      *           parameters to execute the CancelConversionTask service method on
      *           AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1016,6 +1027,7 @@ public interface AmazonEC2 {
      *
      * @param deactivateLicenseRequest Container for the necessary parameters
      *           to execute the DeactivateLicense service method on AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -1101,6 +1113,7 @@ public interface AmazonEC2 {
      * @param reportInstanceStatusRequest Container for the necessary
      *           parameters to execute the ReportInstanceStatus service method on
      *           AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -1206,6 +1219,7 @@ public interface AmazonEC2 {
      *           parameters to execute the RevokeSecurityGroupIngress service method on
      *           AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1256,6 +1270,7 @@ public interface AmazonEC2 {
      * @param modifyImageAttributeRequest Container for the necessary
      *           parameters to execute the ModifyImageAttribute service method on
      *           AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -1522,6 +1537,7 @@ public interface AmazonEC2 {
      *           parameters to execute the ModifyVolumeAttribute service method on
      *           AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1667,6 +1683,7 @@ public interface AmazonEC2 {
      *           parameters to execute the ModifyInstanceAttribute service method on
      *           AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1700,6 +1717,7 @@ public interface AmazonEC2 {
      * @param authorizeSecurityGroupIngressRequest Container for the
      *           necessary parameters to execute the AuthorizeSecurityGroupIngress
      *           service method on AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -1775,6 +1793,7 @@ public interface AmazonEC2 {
      *
      * @param cancelExportTaskRequest Container for the necessary parameters
      *           to execute the CancelExportTask service method on AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -1852,6 +1871,7 @@ public interface AmazonEC2 {
      *
      * @param createTagsRequest Container for the necessary parameters to
      *           execute the CreateTags service method on AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -2009,6 +2029,7 @@ public interface AmazonEC2 {
      *           parameters to execute the ModifySnapshotAttribute service method on
      *           AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2090,6 +2111,7 @@ public interface AmazonEC2 {
      * @param deleteSpotDatafeedSubscriptionRequest Container for the
      *           necessary parameters to execute the DeleteSpotDatafeedSubscription
      *           service method on AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -2385,6 +2407,7 @@ public interface AmazonEC2 {
      * @param deleteSnapshotRequest Container for the necessary parameters to
      *           execute the DeleteSnapshot service method on AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2409,6 +2432,7 @@ public interface AmazonEC2 {
      *           parameters to execute the DisassociateAddress service method on
      *           AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2431,6 +2455,7 @@ public interface AmazonEC2 {
      * @param createPlacementGroupRequest Container for the necessary
      *           parameters to execute the CreatePlacementGroup service method on
      *           AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -2480,6 +2505,7 @@ public interface AmazonEC2 {
      * @param deletePlacementGroupRequest Container for the necessary
      *           parameters to execute the DeletePlacementGroup service method on
      *           AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -2560,6 +2586,7 @@ public interface AmazonEC2 {
      * @param releaseAddressRequest Container for the necessary parameters to
      *           execute the ReleaseAddress service method on AmazonEC2.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2580,6 +2607,7 @@ public interface AmazonEC2 {
      * @param resetInstanceAttributeRequest Container for the necessary
      *           parameters to execute the ResetInstanceAttribute service method on
      *           AmazonEC2.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -2742,6 +2770,7 @@ public interface AmazonEC2 {
      * access from security group A, security group A cannot be deleted until
      * the allow rule is removed.
      * </p>
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -3015,6 +3044,7 @@ public interface AmazonEC2 {
     
     /**
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3065,6 +3095,7 @@ public interface AmazonEC2 {
      * security group. However, depending on the number of instances in the
      * group, a small delay might occur.
      * </p>
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -3262,6 +3293,7 @@ public interface AmazonEC2 {
      * instances, a small delay might occur.
      * </p>
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3375,6 +3407,7 @@ public interface AmazonEC2 {
      * User Guide .
      * 
      * </p>
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -3545,6 +3578,7 @@ public interface AmazonEC2 {
      * not return an error.
      * </p>
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3595,6 +3629,7 @@ public interface AmazonEC2 {
      * be assigned to another account which will cause Amazon EC2 to return
      * an error.
      * </p>
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -3671,11 +3706,11 @@ public interface AmazonEC2 {
      * DryRunResult object contains the information of whether the dry-run was
      * successful. This method will throw exception when the service response
      * does not clearly indicate whether you have the permission.
-     * 
+     *
      * @param request
      *            The request object for any AmazonEC2 operation suppored with
      *            dry-run.
-     * 
+     *
      * @return A DryRunResult object that contains the information of whether
      *         the dry-run was successful.
      *

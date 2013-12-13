@@ -22,8 +22,6 @@ import java.io.Serializable;
  * An Amazon EC2 security group, describing how EC2 instances in this group can receive network traffic.
  * </p>
  */
-
- 
 public class SecurityGroup implements Serializable {
 
     /**
@@ -86,8 +84,7 @@ public class SecurityGroup implements Serializable {
         this.ownerId = ownerId;
         return this;
     }
-    
-    
+
     /**
      * The name of this security group.
      *
@@ -120,8 +117,7 @@ public class SecurityGroup implements Serializable {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the GroupId property for this object.
      *
@@ -154,8 +150,7 @@ public class SecurityGroup implements Serializable {
         this.groupId = groupId;
         return this;
     }
-    
-    
+
     /**
      * The description of this security group.
      *
@@ -188,15 +183,13 @@ public class SecurityGroup implements Serializable {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The permissions enabled for this security group.
      *
      * @return The permissions enabled for this security group.
      */
     public java.util.List<IpPermission> getIpPermissions() {
-        
         if (ipPermissions == null) {
               ipPermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>();
               ipPermissions.setAutoConstruct(true);
@@ -258,14 +251,13 @@ public class SecurityGroup implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the IpPermissionsEgress property for this object.
      *
      * @return The value of the IpPermissionsEgress property for this object.
      */
     public java.util.List<IpPermission> getIpPermissionsEgress() {
-        
         if (ipPermissionsEgress == null) {
               ipPermissionsEgress = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>();
               ipPermissionsEgress.setAutoConstruct(true);
@@ -327,7 +319,7 @@ public class SecurityGroup implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the VpcId property for this object.
      *
@@ -360,15 +352,13 @@ public class SecurityGroup implements Serializable {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Tags property for this object.
      *
      * @return The value of the Tags property for this object.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
               tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
               tags.setAutoConstruct(true);
@@ -430,7 +420,7 @@ public class SecurityGroup implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

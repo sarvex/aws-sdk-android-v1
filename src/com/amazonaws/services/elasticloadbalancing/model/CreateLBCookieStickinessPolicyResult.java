@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output for the CreateLBCookieStickinessPolicy action.
  * </p>
  */
-
- 
 public class CreateLBCookieStickinessPolicyResult implements Serializable {
 
     /**

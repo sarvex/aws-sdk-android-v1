@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.EnableVolumeIORequestMarshalle
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#enableVolumeIO(EnableVolumeIORequest)
  */
-
- 
 public class EnableVolumeIORequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<EnableVolumeIORequest> {
 
     private String volumeId;
@@ -66,8 +64,7 @@ public class EnableVolumeIORequest extends AmazonWebServiceRequest implements Se
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

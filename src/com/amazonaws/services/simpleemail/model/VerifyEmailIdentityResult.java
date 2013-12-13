@@ -22,8 +22,6 @@ import java.io.Serializable;
  * An empty element. Receiving this element indicates that the request completed successfully.
  * </p>
  */
-
- 
 public class VerifyEmailIdentityResult implements Serializable {
 
     /**

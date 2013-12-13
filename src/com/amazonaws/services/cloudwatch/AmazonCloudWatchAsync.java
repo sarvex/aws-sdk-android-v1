@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch;
-            
+
 import java.util.concurrent.Future;
 
 import com.amazonaws.AmazonClientException;
@@ -52,8 +52,8 @@ import com.amazonaws.services.cloudwatch.model.*;
  * <li> <a href="http://monitoring.amazonaws.com/doc/2010-08-01/CloudWatch.wsdl"> WSDL Location </a> :
  * http://monitoring.amazonaws.com/doc/2010-08-01/CloudWatch.wsdl</li>
  * 
- * </ul> 
- */       
+ * </ul>
+ */
 public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
     /**
      * <p>
@@ -77,6 +77,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricAlarm service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -115,6 +116,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricAlarm service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -156,6 +158,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricData service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -200,6 +203,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricData service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -235,6 +239,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         ListMetrics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -273,6 +278,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         ListMetrics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -330,6 +336,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         GetMetricStatistics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -390,6 +397,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         GetMetricStatistics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -416,6 +424,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DisableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -445,6 +454,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DisableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -471,6 +481,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -500,6 +511,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -526,6 +538,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * @return A Java Future object containing the response from the
      *         DescribeAlarmsForMetric service method, as returned by
      *         AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -555,6 +568,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * @return A Java Future object containing the response from the
      *         DescribeAlarmsForMetric service method, as returned by
      *         AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -585,6 +599,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarmHistory service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -618,6 +633,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarmHistory service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -642,6 +658,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         EnableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -669,6 +686,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         EnableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -693,6 +711,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -720,6 +739,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -747,6 +767,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         SetAlarmState service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -777,6 +798,7 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      * 
      * @return A Java Future object containing the response from the
      *         SetAlarmState service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while

@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Associate Address Result
  */
-
- 
 public class AssociateAddressResult implements Serializable {
 
     private String associationId;
@@ -58,8 +56,7 @@ public class AssociateAddressResult implements Serializable {
         this.associationId = associationId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Create Security Group Result
  */
-
- 
 public class CreateSecurityGroupResult implements Serializable {
 
     private String groupId;
@@ -58,8 +56,7 @@ public class CreateSecurityGroupResult implements Serializable {
         this.groupId = groupId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

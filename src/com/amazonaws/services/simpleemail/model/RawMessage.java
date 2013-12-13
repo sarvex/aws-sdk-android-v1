@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents the raw data of the message.
  * </p>
  */
-
- 
 public class RawMessage implements Serializable {
 
     /**
@@ -42,8 +40,6 @@ public class RawMessage implements Serializable {
      */
     public RawMessage() {}
     
-
-
     /**
      * Constructs a new RawMessage object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -60,8 +56,6 @@ public class RawMessage implements Serializable {
         setData(data);
     }
 
-    
-    
     /**
      * The raw data of the message. The client must ensure that the message
      * format complies with Internet email standards regarding email header
@@ -124,8 +118,7 @@ public class RawMessage implements Serializable {
         this.data = data;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

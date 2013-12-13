@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Describes a state change for an Amazon EC2 instance.
  * </p>
  */
-
- 
 public class StateReason implements Serializable {
 
     /**
@@ -68,8 +66,7 @@ public class StateReason implements Serializable {
         this.code = code;
         return this;
     }
-    
-    
+
     /**
      * Descriptive message for the state change.
      *
@@ -102,8 +99,7 @@ public class StateReason implements Serializable {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

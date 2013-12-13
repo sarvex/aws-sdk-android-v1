@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of describing the bundle tasks for the user's account.
  * </p>
  */
-
- 
 public class DescribeBundleTasksResult implements Serializable {
 
     /**
@@ -37,7 +35,6 @@ public class DescribeBundleTasksResult implements Serializable {
      * @return The list of described bundle tasks.
      */
     public java.util.List<BundleTask> getBundleTasks() {
-        
         if (bundleTasks == null) {
               bundleTasks = new com.amazonaws.internal.ListWithAutoConstructFlag<BundleTask>();
               bundleTasks.setAutoConstruct(true);
@@ -99,7 +96,7 @@ public class DescribeBundleTasksResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

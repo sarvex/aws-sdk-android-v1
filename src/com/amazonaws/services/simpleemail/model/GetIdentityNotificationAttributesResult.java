@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Describes whether an identity has a bounce topic or complaint topic set, or feedback forwarding enabled.
  * </p>
  */
-
- 
 public class GetIdentityNotificationAttributesResult implements Serializable {
 
     /**
@@ -67,8 +65,7 @@ public class GetIdentityNotificationAttributesResult implements Serializable {
         setNotificationAttributes(notificationAttributes);
         return this;
     }
-    
-   	
+
     /**
      * A map of Identity to IdentityNotificationAttributes.
      * <p>

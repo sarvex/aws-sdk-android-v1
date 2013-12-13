@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The resulting information about the modified Reserved Instances.
  * </p>
  */
-
- 
 public class ReservedInstancesModificationResult implements Serializable {
 
     /**
@@ -75,8 +73,7 @@ public class ReservedInstancesModificationResult implements Serializable {
         this.reservedInstancesId = reservedInstancesId;
         return this;
     }
-    
-    
+
     /**
      * The configuration settings for the modified Reserved Instances.
      *
@@ -109,8 +106,7 @@ public class ReservedInstancesModificationResult implements Serializable {
         this.targetConfiguration = targetConfiguration;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

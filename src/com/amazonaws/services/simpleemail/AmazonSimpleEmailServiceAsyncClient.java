@@ -293,6 +293,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -328,6 +329,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -374,6 +376,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListVerifiedEmailAddresses service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -415,6 +418,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListVerifiedEmailAddresses service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -460,6 +464,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetSendStatistics service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -500,6 +505,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetSendStatistics service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -541,6 +547,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -577,6 +584,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -621,6 +629,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityNotificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -660,6 +669,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityNotificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -716,6 +726,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainDkim service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -767,6 +778,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainDkim service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -830,6 +842,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityDkimAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -888,6 +901,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityDkimAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -934,6 +948,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -976,6 +991,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1042,6 +1058,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendRawEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1104,6 +1121,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendRawEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1145,6 +1163,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListIdentities service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1181,6 +1200,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListIdentities service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1223,6 +1243,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityVerificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1260,6 +1281,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityVerificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1321,6 +1343,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityDkimEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1377,6 +1400,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityDkimEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1415,6 +1439,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         GetSendQuota service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1448,6 +1473,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         GetSendQuota service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1494,6 +1520,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityFeedbackForwardingEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1535,6 +1562,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityFeedbackForwardingEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1575,6 +1603,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1610,6 +1639,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1674,6 +1704,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1733,6 +1764,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1779,6 +1811,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteVerifiedEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1821,6 +1854,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteVerifiedEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1867,6 +1901,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityNotificationTopic service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1909,6 +1944,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityNotificationTopic service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while

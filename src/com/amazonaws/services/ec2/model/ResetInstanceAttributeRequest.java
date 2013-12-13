@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.ResetInstanceAttributeRequestM
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#resetInstanceAttribute(ResetInstanceAttributeRequest)
  */
-
- 
 public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ResetInstanceAttributeRequest> {
 
     /**
@@ -52,8 +50,6 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest imple
      */
     public ResetInstanceAttributeRequest() {}
     
-
-
     /**
      * Constructs a new ResetInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -69,8 +65,6 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest imple
         setAttribute(attribute);
     }
 
-    
-    
     /**
      * Constructs a new ResetInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -85,7 +79,7 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest imple
         this.instanceId = instanceId;
         this.attribute = attribute.toString();
     }
-    
+
     /**
      * The ID of the Amazon EC2 instance whose attribute is being reset.
      *
@@ -118,8 +112,7 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest imple
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute being reset. <p> Available attribute names:
      * <code>kernel</code>, <code>ramdisk</code>
@@ -173,8 +166,7 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest imple
         this.attribute = attribute;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute being reset. <p> Available attribute names:
      * <code>kernel</code>, <code>ramdisk</code>
@@ -212,7 +204,7 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest imple
         this.attribute = attribute.toString();
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

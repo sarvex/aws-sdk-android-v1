@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Describes the storage destination for a BundleTask when bundling a Windows instance.
  * </p>
  */
-
- 
 public class Storage implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class Storage implements Serializable {
         this.s3 = s3;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

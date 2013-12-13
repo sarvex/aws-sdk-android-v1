@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deletePolicy(DeletePolicyRequest)
  */
-
- 
 public class DeletePolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -92,8 +90,7 @@ public class DeletePolicyRequest extends AmazonWebServiceRequest implements Seri
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The name or PolicyARN of the policy you want to delete.
      * <p>
@@ -138,8 +135,7 @@ public class DeletePolicyRequest extends AmazonWebServiceRequest implements Seri
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

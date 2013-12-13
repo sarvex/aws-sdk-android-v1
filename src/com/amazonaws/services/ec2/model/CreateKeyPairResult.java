@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of creating a new EC2 key pair.
  * </p>
  */
-
- 
 public class CreateKeyPairResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class CreateKeyPairResult implements Serializable {
         this.keyPair = keyPair;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Copy Snapshot Result
  */
-
- 
 public class CopySnapshotResult implements Serializable {
 
     private String snapshotId;
@@ -58,8 +56,7 @@ public class CopySnapshotResult implements Serializable {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

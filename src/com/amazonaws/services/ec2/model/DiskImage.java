@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Disk Image
  */
-
- 
 public class DiskImage implements Serializable {
 
     private DiskImageDetail image;
@@ -62,8 +60,7 @@ public class DiskImage implements Serializable {
         this.image = image;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Description property for this object.
      *
@@ -96,8 +93,7 @@ public class DiskImage implements Serializable {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Volume property for this object.
      *
@@ -130,8 +126,7 @@ public class DiskImage implements Serializable {
         this.volume = volume;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

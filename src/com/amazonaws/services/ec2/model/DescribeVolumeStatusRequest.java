@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeVolumeStatusRequestMar
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeVolumeStatus(DescribeVolumeStatusRequest)
  */
-
- 
 public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeVolumeStatusRequest> {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeIds;
@@ -46,7 +44,6 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest impleme
      * @return The value of the VolumeIds property for this object.
      */
     public java.util.List<String> getVolumeIds() {
-        
         if (volumeIds == null) {
               volumeIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               volumeIds.setAutoConstruct(true);
@@ -108,14 +105,13 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest impleme
 
         return this;
     }
-    
+
     /**
      * Returns the value of the Filters property for this object.
      *
      * @return The value of the Filters property for this object.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -177,7 +173,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest impleme
 
         return this;
     }
-    
+
     /**
      * Returns the value of the NextToken property for this object.
      *
@@ -210,8 +206,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest impleme
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the MaxResults property for this object.
      *
@@ -244,8 +239,7 @@ public class DescribeVolumeStatusRequest extends AmazonWebServiceRequest impleme
         this.maxResults = maxResults;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

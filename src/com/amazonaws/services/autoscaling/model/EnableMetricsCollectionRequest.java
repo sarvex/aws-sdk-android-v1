@@ -32,8 +32,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#enableMetricsCollection(EnableMetricsCollectionRequest)
  */
-
- 
 public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -110,8 +108,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest impl
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The list of metrics to collect. If no metrics are specified, all
      * metrics are enabled. The following metrics are supported: <ul>
@@ -130,7 +127,6 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest impl
      *         </ul>
      */
     public java.util.List<String> getMetrics() {
-        
         if (metrics == null) {
               metrics = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               metrics.setAutoConstruct(true);
@@ -228,7 +224,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest impl
 
         return this;
     }
-    
+
     /**
      * The granularity to associate with the metrics to collect. Currently,
      * the only legal granularity is "1Minute".
@@ -279,8 +275,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest impl
         this.granularity = granularity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

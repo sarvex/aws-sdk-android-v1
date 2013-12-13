@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.DeleteVolumeRequestMarshaller;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteVolume(DeleteVolumeRequest)
  */
-
- 
 public class DeleteVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteVolumeRequest> {
 
     /**
@@ -43,8 +41,6 @@ public class DeleteVolumeRequest extends AmazonWebServiceRequest implements Seri
      */
     public DeleteVolumeRequest() {}
     
-
-
     /**
      * Constructs a new DeleteVolumeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -56,8 +52,6 @@ public class DeleteVolumeRequest extends AmazonWebServiceRequest implements Seri
         setVolumeId(volumeId);
     }
 
-    
-    
     /**
      * The ID of the EBS volume to delete.
      *
@@ -90,8 +84,7 @@ public class DeleteVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

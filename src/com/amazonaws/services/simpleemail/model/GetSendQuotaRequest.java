@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendQuota(GetSendQuotaRequest)
  */
-
- 
 public class GetSendQuotaRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

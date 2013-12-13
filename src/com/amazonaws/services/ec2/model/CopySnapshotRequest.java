@@ -26,8 +26,6 @@ import com.amazonaws.services.ec2.model.transform.CopySnapshotRequestMarshaller;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#copySnapshot(CopySnapshotRequest)
  */
-
- 
 public class CopySnapshotRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CopySnapshotRequest> {
 
     private String sourceRegion;
@@ -68,8 +66,7 @@ public class CopySnapshotRequest extends AmazonWebServiceRequest implements Seri
         this.sourceRegion = sourceRegion;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the SourceSnapshotId property for this object.
      *
@@ -102,8 +99,7 @@ public class CopySnapshotRequest extends AmazonWebServiceRequest implements Seri
         this.sourceSnapshotId = sourceSnapshotId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Description property for this object.
      *
@@ -136,8 +132,7 @@ public class CopySnapshotRequest extends AmazonWebServiceRequest implements Seri
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

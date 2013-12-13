@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of calling the ConfirmProductInstance operation.
  * </p>
  */
-
- 
 public class ConfirmProductInstanceResult implements Serializable {
 
     /**
@@ -70,8 +68,7 @@ public class ConfirmProductInstanceResult implements Serializable {
         this.ownerId = ownerId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

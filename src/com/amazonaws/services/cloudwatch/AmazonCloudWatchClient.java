@@ -14,24 +14,21 @@
  */
 package com.amazonaws.services.cloudwatch;
 
-import org.w3c.dom.Node;
+import org.w3c.dom.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.net.*;
+import java.util.*;
 import java.util.Map.Entry;
 
 import com.amazonaws.*;
 import com.amazonaws.auth.*;
-import com.amazonaws.handlers.HandlerChainFactory;
-import com.amazonaws.handlers.RequestHandler;
-import com.amazonaws.http.StaxResponseHandler;
-import com.amazonaws.http.DefaultErrorResponseHandler;
-import com.amazonaws.http.ExecutionContext;
-import com.amazonaws.internal.StaticCredentialsProvider;
-import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.StaxUnmarshallerContext;
-import com.amazonaws.transform.StandardErrorUnmarshaller;
+import com.amazonaws.handlers.*;
+import com.amazonaws.http.*;
+import com.amazonaws.internal.*;
+import com.amazonaws.regions.*;
+import com.amazonaws.transform.*;
+import com.amazonaws.util.*;
+import com.amazonaws.util.AWSRequestMetrics.Field;
 
 import com.amazonaws.services.cloudwatch.model.*;
 import com.amazonaws.services.cloudwatch.model.transform.*;
@@ -85,11 +82,6 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
     protected final List<Unmarshaller<AmazonServiceException, Node>> exceptionUnmarshallers
             = new ArrayList<Unmarshaller<AmazonServiceException, Node>>();
 
-    
-    /** AWS signer for authenticating requests. */
-    private AWS4Signer signer;
-
-
     /**
      * Constructs a new client to invoke service methods on
      * AmazonCloudWatch.  A credentials provider chain will be used
@@ -104,7 +96,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudWatchClient() {
         this(new DefaultAWSCredentialsProviderChain(), new ClientConfiguration());
@@ -128,7 +120,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *                       client connects to AmazonCloudWatch
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudWatchClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration);
@@ -219,16 +211,13 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
         exceptionUnmarshallers.add(new InvalidParameterValueExceptionUnmarshaller());
         
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
-        setEndpoint("monitoring.amazonaws.com");
-
-        signer = new AWS4Signer();
-        
-        signer.setServiceName("monitoring");
-        
-
+        // calling this.setEndPoint(...) will also modify the signer accordingly
+        this.setEndpoint("monitoring.us-east-1.amazonaws.com");
         HandlerChainFactory chainFactory = new HandlerChainFactory();
-		requestHandlers.addAll(chainFactory.newRequestHandlerChain(
+        requestHandler2s.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/cloudwatch/request.handlers"));
+        requestHandler2s.addAll(chainFactory.newRequestHandler2Chain(
+                "/com/amazonaws/services/cloudwatch/request.handler2s"));
     }
 
     
@@ -252,6 +241,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * @param putMetricAlarmRequest Container for the necessary parameters to
      *           execute the PutMetricAlarm service method on AmazonCloudWatch.
      * 
+     * 
      * @throws LimitExceededException
      *
      * @throws AmazonClientException
@@ -262,10 +252,19 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void putMetricAlarm(PutMetricAlarmRequest putMetricAlarmRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<PutMetricAlarmRequest> request = new PutMetricAlarmRequestMarshaller().marshall(putMetricAlarmRequest);
-        invoke(request, null);
+    public void putMetricAlarm(PutMetricAlarmRequest putMetricAlarmRequest) {
+        ExecutionContext executionContext = createExecutionContext(putMetricAlarmRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<PutMetricAlarmRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new PutMetricAlarmRequestMarshaller().marshall(putMetricAlarmRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -294,6 +293,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * @param putMetricDataRequest Container for the necessary parameters to
      *           execute the PutMetricData service method on AmazonCloudWatch.
      * 
+     * 
      * @throws InvalidParameterValueException
      * @throws InternalServiceException
      * @throws InvalidParameterCombinationException
@@ -307,10 +307,19 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void putMetricData(PutMetricDataRequest putMetricDataRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<PutMetricDataRequest> request = new PutMetricDataRequestMarshaller().marshall(putMetricDataRequest);
-        invoke(request, null);
+    public void putMetricData(PutMetricDataRequest putMetricDataRequest) {
+        ExecutionContext executionContext = createExecutionContext(putMetricDataRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<PutMetricDataRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new PutMetricDataRequestMarshaller().marshall(putMetricDataRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -347,10 +356,21 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListMetricsResult listMetrics(ListMetricsRequest listMetricsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<ListMetricsRequest> request = new ListMetricsRequestMarshaller().marshall(listMetricsRequest);
-        return invoke(request, new ListMetricsResultStaxUnmarshaller());
+    public ListMetricsResult listMetrics(ListMetricsRequest listMetricsRequest) {
+        ExecutionContext executionContext = createExecutionContext(listMetricsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<ListMetricsRequest> request = null;
+        Response<ListMetricsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new ListMetricsRequestMarshaller().marshall(listMetricsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new ListMetricsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -411,10 +431,21 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetMetricStatisticsResult getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetMetricStatisticsRequest> request = new GetMetricStatisticsRequestMarshaller().marshall(getMetricStatisticsRequest);
-        return invoke(request, new GetMetricStatisticsResultStaxUnmarshaller());
+    public GetMetricStatisticsResult getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest) {
+        ExecutionContext executionContext = createExecutionContext(getMetricStatisticsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<GetMetricStatisticsRequest> request = null;
+        Response<GetMetricStatisticsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new GetMetricStatisticsRequestMarshaller().marshall(getMetricStatisticsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new GetMetricStatisticsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -428,6 +459,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *           parameters to execute the DisableAlarmActions service method on
      *           AmazonCloudWatch.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -437,10 +469,19 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void disableAlarmActions(DisableAlarmActionsRequest disableAlarmActionsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DisableAlarmActionsRequest> request = new DisableAlarmActionsRequestMarshaller().marshall(disableAlarmActionsRequest);
-        invoke(request, null);
+    public void disableAlarmActions(DisableAlarmActionsRequest disableAlarmActionsRequest) {
+        ExecutionContext executionContext = createExecutionContext(disableAlarmActionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DisableAlarmActionsRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DisableAlarmActionsRequestMarshaller().marshall(disableAlarmActionsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -467,10 +508,21 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeAlarmsResult describeAlarms(DescribeAlarmsRequest describeAlarmsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeAlarmsRequest> request = new DescribeAlarmsRequestMarshaller().marshall(describeAlarmsRequest);
-        return invoke(request, new DescribeAlarmsResultStaxUnmarshaller());
+    public DescribeAlarmsResult describeAlarms(DescribeAlarmsRequest describeAlarmsRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeAlarmsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeAlarmsRequest> request = null;
+        Response<DescribeAlarmsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeAlarmsRequestMarshaller().marshall(describeAlarmsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeAlarmsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -495,10 +547,21 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeAlarmsForMetricResult describeAlarmsForMetric(DescribeAlarmsForMetricRequest describeAlarmsForMetricRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeAlarmsForMetricRequest> request = new DescribeAlarmsForMetricRequestMarshaller().marshall(describeAlarmsForMetricRequest);
-        return invoke(request, new DescribeAlarmsForMetricResultStaxUnmarshaller());
+    public DescribeAlarmsForMetricResult describeAlarmsForMetric(DescribeAlarmsForMetricRequest describeAlarmsForMetricRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeAlarmsForMetricRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeAlarmsForMetricRequest> request = null;
+        Response<DescribeAlarmsForMetricResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeAlarmsForMetricRequestMarshaller().marshall(describeAlarmsForMetricRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeAlarmsForMetricResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -529,10 +592,21 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeAlarmHistoryResult describeAlarmHistory(DescribeAlarmHistoryRequest describeAlarmHistoryRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeAlarmHistoryRequest> request = new DescribeAlarmHistoryRequestMarshaller().marshall(describeAlarmHistoryRequest);
-        return invoke(request, new DescribeAlarmHistoryResultStaxUnmarshaller());
+    public DescribeAlarmHistoryResult describeAlarmHistory(DescribeAlarmHistoryRequest describeAlarmHistoryRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeAlarmHistoryRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeAlarmHistoryRequest> request = null;
+        Response<DescribeAlarmHistoryResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeAlarmHistoryRequestMarshaller().marshall(describeAlarmHistoryRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeAlarmHistoryResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -544,6 +618,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *           parameters to execute the EnableAlarmActions service method on
      *           AmazonCloudWatch.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -553,10 +628,19 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void enableAlarmActions(EnableAlarmActionsRequest enableAlarmActionsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<EnableAlarmActionsRequest> request = new EnableAlarmActionsRequestMarshaller().marshall(enableAlarmActionsRequest);
-        invoke(request, null);
+    public void enableAlarmActions(EnableAlarmActionsRequest enableAlarmActionsRequest) {
+        ExecutionContext executionContext = createExecutionContext(enableAlarmActionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<EnableAlarmActionsRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new EnableAlarmActionsRequestMarshaller().marshall(enableAlarmActionsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -568,6 +652,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * @param deleteAlarmsRequest Container for the necessary parameters to
      *           execute the DeleteAlarms service method on AmazonCloudWatch.
      * 
+     * 
      * @throws ResourceNotFoundException
      *
      * @throws AmazonClientException
@@ -578,10 +663,19 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteAlarms(DeleteAlarmsRequest deleteAlarmsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteAlarmsRequest> request = new DeleteAlarmsRequestMarshaller().marshall(deleteAlarmsRequest);
-        invoke(request, null);
+    public void deleteAlarms(DeleteAlarmsRequest deleteAlarmsRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteAlarmsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteAlarmsRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteAlarmsRequestMarshaller().marshall(deleteAlarmsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -596,6 +690,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * @param setAlarmStateRequest Container for the necessary parameters to
      *           execute the SetAlarmState service method on AmazonCloudWatch.
      * 
+     * 
      * @throws ResourceNotFoundException
      * @throws InvalidFormatException
      *
@@ -607,10 +702,19 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      *             If an error response is returned by AmazonCloudWatch indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void setAlarmState(SetAlarmStateRequest setAlarmStateRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SetAlarmStateRequest> request = new SetAlarmStateRequestMarshaller().marshall(setAlarmStateRequest);
-        invoke(request, null);
+    public void setAlarmState(SetAlarmStateRequest setAlarmStateRequest) {
+        ExecutionContext executionContext = createExecutionContext(setAlarmStateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SetAlarmStateRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SetAlarmStateRequestMarshaller().marshall(setAlarmStateRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -701,47 +805,6 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
         return describeAlarmHistory(new DescribeAlarmHistoryRequest());
     }
     
-    /**
-     * Overrides the default endpoint for this client ("https://monitoring.amazonaws.com") and explicitly provides
-     * an AWS region ID and AWS service name to use when the client calculates a signature
-     * for requests.  In almost all cases, this region ID and service name
-     * are automatically determined from the endpoint, and callers should use the simpler
-     * one-argument form of setEndpoint instead of this method.
-     * <p>
-     * <b>This method is not threadsafe. Endpoints should be configured when the
-     * client is created and before any service requests are made. Changing it
-     * afterwards creates inevitable race conditions for any service requests in
-     * transit.</b>
-     * <p>
-     * Callers can pass in just the endpoint (ex: "monitoring.amazonaws.com") or a full
-     * URL, including the protocol (ex: "https://monitoring.amazonaws.com"). If the
-     * protocol is not specified here, the default protocol from this client's
-     * {@link ClientConfiguration} will be used, which by default is HTTPS.
-     * <p>
-     * For more information on using AWS regions with the AWS SDK for Java, and
-     * a complete list of all available endpoints for all AWS services, see:
-     * <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
-     * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
-     *
-     * @param endpoint
-     *            The endpoint (ex: "monitoring.amazonaws.com") or a full URL,
-     *            including the protocol (ex: "https://monitoring.amazonaws.com") of
-     *            the region specific AWS endpoint this client will communicate
-     *            with.
-     * @param serviceName
-     *            The name of the AWS service to use when signing requests.
-     * @param regionId
-     *            The ID of the region in which this service resides.
-     *
-     * @throws IllegalArgumentException
-     *             If any problems are detected with the specified endpoint.
-     */
-    public void setEndpoint(String endpoint, String serviceName, String regionId) throws IllegalArgumentException {
-        setEndpoint(endpoint);
-        signer.setServiceName(serviceName);
-        signer.setRegionName(regionId);
-    }
-    
     @Override
     protected String getServiceAbbreviation() {
         return "monitoring";
@@ -768,27 +831,28 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
         return client.getResponseMetadataForRequest(request);
     }
 
-    private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request, Unmarshaller<X, StaxUnmarshallerContext> unmarshaller) {
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request,
+            Unmarshaller<X, StaxUnmarshallerContext> unmarshaller,
+            ExecutionContext executionContext)
+    {
         request.setEndpoint(endpoint);
         request.setTimeOffset(timeOffset);
-        for (Entry<String, String> entry : request.getOriginalRequest().copyPrivateRequestParameters().entrySet()) {
+        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
+        for (Entry<String, String> entry : originalRequest.copyPrivateRequestParameters().entrySet()) {
             request.addParameter(entry.getKey(), entry.getValue());
         }
 
         AWSCredentials credentials = awsCredentialsProvider.getCredentials();
-        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
-        if (originalRequest != null && originalRequest.getRequestCredentials() != null) {
-        	credentials = originalRequest.getRequestCredentials();
+        if (originalRequest.getRequestCredentials() != null) {
+            credentials = originalRequest.getRequestCredentials();
         }
 
-        ExecutionContext executionContext = createExecutionContext();
-        executionContext.setSigner(signer);
+        executionContext.setSigner(getSigner());
         executionContext.setCredentials(credentials);
         
         StaxResponseHandler<X> responseHandler = new StaxResponseHandler<X>(unmarshaller);
         DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);
-
-        return (X)client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 }
         

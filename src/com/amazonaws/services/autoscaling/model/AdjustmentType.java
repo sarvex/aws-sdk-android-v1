@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Specifies whether the PutScalingPolicy <code>ScalingAdjustment</code> parameter is an absolute number or a percentage of the current capacity.
  * </p>
  */
-
- 
 public class AdjustmentType implements Serializable {
 
     /**
@@ -93,8 +91,7 @@ public class AdjustmentType implements Serializable {
         this.adjustmentType = adjustmentType;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

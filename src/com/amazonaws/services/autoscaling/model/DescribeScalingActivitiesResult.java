@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output for the DescribeScalingActivities action.
  * </p>
  */
-
- 
 public class DescribeScalingActivitiesResult implements Serializable {
 
     /**
@@ -47,7 +45,6 @@ public class DescribeScalingActivitiesResult implements Serializable {
      * @return A list of the requested scaling activities.
      */
     public java.util.List<Activity> getActivities() {
-        
         if (activities == null) {
               activities = new com.amazonaws.internal.ListWithAutoConstructFlag<Activity>();
               activities.setAutoConstruct(true);
@@ -109,7 +106,7 @@ public class DescribeScalingActivitiesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Acts as a paging mechanism for large result sets. Set to a non-empty
      * string if there are additional results waiting to be returned. Pass
@@ -163,8 +160,7 @@ public class DescribeScalingActivitiesResult implements Serializable {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

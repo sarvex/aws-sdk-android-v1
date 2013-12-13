@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Spot Instance Request
  */
-
- 
 public class SpotInstanceRequest implements Serializable {
 
     private String spotInstanceRequestId;
@@ -98,8 +96,7 @@ public class SpotInstanceRequest implements Serializable {
         this.spotInstanceRequestId = spotInstanceRequestId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the SpotPrice property for this object.
      *
@@ -132,8 +129,7 @@ public class SpotInstanceRequest implements Serializable {
         this.spotPrice = spotPrice;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Type property for this object.
      * <p>
@@ -181,8 +177,7 @@ public class SpotInstanceRequest implements Serializable {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the Type property for this object.
      * <p>
@@ -216,7 +211,7 @@ public class SpotInstanceRequest implements Serializable {
         this.type = type.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the State property for this object.
      * <p>
@@ -264,8 +259,7 @@ public class SpotInstanceRequest implements Serializable {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the State property for this object.
      * <p>
@@ -299,7 +293,7 @@ public class SpotInstanceRequest implements Serializable {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the Fault property for this object.
      *
@@ -332,8 +326,7 @@ public class SpotInstanceRequest implements Serializable {
         this.fault = fault;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Status property for this object.
      *
@@ -366,8 +359,7 @@ public class SpotInstanceRequest implements Serializable {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the ValidFrom property for this object.
      *
@@ -400,8 +392,7 @@ public class SpotInstanceRequest implements Serializable {
         this.validFrom = validFrom;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the ValidUntil property for this object.
      *
@@ -434,8 +425,7 @@ public class SpotInstanceRequest implements Serializable {
         this.validUntil = validUntil;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the LaunchGroup property for this object.
      *
@@ -468,8 +458,7 @@ public class SpotInstanceRequest implements Serializable {
         this.launchGroup = launchGroup;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the AvailabilityZoneGroup property for this
      * object.
@@ -503,8 +492,7 @@ public class SpotInstanceRequest implements Serializable {
         this.availabilityZoneGroup = availabilityZoneGroup;
         return this;
     }
-    
-    
+
     /**
      * The LaunchSpecificationType data type.
      *
@@ -537,8 +525,7 @@ public class SpotInstanceRequest implements Serializable {
         this.launchSpecification = launchSpecification;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the InstanceId property for this object.
      *
@@ -571,8 +558,7 @@ public class SpotInstanceRequest implements Serializable {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the CreateTime property for this object.
      *
@@ -605,8 +591,7 @@ public class SpotInstanceRequest implements Serializable {
         this.createTime = createTime;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the ProductDescription property for this object.
      * <p>
@@ -654,8 +639,7 @@ public class SpotInstanceRequest implements Serializable {
         this.productDescription = productDescription;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the ProductDescription property for this object.
      * <p>
@@ -689,14 +673,13 @@ public class SpotInstanceRequest implements Serializable {
         this.productDescription = productDescription.toString();
         return this;
     }
-    
+
     /**
      * A list of tags for this spot instance request.
      *
      * @return A list of tags for this spot instance request.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
               tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
               tags.setAutoConstruct(true);
@@ -758,7 +741,7 @@ public class SpotInstanceRequest implements Serializable {
 
         return this;
     }
-    
+
     /**
      * The Availability Zone in which the bid is launched.
      *
@@ -791,8 +774,7 @@ public class SpotInstanceRequest implements Serializable {
         this.launchedAvailabilityZone = launchedAvailabilityZone;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

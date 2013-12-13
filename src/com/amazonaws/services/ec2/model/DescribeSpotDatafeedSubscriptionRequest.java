@@ -33,8 +33,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeSpotDatafeedSubscripti
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSpotDatafeedSubscription(DescribeSpotDatafeedSubscriptionRequest)
  */
-
- 
 public class DescribeSpotDatafeedSubscriptionRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSpotDatafeedSubscriptionRequest> {
 
     /**

@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The Subnet data type.
  * </p>
  */
-
- 
 public class Subnet implements Serializable {
 
     /**
@@ -103,8 +101,7 @@ public class Subnet implements Serializable {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
      * Describes the current state of the subnet. The state of the subnet may
      * be either <code>pending</code> or <code>available</code>.
@@ -158,8 +155,7 @@ public class Subnet implements Serializable {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * Describes the current state of the subnet. The state of the subnet may
      * be either <code>pending</code> or <code>available</code>.
@@ -197,7 +193,7 @@ public class Subnet implements Serializable {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * Contains the ID of the VPC the subnet is in.
      *
@@ -230,8 +226,7 @@ public class Subnet implements Serializable {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
      * Specifies the CIDR block assigned to the subnet.
      *
@@ -264,8 +259,7 @@ public class Subnet implements Serializable {
         this.cidrBlock = cidrBlock;
         return this;
     }
-    
-    
+
     /**
      * Specifies the number of unused IP addresses in the subnet. <note> <p>
      * The IP addresses for any stopped instances are considered unavailable.
@@ -310,8 +304,7 @@ public class Subnet implements Serializable {
         this.availableIpAddressCount = availableIpAddressCount;
         return this;
     }
-    
-    
+
     /**
      * Specifies the Availability Zone the subnet is in.
      *
@@ -344,8 +337,7 @@ public class Subnet implements Serializable {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the DefaultForAz property for this object.
      *
@@ -378,8 +370,7 @@ public class Subnet implements Serializable {
         this.defaultForAz = defaultForAz;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the DefaultForAz property for this object.
      *
@@ -388,7 +379,7 @@ public class Subnet implements Serializable {
     public Boolean getDefaultForAz() {
         return defaultForAz;
     }
-    
+
     /**
      * Returns the value of the MapPublicIpOnLaunch property for this object.
      *
@@ -421,8 +412,7 @@ public class Subnet implements Serializable {
         this.mapPublicIpOnLaunch = mapPublicIpOnLaunch;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the MapPublicIpOnLaunch property for this object.
      *
@@ -431,14 +421,13 @@ public class Subnet implements Serializable {
     public Boolean getMapPublicIpOnLaunch() {
         return mapPublicIpOnLaunch;
     }
-    
+
     /**
      * A list of tags for the Subnet.
      *
      * @return A list of tags for the Subnet.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
               tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
               tags.setAutoConstruct(true);
@@ -500,7 +489,7 @@ public class Subnet implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

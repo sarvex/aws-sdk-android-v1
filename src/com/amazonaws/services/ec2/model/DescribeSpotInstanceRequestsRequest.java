@@ -49,8 +49,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeSpotInstanceRequestsRe
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSpotInstanceRequests(DescribeSpotInstanceRequestsRequest)
  */
-
- 
 public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSpotInstanceRequestsRequest> {
 
     /**
@@ -73,7 +71,6 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * @return The ID of the request.
      */
     public java.util.List<String> getSpotInstanceRequestIds() {
-        
         if (spotInstanceRequestIds == null) {
               spotInstanceRequestIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               spotInstanceRequestIds.setAutoConstruct(true);
@@ -135,7 +132,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for SpotInstances. For a
      * complete reference to the available filter keys for this operation,
@@ -150,7 +147,6 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -236,7 +232,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
 
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

@@ -30,7 +30,6 @@ import com.amazonaws.Request;
  * according to the various signature versions and hashing algorithms.
  */
 public class QueryStringSigner extends AbstractAWSSigner implements Signer {
-
     /** Date override for testing only */
     private Date overriddenDate;
 

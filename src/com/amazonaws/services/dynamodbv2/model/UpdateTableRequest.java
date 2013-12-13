@@ -62,14 +62,14 @@ public class UpdateTableRequest extends AmazonWebServiceRequest implements Seria
      */
     private ProvisionedThroughput provisionedThroughput;
 
+    private com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexUpdate> globalSecondaryIndexUpdates;
+
     /**
      * Default constructor for a new UpdateTableRequest object.  Callers should use the
      * setter or fluent setter (with...) methods to initialize this object after creating it.
      */
     public UpdateTableRequest() {}
     
-
-
     /**
      * Constructs a new UpdateTableRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -88,8 +88,6 @@ public class UpdateTableRequest extends AmazonWebServiceRequest implements Seria
         setProvisionedThroughput(provisionedThroughput);
     }
 
-    
-    
     /**
      * The name of the table to be updated.
      * <p>
@@ -134,8 +132,7 @@ public class UpdateTableRequest extends AmazonWebServiceRequest implements Seria
         this.tableName = tableName;
         return this;
     }
-    
-    
+
     /**
      * The provisioned throughput settings for the specified table. The
      * settings can be modified using the <i>UpdateTable</i> operation.
@@ -198,8 +195,78 @@ public class UpdateTableRequest extends AmazonWebServiceRequest implements Seria
         this.provisionedThroughput = provisionedThroughput;
         return this;
     }
+
+    /**
+     * Returns the value of the GlobalSecondaryIndexUpdates property for this
+     * object.
+     *
+     * @return The value of the GlobalSecondaryIndexUpdates property for this object.
+     */
+    public java.util.List<GlobalSecondaryIndexUpdate> getGlobalSecondaryIndexUpdates() {
+        return globalSecondaryIndexUpdates;
+    }
     
+    /**
+     * Sets the value of the GlobalSecondaryIndexUpdates property for this
+     * object.
+     *
+     * @param globalSecondaryIndexUpdates The new value for the GlobalSecondaryIndexUpdates property for this
+     *         object.
+     */
+    public void setGlobalSecondaryIndexUpdates(java.util.Collection<GlobalSecondaryIndexUpdate> globalSecondaryIndexUpdates) {
+        if (globalSecondaryIndexUpdates == null) {
+            this.globalSecondaryIndexUpdates = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexUpdate> globalSecondaryIndexUpdatesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexUpdate>(globalSecondaryIndexUpdates.size());
+        globalSecondaryIndexUpdatesCopy.addAll(globalSecondaryIndexUpdates);
+        this.globalSecondaryIndexUpdates = globalSecondaryIndexUpdatesCopy;
+    }
     
+    /**
+     * Sets the value of the GlobalSecondaryIndexUpdates property for this
+     * object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param globalSecondaryIndexUpdates The new value for the GlobalSecondaryIndexUpdates property for this
+     *         object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public UpdateTableRequest withGlobalSecondaryIndexUpdates(GlobalSecondaryIndexUpdate... globalSecondaryIndexUpdates) {
+        if (getGlobalSecondaryIndexUpdates() == null) setGlobalSecondaryIndexUpdates(new java.util.ArrayList<GlobalSecondaryIndexUpdate>(globalSecondaryIndexUpdates.length));
+        for (GlobalSecondaryIndexUpdate value : globalSecondaryIndexUpdates) {
+            getGlobalSecondaryIndexUpdates().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * Sets the value of the GlobalSecondaryIndexUpdates property for this
+     * object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param globalSecondaryIndexUpdates The new value for the GlobalSecondaryIndexUpdates property for this
+     *         object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public UpdateTableRequest withGlobalSecondaryIndexUpdates(java.util.Collection<GlobalSecondaryIndexUpdate> globalSecondaryIndexUpdates) {
+        if (globalSecondaryIndexUpdates == null) {
+            this.globalSecondaryIndexUpdates = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexUpdate> globalSecondaryIndexUpdatesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexUpdate>(globalSecondaryIndexUpdates.size());
+            globalSecondaryIndexUpdatesCopy.addAll(globalSecondaryIndexUpdates);
+            this.globalSecondaryIndexUpdates = globalSecondaryIndexUpdatesCopy;
+        }
+
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -213,7 +280,8 @@ public class UpdateTableRequest extends AmazonWebServiceRequest implements Seria
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");
-        if (getProvisionedThroughput() != null) sb.append("ProvisionedThroughput: " + getProvisionedThroughput() );
+        if (getProvisionedThroughput() != null) sb.append("ProvisionedThroughput: " + getProvisionedThroughput() + ",");
+        if (getGlobalSecondaryIndexUpdates() != null) sb.append("GlobalSecondaryIndexUpdates: " + getGlobalSecondaryIndexUpdates() );
         sb.append("}");
         return sb.toString();
     }
@@ -225,6 +293,7 @@ public class UpdateTableRequest extends AmazonWebServiceRequest implements Seria
         
         hashCode = prime * hashCode + ((getTableName() == null) ? 0 : getTableName().hashCode()); 
         hashCode = prime * hashCode + ((getProvisionedThroughput() == null) ? 0 : getProvisionedThroughput().hashCode()); 
+        hashCode = prime * hashCode + ((getGlobalSecondaryIndexUpdates() == null) ? 0 : getGlobalSecondaryIndexUpdates().hashCode()); 
         return hashCode;
     }
     
@@ -240,6 +309,8 @@ public class UpdateTableRequest extends AmazonWebServiceRequest implements Seria
         if (other.getTableName() != null && other.getTableName().equals(this.getTableName()) == false) return false; 
         if (other.getProvisionedThroughput() == null ^ this.getProvisionedThroughput() == null) return false;
         if (other.getProvisionedThroughput() != null && other.getProvisionedThroughput().equals(this.getProvisionedThroughput()) == false) return false; 
+        if (other.getGlobalSecondaryIndexUpdates() == null ^ this.getGlobalSecondaryIndexUpdates() == null) return false;
+        if (other.getGlobalSecondaryIndexUpdates() != null && other.getGlobalSecondaryIndexUpdates().equals(this.getGlobalSecondaryIndexUpdates()) == false) return false; 
         return true;
     }
     

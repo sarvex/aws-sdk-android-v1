@@ -22,22 +22,19 @@ import java.io.Serializable;
  * The output for the RegisterInstancesWithLoadBalancer action.
  * </p>
  */
-
- 
 public class RegisterInstancesWithLoadBalancerResult implements Serializable {
 
     /**
-     * An updated list of instances for the LoadBalancer.
+     * An updated list of instances for the load balancer.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
-     * An updated list of instances for the LoadBalancer.
+     * An updated list of instances for the load balancer.
      *
-     * @return An updated list of instances for the LoadBalancer.
+     * @return An updated list of instances for the load balancer.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
               instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
               instances.setAutoConstruct(true);
@@ -46,9 +43,9 @@ public class RegisterInstancesWithLoadBalancerResult implements Serializable {
     }
     
     /**
-     * An updated list of instances for the LoadBalancer.
+     * An updated list of instances for the load balancer.
      *
-     * @param instances An updated list of instances for the LoadBalancer.
+     * @param instances An updated list of instances for the load balancer.
      */
     public void setInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
@@ -61,11 +58,11 @@ public class RegisterInstancesWithLoadBalancerResult implements Serializable {
     }
     
     /**
-     * An updated list of instances for the LoadBalancer.
+     * An updated list of instances for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instances An updated list of instances for the LoadBalancer.
+     * @param instances An updated list of instances for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -79,11 +76,11 @@ public class RegisterInstancesWithLoadBalancerResult implements Serializable {
     }
     
     /**
-     * An updated list of instances for the LoadBalancer.
+     * An updated list of instances for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instances An updated list of instances for the LoadBalancer.
+     * @param instances An updated list of instances for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -99,7 +96,7 @@ public class RegisterInstancesWithLoadBalancerResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

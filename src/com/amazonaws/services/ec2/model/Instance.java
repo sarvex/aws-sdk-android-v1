@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents an Amazon EC2 instance.
  * </p>
  */
-
- 
 public class Instance implements Serializable {
 
     /**
@@ -85,7 +83,7 @@ public class Instance implements Serializable {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      */
     private String instanceType;
 
@@ -215,6 +213,8 @@ public class Instance implements Serializable {
 
     private Boolean ebsOptimized;
 
+    private String sriovNetSupport;
+
     /**
      * Unique ID of the instance launched.
      *
@@ -247,8 +247,7 @@ public class Instance implements Serializable {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Image ID of the AMI used to launch the instance.
      *
@@ -281,8 +280,7 @@ public class Instance implements Serializable {
         this.imageId = imageId;
         return this;
     }
-    
-    
+
     /**
      * The current state of the instance.
      *
@@ -315,8 +313,7 @@ public class Instance implements Serializable {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * The private DNS name assigned to the instance. This DNS name can only
      * be used inside the Amazon EC2 network. This element remains empty
@@ -361,8 +358,7 @@ public class Instance implements Serializable {
         this.privateDnsName = privateDnsName;
         return this;
     }
-    
-    
+
     /**
      * The public DNS name assigned to the instance. This DNS name is
      * contactable from outside the Amazon EC2 network. This element remains
@@ -407,8 +403,7 @@ public class Instance implements Serializable {
         this.publicDnsName = publicDnsName;
         return this;
     }
-    
-    
+
     /**
      * Reason for the most recent state transition. This might be an empty
      * string.
@@ -447,8 +442,7 @@ public class Instance implements Serializable {
         this.stateTransitionReason = stateTransitionReason;
         return this;
     }
-    
-    
+
     /**
      * If this instance was launched with an associated key pair, this
      * displays the key pair name.
@@ -487,8 +481,7 @@ public class Instance implements Serializable {
         this.keyName = keyName;
         return this;
     }
-    
-    
+
     /**
      * The AMI launch index, which can be used to find this instance within
      * the launch group.
@@ -527,15 +520,13 @@ public class Instance implements Serializable {
         this.amiLaunchIndex = amiLaunchIndex;
         return this;
     }
-    
-    
+
     /**
      * Product codes attached to this instance.
      *
      * @return Product codes attached to this instance.
      */
     public java.util.List<ProductCode> getProductCodes() {
-        
         if (productCodes == null) {
               productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
               productCodes.setAutoConstruct(true);
@@ -597,7 +588,7 @@ public class Instance implements Serializable {
 
         return this;
     }
-    
+
     /**
      * The instance type. For more information on instance types, please see
      * the <a
@@ -605,7 +596,7 @@ public class Instance implements Serializable {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @return The instance type. For more information on instance types, please see
      *         the <a
@@ -625,7 +616,7 @@ public class Instance implements Serializable {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -647,7 +638,7 @@ public class Instance implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -663,8 +654,7 @@ public class Instance implements Serializable {
         this.instanceType = instanceType;
         return this;
     }
-    
-    
+
     /**
      * The instance type. For more information on instance types, please see
      * the <a
@@ -672,7 +662,7 @@ public class Instance implements Serializable {
      * Amazon Elastic Compute Cloud Developer Guide</a>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -694,7 +684,7 @@ public class Instance implements Serializable {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, m3.xlarge, m3.2xlarge, c1.medium, c1.xlarge, hi1.4xlarge, hs1.8xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge, cr1.8xlarge
+     * <b>Allowed Values: </b>t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m3.xlarge, m3.2xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, cg1.4xlarge
      *
      * @param instanceType The instance type. For more information on instance types, please see
      *         the <a
@@ -710,7 +700,7 @@ public class Instance implements Serializable {
         this.instanceType = instanceType.toString();
         return this;
     }
-    
+
     /**
      * The time this instance launched.
      *
@@ -743,8 +733,7 @@ public class Instance implements Serializable {
         this.launchTime = launchTime;
         return this;
     }
-    
-    
+
     /**
      * The location where this instance launched.
      *
@@ -777,8 +766,7 @@ public class Instance implements Serializable {
         this.placement = placement;
         return this;
     }
-    
-    
+
     /**
      * Kernel associated with this instance.
      *
@@ -811,8 +799,7 @@ public class Instance implements Serializable {
         this.kernelId = kernelId;
         return this;
     }
-    
-    
+
     /**
      * RAM disk associated with this instance.
      *
@@ -845,8 +832,7 @@ public class Instance implements Serializable {
         this.ramdiskId = ramdiskId;
         return this;
     }
-    
-    
+
     /**
      * Platform of the instance (e.g., Windows).
      * <p>
@@ -894,8 +880,7 @@ public class Instance implements Serializable {
         this.platform = platform;
         return this;
     }
-    
-    
+
     /**
      * Platform of the instance (e.g., Windows).
      * <p>
@@ -929,7 +914,7 @@ public class Instance implements Serializable {
         this.platform = platform.toString();
         return this;
     }
-    
+
     /**
      * Monitoring status for this instance.
      *
@@ -962,8 +947,7 @@ public class Instance implements Serializable {
         this.monitoring = monitoring;
         return this;
     }
-    
-    
+
     /**
      * Specifies the Amazon VPC subnet ID in which the instance is running.
      *
@@ -996,8 +980,7 @@ public class Instance implements Serializable {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
      * Specifies the Amazon VPC in which the instance is running.
      *
@@ -1030,8 +1013,7 @@ public class Instance implements Serializable {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
      * Specifies the private IP address that is assigned to the instance
      * (Amazon VPC).
@@ -1070,8 +1052,7 @@ public class Instance implements Serializable {
         this.privateIpAddress = privateIpAddress;
         return this;
     }
-    
-    
+
     /**
      * Specifies the IP address of the instance.
      *
@@ -1104,8 +1085,7 @@ public class Instance implements Serializable {
         this.publicIpAddress = publicIpAddress;
         return this;
     }
-    
-    
+
     /**
      * The reason for the state change.
      *
@@ -1138,8 +1118,7 @@ public class Instance implements Serializable {
         this.stateReason = stateReason;
         return this;
     }
-    
-    
+
     /**
      * The architecture of this instance.
      * <p>
@@ -1187,8 +1166,7 @@ public class Instance implements Serializable {
         this.architecture = architecture;
         return this;
     }
-    
-    
+
     /**
      * The architecture of this instance.
      * <p>
@@ -1222,7 +1200,7 @@ public class Instance implements Serializable {
         this.architecture = architecture.toString();
         return this;
     }
-    
+
     /**
      * The root device type used by the AMI. The AMI can use an Amazon EBS or
      * instance store root device.
@@ -1276,8 +1254,7 @@ public class Instance implements Serializable {
         this.rootDeviceType = rootDeviceType;
         return this;
     }
-    
-    
+
     /**
      * The root device type used by the AMI. The AMI can use an Amazon EBS or
      * instance store root device.
@@ -1315,7 +1292,7 @@ public class Instance implements Serializable {
         this.rootDeviceType = rootDeviceType.toString();
         return this;
     }
-    
+
     /**
      * The root device name (e.g., <code>/dev/sda1</code>).
      *
@@ -1348,15 +1325,13 @@ public class Instance implements Serializable {
         this.rootDeviceName = rootDeviceName;
         return this;
     }
-    
-    
+
     /**
      * Block device mapping set.
      *
      * @return Block device mapping set.
      */
     public java.util.List<InstanceBlockDeviceMapping> getBlockDeviceMappings() {
-        
         if (blockDeviceMappings == null) {
               blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceBlockDeviceMapping>();
               blockDeviceMappings.setAutoConstruct(true);
@@ -1418,7 +1393,7 @@ public class Instance implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the VirtualizationType property for this object.
      * <p>
@@ -1466,8 +1441,7 @@ public class Instance implements Serializable {
         this.virtualizationType = virtualizationType;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the VirtualizationType property for this object.
      * <p>
@@ -1501,7 +1475,7 @@ public class Instance implements Serializable {
         this.virtualizationType = virtualizationType.toString();
         return this;
     }
-    
+
     /**
      * 
      * <p>
@@ -1549,8 +1523,7 @@ public class Instance implements Serializable {
         this.instanceLifecycle = instanceLifecycle;
         return this;
     }
-    
-    
+
     /**
      * 
      * <p>
@@ -1584,7 +1557,7 @@ public class Instance implements Serializable {
         this.instanceLifecycle = instanceLifecycle.toString();
         return this;
     }
-    
+
     /**
      * 
      *
@@ -1617,8 +1590,7 @@ public class Instance implements Serializable {
         this.spotInstanceRequestId = spotInstanceRequestId;
         return this;
     }
-    
-    
+
     /**
      * Represents an active license in use and attached to an Amazon EC2
      * instance.
@@ -1657,8 +1629,7 @@ public class Instance implements Serializable {
         this.license = license;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the ClientToken property for this object.
      *
@@ -1691,15 +1662,13 @@ public class Instance implements Serializable {
         this.clientToken = clientToken;
         return this;
     }
-    
-    
+
     /**
      * A list of tags for the Instance.
      *
      * @return A list of tags for the Instance.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
               tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
               tags.setAutoConstruct(true);
@@ -1761,14 +1730,13 @@ public class Instance implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the SecurityGroups property for this object.
      *
      * @return The value of the SecurityGroups property for this object.
      */
     public java.util.List<GroupIdentifier> getSecurityGroups() {
-        
         if (securityGroups == null) {
               securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>();
               securityGroups.setAutoConstruct(true);
@@ -1830,7 +1798,7 @@ public class Instance implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the SourceDestCheck property for this object.
      *
@@ -1863,8 +1831,7 @@ public class Instance implements Serializable {
         this.sourceDestCheck = sourceDestCheck;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the SourceDestCheck property for this object.
      *
@@ -1873,7 +1840,7 @@ public class Instance implements Serializable {
     public Boolean getSourceDestCheck() {
         return sourceDestCheck;
     }
-    
+
     /**
      * Returns the value of the Hypervisor property for this object.
      * <p>
@@ -1921,8 +1888,7 @@ public class Instance implements Serializable {
         this.hypervisor = hypervisor;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the Hypervisor property for this object.
      * <p>
@@ -1956,14 +1922,13 @@ public class Instance implements Serializable {
         this.hypervisor = hypervisor.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the NetworkInterfaces property for this object.
      *
      * @return The value of the NetworkInterfaces property for this object.
      */
     public java.util.List<InstanceNetworkInterface> getNetworkInterfaces() {
-        
         if (networkInterfaces == null) {
               networkInterfaces = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceNetworkInterface>();
               networkInterfaces.setAutoConstruct(true);
@@ -2025,7 +1990,7 @@ public class Instance implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the IamInstanceProfile property for this object.
      *
@@ -2058,8 +2023,7 @@ public class Instance implements Serializable {
         this.iamInstanceProfile = iamInstanceProfile;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the EbsOptimized property for this object.
      *
@@ -2092,8 +2056,7 @@ public class Instance implements Serializable {
         this.ebsOptimized = ebsOptimized;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the EbsOptimized property for this object.
      *
@@ -2102,7 +2065,40 @@ public class Instance implements Serializable {
     public Boolean getEbsOptimized() {
         return ebsOptimized;
     }
+
+    /**
+     * Returns the value of the SriovNetSupport property for this object.
+     *
+     * @return The value of the SriovNetSupport property for this object.
+     */
+    public String getSriovNetSupport() {
+        return sriovNetSupport;
+    }
     
+    /**
+     * Sets the value of the SriovNetSupport property for this object.
+     *
+     * @param sriovNetSupport The new value for the SriovNetSupport property for this object.
+     */
+    public void setSriovNetSupport(String sriovNetSupport) {
+        this.sriovNetSupport = sriovNetSupport;
+    }
+    
+    /**
+     * Sets the value of the SriovNetSupport property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param sriovNetSupport The new value for the SriovNetSupport property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Instance withSriovNetSupport(String sriovNetSupport) {
+        this.sriovNetSupport = sriovNetSupport;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -2151,7 +2147,8 @@ public class Instance implements Serializable {
         if (getHypervisor() != null) sb.append("Hypervisor: " + getHypervisor() + ",");
         if (getNetworkInterfaces() != null) sb.append("NetworkInterfaces: " + getNetworkInterfaces() + ",");
         if (getIamInstanceProfile() != null) sb.append("IamInstanceProfile: " + getIamInstanceProfile() + ",");
-        if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() );
+        if (isEbsOptimized() != null) sb.append("EbsOptimized: " + isEbsOptimized() + ",");
+        if (getSriovNetSupport() != null) sb.append("SriovNetSupport: " + getSriovNetSupport() );
         sb.append("}");
         return sb.toString();
     }
@@ -2198,6 +2195,7 @@ public class Instance implements Serializable {
         hashCode = prime * hashCode + ((getNetworkInterfaces() == null) ? 0 : getNetworkInterfaces().hashCode()); 
         hashCode = prime * hashCode + ((getIamInstanceProfile() == null) ? 0 : getIamInstanceProfile().hashCode()); 
         hashCode = prime * hashCode + ((isEbsOptimized() == null) ? 0 : isEbsOptimized().hashCode()); 
+        hashCode = prime * hashCode + ((getSriovNetSupport() == null) ? 0 : getSriovNetSupport().hashCode()); 
         return hashCode;
     }
     
@@ -2283,6 +2281,8 @@ public class Instance implements Serializable {
         if (other.getIamInstanceProfile() != null && other.getIamInstanceProfile().equals(this.getIamInstanceProfile()) == false) return false; 
         if (other.isEbsOptimized() == null ^ this.isEbsOptimized() == null) return false;
         if (other.isEbsOptimized() != null && other.isEbsOptimized().equals(this.isEbsOptimized()) == false) return false; 
+        if (other.getSriovNetSupport() == null ^ this.getSriovNetSupport() == null) return false;
+        if (other.getSriovNetSupport() != null && other.getSriovNetSupport().equals(this.getSriovNetSupport()) == false) return false; 
         return true;
     }
     

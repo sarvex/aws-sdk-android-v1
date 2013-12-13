@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Reserved Instance Limit Price
  */
-
- 
 public class ReservedInstanceLimitPrice implements Serializable {
 
     private Double amount;
@@ -60,8 +58,7 @@ public class ReservedInstanceLimitPrice implements Serializable {
         this.amount = amount;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the CurrencyCode property for this object.
      * <p>
@@ -109,8 +106,7 @@ public class ReservedInstanceLimitPrice implements Serializable {
         this.currencyCode = currencyCode;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the CurrencyCode property for this object.
      * <p>
@@ -144,7 +140,7 @@ public class ReservedInstanceLimitPrice implements Serializable {
         this.currencyCode = currencyCode.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

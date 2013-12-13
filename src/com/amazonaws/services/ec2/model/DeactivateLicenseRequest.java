@@ -29,8 +29,6 @@ import com.amazonaws.services.ec2.model.transform.DeactivateLicenseRequestMarsha
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deactivateLicense(DeactivateLicenseRequest)
  */
-
- 
 public class DeactivateLicenseRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeactivateLicenseRequest> {
 
     /**
@@ -49,8 +47,6 @@ public class DeactivateLicenseRequest extends AmazonWebServiceRequest implements
      */
     public DeactivateLicenseRequest() {}
     
-
-
     /**
      * Constructs a new DeactivateLicenseRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -66,8 +62,6 @@ public class DeactivateLicenseRequest extends AmazonWebServiceRequest implements
         setCapacity(capacity);
     }
 
-    
-    
     /**
      * Specifies the ID for the specific license to deactivate against.
      *
@@ -100,8 +94,7 @@ public class DeactivateLicenseRequest extends AmazonWebServiceRequest implements
         this.licenseId = licenseId;
         return this;
     }
-    
-    
+
     /**
      * Specifies the amount of capacity to deactivate against the license.
      *
@@ -134,8 +127,7 @@ public class DeactivateLicenseRequest extends AmazonWebServiceRequest implements
         this.capacity = capacity;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

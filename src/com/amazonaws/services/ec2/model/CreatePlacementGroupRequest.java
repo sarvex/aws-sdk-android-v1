@@ -29,8 +29,6 @@ import com.amazonaws.services.ec2.model.transform.CreatePlacementGroupRequestMar
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createPlacementGroup(CreatePlacementGroupRequest)
  */
-
- 
 public class CreatePlacementGroupRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreatePlacementGroupRequest> {
 
     /**
@@ -52,8 +50,6 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest impleme
      */
     public CreatePlacementGroupRequest() {}
     
-
-
     /**
      * Constructs a new CreatePlacementGroupRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -67,8 +63,6 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest impleme
         setStrategy(strategy);
     }
 
-    
-    
     /**
      * Constructs a new CreatePlacementGroupRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -81,7 +75,7 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest impleme
         this.groupName = groupName;
         this.strategy = strategy.toString();
     }
-    
+
     /**
      * The name of the <code>PlacementGroup</code>.
      *
@@ -114,8 +108,7 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest impleme
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * The <code>PlacementGroup</code> strategy.
      * <p>
@@ -163,8 +156,7 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest impleme
         this.strategy = strategy;
         return this;
     }
-    
-    
+
     /**
      * The <code>PlacementGroup</code> strategy.
      * <p>
@@ -198,7 +190,7 @@ public class CreatePlacementGroupRequest extends AmazonWebServiceRequest impleme
         this.strategy = strategy.toString();
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

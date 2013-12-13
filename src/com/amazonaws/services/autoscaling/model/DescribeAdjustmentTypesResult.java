@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output of the DescribeAdjustmentTypes action.
  * </p>
  */
-
- 
 public class DescribeAdjustmentTypesResult implements Serializable {
 
     /**
@@ -37,7 +35,6 @@ public class DescribeAdjustmentTypesResult implements Serializable {
      * @return A list of specific policy adjustment types.
      */
     public java.util.List<AdjustmentType> getAdjustmentTypes() {
-        
         if (adjustmentTypes == null) {
               adjustmentTypes = new com.amazonaws.internal.ListWithAutoConstructFlag<AdjustmentType>();
               adjustmentTypes.setAutoConstruct(true);
@@ -99,7 +96,7 @@ public class DescribeAdjustmentTypesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

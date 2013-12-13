@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Describes a permission to launch an Amazon Machine Image (AMI).
  * </p>
  */
-
- 
 public class LaunchPermission implements Serializable {
 
     /**
@@ -72,8 +70,7 @@ public class LaunchPermission implements Serializable {
         this.userId = userId;
         return this;
     }
-    
-    
+
     /**
      * The AWS group of the user involved in this launch permission. <p>
      * Available groups: <code>all</code>
@@ -127,8 +124,7 @@ public class LaunchPermission implements Serializable {
         this.group = group;
         return this;
     }
-    
-    
+
     /**
      * The AWS group of the user involved in this launch permission. <p>
      * Available groups: <code>all</code>
@@ -166,7 +162,7 @@ public class LaunchPermission implements Serializable {
         this.group = group.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

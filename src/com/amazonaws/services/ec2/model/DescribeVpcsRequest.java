@@ -36,8 +36,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeVpcsRequestMarshaller;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeVpcs(DescribeVpcsRequest)
  */
-
- 
 public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeVpcsRequest> {
 
     /**
@@ -59,7 +57,6 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      * @return The ID of a VPC you want information about.
      */
     public java.util.List<String> getVpcIds() {
-        
         if (vpcIds == null) {
               vpcIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               vpcIds.setAutoConstruct(true);
@@ -121,7 +118,7 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for VPCs. For a complete
      * reference to the available filter keys for this operation, see the <a
@@ -134,7 +131,6 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -214,7 +210,7 @@ public class DescribeVpcsRequest extends AmazonWebServiceRequest implements Seri
 
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

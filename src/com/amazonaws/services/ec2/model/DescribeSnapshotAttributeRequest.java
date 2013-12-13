@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeSnapshotAttributeReque
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSnapshotAttribute(DescribeSnapshotAttributeRequest)
  */
-
- 
 public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSnapshotAttributeRequest> {
 
     /**
@@ -52,8 +50,6 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest im
      */
     public DescribeSnapshotAttributeRequest() {}
     
-
-
     /**
      * Constructs a new DescribeSnapshotAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -69,8 +65,6 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest im
         setAttribute(attribute);
     }
 
-    
-    
     /**
      * Constructs a new DescribeSnapshotAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -85,7 +79,7 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest im
         this.snapshotId = snapshotId;
         this.attribute = attribute.toString();
     }
-    
+
     /**
      * The ID of the EBS snapshot whose attribute is being described.
      *
@@ -118,8 +112,7 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest im
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * The name of the EBS attribute to describe. <p> Available attribute
      * names: createVolumePermission
@@ -173,8 +166,7 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest im
         this.attribute = attribute;
         return this;
     }
-    
-    
+
     /**
      * The name of the EBS attribute to describe. <p> Available attribute
      * names: createVolumePermission
@@ -212,7 +204,7 @@ public class DescribeSnapshotAttributeRequest extends AmazonWebServiceRequest im
         this.attribute = attribute.toString();
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

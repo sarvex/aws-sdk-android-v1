@@ -24,8 +24,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#cancelReservedInstancesListing(CancelReservedInstancesListingRequest)
  */
-
- 
 public class CancelReservedInstancesListingRequest extends AmazonWebServiceRequest implements Serializable {
 
     private String reservedInstancesListingId;
@@ -67,8 +65,7 @@ public class CancelReservedInstancesListingRequest extends AmazonWebServiceReque
         this.reservedInstancesListingId = reservedInstancesListingId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

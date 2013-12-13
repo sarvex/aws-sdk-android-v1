@@ -36,8 +36,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeInstancesRequestMarsha
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeInstances(DescribeInstancesRequest)
  */
-
- 
 public class DescribeInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeInstancesRequest> {
 
     /**
@@ -54,13 +52,16 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
+    private String nextToken;
+
+    private Integer maxResults;
+
     /**
      * An optional list of the instances to describe.
      *
      * @return An optional list of the instances to describe.
      */
     public java.util.List<String> getInstanceIds() {
-        
         if (instanceIds == null) {
               instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               instanceIds.setAutoConstruct(true);
@@ -122,7 +123,7 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for Instances. For a
      * complete reference to the available filter keys for this operation,
@@ -137,7 +138,6 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -223,7 +223,73 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
 
         return this;
     }
+
+    /**
+     * Returns the value of the NextToken property for this object.
+     *
+     * @return The value of the NextToken property for this object.
+     */
+    public String getNextToken() {
+        return nextToken;
+    }
     
+    /**
+     * Sets the value of the NextToken property for this object.
+     *
+     * @param nextToken The new value for the NextToken property for this object.
+     */
+    public void setNextToken(String nextToken) {
+        this.nextToken = nextToken;
+    }
+    
+    /**
+     * Sets the value of the NextToken property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param nextToken The new value for the NextToken property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeInstancesRequest withNextToken(String nextToken) {
+        this.nextToken = nextToken;
+        return this;
+    }
+
+    /**
+     * Returns the value of the MaxResults property for this object.
+     *
+     * @return The value of the MaxResults property for this object.
+     */
+    public Integer getMaxResults() {
+        return maxResults;
+    }
+    
+    /**
+     * Sets the value of the MaxResults property for this object.
+     *
+     * @param maxResults The new value for the MaxResults property for this object.
+     */
+    public void setMaxResults(Integer maxResults) {
+        this.maxResults = maxResults;
+    }
+    
+    /**
+     * Sets the value of the MaxResults property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param maxResults The new value for the MaxResults property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeInstancesRequest withMaxResults(Integer maxResults) {
+        this.maxResults = maxResults;
+        return this;
+    }
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to
@@ -249,7 +315,9 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");
-        if (getFilters() != null) sb.append("Filters: " + getFilters() );
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
+        if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() );
         sb.append("}");
         return sb.toString();
     }
@@ -261,6 +329,8 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
         
         hashCode = prime * hashCode + ((getInstanceIds() == null) ? 0 : getInstanceIds().hashCode()); 
         hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode()); 
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode()); 
+        hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode()); 
         return hashCode;
     }
     
@@ -276,6 +346,10 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
         if (other.getInstanceIds() != null && other.getInstanceIds().equals(this.getInstanceIds()) == false) return false; 
         if (other.getFilters() == null ^ this.getFilters() == null) return false;
         if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false) return false; 
+        if (other.getNextToken() == null ^ this.getNextToken() == null) return false;
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false) return false; 
+        if (other.getMaxResults() == null ^ this.getMaxResults() == null) return false;
+        if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false) return false; 
         return true;
     }
     

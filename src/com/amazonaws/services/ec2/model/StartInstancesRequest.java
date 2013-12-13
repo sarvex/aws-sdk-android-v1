@@ -34,8 +34,6 @@ import com.amazonaws.services.ec2.model.transform.StartInstancesRequestMarshalle
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#startInstances(StartInstancesRequest)
  */
-
- 
 public class StartInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<StartInstancesRequest> {
 
     /**
@@ -51,8 +49,6 @@ public class StartInstancesRequest extends AmazonWebServiceRequest implements Se
      */
     public StartInstancesRequest() {}
     
-
-
     /**
      * Constructs a new StartInstancesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -64,15 +60,12 @@ public class StartInstancesRequest extends AmazonWebServiceRequest implements Se
         setInstanceIds(instanceIds);
     }
 
-    
-    
     /**
      * The list of Amazon EC2 instances to start.
      *
      * @return The list of Amazon EC2 instances to start.
      */
     public java.util.List<String> getInstanceIds() {
-        
         if (instanceIds == null) {
               instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               instanceIds.setAutoConstruct(true);
@@ -134,7 +127,7 @@ public class StartInstancesRequest extends AmazonWebServiceRequest implements Se
 
         return this;
     }
-    
+
     /**
      * Returns the value of the AdditionalInfo property for this object.
      *
@@ -167,8 +160,7 @@ public class StartInstancesRequest extends AmazonWebServiceRequest implements Se
         this.additionalInfo = additionalInfo;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

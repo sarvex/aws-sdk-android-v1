@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The RequestSpotInstancesResult data type.
  * </p>
  */
-
- 
 public class RequestSpotInstancesResult implements Serializable {
 
     /**
@@ -37,7 +35,6 @@ public class RequestSpotInstancesResult implements Serializable {
      * @return Contains a list of Spot Instance requests.
      */
     public java.util.List<SpotInstanceRequest> getSpotInstanceRequests() {
-        
         if (spotInstanceRequests == null) {
               spotInstanceRequests = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotInstanceRequest>();
               spotInstanceRequests.setAutoConstruct(true);
@@ -99,7 +96,7 @@ public class RequestSpotInstancesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

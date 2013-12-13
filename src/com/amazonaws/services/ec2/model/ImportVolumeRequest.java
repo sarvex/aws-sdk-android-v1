@@ -26,8 +26,6 @@ import com.amazonaws.services.ec2.model.transform.ImportVolumeRequestMarshaller;
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#importVolume(ImportVolumeRequest)
  */
-
- 
 public class ImportVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ImportVolumeRequest> {
 
     private String availabilityZone;
@@ -70,8 +68,7 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Image property for this object.
      *
@@ -104,8 +101,7 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.image = image;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Description property for this object.
      *
@@ -138,8 +134,7 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Volume property for this object.
      *
@@ -172,8 +167,7 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest implements Seri
         this.volume = volume;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

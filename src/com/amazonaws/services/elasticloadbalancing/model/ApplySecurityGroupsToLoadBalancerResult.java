@@ -22,22 +22,19 @@ import java.io.Serializable;
  * The out for the ApplySecurityGroupsToLoadBalancer action.
  * </p>
  */
-
- 
 public class ApplySecurityGroupsToLoadBalancerResult implements Serializable {
 
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroups;
 
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      *
-     * @return A list of security group IDs associated with your LoadBalancer.
+     * @return A list of security group IDs associated with your load balancer.
      */
     public java.util.List<String> getSecurityGroups() {
-        
         if (securityGroups == null) {
               securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               securityGroups.setAutoConstruct(true);
@@ -46,9 +43,9 @@ public class ApplySecurityGroupsToLoadBalancerResult implements Serializable {
     }
     
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      *
-     * @param securityGroups A list of security group IDs associated with your LoadBalancer.
+     * @param securityGroups A list of security group IDs associated with your load balancer.
      */
     public void setSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
@@ -61,11 +58,11 @@ public class ApplySecurityGroupsToLoadBalancerResult implements Serializable {
     }
     
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param securityGroups A list of security group IDs associated with your LoadBalancer.
+     * @param securityGroups A list of security group IDs associated with your load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -79,11 +76,11 @@ public class ApplySecurityGroupsToLoadBalancerResult implements Serializable {
     }
     
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param securityGroups A list of security group IDs associated with your LoadBalancer.
+     * @param securityGroups A list of security group IDs associated with your load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -99,7 +96,7 @@ public class ApplySecurityGroupsToLoadBalancerResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

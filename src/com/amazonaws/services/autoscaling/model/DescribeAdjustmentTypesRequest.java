@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeAdjustmentTypes(DescribeAdjustmentTypesRequest)
  */
-
- 
 public class DescribeAdjustmentTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

@@ -135,6 +135,8 @@ public class TableDescription implements Serializable {
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<LocalSecondaryIndexDescription> localSecondaryIndexes;
 
+    private com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexDescription> globalSecondaryIndexes;
+
     /**
      * Default constructor for a new TableDescription object.  Callers should use the
      * setter or fluent setter (with...) methods to initialize this object after creating it.
@@ -155,7 +157,6 @@ public class TableDescription implements Serializable {
      *         <p><i>AttributeType</i> - The data type for the attribute. </li> </ul>
      */
     public java.util.List<AttributeDefinition> getAttributeDefinitions() {
-        
         return attributeDefinitions;
     }
     
@@ -237,7 +238,7 @@ public class TableDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
      * The name of the table.
      * <p>
@@ -282,8 +283,7 @@ public class TableDescription implements Serializable {
         this.tableName = tableName;
         return this;
     }
-    
-    
+
     /**
      * The primary key structure for the table. Each <i>KeySchemaElement</i>
      * consists of: <ul> <li> <p><i>AttributeName</i> - The name of the
@@ -305,7 +305,6 @@ public class TableDescription implements Serializable {
      *         Key</a> in the Amazon DynamoDB Developer Guide.
      */
     public java.util.List<KeySchemaElement> getKeySchema() {
-        
         return keySchema;
     }
     
@@ -408,7 +407,7 @@ public class TableDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Represents the current state of the table: <ul> <li>
      * <p><i>CREATING</i> - The table is being created, as the result of a
@@ -492,8 +491,7 @@ public class TableDescription implements Serializable {
         this.tableStatus = tableStatus;
         return this;
     }
-    
-    
+
     /**
      * Represents the current state of the table: <ul> <li>
      * <p><i>CREATING</i> - The table is being created, as the result of a
@@ -551,7 +549,7 @@ public class TableDescription implements Serializable {
         this.tableStatus = tableStatus.toString();
         return this;
     }
-    
+
     /**
      * Represents the date and time when the table was created, in <a
      * href="http://www.epochconverter.com/">UNIX epoch time</a> format.
@@ -590,8 +588,7 @@ public class TableDescription implements Serializable {
         this.creationDateTime = creationDateTime;
         return this;
     }
-    
-    
+
     /**
      * Represents the provisioned throughput settings for the table,
      * consisting of read and write capacity units, along with data about
@@ -636,8 +633,7 @@ public class TableDescription implements Serializable {
         this.provisionedThroughput = provisionedThroughput;
         return this;
     }
-    
-    
+
     /**
      * Represents the total size of the specified table, in bytes. Amazon
      * DynamoDB updates this value approximately every six hours. Recent
@@ -682,8 +678,7 @@ public class TableDescription implements Serializable {
         this.tableSizeBytes = tableSizeBytes;
         return this;
     }
-    
-    
+
     /**
      * Represents the number of items in the specified table. Amazon DynamoDB
      * updates this value approximately every six hours. Recent changes might
@@ -728,8 +723,7 @@ public class TableDescription implements Serializable {
         this.itemCount = itemCount;
         return this;
     }
-    
-    
+
     /**
      * Represents one or more secondary indexes on the table. Each index is
      * scoped to a given hash key value. Tables with one or more local
@@ -802,7 +796,6 @@ public class TableDescription implements Serializable {
      *         returned.
      */
     public java.util.List<LocalSecondaryIndexDescription> getLocalSecondaryIndexes() {
-        
         return localSecondaryIndexes;
     }
     
@@ -1058,7 +1051,72 @@ public class TableDescription implements Serializable {
 
         return this;
     }
+
+    /**
+     * Returns the value of the GlobalSecondaryIndexes property for this
+     * object.
+     *
+     * @return The value of the GlobalSecondaryIndexes property for this object.
+     */
+    public java.util.List<GlobalSecondaryIndexDescription> getGlobalSecondaryIndexes() {
+        return globalSecondaryIndexes;
+    }
     
+    /**
+     * Sets the value of the GlobalSecondaryIndexes property for this object.
+     *
+     * @param globalSecondaryIndexes The new value for the GlobalSecondaryIndexes property for this object.
+     */
+    public void setGlobalSecondaryIndexes(java.util.Collection<GlobalSecondaryIndexDescription> globalSecondaryIndexes) {
+        if (globalSecondaryIndexes == null) {
+            this.globalSecondaryIndexes = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexDescription> globalSecondaryIndexesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexDescription>(globalSecondaryIndexes.size());
+        globalSecondaryIndexesCopy.addAll(globalSecondaryIndexes);
+        this.globalSecondaryIndexes = globalSecondaryIndexesCopy;
+    }
+    
+    /**
+     * Sets the value of the GlobalSecondaryIndexes property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param globalSecondaryIndexes The new value for the GlobalSecondaryIndexes property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public TableDescription withGlobalSecondaryIndexes(GlobalSecondaryIndexDescription... globalSecondaryIndexes) {
+        if (getGlobalSecondaryIndexes() == null) setGlobalSecondaryIndexes(new java.util.ArrayList<GlobalSecondaryIndexDescription>(globalSecondaryIndexes.length));
+        for (GlobalSecondaryIndexDescription value : globalSecondaryIndexes) {
+            getGlobalSecondaryIndexes().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * Sets the value of the GlobalSecondaryIndexes property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param globalSecondaryIndexes The new value for the GlobalSecondaryIndexes property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public TableDescription withGlobalSecondaryIndexes(java.util.Collection<GlobalSecondaryIndexDescription> globalSecondaryIndexes) {
+        if (globalSecondaryIndexes == null) {
+            this.globalSecondaryIndexes = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexDescription> globalSecondaryIndexesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlobalSecondaryIndexDescription>(globalSecondaryIndexes.size());
+            globalSecondaryIndexesCopy.addAll(globalSecondaryIndexes);
+            this.globalSecondaryIndexes = globalSecondaryIndexesCopy;
+        }
+
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1079,7 +1137,8 @@ public class TableDescription implements Serializable {
         if (getProvisionedThroughput() != null) sb.append("ProvisionedThroughput: " + getProvisionedThroughput() + ",");
         if (getTableSizeBytes() != null) sb.append("TableSizeBytes: " + getTableSizeBytes() + ",");
         if (getItemCount() != null) sb.append("ItemCount: " + getItemCount() + ",");
-        if (getLocalSecondaryIndexes() != null) sb.append("LocalSecondaryIndexes: " + getLocalSecondaryIndexes() );
+        if (getLocalSecondaryIndexes() != null) sb.append("LocalSecondaryIndexes: " + getLocalSecondaryIndexes() + ",");
+        if (getGlobalSecondaryIndexes() != null) sb.append("GlobalSecondaryIndexes: " + getGlobalSecondaryIndexes() );
         sb.append("}");
         return sb.toString();
     }
@@ -1098,6 +1157,7 @@ public class TableDescription implements Serializable {
         hashCode = prime * hashCode + ((getTableSizeBytes() == null) ? 0 : getTableSizeBytes().hashCode()); 
         hashCode = prime * hashCode + ((getItemCount() == null) ? 0 : getItemCount().hashCode()); 
         hashCode = prime * hashCode + ((getLocalSecondaryIndexes() == null) ? 0 : getLocalSecondaryIndexes().hashCode()); 
+        hashCode = prime * hashCode + ((getGlobalSecondaryIndexes() == null) ? 0 : getGlobalSecondaryIndexes().hashCode()); 
         return hashCode;
     }
     
@@ -1127,6 +1187,8 @@ public class TableDescription implements Serializable {
         if (other.getItemCount() != null && other.getItemCount().equals(this.getItemCount()) == false) return false; 
         if (other.getLocalSecondaryIndexes() == null ^ this.getLocalSecondaryIndexes() == null) return false;
         if (other.getLocalSecondaryIndexes() != null && other.getLocalSecondaryIndexes().equals(this.getLocalSecondaryIndexes()) == false) return false; 
+        if (other.getGlobalSecondaryIndexes() == null ^ this.getGlobalSecondaryIndexes() == null) return false;
+        if (other.getGlobalSecondaryIndexes() != null && other.getGlobalSecondaryIndexes().equals(this.getGlobalSecondaryIndexes()) == false) return false; 
         return true;
     }
     

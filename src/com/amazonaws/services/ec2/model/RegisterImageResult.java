@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of registering a new Amazon Machine Image (AMI). Contains the ID of the new image.
  * </p>
  */
-
- 
 public class RegisterImageResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class RegisterImageResult implements Serializable {
         this.imageId = imageId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

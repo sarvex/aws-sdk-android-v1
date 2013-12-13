@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeTerminationPolicyTypes(DescribeTerminationPolicyTypesRequest)
  */
-
- 
 public class DescribeTerminationPolicyTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

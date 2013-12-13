@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Volume Status Item
  */
-
- 
 public class VolumeStatusItem implements Serializable {
 
     private String volumeId;
@@ -66,8 +64,7 @@ public class VolumeStatusItem implements Serializable {
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the AvailabilityZone property for this object.
      *
@@ -100,8 +97,7 @@ public class VolumeStatusItem implements Serializable {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the VolumeStatus property for this object.
      *
@@ -134,15 +130,13 @@ public class VolumeStatusItem implements Serializable {
         this.volumeStatus = volumeStatus;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Events property for this object.
      *
      * @return The value of the Events property for this object.
      */
     public java.util.List<VolumeStatusEvent> getEvents() {
-        
         if (events == null) {
               events = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent>();
               events.setAutoConstruct(true);
@@ -204,14 +198,13 @@ public class VolumeStatusItem implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns the value of the Actions property for this object.
      *
      * @return The value of the Actions property for this object.
      */
     public java.util.List<VolumeStatusAction> getActions() {
-        
         if (actions == null) {
               actions = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction>();
               actions.setAutoConstruct(true);
@@ -273,7 +266,7 @@ public class VolumeStatusItem implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

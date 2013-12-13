@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeNotificationConfigurations(DescribeNotificationConfigurationsRequest)
  */
-
- 
 public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -58,7 +56,6 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @return The name of the Auto Scaling group.
      */
     public java.util.List<String> getAutoScalingGroupNames() {
-        
         if (autoScalingGroupNames == null) {
               autoScalingGroupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               autoScalingGroupNames.setAutoConstruct(true);
@@ -120,7 +117,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
 
         return this;
     }
-    
+
     /**
      * A string that is used to mark the start of the next batch of returned
      * results for pagination.
@@ -168,8 +165,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Maximum number of records to be returned.
      * <p>
@@ -211,8 +207,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

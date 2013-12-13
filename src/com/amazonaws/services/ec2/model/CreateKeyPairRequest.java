@@ -29,8 +29,6 @@ import com.amazonaws.services.ec2.model.transform.CreateKeyPairRequestMarshaller
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createKeyPair(CreateKeyPairRequest)
  */
-
- 
 public class CreateKeyPairRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateKeyPairRequest> {
 
     /**
@@ -44,8 +42,6 @@ public class CreateKeyPairRequest extends AmazonWebServiceRequest implements Ser
      */
     public CreateKeyPairRequest() {}
     
-
-
     /**
      * Constructs a new CreateKeyPairRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -57,8 +53,6 @@ public class CreateKeyPairRequest extends AmazonWebServiceRequest implements Ser
         setKeyName(keyName);
     }
 
-    
-    
     /**
      * The unique name for the new key pair.
      *
@@ -91,8 +85,7 @@ public class CreateKeyPairRequest extends AmazonWebServiceRequest implements Ser
         this.keyName = keyName;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

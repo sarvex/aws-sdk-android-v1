@@ -112,7 +112,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      */
     private String returnConsumedCapacity;
 
@@ -133,8 +133,6 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
      */
     public DeleteItemRequest() {}
     
-
-
     /**
      * Constructs a new DeleteItemRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -149,8 +147,50 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         setKey(key);
     }
 
-    
-    
+    /**
+     * Constructs a new DeleteItemRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param tableName The name of the table from which to delete the item.
+     * @param key A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the
+     * item attributes as they appeared before they were deleted. For
+     * <i>DeleteItem</i>, the valid values are: <ul> <li>
+     * <p><code>NONE</code> - If <i>ReturnValues</i> is not specified, or if
+     * its value is <code>NONE</code>, then nothing is returned. (This is the
+     * default for <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> -
+     * The content of the old item is returned. </li> </ul>
+     */
+    public DeleteItemRequest(String tableName, java.util.Map<String,AttributeValue> key, String returnValues) {
+        setTableName(tableName);
+        setKey(key);
+        setReturnValues(returnValues);
+    }
+
+    /**
+     * Constructs a new DeleteItemRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param tableName The name of the table from which to delete the item.
+     * @param key A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to delete.
+     * @param returnValues Use <i>ReturnValues</i> if you want to get the
+     * item attributes as they appeared before they were deleted. For
+     * <i>DeleteItem</i>, the valid values are: <ul> <li>
+     * <p><code>NONE</code> - If <i>ReturnValues</i> is not specified, or if
+     * its value is <code>NONE</code>, then nothing is returned. (This is the
+     * default for <i>ReturnValues</i>.) </li> <li> <p><code>ALL_OLD</code> -
+     * The content of the old item is returned. </li> </ul>
+     */
+    public DeleteItemRequest(String tableName, java.util.Map<String,AttributeValue> key, ReturnValue returnValues) {
+        this.tableName = tableName;
+        this.key = key;
+        this.returnValues = returnValues.toString();
+    }
+
     /**
      * The name of the table from which to delete the item.
      * <p>
@@ -195,8 +235,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         this.tableName = tableName;
         return this;
     }
-    
-    
+
     /**
      * A map of attribute names to <i>AttributeValue</i> objects,
      * representing the primary key of the item to delete.
@@ -236,8 +275,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         setKey(key);
         return this;
     }
-    
-   	
+
     /**
      * A map of attribute names to <i>AttributeValue</i> objects,
      * representing the primary key of the item to delete.
@@ -272,12 +310,12 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
      *
      * @param hashKey Primary hash key.
      * @param rangeKey Primary range key. (null if it a hash-only table)
-     */    
+     */
     public DeleteItemRequest withKey(java.util.Map.Entry<String, AttributeValue> hashKey, java.util.Map.Entry<String, AttributeValue> rangeKey) throws IllegalArgumentException {
     	setKey(hashKey, rangeKey);
     	return this;
     }
-	
+
     /**
      * A map of attribute names to <i>AttributeValue</i> objects,
      * representing the primary key of the item to delete.
@@ -297,7 +335,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
 		this.key.put(key, value);
 		return this;
 	}
-	
+
 	/**
 	 * Removes all the entries added into Key.
 	 * <p>
@@ -533,8 +571,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         setExpected(expected);
         return this;
     }
-    
-   	
+
     /**
      * A map of attribute/condition pairs. This is the conditional block for
      * the <i>DeleteItem</i>operation. All the conditions must be met for the
@@ -586,7 +623,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
 		this.expected.put(key, value);
 		return this;
 	}
-	
+
 	/**
 	 * Removes all the entries added into Expected.
 	 * <p>
@@ -680,8 +717,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         this.returnValues = returnValues;
         return this;
     }
-    
-    
+
     /**
      * Use <i>ReturnValues</i> if you want to get the item attributes as they
      * appeared before they were deleted. For <i>DeleteItem</i>, the valid
@@ -739,14 +775,14 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         this.returnValues = returnValues.toString();
         return this;
     }
-    
+
     /**
      * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      * the response; if set to <code>NONE</code> (the default),
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @return If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -764,7 +800,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -784,7 +820,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -799,15 +835,14 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         this.returnConsumedCapacity = returnConsumedCapacity;
         return this;
     }
-    
-    
+
     /**
      * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      * the response; if set to <code>NONE</code> (the default),
      * <i>ConsumedCapacity</i> is not included.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -827,7 +862,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
      * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
      *         the response; if set to <code>NONE</code> (the default),
@@ -842,7 +877,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         this.returnConsumedCapacity = returnConsumedCapacity.toString();
         return this;
     }
-    
+
     /**
      * If set to <code>SIZE</code>, statistics about item collections, if
      * any, that were modified during the operation are returned in the
@@ -908,8 +943,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         this.returnItemCollectionMetrics = returnItemCollectionMetrics;
         return this;
     }
-    
-    
+
     /**
      * If set to <code>SIZE</code>, statistics about item collections, if
      * any, that were modified during the operation are returned in the
@@ -955,7 +989,7 @@ public class DeleteItemRequest extends AmazonWebServiceRequest implements Serial
         this.returnItemCollectionMetrics = returnItemCollectionMetrics.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

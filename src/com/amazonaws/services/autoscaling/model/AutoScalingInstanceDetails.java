@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The <code>AutoScalingInstanceDetails</code> data type.
  * </p>
  */
-
- 
 public class AutoScalingInstanceDetails implements Serializable {
 
     /**
@@ -128,8 +126,7 @@ public class AutoScalingInstanceDetails implements Serializable {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The name of the Auto Scaling group associated with this instance.
      * <p>
@@ -174,8 +171,7 @@ public class AutoScalingInstanceDetails implements Serializable {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The Availability Zone in which this instance resides.
      * <p>
@@ -220,8 +216,7 @@ public class AutoScalingInstanceDetails implements Serializable {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * The life cycle state of this instance. for more information, see <a
      * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AS_Concepts.html#instance-lifecycle">Instance
@@ -278,8 +273,7 @@ public class AutoScalingInstanceDetails implements Serializable {
         this.lifecycleState = lifecycleState;
         return this;
     }
-    
-    
+
     /**
      * The health status of this instance. "Healthy" means that the instance
      * is healthy and should remain in service. "Unhealthy" means that the
@@ -336,8 +330,7 @@ public class AutoScalingInstanceDetails implements Serializable {
         this.healthStatus = healthStatus;
         return this;
     }
-    
-    
+
     /**
      * The launch configuration associated with this instance.
      * <p>
@@ -382,8 +375,7 @@ public class AutoScalingInstanceDetails implements Serializable {
         this.launchConfigurationName = launchConfigurationName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

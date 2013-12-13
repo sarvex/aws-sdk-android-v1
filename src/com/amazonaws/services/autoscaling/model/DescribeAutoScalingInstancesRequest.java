@@ -31,8 +31,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeAutoScalingInstances(DescribeAutoScalingInstancesRequest)
  */
-
- 
 public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -73,7 +71,6 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
      *         instances are requested, they are ignored with no error.
      */
     public java.util.List<String> getInstanceIds() {
-        
         if (instanceIds == null) {
               instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               instanceIds.setAutoConstruct(true);
@@ -153,7 +150,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
 
         return this;
     }
-    
+
     /**
      * The maximum number of Auto Scaling instances to be described with each
      * call.
@@ -201,8 +198,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * The token returned by a previous call to indicate that there is more
      * data available.
@@ -250,8 +246,7 @@ public class DescribeAutoScalingInstancesRequest extends AmazonWebServiceRequest
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

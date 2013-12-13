@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output for the SetLoadBalancerPoliciesForBackendServer action.
  * </p>
  */
-
- 
 public class SetLoadBalancerPoliciesForBackendServerResult implements Serializable {
 
     /**

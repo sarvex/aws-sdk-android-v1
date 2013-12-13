@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents a unique message ID returned from a successful <code>SendEmail</code> request.
  * </p>
  */
-
- 
 public class SendEmailResult implements Serializable {
 
     /**
@@ -70,8 +68,7 @@ public class SendEmailResult implements Serializable {
         this.messageId = messageId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

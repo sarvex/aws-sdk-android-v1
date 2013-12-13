@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeReservedInstancesReque
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeReservedInstances(DescribeReservedInstancesRequest)
  */
-
- 
 public class DescribeReservedInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeReservedInstancesRequest> {
 
     /**
@@ -60,7 +58,6 @@ public class DescribeReservedInstancesRequest extends AmazonWebServiceRequest im
      * @return The optional list of Reserved Instance IDs to describe.
      */
     public java.util.List<String> getReservedInstancesIds() {
-        
         if (reservedInstancesIds == null) {
               reservedInstancesIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               reservedInstancesIds.setAutoConstruct(true);
@@ -122,7 +119,7 @@ public class DescribeReservedInstancesRequest extends AmazonWebServiceRequest im
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for ReservedInstances. For
      * a complete reference to the available filter keys for this operation,
@@ -137,7 +134,6 @@ public class DescribeReservedInstancesRequest extends AmazonWebServiceRequest im
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -223,7 +219,7 @@ public class DescribeReservedInstancesRequest extends AmazonWebServiceRequest im
 
         return this;
     }
-    
+
     /**
      * The Reserved Instance offering type.
      * <p>
@@ -271,8 +267,7 @@ public class DescribeReservedInstancesRequest extends AmazonWebServiceRequest im
         this.offeringType = offeringType;
         return this;
     }
-    
-    
+
     /**
      * The Reserved Instance offering type.
      * <p>
@@ -306,7 +301,7 @@ public class DescribeReservedInstancesRequest extends AmazonWebServiceRequest im
         this.offeringType = offeringType.toString();
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The <code>Filter</code> data type.
  * </p>
  */
-
- 
 public class Filter implements Serializable {
 
     /**
@@ -94,15 +92,13 @@ public class Filter implements Serializable {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The value of the filter.
      *
      * @return The value of the filter.
      */
     public java.util.List<String> getValues() {
-        
         if (values == null) {
               values = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               values.setAutoConstruct(true);
@@ -164,7 +160,7 @@ public class Filter implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

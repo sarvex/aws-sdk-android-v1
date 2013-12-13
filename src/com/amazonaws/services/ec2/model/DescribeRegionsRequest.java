@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeRegionsRequestMarshall
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeRegions(DescribeRegionsRequest)
  */
-
- 
 public class DescribeRegionsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeRegionsRequest> {
 
     /**
@@ -51,7 +49,6 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
      * @return The optional list of regions to describe.
      */
     public java.util.List<String> getRegionNames() {
-        
         if (regionNames == null) {
               regionNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               regionNames.setAutoConstruct(true);
@@ -113,7 +110,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for Regions. For a complete
      * reference to the available filter keys for this operation, see the <a
@@ -126,7 +123,6 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -206,7 +202,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

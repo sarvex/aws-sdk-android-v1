@@ -25,31 +25,33 @@ import com.amazonaws.AmazonWebServiceRequest;
  * This policy can be associated only with HTTP/HTTPS listeners.
  * </p>
  * <p>
- * When a LoadBalancer implements this policy, the LoadBalancer uses a special cookie to track the backend server instance for each request. When the
- * LoadBalancer receives a request, it first checks to see if this cookie is present in the request. If so, the LoadBalancer sends the request to the
- * application server specified in the cookie. If not, the LoadBalancer sends the request to a server that is chosen based on the existing load balancing
- * algorithm.
+ * When a load balancer implements this policy, the load balancer uses a special cookie to track the backend server instance for each request. When the
+ * load balancer receives a request, it first checks to see if this cookie is present in the request. If so, the load balancer sends the request to the
+ * application server specified in the cookie. If not, the load balancer sends the request to a server that is chosen based on the existing load
+ * balancing algorithm.
  * </p>
  * <p>
  * A cookie is inserted into the response for binding subsequent requests from the same user to that server. The validity of the cookie is based on the
  * cookie expiration time, which is specified in the policy configuration.
  * </p>
+ * <p>
+ * For more information, see <a
+ * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/US_StickySessions.html#US_EnableStickySessionsLBCookies"> Enabling
+ * Duration-Based Session Stickiness </a> in the <i>Elastic Load Balancing Developer Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#createLBCookieStickinessPolicy(CreateLBCookieStickinessPolicyRequest)
  */
-
- 
 public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      */
     private String loadBalancerName;
 
     /**
      * The name of the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      */
     private String policyName;
 
@@ -66,55 +68,44 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
      */
     public CreateLBCookieStickinessPolicyRequest() {}
     
-
-
     /**
      * Constructs a new CreateLBCookieStickinessPolicyRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The name associated with the LoadBalancer. The
-     * name must be unique within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      * @param policyName The name of the policy being created. The name must
-     * be unique within the set of policies for this LoadBalancer.
+     * be unique within the set of policies for this load balancer.
      */
     public CreateLBCookieStickinessPolicyRequest(String loadBalancerName, String policyName) {
         setLoadBalancerName(loadBalancerName);
         setPolicyName(policyName);
     }
 
-    
-    
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      *
-     * @return The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @return The name associated with the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -123,14 +114,13 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The name of the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      *
      * @return The name of the policy being created. The name must be unique within
-     *         the set of policies for this LoadBalancer.
+     *         the set of policies for this load balancer.
      */
     public String getPolicyName() {
         return policyName;
@@ -138,10 +128,10 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
     
     /**
      * The name of the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      *
      * @param policyName The name of the policy being created. The name must be unique within
-     *         the set of policies for this LoadBalancer.
+     *         the set of policies for this load balancer.
      */
     public void setPolicyName(String policyName) {
         this.policyName = policyName;
@@ -149,12 +139,12 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
     
     /**
      * The name of the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param policyName The name of the policy being created. The name must be unique within
-     *         the set of policies for this LoadBalancer.
+     *         the set of policies for this load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -163,8 +153,7 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * The time period in seconds after which the cookie should be considered
      * stale. Not specifying this parameter indicates that the sticky session
@@ -209,8 +198,7 @@ public class CreateLBCookieStickinessPolicyRequest extends AmazonWebServiceReque
         this.cookieExpirationPeriod = cookieExpirationPeriod;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

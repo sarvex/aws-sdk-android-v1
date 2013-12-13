@@ -52,11 +52,11 @@ import com.amazonaws.services.cloudwatch.model.*;
 public interface AmazonCloudWatch {
 
     /**
-     * Overrides the default endpoint for this client ("https://monitoring.amazonaws.com").
+     * Overrides the default endpoint for this client ("https://monitoring.us-east-1.amazonaws.com").
      * Callers can use this method to control which AWS region they want to work with.
      * <p>
-     * Callers can pass in just the endpoint (ex: "monitoring.amazonaws.com") or a full
-     * URL, including the protocol (ex: "https://monitoring.amazonaws.com"). If the
+     * Callers can pass in just the endpoint (ex: "monitoring.us-east-1.amazonaws.com") or a full
+     * URL, including the protocol (ex: "https://monitoring.us-east-1.amazonaws.com"). If the
      * protocol is not specified here, the default protocol from this client's
      * {@link ClientConfiguration} will be used, which by default is HTTPS.
      * <p>
@@ -71,8 +71,8 @@ public interface AmazonCloudWatch {
      * transit or retrying.</b>
      *
      * @param endpoint
-     *            The endpoint (ex: "monitoring.amazonaws.com") or a full URL,
-     *            including the protocol (ex: "https://monitoring.amazonaws.com") of
+     *            The endpoint (ex: "monitoring.us-east-1.amazonaws.com") or a full URL,
+     *            including the protocol (ex: "https://monitoring.us-east-1.amazonaws.com") of
      *            the region specific AWS endpoint this client will communicate
      *            with.
      *
@@ -128,6 +128,7 @@ public interface AmazonCloudWatch {
      * @param putMetricAlarmRequest Container for the necessary parameters to
      *           execute the PutMetricAlarm service method on AmazonCloudWatch.
      * 
+     * 
      * @throws LimitExceededException
      *
      * @throws AmazonClientException
@@ -166,6 +167,7 @@ public interface AmazonCloudWatch {
      *
      * @param putMetricDataRequest Container for the necessary parameters to
      *           execute the PutMetricData service method on AmazonCloudWatch.
+     * 
      * 
      * @throws InvalidParameterValueException
      * @throws InternalServiceException
@@ -292,6 +294,7 @@ public interface AmazonCloudWatch {
      *           parameters to execute the DisableAlarmActions service method on
      *           AmazonCloudWatch.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -396,6 +399,7 @@ public interface AmazonCloudWatch {
      *           parameters to execute the EnableAlarmActions service method on
      *           AmazonCloudWatch.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -416,6 +420,7 @@ public interface AmazonCloudWatch {
      *
      * @param deleteAlarmsRequest Container for the necessary parameters to
      *           execute the DeleteAlarms service method on AmazonCloudWatch.
+     * 
      * 
      * @throws ResourceNotFoundException
      *
@@ -441,6 +446,7 @@ public interface AmazonCloudWatch {
      *
      * @param setAlarmStateRequest Container for the necessary parameters to
      *           execute the SetAlarmState service method on AmazonCloudWatch.
+     * 
      * 
      * @throws ResourceNotFoundException
      * @throws InvalidFormatException

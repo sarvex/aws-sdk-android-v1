@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of detaching an EBS volume from an instance.
  * </p>
  */
-
- 
 public class DetachVolumeResult implements Serializable {
 
     /**
@@ -70,8 +68,7 @@ public class DetachVolumeResult implements Serializable {
         this.attachment = attachment;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

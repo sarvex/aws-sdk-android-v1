@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents a usage charge for Amazon EC2 resources that repeats on a schedule.
  * </p>
  */
-
- 
 public class RecurringCharge implements Serializable {
 
     /**
@@ -86,8 +84,7 @@ public class RecurringCharge implements Serializable {
         this.frequency = frequency;
         return this;
     }
-    
-    
+
     /**
      * The frequency of the recurring charge.
      * <p>
@@ -121,7 +118,7 @@ public class RecurringCharge implements Serializable {
         this.frequency = frequency.toString();
         return this;
     }
-    
+
     /**
      * The amount of the recurring charge.
      *
@@ -154,8 +151,7 @@ public class RecurringCharge implements Serializable {
         this.amount = amount;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

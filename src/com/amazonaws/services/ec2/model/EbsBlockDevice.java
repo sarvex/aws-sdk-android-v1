@@ -22,8 +22,6 @@ import java.io.Serializable;
  * An EBS volume backed block device.
  * </p>
  */
-
- 
 public class EbsBlockDevice implements Serializable {
 
     /**
@@ -78,8 +76,7 @@ public class EbsBlockDevice implements Serializable {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * The size of the volume, in gigabytes.
      *
@@ -112,8 +109,7 @@ public class EbsBlockDevice implements Serializable {
         this.volumeSize = volumeSize;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the Amazon EBS volume is deleted on instance
      * termination.
@@ -152,8 +148,7 @@ public class EbsBlockDevice implements Serializable {
         this.deleteOnTermination = deleteOnTermination;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the Amazon EBS volume is deleted on instance
      * termination.
@@ -164,7 +159,7 @@ public class EbsBlockDevice implements Serializable {
     public Boolean getDeleteOnTermination() {
         return deleteOnTermination;
     }
-    
+
     /**
      * Returns the value of the VolumeType property for this object.
      * <p>
@@ -212,8 +207,7 @@ public class EbsBlockDevice implements Serializable {
         this.volumeType = volumeType;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the VolumeType property for this object.
      * <p>
@@ -247,7 +241,7 @@ public class EbsBlockDevice implements Serializable {
         this.volumeType = volumeType.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the Iops property for this object.
      *
@@ -280,8 +274,7 @@ public class EbsBlockDevice implements Serializable {
         this.iops = iops;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

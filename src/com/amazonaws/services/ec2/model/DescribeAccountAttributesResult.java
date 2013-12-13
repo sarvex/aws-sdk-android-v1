@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Describe Account Attributes Result
  */
-
- 
 public class DescribeAccountAttributesResult implements Serializable {
 
     private com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute> accountAttributes;
@@ -32,7 +30,6 @@ public class DescribeAccountAttributesResult implements Serializable {
      * @return The value of the AccountAttributes property for this object.
      */
     public java.util.List<AccountAttribute> getAccountAttributes() {
-        
         if (accountAttributes == null) {
               accountAttributes = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute>();
               accountAttributes.setAutoConstruct(true);
@@ -94,7 +91,7 @@ public class DescribeAccountAttributesResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

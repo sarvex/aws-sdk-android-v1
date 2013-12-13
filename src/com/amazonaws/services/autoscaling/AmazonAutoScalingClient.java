@@ -14,24 +14,21 @@
  */
 package com.amazonaws.services.autoscaling;
 
-import org.w3c.dom.Node;
+import org.w3c.dom.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.net.*;
+import java.util.*;
 import java.util.Map.Entry;
 
 import com.amazonaws.*;
 import com.amazonaws.auth.*;
-import com.amazonaws.handlers.HandlerChainFactory;
-import com.amazonaws.handlers.RequestHandler;
-import com.amazonaws.http.StaxResponseHandler;
-import com.amazonaws.http.DefaultErrorResponseHandler;
-import com.amazonaws.http.ExecutionContext;
-import com.amazonaws.internal.StaticCredentialsProvider;
-import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.StaxUnmarshallerContext;
-import com.amazonaws.transform.StandardErrorUnmarshaller;
+import com.amazonaws.handlers.*;
+import com.amazonaws.http.*;
+import com.amazonaws.internal.*;
+import com.amazonaws.regions.*;
+import com.amazonaws.transform.*;
+import com.amazonaws.util.*;
+import com.amazonaws.util.AWSRequestMetrics.Field;
 
 import com.amazonaws.services.autoscaling.model.*;
 import com.amazonaws.services.autoscaling.model.transform.*;
@@ -90,11 +87,6 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
     protected final List<Unmarshaller<AmazonServiceException, Node>> exceptionUnmarshallers
             = new ArrayList<Unmarshaller<AmazonServiceException, Node>>();
 
-    
-    /** AWS signer for authenticating requests. */
-    private AWS4Signer signer;
-
-
     /**
      * Constructs a new client to invoke service methods on
      * AmazonAutoScaling.  A credentials provider chain will be used
@@ -109,7 +101,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonAutoScalingClient() {
         this(new DefaultAWSCredentialsProviderChain(), new ClientConfiguration());
@@ -133,7 +125,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *                       client connects to AmazonAutoScaling
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonAutoScalingClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration);
@@ -221,16 +213,13 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
         exceptionUnmarshallers.add(new ResourceInUseExceptionUnmarshaller());
         
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
-        setEndpoint("autoscaling.amazonaws.com");
-
-        signer = new AWS4Signer();
-        
-        signer.setServiceName("autoscaling");
-        
-
+        // calling this.setEndPoint(...) will also modify the signer accordingly
+        this.setEndpoint("autoscaling.amazonaws.com");
         HandlerChainFactory chainFactory = new HandlerChainFactory();
-		requestHandlers.addAll(chainFactory.newRequestHandlerChain(
+        requestHandler2s.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/autoscaling/request.handlers"));
+        requestHandler2s.addAll(chainFactory.newRequestHandler2Chain(
+                "/com/amazonaws/services/autoscaling/request.handler2s"));
     }
 
     
@@ -264,10 +253,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeAutoScalingGroupsResult describeAutoScalingGroups(DescribeAutoScalingGroupsRequest describeAutoScalingGroupsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeAutoScalingGroupsRequest> request = new DescribeAutoScalingGroupsRequestMarshaller().marshall(describeAutoScalingGroupsRequest);
-        return invoke(request, new DescribeAutoScalingGroupsResultStaxUnmarshaller());
+    public DescribeAutoScalingGroupsResult describeAutoScalingGroups(DescribeAutoScalingGroupsRequest describeAutoScalingGroupsRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeAutoScalingGroupsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeAutoScalingGroupsRequest> request = null;
+        Response<DescribeAutoScalingGroupsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeAutoScalingGroupsRequestMarshaller().marshall(describeAutoScalingGroupsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeAutoScalingGroupsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -288,6 +288,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the EnableMetricsCollection service method on
      *           AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -297,10 +298,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void enableMetricsCollection(EnableMetricsCollectionRequest enableMetricsCollectionRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<EnableMetricsCollectionRequest> request = new EnableMetricsCollectionRequestMarshaller().marshall(enableMetricsCollectionRequest);
-        invoke(request, null);
+    public void enableMetricsCollection(EnableMetricsCollectionRequest enableMetricsCollectionRequest) {
+        ExecutionContext executionContext = createExecutionContext(enableMetricsCollectionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<EnableMetricsCollectionRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new EnableMetricsCollectionRequestMarshaller().marshall(enableMetricsCollectionRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -315,6 +325,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * @param resumeProcessesRequest Container for the necessary parameters
      *           to execute the ResumeProcesses service method on AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -324,10 +335,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void resumeProcesses(ResumeProcessesRequest resumeProcessesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<ResumeProcessesRequest> request = new ResumeProcessesRequestMarshaller().marshall(resumeProcessesRequest);
-        invoke(request, null);
+    public void resumeProcesses(ResumeProcessesRequest resumeProcessesRequest) {
+        ExecutionContext executionContext = createExecutionContext(resumeProcessesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<ResumeProcessesRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new ResumeProcessesRequestMarshaller().marshall(resumeProcessesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -344,6 +364,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the DeleteLaunchConfiguration service method on
      *           AmazonAutoScaling.
      * 
+     * 
      * @throws ResourceInUseException
      *
      * @throws AmazonClientException
@@ -354,10 +375,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteLaunchConfiguration(DeleteLaunchConfigurationRequest deleteLaunchConfigurationRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteLaunchConfigurationRequest> request = new DeleteLaunchConfigurationRequestMarshaller().marshall(deleteLaunchConfigurationRequest);
-        invoke(request, null);
+    public void deleteLaunchConfiguration(DeleteLaunchConfigurationRequest deleteLaunchConfigurationRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteLaunchConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteLaunchConfigurationRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteLaunchConfigurationRequestMarshaller().marshall(deleteLaunchConfigurationRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -384,10 +414,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribePoliciesResult describePolicies(DescribePoliciesRequest describePoliciesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribePoliciesRequest> request = new DescribePoliciesRequestMarshaller().marshall(describePoliciesRequest);
-        return invoke(request, new DescribePoliciesResultStaxUnmarshaller());
+    public DescribePoliciesResult describePolicies(DescribePoliciesRequest describePoliciesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describePoliciesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribePoliciesRequest> request = null;
+        Response<DescribePoliciesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribePoliciesRequestMarshaller().marshall(describePoliciesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribePoliciesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -412,10 +453,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeScalingProcessTypesResult describeScalingProcessTypes(DescribeScalingProcessTypesRequest describeScalingProcessTypesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeScalingProcessTypesRequest> request = new DescribeScalingProcessTypesRequestMarshaller().marshall(describeScalingProcessTypesRequest);
-        return invoke(request, new DescribeScalingProcessTypesResultStaxUnmarshaller());
+    public DescribeScalingProcessTypesResult describeScalingProcessTypes(DescribeScalingProcessTypesRequest describeScalingProcessTypesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeScalingProcessTypesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeScalingProcessTypesRequest> request = null;
+        Response<DescribeScalingProcessTypesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeScalingProcessTypesRequestMarshaller().marshall(describeScalingProcessTypesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeScalingProcessTypesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -433,6 +485,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the CreateAutoScalingGroup service method on
      *           AmazonAutoScaling.
      * 
+     * 
      * @throws LimitExceededException
      * @throws AlreadyExistsException
      *
@@ -444,10 +497,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void createAutoScalingGroup(CreateAutoScalingGroupRequest createAutoScalingGroupRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<CreateAutoScalingGroupRequest> request = new CreateAutoScalingGroupRequestMarshaller().marshall(createAutoScalingGroupRequest);
-        invoke(request, null);
+    public void createAutoScalingGroup(CreateAutoScalingGroupRequest createAutoScalingGroupRequest) {
+        ExecutionContext executionContext = createExecutionContext(createAutoScalingGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<CreateAutoScalingGroupRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new CreateAutoScalingGroupRequestMarshaller().marshall(createAutoScalingGroupRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -484,10 +546,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeScalingActivitiesResult describeScalingActivities(DescribeScalingActivitiesRequest describeScalingActivitiesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeScalingActivitiesRequest> request = new DescribeScalingActivitiesRequestMarshaller().marshall(describeScalingActivitiesRequest);
-        return invoke(request, new DescribeScalingActivitiesResultStaxUnmarshaller());
+    public DescribeScalingActivitiesResult describeScalingActivities(DescribeScalingActivitiesRequest describeScalingActivitiesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeScalingActivitiesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeScalingActivitiesRequest> request = null;
+        Response<DescribeScalingActivitiesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeScalingActivitiesRequestMarshaller().marshall(describeScalingActivitiesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeScalingActivitiesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -513,10 +586,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeNotificationConfigurationsResult describeNotificationConfigurations(DescribeNotificationConfigurationsRequest describeNotificationConfigurationsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeNotificationConfigurationsRequest> request = new DescribeNotificationConfigurationsRequestMarshaller().marshall(describeNotificationConfigurationsRequest);
-        return invoke(request, new DescribeNotificationConfigurationsResultStaxUnmarshaller());
+    public DescribeNotificationConfigurationsResult describeNotificationConfigurations(DescribeNotificationConfigurationsRequest describeNotificationConfigurationsRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeNotificationConfigurationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeNotificationConfigurationsRequest> request = null;
+        Response<DescribeNotificationConfigurationsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeNotificationConfigurationsRequestMarshaller().marshall(describeNotificationConfigurationsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeNotificationConfigurationsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -540,10 +624,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeTerminationPolicyTypesResult describeTerminationPolicyTypes(DescribeTerminationPolicyTypesRequest describeTerminationPolicyTypesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeTerminationPolicyTypesRequest> request = new DescribeTerminationPolicyTypesRequestMarshaller().marshall(describeTerminationPolicyTypesRequest);
-        return invoke(request, new DescribeTerminationPolicyTypesResultStaxUnmarshaller());
+    public DescribeTerminationPolicyTypesResult describeTerminationPolicyTypes(DescribeTerminationPolicyTypesRequest describeTerminationPolicyTypesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeTerminationPolicyTypesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeTerminationPolicyTypesRequest> request = null;
+        Response<DescribeTerminationPolicyTypesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeTerminationPolicyTypesRequestMarshaller().marshall(describeTerminationPolicyTypesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeTerminationPolicyTypesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -579,10 +674,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeTagsRequest> request = new DescribeTagsRequestMarshaller().marshall(describeTagsRequest);
-        return invoke(request, new DescribeTagsResultStaxUnmarshaller());
+    public DescribeTagsResult describeTags(DescribeTagsRequest describeTagsRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeTagsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeTagsRequest> request = null;
+        Response<DescribeTagsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeTagsRequestMarshaller().marshall(describeTagsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeTagsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -592,6 +698,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *
      * @param executePolicyRequest Container for the necessary parameters to
      *           execute the ExecutePolicy service method on AmazonAutoScaling.
+     * 
      * 
      * @throws ScalingActivityInProgressException
      *
@@ -603,10 +710,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void executePolicy(ExecutePolicyRequest executePolicyRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<ExecutePolicyRequest> request = new ExecutePolicyRequestMarshaller().marshall(executePolicyRequest);
-        invoke(request, null);
+    public void executePolicy(ExecutePolicyRequest executePolicyRequest) {
+        ExecutionContext executionContext = createExecutionContext(executePolicyRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<ExecutePolicyRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new ExecutePolicyRequestMarshaller().marshall(executePolicyRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -617,6 +733,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * @param deleteTagsRequest Container for the necessary parameters to
      *           execute the DeleteTags service method on AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -626,10 +743,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteTags(DeleteTagsRequest deleteTagsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteTagsRequest> request = new DeleteTagsRequestMarshaller().marshall(deleteTagsRequest);
-        invoke(request, null);
+    public void deleteTags(DeleteTagsRequest deleteTagsRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteTagsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteTagsRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteTagsRequestMarshaller().marshall(deleteTagsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -656,10 +782,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public PutScalingPolicyResult putScalingPolicy(PutScalingPolicyRequest putScalingPolicyRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<PutScalingPolicyRequest> request = new PutScalingPolicyRequestMarshaller().marshall(putScalingPolicyRequest);
-        return invoke(request, new PutScalingPolicyResultStaxUnmarshaller());
+    public PutScalingPolicyResult putScalingPolicy(PutScalingPolicyRequest putScalingPolicyRequest) {
+        ExecutionContext executionContext = createExecutionContext(putScalingPolicyRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<PutScalingPolicyRequest> request = null;
+        Response<PutScalingPolicyResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new PutScalingPolicyRequestMarshaller().marshall(putScalingPolicyRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new PutScalingPolicyResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -682,6 +819,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the PutNotificationConfiguration service method
      *           on AmazonAutoScaling.
      * 
+     * 
      * @throws LimitExceededException
      *
      * @throws AmazonClientException
@@ -692,10 +830,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void putNotificationConfiguration(PutNotificationConfigurationRequest putNotificationConfigurationRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<PutNotificationConfigurationRequest> request = new PutNotificationConfigurationRequestMarshaller().marshall(putNotificationConfigurationRequest);
-        invoke(request, null);
+    public void putNotificationConfiguration(PutNotificationConfigurationRequest putNotificationConfigurationRequest) {
+        ExecutionContext executionContext = createExecutionContext(putNotificationConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<PutNotificationConfigurationRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new PutNotificationConfigurationRequestMarshaller().marshall(putNotificationConfigurationRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -706,6 +853,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * @param deletePolicyRequest Container for the necessary parameters to
      *           execute the DeletePolicy service method on AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -715,10 +863,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deletePolicy(DeletePolicyRequest deletePolicyRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeletePolicyRequest> request = new DeletePolicyRequestMarshaller().marshall(deletePolicyRequest);
-        invoke(request, null);
+    public void deletePolicy(DeletePolicyRequest deletePolicyRequest) {
+        ExecutionContext executionContext = createExecutionContext(deletePolicyRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeletePolicyRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeletePolicyRequestMarshaller().marshall(deletePolicyRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -730,6 +887,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           necessary parameters to execute the DeleteNotificationConfiguration
      *           service method on AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -739,10 +897,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteNotificationConfiguration(DeleteNotificationConfigurationRequest deleteNotificationConfigurationRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteNotificationConfigurationRequest> request = new DeleteNotificationConfigurationRequestMarshaller().marshall(deleteNotificationConfigurationRequest);
-        invoke(request, null);
+    public void deleteNotificationConfiguration(DeleteNotificationConfigurationRequest deleteNotificationConfigurationRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteNotificationConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteNotificationConfigurationRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteNotificationConfigurationRequestMarshaller().marshall(deleteNotificationConfigurationRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -755,6 +922,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the DeleteScheduledAction service method on
      *           AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -764,10 +932,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteScheduledAction(DeleteScheduledActionRequest deleteScheduledActionRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteScheduledActionRequest> request = new DeleteScheduledActionRequestMarshaller().marshall(deleteScheduledActionRequest);
-        invoke(request, null);
+    public void deleteScheduledAction(DeleteScheduledActionRequest deleteScheduledActionRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteScheduledActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteScheduledActionRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteScheduledActionRequestMarshaller().marshall(deleteScheduledActionRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -784,6 +961,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * @param setInstanceHealthRequest Container for the necessary parameters
      *           to execute the SetInstanceHealth service method on AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -793,10 +971,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void setInstanceHealth(SetInstanceHealthRequest setInstanceHealthRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SetInstanceHealthRequest> request = new SetInstanceHealthRequestMarshaller().marshall(setInstanceHealthRequest);
-        invoke(request, null);
+    public void setInstanceHealth(SetInstanceHealthRequest setInstanceHealthRequest) {
+        ExecutionContext executionContext = createExecutionContext(setInstanceHealthRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SetInstanceHealthRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SetInstanceHealthRequestMarshaller().marshall(setInstanceHealthRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -822,10 +1009,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeAutoScalingNotificationTypesResult describeAutoScalingNotificationTypes(DescribeAutoScalingNotificationTypesRequest describeAutoScalingNotificationTypesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeAutoScalingNotificationTypesRequest> request = new DescribeAutoScalingNotificationTypesRequestMarshaller().marshall(describeAutoScalingNotificationTypesRequest);
-        return invoke(request, new DescribeAutoScalingNotificationTypesResultStaxUnmarshaller());
+    public DescribeAutoScalingNotificationTypesResult describeAutoScalingNotificationTypes(DescribeAutoScalingNotificationTypesRequest describeAutoScalingNotificationTypesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeAutoScalingNotificationTypesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeAutoScalingNotificationTypesRequest> request = null;
+        Response<DescribeAutoScalingNotificationTypesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeAutoScalingNotificationTypesRequestMarshaller().marshall(describeAutoScalingNotificationTypesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeAutoScalingNotificationTypesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -848,6 +1046,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the CreateOrUpdateTags service method on
      *           AmazonAutoScaling.
      * 
+     * 
      * @throws LimitExceededException
      * @throws AlreadyExistsException
      *
@@ -859,10 +1058,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void createOrUpdateTags(CreateOrUpdateTagsRequest createOrUpdateTagsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<CreateOrUpdateTagsRequest> request = new CreateOrUpdateTagsRequestMarshaller().marshall(createOrUpdateTagsRequest);
-        invoke(request, null);
+    public void createOrUpdateTags(CreateOrUpdateTagsRequest createOrUpdateTagsRequest) {
+        ExecutionContext executionContext = createExecutionContext(createOrUpdateTagsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<CreateOrUpdateTagsRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new CreateOrUpdateTagsRequestMarshaller().marshall(createOrUpdateTagsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -889,6 +1097,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      * @param suspendProcessesRequest Container for the necessary parameters
      *           to execute the SuspendProcesses service method on AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -898,10 +1107,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void suspendProcesses(SuspendProcessesRequest suspendProcessesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SuspendProcessesRequest> request = new SuspendProcessesRequestMarshaller().marshall(suspendProcessesRequest);
-        invoke(request, null);
+    public void suspendProcesses(SuspendProcessesRequest suspendProcessesRequest) {
+        ExecutionContext executionContext = createExecutionContext(suspendProcessesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SuspendProcessesRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SuspendProcessesRequestMarshaller().marshall(suspendProcessesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -934,10 +1152,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeAutoScalingInstancesResult describeAutoScalingInstances(DescribeAutoScalingInstancesRequest describeAutoScalingInstancesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeAutoScalingInstancesRequest> request = new DescribeAutoScalingInstancesRequestMarshaller().marshall(describeAutoScalingInstancesRequest);
-        return invoke(request, new DescribeAutoScalingInstancesResultStaxUnmarshaller());
+    public DescribeAutoScalingInstancesResult describeAutoScalingInstances(DescribeAutoScalingInstancesRequest describeAutoScalingInstancesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeAutoScalingInstancesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeAutoScalingInstancesRequest> request = null;
+        Response<DescribeAutoScalingInstancesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeAutoScalingInstancesRequestMarshaller().marshall(describeAutoScalingInstancesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeAutoScalingInstancesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -963,6 +1192,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the CreateLaunchConfiguration service method on
      *           AmazonAutoScaling.
      * 
+     * 
      * @throws LimitExceededException
      * @throws AlreadyExistsException
      *
@@ -974,10 +1204,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void createLaunchConfiguration(CreateLaunchConfigurationRequest createLaunchConfigurationRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<CreateLaunchConfigurationRequest> request = new CreateLaunchConfigurationRequestMarshaller().marshall(createLaunchConfigurationRequest);
-        invoke(request, null);
+    public void createLaunchConfiguration(CreateLaunchConfigurationRequest createLaunchConfigurationRequest) {
+        ExecutionContext executionContext = createExecutionContext(createLaunchConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<CreateLaunchConfigurationRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new CreateLaunchConfigurationRequestMarshaller().marshall(createLaunchConfigurationRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -995,6 +1234,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the DeleteAutoScalingGroup service method on
      *           AmazonAutoScaling.
      * 
+     * 
      * @throws ResourceInUseException
      * @throws ScalingActivityInProgressException
      *
@@ -1006,10 +1246,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteAutoScalingGroup(DeleteAutoScalingGroupRequest deleteAutoScalingGroupRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteAutoScalingGroupRequest> request = new DeleteAutoScalingGroupRequestMarshaller().marshall(deleteAutoScalingGroupRequest);
-        invoke(request, null);
+    public void deleteAutoScalingGroup(DeleteAutoScalingGroupRequest deleteAutoScalingGroupRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteAutoScalingGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteAutoScalingGroupRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteAutoScalingGroupRequestMarshaller().marshall(deleteAutoScalingGroupRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -1024,6 +1273,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the DisableMetricsCollection service method on
      *           AmazonAutoScaling.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1033,10 +1283,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void disableMetricsCollection(DisableMetricsCollectionRequest disableMetricsCollectionRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DisableMetricsCollectionRequest> request = new DisableMetricsCollectionRequestMarshaller().marshall(disableMetricsCollectionRequest);
-        invoke(request, null);
+    public void disableMetricsCollection(DisableMetricsCollectionRequest disableMetricsCollectionRequest) {
+        ExecutionContext executionContext = createExecutionContext(disableMetricsCollectionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DisableMetricsCollectionRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DisableMetricsCollectionRequestMarshaller().marshall(disableMetricsCollectionRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -1073,6 +1332,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the UpdateAutoScalingGroup service method on
      *           AmazonAutoScaling.
      * 
+     * 
      * @throws ScalingActivityInProgressException
      *
      * @throws AmazonClientException
@@ -1083,10 +1343,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void updateAutoScalingGroup(UpdateAutoScalingGroupRequest updateAutoScalingGroupRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<UpdateAutoScalingGroupRequest> request = new UpdateAutoScalingGroupRequestMarshaller().marshall(updateAutoScalingGroupRequest);
-        invoke(request, null);
+    public void updateAutoScalingGroup(UpdateAutoScalingGroupRequest updateAutoScalingGroupRequest) {
+        ExecutionContext executionContext = createExecutionContext(updateAutoScalingGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<UpdateAutoScalingGroupRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new UpdateAutoScalingGroupRequestMarshaller().marshall(updateAutoScalingGroupRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -1116,10 +1385,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeLaunchConfigurationsResult describeLaunchConfigurations(DescribeLaunchConfigurationsRequest describeLaunchConfigurationsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeLaunchConfigurationsRequest> request = new DescribeLaunchConfigurationsRequestMarshaller().marshall(describeLaunchConfigurationsRequest);
-        return invoke(request, new DescribeLaunchConfigurationsResultStaxUnmarshaller());
+    public DescribeLaunchConfigurationsResult describeLaunchConfigurations(DescribeLaunchConfigurationsRequest describeLaunchConfigurationsRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeLaunchConfigurationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeLaunchConfigurationsRequest> request = null;
+        Response<DescribeLaunchConfigurationsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeLaunchConfigurationsRequestMarshaller().marshall(describeLaunchConfigurationsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeLaunchConfigurationsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -1144,10 +1424,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeAdjustmentTypesResult describeAdjustmentTypes(DescribeAdjustmentTypesRequest describeAdjustmentTypesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeAdjustmentTypesRequest> request = new DescribeAdjustmentTypesRequestMarshaller().marshall(describeAdjustmentTypesRequest);
-        return invoke(request, new DescribeAdjustmentTypesResultStaxUnmarshaller());
+    public DescribeAdjustmentTypesResult describeAdjustmentTypes(DescribeAdjustmentTypesRequest describeAdjustmentTypesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeAdjustmentTypesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeAdjustmentTypesRequest> request = null;
+        Response<DescribeAdjustmentTypesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeAdjustmentTypesRequestMarshaller().marshall(describeAdjustmentTypesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeAdjustmentTypesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -1174,10 +1465,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeScheduledActionsResult describeScheduledActions(DescribeScheduledActionsRequest describeScheduledActionsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeScheduledActionsRequest> request = new DescribeScheduledActionsRequestMarshaller().marshall(describeScheduledActionsRequest);
-        return invoke(request, new DescribeScheduledActionsResultStaxUnmarshaller());
+    public DescribeScheduledActionsResult describeScheduledActions(DescribeScheduledActionsRequest describeScheduledActionsRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeScheduledActionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeScheduledActionsRequest> request = null;
+        Response<DescribeScheduledActionsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeScheduledActionsRequestMarshaller().marshall(describeScheduledActionsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeScheduledActionsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -1202,6 +1504,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           necessary parameters to execute the PutScheduledUpdateGroupAction
      *           service method on AmazonAutoScaling.
      * 
+     * 
      * @throws LimitExceededException
      * @throws AlreadyExistsException
      *
@@ -1213,10 +1516,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void putScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest putScheduledUpdateGroupActionRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<PutScheduledUpdateGroupActionRequest> request = new PutScheduledUpdateGroupActionRequestMarshaller().marshall(putScheduledUpdateGroupActionRequest);
-        invoke(request, null);
+    public void putScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest putScheduledUpdateGroupActionRequest) {
+        ExecutionContext executionContext = createExecutionContext(putScheduledUpdateGroupActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<PutScheduledUpdateGroupActionRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new PutScheduledUpdateGroupActionRequestMarshaller().marshall(putScheduledUpdateGroupActionRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -1241,10 +1553,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeMetricCollectionTypesResult describeMetricCollectionTypes(DescribeMetricCollectionTypesRequest describeMetricCollectionTypesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DescribeMetricCollectionTypesRequest> request = new DescribeMetricCollectionTypesRequestMarshaller().marshall(describeMetricCollectionTypesRequest);
-        return invoke(request, new DescribeMetricCollectionTypesResultStaxUnmarshaller());
+    public DescribeMetricCollectionTypesResult describeMetricCollectionTypes(DescribeMetricCollectionTypesRequest describeMetricCollectionTypesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeMetricCollectionTypesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DescribeMetricCollectionTypesRequest> request = null;
+        Response<DescribeMetricCollectionTypesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DescribeMetricCollectionTypesRequestMarshaller().marshall(describeMetricCollectionTypesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DescribeMetricCollectionTypesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -1256,6 +1579,7 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *           parameters to execute the SetDesiredCapacity service method on
      *           AmazonAutoScaling.
      * 
+     * 
      * @throws ScalingActivityInProgressException
      *
      * @throws AmazonClientException
@@ -1266,10 +1590,19 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void setDesiredCapacity(SetDesiredCapacityRequest setDesiredCapacityRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SetDesiredCapacityRequest> request = new SetDesiredCapacityRequestMarshaller().marshall(setDesiredCapacityRequest);
-        invoke(request, null);
+    public void setDesiredCapacity(SetDesiredCapacityRequest setDesiredCapacityRequest) {
+        ExecutionContext executionContext = createExecutionContext(setDesiredCapacityRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SetDesiredCapacityRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SetDesiredCapacityRequestMarshaller().marshall(setDesiredCapacityRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -1300,10 +1633,21 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
      *             If an error response is returned by AmazonAutoScaling indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public TerminateInstanceInAutoScalingGroupResult terminateInstanceInAutoScalingGroup(TerminateInstanceInAutoScalingGroupRequest terminateInstanceInAutoScalingGroupRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<TerminateInstanceInAutoScalingGroupRequest> request = new TerminateInstanceInAutoScalingGroupRequestMarshaller().marshall(terminateInstanceInAutoScalingGroupRequest);
-        return invoke(request, new TerminateInstanceInAutoScalingGroupResultStaxUnmarshaller());
+    public TerminateInstanceInAutoScalingGroupResult terminateInstanceInAutoScalingGroup(TerminateInstanceInAutoScalingGroupRequest terminateInstanceInAutoScalingGroupRequest) {
+        ExecutionContext executionContext = createExecutionContext(terminateInstanceInAutoScalingGroupRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<TerminateInstanceInAutoScalingGroupRequest> request = null;
+        Response<TerminateInstanceInAutoScalingGroupResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new TerminateInstanceInAutoScalingGroupRequestMarshaller().marshall(terminateInstanceInAutoScalingGroupRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new TerminateInstanceInAutoScalingGroupResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -1642,47 +1986,6 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
         return describeMetricCollectionTypes(new DescribeMetricCollectionTypesRequest());
     }
     
-    /**
-     * Overrides the default endpoint for this client ("https://autoscaling.amazonaws.com") and explicitly provides
-     * an AWS region ID and AWS service name to use when the client calculates a signature
-     * for requests.  In almost all cases, this region ID and service name
-     * are automatically determined from the endpoint, and callers should use the simpler
-     * one-argument form of setEndpoint instead of this method.
-     * <p>
-     * <b>This method is not threadsafe. Endpoints should be configured when the
-     * client is created and before any service requests are made. Changing it
-     * afterwards creates inevitable race conditions for any service requests in
-     * transit.</b>
-     * <p>
-     * Callers can pass in just the endpoint (ex: "autoscaling.amazonaws.com") or a full
-     * URL, including the protocol (ex: "https://autoscaling.amazonaws.com"). If the
-     * protocol is not specified here, the default protocol from this client's
-     * {@link ClientConfiguration} will be used, which by default is HTTPS.
-     * <p>
-     * For more information on using AWS regions with the AWS SDK for Java, and
-     * a complete list of all available endpoints for all AWS services, see:
-     * <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
-     * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
-     *
-     * @param endpoint
-     *            The endpoint (ex: "autoscaling.amazonaws.com") or a full URL,
-     *            including the protocol (ex: "https://autoscaling.amazonaws.com") of
-     *            the region specific AWS endpoint this client will communicate
-     *            with.
-     * @param serviceName
-     *            The name of the AWS service to use when signing requests.
-     * @param regionId
-     *            The ID of the region in which this service resides.
-     *
-     * @throws IllegalArgumentException
-     *             If any problems are detected with the specified endpoint.
-     */
-    public void setEndpoint(String endpoint, String serviceName, String regionId) throws IllegalArgumentException {
-        setEndpoint(endpoint);
-        signer.setServiceName(serviceName);
-        signer.setRegionName(regionId);
-    }
-    
     @Override
     protected String getServiceAbbreviation() {
         return "autoscaling";
@@ -1709,27 +2012,28 @@ public class AmazonAutoScalingClient extends AmazonWebServiceClient implements A
         return client.getResponseMetadataForRequest(request);
     }
 
-    private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request, Unmarshaller<X, StaxUnmarshallerContext> unmarshaller) {
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request,
+            Unmarshaller<X, StaxUnmarshallerContext> unmarshaller,
+            ExecutionContext executionContext)
+    {
         request.setEndpoint(endpoint);
         request.setTimeOffset(timeOffset);
-        for (Entry<String, String> entry : request.getOriginalRequest().copyPrivateRequestParameters().entrySet()) {
+        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
+        for (Entry<String, String> entry : originalRequest.copyPrivateRequestParameters().entrySet()) {
             request.addParameter(entry.getKey(), entry.getValue());
         }
 
         AWSCredentials credentials = awsCredentialsProvider.getCredentials();
-        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
-        if (originalRequest != null && originalRequest.getRequestCredentials() != null) {
-        	credentials = originalRequest.getRequestCredentials();
+        if (originalRequest.getRequestCredentials() != null) {
+            credentials = originalRequest.getRequestCredentials();
         }
 
-        ExecutionContext executionContext = createExecutionContext();
-        executionContext.setSigner(signer);
+        executionContext.setSigner(getSigner());
         executionContext.setCredentials(credentials);
         
         StaxResponseHandler<X> responseHandler = new StaxResponseHandler<X>(unmarshaller);
         DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);
-
-        return (X)client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 }
         

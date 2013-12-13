@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Price Schedule
  */
-
- 
 public class PriceSchedule implements Serializable {
 
     private Long term;
@@ -64,8 +62,7 @@ public class PriceSchedule implements Serializable {
         this.term = term;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Price property for this object.
      *
@@ -98,8 +95,7 @@ public class PriceSchedule implements Serializable {
         this.price = price;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the CurrencyCode property for this object.
      * <p>
@@ -147,8 +143,7 @@ public class PriceSchedule implements Serializable {
         this.currencyCode = currencyCode;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the CurrencyCode property for this object.
      * <p>
@@ -182,7 +177,7 @@ public class PriceSchedule implements Serializable {
         this.currencyCode = currencyCode.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the Active property for this object.
      *
@@ -215,8 +210,7 @@ public class PriceSchedule implements Serializable {
         this.active = active;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the Active property for this object.
      *
@@ -225,7 +219,7 @@ public class PriceSchedule implements Serializable {
     public Boolean getActive() {
         return active;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

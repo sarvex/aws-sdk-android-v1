@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The <code>PolicyARNType</code> data type.
  * </p>
  */
-
- 
 public class PutScalingPolicyResult implements Serializable {
 
     /**
@@ -79,8 +77,7 @@ public class PutScalingPolicyResult implements Serializable {
         this.policyARN = policyARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

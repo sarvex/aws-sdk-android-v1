@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of calling the RunInstancesResult, contains the new reservation created by Amazon EC2.
  * </p>
  */
-
- 
 public class RunInstancesResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class RunInstancesResult implements Serializable {
         this.reservation = reservation;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

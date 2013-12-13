@@ -22,8 +22,6 @@ import java.io.Serializable;
  * Represents a task to bundle an EC2 Windows instance into a new image.
  * </p>
  */
-
- 
 public class BundleTask implements Serializable {
 
     /**
@@ -101,8 +99,7 @@ public class BundleTask implements Serializable {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Unique identifier for this task.
      *
@@ -135,8 +132,7 @@ public class BundleTask implements Serializable {
         this.bundleId = bundleId;
         return this;
     }
-    
-    
+
     /**
      * The state of this task.
      * <p>
@@ -184,8 +180,7 @@ public class BundleTask implements Serializable {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * The state of this task.
      * <p>
@@ -219,7 +214,7 @@ public class BundleTask implements Serializable {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * The time this task started.
      *
@@ -252,8 +247,7 @@ public class BundleTask implements Serializable {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The time of the most recent update for the task.
      *
@@ -286,8 +280,7 @@ public class BundleTask implements Serializable {
         this.updateTime = updateTime;
         return this;
     }
-    
-    
+
     /**
      * Amazon S3 storage locations.
      *
@@ -320,8 +313,7 @@ public class BundleTask implements Serializable {
         this.storage = storage;
         return this;
     }
-    
-    
+
     /**
      * The level of task completion, in percent (e.g., 20%).
      *
@@ -354,8 +346,7 @@ public class BundleTask implements Serializable {
         this.progress = progress;
         return this;
     }
-    
-    
+
     /**
      * If the task fails, a description of the error.
      *
@@ -388,8 +379,7 @@ public class BundleTask implements Serializable {
         this.bundleTaskError = bundleTaskError;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

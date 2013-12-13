@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyDomainIdentity(VerifyDomainIdentityRequest)
  */
-
- 
 public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -67,8 +65,7 @@ public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest impleme
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

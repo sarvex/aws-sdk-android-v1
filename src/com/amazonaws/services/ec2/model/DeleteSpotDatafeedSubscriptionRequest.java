@@ -33,8 +33,6 @@ import com.amazonaws.services.ec2.model.transform.DeleteSpotDatafeedSubscription
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteSpotDatafeedSubscription(DeleteSpotDatafeedSubscriptionRequest)
  */
-
- 
 public class DeleteSpotDatafeedSubscriptionRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteSpotDatafeedSubscriptionRequest> {
 
     /**

@@ -30,8 +30,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteAutoScalingGroup(DeleteAutoScalingGroupRequest)
  */
-
- 
 public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -94,8 +92,7 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest imple
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * Starting with API version 2011-01-01, specifies that the Auto Scaling
      * group will be deleted along with all instances associated with the
@@ -140,8 +137,7 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest imple
         this.forceDelete = forceDelete;
         return this;
     }
-    
-    
+
     /**
      * Starting with API version 2011-01-01, specifies that the Auto Scaling
      * group will be deleted along with all instances associated with the
@@ -154,7 +150,7 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest imple
     public Boolean getForceDelete() {
         return forceDelete;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

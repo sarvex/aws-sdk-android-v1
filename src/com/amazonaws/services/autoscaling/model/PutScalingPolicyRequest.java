@@ -27,8 +27,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#putScalingPolicy(PutScalingPolicyRequest)
  */
-
- 
 public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -137,8 +135,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements 
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The name of the policy you want to create or update.
      * <p>
@@ -183,8 +180,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements 
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * The number of instances by which to scale. <code>AdjustmentType</code>
      * determines the interpretation of this number (e.g., as an absolute
@@ -241,8 +237,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements 
         this.scalingAdjustment = scalingAdjustment;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the <code>ScalingAdjustment</code> is an absolute
      * number or a percentage of the current capacity. Valid values are
@@ -323,8 +318,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements 
         this.adjustmentType = adjustmentType;
         return this;
     }
-    
-    
+
     /**
      * The amount of time, in seconds, after a scaling activity completes and
      * before the next scaling activity can start. <p>For more information,
@@ -381,8 +375,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements 
         this.cooldown = cooldown;
         return this;
     }
-    
-    
+
     /**
      * Used with <code>AdjustmentType</code> with the value
      * <code>PercentChangeInCapacity</code>, the scaling policy changes the
@@ -451,8 +444,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements 
         this.minAdjustmentStep = minAdjustmentStep;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

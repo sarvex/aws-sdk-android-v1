@@ -14,21 +14,22 @@
  */
 package com.amazonaws.event;
 
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.amazonaws.internal.SdkFilterInputStream;
 
 /**
  * Simple InputStream wrapper that occasionally notifies a progress listener
  * about the number of bytes transferred.
  * <p>
  * This class could be used for both Amazon S3 and Amazon Glacier clients. The
- * legacy Amazon Amazon S3 ProgressReportingInputStream
- * {@link com.amazonaws.services.s3.internal.ProgressReportingInputStream} is
+ * legacy Amazon Amazon S3
+ * com.amazonaws.services.s3.internal.ProgressReportingInputStream has been
  * deprecated in favor of this new class.
  * </p>
  */
-public class ProgressReportingInputStream extends FilterInputStream {
+public class ProgressReportingInputStream extends SdkFilterInputStream {
 
     /** The threshold of bytes between notifications. */
     private static final int NOTIFICATION_THRESHOLD = 8 * 1024;

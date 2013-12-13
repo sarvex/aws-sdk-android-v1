@@ -28,8 +28,6 @@ import com.amazonaws.services.ec2.model.transform.ResetSnapshotAttributeRequestM
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#resetSnapshotAttribute(ResetSnapshotAttributeRequest)
  */
-
- 
 public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ResetSnapshotAttributeRequest> {
 
     /**
@@ -52,8 +50,6 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest imple
      */
     public ResetSnapshotAttributeRequest() {}
     
-
-
     /**
      * Constructs a new ResetSnapshotAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -69,8 +65,6 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest imple
         setAttribute(attribute);
     }
 
-    
-    
     /**
      * Constructs a new ResetSnapshotAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -85,7 +79,7 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest imple
         this.snapshotId = snapshotId;
         this.attribute = attribute.toString();
     }
-    
+
     /**
      * The ID of the snapshot whose attribute is being reset.
      *
@@ -118,8 +112,7 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest imple
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute being reset. <p> Available attribute names:
      * <code>createVolumePermission</code>
@@ -173,8 +166,7 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest imple
         this.attribute = attribute;
         return this;
     }
-    
-    
+
     /**
      * The name of the attribute being reset. <p> Available attribute names:
      * <code>createVolumePermission</code>
@@ -212,7 +204,7 @@ public class ResetSnapshotAttributeRequest extends AmazonWebServiceRequest imple
         this.attribute = attribute.toString();
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

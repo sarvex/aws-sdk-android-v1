@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The output of the DescribeNotificationConfigurations action.
  * </p>
  */
-
- 
 public class DescribeNotificationConfigurationsResult implements Serializable {
 
     /**
@@ -46,7 +44,6 @@ public class DescribeNotificationConfigurationsResult implements Serializable {
      * @return The list of notification configurations.
      */
     public java.util.List<NotificationConfiguration> getNotificationConfigurations() {
-        
         if (notificationConfigurations == null) {
               notificationConfigurations = new com.amazonaws.internal.ListWithAutoConstructFlag<NotificationConfiguration>();
               notificationConfigurations.setAutoConstruct(true);
@@ -108,7 +105,7 @@ public class DescribeNotificationConfigurationsResult implements Serializable {
 
         return this;
     }
-    
+
     /**
      * A string that is used to mark the start of the next batch of returned
      * results for pagination.
@@ -156,8 +153,7 @@ public class DescribeNotificationConfigurationsResult implements Serializable {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

@@ -26,8 +26,6 @@ import java.io.Serializable;
  * also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.
  * </p>
  */
-
- 
 public class Content implements Serializable {
 
     /**
@@ -46,8 +44,6 @@ public class Content implements Serializable {
      */
     public Content() {}
     
-
-
     /**
      * Constructs a new Content object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -59,8 +55,6 @@ public class Content implements Serializable {
         setData(data);
     }
 
-    
-    
     /**
      * The textual data of the content.
      *
@@ -93,8 +87,7 @@ public class Content implements Serializable {
         this.data = data;
         return this;
     }
-    
-    
+
     /**
      * The character set of the content.
      *
@@ -127,8 +120,7 @@ public class Content implements Serializable {
         this.charset = charset;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

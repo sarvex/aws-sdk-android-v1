@@ -23,8 +23,6 @@ import java.io.Serializable;
  * enabled.
  * </p>
  */
-
- 
 public class IdentityNotificationAttributes implements Serializable {
 
     /**
@@ -93,8 +91,7 @@ public class IdentityNotificationAttributes implements Serializable {
         this.bounceTopic = bounceTopic;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
      * Service (SNS) topic where Amazon SES will publish complaint
@@ -139,8 +136,7 @@ public class IdentityNotificationAttributes implements Serializable {
         this.complaintTopic = complaintTopic;
         return this;
     }
-    
-    
+
     /**
      * Describes whether Amazon SES will forward feedback as email.
      * <code>true</code> indicates that Amazon SES will forward feedback as
@@ -191,8 +187,7 @@ public class IdentityNotificationAttributes implements Serializable {
         this.forwardingEnabled = forwardingEnabled;
         return this;
     }
-    
-    
+
     /**
      * Describes whether Amazon SES will forward feedback as email.
      * <code>true</code> indicates that Amazon SES will forward feedback as
@@ -207,7 +202,7 @@ public class IdentityNotificationAttributes implements Serializable {
     public Boolean getForwardingEnabled() {
         return forwardingEnabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

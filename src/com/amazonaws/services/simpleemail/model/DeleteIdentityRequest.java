@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#deleteIdentity(DeleteIdentityRequest)
  */
-
- 
 public class DeleteIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
@@ -74,8 +72,7 @@ public class DeleteIdentityRequest extends AmazonWebServiceRequest implements Se
         this.identity = identity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

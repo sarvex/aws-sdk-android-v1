@@ -22,8 +22,6 @@ import java.io.Serializable;
  * The result of canceling an Amazon EC2 bundle task.
  * </p>
  */
-
- 
 public class CancelBundleTaskResult implements Serializable {
 
     /**
@@ -63,8 +61,7 @@ public class CancelBundleTaskResult implements Serializable {
         this.bundleTask = bundleTask;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

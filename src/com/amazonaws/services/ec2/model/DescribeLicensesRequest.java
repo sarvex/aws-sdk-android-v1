@@ -29,8 +29,6 @@ import com.amazonaws.services.ec2.model.transform.DescribeLicensesRequestMarshal
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeLicenses(DescribeLicensesRequest)
  */
-
- 
 public class DescribeLicensesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeLicensesRequest> {
 
     /**
@@ -56,7 +54,6 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest implements 
      *         returned.
      */
     public java.util.List<String> getLicenseIds() {
-        
         if (licenseIds == null) {
               licenseIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               licenseIds.setAutoConstruct(true);
@@ -124,7 +121,7 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest implements 
 
         return this;
     }
-    
+
     /**
      * A list of filters used to match properties for Licenses. For a
      * complete reference to the available filter keys for this operation,
@@ -139,7 +136,6 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest implements 
      *         EC2 API reference</a>.
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
               filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
               filters.setAutoConstruct(true);
@@ -225,7 +221,7 @@ public class DescribeLicensesRequest extends AmazonWebServiceRequest implements 
 
         return this;
     }
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

@@ -26,8 +26,6 @@ import com.amazonaws.AmazonWebServiceRequest;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeAutoScalingNotificationTypes(DescribeAutoScalingNotificationTypesRequest)
  */
-
- 
 public class DescribeAutoScalingNotificationTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**

@@ -22,25 +22,23 @@ import java.io.Serializable;
  * Contains the result of a successful invocation of DescribeLoadBalancers.
  * </p>
  */
-
- 
 public class LoadBalancerDescription implements Serializable {
 
     /**
-     * Specifies the name associated with the LoadBalancer.
+     * Specifies the name associated with the load balancer.
      */
     private String loadBalancerName;
 
     /**
-     * Specifies the external DNS name associated with the LoadBalancer.
+     * Specifies the external DNS name associated with the load balancer.
      */
     private String dNSName;
 
     /**
      * Provides the name of the Amazon Route 53 hosted zone that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      */
@@ -48,9 +46,9 @@ public class LoadBalancerDescription implements Serializable {
 
     /**
      * Provides the ID of the Amazon Route 53 hosted zone name that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * or disassociate your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      */
@@ -64,7 +62,7 @@ public class LoadBalancerDescription implements Serializable {
     private com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription> listenerDescriptions;
 
     /**
-     * Provides a list of policies defined for the LoadBalancer.
+     * Provides a list of policies defined for the load balancer.
      */
     private Policies policies;
 
@@ -79,52 +77,53 @@ public class LoadBalancerDescription implements Serializable {
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
-     * Provides a list of VPC subnet IDs for the LoadBalancer.
+     * Provides a list of VPC subnet IDs for the load balancer.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnets;
 
     /**
-     * Provides the ID of the VPC attached to the LoadBalancer.
+     * Provides the ID of the VPC attached to the load balancer.
      */
     private String vPCId;
 
     /**
-     * Provides a list of EC2 instance IDs for the LoadBalancer.
+     * Provides a list of EC2 instance IDs for the load balancer.
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * Specifies information regarding the various health probes conducted on
-     * the LoadBalancer.
+     * the load balancer.
      */
     private HealthCheck healthCheck;
 
     /**
      * The security group that you can use as part of your inbound rules for
-     * your LoadBalancer's back-end Amazon EC2 application instances. To only
-     * allow traffic from LoadBalancers, add a security group rule to your
-     * back end instance that specifies this source security group as the
-     * inbound source.
+     * your load balancer's back-end Amazon EC2 application instances. To
+     * only allow traffic from load balancers, add a security group rule to
+     * your back end instance that specifies this source security group as
+     * the inbound source.
      */
     private SourceSecurityGroup sourceSecurityGroup;
 
     /**
-     * The security groups the LoadBalancer is a member of (VPC only).
+     * The security groups the load balancer is a member of (VPC only).
      */
     private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroups;
 
     /**
-     * Provides the date and time the LoadBalancer was created.
+     * Provides the date and time the load balancer was created.
      */
     private java.util.Date createdTime;
 
     /**
-     * Specifies the type of a load balancer. If it is
-     * <i>internet-facing</i>, the load balancer has a publicly resolvable
-     * DNS name that resolves to public IP addresses. If it is
-     * <i>internal</i>, the load balancer has a publicly resolvable DNS name
-     * that resolves to private IP addresses. This option is only available
-     * for load balancers attached to a VPC.
+     * Specifies the type of load balancer. <p>If the <code>Scheme</code> is
+     * <code>internet-facing</code>, the load balancer has a publicly
+     * resolvable DNS name that resolves to public IP addresses. <p>If the
+     * <code>Scheme</code> is <code>internal</code>, the load balancer has a
+     * publicly resolvable DNS name that resolves to private IP addresses.
+     * <p> This option is only available for load balancers attached to an
+     * Amazon VPC.
      */
     private String scheme;
 
@@ -135,29 +134,29 @@ public class LoadBalancerDescription implements Serializable {
     public LoadBalancerDescription() {}
     
     /**
-     * Specifies the name associated with the LoadBalancer.
+     * Specifies the name associated with the load balancer.
      *
-     * @return Specifies the name associated with the LoadBalancer.
+     * @return Specifies the name associated with the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * Specifies the name associated with the LoadBalancer.
+     * Specifies the name associated with the load balancer.
      *
-     * @param loadBalancerName Specifies the name associated with the LoadBalancer.
+     * @param loadBalancerName Specifies the name associated with the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * Specifies the name associated with the LoadBalancer.
+     * Specifies the name associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName Specifies the name associated with the LoadBalancer.
+     * @param loadBalancerName Specifies the name associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -166,32 +165,31 @@ public class LoadBalancerDescription implements Serializable {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the external DNS name associated with the LoadBalancer.
+     * Specifies the external DNS name associated with the load balancer.
      *
-     * @return Specifies the external DNS name associated with the LoadBalancer.
+     * @return Specifies the external DNS name associated with the load balancer.
      */
     public String getDNSName() {
         return dNSName;
     }
     
     /**
-     * Specifies the external DNS name associated with the LoadBalancer.
+     * Specifies the external DNS name associated with the load balancer.
      *
-     * @param dNSName Specifies the external DNS name associated with the LoadBalancer.
+     * @param dNSName Specifies the external DNS name associated with the load balancer.
      */
     public void setDNSName(String dNSName) {
         this.dNSName = dNSName;
     }
     
     /**
-     * Specifies the external DNS name associated with the LoadBalancer.
+     * Specifies the external DNS name associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dNSName Specifies the external DNS name associated with the LoadBalancer.
+     * @param dNSName Specifies the external DNS name associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -200,20 +198,19 @@ public class LoadBalancerDescription implements Serializable {
         this.dNSName = dNSName;
         return this;
     }
-    
-    
+
     /**
      * Provides the name of the Amazon Route 53 hosted zone that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      *
      * @return Provides the name of the Amazon Route 53 hosted zone that is
-     *         associated with the LoadBalancer. For information on how to associate
+     *         associated with the load balancer. For information on how to associate
      *         your load balancer with a hosted zone, go to <a
-     *         href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     *         href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      *         Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      *         Balancing Developer Guide</i>.
      */
@@ -223,16 +220,16 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * Provides the name of the Amazon Route 53 hosted zone that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      *
      * @param canonicalHostedZoneName Provides the name of the Amazon Route 53 hosted zone that is
-     *         associated with the LoadBalancer. For information on how to associate
+     *         associated with the load balancer. For information on how to associate
      *         your load balancer with a hosted zone, go to <a
-     *         href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     *         href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      *         Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      *         Balancing Developer Guide</i>.
      */
@@ -242,18 +239,18 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * Provides the name of the Amazon Route 53 hosted zone that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param canonicalHostedZoneName Provides the name of the Amazon Route 53 hosted zone that is
-     *         associated with the LoadBalancer. For information on how to associate
+     *         associated with the load balancer. For information on how to associate
      *         your load balancer with a hosted zone, go to <a
-     *         href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     *         href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      *         Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      *         Balancing Developer Guide</i>.
      *
@@ -264,20 +261,19 @@ public class LoadBalancerDescription implements Serializable {
         this.canonicalHostedZoneName = canonicalHostedZoneName;
         return this;
     }
-    
-    
+
     /**
      * Provides the ID of the Amazon Route 53 hosted zone name that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * or disassociate your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      *
      * @return Provides the ID of the Amazon Route 53 hosted zone name that is
-     *         associated with the LoadBalancer. For information on how to associate
+     *         associated with the load balancer. For information on how to associate
      *         or disassociate your load balancer with a hosted zone, go to <a
-     *         href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     *         href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      *         Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      *         Balancing Developer Guide</i>.
      */
@@ -287,16 +283,16 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * Provides the ID of the Amazon Route 53 hosted zone name that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * or disassociate your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      *
      * @param canonicalHostedZoneNameID Provides the ID of the Amazon Route 53 hosted zone name that is
-     *         associated with the LoadBalancer. For information on how to associate
+     *         associated with the load balancer. For information on how to associate
      *         or disassociate your load balancer with a hosted zone, go to <a
-     *         href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     *         href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      *         Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      *         Balancing Developer Guide</i>.
      */
@@ -306,18 +302,18 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * Provides the ID of the Amazon Route 53 hosted zone name that is
-     * associated with the LoadBalancer. For information on how to associate
+     * associated with the load balancer. For information on how to associate
      * or disassociate your load balancer with a hosted zone, go to <a
-     * href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     * href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      * Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      * Balancing Developer Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param canonicalHostedZoneNameID Provides the ID of the Amazon Route 53 hosted zone name that is
-     *         associated with the LoadBalancer. For information on how to associate
+     *         associated with the load balancer. For information on how to associate
      *         or disassociate your load balancer with a hosted zone, go to <a
-     *         href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
+     *         href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Using
      *         Domain Names With Elastic Load Balancing</a> in the <i>Elastic Load
      *         Balancing Developer Guide</i>.
      *
@@ -328,8 +324,7 @@ public class LoadBalancerDescription implements Serializable {
         this.canonicalHostedZoneNameID = canonicalHostedZoneNameID;
         return this;
     }
-    
-    
+
     /**
      * LoadBalancerPort, InstancePort, Protocol, InstanceProtocol, and
      * PolicyNames are returned in a list of tuples in the
@@ -340,7 +335,6 @@ public class LoadBalancerDescription implements Serializable {
      *         ListenerDescriptions element.
      */
     public java.util.List<ListenerDescription> getListenerDescriptions() {
-        
         if (listenerDescriptions == null) {
               listenerDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<ListenerDescription>();
               listenerDescriptions.setAutoConstruct(true);
@@ -414,31 +408,31 @@ public class LoadBalancerDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
-     * Provides a list of policies defined for the LoadBalancer.
+     * Provides a list of policies defined for the load balancer.
      *
-     * @return Provides a list of policies defined for the LoadBalancer.
+     * @return Provides a list of policies defined for the load balancer.
      */
     public Policies getPolicies() {
         return policies;
     }
     
     /**
-     * Provides a list of policies defined for the LoadBalancer.
+     * Provides a list of policies defined for the load balancer.
      *
-     * @param policies Provides a list of policies defined for the LoadBalancer.
+     * @param policies Provides a list of policies defined for the load balancer.
      */
     public void setPolicies(Policies policies) {
         this.policies = policies;
     }
     
     /**
-     * Provides a list of policies defined for the LoadBalancer.
+     * Provides a list of policies defined for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policies Provides a list of policies defined for the LoadBalancer.
+     * @param policies Provides a list of policies defined for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -447,15 +441,13 @@ public class LoadBalancerDescription implements Serializable {
         this.policies = policies;
         return this;
     }
-    
-    
+
     /**
      * Contains a list of back-end server descriptions.
      *
      * @return Contains a list of back-end server descriptions.
      */
     public java.util.List<BackendServerDescription> getBackendServerDescriptions() {
-        
         if (backendServerDescriptions == null) {
               backendServerDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<BackendServerDescription>();
               backendServerDescriptions.setAutoConstruct(true);
@@ -517,14 +509,13 @@ public class LoadBalancerDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Specifies a list of Availability Zones.
      *
      * @return Specifies a list of Availability Zones.
      */
     public java.util.List<String> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
               availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               availabilityZones.setAutoConstruct(true);
@@ -586,14 +577,13 @@ public class LoadBalancerDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
-     * Provides a list of VPC subnet IDs for the LoadBalancer.
+     * Provides a list of VPC subnet IDs for the load balancer.
      *
-     * @return Provides a list of VPC subnet IDs for the LoadBalancer.
+     * @return Provides a list of VPC subnet IDs for the load balancer.
      */
     public java.util.List<String> getSubnets() {
-        
         if (subnets == null) {
               subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               subnets.setAutoConstruct(true);
@@ -602,9 +592,9 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * Provides a list of VPC subnet IDs for the LoadBalancer.
+     * Provides a list of VPC subnet IDs for the load balancer.
      *
-     * @param subnets Provides a list of VPC subnet IDs for the LoadBalancer.
+     * @param subnets Provides a list of VPC subnet IDs for the load balancer.
      */
     public void setSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
@@ -617,11 +607,11 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * Provides a list of VPC subnet IDs for the LoadBalancer.
+     * Provides a list of VPC subnet IDs for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnets Provides a list of VPC subnet IDs for the LoadBalancer.
+     * @param subnets Provides a list of VPC subnet IDs for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -635,11 +625,11 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * Provides a list of VPC subnet IDs for the LoadBalancer.
+     * Provides a list of VPC subnet IDs for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnets Provides a list of VPC subnet IDs for the LoadBalancer.
+     * @param subnets Provides a list of VPC subnet IDs for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -655,31 +645,31 @@ public class LoadBalancerDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
-     * Provides the ID of the VPC attached to the LoadBalancer.
+     * Provides the ID of the VPC attached to the load balancer.
      *
-     * @return Provides the ID of the VPC attached to the LoadBalancer.
+     * @return Provides the ID of the VPC attached to the load balancer.
      */
     public String getVPCId() {
         return vPCId;
     }
     
     /**
-     * Provides the ID of the VPC attached to the LoadBalancer.
+     * Provides the ID of the VPC attached to the load balancer.
      *
-     * @param vPCId Provides the ID of the VPC attached to the LoadBalancer.
+     * @param vPCId Provides the ID of the VPC attached to the load balancer.
      */
     public void setVPCId(String vPCId) {
         this.vPCId = vPCId;
     }
     
     /**
-     * Provides the ID of the VPC attached to the LoadBalancer.
+     * Provides the ID of the VPC attached to the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vPCId Provides the ID of the VPC attached to the LoadBalancer.
+     * @param vPCId Provides the ID of the VPC attached to the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -688,15 +678,13 @@ public class LoadBalancerDescription implements Serializable {
         this.vPCId = vPCId;
         return this;
     }
-    
-    
+
     /**
-     * Provides a list of EC2 instance IDs for the LoadBalancer.
+     * Provides a list of EC2 instance IDs for the load balancer.
      *
-     * @return Provides a list of EC2 instance IDs for the LoadBalancer.
+     * @return Provides a list of EC2 instance IDs for the load balancer.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
               instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
               instances.setAutoConstruct(true);
@@ -705,9 +693,9 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * Provides a list of EC2 instance IDs for the LoadBalancer.
+     * Provides a list of EC2 instance IDs for the load balancer.
      *
-     * @param instances Provides a list of EC2 instance IDs for the LoadBalancer.
+     * @param instances Provides a list of EC2 instance IDs for the load balancer.
      */
     public void setInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
@@ -720,11 +708,11 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * Provides a list of EC2 instance IDs for the LoadBalancer.
+     * Provides a list of EC2 instance IDs for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instances Provides a list of EC2 instance IDs for the LoadBalancer.
+     * @param instances Provides a list of EC2 instance IDs for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -738,11 +726,11 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * Provides a list of EC2 instance IDs for the LoadBalancer.
+     * Provides a list of EC2 instance IDs for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instances Provides a list of EC2 instance IDs for the LoadBalancer.
+     * @param instances Provides a list of EC2 instance IDs for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -758,13 +746,13 @@ public class LoadBalancerDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
      * Specifies information regarding the various health probes conducted on
-     * the LoadBalancer.
+     * the load balancer.
      *
      * @return Specifies information regarding the various health probes conducted on
-     *         the LoadBalancer.
+     *         the load balancer.
      */
     public HealthCheck getHealthCheck() {
         return healthCheck;
@@ -772,10 +760,10 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * Specifies information regarding the various health probes conducted on
-     * the LoadBalancer.
+     * the load balancer.
      *
      * @param healthCheck Specifies information regarding the various health probes conducted on
-     *         the LoadBalancer.
+     *         the load balancer.
      */
     public void setHealthCheck(HealthCheck healthCheck) {
         this.healthCheck = healthCheck;
@@ -783,12 +771,12 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * Specifies information regarding the various health probes conducted on
-     * the LoadBalancer.
+     * the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param healthCheck Specifies information regarding the various health probes conducted on
-     *         the LoadBalancer.
+     *         the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -797,20 +785,19 @@ public class LoadBalancerDescription implements Serializable {
         this.healthCheck = healthCheck;
         return this;
     }
-    
-    
+
     /**
      * The security group that you can use as part of your inbound rules for
-     * your LoadBalancer's back-end Amazon EC2 application instances. To only
-     * allow traffic from LoadBalancers, add a security group rule to your
-     * back end instance that specifies this source security group as the
-     * inbound source.
+     * your load balancer's back-end Amazon EC2 application instances. To
+     * only allow traffic from load balancers, add a security group rule to
+     * your back end instance that specifies this source security group as
+     * the inbound source.
      *
      * @return The security group that you can use as part of your inbound rules for
-     *         your LoadBalancer's back-end Amazon EC2 application instances. To only
-     *         allow traffic from LoadBalancers, add a security group rule to your
-     *         back end instance that specifies this source security group as the
-     *         inbound source.
+     *         your load balancer's back-end Amazon EC2 application instances. To
+     *         only allow traffic from load balancers, add a security group rule to
+     *         your back end instance that specifies this source security group as
+     *         the inbound source.
      */
     public SourceSecurityGroup getSourceSecurityGroup() {
         return sourceSecurityGroup;
@@ -818,16 +805,16 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * The security group that you can use as part of your inbound rules for
-     * your LoadBalancer's back-end Amazon EC2 application instances. To only
-     * allow traffic from LoadBalancers, add a security group rule to your
-     * back end instance that specifies this source security group as the
-     * inbound source.
+     * your load balancer's back-end Amazon EC2 application instances. To
+     * only allow traffic from load balancers, add a security group rule to
+     * your back end instance that specifies this source security group as
+     * the inbound source.
      *
      * @param sourceSecurityGroup The security group that you can use as part of your inbound rules for
-     *         your LoadBalancer's back-end Amazon EC2 application instances. To only
-     *         allow traffic from LoadBalancers, add a security group rule to your
-     *         back end instance that specifies this source security group as the
-     *         inbound source.
+     *         your load balancer's back-end Amazon EC2 application instances. To
+     *         only allow traffic from load balancers, add a security group rule to
+     *         your back end instance that specifies this source security group as
+     *         the inbound source.
      */
     public void setSourceSecurityGroup(SourceSecurityGroup sourceSecurityGroup) {
         this.sourceSecurityGroup = sourceSecurityGroup;
@@ -835,18 +822,18 @@ public class LoadBalancerDescription implements Serializable {
     
     /**
      * The security group that you can use as part of your inbound rules for
-     * your LoadBalancer's back-end Amazon EC2 application instances. To only
-     * allow traffic from LoadBalancers, add a security group rule to your
-     * back end instance that specifies this source security group as the
-     * inbound source.
+     * your load balancer's back-end Amazon EC2 application instances. To
+     * only allow traffic from load balancers, add a security group rule to
+     * your back end instance that specifies this source security group as
+     * the inbound source.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param sourceSecurityGroup The security group that you can use as part of your inbound rules for
-     *         your LoadBalancer's back-end Amazon EC2 application instances. To only
-     *         allow traffic from LoadBalancers, add a security group rule to your
-     *         back end instance that specifies this source security group as the
-     *         inbound source.
+     *         your load balancer's back-end Amazon EC2 application instances. To
+     *         only allow traffic from load balancers, add a security group rule to
+     *         your back end instance that specifies this source security group as
+     *         the inbound source.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -855,15 +842,13 @@ public class LoadBalancerDescription implements Serializable {
         this.sourceSecurityGroup = sourceSecurityGroup;
         return this;
     }
-    
-    
+
     /**
-     * The security groups the LoadBalancer is a member of (VPC only).
+     * The security groups the load balancer is a member of (VPC only).
      *
-     * @return The security groups the LoadBalancer is a member of (VPC only).
+     * @return The security groups the load balancer is a member of (VPC only).
      */
     public java.util.List<String> getSecurityGroups() {
-        
         if (securityGroups == null) {
               securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
               securityGroups.setAutoConstruct(true);
@@ -872,9 +857,9 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * The security groups the LoadBalancer is a member of (VPC only).
+     * The security groups the load balancer is a member of (VPC only).
      *
-     * @param securityGroups The security groups the LoadBalancer is a member of (VPC only).
+     * @param securityGroups The security groups the load balancer is a member of (VPC only).
      */
     public void setSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
@@ -887,11 +872,11 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * The security groups the LoadBalancer is a member of (VPC only).
+     * The security groups the load balancer is a member of (VPC only).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param securityGroups The security groups the LoadBalancer is a member of (VPC only).
+     * @param securityGroups The security groups the load balancer is a member of (VPC only).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -905,11 +890,11 @@ public class LoadBalancerDescription implements Serializable {
     }
     
     /**
-     * The security groups the LoadBalancer is a member of (VPC only).
+     * The security groups the load balancer is a member of (VPC only).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param securityGroups The security groups the LoadBalancer is a member of (VPC only).
+     * @param securityGroups The security groups the load balancer is a member of (VPC only).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -925,31 +910,31 @@ public class LoadBalancerDescription implements Serializable {
 
         return this;
     }
-    
+
     /**
-     * Provides the date and time the LoadBalancer was created.
+     * Provides the date and time the load balancer was created.
      *
-     * @return Provides the date and time the LoadBalancer was created.
+     * @return Provides the date and time the load balancer was created.
      */
     public java.util.Date getCreatedTime() {
         return createdTime;
     }
     
     /**
-     * Provides the date and time the LoadBalancer was created.
+     * Provides the date and time the load balancer was created.
      *
-     * @param createdTime Provides the date and time the LoadBalancer was created.
+     * @param createdTime Provides the date and time the load balancer was created.
      */
     public void setCreatedTime(java.util.Date createdTime) {
         this.createdTime = createdTime;
     }
     
     /**
-     * Provides the date and time the LoadBalancer was created.
+     * Provides the date and time the load balancer was created.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param createdTime Provides the date and time the LoadBalancer was created.
+     * @param createdTime Provides the date and time the load balancer was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -958,62 +943,67 @@ public class LoadBalancerDescription implements Serializable {
         this.createdTime = createdTime;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the type of a load balancer. If it is
-     * <i>internet-facing</i>, the load balancer has a publicly resolvable
-     * DNS name that resolves to public IP addresses. If it is
-     * <i>internal</i>, the load balancer has a publicly resolvable DNS name
-     * that resolves to private IP addresses. This option is only available
-     * for load balancers attached to a VPC.
+     * Specifies the type of load balancer. <p>If the <code>Scheme</code> is
+     * <code>internet-facing</code>, the load balancer has a publicly
+     * resolvable DNS name that resolves to public IP addresses. <p>If the
+     * <code>Scheme</code> is <code>internal</code>, the load balancer has a
+     * publicly resolvable DNS name that resolves to private IP addresses.
+     * <p> This option is only available for load balancers attached to an
+     * Amazon VPC.
      *
-     * @return Specifies the type of a load balancer. If it is
-     *         <i>internet-facing</i>, the load balancer has a publicly resolvable
-     *         DNS name that resolves to public IP addresses. If it is
-     *         <i>internal</i>, the load balancer has a publicly resolvable DNS name
-     *         that resolves to private IP addresses. This option is only available
-     *         for load balancers attached to a VPC.
+     * @return Specifies the type of load balancer. <p>If the <code>Scheme</code> is
+     *         <code>internet-facing</code>, the load balancer has a publicly
+     *         resolvable DNS name that resolves to public IP addresses. <p>If the
+     *         <code>Scheme</code> is <code>internal</code>, the load balancer has a
+     *         publicly resolvable DNS name that resolves to private IP addresses.
+     *         <p> This option is only available for load balancers attached to an
+     *         Amazon VPC.
      */
     public String getScheme() {
         return scheme;
     }
     
     /**
-     * Specifies the type of a load balancer. If it is
-     * <i>internet-facing</i>, the load balancer has a publicly resolvable
-     * DNS name that resolves to public IP addresses. If it is
-     * <i>internal</i>, the load balancer has a publicly resolvable DNS name
-     * that resolves to private IP addresses. This option is only available
-     * for load balancers attached to a VPC.
+     * Specifies the type of load balancer. <p>If the <code>Scheme</code> is
+     * <code>internet-facing</code>, the load balancer has a publicly
+     * resolvable DNS name that resolves to public IP addresses. <p>If the
+     * <code>Scheme</code> is <code>internal</code>, the load balancer has a
+     * publicly resolvable DNS name that resolves to private IP addresses.
+     * <p> This option is only available for load balancers attached to an
+     * Amazon VPC.
      *
-     * @param scheme Specifies the type of a load balancer. If it is
-     *         <i>internet-facing</i>, the load balancer has a publicly resolvable
-     *         DNS name that resolves to public IP addresses. If it is
-     *         <i>internal</i>, the load balancer has a publicly resolvable DNS name
-     *         that resolves to private IP addresses. This option is only available
-     *         for load balancers attached to a VPC.
+     * @param scheme Specifies the type of load balancer. <p>If the <code>Scheme</code> is
+     *         <code>internet-facing</code>, the load balancer has a publicly
+     *         resolvable DNS name that resolves to public IP addresses. <p>If the
+     *         <code>Scheme</code> is <code>internal</code>, the load balancer has a
+     *         publicly resolvable DNS name that resolves to private IP addresses.
+     *         <p> This option is only available for load balancers attached to an
+     *         Amazon VPC.
      */
     public void setScheme(String scheme) {
         this.scheme = scheme;
     }
     
     /**
-     * Specifies the type of a load balancer. If it is
-     * <i>internet-facing</i>, the load balancer has a publicly resolvable
-     * DNS name that resolves to public IP addresses. If it is
-     * <i>internal</i>, the load balancer has a publicly resolvable DNS name
-     * that resolves to private IP addresses. This option is only available
-     * for load balancers attached to a VPC.
+     * Specifies the type of load balancer. <p>If the <code>Scheme</code> is
+     * <code>internet-facing</code>, the load balancer has a publicly
+     * resolvable DNS name that resolves to public IP addresses. <p>If the
+     * <code>Scheme</code> is <code>internal</code>, the load balancer has a
+     * publicly resolvable DNS name that resolves to private IP addresses.
+     * <p> This option is only available for load balancers attached to an
+     * Amazon VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param scheme Specifies the type of a load balancer. If it is
-     *         <i>internet-facing</i>, the load balancer has a publicly resolvable
-     *         DNS name that resolves to public IP addresses. If it is
-     *         <i>internal</i>, the load balancer has a publicly resolvable DNS name
-     *         that resolves to private IP addresses. This option is only available
-     *         for load balancers attached to a VPC.
+     * @param scheme Specifies the type of load balancer. <p>If the <code>Scheme</code> is
+     *         <code>internet-facing</code>, the load balancer has a publicly
+     *         resolvable DNS name that resolves to public IP addresses. <p>If the
+     *         <code>Scheme</code> is <code>internal</code>, the load balancer has a
+     *         publicly resolvable DNS name that resolves to private IP addresses.
+     *         <p> This option is only available for load balancers attached to an
+     *         Amazon VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -1022,8 +1012,7 @@ public class LoadBalancerDescription implements Serializable {
         this.scheme = scheme;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

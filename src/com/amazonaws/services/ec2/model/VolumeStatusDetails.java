@@ -20,8 +20,6 @@ import java.io.Serializable;
 /**
  * Volume Status Details
  */
-
- 
 public class VolumeStatusDetails implements Serializable {
 
     private String name;
@@ -75,8 +73,7 @@ public class VolumeStatusDetails implements Serializable {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the Name property for this object.
      * <p>
@@ -110,7 +107,7 @@ public class VolumeStatusDetails implements Serializable {
         this.name = name.toString();
         return this;
     }
-    
+
     /**
      * Returns the value of the Status property for this object.
      *
@@ -143,8 +140,7 @@ public class VolumeStatusDetails implements Serializable {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.

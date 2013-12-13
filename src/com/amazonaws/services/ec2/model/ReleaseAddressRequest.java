@@ -37,8 +37,6 @@ import com.amazonaws.services.ec2.model.transform.ReleaseAddressRequestMarshalle
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#releaseAddress(ReleaseAddressRequest)
  */
-
- 
 public class ReleaseAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ReleaseAddressRequest> {
 
     /**
@@ -58,8 +56,6 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest implements Se
      */
     public ReleaseAddressRequest() {}
     
-
-
     /**
      * Constructs a new ReleaseAddressRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -72,8 +68,6 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest implements Se
         setPublicIp(publicIp);
     }
 
-    
-    
     /**
      * The elastic IP address that you are releasing from your account.
      *
@@ -106,8 +100,7 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest implements Se
         this.publicIp = publicIp;
         return this;
     }
-    
-    
+
     /**
      * The allocation ID that AWS provided when you allocated the address for
      * use with Amazon VPC.
@@ -146,8 +139,7 @@ public class ReleaseAddressRequest extends AmazonWebServiceRequest implements Se
         this.allocationId = allocationId;
         return this;
     }
-    
-    
+
     /**
      * This method is intended for internal use only.
      * Returns the marshaled request configured with additional parameters to

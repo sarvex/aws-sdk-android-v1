@@ -14,6 +14,8 @@
  */
 package com.amazonaws.regions;
 
+import static com.amazonaws.SDKGlobalConfiguration.REGIONS_FILE_OVERRIDE_SYSTEM_PROPERTY;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -35,8 +37,10 @@ import com.amazonaws.util.VersionInfoUtils;
  */
 public class RegionUtils {
 
+    // If all things failed, this is the fall back config file. 
+    private static final String FALLBACK = "regions.xml";
+    
     private static List<Region> regions;
-    private static final String REGIONS_FILE_OVERRIDE = RegionUtils.class.getName() + ".fileOverride";
 
     // Use the same logger as the http client
     private static final Log log = LogFactory.getLog("com.amazonaws.request");
@@ -117,7 +121,7 @@ public class RegionUtils {
      * initializes the static list of regions with it.
      */
     public static synchronized void init() {
-        if ( System.getProperty(REGIONS_FILE_OVERRIDE) != null ) {
+        if ( System.getProperty(REGIONS_FILE_OVERRIDE_SYSTEM_PROPERTY) != null ) {
             try {
                 loadRegionsFromOverrideFile();
             } catch ( FileNotFoundException e ) {
@@ -136,8 +140,7 @@ public class RegionUtils {
     }
 
     private static void loadRegionsFromOverrideFile() throws FileNotFoundException {
-        System.setProperty("com.amazonaws.sdk.disableCertChecking", "true");
-        String overrideFilePath = System.getProperty(REGIONS_FILE_OVERRIDE);
+        String overrideFilePath = System.getProperty(REGIONS_FILE_OVERRIDE_SYSTEM_PROPERTY);
         if ( log.isDebugEnabled() ) {
             log.debug("Using local override of the regions file (" 
                         + overrideFilePath
@@ -177,7 +180,7 @@ public class RegionUtils {
         if ( log.isDebugEnabled() ) {
             log.debug("Initializing the regions from the region file bundled with the SDK...");
         }
-        InputStream inputStream = RegionUtils.class.getResourceAsStream("regions.xml");
+        InputStream inputStream = RegionUtils.class.getResourceAsStream(FALLBACK);
         initRegions(inputStream, true);
     }
 
