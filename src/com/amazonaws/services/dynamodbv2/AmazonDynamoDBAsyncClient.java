@@ -29,7 +29,6 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.dynamodbv2.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonDynamoDBv2.
  * All asynchronous calls made using this client are non-blocking. Callers could either
@@ -49,7 +48,6 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * Executor service for executing asynchronous requests.
      */
     private ExecutorService executorService;
-
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -249,7 +247,6 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -318,11 +315,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<ScanResult>() {
             public ScanResult call() throws Exception {
                 return scan(scanRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <i>Scan</i> operation returns one or more items and item
@@ -373,17 +369,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ScanResult>() {
             public ScanResult call() throws Exception {
-            	ScanResult result;
+                ScanResult result;
                 try {
-            		result = scan(scanRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(scanRequest, result);
-               	return result;
-		    }
-		});
+                    result = scan(scanRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(scanRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -409,9 +405,8 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * operation.
      * </p>
      * <p>
-     * You cannot add, modify or delete local secondary indexes using
-     * <i>UpdateTable</i> . Local secondary indexes can only be defined at
-     * table creation time.
+     * You cannot add, modify or delete indexes using <i>UpdateTable</i> .
+     * Indexes can only be defined at table creation time.
      * </p>
      *
      * @param updateTableRequest Container for the necessary parameters to
@@ -434,11 +429,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<UpdateTableResult>() {
             public UpdateTableResult call() throws Exception {
                 return updateTable(updateTableRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * Updates the provisioned throughput for the given table. Setting the
@@ -462,9 +456,8 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * operation.
      * </p>
      * <p>
-     * You cannot add, modify or delete local secondary indexes using
-     * <i>UpdateTable</i> . Local secondary indexes can only be defined at
-     * table creation time.
+     * You cannot add, modify or delete indexes using <i>UpdateTable</i> .
+     * Indexes can only be defined at table creation time.
      * </p>
      *
      * @param updateTableRequest Container for the necessary parameters to
@@ -492,17 +485,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateTableResult>() {
             public UpdateTableResult call() throws Exception {
-            	UpdateTableResult result;
+                UpdateTableResult result;
                 try {
-            		result = updateTable(updateTableRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateTableRequest, result);
-               	return result;
-		    }
-		});
+                    result = updateTable(updateTableRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(updateTableRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -524,8 +517,7 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * DELETING state until the table deletion is complete.
      * </p>
      * <p>
-     * When you delete a table, any local secondary indexes on that table are
-     * also deleted.
+     * When you delete a table, any indexes on that table are also deleted.
      * </p>
      * <p>
      * Use the <i>DescribeTable</i> API to check the status of the table.
@@ -551,11 +543,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<DeleteTableResult>() {
             public DeleteTableResult call() throws Exception {
                 return deleteTable(deleteTableRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <i>DeleteTable</i> operation deletes a table and all of its items.
@@ -575,8 +566,7 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * DELETING state until the table deletion is complete.
      * </p>
      * <p>
-     * When you delete a table, any local secondary indexes on that table are
-     * also deleted.
+     * When you delete a table, any indexes on that table are also deleted.
      * </p>
      * <p>
      * Use the <i>DescribeTable</i> API to check the status of the table.
@@ -607,17 +597,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeleteTableResult>() {
             public DeleteTableResult call() throws Exception {
-            	DeleteTableResult result;
+                DeleteTableResult result;
                 try {
-            		result = deleteTable(deleteTableRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteTableRequest, result);
-               	return result;
-		    }
-		});
+                    result = deleteTable(deleteTableRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(deleteTableRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -729,11 +719,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<BatchWriteItemResult>() {
             public BatchWriteItemResult call() throws Exception {
                 return batchWriteItem(batchWriteItemRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <i>BatchWriteItem</i> operation puts or deletes multiple items in
@@ -848,17 +837,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<BatchWriteItemResult>() {
             public BatchWriteItemResult call() throws Exception {
-            	BatchWriteItemResult result;
+                BatchWriteItemResult result;
                 try {
-            		result = batchWriteItem(batchWriteItemRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(batchWriteItemRequest, result);
-               	return result;
-		    }
-		});
+                    result = batchWriteItem(batchWriteItemRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(batchWriteItemRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -888,11 +877,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<DescribeTableResult>() {
             public DescribeTableResult call() throws Exception {
                 return describeTable(describeTableRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * Returns information about the table, including the current status of
@@ -925,17 +913,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeTableResult>() {
             public DescribeTableResult call() throws Exception {
-            	DescribeTableResult result;
+                DescribeTableResult result;
                 try {
-            		result = describeTable(describeTableRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeTableRequest, result);
-               	return result;
-		    }
-		});
+                    result = describeTable(describeTableRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(describeTableRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -972,11 +960,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<GetItemResult>() {
             public GetItemResult call() throws Exception {
                 return getItem(getItemRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <i>GetItem</i> operation returns a set of attributes for the item
@@ -1016,17 +1003,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetItemResult>() {
             public GetItemResult call() throws Exception {
-            	GetItemResult result;
+                GetItemResult result;
                 try {
-            		result = getItem(getItemRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getItemRequest, result);
-               	return result;
-		    }
-		});
+                    result = getItem(getItemRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(getItemRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1071,11 +1058,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<DeleteItemResult>() {
             public DeleteItemResult call() throws Exception {
                 return deleteItem(deleteItemRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * Deletes a single item in a table by primary key. You can perform a
@@ -1123,17 +1109,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeleteItemResult>() {
             public DeleteItemResult call() throws Exception {
-            	DeleteItemResult result;
+                DeleteItemResult result;
                 try {
-            		result = deleteItem(deleteItemRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteItemRequest, result);
-               	return result;
-		    }
-		});
+                    result = deleteItem(deleteItemRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(deleteItemRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1152,10 +1138,9 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * on an <code>ACTIVE</code> table.
      * </p>
      * <p>
-     * If you want to create multiple tables with local secondary indexes on
-     * them, you must create them sequentially. Only one table with local
-     * secondary indexes can be in the <code>CREATING</code> state at any
-     * given time.
+     * If you want to create multiple tables with secondary indexes on them,
+     * you must create them sequentially. Only one table with secondary
+     * indexes can be in the <code>CREATING</code> state at any given time.
      * </p>
      * <p>
      * You can use the <i>DescribeTable</i> API to check the table status.
@@ -1181,11 +1166,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<CreateTableResult>() {
             public CreateTableResult call() throws Exception {
                 return createTable(createTableRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <i>CreateTable</i> operation adds a new table to your account. In
@@ -1202,10 +1186,9 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * on an <code>ACTIVE</code> table.
      * </p>
      * <p>
-     * If you want to create multiple tables with local secondary indexes on
-     * them, you must create them sequentially. Only one table with local
-     * secondary indexes can be in the <code>CREATING</code> state at any
-     * given time.
+     * If you want to create multiple tables with secondary indexes on them,
+     * you must create them sequentially. Only one table with secondary
+     * indexes can be in the <code>CREATING</code> state at any given time.
      * </p>
      * <p>
      * You can use the <i>DescribeTable</i> API to check the table status.
@@ -1236,17 +1219,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateTableResult>() {
             public CreateTableResult call() throws Exception {
-            	CreateTableResult result;
+                CreateTableResult result;
                 try {
-            		result = createTable(createTableRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createTableRequest, result);
-               	return result;
-		    }
-		});
+                    result = createTable(createTableRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(createTableRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1273,8 +1256,11 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * or if you have used <i>Limit</i> .
      * </p>
      * <p>
-     * To request a strongly consistent result, set <i>ConsistentRead</i> to
-     * true.
+     * You can query a table, a local secondary index (LSI), or a global
+     * secondary index (GSI). For a query on a table or on an LSI, you can
+     * set <i>ConsistentRead</i> to true and obtain a strongly consistent
+     * result. GSIs support eventually consistent reads only, so do not
+     * specify <i>ConsistentRead</i> when querying a GSI.
      * </p>
      *
      * @param queryRequest Container for the necessary parameters to execute
@@ -1297,11 +1283,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<QueryResult>() {
             public QueryResult call() throws Exception {
                 return query(queryRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * A <i>Query</i> operation directly accesses items from a table using
@@ -1326,8 +1311,11 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * or if you have used <i>Limit</i> .
      * </p>
      * <p>
-     * To request a strongly consistent result, set <i>ConsistentRead</i> to
-     * true.
+     * You can query a table, a local secondary index (LSI), or a global
+     * secondary index (GSI). For a query on a table or on an LSI, you can
+     * set <i>ConsistentRead</i> to true and obtain a strongly consistent
+     * result. GSIs support eventually consistent reads only, so do not
+     * specify <i>ConsistentRead</i> when querying a GSI.
      * </p>
      *
      * @param queryRequest Container for the necessary parameters to execute
@@ -1355,17 +1343,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<QueryResult>() {
             public QueryResult call() throws Exception {
-            	QueryResult result;
+                QueryResult result;
                 try {
-            		result = query(queryRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(queryRequest, result);
-               	return result;
-		    }
-		});
+                    result = query(queryRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(queryRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1425,11 +1413,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<PutItemResult>() {
             public PutItemResult call() throws Exception {
                 return putItem(putItemRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * Creates a new item, or replaces an old item with a new item. If an
@@ -1492,17 +1479,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<PutItemResult>() {
             public PutItemResult call() throws Exception {
-            	PutItemResult result;
+                PutItemResult result;
                 try {
-            		result = putItem(putItemRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(putItemRequest, result);
-               	return result;
-		    }
-		});
+                    result = putItem(putItemRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(putItemRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1531,11 +1518,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<ListTablesResult>() {
             public ListTablesResult call() throws Exception {
                 return listTables(listTablesRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * Returns an array of all the tables associated with the current account
@@ -1567,17 +1553,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListTablesResult>() {
             public ListTablesResult call() throws Exception {
-            	ListTablesResult result;
+                ListTablesResult result;
                 try {
-            		result = listTables(listTablesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listTablesRequest, result);
-               	return result;
-		    }
-		});
+                    result = listTables(listTablesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(listTablesRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1614,11 +1600,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<UpdateItemResult>() {
             public UpdateItemResult call() throws Exception {
                 return updateItem(updateItemRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * Edits an existing item's attributes, or inserts a new item if it does
@@ -1658,17 +1643,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateItemResult>() {
             public UpdateItemResult call() throws Exception {
-            	UpdateItemResult result;
+                UpdateItemResult result;
                 try {
-            		result = updateItem(updateItemRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateItemRequest, result);
-               	return result;
-		    }
-		});
+                    result = updateItem(updateItemRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(updateItemRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1744,11 +1729,10 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
         return executorService.submit(new Callable<BatchGetItemResult>() {
             public BatchGetItemResult call() throws Exception {
                 return batchGetItem(batchGetItemRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <i>BatchGetItem</i> operation returns the attributes of one or
@@ -1827,17 +1811,17 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<BatchGetItemResult>() {
             public BatchGetItemResult call() throws Exception {
-            	BatchGetItemResult result;
+                BatchGetItemResult result;
                 try {
-            		result = batchGetItem(batchGetItemRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(batchGetItemRequest, result);
-               	return result;
-		    }
-		});
+                    result = batchGetItem(batchGetItemRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(batchGetItemRequest, result);
+                   return result;
+            }
+        });
     }
     
 }

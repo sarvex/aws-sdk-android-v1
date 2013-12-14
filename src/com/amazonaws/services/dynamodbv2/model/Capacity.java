@@ -16,38 +16,42 @@ package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
 
-
 /**
- * Capacity
+ * <p>
+ * Represents the amount of provisioned throughput capacity consumed on a table or an index.
+ * </p>
  */
 public class Capacity implements Serializable {
 
+    /**
+     * The total number of capacity units consumed on a table or an index.
+     */
     private Double capacityUnits;
 
     /**
-     * Returns the value of the CapacityUnits property for this object.
+     * The total number of capacity units consumed on a table or an index.
      *
-     * @return The value of the CapacityUnits property for this object.
+     * @return The total number of capacity units consumed on a table or an index.
      */
     public Double getCapacityUnits() {
         return capacityUnits;
     }
     
     /**
-     * Sets the value of the CapacityUnits property for this object.
+     * The total number of capacity units consumed on a table or an index.
      *
-     * @param capacityUnits The new value for the CapacityUnits property for this object.
+     * @param capacityUnits The total number of capacity units consumed on a table or an index.
      */
     public void setCapacityUnits(Double capacityUnits) {
         this.capacityUnits = capacityUnits;
     }
     
     /**
-     * Sets the value of the CapacityUnits property for this object.
+     * The total number of capacity units consumed on a table or an index.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param capacityUnits The new value for the CapacityUnits property for this object.
+     * @param capacityUnits The total number of capacity units consumed on a table or an index.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.

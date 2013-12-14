@@ -29,7 +29,6 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.sns.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonSNS.
  * All asynchronous calls made using this client are non-blocking. Callers could either
@@ -57,7 +56,6 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
      * Executor service for executing asynchronous requests.
      */
     private ExecutorService executorService;
-
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -257,7 +255,6 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -311,11 +308,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<ConfirmSubscriptionResult>() {
             public ConfirmSubscriptionResult call() throws Exception {
                 return confirmSubscription(confirmSubscriptionRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>ConfirmSubscription</code> action verifies an endpoint
@@ -351,17 +347,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ConfirmSubscriptionResult>() {
             public ConfirmSubscriptionResult call() throws Exception {
-            	ConfirmSubscriptionResult result;
+                ConfirmSubscriptionResult result;
                 try {
-            		result = confirmSubscription(confirmSubscriptionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(confirmSubscriptionRequest, result);
-               	return result;
-		    }
-		});
+                    result = confirmSubscription(confirmSubscriptionRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(confirmSubscriptionRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -407,11 +403,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<CreatePlatformApplicationResult>() {
             public CreatePlatformApplicationResult call() throws Exception {
                 return createPlatformApplication(createPlatformApplicationRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>CreatePlatformApplication</code> action creates a platform
@@ -460,17 +455,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreatePlatformApplicationResult>() {
             public CreatePlatformApplicationResult call() throws Exception {
-            	CreatePlatformApplicationResult result;
+                CreatePlatformApplicationResult result;
                 try {
-            		result = createPlatformApplication(createPlatformApplicationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createPlatformApplicationRequest, result);
-               	return result;
-		    }
-		});
+                    result = createPlatformApplication(createPlatformApplicationRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(createPlatformApplicationRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -500,11 +495,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<GetTopicAttributesResult>() {
             public GetTopicAttributesResult call() throws Exception {
                 return getTopicAttributes(getTopicAttributesRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>GetTopicAttributes</code> action returns all of the
@@ -537,17 +531,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetTopicAttributesResult>() {
             public GetTopicAttributesResult call() throws Exception {
-            	GetTopicAttributesResult result;
+                GetTopicAttributesResult result;
                 try {
-            		result = getTopicAttributes(getTopicAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getTopicAttributesRequest, result);
-               	return result;
-		    }
-		});
+                    result = getTopicAttributes(getTopicAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(getTopicAttributesRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -579,11 +573,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<SubscribeResult>() {
             public SubscribeResult call() throws Exception {
                 return subscribe(subscribeRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>Subscribe</code> action prepares to subscribe an endpoint by
@@ -618,17 +611,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<SubscribeResult>() {
             public SubscribeResult call() throws Exception {
-            	SubscribeResult result;
+                SubscribeResult result;
                 try {
-            		result = subscribe(subscribeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(subscribeRequest, result);
-               	return result;
-		    }
-		});
+                    result = subscribe(subscribeRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(subscribeRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -660,11 +653,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 deleteEndpoint(deleteEndpointRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>DeleteEndpoint</code> action, which is idempotent, deletes
@@ -698,16 +690,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteEndpoint(deleteEndpointRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteEndpointRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    deleteEndpoint(deleteEndpointRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(deleteEndpointRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -737,11 +729,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 setTopicAttributes(setTopicAttributesRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>SetTopicAttributes</code> action allows a topic owner to set
@@ -773,16 +764,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		setTopicAttributes(setTopicAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setTopicAttributesRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    setTopicAttributes(setTopicAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(setTopicAttributesRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -812,11 +803,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 removePermission(removePermissionRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>RemovePermission</code> action removes a statement from a
@@ -848,16 +838,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		removePermission(removePermissionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(removePermissionRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    removePermission(removePermissionRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(removePermissionRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -890,11 +880,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<GetEndpointAttributesResult>() {
             public GetEndpointAttributesResult call() throws Exception {
                 return getEndpointAttributes(getEndpointAttributesRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>GetEndpointAttributes</code> retrieves the endpoint
@@ -930,17 +919,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetEndpointAttributesResult>() {
             public GetEndpointAttributesResult call() throws Exception {
-            	GetEndpointAttributesResult result;
+                GetEndpointAttributesResult result;
                 try {
-            		result = getEndpointAttributes(getEndpointAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getEndpointAttributesRequest, result);
-               	return result;
-		    }
-		});
+                    result = getEndpointAttributes(getEndpointAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(getEndpointAttributesRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -973,11 +962,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<ListSubscriptionsResult>() {
             public ListSubscriptionsResult call() throws Exception {
                 return listSubscriptions(listSubscriptionsRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>ListSubscriptions</code> action returns a list of the
@@ -1013,17 +1001,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListSubscriptionsResult>() {
             public ListSubscriptionsResult call() throws Exception {
-            	ListSubscriptionsResult result;
+                ListSubscriptionsResult result;
                 try {
-            		result = listSubscriptions(listSubscriptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listSubscriptionsRequest, result);
-               	return result;
-		    }
-		});
+                    result = listSubscriptions(listSubscriptionsRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(listSubscriptionsRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1062,11 +1050,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<CreatePlatformEndpointResult>() {
             public CreatePlatformEndpointResult call() throws Exception {
                 return createPlatformEndpoint(createPlatformEndpointRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>CreatePlatformEndpoint</code> creates an endpoint for a
@@ -1108,17 +1095,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreatePlatformEndpointResult>() {
             public CreatePlatformEndpointResult call() throws Exception {
-            	CreatePlatformEndpointResult result;
+                CreatePlatformEndpointResult result;
                 try {
-            		result = createPlatformEndpoint(createPlatformEndpointRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createPlatformEndpointRequest, result);
-               	return result;
-		    }
-		});
+                    result = createPlatformEndpoint(createPlatformEndpointRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(createPlatformEndpointRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1149,11 +1136,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 setSubscriptionAttributes(setSubscriptionAttributesRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>SetSubscriptionAttributes</code> action allows a
@@ -1186,16 +1172,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		setSubscriptionAttributes(setSubscriptionAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setSubscriptionAttributesRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    setSubscriptionAttributes(setSubscriptionAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(setSubscriptionAttributesRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -1228,11 +1214,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<CreateTopicResult>() {
             public CreateTopicResult call() throws Exception {
                 return createTopic(createTopicRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>CreateTopic</code> action creates a topic to which
@@ -1268,17 +1253,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateTopicResult>() {
             public CreateTopicResult call() throws Exception {
-            	CreateTopicResult result;
+                CreateTopicResult result;
                 try {
-            		result = createTopic(createTopicRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createTopicRequest, result);
-               	return result;
-		    }
-		});
+                    result = createTopic(createTopicRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(createTopicRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1308,11 +1293,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<GetSubscriptionAttributesResult>() {
             public GetSubscriptionAttributesResult call() throws Exception {
                 return getSubscriptionAttributes(getSubscriptionAttributesRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>GetSubscriptionAttribtues</code> action returns all of the
@@ -1345,17 +1329,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetSubscriptionAttributesResult>() {
             public GetSubscriptionAttributesResult call() throws Exception {
-            	GetSubscriptionAttributesResult result;
+                GetSubscriptionAttributesResult result;
                 try {
-            		result = getSubscriptionAttributes(getSubscriptionAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getSubscriptionAttributesRequest, result);
-               	return result;
-		    }
-		});
+                    result = getSubscriptionAttributes(getSubscriptionAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(getSubscriptionAttributesRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1387,11 +1371,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<ListTopicsResult>() {
             public ListTopicsResult call() throws Exception {
                 return listTopics(listTopicsRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>ListTopics</code> action returns a list of the requester's
@@ -1426,17 +1409,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListTopicsResult>() {
             public ListTopicsResult call() throws Exception {
-            	ListTopicsResult result;
+                ListTopicsResult result;
                 try {
-            		result = listTopics(listTopicsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listTopicsRequest, result);
-               	return result;
-		    }
-		});
+                    result = listTopics(listTopicsRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(listTopicsRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1470,11 +1453,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 deletePlatformApplication(deletePlatformApplicationRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>DeletePlatformApplication</code> action deletes a platform
@@ -1510,16 +1492,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deletePlatformApplication(deletePlatformApplicationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deletePlatformApplicationRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    deletePlatformApplication(deletePlatformApplicationRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(deletePlatformApplicationRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -1558,11 +1540,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<ListPlatformApplicationsResult>() {
             public ListPlatformApplicationsResult call() throws Exception {
                 return listPlatformApplications(listPlatformApplicationsRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>ListPlatformApplications</code> action lists the platform
@@ -1604,17 +1585,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListPlatformApplicationsResult>() {
             public ListPlatformApplicationsResult call() throws Exception {
-            	ListPlatformApplicationsResult result;
+                ListPlatformApplicationsResult result;
                 try {
-            		result = listPlatformApplications(listPlatformApplicationsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listPlatformApplicationsRequest, result);
-               	return result;
-		    }
-		});
+                    result = listPlatformApplications(listPlatformApplicationsRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(listPlatformApplicationsRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1648,11 +1629,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 setEndpointAttributes(setEndpointAttributesRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>SetEndpointAttributes</code> action sets the attributes for
@@ -1688,16 +1668,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		setEndpointAttributes(setEndpointAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setEndpointAttributesRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    setEndpointAttributes(setEndpointAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(setEndpointAttributesRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -1733,11 +1713,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 unsubscribe(unsubscribeRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>Unsubscribe</code> action deletes a subscription. If the
@@ -1775,16 +1754,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		unsubscribe(unsubscribeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(unsubscribeRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    unsubscribe(unsubscribeRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(unsubscribeRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -1817,11 +1796,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 deleteTopic(deleteTopicRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>DeleteTopic</code> action deletes a topic and all its
@@ -1856,16 +1834,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteTopic(deleteTopicRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteTopicRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    deleteTopic(deleteTopicRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(deleteTopicRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -1899,11 +1877,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<GetPlatformApplicationAttributesResult>() {
             public GetPlatformApplicationAttributesResult call() throws Exception {
                 return getPlatformApplicationAttributes(getPlatformApplicationAttributesRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>GetPlatformApplicationAttributes</code> action retrieves the
@@ -1940,17 +1917,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetPlatformApplicationAttributesResult>() {
             public GetPlatformApplicationAttributesResult call() throws Exception {
-            	GetPlatformApplicationAttributesResult result;
+                GetPlatformApplicationAttributesResult result;
                 try {
-            		result = getPlatformApplicationAttributes(getPlatformApplicationAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getPlatformApplicationAttributesRequest, result);
-               	return result;
-		    }
-		});
+                    result = getPlatformApplicationAttributes(getPlatformApplicationAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(getPlatformApplicationAttributesRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -1985,11 +1962,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 setPlatformApplicationAttributes(setPlatformApplicationAttributesRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>SetPlatformApplicationAttributes</code> action sets the
@@ -2026,16 +2002,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		setPlatformApplicationAttributes(setPlatformApplicationAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setPlatformApplicationAttributesRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    setPlatformApplicationAttributes(setPlatformApplicationAttributesRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(setPlatformApplicationAttributesRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -2066,11 +2042,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
             public Void call() throws Exception {
                 addPermission(addPermissionRequest);
                 return null;
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>AddPermission</code> action adds a statement to a topic's
@@ -2103,16 +2078,16 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		addPermission(addPermissionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(addPermissionRequest, null);
-               	return null;
-		    }
-		});
+                try {
+                    addPermission(addPermissionRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(addPermissionRequest, null);
+                   return null;
+            }
+        });
     }
     
     /**
@@ -2154,11 +2129,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<ListEndpointsByPlatformApplicationResult>() {
             public ListEndpointsByPlatformApplicationResult call() throws Exception {
                 return listEndpointsByPlatformApplication(listEndpointsByPlatformApplicationRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>ListEndpointsByPlatformApplication</code> action lists the
@@ -2203,17 +2177,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListEndpointsByPlatformApplicationResult>() {
             public ListEndpointsByPlatformApplicationResult call() throws Exception {
-            	ListEndpointsByPlatformApplicationResult result;
+                ListEndpointsByPlatformApplicationResult result;
                 try {
-            		result = listEndpointsByPlatformApplication(listEndpointsByPlatformApplicationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listEndpointsByPlatformApplicationRequest, result);
-               	return result;
-		    }
-		});
+                    result = listEndpointsByPlatformApplication(listEndpointsByPlatformApplicationRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(listEndpointsByPlatformApplicationRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -2247,11 +2221,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<ListSubscriptionsByTopicResult>() {
             public ListSubscriptionsByTopicResult call() throws Exception {
                 return listSubscriptionsByTopic(listSubscriptionsByTopicRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>ListSubscriptionsByTopic</code> action returns a list of the
@@ -2288,17 +2261,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListSubscriptionsByTopicResult>() {
             public ListSubscriptionsByTopicResult call() throws Exception {
-            	ListSubscriptionsByTopicResult result;
+                ListSubscriptionsByTopicResult result;
                 try {
-            		result = listSubscriptionsByTopic(listSubscriptionsByTopicRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listSubscriptionsByTopicRequest, result);
-               	return result;
-		    }
-		});
+                    result = listSubscriptionsByTopic(listSubscriptionsByTopicRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(listSubscriptionsByTopicRequest, result);
+                   return result;
+            }
+        });
     }
     
     /**
@@ -2339,11 +2312,10 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
         return executorService.submit(new Callable<PublishResult>() {
             public PublishResult call() throws Exception {
                 return publish(publishRequest);
-		    }
-		});
+            }
+        });
     }
 
-    
     /**
      * <p>
      * The <code>Publish</code> action sends a message to all of a topic's
@@ -2387,17 +2359,17 @@ public class AmazonSNSAsyncClient extends AmazonSNSClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<PublishResult>() {
             public PublishResult call() throws Exception {
-            	PublishResult result;
+                PublishResult result;
                 try {
-            		result = publish(publishRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(publishRequest, result);
-               	return result;
-		    }
-		});
+                    result = publish(publishRequest);
+                } catch (Exception ex) {
+                    asyncHandler.onError(ex);
+                    throw ex;
+                }
+                asyncHandler.onSuccess(publishRequest, result);
+                   return result;
+            }
+        });
     }
     
 }

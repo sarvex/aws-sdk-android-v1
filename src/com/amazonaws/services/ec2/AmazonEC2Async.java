@@ -5843,6 +5843,5 @@ public interface AmazonEC2Async extends AmazonEC2 {
     public Future<RegisterImageResult> registerImageAsync(RegisterImageRequest registerImageRequest,
             AsyncHandler<RegisterImageRequest, RegisterImageResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
-
 }
         

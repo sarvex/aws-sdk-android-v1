@@ -16,38 +16,49 @@ package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
 
-
 /**
- * Global Secondary Index Update
+ * <p>
+ * Represents the new provisioned throughput settings to apply to a global secondary index.
+ * </p>
  */
 public class GlobalSecondaryIndexUpdate implements Serializable {
 
+    /**
+     * The name of a global secondary index, along with the updated
+     * provisioned throughput settings that are to be applied to that index.
+     */
     private UpdateGlobalSecondaryIndexAction update;
 
     /**
-     * Returns the value of the Update property for this object.
+     * The name of a global secondary index, along with the updated
+     * provisioned throughput settings that are to be applied to that index.
      *
-     * @return The value of the Update property for this object.
+     * @return The name of a global secondary index, along with the updated
+     *         provisioned throughput settings that are to be applied to that index.
      */
     public UpdateGlobalSecondaryIndexAction getUpdate() {
         return update;
     }
     
     /**
-     * Sets the value of the Update property for this object.
+     * The name of a global secondary index, along with the updated
+     * provisioned throughput settings that are to be applied to that index.
      *
-     * @param update The new value for the Update property for this object.
+     * @param update The name of a global secondary index, along with the updated
+     *         provisioned throughput settings that are to be applied to that index.
      */
     public void setUpdate(UpdateGlobalSecondaryIndexAction update) {
         this.update = update;
     }
     
     /**
-     * Sets the value of the Update property for this object.
+     * The name of a global secondary index, along with the updated
+     * provisioned throughput settings that are to be applied to that index.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param update The new value for the Update property for this object.
+     * @param update The name of a global secondary index, along with the updated
+     *         provisioned throughput settings that are to be applied to that index.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.

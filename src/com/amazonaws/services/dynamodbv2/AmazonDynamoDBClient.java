@@ -26,6 +26,7 @@ import com.amazonaws.handlers.*;
 import com.amazonaws.http.*;
 import com.amazonaws.regions.*;
 import com.amazonaws.internal.*;
+import com.amazonaws.metrics.*;
 import com.amazonaws.transform.*;
 import com.amazonaws.util.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
@@ -33,7 +34,6 @@ import com.amazonaws.util.json.*;
 
 import com.amazonaws.services.dynamodbv2.model.*;
 import com.amazonaws.services.dynamodbv2.model.transform.*;
-
 
 /**
  * Client for accessing AmazonDynamoDBv2.  All service calls made
@@ -174,13 +174,35 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      *                       (ex: proxy settings, retry counts, etc.).
      */
     public AmazonDynamoDBClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
-        super(clientConfiguration);
+        this(awsCredentialsProvider, clientConfiguration, null);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on
+     * AmazonDynamoDBv2 using the specified AWS account credentials
+     * provider, client configuration options and request metric collector.
+     * 
+     * <p>
+     * All service calls made using this new client object are blocking, and will not
+     * return until the service call completes.
+     *
+     * @param awsCredentialsProvider
+     *            The AWS credentials provider which will provide credentials
+     *            to authenticate requests with AWS services.
+     * @param clientConfiguration The client configuration options controlling how this
+     *                       client connects to AmazonDynamoDBv2
+     *                       (ex: proxy settings, retry counts, etc.).
+     * @param requestMetricCollector optional request metric collector
+     */
+    public AmazonDynamoDBClient(AWSCredentialsProvider awsCredentialsProvider,
+            ClientConfiguration clientConfiguration,
+            RequestMetricCollector requestMetricCollector) {
+        super(clientConfiguration, requestMetricCollector);
         
         this.awsCredentialsProvider = awsCredentialsProvider;
         
         init();
     }
-
 
     private void init() {
         exceptionUnmarshallers = new ArrayList<Unmarshaller<AmazonServiceException, JSONObject>>();
@@ -201,7 +223,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         requestHandler2s.addAll(chainFactory.newRequestHandler2Chain(
                 "/com/amazonaws/services/dynamodbv2/request.handler2s"));
 
-        
         clientConfiguration = new ClientConfiguration(clientConfiguration);
         if (clientConfiguration.getRetryPolicy() == com.amazonaws.retry.PredefinedRetryPolicies.DEFAULT) {
             clientConfiguration.setRetryPolicy(com.amazonaws.retry.PredefinedRetryPolicies.DYNAMODB_DEFAULT);
@@ -209,7 +230,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         setConfiguration(clientConfiguration);
     }
 
-    
     /**
      * <p>
      * The <i>Scan</i> operation returns one or more items and item
@@ -278,7 +298,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * Updates the provisioned throughput for the given table. Setting the
@@ -302,9 +321,8 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * operation.
      * </p>
      * <p>
-     * You cannot add, modify or delete local secondary indexes using
-     * <i>UpdateTable</i> . Local secondary indexes can only be defined at
-     * table creation time.
+     * You cannot add, modify or delete indexes using <i>UpdateTable</i> .
+     * Indexes can only be defined at table creation time.
      * </p>
      *
      * @param updateTableRequest Container for the necessary parameters to
@@ -351,7 +369,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * The <i>DeleteTable</i> operation deletes a table and all of its items.
@@ -371,8 +388,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * DELETING state until the table deletion is complete.
      * </p>
      * <p>
-     * When you delete a table, any local secondary indexes on that table are
-     * also deleted.
+     * When you delete a table, any indexes on that table are also deleted.
      * </p>
      * <p>
      * Use the <i>DescribeTable</i> API to check the status of the table.
@@ -422,7 +438,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * The <i>BatchWriteItem</i> operation puts or deletes multiple items in
@@ -556,7 +571,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * Returns information about the table, including the current status of
@@ -606,7 +620,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * The <i>GetItem</i> operation returns a set of attributes for the item
@@ -664,7 +677,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * Deletes a single item in a table by primary key. You can perform a
@@ -732,7 +744,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * The <i>CreateTable</i> operation adds a new table to your account. In
@@ -749,10 +760,9 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * on an <code>ACTIVE</code> table.
      * </p>
      * <p>
-     * If you want to create multiple tables with local secondary indexes on
-     * them, you must create them sequentially. Only one table with local
-     * secondary indexes can be in the <code>CREATING</code> state at any
-     * given time.
+     * If you want to create multiple tables with secondary indexes on them,
+     * you must create them sequentially. Only one table with secondary
+     * indexes can be in the <code>CREATING</code> state at any given time.
      * </p>
      * <p>
      * You can use the <i>DescribeTable</i> API to check the table status.
@@ -801,7 +811,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * A <i>Query</i> operation directly accesses items from a table using
@@ -826,8 +835,11 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * or if you have used <i>Limit</i> .
      * </p>
      * <p>
-     * To request a strongly consistent result, set <i>ConsistentRead</i> to
-     * true.
+     * You can query a table, a local secondary index (LSI), or a global
+     * secondary index (GSI). For a query on a table or on an LSI, you can
+     * set <i>ConsistentRead</i> to true and obtain a strongly consistent
+     * result. GSIs support eventually consistent reads only, so do not
+     * specify <i>ConsistentRead</i> when querying a GSI.
      * </p>
      *
      * @param queryRequest Container for the necessary parameters to execute
@@ -873,7 +885,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * Creates a new item, or replaces an old item with a new item. If an
@@ -956,7 +967,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * Returns an array of all the tables associated with the current account
@@ -1004,7 +1014,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * Edits an existing item's attributes, or inserts a new item if it does
@@ -1064,7 +1073,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * The <i>BatchGetItem</i> operation returns the attributes of one or
@@ -1161,7 +1169,6 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         }
     }
 
-   
     /**
      * <p>
      * Returns an array of all the tables associated with the current account
@@ -1583,16 +1590,15 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * operation.
      * </p>
      * <p>
-     * You cannot add, modify or delete local secondary indexes using
-     * <i>UpdateTable</i> . Local secondary indexes can only be defined at
-     * table creation time.
+     * You cannot add, modify or delete indexes using <i>UpdateTable</i> .
+     * Indexes can only be defined at table creation time.
      * </p>
      * 
      * @param tableName The name of the table to be updated.
-     * @param provisionedThroughput The provisioned throughput settings for
-     * the specified table. The settings can be modified using the
-     * <i>UpdateTable</i> operation. <p>For current minimum and maximum
-     * provisioned throughput values, see <a
+     * @param provisionedThroughput Represents the provisioned throughput
+     * settings for a specified table or index. The settings can be modified
+     * using the <i>UpdateTable</i> operation. <p>For current minimum and
+     * maximum provisioned throughput values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      * 
@@ -1639,8 +1645,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * DELETING state until the table deletion is complete.
      * </p>
      * <p>
-     * When you delete a table, any local secondary indexes on that table are
-     * also deleted.
+     * When you delete a table, any indexes on that table are also deleted.
      * </p>
      * <p>
      * Use the <i>DescribeTable</i> API to check the status of the table.
@@ -2045,10 +2050,9 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * on an <code>ACTIVE</code> table.
      * </p>
      * <p>
-     * If you want to create multiple tables with local secondary indexes on
-     * them, you must create them sequentially. Only one table with local
-     * secondary indexes can be in the <code>CREATING</code> state at any
-     * given time.
+     * If you want to create multiple tables with secondary indexes on them,
+     * you must create them sequentially. Only one table with secondary
+     * indexes can be in the <code>CREATING</code> state at any given time.
      * </p>
      * <p>
      * You can use the <i>DescribeTable</i> API to check the table status.
@@ -2058,8 +2062,9 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * key schema for the table and indexes.
      * @param tableName The name of the table to create.
      * @param keySchema Specifies the attributes that make up the primary key
-     * for the table. The attributes in <i>KeySchema</i> must also be defined
-     * in the <i>AttributeDefinitions</i> array. For more information, see <a
+     * for a table or an index. The attributes in <i>KeySchema</i> must also
+     * be defined in the <i>AttributeDefinitions</i> array. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data
      * Model</a> in the Amazon DynamoDB Developer Guide. <p>Each
      * <i>KeySchemaElement</i> in the array is composed of: <ul> <li>
@@ -2075,10 +2080,10 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDDTables.html#WorkingWithDDTables.primary.key">Specifying
      * the Primary Key</a> in the Amazon DynamoDB Developer Guide.
-     * @param provisionedThroughput The provisioned throughput settings for
-     * the specified table. The settings can be modified using the
-     * <i>UpdateTable</i> operation. <p>For current minimum and maximum
-     * provisioned throughput values, see <a
+     * @param provisionedThroughput Represents the provisioned throughput
+     * settings for a specified table or index. The settings can be modified
+     * using the <i>UpdateTable</i> operation. <p>For current minimum and
+     * maximum provisioned throughput values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      * 
@@ -2668,10 +2673,11 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * <code>true</code>, a strongly consistent read is used; if
      * <code>false</code> (the default), an eventually consistent read is
      * used. </li> </ul>
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>,
-     * <i>ConsumedCapacity</i> is included in the response; if set to
-     * <code>NONE</code> (the default), <i>ConsumedCapacity</i> is not
-     * included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the
+     * response includes <i>ConsumedCapacity</i> data for tables and indexes.
+     * If set to <code>INDEXES</code>, the repsonse includes
+     * <i>ConsumedCapacity</i> for indexes. If set to <code>NONE</code> (the
+     * default), <i>ConsumedCapacity</i> is not included in the response.
      * 
      * @return The response from the BatchGetItem service method, as returned
      *         by AmazonDynamoDBv2.
@@ -2783,20 +2789,15 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
         batchGetItemRequest.setRequestItems(requestItems);
         return batchGetItem(batchGetItemRequest);
     }
-    
 
     @Override
     public void setEndpoint(String endpoint) {
         super.setEndpoint(endpoint);
-
-        
     }
 
     @Override
     public void setEndpoint(String endpoint, String serviceName, String regionId) throws IllegalArgumentException {
         super.setEndpoint(endpoint, serviceName, regionId);
-
-        
     }
 
     /**

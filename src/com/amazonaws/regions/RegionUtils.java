@@ -112,7 +112,7 @@ public class RegionUtils {
             }
         }
 
-        throw new RuntimeException("No region found with any service for endpoint " + endpoint);
+        throw new IllegalArgumentException("No region found with any service for endpoint " + endpoint);
     }
 
     /**

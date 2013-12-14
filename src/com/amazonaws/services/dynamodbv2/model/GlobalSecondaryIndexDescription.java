@@ -16,64 +16,103 @@ package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
 
-
 /**
- * Global Secondary Index Description
+ * <p>
+ * Represents the properties of a global secondary index.
+ * </p>
  */
 public class GlobalSecondaryIndexDescription implements Serializable {
 
+    /**
+     * The name of the global secondary index.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String indexName;
 
+    /**
+     * The complete key schema for the global secondary index, consisting of
+     * one or more pairs of attribute names and key types (<code>HASH</code>
+     * or <code>RANGE</code>).
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 2<br/>
+     */
     private com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> keySchema;
 
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      */
     private Projection projection;
 
+    /**
+     * The current state of the global secondary index: <ul> <li>
+     * <p><i>CREATING</i> - The index is being created, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>UPDATING</i> - The index is being updated, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>DELETING</i> - The index is being deleted, as the result of a
+     * <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     * is ready for use. </li> </ul>
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>CREATING, UPDATING, DELETING, ACTIVE
+     */
     private String indexStatus;
 
     /**
-     * Describes the provisioned throughput settings for the table,
+     * Represents the provisioned throughput settings for the table,
      * consisting of read and write capacity units, along with data about
      * increases and decreases.
      */
     private ProvisionedThroughputDescription provisionedThroughput;
 
+    /**
+     * The total size of the specified index, in bytes. Amazon DynamoDB
+     * updates this value approximately every six hours. Recent changes might
+     * not be reflected in this value.
+     */
     private Long indexSizeBytes;
 
+    /**
+     * The number of items in the specified index. Amazon DynamoDB updates
+     * this value approximately every six hours. Recent changes might not be
+     * reflected in this value.
+     */
     private Long itemCount;
 
     /**
-     * Returns the value of the IndexName property for this object.
+     * The name of the global secondary index.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the IndexName property for this object.
+     * @return The name of the global secondary index.
      */
     public String getIndexName() {
         return indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * The name of the global secondary index.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName The name of the global secondary index.
      */
     public void setIndexName(String indexName) {
         this.indexName = indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * The name of the global secondary index.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -81,7 +120,7 @@ public class GlobalSecondaryIndexDescription implements Serializable {
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName The name of the global secondary index.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -92,24 +131,32 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
 
     /**
-     * Returns the value of the KeySchema property for this object.
+     * The complete key schema for the global secondary index, consisting of
+     * one or more pairs of attribute names and key types (<code>HASH</code>
+     * or <code>RANGE</code>).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @return The value of the KeySchema property for this object.
+     * @return The complete key schema for the global secondary index, consisting of
+     *         one or more pairs of attribute names and key types (<code>HASH</code>
+     *         or <code>RANGE</code>).
      */
     public java.util.List<KeySchemaElement> getKeySchema() {
         return keySchema;
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * The complete key schema for the global secondary index, consisting of
+     * one or more pairs of attribute names and key types (<code>HASH</code>
+     * or <code>RANGE</code>).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema The complete key schema for the global secondary index, consisting of
+     *         one or more pairs of attribute names and key types (<code>HASH</code>
+     *         or <code>RANGE</code>).
      */
     public void setKeySchema(java.util.Collection<KeySchemaElement> keySchema) {
         if (keySchema == null) {
@@ -122,14 +169,18 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * The complete key schema for the global secondary index, consisting of
+     * one or more pairs of attribute names and key types (<code>HASH</code>
+     * or <code>RANGE</code>).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema The complete key schema for the global secondary index, consisting of
+     *         one or more pairs of attribute names and key types (<code>HASH</code>
+     *         or <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -143,14 +194,18 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * The complete key schema for the global secondary index, consisting of
+     * one or more pairs of attribute names and key types (<code>HASH</code>
+     * or <code>RANGE</code>).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema The complete key schema for the global secondary index, consisting of
+     *         one or more pairs of attribute names and key types (<code>HASH</code>
+     *         or <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -169,11 +224,11 @@ public class GlobalSecondaryIndexDescription implements Serializable {
 
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      *
      * @return Represents attributes that are copied (projected) from the table into
-     *         the index. These are in addition to the primary key attributes and
+     *         an index. These are in addition to the primary key attributes and
      *         index key attributes, which are automatically projected.
      */
     public Projection getProjection() {
@@ -182,11 +237,11 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      *
      * @param projection Represents attributes that are copied (projected) from the table into
-     *         the index. These are in addition to the primary key attributes and
+     *         an index. These are in addition to the primary key attributes and
      *         index key attributes, which are automatically projected.
      */
     public void setProjection(Projection projection) {
@@ -195,13 +250,13 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param projection Represents attributes that are copied (projected) from the table into
-     *         the index. These are in addition to the primary key attributes and
+     *         an index. These are in addition to the primary key attributes and
      *         index key attributes, which are automatically projected.
      *
      * @return A reference to this updated object so that method calls can be chained 
@@ -213,12 +268,26 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
 
     /**
-     * Returns the value of the IndexStatus property for this object.
+     * The current state of the global secondary index: <ul> <li>
+     * <p><i>CREATING</i> - The index is being created, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>UPDATING</i> - The index is being updated, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>DELETING</i> - The index is being deleted, as the result of a
+     * <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     * is ready for use. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>CREATING, UPDATING, DELETING, ACTIVE
      *
-     * @return The value of the IndexStatus property for this object.
+     * @return The current state of the global secondary index: <ul> <li>
+     *         <p><i>CREATING</i> - The index is being created, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>UPDATING</i> - The index is being updated, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>DELETING</i> - The index is being deleted, as the result of a
+     *         <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     *         is ready for use. </li> </ul>
      *
      * @see IndexStatus
      */
@@ -227,12 +296,26 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
     
     /**
-     * Sets the value of the IndexStatus property for this object.
+     * The current state of the global secondary index: <ul> <li>
+     * <p><i>CREATING</i> - The index is being created, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>UPDATING</i> - The index is being updated, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>DELETING</i> - The index is being deleted, as the result of a
+     * <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     * is ready for use. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>CREATING, UPDATING, DELETING, ACTIVE
      *
-     * @param indexStatus The new value for the IndexStatus property for this object.
+     * @param indexStatus The current state of the global secondary index: <ul> <li>
+     *         <p><i>CREATING</i> - The index is being created, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>UPDATING</i> - The index is being updated, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>DELETING</i> - The index is being deleted, as the result of a
+     *         <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     *         is ready for use. </li> </ul>
      *
      * @see IndexStatus
      */
@@ -241,14 +324,28 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
     
     /**
-     * Sets the value of the IndexStatus property for this object.
+     * The current state of the global secondary index: <ul> <li>
+     * <p><i>CREATING</i> - The index is being created, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>UPDATING</i> - The index is being updated, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>DELETING</i> - The index is being deleted, as the result of a
+     * <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     * is ready for use. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>CREATING, UPDATING, DELETING, ACTIVE
      *
-     * @param indexStatus The new value for the IndexStatus property for this object.
+     * @param indexStatus The current state of the global secondary index: <ul> <li>
+     *         <p><i>CREATING</i> - The index is being created, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>UPDATING</i> - The index is being updated, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>DELETING</i> - The index is being deleted, as the result of a
+     *         <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     *         is ready for use. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -261,12 +358,26 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
 
     /**
-     * Sets the value of the IndexStatus property for this object.
+     * The current state of the global secondary index: <ul> <li>
+     * <p><i>CREATING</i> - The index is being created, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>UPDATING</i> - The index is being updated, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>DELETING</i> - The index is being deleted, as the result of a
+     * <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     * is ready for use. </li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>CREATING, UPDATING, DELETING, ACTIVE
      *
-     * @param indexStatus The new value for the IndexStatus property for this object.
+     * @param indexStatus The current state of the global secondary index: <ul> <li>
+     *         <p><i>CREATING</i> - The index is being created, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>UPDATING</i> - The index is being updated, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>DELETING</i> - The index is being deleted, as the result of a
+     *         <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     *         is ready for use. </li> </ul>
      *
      * @see IndexStatus
      */
@@ -275,14 +386,28 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
     
     /**
-     * Sets the value of the IndexStatus property for this object.
+     * The current state of the global secondary index: <ul> <li>
+     * <p><i>CREATING</i> - The index is being created, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>UPDATING</i> - The index is being updated, as the result of a
+     * <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     * <p><i>DELETING</i> - The index is being deleted, as the result of a
+     * <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     * is ready for use. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>CREATING, UPDATING, DELETING, ACTIVE
      *
-     * @param indexStatus The new value for the IndexStatus property for this object.
+     * @param indexStatus The current state of the global secondary index: <ul> <li>
+     *         <p><i>CREATING</i> - The index is being created, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>UPDATING</i> - The index is being updated, as the result of a
+     *         <i>CreateTable</i> or <i>UpdateTable</i> operation. </li> <li>
+     *         <p><i>DELETING</i> - The index is being deleted, as the result of a
+     *         <i>DeleteTable</i> operation. </li> <li> <p><i>ACTIVE</i> - The index
+     *         is ready for use. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -295,11 +420,11 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
 
     /**
-     * Describes the provisioned throughput settings for the table,
+     * Represents the provisioned throughput settings for the table,
      * consisting of read and write capacity units, along with data about
      * increases and decreases.
      *
-     * @return Describes the provisioned throughput settings for the table,
+     * @return Represents the provisioned throughput settings for the table,
      *         consisting of read and write capacity units, along with data about
      *         increases and decreases.
      */
@@ -308,11 +433,11 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
     
     /**
-     * Describes the provisioned throughput settings for the table,
+     * Represents the provisioned throughput settings for the table,
      * consisting of read and write capacity units, along with data about
      * increases and decreases.
      *
-     * @param provisionedThroughput Describes the provisioned throughput settings for the table,
+     * @param provisionedThroughput Represents the provisioned throughput settings for the table,
      *         consisting of read and write capacity units, along with data about
      *         increases and decreases.
      */
@@ -321,13 +446,13 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
     
     /**
-     * Describes the provisioned throughput settings for the table,
+     * Represents the provisioned throughput settings for the table,
      * consisting of read and write capacity units, along with data about
      * increases and decreases.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param provisionedThroughput Describes the provisioned throughput settings for the table,
+     * @param provisionedThroughput Represents the provisioned throughput settings for the table,
      *         consisting of read and write capacity units, along with data about
      *         increases and decreases.
      *
@@ -340,29 +465,41 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
 
     /**
-     * Returns the value of the IndexSizeBytes property for this object.
+     * The total size of the specified index, in bytes. Amazon DynamoDB
+     * updates this value approximately every six hours. Recent changes might
+     * not be reflected in this value.
      *
-     * @return The value of the IndexSizeBytes property for this object.
+     * @return The total size of the specified index, in bytes. Amazon DynamoDB
+     *         updates this value approximately every six hours. Recent changes might
+     *         not be reflected in this value.
      */
     public Long getIndexSizeBytes() {
         return indexSizeBytes;
     }
     
     /**
-     * Sets the value of the IndexSizeBytes property for this object.
+     * The total size of the specified index, in bytes. Amazon DynamoDB
+     * updates this value approximately every six hours. Recent changes might
+     * not be reflected in this value.
      *
-     * @param indexSizeBytes The new value for the IndexSizeBytes property for this object.
+     * @param indexSizeBytes The total size of the specified index, in bytes. Amazon DynamoDB
+     *         updates this value approximately every six hours. Recent changes might
+     *         not be reflected in this value.
      */
     public void setIndexSizeBytes(Long indexSizeBytes) {
         this.indexSizeBytes = indexSizeBytes;
     }
     
     /**
-     * Sets the value of the IndexSizeBytes property for this object.
+     * The total size of the specified index, in bytes. Amazon DynamoDB
+     * updates this value approximately every six hours. Recent changes might
+     * not be reflected in this value.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param indexSizeBytes The new value for the IndexSizeBytes property for this object.
+     * @param indexSizeBytes The total size of the specified index, in bytes. Amazon DynamoDB
+     *         updates this value approximately every six hours. Recent changes might
+     *         not be reflected in this value.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -373,29 +510,41 @@ public class GlobalSecondaryIndexDescription implements Serializable {
     }
 
     /**
-     * Returns the value of the ItemCount property for this object.
+     * The number of items in the specified index. Amazon DynamoDB updates
+     * this value approximately every six hours. Recent changes might not be
+     * reflected in this value.
      *
-     * @return The value of the ItemCount property for this object.
+     * @return The number of items in the specified index. Amazon DynamoDB updates
+     *         this value approximately every six hours. Recent changes might not be
+     *         reflected in this value.
      */
     public Long getItemCount() {
         return itemCount;
     }
     
     /**
-     * Sets the value of the ItemCount property for this object.
+     * The number of items in the specified index. Amazon DynamoDB updates
+     * this value approximately every six hours. Recent changes might not be
+     * reflected in this value.
      *
-     * @param itemCount The new value for the ItemCount property for this object.
+     * @param itemCount The number of items in the specified index. Amazon DynamoDB updates
+     *         this value approximately every six hours. Recent changes might not be
+     *         reflected in this value.
      */
     public void setItemCount(Long itemCount) {
         this.itemCount = itemCount;
     }
     
     /**
-     * Sets the value of the ItemCount property for this object.
+     * The number of items in the specified index. Amazon DynamoDB updates
+     * this value approximately every six hours. Recent changes might not be
+     * reflected in this value.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param itemCount The new value for the ItemCount property for this object.
+     * @param itemCount The number of items in the specified index. Amazon DynamoDB updates
+     *         this value approximately every six hours. Recent changes might not be
+     *         reflected in this value.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.

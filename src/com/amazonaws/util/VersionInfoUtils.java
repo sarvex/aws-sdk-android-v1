@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
 public class VersionInfoUtils {
     
     /** The AWS SDK version info file with SDK versioning info */
-    private static final String VERSION_INFO_FILE = "com/amazonaws/sdk/versionInfo.properties";
+    static final String VERSION_INFO_FILE = "/com/amazonaws/sdk/versionInfo.properties";
     
     /** SDK version info */
     private static String version = null;

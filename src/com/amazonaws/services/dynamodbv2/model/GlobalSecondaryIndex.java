@@ -16,61 +16,83 @@ package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
 
-
 /**
- * Global Secondary Index
+ * <p>
+ * Represents a global secondary index.
+ * </p>
  */
 public class GlobalSecondaryIndex implements Serializable {
 
+    /**
+     * The name of the global secondary index. The name must be unique among
+     * all other indexes on this table.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String indexName;
 
+    /**
+     * The complete key schema for a global secondary index, which consists
+     * of one or more pairs of attribute names and key types
+     * (<code>HASH</code> or <code>RANGE</code>).
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 2<br/>
+     */
     private com.amazonaws.internal.ListWithAutoConstructFlag<KeySchemaElement> keySchema;
 
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      */
     private Projection projection;
 
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      */
     private ProvisionedThroughput provisionedThroughput;
 
     /**
-     * Returns the value of the IndexName property for this object.
+     * The name of the global secondary index. The name must be unique among
+     * all other indexes on this table.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the IndexName property for this object.
+     * @return The name of the global secondary index. The name must be unique among
+     *         all other indexes on this table.
      */
     public String getIndexName() {
         return indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * The name of the global secondary index. The name must be unique among
+     * all other indexes on this table.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName The name of the global secondary index. The name must be unique among
+     *         all other indexes on this table.
      */
     public void setIndexName(String indexName) {
         this.indexName = indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * The name of the global secondary index. The name must be unique among
+     * all other indexes on this table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -78,7 +100,8 @@ public class GlobalSecondaryIndex implements Serializable {
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName The name of the global secondary index. The name must be unique among
+     *         all other indexes on this table.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -89,24 +112,32 @@ public class GlobalSecondaryIndex implements Serializable {
     }
 
     /**
-     * Returns the value of the KeySchema property for this object.
+     * The complete key schema for a global secondary index, which consists
+     * of one or more pairs of attribute names and key types
+     * (<code>HASH</code> or <code>RANGE</code>).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @return The value of the KeySchema property for this object.
+     * @return The complete key schema for a global secondary index, which consists
+     *         of one or more pairs of attribute names and key types
+     *         (<code>HASH</code> or <code>RANGE</code>).
      */
     public java.util.List<KeySchemaElement> getKeySchema() {
         return keySchema;
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * The complete key schema for a global secondary index, which consists
+     * of one or more pairs of attribute names and key types
+     * (<code>HASH</code> or <code>RANGE</code>).
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema The complete key schema for a global secondary index, which consists
+     *         of one or more pairs of attribute names and key types
+     *         (<code>HASH</code> or <code>RANGE</code>).
      */
     public void setKeySchema(java.util.Collection<KeySchemaElement> keySchema) {
         if (keySchema == null) {
@@ -119,14 +150,18 @@ public class GlobalSecondaryIndex implements Serializable {
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * The complete key schema for a global secondary index, which consists
+     * of one or more pairs of attribute names and key types
+     * (<code>HASH</code> or <code>RANGE</code>).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema The complete key schema for a global secondary index, which consists
+     *         of one or more pairs of attribute names and key types
+     *         (<code>HASH</code> or <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -140,14 +175,18 @@ public class GlobalSecondaryIndex implements Serializable {
     }
     
     /**
-     * Sets the value of the KeySchema property for this object.
+     * The complete key schema for a global secondary index, which consists
+     * of one or more pairs of attribute names and key types
+     * (<code>HASH</code> or <code>RANGE</code>).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2<br/>
      *
-     * @param keySchema The new value for the KeySchema property for this object.
+     * @param keySchema The complete key schema for a global secondary index, which consists
+     *         of one or more pairs of attribute names and key types
+     *         (<code>HASH</code> or <code>RANGE</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -166,11 +205,11 @@ public class GlobalSecondaryIndex implements Serializable {
 
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      *
      * @return Represents attributes that are copied (projected) from the table into
-     *         the index. These are in addition to the primary key attributes and
+     *         an index. These are in addition to the primary key attributes and
      *         index key attributes, which are automatically projected.
      */
     public Projection getProjection() {
@@ -179,11 +218,11 @@ public class GlobalSecondaryIndex implements Serializable {
     
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      *
      * @param projection Represents attributes that are copied (projected) from the table into
-     *         the index. These are in addition to the primary key attributes and
+     *         an index. These are in addition to the primary key attributes and
      *         index key attributes, which are automatically projected.
      */
     public void setProjection(Projection projection) {
@@ -192,13 +231,13 @@ public class GlobalSecondaryIndex implements Serializable {
     
     /**
      * Represents attributes that are copied (projected) from the table into
-     * the index. These are in addition to the primary key attributes and
+     * an index. These are in addition to the primary key attributes and
      * index key attributes, which are automatically projected.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param projection Represents attributes that are copied (projected) from the table into
-     *         the index. These are in addition to the primary key attributes and
+     *         an index. These are in addition to the primary key attributes and
      *         index key attributes, which are automatically projected.
      *
      * @return A reference to this updated object so that method calls can be chained 
@@ -210,17 +249,17 @@ public class GlobalSecondaryIndex implements Serializable {
     }
 
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      *
-     * @return The provisioned throughput settings for the specified table. The
-     *         settings can be modified using the <i>UpdateTable</i> operation.
-     *         <p>For current minimum and maximum provisioned throughput values, see
-     *         <a
+     * @return Represents the provisioned throughput settings for a specified table
+     *         or index. The settings can be modified using the <i>UpdateTable</i>
+     *         operation. <p>For current minimum and maximum provisioned throughput
+     *         values, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      *         in the Amazon DynamoDB Developer Guide.
      */
@@ -229,17 +268,17 @@ public class GlobalSecondaryIndex implements Serializable {
     }
     
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      *
-     * @param provisionedThroughput The provisioned throughput settings for the specified table. The
-     *         settings can be modified using the <i>UpdateTable</i> operation.
-     *         <p>For current minimum and maximum provisioned throughput values, see
-     *         <a
+     * @param provisionedThroughput Represents the provisioned throughput settings for a specified table
+     *         or index. The settings can be modified using the <i>UpdateTable</i>
+     *         operation. <p>For current minimum and maximum provisioned throughput
+     *         values, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      *         in the Amazon DynamoDB Developer Guide.
      */
@@ -248,19 +287,19 @@ public class GlobalSecondaryIndex implements Serializable {
     }
     
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param provisionedThroughput The provisioned throughput settings for the specified table. The
-     *         settings can be modified using the <i>UpdateTable</i> operation.
-     *         <p>For current minimum and maximum provisioned throughput values, see
-     *         <a
+     * @param provisionedThroughput Represents the provisioned throughput settings for a specified table
+     *         or index. The settings can be modified using the <i>UpdateTable</i>
+     *         operation. <p>For current minimum and maximum provisioned throughput
+     *         values, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      *         in the Amazon DynamoDB Developer Guide.
      *

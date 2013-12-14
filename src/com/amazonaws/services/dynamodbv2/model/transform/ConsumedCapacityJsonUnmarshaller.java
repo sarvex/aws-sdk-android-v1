@@ -25,19 +25,14 @@ import com.amazonaws.transform.*;
 import com.fasterxml.jackson.core.JsonToken;
 import static com.fasterxml.jackson.core.JsonToken.*;
 
-
 /**
  * Consumed Capacity JSON Unmarshaller
  */
 public class ConsumedCapacityJsonUnmarshaller implements Unmarshaller<ConsumedCapacity, JsonUnmarshallerContext> {
 
-    
-
     public ConsumedCapacity unmarshall(JsonUnmarshallerContext context) throws Exception {
         ConsumedCapacity consumedCapacity = new ConsumedCapacity();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
@@ -49,7 +44,6 @@ public class ConsumedCapacityJsonUnmarshaller implements Unmarshaller<ConsumedCa
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("TableName", targetDepth)) {
                     context.nextToken();
@@ -74,7 +68,6 @@ public class ConsumedCapacityJsonUnmarshaller implements Unmarshaller<ConsumedCa
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

@@ -14,7 +14,6 @@
  */
 package com.amazonaws.services.dynamodbv2.model.transform;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +38,6 @@ import com.amazonaws.util.json.*;
  */
 public class UpdateTableRequestMarshaller implements Marshaller<Request<UpdateTableRequest>, UpdateTableRequest> {
 
-    
-
     public Request<UpdateTableRequest> marshall(UpdateTableRequest updateTableRequest) {
     if (updateTableRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +48,7 @@ public class UpdateTableRequestMarshaller implements Marshaller<Request<UpdateTa
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,14 +70,10 @@ public class UpdateTableRequestMarshaller implements Marshaller<Request<UpdateTa
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (updateTableRequest.getTableName() != null) {
@@ -144,7 +135,6 @@ public class UpdateTableRequestMarshaller implements Marshaller<Request<UpdateTa
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
           byte[] content = snippet.getBytes("UTF-8");
@@ -153,7 +143,6 @@ public class UpdateTableRequestMarshaller implements Marshaller<Request<UpdateTa
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
     }

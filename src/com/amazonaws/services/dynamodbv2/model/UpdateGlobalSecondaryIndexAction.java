@@ -16,52 +16,60 @@ package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
 
-
 /**
- * Update Global Secondary Index Action
+ * <p>
+ * Represents the new provisioned throughput settings to be applied to a global secondary index.
+ * </p>
  */
 public class UpdateGlobalSecondaryIndexAction implements Serializable {
 
+    /**
+     * The name of the global secondary index to be updated.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>3 - 255<br/>
+     * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
+     */
     private String indexName;
 
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      */
     private ProvisionedThroughput provisionedThroughput;
 
     /**
-     * Returns the value of the IndexName property for this object.
+     * The name of the global secondary index to be updated.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @return The value of the IndexName property for this object.
+     * @return The name of the global secondary index to be updated.
      */
     public String getIndexName() {
         return indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * The name of the global secondary index to be updated.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName The name of the global secondary index to be updated.
      */
     public void setIndexName(String indexName) {
         this.indexName = indexName;
     }
     
     /**
-     * Sets the value of the IndexName property for this object.
+     * The name of the global secondary index to be updated.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -69,7 +77,7 @@ public class UpdateGlobalSecondaryIndexAction implements Serializable {
      * <b>Length: </b>3 - 255<br/>
      * <b>Pattern: </b>[a-zA-Z0-9_.-]+<br/>
      *
-     * @param indexName The new value for the IndexName property for this object.
+     * @param indexName The name of the global secondary index to be updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
      *         together.
@@ -80,17 +88,17 @@ public class UpdateGlobalSecondaryIndexAction implements Serializable {
     }
 
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      *
-     * @return The provisioned throughput settings for the specified table. The
-     *         settings can be modified using the <i>UpdateTable</i> operation.
-     *         <p>For current minimum and maximum provisioned throughput values, see
-     *         <a
+     * @return Represents the provisioned throughput settings for a specified table
+     *         or index. The settings can be modified using the <i>UpdateTable</i>
+     *         operation. <p>For current minimum and maximum provisioned throughput
+     *         values, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      *         in the Amazon DynamoDB Developer Guide.
      */
@@ -99,17 +107,17 @@ public class UpdateGlobalSecondaryIndexAction implements Serializable {
     }
     
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      *
-     * @param provisionedThroughput The provisioned throughput settings for the specified table. The
-     *         settings can be modified using the <i>UpdateTable</i> operation.
-     *         <p>For current minimum and maximum provisioned throughput values, see
-     *         <a
+     * @param provisionedThroughput Represents the provisioned throughput settings for a specified table
+     *         or index. The settings can be modified using the <i>UpdateTable</i>
+     *         operation. <p>For current minimum and maximum provisioned throughput
+     *         values, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      *         in the Amazon DynamoDB Developer Guide.
      */
@@ -118,19 +126,19 @@ public class UpdateGlobalSecondaryIndexAction implements Serializable {
     }
     
     /**
-     * The provisioned throughput settings for the specified table. The
-     * settings can be modified using the <i>UpdateTable</i> operation.
-     * <p>For current minimum and maximum provisioned throughput values, see
-     * <a
+     * Represents the provisioned throughput settings for a specified table
+     * or index. The settings can be modified using the <i>UpdateTable</i>
+     * operation. <p>For current minimum and maximum provisioned throughput
+     * values, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      * in the Amazon DynamoDB Developer Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param provisionedThroughput The provisioned throughput settings for the specified table. The
-     *         settings can be modified using the <i>UpdateTable</i> operation.
-     *         <p>For current minimum and maximum provisioned throughput values, see
-     *         <a
+     * @param provisionedThroughput Represents the provisioned throughput settings for a specified table
+     *         or index. The settings can be modified using the <i>UpdateTable</i>
+     *         operation. <p>For current minimum and maximum provisioned throughput
+     *         values, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
      *         in the Amazon DynamoDB Developer Guide.
      *
