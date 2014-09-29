@@ -1,6 +1,8 @@
-# [Version 2 of the AWS SDK for Android](https://github.com/aws/aws-sdk-android-v2)
+# [Version 2 of the AWS SDK for Android](https://github.com/aws/aws-sdk-android)
 
-We are happy to announce that Version 2 of AWS Mobile SDK for Android is now in Developer Preview.  In Version 2 we have introduced new serviced designed for mobile, new mobile optimized connectors, and other feature improvements.  The highlights of Version 2 are as follows:
+We are happy to announce that Version 2 of AWS Mobile SDK for Android is now in Developer Preview.Version 2 of the AWS Mobile SDK for Android has reached General Availability (GA) and is no longer in Developer Preview.  It is available on our aws-sdk-android repository. Version 1 is deprecated as of September 29, 2014. If you are building new apps, we recommend you use Version 2.
+
+In Version 2 we introduced new serviced designed for mobile, new mobile optimized connectors, and other feature improvements.  The highlights of Version 2 are as follows:
 
 ·         Amazon Cognito - is a simple user identity and synchronization service that helps you securely manage and synchronize app data for your users across their mobile devices.
 
@@ -11,7 +13,7 @@ We are happy to announce that Version 2 of AWS Mobile SDK for Android is now in 
 ·         Amazon S3 Transfer Manager - now supports aborting uploads, and pausing and resuming file uploads and downloads.
  
 
-The new SDK is available in our [aws-sdk-android-v2](https://github.com/aws/aws-sdk-android-v2) repository.  You can also get the SDK from our [AWS Mobile SDK page](http://aws.amazon.com/sdkforandroid/).
+The new SDK is available in our [aws-sdk-android](https://github.com/aws/aws-sdk-android) repository.  You can also get the SDK from our [AWS Mobile SDK page](http://aws.amazon.com/sdkforandroid/).
 
 
 # Version 1 of the AWS SDK for Android
